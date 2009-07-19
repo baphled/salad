@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090719033429) do
+ActiveRecord::Schema.define(:version => 20090719044535) do
 
   create_table "projects", :force => true do |t|
-    t.string "name",        :limit => 100, :default => ""
     t.string "description"
     t.string "aim",         :limit => 250
+    t.string "title"
   end
 
 end

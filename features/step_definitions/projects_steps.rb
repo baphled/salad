@@ -19,3 +19,11 @@ end
 Then /^the project information should be saved$/ do
   assert_response :success
 end
+
+Then /^I should be redirected to the new project$/ do
+  current_url.should_not eql "/projects/new"
+end
+
+Then /^a flash message notice should be displayed$/ do
+  flash.should contain "A project was created"
+end

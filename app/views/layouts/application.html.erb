@@ -1,0 +1,10 @@
+<html>
+<head>
+  <title>SaladBowl</title>
+</head>
+<body>
+  <div id="notice" class="notice"><%= flash[:notice] %></div>
+  <div id="error" class="error"><%= flash[:error] %></div>
+  <%= yield :layout %>
+</body>
+</html>
