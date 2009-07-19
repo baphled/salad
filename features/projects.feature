@@ -56,21 +56,21 @@ Feature: We need to a way to store our stories within a project, this will help 
 	
 	Scenario: A user should be able to edit projects title
 	  Given there is a project
-	  When it is view the 'A project' project
+	  When it is edit the 'A project' project
 	  Then I should be able to edit its title
 		And submit the form
 		Then project 'A project' should now be 'A different title'
 	
 	Scenario: A user should be able to edit projects description
 	  Given there is a project
-	  When it is view the 'A description' project
+	  When it is edit the 'A description' project
 	  Then I should be able to edit its title
 		And submit the form
 		Then project 'A description' should now be 'A different description'
 
 	Scenario: A user should be able to edit projects aim
 	  Given there is a project
-	  When it is view the 'An aim' project
+	  When it is edit the 'An aim' project
 	  Then I should be able to edit its title
 		And submit the form
 		Then project 'An aim' should now be 'A different aim'

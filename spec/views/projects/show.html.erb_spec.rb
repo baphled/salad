@@ -4,7 +4,8 @@ describe "projects/show.html.erb" do
   before(:each) do
     @project = mock_model(Project,
                           :title => "A project",
-                          :description => "The project description")
+                          :description => "The project description",
+                          :aim => "The aim of this project is...")
     assigns[:project] = @project
     render
   end
@@ -17,5 +18,7 @@ describe "projects/show.html.erb" do
     response.should have_selector :p, :content => "The project description"
   end
   
-  it "should have an aim"
+  it "should have an aim" do
+    response.should have_selector :p, :content => "The aim of this project is..."
+  end
 end
