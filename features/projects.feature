@@ -90,3 +90,4 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And I visit the projects index page
 	  Then I should not view a list of projects
 		And should see a message saying 'No projects available'
+		

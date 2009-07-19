@@ -2,9 +2,18 @@
   <% @projects.each do |project| %>
     <ul>
 			<li>
-				<span><%=h project.title %></span>
-				<span><%=h project.description %></span>
-				<span><%=h project.aim %></span>
+				<div id="project_title">
+					Title: 
+					<%=h project.title %>
+				</div>
+				<div id="project_description">
+					Description:
+					<%=h project.description %>
+				</div>
+				<div id="project_aim">
+					Aim:
+					<%=h project.aim %>
+				</div>
 			</li>
 		</ul>
   <% end %>
