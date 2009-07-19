@@ -1,1 +1,14 @@
-<span>No projects available</span>
+<% if !@projects.nil? %>
+  <% @projects.each do |project| %>
+    <ul>
+			<li>
+				<span><%=h project.title %></span>
+				<span><%=h project.description %></span>
+				<span><%=h project.aim %></span>
+			</li>
+		</ul>
+  <% end %>
+<% else %>
+  <span>No projects available</span>
+<% end %>
+

@@ -86,12 +86,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Then the project should not be updated
 	
 	Scenario: A user should be notified if there are no projects available
-	  Given there are no projects
-	  When I visit the projects index page
+	  When there are no projects
+		And I visit the projects index page
 	  Then I should not view a list of projects
 		And should see a message saying 'No projects available'
-	
-	Scenario: A user should be able to view a list of already created project
-	  Given there are project
-	  When I visit the projects index page
-	  Then I should view a list of projects

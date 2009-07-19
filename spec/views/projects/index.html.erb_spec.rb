@@ -12,4 +12,20 @@ describe "/projects/index.html.erb" do
       response.should have_selector :span, :content => "No projects available"
     end
   end
+  
+  context "Projects are stored on the system" do
+    before(:each) do
+      assigns[:projects] = Project.find :all
+      render
+    end
+    it "should have a list of projects" do
+      response.should have_selector :ul do |list|
+        list.should have_selector :li do |content|
+          content.should have_selector :span, :content => "A fixture project"
+          content.should have_selector :span, :content => "A description for our project"
+          content.should have_selector :span, :content => "A projects aims"
+        end
+      end
+    end
+  end
 end

@@ -13,8 +13,8 @@ Given /^I visit its edit view$/ do
   visit("/projects/#{@project.id}/edit")
 end
 
-Given /^there are no projects$/ do
-  Project.stub!(:find).with(:all).and_return nil
+Given /^there are projects$/ do
+  @projects = Project.find :all
 end
 
 When /^I click new project$/ do
@@ -78,6 +78,11 @@ end
 
 When /^I visit the projects index page$/ do
   visit('/projects')
+  assigns[:projects] = @projects
+end
+
+When /^there are no projects$/ do
+  Project.stub!(:find).and_return nil
 end
 
 Then /^submit the form$/ do
