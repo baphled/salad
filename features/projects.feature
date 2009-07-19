@@ -7,7 +7,8 @@ Feature: We need to a way to store our stories within a project, this will help 
     Given I can view the site
     When I click new project
     And fill in the new project with no errors
-    Then the project information should be saved
+    Then submit the form
+		And the project information should be saved
     And I should be redirected to the new project
     And a flash message notice should be displayed
 
@@ -15,7 +16,8 @@ Feature: We need to a way to store our stories within a project, this will help 
     Given I can view the site
     When I click new project
     And don't fill in the title
-    Then the project information should not be saved
+    Then submit the form
+		And the project information should not be saved
     And I should be redirected to the new project form
     And a flash message notice should be displayed
 
@@ -23,7 +25,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given I can view the site
 	  When I click new project
 	  And don't fill in the description
-	  Then the project information should not be saved
+	  Then submit the form
+		And the project information should not be saved
 	  And I should be redirected to the new project form
 	  And a flash message notice should be displayed
 
@@ -31,7 +34,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given I can view the site
 	  When I click new project
 	  And don't fill in the aim
-	  Then the project information should not be saved
+	  Then submit the form
+		And the project information should not be saved
 	  And I should be redirected to the new project form
 	  And a flash message notice should be displayed
 
@@ -39,6 +43,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Given I can view the site
     When I click new project
     And the project already exists
-    Then the project information should not be saved
+    Then submit the form
+		And the project information should not be saved
     And I should be redirected to the new project form
     And a flash message notice should be displayed
