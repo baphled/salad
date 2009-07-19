@@ -1,5 +1,5 @@
-Given /^I can view the site$/ do
-  visit "/projects"
+Given /^I can view the (.*) page$/ do |controller|
+  visit "/#{controller}"
 end
 
 Given /^there is a project$/ do
