@@ -12,6 +12,7 @@ describe "/projects/edit.html.erb" do
    it "should have a form" do
       response.should have_tag("form[action=#{project_path(@project)}][method=post]") do
         with_tag('input#project_title[name=?]', "project[title]")
+        with_tag('textarea#project_description[name=?]', "project[description]")
       end
     end
     

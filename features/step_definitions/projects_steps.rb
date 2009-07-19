@@ -55,6 +55,13 @@ When /^it is viewed$/ do
   visit "/projects/#{@project.id}"
 end
 
+When /^we edit the 'A project' project$/ do
+  @found_project = Project.find_by_title("A project")
+end
+
+When /^we edit the 'A description' project$/ do
+  fill_in 'project_description', :with => 'A different description'
+end
 
 Then /^submit the form$/ do
   click_button 'Submit'
@@ -90,4 +97,16 @@ end
 
 Then /^I should be able to view its details$/ do
   response.should have_selector(:p, :content =>"This is a description")
+end
+
+Then /^I should be able to edit its title$/ do
+  fill_in 'project_title', :with => 'A different title'
+end
+
+Then /^project title 'A project' should now be 'A different title'$/ do
+  response.should contain 'A different title'
+end
+
+Then /^project description 'A description' should now be 'A different description'$/ do
+  response.should contain 'A different description'
 end

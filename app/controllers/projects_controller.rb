@@ -23,6 +23,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   
+  def update
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html { redirect_to :project }
+      end
+    end
+  end
+  
   def show
     @project = Project.find(params[:id])
   end
