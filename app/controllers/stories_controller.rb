@@ -6,6 +6,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(params[:story])
     @story.save
+    flash[:notice] = "Story: #{@story.title}, was created"
     redirect_to @story
   end
   
