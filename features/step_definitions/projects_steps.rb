@@ -36,3 +36,7 @@ end
 Then /^I should be redirected to the new project form$/ do
   response.should have_selector :form
 end
+
+Then /^a form error must be displayed$/ do
+  response.should contain "Title can't be blank"
+end

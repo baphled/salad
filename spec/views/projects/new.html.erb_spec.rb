@@ -20,4 +20,5 @@ describe "projects/new.html.erb" do
     end
     
   end
+  
 end
