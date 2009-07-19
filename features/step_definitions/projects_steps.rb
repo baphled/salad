@@ -12,6 +12,11 @@ When /^fill in the new project with no errors$/ do
   fill_in 'project_aim', :with => 'the aim of our project is...'
 end
 
+When /^don't fill in the title$/ do
+  fill_in 'project_description', :with => 'This is a description'
+  fill_in 'project_aim', :with => 'the aim of our project is...'
+end
+
 Then /^submit the form$/ do
   click_button 'Submit'
 end

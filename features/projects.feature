@@ -17,7 +17,6 @@ Feature: We need to a way to store our stories within a project, this will help 
     When I click new project
     And don't fill in the title
     Then submit the form
-		And the project information should not be saved
     And I should be redirected to the new project form
     And a flash message notice should be displayed
 
@@ -26,7 +25,6 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  When I click new project
 	  And don't fill in the description
 	  Then submit the form
-		And the project information should not be saved
 	  And I should be redirected to the new project form
 	  And a flash message notice should be displayed
 
@@ -35,7 +33,6 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  When I click new project
 	  And don't fill in the aim
 	  Then submit the form
-		And the project information should not be saved
 	  And I should be redirected to the new project form
 	  And a flash message notice should be displayed
 
@@ -44,6 +41,5 @@ Feature: We need to a way to store our stories within a project, this will help 
     When I click new project
     And the project already exists
     Then submit the form
-		And the project information should not be saved
     And I should be redirected to the new project form
     And a flash message notice should be displayed
