@@ -15,3 +15,7 @@ end
 Then /^submit the form$/ do
   click_button 'Submit'
 end
+
+Then /^the project information should be saved$/ do
+  assert_response :success
+end
