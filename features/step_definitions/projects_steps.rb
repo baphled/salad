@@ -10,5 +10,5 @@ When /^fill in the new project$/ do
   fill_in 'project_title', :with => 'A project'
   fill_in 'project_description', :with => 'This is a description'
   fill_in 'project_aim', :with => 'the aim of our project is...'
-  submit_form 'new_project'
+  click_button 'Submit'
 end
