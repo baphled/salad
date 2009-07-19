@@ -63,6 +63,10 @@ When /^we edit the 'A description' project$/ do
   fill_in 'project_description', :with => 'A different description'
 end
 
+When /^we edit the 'An aim' project$/ do
+  fill_in 'project_aim', :with => 'A different aim'
+end
+
 Then /^submit the form$/ do
   click_button 'Submit'
 end
@@ -109,4 +113,8 @@ end
 
 Then /^project description 'A description' should now be 'A different description'$/ do
   response.should contain 'A different description'
+end
+
+Then /^project aim 'An aim' should now be 'A different aim'$/ do
+  response.should contain 'A different aim'
 end
