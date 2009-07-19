@@ -67,3 +67,7 @@ end
 Then /^the user should be told the must have a (.*)$/ do |value|
   response.should contain "#{value.capitalize} can't be blank"
 end
+
+Then /^the user should be told the project already exists$/ do
+  response.should contain "Title has already been taken"
+end
