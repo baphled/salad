@@ -13,6 +13,10 @@ Given /^I visit its edit view$/ do
   visit("/projects/#{@project.id}/edit")
 end
 
+Given /^there are no projects$/ do
+  Project.stub!(:find).with(:all).and_return nil
+end
+
 When /^I click new project$/ do
   visit "/projects/new"
 end
@@ -72,6 +76,10 @@ When /^the project is not able to update$/ do
   assigns[:project] = @project
 end
 
+When /^I visit the projects index page$/ do
+  visit('/projects')
+end
+
 Then /^submit the form$/ do
   click_button 'Submit'
 end
@@ -126,4 +134,14 @@ end
 
 Then /^the project should not be updated$/ do
   response.should have_selector :form
+end
+
+Then /^I should not view a list of projects$/ do
+  response.should_not have_selector :ul do |list|
+    list.should_not have_selector :li
+  end
+end
+
+Then /^should see a message saying 'No projects available'$/ do
+  response.should have_selector :span, :content => "No projects available"
 end
