@@ -10,6 +10,7 @@ describe "/stories/new.html.erb" do
       response.should have_tag("form[action=#{stories_path}][method=post]") do
         with_tag('input#story_title[name=?]', "story[title]")
         with_tag('textarea#story_body[name=?]', "story[body]")
+        with_tag('input#story_submit[name=?]', "commit")
       end
     end
   end
