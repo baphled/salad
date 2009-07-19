@@ -27,6 +27,10 @@ describe "projects/new.html.erb" do
         with_tag('textarea#project_aim[name=?]', "project[aim]")
       end
     end
-    it "shold have a submit button"
+    it "shold have a submit button" do
+      response.should have_tag("form[action=#{new_project_path}][method=post]") do
+        with_tag('input#project_submit[name=?]', "commit")
+      end
+    end
   end
 end
