@@ -9,6 +9,10 @@ Given /^there is a project$/ do
   @project.save
 end
 
+Given /^I visit its edit view$/ do
+  visit("/projects/#{@project.id}/edit")
+end
+
 When /^I click new project$/ do
   visit "/projects/new"
 end
@@ -50,6 +54,7 @@ end
 When /^it is viewed$/ do
   visit "/projects/#{@project.id}"
 end
+
 
 Then /^submit the form$/ do
   click_button 'Submit'
