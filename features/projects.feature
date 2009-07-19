@@ -4,7 +4,7 @@ Feature: We need to a way to store our stories within a project, this will help 
   I want to be able to create a problem which I can view, edit and manage
 
   Scenario: As a user I need to be able to create a new project
-    Given I am a user I should be able to create a new project
+    Given I can view the site
     When I click new project
     And fill in the new project
     And there are no errors
@@ -13,7 +13,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a flash message notice should be displayed
 
   Scenario: As a user I must give a new project a title
-    Given I am a user I should be able to create a new project
+    Given I can view the site
     When I click new project
     And fill in the new project
     And don't fill in the title
@@ -22,7 +22,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a flash message notice should be displayed
 
   Scenario: As a user I must give the project a brief description
-	  Given I am a user I should be able to create a new project
+	  Given I can view the site
 	  When I click new project
 	  And fill in the new project
 	  And don't fill in the description
@@ -31,7 +31,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  And a flash message notice should be displayed
 
 	Scenario: As a user I must give the project an aim
-	  Given I am a user I should be able to create a new project
+	  Given I can view the site
 	  When I click new project
 	  And fill in the new project
 	  And don't fill in the aim
@@ -40,7 +40,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  And a flash message notice should be displayed
 
   Scenario: As a user I should not be able to create a project that already exists
-    Given I am a user I should be able to create a new project
+    Given I can view the site
     When I click new project
     And fill in the new project
     And the project already exists
