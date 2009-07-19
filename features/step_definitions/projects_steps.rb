@@ -2,6 +2,13 @@ Given /^I can view the site$/ do
   visit "/projects"
 end
 
+Given /^there is a project$/ do
+  @project = Project.new(:title=>"A project",
+              :description=>"This is a description",
+              :aim=>"the aim of our project is...")
+  @project.save
+end
+
 When /^I click new project$/ do
   visit "/projects/new"
 end
@@ -40,6 +47,10 @@ When /^the project already exists$/ do
   @project.save
 end
 
+When /^it is viewed$/ do
+  visit "/projects/#{@project.id}"
+end
+
 Then /^submit the form$/ do
   click_button 'Submit'
 end
@@ -70,4 +81,8 @@ end
 
 Then /^the user should be told the project already exists$/ do
   response.should contain "Title has already been taken"
+end
+
+Then /^I should be able to view its details$/ do
+  response.should have_selector(:p, :content =>"This is a description")
 end
