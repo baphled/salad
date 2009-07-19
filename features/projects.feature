@@ -28,7 +28,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Then submit the form
 	  And I should be redirected to the new project form
 	  And a form error must be displayed
-		And the user should be told the the project must have a description
+		And the user should be told the must have a description
 		
 	Scenario: As a user I must give the project an aim
 	  Given I can view the site
@@ -37,7 +37,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Then submit the form
 	  And I should be redirected to the new project form
 	  And a form error must be displayed
-		And the user should be told the the project needs an aim
+		And the user should be told the must have a aim
 		
   Scenario: As a user I should not be able to create a project that already exists
     Given I can view the site
