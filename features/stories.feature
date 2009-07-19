@@ -9,7 +9,7 @@ Feature: A user should be able to create new stories, which can be associated wi
     And fill in the new story with no errors
     Then submit the form
 		And the story information should be saved
-    And I should be redirected to the new project
+    And I should be redirected to the new story
     And a flash message 'Story: Logging in, was created' should be displayed
 
   Scenario: As a user when I create a story with no title, the story should not be valid

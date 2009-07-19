@@ -27,7 +27,7 @@ When /^fill in the new project with no errors$/ do
   fill_in 'project_aim', :with => 'the aim of our project is...'
 end
 
-When /^don't fill in the title$/ do
+When /^don't fill in the project title$/ do
   fill_in 'project_description', :with => 'This is a description'
   fill_in 'project_aim', :with => 'the aim of our project is...'
 end
@@ -93,15 +93,15 @@ Then /^the project information should be saved$/ do
   assert_response :success
 end
 
-Then /^I should be redirected to the new project$/ do
-  current_url.should_not eql "/projects/new"
+Then /^I should be redirected to the new $controller$/ do |controller|
+  current_url.should eql "/#{controller}/new"
 end
 
 Then "a flash message '(.*)' should be displayed" do |message|
   flash.should contain "#{message}"
 end
 
-Then /^I should be redirected to the new project form$/ do
+Then /^I should be redirected to the form$/ do
   response.should have_selector :form
 end
 

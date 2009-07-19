@@ -15,9 +15,9 @@ Feature: We need to a way to store our stories within a project, this will help 
   Scenario: As a user I must give a new project a title
     Given I can view the projects page
     When I click new projects
-    And don't fill in the title
+    And don't fill in the project title
     Then submit the form
-    And I should be redirected to the new project form
+    And I should be redirected to the form
     And a form error must be displayed
 		And the user should be told the must have a title
 		
@@ -26,7 +26,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  When I click new projects
 	  And don't fill in the description
 	  Then submit the form
-	  And I should be redirected to the new project form
+	  And I should be redirected to the form
 	  And a form error must be displayed
 		And the user should be told the must have a description
 		
@@ -35,7 +35,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  When I click new projects
 	  And don't fill in the aim
 	  Then submit the form
-	  And I should be redirected to the new project form
+	  And I should be redirected to the form
 	  And a form error must be displayed
 		And the user should be told the must have a aim
 		
@@ -45,7 +45,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the project already exists
     And fill in the new project all details
     Then submit the form
-    And I should be redirected to the new project form
+    And I should be redirected to the form
     And a form error must be displayed
 		And the user should be told the project already exists
 		

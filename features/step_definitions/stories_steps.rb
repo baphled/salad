@@ -6,3 +6,7 @@ end
 Then /^the story information should be saved$/ do
   assert_response :success
 end
+
+When /^don't fill in the story title$/ do
+  fill_in 'story_body', :with => 'When a user successfully logs in'
+end
