@@ -67,6 +67,11 @@ When /^we edit the 'An aim' project$/ do
   fill_in 'project_aim', :with => 'A different aim'
 end
 
+When /^the project is not able to update$/ do
+  @project.stub!(:update_attributes).and_return false
+  assigns[:project] = @project
+end
+
 Then /^submit the form$/ do
   click_button 'Submit'
 end
@@ -117,4 +122,8 @@ end
 
 Then /^project aim 'An aim' should now be 'A different aim'$/ do
   response.should contain 'A different aim'
+end
+
+Then /^the project should not be updated$/ do
+  response.should have_selector :form
 end

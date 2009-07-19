@@ -78,4 +78,14 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And submit the form
 		Then project aim 'An aim' should now be 'A different aim'
 
+	Scenario: If there is a problem saving the project we should be alerted
+	  Given there is a project
+	  When I visit its edit view
+		And we edit the 'An aim' project
+		And the project is not able to update
+	  Then the project should not be updated
 	
+	Scenario: A user should be able to view a list of already created project
+	  Given there are project
+	  When I visit the projects index page
+	  Then I should view a list of projects
