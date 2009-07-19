@@ -5,7 +5,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 
   Scenario: As a user I need to be able to create a new project
     Given I can view the projects page
-    When I click new project
+    When I click new projects
     And fill in the new project with no errors
     Then submit the form
 		And the project information should be saved
@@ -14,7 +14,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 
   Scenario: As a user I must give a new project a title
     Given I can view the projects page
-    When I click new project
+    When I click new projects
     And don't fill in the title
     Then submit the form
     And I should be redirected to the new project form
@@ -23,7 +23,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 		
   Scenario: As a user I must give the project a brief description
 	  Given I can view the projects page
-	  When I click new project
+	  When I click new projects
 	  And don't fill in the description
 	  Then submit the form
 	  And I should be redirected to the new project form
@@ -32,7 +32,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 		
 	Scenario: As a user I must give the project an aim
 	  Given I can view the projects page
-	  When I click new project
+	  When I click new projects
 	  And don't fill in the aim
 	  Then submit the form
 	  And I should be redirected to the new project form
@@ -41,7 +41,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 		
   Scenario: As a user I should not be able to create a project that already exists
     Given I can view the projects page
-    When I click new project
+    When I click new projects
     And the project already exists
     And fill in the new project all details
     Then submit the form
@@ -90,10 +90,3 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And I visit the projects index page
 	  Then I should not view a list of projects
 		And should see a message saying 'No projects available'
-		
-	Scenario: When a user creates a project, they should be able to and stories to the project
-	  Given I can view the projects page
-    When I click new project
-		And click add story
-    And fill in the new project with no errors
-    Then submit the form

@@ -5,7 +5,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 
   Scenario: As a user I should be able to create a new story
     Given I can view the stories page
-    When I click new story
+    When I click new stories
     And fill in the new story with no errors
     Then submit the new story form
 		And the story information should be saved
@@ -14,7 +14,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 
   Scenario: As a user when I create a story with no title, the story should not be valid
 	  Given I can view the stories page
-	  When I click new story
+	  When I click new stories
 	  And don't fill in the story title
 	  Then submit the story form
 	  And I should be redirected to the new story form
@@ -23,7 +23,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 		
 	Scenario: As a user when I create a story with no body, the story should not be valid
 	  Given I can view the stories page
-	  When I click new story
+	  When I click new stories
 	  And don't fill in the story body
 	  Then submit the story form
 	  And I should be redirected to the new story form
@@ -32,7 +32,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 		
 	Scenario: As a user when I create a story I should be able to associate the story to a project
 	  Given I can view the stories page
-	  When I click new story
+	  When I click new stories
 	  And fill in the new story with no errors
 		And select a the first project
 	  Then submit the story form

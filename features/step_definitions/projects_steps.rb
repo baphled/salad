@@ -17,8 +17,8 @@ Given /^there are projects$/ do
   @projects = Project.find :all
 end
 
-When /^I click new project$/ do
-  visit "/projects/new"
+When "^I click $action $controller$"do |action,controller|
+  visit "/#{controller}/#{action}"
 end
 
 When /^fill in the new project with no errors$/ do
