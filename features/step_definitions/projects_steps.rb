@@ -32,3 +32,7 @@ end
 Then /^a flash message notice should be displayed$/ do
   flash.should contain "A project was created"
 end
+
+Then /^I should be redirected to the new project form$/ do
+  response.should have_selector :form
+end

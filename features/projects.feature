@@ -18,28 +18,32 @@ Feature: We need to a way to store our stories within a project, this will help 
     And don't fill in the title
     Then submit the form
     And I should be redirected to the new project form
-    And a flash message notice should be displayed
-
+    And a form error must be displayed
+		And the user should be told the must have a title
+		
   Scenario: As a user I must give the project a brief description
 	  Given I can view the site
 	  When I click new project
 	  And don't fill in the description
 	  Then submit the form
 	  And I should be redirected to the new project form
-	  And a flash message notice should be displayed
-
+	  And a form error must be displayed
+		And the user should be told the the project must have a description
+		
 	Scenario: As a user I must give the project an aim
 	  Given I can view the site
 	  When I click new project
 	  And don't fill in the aim
 	  Then submit the form
 	  And I should be redirected to the new project form
-	  And a flash message notice should be displayed
-
+	  And a form error must be displayed
+		And the user should be told the the project needs an aim
+		
   Scenario: As a user I should not be able to create a project that already exists
     Given I can view the site
     When I click new project
     And the project already exists
     Then submit the form
     And I should be redirected to the new project form
-    And a flash message notice should be displayed
+    And a form error must be displayed
+		And the user should be told the project already exists
