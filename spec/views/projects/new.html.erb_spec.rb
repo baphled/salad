@@ -15,7 +15,13 @@ describe "projects/new.html.erb" do
         with_tag('input#project_title[name=?]', "project[title]")
       end
     end
-    it "should have a description"
+    
+    it "should have a description" do
+      response.should have_tag("form[action=#{new_project_path}][method=post]") do
+        with_tag('textarea#project_description[name=?]', "project[description]")
+      end
+    end
+    
     it "should have an aim"
     it "shold have a submit button"
   end
