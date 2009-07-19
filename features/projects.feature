@@ -43,6 +43,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Given I can view the site
     When I click new project
     And the project already exists
+    And fill in the new project all details
     Then submit the form
     And I should be redirected to the new project form
     And a form error must be displayed
