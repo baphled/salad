@@ -10,3 +10,7 @@ end
 When /^don't fill in the story title$/ do
   fill_in 'story_body', :with => 'When a user successfully logs in'
 end
+
+When /^don't fill in the story body$/ do
+  fill_in 'story_title', :with => 'Logging in'
+end
