@@ -5,9 +5,14 @@ class StoriesController < ApplicationController
   
   def create
     @story = Story.new(params[:story])
-    @story.save
-    flash[:notice] = "Story: #{@story.title}, was created"
-    redirect_to @story
+    respond_to do |format|
+      if @story.save
+        flash[:notice] = "Story: #{@story.title}, was created"
+        format.html { redirect_to @story }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
   
   def show

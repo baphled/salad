@@ -93,8 +93,8 @@ Then /^the project information should be saved$/ do
   assert_response :success
 end
 
-Then /^I should be redirected to the new $controller$/ do |controller|
-  current_url.should eql "/#{controller}/new"
+Then "I should be redirected to the new $controller" do |controller|
+  current_url.should_not eql "/#{controller}/new"
 end
 
 Then "a flash message '(.*)' should be displayed" do |message|

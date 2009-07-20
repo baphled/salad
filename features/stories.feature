@@ -9,7 +9,7 @@ Feature: A user should be able to create new stories, which can be associated wi
     And fill in the new story with no errors
     Then submit the form
 		And the story information should be saved
-    And I should be redirected to the new story
+    And I should be redirected to the new stories
     And a flash message 'Story: Logging in, was created' should be displayed
 
   Scenario: As a user when I create a story with no title, the story should not be valid
@@ -17,7 +17,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 	  When I click new stories
 	  And don't fill in the story title
 	  Then submit the form
-	  And I should be redirected to the new story form
+	  And I should be redirected to the form
 	  And a form error must be displayed
 		And the user should be told the must have a title
 		
@@ -26,7 +26,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 	  When I click new stories
 	  And don't fill in the story body
 	  Then submit the form
-	  And I should be redirected to the new story form
+	  And I should be redirected to the form
 	  And a form error must be displayed
 		And the user should be told the must have a title
 		
