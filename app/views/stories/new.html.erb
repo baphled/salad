@@ -10,18 +10,6 @@
 		<%= f.text_area :body %>
 	</p>
 
-	<p>
-			<% if !@projects.blank? %>
-			  <% for project in @projects %>
-			    <div>
-					<% check_box_tag "story[project_ids][]", project.id, @story.projects.include?(project) %>
-						<%= project.title%>
-					</div>
-			  <% end %>
-			<% else %>
-			  
-			<% end %>
-			
-	</p>
+
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>

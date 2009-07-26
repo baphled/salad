@@ -30,22 +30,3 @@ Feature: A user should be able to create new stories, which can be associated wi
 	  And I should be redirected to the form
 	  And a form error must be displayed
 		And the user should be told the must have a body
-		
-	Scenario: All stories can be linked to a project
-  	Given I can view the stories page
-	  When I click new stories
-		Then I should have a checkable list of projects
-		And we must be able to select 1 project		
-		And the story information should be saved
-    And I should be redirected to the new stories
-    And a flash message 'Story: Logging in, was created' should be displayed
-
-	Scenario: As a user when I create a story I should be able to associate the story to a project
-	  Given I can view the stories page
-	  When I click new stories
-	  And fill in the new story with no errors
-		And select a the first project
-	  Then submit the form
-		And the story information should be saved
-    And I should be redirected to the new stories
-    And a flash message 'Story: Logging in, was created' should be displayed

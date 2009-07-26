@@ -14,5 +14,17 @@
 		<%= f.label :aim, "Aim" %>
 		<%= f.text_area :aim %>
 	</p>
+
+	<% if !@stories.blank? %>
+	  <% for story in @stories %>
+	    <div>
+			<%= check_box_tag "project[story_ids][]", story.id, @project.stories.include?(story) %>
+				<%= story.title%>
+			</div>
+	  <% end %>
+	<% else %>
+	No stories to select  
+	<% end %>
+	
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>

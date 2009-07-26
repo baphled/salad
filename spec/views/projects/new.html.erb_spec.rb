@@ -1,7 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "projects/new.html.erb" do
-  before(:each) do
+  before(:each) do 
+    @stories = [stub_model(Story,:null_object=>true),stub_model(Story,:null_object=>true)]
+    assigns[:stories] = @stories
+    assigns[:project] = Project.new
     render
   end
   it "should display a form" do
@@ -19,6 +22,14 @@ describe "projects/new.html.erb" do
       end
     end
     
+    
+    it "should have a list of checkboxes for each project that is avaiable" do
+      response.should have_selector :form do |content|
+        @stories.each do |story|
+          content.should have_selector :input, attribute = {:type => "checkbox", :value => "#{story.id}"}
+        end
+      end
+    end
   end
   
 end

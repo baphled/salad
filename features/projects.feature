@@ -85,3 +85,23 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And the project is not able to update
 	  Then the project should not be updated
 	
+	Scenario: All stories can be linked to a project
+  	Given I can view the projects page
+	  When I click new projects
+		And there are stories
+		Then I should have a checkable list of stories
+		And we must be able to select 1 story		
+		And the project information should be saved
+    And I should be redirected to the new project
+    And a flash message 'Story: Logging in, was created' should be displayed
+
+	Scenario: As a user when I create a story I should be able to associate the story to a project
+	  Given I can view the projects page
+	  When I click new projects
+		And there are projects
+	  And fill in the new project with no errors
+		And select a the first story
+	  Then submit the form
+		And the project information should be saved
+    And I should be redirected to the new project
+    And a flash message 'Story: Logging in, was created' should be displayed

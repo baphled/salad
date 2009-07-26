@@ -80,6 +80,10 @@ When /^I visit the projects index page$/ do
   assigns[:projects] = @projects
 end
 
+When /^there are stories$/ do
+  assert Story.find :all
+end
+
 Given /^there are no projects$/ do
     @projects << []
 end
@@ -148,4 +152,11 @@ end
 
 Then /^should see a message saying 'No projects available'$/ do
   response.should have_selector :span, :content => "No projects available"
+end
+
+Then /^I should have a checkable list of stories$/ do
+  Story.find(:all).each do |story|
+    response.should contain story.title
+    response.should have_selector :input
+  end
 end
