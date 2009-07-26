@@ -35,8 +35,9 @@ Feature: A user should be able to create new stories, which can be associated wi
 	  Given I can view the stories page
 	  When I click new stories
 		And there are stories
-	  And fill in the new stories with no errors
-		And select a the first project
+	  And fill in the new story with no errors
+		Then I should have a checkable list of projects
 	  Then submit the form
 		And the story information should be saved
     And I should be redirected to the new story
+		
