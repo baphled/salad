@@ -90,6 +90,6 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  When I click new projects
 		And there are stories
 		Then I should have a checkable list of stories
-		And we must be able to select 1 story		
+		And we must be able to select 1 story	
 		And the project information should be saved
     And I should be redirected to the new project

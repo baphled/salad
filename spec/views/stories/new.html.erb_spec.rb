@@ -16,4 +16,11 @@ describe "/stories/new.html.erb" do
     end
   end
   
+  it "should have a list of checkboxes for each project that is avaiable" do
+    response.should have_selector :form do |content|
+      @projects.each do |project|
+        content.should have_selector :input, attribute = {:type => "checkbox", :value => "#{project.id}"}
+      end
+    end
+  end
 end

@@ -22,7 +22,6 @@ describe "projects/new.html.erb" do
       end
     end
     
-    
     it "should have a list of checkboxes for each project that is avaiable" do
       response.should have_selector :form do |content|
         @stories.each do |story|
