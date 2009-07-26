@@ -5,6 +5,7 @@ Feature: A user should be able to create new stories, which can be associated wi
 
   Scenario: As a user I should be able to create a new story
     Given I can view the stories page
+		And there are projects
     When I click new stories
     And fill in the new story with no errors
     Then submit the form

@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   def new
-    
+    @projects = Project.find :all
+    @story = Story.new
   end
   
   def create

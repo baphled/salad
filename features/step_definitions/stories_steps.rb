@@ -14,3 +14,10 @@ end
 When /^don't fill in the story body$/ do
   fill_in 'story_title', :with => 'Logging in'
 end
+
+Then /^I should have a checkable list of projects$/ do
+  Project.find(:all).each do |project|
+    response.should contain project.title
+    response.should have_selector :input
+  end
+end

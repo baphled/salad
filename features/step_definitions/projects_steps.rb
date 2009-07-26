@@ -73,7 +73,6 @@ end
 
 When /^the project is not able to update$/ do
   @project.stub!(:update_attributes).and_return false
-  assigns[:project] = @project
 end
 
 When /^I visit the projects index page$/ do
@@ -81,8 +80,8 @@ When /^I visit the projects index page$/ do
   assigns[:projects] = @projects
 end
 
-When /^there are no projects$/ do
-  Project.stub!(:find).and_return nil
+Given /^there are no projects$/ do
+    @projects << []
 end
 
 Then /^submit the form$/ do
