@@ -29,4 +29,14 @@ Feature: A user should be able to create new stories, which can be associated wi
 	  Then submit the form
 	  And I should be redirected to the form
 	  And a form error must be displayed
-		And the user should be told the must have a body
+		And the user should be told the must have a body	
+	
+	Scenario: As a user when I create a story I should be able to associate the story to a project
+	  Given I can view the stories page
+	  When I click new stories
+		And there are stories
+	  And fill in the new stories with no errors
+		And select a the first project
+	  Then submit the form
+		And the story information should be saved
+    And I should be redirected to the new story
