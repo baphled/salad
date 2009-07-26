@@ -2,6 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/stories/new.html.erb" do
   before(:each) do
+    @projects = Project.find :all
+    assigns[:story] = Story.new
+    assigns[:projects] = @projects
     render
   end
   

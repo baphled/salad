@@ -16,7 +16,7 @@
 	</p>
 
 	<% if !@stories.blank? %>
-	  <% for story in @stories %>
+	  <% for story in Story.find :all %>
 	    <div>
 			<%= check_box_tag "project[story_ids][]", story.id, @project.stories.include?(story) %>
 				<%= story.title%>

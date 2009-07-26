@@ -160,3 +160,7 @@ Then /^I should have a checkable list of stories$/ do
     response.should have_selector :input
   end
 end
+
+Then /^we must be able to select 1 story$/ do
+  check 'project_story_ids_'
+end
