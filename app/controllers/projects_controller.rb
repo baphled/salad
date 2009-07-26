@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     respond_to do |format|
       if @project.save
-        flash[:notice] = "#{@project.title} was created"
+        flash[:notice] = "Project: #{@project.title} was created"
         format.html { redirect_to @project }
       else
         format.html { render :action => "new" }

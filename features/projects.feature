@@ -10,7 +10,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
 		And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'A project was created' should be displayed
+    And a flash message 'Project: A project was created' should be displayed
 
   Scenario: As a user I must give a new project a title
     Given I can view the projects page
@@ -93,15 +93,3 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And we must be able to select 1 story		
 		And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'Story: Logging in, was created' should be displayed
-
-	Scenario: As a user when I create a story I should be able to associate the story to a project
-	  Given I can view the projects page
-	  When I click new projects
-		And there are projects
-	  And fill in the new project with no errors
-		And select a the first story
-	  Then submit the form
-		And the project information should be saved
-    And I should be redirected to the new project
-    And a flash message 'Story: Logging in, was created' should be displayed

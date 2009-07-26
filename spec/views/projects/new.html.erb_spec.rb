@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "projects/new.html.erb" do
   before(:each) do 
-    @stories = [stub_model(Story,:null_object=>true),stub_model(Story,:null_object=>true)]
+    @stories = Story.find :all
     assigns[:stories] = @stories
     assigns[:project] = Project.new
     render
