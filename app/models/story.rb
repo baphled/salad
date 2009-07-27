@@ -4,5 +4,5 @@ class Story < ActiveRecord::Base
   
   has_many :project_stories
   has_many :projects, :through => :project_stories
-  
+
 end

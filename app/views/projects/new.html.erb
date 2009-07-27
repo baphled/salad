@@ -25,6 +25,17 @@
 	<% else %>
 	No stories to select  
 	<% end %>
+
+	<% if !@features.blank? %>
+	  <% for feature in Feature.find :all %>
+	    <div>
+			<%= check_box_tag "project[feature_ids][]", story.id, @project.features.include?(feature) %>
+				<%= feature.title%>
+			</div>
+	  <% end %>
+	<% else %>
+	No features to select  
+	<% end %>
 	
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>

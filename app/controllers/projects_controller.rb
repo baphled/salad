@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @stories = Story.find :all
+    @features = Story.find :all
   end
   
   def create  

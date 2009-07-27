@@ -162,5 +162,5 @@ Then /^I should have a checkable list of stories$/ do
 end
 
 Then /^we must be able to select 1 story$/ do
-  check 'project_story_ids_'
+  check 'project_feature_ids_'
 end

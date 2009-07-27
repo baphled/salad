@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
 
   has_many :project_stories
   has_many :stories, :through => :project_stories
+  
+  
+  has_many :feature_projects
+  has_many :features, :through => :feature_projects
 end

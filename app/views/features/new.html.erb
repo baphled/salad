@@ -1,5 +1,5 @@
-<% form_for :story, :url => stories_path do |f| -%>
-	<%= error_messages_for :story %>
+<% form_for :feature, :url => features_path do |f| -%>
+	<%= error_messages_for :feature %>
   <p>
 		<%= f.label :title, "Title" %><br/>
 		<%= f.text_field :title %>
@@ -9,10 +9,12 @@
 		<%= f.label :body, "Body" %><br/>
 		<%= f.text_area :body %>
 	</p>
+
+	
 	<% if !@projects.blank? %>
 	  <% for project in Project.find :all %>
 	    <div>
-			<%= check_box_tag "story[project_ids][]", project.id, @story.projects.include?(project) %>
+			<%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project) %>
 				<%= project.title%>
 			</div>
 	  <% end %>

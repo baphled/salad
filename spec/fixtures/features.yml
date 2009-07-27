@@ -1,0 +1,9 @@
+one:
+  id: 1
+  title: my first feature
+  body: my feature's body
+
+two:
+  id: 2
+  title: my second feature
+  body: my second feature's body
