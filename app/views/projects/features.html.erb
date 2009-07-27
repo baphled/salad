@@ -4,16 +4,20 @@
 <fieldset class="project_field">
 	<legend>Project Summary</legend>
 	<div class='project_info'>
-		Title: <span><%= @project.title %></span><br/>
-		Description: <span><%= @project.description %></span><br/>
-		Aim: <span><%= @project.aim %></span><br/>
+		<b>Title: </b><span><%= @project.title %></span><br/>
+		<b>Description: </b><span><%= @project.description %></span><br/>
+		<b>Aim: </b><span><%= @project.aim %></span><br/>
 	</div>
 </fieldset>
-<b>Features</b>
+<b>Features</b><span class="order_icon">Order</span>
 <ul>
 	<% if !@project.features.blank? %>
 	  <% for feature in @project.features %>
-	    <li><span class="order_box">1</span><%= feature.title %></li>
+	    <li>
+				<span class="order_box">1</span>
+				<%= feature.title %>
+				<span class="icons"></span>
+			</li>
 	  <% end %>
 	<% end %>
 </ul>
