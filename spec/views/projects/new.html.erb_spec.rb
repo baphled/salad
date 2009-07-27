@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "projects/new.html.erb" do
   before(:each) do 
-    @stories = Story.find :all
-    assigns[:stories] = @stories
+    @features = Feature.find :all
+    assigns[:features] = @features
     assigns[:project] = Project.new
     render
   end
@@ -24,8 +24,8 @@ describe "projects/new.html.erb" do
     
     it "should have a list of checkboxes for each project that is avaiable" do
       response.should have_selector :form do |content|
-        @stories.each do |story|
-          content.should have_selector :input, attribute = {:type => "checkbox", :value => "#{story.id}"}
+        @features.each do |feature|
+          content.should have_selector :input, attribute = {:type => "checkbox", :value => "#{feature.id}"}
         end
       end
     end

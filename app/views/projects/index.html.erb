@@ -14,14 +14,14 @@
 					Aim:
 					<%=h project.aim %>
 				</div>
-				<% if !project.story_ids.blank? %>
+				<% if !project.feature_ids.blank? %>
 					<ul>
-				  <% for story in project.stories %>
-				    <li><%= story.title%></li>
+				  <% for feature in project.features %>
+				    <li><%= feature.title%></li>
 				  <% end %>
 					</ul>
 				<% else %>
-				  <p>Need to add stories</p>
+				  <p>Need to add feature</p>
 				<% end %>
 				
 			</li>

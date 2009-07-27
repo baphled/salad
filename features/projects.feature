@@ -88,8 +88,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: All stories can be linked to a project
   	Given I can view the projects page
 	  When I click new projects
-		And there are stories
-		Then I should have a checkable list of stories
-		And we must be able to select 1 story	
+		And there are features
+		Then I should have a checkable list of features
+		And we must be able to select 1 feature	
 		And the project information should be saved
     And I should be redirected to the new project

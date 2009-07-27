@@ -15,21 +15,10 @@
 		<%= f.text_area :aim %>
 	</p>
 
-	<% if !@stories.blank? %>
-	  <% for story in Story.find :all %>
-	    <div>
-			<%= check_box_tag "project[story_ids][]", story.id, @project.stories.include?(story) %>
-				<%= story.title%>
-			</div>
-	  <% end %>
-	<% else %>
-	No stories to select  
-	<% end %>
-
 	<% if !@features.blank? %>
 	  <% for feature in Feature.find :all %>
 	    <div>
-			<%= check_box_tag "project[feature_ids][]", story.id, @project.features.include?(feature) %>
+			<%= check_box_tag "project[feature_ids][]", feature.id, @project.features.include?(feature) %>
 				<%= feature.title%>
 			</div>
 	  <% end %>
