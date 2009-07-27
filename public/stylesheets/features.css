@@ -1,3 +1,14 @@
-#project_field {
-	width:400px;
+fieldset.project_field {
+	width:450px;
+	margin-bottom:30px;
+}
+
+li span.order_box {
+	width:15px;
+	height:15px;
+	display:inline-block;
+	background-color:#e34f21;
+	border:thin solid silver;
+	text-align:center;
+	margin:2px;
 }

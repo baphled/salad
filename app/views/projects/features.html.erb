@@ -9,11 +9,11 @@
 		Aim: <span><%= @project.aim %></span><br/>
 	</div>
 </fieldset>
-
+<b>Features</b>
 <ul>
 	<% if !@project.features.blank? %>
 	  <% for feature in @project.features %>
-	    <li><%= feature.title %></li>
+	    <li><span class="order_box">1</span><%= feature.title %></li>
 	  <% end %>
 	<% end %>
 </ul>
