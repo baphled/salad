@@ -96,18 +96,18 @@ Feature: We need to a way to store our stories within a project, this will help 
 
 	Scenario: I should be able to click a link which takes me to the projects features
 	  Given I can view the projects page
-	  When I visit the first projects features
+	  When I visit the second projects features
 	  Then the project features page will be displayed
 	
 	Scenario: I should be able to view the project information in details
 	  Given I can view the projects page
-	  When we view the first projects features
+	  When I visit the second projects features
 	  Then the project features page will be displayed
 		And a summary of the project should be displayed
 	
 	Scenario: I should be able to add new features a project within the project features
 	  Given I can view the projects page
-	  When we view the first projects features
+	  When we view the second projects features
 	  Then the project features page will be displayed
 		When I create new a feature
 		Then I should be sent to the new feature page
@@ -117,5 +117,5 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: I should not see a list of features if there are none associated with a project
 	  Given I can view the projects page
 		When a project has no features
-		And I visit the project
+		And I visit the first projects features
 	  Then I should not see the project features section

@@ -79,12 +79,12 @@ When /^I visit the projects index page$/ do
   visit('/projects')
   assigns[:projects] = @projects
 end
-When /^we view the first projects features$/ do
-  visit('/projects/1/features')
+When /^we view the second projects features$/ do
+  visit('/projects/2/features')
 end
 
-When /^I visit the first projects features$/ do
-  visit('/projects/1/features')
+When /^I visit the second projects features$/ do
+  visit('/projects/2/features')
 end
 
 When /^I create new a feature$/ do
@@ -97,6 +97,10 @@ end
 
 When /^I visit the project$/ do
   visit('/projects/2/features')
+end
+
+When /^I visit the first projects features$/ do
+  visit('/projects/1/features')
 end
 
 Given /^there are no projects$/ do
@@ -191,7 +195,7 @@ Then /^the project features page will be displayed$/ do
 end
 
 Then /^a summary of the project should be displayed$/ do
-  @project = Project.find 1
+  @project = Project.find 2
   response.should have_selector :fieldset, attribute = {:class=>"project_field"} do |project_field|
     project_field.should have_selector :div, attribute = {:class=>"project_info"} do |project_info|
       project_info.should have_selector :span, :content => @project.title
@@ -207,4 +211,10 @@ end
 
 Then /^the project should already be selected$/ do
   response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"project_id_1"}
+end
+
+Then /^I should not see the project features section$/ do
+  response.should_not have_selector :div, attribute = {:id=>"features"} do |feature|
+    feature.should_not have_selector :ul
+  end
 end
