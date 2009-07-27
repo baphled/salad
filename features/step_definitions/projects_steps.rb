@@ -79,6 +79,9 @@ When /^I visit the projects index page$/ do
   visit('/projects')
   assigns[:projects] = @projects
 end
+When /^we view the first projects features$/ do
+  visit('/projects/1/features')
+end
 
 When /^I visit the first projects features$/ do
   visit('/projects/1/features')
@@ -174,3 +177,15 @@ Then /^the project features page will be displayed$/ do
     end
   end
 end
+
+Then /^a summary of the project should be displayed$/ do
+  @project = Project.find 1
+  response.should have_selector :fieldset, attribute = {:class=>"project_field"} do |project_field|
+    project_field.should have_selector :div, attribute = {:class=>"project_info"} do |project_info|
+      project_info.should have_selector :span, :content => @project.title
+      project_info.should have_selector :span, :content => @project.description
+      project_info.should have_selector :span, :content => @project.aim
+    end
+  end
+end
+

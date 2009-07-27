@@ -101,7 +101,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	
 	Scenario: I should be able to view the project information in details
 	  Given I can view the projects page
-	  When we edit the 'A project' project
+	  When we view the first projects features
 	  Then the project features page will be displayed
 		And a summary of the project should be displayed
 	

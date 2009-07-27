@@ -1,3 +1,12 @@
+<fieldset class="project_field">
+	<div class='project_info'>
+		<span><%= @project.title %></span>
+		<span><%= @project.description %></span>
+		<span><%= @project.aim %></span>
+	</div>
+	
+<fieldset>	
+
 <ul>
 	<% if !@project.features.blank? %>
 	  <% for feature in @project.features %>
