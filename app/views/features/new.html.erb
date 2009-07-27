@@ -13,7 +13,7 @@
 	<p>
 	  <% for project in Project.find :all %>
 	    <div>
-			<%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project) %>
+			<%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"project_id_#{project.id}"} %>
 				<%= project.title%>
 			</div>
 		<% end %>

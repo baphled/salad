@@ -1,6 +1,11 @@
 class FeaturesController < ApplicationController
   def new
-    @feature = Feature.new
+    if !params[:project_id].nil? && !Project.find(params[:project_id]).nil?
+      @feature = Feature.new
+      @feature.projects << Project.find(params[:project_id])
+    else
+      @feature = Feature.new
+    end
     @projects = Project.find :all
   end
   

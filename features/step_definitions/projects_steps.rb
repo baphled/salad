@@ -196,3 +196,7 @@ end
 Then /^I should be sent to the new feature page$/ do
   response.should have_selector :form
 end
+
+Then /^the project should already be selected$/ do
+  response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"project_id_1"}
+end
