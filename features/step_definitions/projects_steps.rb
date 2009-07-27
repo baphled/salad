@@ -91,6 +91,14 @@ When /^I create new a feature$/ do
   click_link 'Add feature'
 end
 
+When /^a project has no features$/ do
+  assert Project.find(1).feature_ids.empty?
+end
+
+When /^I visit the project$/ do
+  visit('/projects/2/features')
+end
+
 Given /^there are no projects$/ do
     @projects << []
 end

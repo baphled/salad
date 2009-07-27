@@ -113,3 +113,9 @@ Feature: We need to a way to store our stories within a project, this will help 
 		Then I should be sent to the new feature page
 		And the project should already be selected
 		And the feature information should be saved
+	
+	Scenario: I should not see a list of features if there are none associated with a project
+	  Given I can view the projects page
+		When a project has no features
+		And I visit the project
+	  Then I should not see the project features section
