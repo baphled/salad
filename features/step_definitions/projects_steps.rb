@@ -17,7 +17,7 @@ Given /^there are projects$/ do
   @projects = Project.find :all
 end
 
-When "^I click $action $controller$"do |action,controller|
+When "I click (.*) (.*)" do |action,controller|
   visit "/#{controller}/#{action}"
 end
 

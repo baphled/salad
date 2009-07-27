@@ -105,6 +105,16 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Then the project features page will be displayed
 		And a summary of the project should be displayed
 	
+	Scenario: I should be able to add new features a project within the project features
+	  Given I can view the projects page
+	  When we view the first projects features
+	  Then the project features page will be displayed
+		When I create new a feature
+		Then I should be sent to the new feature page
+		And the project should already be selected
+		And the feature information should be saved
+	
+	
 	
 	
 	
