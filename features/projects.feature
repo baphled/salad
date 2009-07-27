@@ -94,10 +94,17 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And the project information should be saved
     And I should be redirected to the new project
 
-	Scenario: As a user I should be able to click a link which takes me to the projects features
+	Scenario: I should be able to click a link which takes me to the projects features
 	  Given I can view the projects page
 	  When I visit the first projects features
 	  Then the project features page will be displayed
+	
+	Scenario: I should be able to view the project information in details
+	  Given I can view the projects page
+	  When we edit the 'A project' project
+	  Then the project features page will be displayed
+		And a summary of the project should be displayed
+	
 	
 	
 	

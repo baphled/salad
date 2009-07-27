@@ -81,7 +81,7 @@ When /^I visit the projects index page$/ do
 end
 
 When /^I visit the first projects features$/ do
-  visit('/projects/2/features')
+  visit('/projects/1/features')
 end
 
 Given /^there are no projects$/ do
@@ -167,8 +167,10 @@ end
 
 Then /^the project features page will be displayed$/ do
   response.should have_selector :ul do |list|
-    Feature.find(:all).each do |feature|
-      list.should have_selector :li, :content => feature.title
+    Project.find(1).features.each do |feature|
+      list.should have_selector :li do |content|
+        content.should contain => feature.title
+      end
     end
   end
 end
