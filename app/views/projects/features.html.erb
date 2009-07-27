@@ -10,15 +10,17 @@
 	</div>
 </fieldset>
 <%= link_to "Add feature", new_feature_path({:project_id=>@project.id})%>
-<b>Features</b><span class="order_icon">Order</span>
-<ul>
-	<% if !@project.features.blank? %>
-	  <% for feature in @project.features %>
-	    <li>
-				<span class="order_box">1</span>
-				<%= feature.title %>
-				<span class="icons"></span>
-			</li>
-	  <% end %>
-	<% end %>
-</ul>
+<div>
+	<b>Features</b><span class="order_icon">Order</span>
+	<ul>
+		<% if !@project.features.blank? %>
+		  <% for feature in @project.features %>
+		    <li>
+					<span class="order_box">1</span>
+					<%= feature.title %>
+					<span class="icons"></span>
+				</li>
+		  <% end %>
+		<% end %>
+	</ul>
+</div>
