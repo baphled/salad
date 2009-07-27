@@ -1,11 +1,14 @@
+<% content_for :css_head do %>
+	<%= stylesheet_link_tag 'features' %>
+<% end %>
 <fieldset class="project_field">
+	<legend>Project Summary</legend>
 	<div class='project_info'>
-		<span><%= @project.title %></span>
-		<span><%= @project.description %></span>
-		<span><%= @project.aim %></span>
+		Title: <span><%= @project.title %></span><br/>
+		Description: <span><%= @project.description %></span><br/>
+		Aim: <span><%= @project.aim %></span><br/>
 	</div>
-	
-<fieldset>	
+</fieldset>
 
 <ul>
 	<% if !@project.features.blank? %>

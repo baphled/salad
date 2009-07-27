@@ -1,8 +1,10 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
   <title>SaladBowl</title>
 </head>
-<link type="text/css" rel="stylesheet" href="/stylesheets/application.css"/>
+<%= stylesheet_link_tag "application" %>
+<%= yield :css_head %>
 <body>
   <div id="notice" class="notice"><%= flash[:notice] %></div>
   <div id="error" class="error"><%= flash[:error] %></div>
