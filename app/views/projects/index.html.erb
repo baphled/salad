@@ -1,16 +1,19 @@
+<h3>Projects</h3>
+<div id="lists" class="projects">
 <% if !@projects.blank? %>
   <% @projects.each do |project| %>
     <ul>
 			<li>
-				<div id="project_title">
+				<div class="project_info">
+				<div class="project_title">
 					Title: 
 					<%=h project.title %>
 				</div>
-				<div id="project_description">
+				<div class="project_description">
 					Description:
 					<%=h project.description %>
 				</div>
-				<div id="project_aim">
+				<div class="project_aim">
 					Aim:
 					<%=h project.aim %>
 				</div>
@@ -30,4 +33,4 @@
 <% else %>
   <span>No projects available</span>
 <% end %>
-
+</div>

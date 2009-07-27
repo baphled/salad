@@ -1,0 +1,16 @@
+* {
+	list-style:none;
+	list-style-position:outside;
+	list-type:none;
+	border-color:gray
+}
+
+#lists {
+	border-top:thin solid black;
+	border-bottom:thin solid black;
+	padding:5px 0px 5px 0px;
+}
+ul {
+	margin:auto;
+	padding:0px;
+}
