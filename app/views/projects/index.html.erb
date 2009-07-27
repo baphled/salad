@@ -4,7 +4,6 @@
   <% @projects.each do |project| %>
     <ul>
 			<li>
-				<div class="project_info">
 				<div class="project_title">
 					Title: 
 					<%=h project.title %>
@@ -17,16 +16,7 @@
 					Aim:
 					<%=h project.aim %>
 				</div>
-				<% if !project.feature_ids.blank? %>
-					<ul>
-				  <% for feature in project.features %>
-				    <li><%= feature.title%></li>
-				  <% end %>
-					</ul>
-				<% else %>
-				  <p>Need to add feature</p>
-				<% end %>
-				
+				<%= link_to "View Features", project_features_path(project)%>
 			</li>
 		</ul>
   <% end %>

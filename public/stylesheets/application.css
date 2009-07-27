@@ -2,15 +2,47 @@
 	list-style:none;
 	list-style-position:outside;
 	list-type:none;
-	border-color:gray
+	border-color:gray;
+	color:black;
+	font: arial, serif;
 }
 
-#lists {
-	border-top:thin solid black;
-	border-bottom:thin solid black;
-	padding:5px 0px 5px 0px;
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   11px;
+  line-height: 18px;
 }
-ul {
+
+body {
 	margin:auto;
+	height:100%;
+	background-color:#FFFFFF;
+}
+
+#content {
+	margin:auto;
+	border:thin solid black;
+	width:900px;
+}
+
+#main {
+	padding: 10px;
+}
+#lists {
+	border-top:thin solid silver;
+	border-bottom:thin solid silver;
+	padding:5px 0px 5px 0px;
+	width: 550px;
+	margin:auto;
+}
+
+ul {
+	margin:0px 10px 10px 10px;
 	padding:0px;
+	border-top:thin solid gray;
+	border-bottom:thin solid gray;
+}
+
+div#lists ul {
+	margin:20px;
 }

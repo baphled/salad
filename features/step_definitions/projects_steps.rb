@@ -80,6 +80,10 @@ When /^I visit the projects index page$/ do
   assigns[:projects] = @projects
 end
 
+When /^I visit the first projects features$/ do
+  visit('/projects/1/features')
+end
+
 Given /^there are no projects$/ do
     @projects << []
 end

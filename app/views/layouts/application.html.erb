@@ -6,6 +6,12 @@
 <body>
   <div id="notice" class="notice"><%= flash[:notice] %></div>
   <div id="error" class="error"><%= flash[:error] %></div>
-  <%= yield :layout %>
+	<div id="content">
+		<div id="head"></div>
+		<div id="main">
+	  	<%= yield :layout %>
+		</div>
+		<div id="foot"></div>
+	</div>
 </body>
 </html>
