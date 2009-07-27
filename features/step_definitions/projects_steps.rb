@@ -87,6 +87,10 @@ When /^I visit the first projects features$/ do
   visit('/projects/1/features')
 end
 
+When /^I create new a feature$/ do
+  click_link 'Add feature'
+end
+
 Given /^there are no projects$/ do
     @projects << []
 end

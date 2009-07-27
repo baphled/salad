@@ -113,8 +113,3 @@ Feature: We need to a way to store our stories within a project, this will help 
 		Then I should be sent to the new feature page
 		And the project should already be selected
 		And the feature information should be saved
-	
-	
-	
-	
-	
