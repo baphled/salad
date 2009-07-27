@@ -193,3 +193,6 @@ Then /^a summary of the project should be displayed$/ do
   end
 end
 
+Then /^I should be sent to the new feature page$/ do
+  response.should have_selector :form
+end

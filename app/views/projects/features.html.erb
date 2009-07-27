@@ -9,7 +9,7 @@
 		<b>Aim: </b><span><%= @project.aim %></span><br/>
 	</div>
 </fieldset>
-<%= link_to "Add feature", features_path({:project_id=>@project.id})%>
+<%= link_to "Add feature", new_feature_path({:project_id=>@project.id})%>
 <b>Features</b><span class="order_icon">Order</span>
 <ul>
 	<% if !@project.features.blank? %>
