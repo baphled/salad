@@ -1,0 +1,7 @@
+<ul>
+	<% if !@project.features.blank? %>
+	  <% for feature in @project.features %>
+	    <li><%= feature.title %></li>
+	  <% end %>
+	<% end %>
+</ul>

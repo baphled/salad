@@ -81,7 +81,7 @@ When /^I visit the projects index page$/ do
 end
 
 When /^I visit the first projects features$/ do
-  visit('/projects/1/features')
+  visit('/projects/2/features')
 end
 
 Given /^there are no projects$/ do
@@ -163,4 +163,12 @@ end
 
 Then /^we must be able to select 1 feature$/ do
   check 'project_feature_ids_'
+end
+
+Then /^the project features page will be displayed$/ do
+  response.should have_selector :ul do |list|
+    Feature.find(:all).each do |feature|
+      list.should have_selector :li, :content => feature.title
+    end
+  end
 end

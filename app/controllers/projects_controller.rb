@@ -40,6 +40,8 @@ class ProjectsController < ApplicationController
   end
   
   def features
+    @project = Project.find(params[:id])
+    @features = @project.features
     respond_to do |format|
       format.html
     end

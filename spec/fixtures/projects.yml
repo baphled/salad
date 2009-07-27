@@ -3,3 +3,9 @@ one:
   title: A fixture project
   description: A description for our project
   aim: A projects aims
+
+two:
+  id: 2
+  title: A simple project
+  description: A description for our other project
+  aim: A projects aims
