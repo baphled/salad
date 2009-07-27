@@ -20,7 +20,7 @@ body {
 }
 
 #content {
-	margin:auto;
+	margin:32px auto;
 	border:thin solid black;
 	width:900px;
 }
@@ -37,12 +37,8 @@ body {
 }
 
 ul {
-	margin:0px 10px 10px 10px;
-	padding:0px;
+	margin:0px 10px 4px 10px;
+	padding:0px 10px;
 	border-top:thin solid gray;
 	border-bottom:thin solid gray;
-}
-
-div#lists ul {
-	margin:20px;
 }
