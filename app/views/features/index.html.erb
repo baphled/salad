@@ -1,0 +1,12 @@
+<div class="feature">
+	<ul>	
+		<% if !@features.blank? %>
+		  <% for feature in @features %>
+		    <li>
+						<b>Title:</b><%= feature.title %><br/>
+						<b>Body:</b><%= feature.body %><br/>
+				</li>
+		  <% end %>
+		<% end %>
+	</ul>
+</div>

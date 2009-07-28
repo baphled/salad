@@ -25,3 +25,22 @@ end
 When /^there are features$/ do
   assert Feature.find :all
 end
+
+When /^I visit the index features page$/ do
+  visit('/features')
+end
+
+Then /^I should see a list of features$/ do
+  response.should have_selector :ul do |list|
+    list.should have_selector :li
+  end
+end
+
+Then /^the list should contain features$/ do
+  Feature.all.each do |feature|
+    response.should have_selector :div, attribute = {:class=>"feature"} do |content|
+      content.should contain feature.title
+      content.should contain feature.body
+    end
+  end
+end

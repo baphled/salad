@@ -1,4 +1,9 @@
 class FeaturesController < ApplicationController
+
+  def index
+    @features = Feature.all
+  end
+  
   def new
     if !params[:project_id].nil? && !Project.find(params[:project_id]).nil?
       @feature = Feature.new

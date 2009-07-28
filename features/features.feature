@@ -42,9 +42,10 @@ Feature: A user should be able to create new features, which can be associated w
     And I should be redirected to the new feature
 
 		Scenario: As a user I should be able to visit the feautres index page and view all the features in the application
-		  Given there are features added to the application
+		  Given there are features
 		  When I visit the index features page
 		  Then I should see a list of features
+			And the list should contain features
 		
 		
 		
