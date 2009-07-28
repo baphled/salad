@@ -226,3 +226,9 @@ end
 Then /^be sent to the new projects view$/ do
   response.should have_selector :form, attribute = {:action=>"/projects",:method=>"post"}
 end
+
+Then /^there should not be a 'view features' link$/ do
+  response.should_not have_selector :a, attribute = {:href=>"/projects/1/features"} do |content|
+    content.should_not contain "View Feature"
+  end
+end

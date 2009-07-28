@@ -124,6 +124,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given I can view the projects page
 	  Then I should be able to click the new project link
 		And be sent to the new projects view
-	
-	
-	
+		
+	Scenario: I should not be able to see the view project features link unless there are actually features linked to the project
+	  Given I can view the projects page
+	  When a project has no features
+	  Then there should not be a 'view features' link

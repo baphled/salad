@@ -2,8 +2,8 @@
 <%= link_to "New projects", new_project_path %>
 <div id="lists" class="projects">
 <% if !@projects.blank? %>
-  <% @projects.each do |project| %>
     <ul>
+  <% @projects.each do |project| %>
 			<li>
 				<div class="project_title">
 					Title: 
@@ -17,10 +17,13 @@
 					Aim:
 					<%=h project.aim %>
 				</div>
-				<%= link_to "View Features", project_features_path(project)%>
+				<% if !project.feature_ids.empty? %>
+					<%= link_to "View Features", project_features_path(project)%>
+				<% end %>
 			</li>
-		</ul>
+
   <% end %>
+	</ul>
 <% else %>
   <span>No projects available</span>
 <% end %>
