@@ -220,5 +220,9 @@ Then /^I should not see the project features section$/ do
 end
 
 Then /^I should be able to click the new project link$/ do
-  response.should have_selector :a, attribute = {:href=>"/projects/new"}
+  click_link 'New project'
+end
+
+Then /^be sent to the new projects view$/ do
+  response.should have_selector :form, attribute = {:action=>"/projects",:method=>"post"}
 end
