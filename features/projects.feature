@@ -119,3 +119,11 @@ Feature: We need to a way to store our stories within a project, this will help 
 		When a project has no features
 		And I visit the first projects features
 	  Then I should not see the project features section
+	
+	Scenario: I should be able to create a new project via the projects index page
+	  Given I can view the projects page
+	  Then I should be able to click the new project link
+		And be sent to the new projects view
+	
+	
+	

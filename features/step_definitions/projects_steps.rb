@@ -218,3 +218,7 @@ Then /^I should not see the project features section$/ do
     feature.should_not have_selector :ul
   end
 end
+
+Then /^I should be able to click the new project link$/ do
+  response.should have_selector :a, attribute = {:href=>"/projects/new"}
+end
