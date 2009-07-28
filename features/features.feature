@@ -40,3 +40,11 @@ Feature: A user should be able to create new features, which can be associated w
 	  Then submit the form
 		And the feature information should be saved
     And I should be redirected to the new feature
+
+		Scenario: As a user I should be able to visit the feautres index page and view all the features in the application
+		  Given there are features added to the application
+		  When I visit the index features page
+		  Then I should see a list of features
+		
+		
+		
