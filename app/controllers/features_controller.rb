@@ -33,4 +33,15 @@ class FeaturesController < ApplicationController
   def show
     
   end
+  
+  def update
+    @feature = Feature.find(params[:id])
+    title = @feature.title
+    respond_to do |format|
+      if @feature.update_attributes(params[:feature])
+        flash[:notice] = "Feature: #{title}, was updated"
+        format.html { redirect_to @feature }
+      end
+    end
+  end
 end

@@ -1,12 +1,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FeaturesController do
+  
+  def mock_feature(stubs={})
+    @mock_feature ||= mock_model(Feature, stubs)
+  end
   describe "POST, create" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature",:null_object=>true)
       Feature.stub!(:new).and_return @feature
       
     end
+    
     context "the feature is valid" do
       before(:each) do
         @feature.stub!(:save).and_return true

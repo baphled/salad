@@ -34,10 +34,9 @@ When /^I edit the first feature$/ do
   visit('/features/1/edit')
 end
 
-When /^the title edited$/ do
+When /^the title is edited$/ do
   fill_in 'feature_title', :with => 'an edited title'
 end
-
 
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
@@ -52,4 +51,12 @@ Then /^the list should contain features$/ do
       content.should contain feature.body
     end
   end
+end
+
+Then /^the feature should be saved$/ do
+  assert !Feature.find_by_title("an edited title").title.nil?
+end
+
+Then /^the flash message 'Feature: my first feature, was updated'$/ do
+  flash.should contain "Feature: my first feature, was updated"
 end
