@@ -41,6 +41,9 @@ class FeaturesController < ApplicationController
       if @feature.update_attributes(params[:feature])
         flash[:notice] = "Feature: #{title}, was updated"
         format.html { redirect_to @feature }
+      else
+        flash[:error] = "Feature: #{title}, was not updated"
+        format.html { render :action => "edit" }
       end
     end
   end

@@ -38,6 +38,10 @@ When /^the title is edited$/ do
   fill_in 'feature_title', :with => 'an edited title'
 end
 
+When /^the title is invalid$/ do
+  fill_in 'feature_title', :with => ''
+end
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
@@ -59,4 +63,12 @@ end
 
 Then /^the flash message 'Feature: my first feature, was updated'$/ do
   flash.should contain "Feature: my first feature, was updated"
+end
+
+Then /^the form should be rerendered$/ do
+  response.should render_template("edit")
+end
+
+Then /^the flash message 'Feature: my first feature, was not updated'$/ do
+  flash.should contain "Feature: my first feature, was not updated"
 end
