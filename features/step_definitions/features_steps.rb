@@ -30,6 +30,15 @@ When /^I visit the index features page$/ do
   visit('/features')
 end
 
+When /^I edit the first feature$/ do
+  visit('/features/1/edit')
+end
+
+When /^the title edited$/ do
+  fill_in 'feature_title', :with => 'an edited title'
+end
+
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li

@@ -41,11 +41,20 @@ Feature: A user should be able to create new features, which can be associated w
 		And the feature information should be saved
     And I should be redirected to the new feature
 
-		Scenario: As a user I should be able to visit the feautres index page and view all the features in the application
+		Scenario: As a user I should be able to visit the features index page and view all the features in the application
 		  Given there are features
 		  When I visit the index features page
 		  Then I should see a list of features
 			And the list should contain features
+			
+		Scenario: As a user I should be able to edit a feature
+		  Given I can view the features page
+		  When I edit the first feature
+			And the title is edited
+			And submit the form
+		  Then the feature should be saved
+			And I should be redirected to the new feature
+			And the flash message 'Feature: my first feature, was updated'
 		
 		
 		
