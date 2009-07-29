@@ -56,5 +56,11 @@ Feature: A user should be able to create new features, which can be associated w
 			And I should be redirected to the new feature
 			And the flash message 'Feature: my first feature, was updated'
 		
-		
-		
+		Scenario: A user who sends an invalid feature update 
+		  Given I can view the features page
+		  When I edit the first feature
+			And the title is invalid
+			And submit the form
+		  Then the form should be rerendered
+			And the flash message 'Feature: my first feature, was not updated'
+			
