@@ -21,6 +21,21 @@ body {
 	height:100%;
 	background-color:#FFFFFF;
 }
+
+#logo {
+	font-size:32px;
+	margin-top:30px;	
+}
+
+#logo,
+#slogan {
+	padding-left:30px;
+	position:absolute;
+}
+
+#slogan {
+	bottom:0;
+}
 #container {
 	height:auto;
 	width:100%;
@@ -32,6 +47,7 @@ body {
 	background:#89a407;
 	color:#c1c4b5;
 	height: 80px;
+	position:relative;
 }
 
 #foot {
@@ -69,7 +85,10 @@ body {
 
 #menu-items {
 	margin:auto;
+	padding-left:29px;
+	padding-top:4px;
 }
+
 #menu {
 	color:#c1c4b5;
 	background:#4b5425;
