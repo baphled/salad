@@ -1,14 +1,17 @@
 <% if !@feature.nil? %>
-	<%=h @feature.title %><br/>
-	<%=h @feature.body %><br/>
+	<%= render :partial => '/common/feature_info' %>
 <% end %>
 
-<%= error_messages_for :story %>
+<fieldset>
+	<legend>New story</legend>
+	<%= error_messages_for :story %>
 
-<% form_for @story do |f| -%>
-  <%= f.label :title, "Title" %>
-	<%= f.text_field :title %><br/>
-	<%= f.label :scenario, "Scenario" %>
-	<%= f.text_field :scenario %><br/>
-	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
-<% end -%>
+	<% form_for @story do |f| -%>
+	<%= f.hidden_field :feature_ids, :value => @feature_id %>
+	  <%= f.label :title, "Title" %>
+		<%= f.text_field :title %><br/>
+		<%= f.label :scenario, "Scenario" %>
+		<%= f.text_field :scenario %><br/>
+		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+	<% end -%>
+</fieldset>

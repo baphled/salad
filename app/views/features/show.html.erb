@@ -1,6 +1,5 @@
 <div id="feature_info">
-	<%=h @feature.title %><br/>
-	<%=h @feature.body %><br/>
+	<%= render :partial => '/common/feature_info' %>
 </div>
 	<%= link_to "New Story", new_story_path({:feature_id=>@feature.id}) %>
 	<ul>

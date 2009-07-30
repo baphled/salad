@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   def new
     @feature = Feature.find(params[:feature_id]) unless params[:feature_id].nil?
     if @feature
-      @story = @feature.stories.new
+      @story = @feature.stories.new(:feature_ids => [params[:feature_id]])
     else
       @story = Story.new
     end
