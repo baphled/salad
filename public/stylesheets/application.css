@@ -100,23 +100,24 @@ ul li {
 	margin:6px;
 }
 
+span.order_icon,
+li > span.icons {
+	background:#89A407 none repeat scroll 0 0;
+	border:thin solid #785C17;
+}
 span.order_icon {
 	float:right;
 	margin-right:23px;
 	margin-bottom:10px;
 	text-align:center;
-	background:gainsboro;
-	background-color:#e34f21;
-	border:thin solid silver;
 	height:23px;
 	width:40px;
 }
 li > span.icons {
-	float:right;
+	bottom:5px;
 	display:inline-block;
-	background:gainsboro;
-	background-color:#e34f21;
-	border:thin solid silver;
-	width:150px;
+	float:right;
 	height:20px;
+	position:relative;
+	width:200px;
 }
