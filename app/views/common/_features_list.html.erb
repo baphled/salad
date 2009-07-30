@@ -10,7 +10,7 @@
 						<%= link_to "View", feature_path(feature) %>
 						<%= link_to "Edit", edit_feature_path(feature), {:id=>"edit_feature_#{feature.id}"} %>
 						<%= link_to "New Story", new_story_path %>
-						<%= link_to "Feature Stories", feature_stories_path(feature), {:id=>"feature_1_stories"} %>
+						<%= link_to "Feature Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"} %>
 					</span>
 				</li>
 		  <% end %>
