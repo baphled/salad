@@ -1,16 +1,4 @@
 class StoriesController < ApplicationController
-  def new
-    if not params[:feature_id].nil?
-      @feature = Feature.find(params[:feature_id])
-      @story = @feature.stories.new(:feature_ids => [params[:feature_id]])
-    else
-      @story = Story.new
-    end
-    respond_to do |format|
-      format.html
-    end
-  end
-  
   def index
     @stories = Story.find :all
     respond_to do |format|
@@ -32,5 +20,17 @@ class StoriesController < ApplicationController
   
   def show
     @story = Story.find params[:id]
+  end
+  
+  def new
+    if not params[:feature_id].nil?
+      @feature = Feature.find(params[:feature_id])
+      @story = @feature.stories.new(:feature_ids => [params[:feature_id]])
+    else
+      @story = Story.new
+    end
+    respond_to do |format|
+      format.html
+    end
   end
 end
