@@ -3,8 +3,10 @@
 		<% if !stories.blank? %>
 		  <% for story in stories %>
 		    <li>
-		    	<%=h story.title %><br/>
-					<%=h story.scenario %><br/>
+					<div>
+			    	<b>Title: </b><%=h story.title %><br/>
+						<b>Scenario: </b><%=h story.scenario %><br/>
+					</div>
 		    </li>
 		  <% end %>
 		<% else %>

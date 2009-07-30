@@ -2,13 +2,4 @@
 	<%= render :partial => '/common/feature_info' %>
 </div>
 	<%= link_to "New Story", new_story_path({:feature_id=>@feature.id}) %>
-	<ul>
-  <% for story in @feature.stories %>
-		<li>
-			<div>
-	    	<%=h story.title %>
-				<%=h story.scenario %>
-			</div>
-		</li>
-  <% end %>
-	</ul>
+<%= render :partial => '/common/stories_list', :locals => {:stories => @feature.stories}%>
