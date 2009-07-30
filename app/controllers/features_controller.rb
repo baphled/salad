@@ -2,6 +2,9 @@ class FeaturesController < ApplicationController
 
   def index
     @features = Feature.all
+    respond_to do |format|
+      format.html
+    end
   end
   
   def new
@@ -31,7 +34,7 @@ class FeaturesController < ApplicationController
   end
   
   def show
-    
+    @feature = Feature.find params[:id]
   end
   
   def update

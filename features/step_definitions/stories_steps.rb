@@ -11,6 +11,9 @@ When /^fill in the new story with no errors$/ do
   fill_in 'story_scenario', :with => 'this is our stories scenario'
 end
 
+When /^I select first feature$/ do
+  click_link 'View'
+end
 
 Then /^there should be a list of stories$/ do
   response.should have_selector :div do |content|
@@ -46,4 +49,12 @@ end
 
 Then /^the story information should be saved$/ do
   assert !Story.find_by_title("a new story").title.nil?
+end
+
+Then /^I should see a list of stories$/ do
+  response.should have_selector :ul do |list|
+    list.should have_selector :li do |content|
+      content.should have_selector :div
+    end
+  end
 end

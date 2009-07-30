@@ -1,0 +1,15 @@
+<div id="feature_info">
+	<%=h @feature.title %><br/>
+	<%=h @feature.body %><br/>
+</div>
+
+	<ul>
+  <% for story in @feature.stories %>
+		<li>
+			<div>
+	    	<%=h story.title %>
+				<%=h story.scenario %>
+			</div>
+		</li>
+  <% end %>
+	</ul>

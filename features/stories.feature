@@ -26,5 +26,5 @@ Feature: Stories will be needed to populate our projects features
     When I select first feature
 		Then I should see a list of stories
 		And each story should have a title
-		And each story should have a body
+		And each story should have a scenario
 	

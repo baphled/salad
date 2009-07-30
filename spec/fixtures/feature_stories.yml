@@ -1,0 +1,7 @@
+one:
+  story_id: 1
+  feature_id: 1
+
+two:
+  story_id: 2
+  feature_id: 1

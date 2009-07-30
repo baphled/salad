@@ -4,10 +4,11 @@
 	<ul>	
 		<% if !@features.blank? %>
 		  <% for feature in @features %>
-		    <li>
+		    <li id="feature_#{feature.id}">
 						<b>Title: </b><%= feature.title %><br/>
 						<b>Body: </b><%= feature.body %><br/>
 						<%= link_to "New Story", new_story_path %>
+						<%= link_to "View", feature_path(feature) %>
 				</li>
 		  <% end %>
 		<% end %>
