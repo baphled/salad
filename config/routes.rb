@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   map.resources :projects
   map.resources :features
+  map.resources :stories
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   
   # Sample of regular route:

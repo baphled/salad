@@ -26,10 +26,13 @@ class ProjectsController < ApplicationController
   
   def update
     @project ||= Project.find(params[:id])
+    title = @project.title
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        flash[:notice] = "Project: #{title} was updated"
         format.html { redirect_to :project }
       else
+        flash[:error] = "Project: #{title} was not created"
         format.html { render :action => "edit" }
       end
     end

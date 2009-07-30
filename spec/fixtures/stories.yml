@@ -1,0 +1,9 @@
+one:
+  id: 1
+  title: my first story
+  scenario: my stories 1st scenario
+
+two:
+  id: 2
+  title: my second story
+  scenario: my stories 2nd scenario
