@@ -11,16 +11,5 @@
 </fieldset>
 <%= link_to "Add feature", new_feature_path({:project_id=>@project.id})%>
 <% if !@project.features.blank? %>
-<div id="features">
-	<b>Features</b><span class="order_icon">Order</span>
-	<ul>
-		  <% for feature in @project.features %>
-		    <li>
-					<span class="order_box">1</span>
-					<%= feature.title %>
-					<span class="icons"></span>
-				</li>
-		  <% end %>
-	</ul>
+	<%= render :partial => '/common/features_list', :locals => {:features => @project.features}%>
 <% end %>
-</div>

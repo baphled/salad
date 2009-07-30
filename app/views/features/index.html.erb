@@ -1,16 +1,3 @@
 <h3>Features</h3>
 <%= link_to "New Feature", new_feature_path %>
-<div id="lists" class="features">
-	<ul>	
-		<% if !@features.blank? %>
-		  <% for feature in @features %>
-		    <li id="feature_#{feature.id}">
-						<b>Title: </b><%= feature.title %><br/>
-						<b>Body: </b><%= feature.body %><br/>
-						<%= link_to "New Story", new_story_path %>
-						<%= link_to "View", feature_path(feature) %>
-				</li>
-		  <% end %>
-		<% end %>
-	</ul>
-</div>
+<%= render :partial => '/common/features_list', :locals => {:features => @features}%>

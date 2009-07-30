@@ -1,0 +1,17 @@
+<div class="features" id="lists">
+	<b>Features</b><span class="order_icon">Order</span>
+	<ul>
+		  <% for feature in features %>
+		    <li>
+					<span class="order_box">1</span>
+					<b>Title: </b><%= feature.title %><br/>
+					<b>Body: </b><%= feature.body %>
+					<span class="icons">
+						<%= link_to "View", feature_path(feature) %>
+						<%= link_to "Edit", edit_feature_path(feature), {:id=>"edit_feature_#{feature.id}"} %>
+						<%= link_to "New Story", new_story_path %>
+					</span>
+				</li>
+		  <% end %>
+	</ul>
+</div>

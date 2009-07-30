@@ -31,7 +31,7 @@ When /^I visit the index features page$/ do
 end
 
 When /^I edit the first feature$/ do
-  visit('/features/1/edit')
+  click_link 'edit_feature_1'
 end
 
 When /^the title is edited$/ do
