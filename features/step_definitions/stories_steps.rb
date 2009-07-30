@@ -19,3 +19,17 @@ Then /^each story should have a title$/ do
     end
   end
 end
+
+Then /^each story should have a scenario$/ do
+  response.should have_selector :ul do |list|
+    Story.all.each do |story|
+      list.should have_selector :li do |content|
+        content.should contain story.scenario
+      end
+    end
+  end
+end
+
+Then /^there should not be a list of stories$/ do
+  response.should_not have_selector :ul
+end
