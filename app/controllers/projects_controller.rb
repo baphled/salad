@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  
+  before_filter :find_project, :except => [:index,:new,:create]
+  
   def index
     @projects = Project.find(:all)
   end
@@ -52,4 +55,9 @@ class ProjectsController < ApplicationController
       format.html
     end
   end
+  
+  private
+    def find_project
+      @project = Project.find(params[:id])
+    end
 end
