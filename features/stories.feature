@@ -18,7 +18,7 @@ Feature: Stories will be needed to populate our projects features
     Then submit the form
 		And the story information should be saved
     And I should be redirected to the new story
-    And a flash message 'Feature: Logging in, was created' should be displayed
+    And a flash message 'Story: a new story, was created' should be displayed
 
 	Scenario: As a user I should be able to view all the features stories
 	  Given I can view the features page

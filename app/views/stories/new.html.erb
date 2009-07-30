@@ -1,0 +1,9 @@
+<%= error_messages_for :story %>
+
+<% form_for @story do |f| -%>
+  <%= f.label :title, "Title" %>
+	<%= f.text_field :title %><br/>
+	<%= f.label :scenario, "Scenario" %>
+	<%= f.text_field :scenario %><br/>
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>

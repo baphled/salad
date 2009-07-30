@@ -2,6 +2,16 @@ Given /^there are stories$/ do
   assert !Story.find(:all).nil?
 end
 
+When /^I select first feature new story link$/ do
+  click_link 'New Story'
+end
+
+When /^fill in the new story with no errors$/ do
+  fill_in 'story_title', :with => 'a new story'
+  fill_in 'story_scenario', :with => 'this is our stories scenario'
+end
+
+
 Then /^there should be a list of stories$/ do
   response.should have_selector :div do |content|
     content.should have_selector :ul do |list|
@@ -32,4 +42,8 @@ end
 
 Then /^there should not be a list of stories$/ do
   response.should_not have_selector :ul
+end
+
+Then /^the story information should be saved$/ do
+  assert !Story.find_by_title("a new story").title.nil?
 end
