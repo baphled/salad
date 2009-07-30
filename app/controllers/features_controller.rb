@@ -1,5 +1,6 @@
 class FeaturesController < ApplicationController
-
+  before_filter :find_feature, :except => [:index,:new,:create]
+  
   def index
     @features = Feature.all
     respond_to do |format|
@@ -30,15 +31,12 @@ class FeaturesController < ApplicationController
   end
   
   def edit
-    @feature = Feature.find(params[:id])
   end
   
   def show
-    @feature = Feature.find params[:id]
   end
   
   def update
-    @feature = Feature.find(params[:id])
     title = @feature.title
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
@@ -52,9 +50,14 @@ class FeaturesController < ApplicationController
   end
   
   def stories
-    @feature = Feature.find(params[:id])
     respond_to do |format|
       format.html
     end
+  end
+  
+  private
+  
+  def find_feature
+    @feature = Feature.find(params[:id])
   end
 end
