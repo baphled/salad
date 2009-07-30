@@ -1,3 +1,7 @@
+Given /^the first feature has stories$/ do
+  assert !Feature.find(1).stories.nil?
+end
+
 When /^fill in the new feature with no errors$/ do
   fill_in 'feature_title', :with => 'Logging in'
   fill_in 'feature_body', :with => 'When a user successfully logs in'
@@ -75,4 +79,8 @@ end
 
 Then /^I should be able to add a new story$/ do
   click_link 'New Story'
+end
+
+Then /^I should be able to see the first features stories link$/ do
+  response.should have_selector :a, attribute = {:href=>"/features/1/stories"}
 end

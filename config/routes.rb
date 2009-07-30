@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :features
   map.resources :stories
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
+  map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
   
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'

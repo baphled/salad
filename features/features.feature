@@ -71,6 +71,8 @@ Feature: A user should be able to create new features, which can be associated w
 			Then I should be able to add a new story
 			And the features information should be displayed above the form
 		
-		
-		
-			
+		Scenario: A user should only see a view stories link if the feature has stories associated to it
+		  Given I can view the features page
+			And there are features
+			And the first feature has stories
+	    Then I should be able to see the first features stories link
