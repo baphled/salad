@@ -19,6 +19,9 @@ body {
 	background-color:#FFFFFF;
 }
 
+#head {
+	height: 80px;
+}
 #content {
 	margin:32px auto;
 	border:thin solid black;
@@ -27,6 +30,16 @@ body {
 
 #main {
 	padding: 10px;
+}
+
+#menu-items {
+	margin:auto;
+}
+#menu {
+	height:30px;
+	display:block;
+	border-top: thin solid gray;
+	border-bottom: thin solid gray;
 }
 #lists {
 	padding:5px 0px 5px 0px;

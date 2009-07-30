@@ -66,3 +66,7 @@ Then /^the features information should be displayed above the form$/ do
     content.should contain @feature.body
   end
 end
+
+Then /^I should be see a link to create a new story$/ do
+  click_link 'New Story'
+end

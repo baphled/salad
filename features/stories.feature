@@ -28,3 +28,10 @@ Feature: Stories will be needed to populate our projects features
 		And each story should have a title
 		And each story should have a scenario
 	
+	Scenario: As a user I should be able to create a new story via the stories page
+	  Given I can view the stories page
+		And there are stories
+	  Then I should be see a link to create a new story
+	
+	
+	
