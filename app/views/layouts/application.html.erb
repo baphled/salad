@@ -17,10 +17,15 @@
 				<%= link_to "Projects", projects_path %> | <%= link_to "Features", features_path %> | <%= link_to "Stories", stories_path %>
 			</div>
 		</div>
-		<div id="main">
-	  	<%= yield :layout %>
+		<div id="container">
+			<div id="main">
+		  	<%= yield :layout %>
+			</div>
+			<div id="right_column">
+				Content
+			</div>
 		</div>
-		<div id="foot"></div>
+		<div id="foot">&copy; Designed &amp; Developed by <a href="http://boodah.net">boodah.net</a></div>
 	</div>
 </body>
 </html>
