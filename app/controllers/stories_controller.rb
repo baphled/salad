@@ -1,6 +1,12 @@
 class StoriesController < ApplicationController
   def new
-    @story = Story.new
+    @feature = Feature.find(params[:feature_id]) unless params[:feature_id].nil?
+    if @feature
+      @story = @feature.stories.new
+    else
+      @story = Story.new
+    end
+    
     respond_to do |format|
       format.html
     end

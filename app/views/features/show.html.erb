@@ -2,7 +2,7 @@
 	<%=h @feature.title %><br/>
 	<%=h @feature.body %><br/>
 </div>
-
+	<%= link_to "New Story", new_story_path({:feature_id=>@feature.id}) %>
 	<ul>
   <% for story in @feature.stories %>
 		<li>

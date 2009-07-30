@@ -58,3 +58,11 @@ Then /^I should see a list of stories$/ do
     end
   end
 end
+
+Then /^the features information should be displayed above the form$/ do
+  @feature = Feature.find 1
+  response.should have_selector :div do |content|
+    content.should contain @feature.title
+    content.should contain @feature.body
+  end
+end

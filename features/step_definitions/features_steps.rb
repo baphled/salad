@@ -72,3 +72,7 @@ end
 Then /^the flash message 'Feature: my first feature, was not updated'$/ do
   flash.should contain "Feature: my first feature, was not updated"
 end
+
+Then /^I should be able to add a new story$/ do
+  click_link 'New Story'
+end

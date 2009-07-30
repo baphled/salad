@@ -64,3 +64,13 @@ Feature: A user should be able to create new features, which can be associated w
 		  Then the form should be rerendered
 			And the flash message 'Feature: my first feature, was not updated'
 			
+		Scenario: A user should be able to create a new story for a feature
+		  Given I can view the features page
+			And there are features
+	    When I select first feature
+			Then I should be able to add a new story
+			And the features information should be displayed above the form
+		
+		
+		
+			
