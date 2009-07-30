@@ -1,16 +1,3 @@
 <h3>Stories</h3>
 <%= link_to "New Story", new_story_path %>
-<div id="lists" class="stories">
-	<ul>
-		<% if !@stories.blank? %>
-		  <% for story in @stories %>
-		    <li>
-		    	<%=h story.title %><br/>
-					<%=h story.scenario %><br/>
-		    </li>
-		  <% end %>
-		<% else %>
-		<p>No stories present.</p>
-		<% end %>
-	</ul>
-</div>
+<%= render :partial => '/common/stories_list', :locals => {:stories => @stories}%>

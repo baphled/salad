@@ -50,4 +50,11 @@ class FeaturesController < ApplicationController
       end
     end
   end
+  
+  def stories
+    @feature = Feature.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
 end

@@ -46,6 +46,10 @@ When /^the title is invalid$/ do
   fill_in 'feature_title', :with => ''
 end
 
+When /^I visit the first features stories$/ do
+  click_link 'feature_1_stories'
+end
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
@@ -83,4 +87,15 @@ end
 
 Then /^I should be able to see the first features stories link$/ do
   response.should have_selector :a, attribute = {:href=>"/features/1/stories"}
+end
+
+Then /^I can view all the stories associated to the feature$/ do
+  response.should have_selector :ul, attribute = {:id => "feature_stories"} do |list|
+    Feature.find(1).stories.each do |story|
+      list.should have_selector :li do |content|
+        content.should contain story.title
+        content.should contain story.title
+      end
+    end
+  end
 end

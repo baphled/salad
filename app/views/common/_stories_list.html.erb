@@ -1,0 +1,14 @@
+<div id="lists" class="stories">
+	<ul id="feature_stories">
+		<% if !stories.blank? %>
+		  <% for story in stories %>
+		    <li>
+		    	<%=h story.title %><br/>
+					<%=h story.scenario %><br/>
+		    </li>
+		  <% end %>
+		<% else %>
+		<p>No stories present.</p>
+		<% end %>
+	</ul>
+</div>
