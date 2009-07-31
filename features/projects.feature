@@ -129,3 +129,10 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given I can view the projects page
 	  When a project has no features
 	  Then there should not be a 'view features' link
+	
+	Scenario: I should be able to easily create new features for a project
+	 	Given I can view the projects page
+		Then all projects should have a 'Add features' link
+		And I should be able to visit the URL
+	
+	

@@ -230,3 +230,17 @@ Then /^there should not be a 'view features' link$/ do
     content.should_not contain "View Feature"
   end
 end
+
+Then /^all projects should have a 'Add features' link$/ do
+  response.should have_selector :li do |list|
+    list.should have_selector :span, attribute = {:class=>"icons"} do |content|
+      content.should have_selector :a do |link|
+        link.should contain "Add Feature"
+      end
+    end
+  end
+end
+
+Then /^I should be able to visit the URL$/ do
+  visit('/features/new?id=new_project_feature_1')
+end
