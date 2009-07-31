@@ -37,12 +37,10 @@ describe "/projects/features.html.erb" do
       end
 
       it "should display projects summary" do
-        response.should have_selector :fieldset, attribute = {:class=>"project_field"} do |project_field|
-          project_field.should have_selector :div, attribute = {:class=>"project_info"} do |project_info|
-            project_info.should have_selector :span, :content => @project.title
-            project_info.should have_selector :span, :content => @project.description
-            project_info.should have_selector :span, :content => @project.aim
-          end
+        response.should have_selector :div, attribute = {:class=>"project info"} do |project_info|
+          project_info.should have_selector :span, :content => @project.title
+          project_info.should have_selector :span, :content => @project.description
+          project_info.should have_selector :span, :content => @project.aim
         end
       end
     end
