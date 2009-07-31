@@ -4,7 +4,7 @@
 		  <% for feature in features %>
 		    <li>
 					<span class="order_box">1</span>
-		    	<span id="list_content"><b>Title: </b><%= feature.title %><br/>
+		    	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
 					<b>Body: </b><%= feature.body %></span>
 					<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
 				</li>
