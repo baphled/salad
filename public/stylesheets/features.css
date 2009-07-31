@@ -2,13 +2,3 @@ fieldset.project_field {
 	width:450px;
 	margin-bottom:30px;
 }
-
-li span.order_box {
-	width:15px;
-	height:15px;
-	display:inline-block;
-	background:#89A407 none repeat scroll 0 0;
-	border:thin solid #785C17;
-	text-align:center;
-	margin:2px;
-}

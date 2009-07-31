@@ -103,6 +103,10 @@ body {
 	margin:auto;
 }
 
+#list_content {
+	display:inline-block;
+}
+
 ul {
 	width:97%;
 	margin:10px 0px;
@@ -114,15 +118,17 @@ ul {
 ul li {
 	border-top:thin solid #edf2bf;
 	border-bottom:thin solid #baca54;
-	padding:5px 8px;
+	padding:5px 8px 0px 8px;
 	background:#fcfdef;
-	margin:6px;
+	margin:3px;
 }
 
 span.order_icon,
-li > span.icons {
+li span.icons {
 	background:#89A407 none repeat scroll 0 0;
 	border:thin solid #785C17;
+	display:inline-block;
+	float:left;
 }
 span.order_icon {
 	float:right;
@@ -132,7 +138,7 @@ span.order_icon {
 	height:23px;
 	width:40px;
 }
-li > span.icons {
+li span.icons {
 	bottom:5px;
 	display:inline-block;
 	float:right;
@@ -140,3 +146,13 @@ li > span.icons {
 	position:relative;
 	width:200px;
 }
+
+span.order_box {
+	width:15px;
+	height:15px;
+	display:inline-block;
+	background:#89A407 none repeat scroll 0 0;
+	border:thin solid #785C17;
+	text-align:center;
+	margin:2px;
+}s

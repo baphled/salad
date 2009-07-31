@@ -4,8 +4,10 @@
 		  <% for story in stories %>
 		    <li>
 					<div>
-			    	<b>Title: </b><%=h story.title %><br/>
-						<b>Scenario: </b><%=h story.scenario %><br/>
+						<span class="order_box">1</span>
+			    	<span id="list_content"><b>Title: </b><%=h story.title %><br/>
+						<b>Scenario: </b><%=h story.scenario %><br/></span>
+						<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
 					</div>
 		    </li>
 		  <% end %>
