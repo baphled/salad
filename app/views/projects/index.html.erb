@@ -1,6 +1,7 @@
 <h3>Projects</h3>
 <%= link_to "New projects", new_project_path %>
 <div id="lists" class="projects">
+	<span class="order_icon">Order</span>
 <% if !@projects.blank? %>
     <ul>
   <% @projects.each do |project| %>

@@ -6,7 +6,7 @@
 	<div class='project info'>
 		<b>Title: </b><span><%= @project.title %></span><br/>
 		<b>Description: </b><span><%= @project.description %></span><br/>
-		<b>Aim: </b><span><%= @project.aim %></span><br/>
+		<b>Aim: </b><span><%= @project.aim %></span>
 	</div>
 </div>
 <%= link_to "Add feature", new_feature_path({:project_id=>@project.id})%>

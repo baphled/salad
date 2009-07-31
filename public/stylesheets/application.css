@@ -128,6 +128,7 @@ body {
 	padding:5px 0px 5px 0px;
 	width:95%;
 	margin:auto;
+	display:inline-block;
 }
 
 .info {
@@ -146,7 +147,9 @@ ul {
 	padding:15px 10px 5px;
 	border-top:thin solid silver;
 	border-bottom:thin solid silver;
+	display:inline-block;
 }
+
 
 ul li {
 	border-top:thin solid #edf2bf;
