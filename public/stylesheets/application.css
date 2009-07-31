@@ -123,12 +123,19 @@ body {
 	border-top: thin solid gray;
 	border-bottom: thin solid gray;
 }
+
 #lists {
 	padding:5px 0px 5px 0px;
 	width:95%;
 	margin:auto;
 }
 
+.info {
+	width:45%;
+	height:100px;
+	border-top:thin solid #785C17;
+	border-bottom:thin solid #785C17;
+}
 .list_content {
 	display:inline-block;
 }
