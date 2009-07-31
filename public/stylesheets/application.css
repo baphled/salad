@@ -160,6 +160,7 @@ body {
 .list_content {
 	width:300px;
 	display:inline-block;
+	padding-left:13px;
 }
 
 #left_list li {
@@ -200,7 +201,7 @@ span.order_icon {
 	text-align:center;
 	height:23px;
 	width:40px;
-	top:10px;
+	top:4px;
 }
 
 span.icons a {
@@ -216,12 +217,13 @@ li span.icons {
 }
 
 span.order_box {
+	float:left;
 	width:15px;
 	height:15px;
 	display:inline-block;
 	text-align:center;
 	margin:2px;
-	bottom:4px;
+	top:2px;
 }
 
 #notice {
