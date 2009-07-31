@@ -6,6 +6,32 @@
 	font: arial, serif;
 }
 
+a {
+	text-decoration:none;
+}
+
+#menu a:link,
+a:active {
+	color:#785C17;
+}
+
+#menu a:visited {
+	color:#C1C4B5;
+}
+
+#menu a:hover {
+	color:#89A407;
+}
+
+a:link,
+a:active,
+a:visited {
+	color:#C1C4B5;
+}
+
+a:hover {
+	color:#785C17;
+}
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   11px;
@@ -123,13 +149,15 @@ ul li {
 	margin:3px;
 }
 
+span.order_box,
 span.order_icon,
 li span.icons {
 	background:#89A407 none repeat scroll 0 0;
 	border:thin solid #785C17;
 	display:inline-block;
-	float:left;
+	position:relative;
 }
+
 span.order_icon {
 	float:right;
 	margin-right:23px;
@@ -137,22 +165,26 @@ span.order_icon {
 	text-align:center;
 	height:23px;
 	width:40px;
+	bottom:4px;
 }
+
+span.icons a {
+	padding-left:3px;
+}
+
 li span.icons {
 	bottom:5px;
-	display:inline-block;
 	float:right;
 	height:20px;
-	position:relative;
 	width:200px;
+	top:4px;
 }
 
 span.order_box {
 	width:15px;
 	height:15px;
 	display:inline-block;
-	background:#89A407 none repeat scroll 0 0;
-	border:thin solid #785C17;
 	text-align:center;
 	margin:2px;
+	bottom:13px;
 }s
