@@ -5,3 +5,5 @@
 <% if !@story.features.blank? %>
 	<%= render :partial => '/common/features_list', :locals => {:features => @story.features}%>
 <% end %>
+
+<%= render :partial => '/common/features_checkboxes', :locals => {:story => @story}%>

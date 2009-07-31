@@ -1,5 +1,7 @@
-<fieldset>
-	<legend>Feature information</legend>
-	<b>Title: </b><%=h @feature.title %><br/>
-	<b>Body: </b><%=h @feature.body %><br/>
-</fieldset>
+<div class="feature_info">
+	<h3>Feature Info</h3>
+	<div class='feature info'>
+		<b>Title: </b><span><%= feature.title %></span><br/>
+		<b>Body: </b><span><%= feature.body %></span>
+	</div>
+</div>

@@ -1,14 +1,13 @@
 <% if !Feature.all.empty? %>
-<fieldset>
-	<legend>Features</legend>
-	<ul id="left_list">
-  <% for feature in Feature.find :all %>
-    <li>
-		<%= check_box_tag "story[feature_ids][]", feature.id, story.features.include?(feature), {:id=>"story_feature_id_#{feature.id}"} %>
-			<%= feature.title%>
-		</li>
+<h3>Features</h3>
+<ul id="left_list">
+ <% for feature in Feature.find :all %>
+   <li>
+	<%= check_box_tag "story[feature_ids][]", feature.id, story.features.include?(feature), {:id=>"story_feature_id_#{feature.id}"} %>
+		<%= feature.title%>
+	</li>
 <% end %>
-	</ul>
+</ul>
 </fieldset>
 <% else %>
   <b>No features to add</b>
