@@ -23,10 +23,10 @@
 		  	<%= yield :layout %>
 			</div>
 			<div id="right_column">
-				Content
+				<%= yield :side_bar %>
 			</div>
 		</div>
-		<div id="foot">&copy; Designed &amp; Developed by <a href="http://boodah.net">boodah.net</a></div>
+		<div id="foot">&copy;<%= Time.now.year %> Designed &amp; Developed by <a href="http://boodah.net">boodah.net</a></div>
 	</div>
 </body>
 </html>

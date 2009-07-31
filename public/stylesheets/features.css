@@ -2,3 +2,7 @@ fieldset.project_field {
 	width:450px;
 	margin-bottom:30px;
 }
+
+#features {
+	padding-right:0;
+}
