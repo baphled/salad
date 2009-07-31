@@ -2,16 +2,4 @@
 	<%= render :partial => '/common/feature_info' %>
 <% end %>
 
-<fieldset>
-	<legend>New story</legend>
-	<%= error_messages_for :story %>
-
-	<% form_for @story do |f| -%>
-	<%= f.hidden_field :feature_ids, :value => @feature_id %>
-	  <%= f.label :title, "Title" %>
-		<%= f.text_field :title %><br/>
-		<%= f.label :scenario, "Scenario" %>
-		<%= f.text_field :scenario %><br/>
-		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
-	<% end -%>
-</fieldset>
+<%= render :partial => 'form', :locals => {:story => @story}%>

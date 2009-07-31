@@ -1,4 +1,5 @@
 <span class="icons">
+	<%= link_to "Edit", edit_project_path(project)%>
 	<%= link_to "Add Feature",
 			new_feature_path({:project_id=>project.id}) %>
 	<% if !project.feature_ids.empty? %>

@@ -1,0 +1,10 @@
+<% form_for story do |f| -%>
+	<%= error_messages_for :story %>
+	
+  <%= f.label :title, "Title" %>
+	<%= f.text_field :title %><br/>
+	<%= f.label :scenario, "Scenario" %>
+	<%= f.text_field :scenario %><br/>
+	<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>

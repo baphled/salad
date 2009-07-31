@@ -10,6 +10,11 @@ a {
 	text-decoration:none;
 }
 
+form {
+	padding-top:13px;
+	padding-bottom:13px;
+}
+
 #menu a:link,
 a:active {
 	color:#785C17;

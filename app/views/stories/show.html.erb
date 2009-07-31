@@ -1,3 +1,7 @@
 <h3><%=h @story.title %></h3>
 
 <b>Scenario: </b><%=h @story.scenario %><br/>
+
+<% if !@story.features.blank? %>
+	<%= render :partial => '/common/features_list', :locals => {:features => @story.features}%>
+<% end %>

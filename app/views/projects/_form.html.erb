@@ -15,7 +15,7 @@
 		<%= f.text_area :aim, :rows => 4 %>
 	</p>
 
-		<% if !@features.blank? %>
+		<% if !Feature.all.empty? %>
 		<fieldset>
 			<legend>Features</legend>
 			<ul id="left_list">
