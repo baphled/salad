@@ -81,6 +81,11 @@ body {
 	position:relative;
 }
 
+#foot,
+#head {
+	border-top:thin solid #785C17;
+}
+
 #foot {
 	background:#89a407;
 	text-align:center;
@@ -109,12 +114,14 @@ body {
 	top:0;
 	bottom:0;
 	width:260px;
+	border-left:thin solid #89A407;
 }
 
 #main {
 	width:70%;
 	color:#4b5425;
 	padding-left: 10px;
+	padding-right:10px;
 }
 
 #menu-items {
@@ -128,13 +135,12 @@ body {
 	background:#4b5425;
 	height:30px;
 	display:block;
-	border-top: thin solid gray;
-	border-bottom: thin solid gray;
+	border-top: thin solid #785C17;
+	border-bottom: thin solid #785C17;
 }
 
 #lists {
 	padding:5px 0px 5px 0px;
-	width:95%;
 	margin:auto;
 	display:inline-block;
 }

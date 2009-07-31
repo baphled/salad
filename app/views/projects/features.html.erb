@@ -1,30 +1,13 @@
 <% content_for :css_head do %>
 	<%= stylesheet_link_tag 'features' %>
 <% end %>
+
 <% content_for :side_bar do %>
 	<h3>Stories</h3>
 <% end %>
 
-<div class="project_info">
-	<h3>Project Info</h3>
-	<div class='project info'>
-		<b>Title: </b><span><%= @project.title %></span><br/>
-		<b>Description: </b><span><%= @project.description %></span><br/>
-		<b>Aim: </b><span><%= @project.aim %></span>
-	</div>
-</div>
-
-<div class="project_summary">
-	<h3>Project Summary</h3>
-	<div class='project info'>
-		<%= link_to "Add feature", new_feature_path({:project_id=>@project.id})%><br/>
-		<b>Number of features: </b><span><%= @project.features.count %></span><br/>
-		<% if not @project.features.blank? %>
-		<b>Last feature: </b><span><%= @project.features.last.title %></span><br/>
-		<% end %>
-	</div>
-</div>
-<div style="display:clear"></div>
+<%= render :partial => '/common/project_info', :locals => {:project => @project}%>
+<%= render :partial => '/common/project_summary', :locals => {:project => @project}%>
 
 <% if !@project.features.blank? %>
 	<%= render :partial => '/common/features_list', :locals => {:features => @project.features}%>
