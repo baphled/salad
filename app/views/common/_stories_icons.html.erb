@@ -1,4 +1,5 @@
 <span class="icons">
 	<%= link_to "View", story_path(story) %>
 	<%= link_to "Edit", edit_story_path(story), {:id=>"edit_story_#{story.id}"} %>
+	<%= link_to 'Delete', story, :confirm => 'Are you sure?', :method => :delete %>
 </span>

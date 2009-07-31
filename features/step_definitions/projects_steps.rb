@@ -227,7 +227,7 @@ end
 
 Then /^there should not be a 'view features' link$/ do
   response.should_not have_selector :a, attribute = {:href=>"/projects/1/features"} do |content|
-    content.should_not contain "View Feature"
+    content.should_not contain "Feature"
   end
 end
 
@@ -235,7 +235,7 @@ Then /^all projects should have a 'Add features' link$/ do
   response.should have_selector :li do |list|
     list.should have_selector :span, attribute = {:class=>"icons"} do |content|
       content.should have_selector :a do |link|
-        link.should contain "Add Feature"
+        link.should contain "New Feature"
       end
     end
   end
