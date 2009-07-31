@@ -1,3 +1,7 @@
+<% content_for :side_bar do %>
+	<%= error_messages_for :feature %>
+<% end %>
+
 <% form_for @feature do |f| %>
 	<%= error_messages_for :feature %>
   <p>
