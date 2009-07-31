@@ -4,24 +4,15 @@
 <% if !@projects.blank? %>
     <ul>
   <% @projects.each do |project| %>
-			<li>
-				<div class="project_title">
-					Title: 
-					<%=h project.title %>
-				</div>
-				<div class="project_description">
-					Description:
-					<%=h project.description %>
-				</div>
-				<div class="project_aim">
-					Aim:
-					<%=h project.aim %>
-				</div>
-				<% if !project.feature_ids.empty? %>
-					<%= link_to "View Features", project_features_path(project)%>
-				<% end %>
-			</li>
-
+	<li>
+		<span class="order_box">1</span>
+  	<span class="list_content">
+			<b>Title: </b><%= project.title %><br/>
+			<b>Description: </b><%= project.description %><br/>
+			<b>Aim: </b><%= project.aim %>
+		</span>
+		<%= render :partial => '/common/project_icons', :locals => {:project => project}%>
+	</li>
   <% end %>
 	</ul>
 <% else %>

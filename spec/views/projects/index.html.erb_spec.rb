@@ -22,9 +22,9 @@ describe "/projects/index.html.erb" do
     it "should have a list of projects" do
       response.should have_selector :ul do |list|
         list.should have_selector :li do |content|
-          content.should have_selector :div, :content => "A fixture project"
-          content.should have_selector :div, :content => "A description for our project"
-          content.should have_selector :div, :content => "A projects aims"
+          content.should contain "A fixture project"
+          content.should contain "A description for our project"
+          content.should contain "A projects aims"
         end
       end
     end
