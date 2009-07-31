@@ -107,7 +107,6 @@ body {
 }
 
 #main {
-	float:left;
 	width:70%;
 	color:#4b5425;
 	padding-left: 10px;
@@ -154,6 +153,7 @@ body {
 }
 
 .list_content {
+	width:300px;
 	display:inline-block;
 }
 
@@ -217,4 +217,14 @@ span.order_box {
 	text-align:center;
 	margin:2px;
 	bottom:4px;
-}s
+}
+
+#notice {
+	border:thin solid #89A407;
+	color:#4B5425;
+}
+
+#error {
+	border:thin solid #785C17;
+	color:#785C17;
+}

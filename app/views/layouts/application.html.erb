@@ -6,8 +6,6 @@
 <%= stylesheet_link_tag "application" %>
 <%= yield :css_head %>
 <body>
-  <div id="notice" class="notice"><%= flash[:notice] %></div>
-  <div id="error" class="error"><%= flash[:error] %></div>
 	<div id="content">
 		<div id="head">
 			<span id="logo">Salad</span><br/>
@@ -19,8 +17,13 @@
 			</div>
 		</div>
 		<div id="container">
-			<div id="main">
-		  	<%= yield :layout %>
+			<div>
+				<% flash.each do |key, msg| %>
+					<%= content_tag :div, msg, :id => key %>
+				<% end %>
+				<div id="main">
+			  	<%= yield :layout %>
+				</div>
 			</div>
 			<div id="right_column">
 				<%= yield :side_bar %>

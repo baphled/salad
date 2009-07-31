@@ -22,6 +22,10 @@ class StoriesController < ApplicationController
     @story = Story.find params[:id]
   end
   
+  def edit
+    @story = Story.find params[:id]
+  end
+  
   def new
     if not params[:feature_id].nil?
       @feature = Feature.find(params[:feature_id])
@@ -31,6 +35,21 @@ class StoriesController < ApplicationController
     end
     respond_to do |format|
       format.html
+    end
+  end
+  
+  def update
+    params[:story][:feature_ids] ||= []
+    @story = Story.find(params[:id])
+    title = @story.title
+    respond_to do |format|
+      if @story.update_attributes(params[:story])
+        flash[:notice] = "Story: #{title} was updated"
+        format.html { redirect_to :story }
+      else
+        flash[:error] = "Story: #{title} was not created"
+        format.html { render :action => "edit" }
+      end
     end
   end
 end

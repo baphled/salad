@@ -1,0 +1,18 @@
+<% if !@feature.nil? %>
+	<%= render :partial => '/common/feature_info' %>
+<% end %>
+
+<fieldset>
+	<legend>New story</legend>
+	<%= error_messages_for :story %>
+
+	<% form_for @story do |f| -%>
+		
+	  <%= f.label :title, "Title" %>
+		<%= f.text_field :title %><br/>
+		<%= f.label :scenario, "Scenario" %>
+		<%= f.text_field :scenario %><br/>
+		<%= render :partial => '/common/features_checkboxes', :locals => {:story => @story}%>
+		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+	<% end -%>
+</fieldset>

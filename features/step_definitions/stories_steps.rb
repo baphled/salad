@@ -15,6 +15,14 @@ When /^I select first feature$/ do
   click_link 'View'
 end
 
+When /^I edit the first story$/ do
+  visit('/stories/1/edit')
+end
+
+When /^uncheck a feature it is associated to$/ do
+  uncheck 'story_feature_id_1'
+end
+
 Then /^there should be a list of stories$/ do
   response.should have_selector :div do |content|
     content.should have_selector :ul do |list|
@@ -69,4 +77,8 @@ end
 
 Then /^I should be see a link to create a new story$/ do
   click_link 'New Story'
+end
+
+Then /^the story should no long store the feature$/ do
+  assert Story.find(1).feature_ids.empty?
 end

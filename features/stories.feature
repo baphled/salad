@@ -33,5 +33,10 @@ Feature: Stories will be needed to populate our projects features
 		And there are stories
 	  Then I should be see a link to create a new story
 	
-	
-	
+	Scenario: I should be able to edit a story
+	  Given I can view the stories page
+		And there are stories
+		When I edit the first story
+		And uncheck a feature it is associated to
+		Then submit the form
+		And the story should no long store the feature
