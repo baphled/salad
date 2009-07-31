@@ -1,0 +1,35 @@
+<% form_for project do |f| -%>
+	<%= error_messages_for :project %>
+  <p>
+		<%= f.label :title, "Title" %><br/>
+		<%= f.text_field :title %>
+	</p>
+	
+	<p>
+		<%= f.label :description, "Description" %><br/>
+		<%= f.text_area :description, :rows => 4 %>
+	</p>
+	
+	<p>
+		<%= f.label :aim, "Aim" %><br/>
+		<%= f.text_area :aim, :rows => 4 %>
+	</p>
+
+		<% if !@features.blank? %>
+		<fieldset>
+			<legend>Features</legend>
+			<ul id="left_list">
+		  <% for feature in Feature.find :all %>
+		    <li>
+				<%= check_box_tag "project[feature_ids][]", feature.id, @project.features.include?(feature) %>
+					<%= feature.title%>
+				</li>
+		<% end %>
+			</ul>
+		</fieldset>
+		<% else %>
+		  <b>No features to add</b>
+		<% end %>
+		
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>

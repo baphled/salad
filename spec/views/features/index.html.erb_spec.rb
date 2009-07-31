@@ -17,7 +17,7 @@ describe "/features/index.html.erb" do
     
     it "should have a list of features " do
       Feature.all.each do |feature|
-        response.should have_selector :div, attribute = {:class=>"features",:id=>"lists"} do |content|
+        response.should have_selector :div do |content|
           content.should contain feature.title
           content.should contain feature.body
         end

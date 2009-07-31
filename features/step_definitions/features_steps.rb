@@ -58,7 +58,7 @@ end
 
 Then /^the list should contain features$/ do
   Feature.all.each do |feature|
-    response.should have_selector :div, attribute = {:class=>"features"} do |content|
+    response.should have_selector :div do |content|
       content.should contain feature.title
       content.should contain feature.body
     end

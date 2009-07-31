@@ -157,6 +157,10 @@ body {
 	display:inline-block;
 }
 
+#left_list li {
+	float:left;
+}
+
 ul {
 	width:97%;
 	margin:10px 0px;
@@ -167,7 +171,7 @@ ul {
 }
 
 
-ul li {
+div#lists ul li {
 	border-top:thin solid #edf2bf;
 	border-bottom:thin solid #baca54;
 	padding:5px 8px 0px 8px;
