@@ -225,11 +225,25 @@ span.order_box {
 }
 
 #notice {
+	background:#89A407 none repeat scroll 0 0;
 	border:thin solid #89A407;
 	color:#4B5425;
+	text-align:center;
+	width:71%;
 }
 
 #error {
+	background:#89A407 none repeat scroll 0 0;
+	text-align:center;
+	width:71%;
 	border:thin solid #785C17;
 	color:#785C17;
+}
+
+#errorExplanation {
+	padding-left:15px;
+}
+
+#errorExplanation ul {
+	border:none;
 }
