@@ -42,9 +42,17 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @project = Project.find(params[:id])
     respond_to do |format|
       format.html
+    end
+  end
+  
+  def destroy
+    @project.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(projects_path) }
+      format.xml  { head :ok }
     end
   end
   

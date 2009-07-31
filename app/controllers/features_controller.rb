@@ -49,6 +49,15 @@ class FeaturesController < ApplicationController
     end
   end
   
+  def destroy
+    @feature.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(features_path) }
+      format.xml  { head :ok }
+    end
+  end
+  
   def stories
     respond_to do |format|
       format.html

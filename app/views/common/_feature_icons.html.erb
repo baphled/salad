@@ -1,6 +1,7 @@
 <span class="icons">
 	<%= link_to "View", feature_path(feature) %>
 	<%= link_to "Edit", edit_feature_path(feature), {:id=>"edit_feature_#{feature.id}"} %>
+	<%= link_to 'Destroy', feature, :confirm => 'Are you sure?', :method => :delete %>
 	<%= link_to "New Story", new_story_path({:feature_id=>"#{feature.id}"}) %>
-	<%= link_to "View Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"} %>
+	<%= link_to "Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"} %>
 </span>

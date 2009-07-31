@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  before_filter :find_story, :except => [:index,:new,:create]
   def index
     @stories = Story.find :all
     respond_to do |format|
@@ -19,11 +20,9 @@ class StoriesController < ApplicationController
   end
   
   def show
-    @story = Story.find params[:id]
   end
   
   def edit
-    @story = Story.find params[:id]
   end
   
   def new
@@ -40,7 +39,6 @@ class StoriesController < ApplicationController
   
   def update
     params[:story][:feature_ids] ||= []
-    @story = Story.find(params[:id])
     title = @story.title
     respond_to do |format|
       if @story.update_attributes(params[:story])
@@ -52,4 +50,18 @@ class StoriesController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @story.destroy
+    respond_to do |format|
+      format.html { redirect_to(stories_path) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  private
+    def find_story
+      @story = Story.find(params[:id])
+      
+    end
 end
