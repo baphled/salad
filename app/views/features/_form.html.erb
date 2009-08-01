@@ -2,7 +2,7 @@
 	<%= error_messages_for :feature %>
 <% end %>
 
-<% form_for @feature do |f| %>
+<% form_for @feature,:builder => ValidatingFormBuilder do |f| %>
   <p>
 		<%= f.label :title, "Title" %><br/>
 		<%= f.text_field :title %>

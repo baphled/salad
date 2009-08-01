@@ -260,3 +260,8 @@ span.order_box {
 #errorExplanation ul {
 	border:none;
 }
+.fieldWithErrors option,
+.fieldWithErrors textarea,
+.fieldWithErrors input {
+	background:red;
+}

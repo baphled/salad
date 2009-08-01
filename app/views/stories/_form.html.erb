@@ -2,12 +2,14 @@
 	<%= error_messages_for :story %>
 <% end %>
 
-<% form_for story do |f| -%>
+<% form_for story,:builder => ValidatingFormBuilder do |f| -%>
 	<div id="form_content">
-	  <%= f.label :title, "Title" %>
-		<%= f.text_field :title %><br/>
-		<%= f.label :scenario, "Scenario" %>
-		<%= f.text_area :scenario,:rows=>4 %><br/>
+	  <p>
+			<%= f.text_field :title %><br/>
+		</p>
+		<p>
+			<%= f.text_area :scenario,:rows=>4 %><br/>
+		</p>
 	</div>
 	<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>

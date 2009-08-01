@@ -2,21 +2,10 @@
 	<%= error_messages_for :project %>
 <% end %>
 
-<% form_for project do |f| -%>
-  <p>
-		<%= f.label :title, "Title" %><br/>
+<% form_for project,:builder => ValidatingFormBuilder do |f| -%>
 		<%= f.text_field :title %>
-	</p>
-	
-	<p>
-		<%= f.label :description, "Description" %><br/>
 		<%= f.text_area :description, :rows => 4 %>
-	</p>
-	
-	<p>
-		<%= f.label :aim, "Aim" %><br/>
 		<%= f.text_area :aim, :rows => 4 %>
-	</p>
 
 		<% if !Feature.all.empty? %>
 		<fieldset>
