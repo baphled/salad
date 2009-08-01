@@ -118,7 +118,7 @@ body {
 }
 
 #main {
-	width:70%;
+	width:69%;
 	color:#4b5425;
 	padding-left: 10px;
 	padding-right:10px;
@@ -140,21 +140,26 @@ body {
 }
 
 #lists {
-	padding:5px 0px 5px 0px;
+	width:100%;
 	margin:auto;
 	display:inline-block;
 }
 
 .info {
-	width:305px;
+	width:300px;
 	height:100px;
 	border-top:thin solid #785C17;
 	border-bottom:thin solid #785C17;
 }
 
+.story_summary,
+.feature_summary,
 .project_summary {
 	float:right;
 }
+
+.story_info,
+.feature_info,
 .project_info {
 	float:left;
 }
@@ -176,7 +181,7 @@ body {
 ul {
 	width:97%;
 	margin:10px 0px;
-	padding:15px 10px 5px;
+	padding:15px 4px 5px;
 	border-top:thin solid #785C17;
 	border-bottom:thin solid #785C17;
 	display:inline-block;

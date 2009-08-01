@@ -3,10 +3,12 @@
 <% end %>
 
 <% form_for story do |f| -%>
-  <%= f.label :title, "Title" %>
-	<%= f.text_field :title %><br/>
-	<%= f.label :scenario, "Scenario" %>
-	<%= f.text_field :scenario %><br/>
+	<div id="form_content">
+	  <%= f.label :title, "Title" %>
+		<%= f.text_field :title %><br/>
+		<%= f.label :scenario, "Scenario" %>
+		<%= f.text_area :scenario,:rows=>4 %><br/>
+	</div>
 	<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>
