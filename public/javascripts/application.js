@@ -1,3 +1,3 @@
-function displayFeatureInfo(e, reg) {
+function displayInfo(e, reg) {
 	$(reg).toggle().visible();
 }
