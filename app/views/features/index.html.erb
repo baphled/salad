@@ -4,11 +4,12 @@
 <%= render :partial => 'common/sidebar/feature_stories', :locals => {:features => @features}%>
 
 <% content_for :js_head do %>
+<script type="text/javascript">
+	document.observe('dom:loaded', function() {
  <% for feature in @features %>
    <% if !feature.stories.blank? %>
-	<script type="text/javascript">
-		document.observe('dom:loaded', function() {
-       $('feature_<%=feature.id %>_list').observe('click', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
+       $('feature_<%=feature.id %>_list').observe('mouseover', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
+			$('feature_<%=feature.id %>_list').observe('mouseout', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
    <% end %>
  <% end %>
 			$('li.feature_stories').hide();
