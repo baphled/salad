@@ -4,7 +4,9 @@
   <title>SaladBowl</title>
 </head>
 <%= stylesheet_link_tag "application" %>
+<%= javascript_include_tag :all, :cache => true %>
 <%= yield :css_head %>
+<%= yield :js_head %>
 <body>
 	<div id="content">
 		<div id="head">

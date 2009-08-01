@@ -265,3 +265,9 @@ span.order_box {
 .fieldWithErrors input {
 	background:red;
 }
+
+.feature_stories {
+	position:absolute;
+	top:4px;
+	display:none;
+}

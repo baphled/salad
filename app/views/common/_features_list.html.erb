@@ -2,7 +2,7 @@
 	<span class="order_icon">Order</span>
 	<ul id="features">
 		  <% for feature in features %>
-		    <li>
+		    <li id="feature_<%=feature.id%>_list">
 					<span class="order_box">1</span>
 		    	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
 					<b>Body: </b><%= feature.body %></span>

@@ -2,6 +2,6 @@
 	<h3>Feature Info</h3>
 	<div class='feature info'>
 		<b>Title: </b><span><%= feature.title %></span><br/>
-		<b>Body: </b><span><%= feature.body %></span>
+		<b>Body: </b><span><%= truncate(feature.body,{:length=>200}) %></span>
 	</div>
 </div>

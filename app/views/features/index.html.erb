@@ -1,3 +1,41 @@
 <h3>Features</h3>
 <%= link_to "New Feature", new_feature_path %>
 <%= render :partial => '/common/features_list', :locals => {:features => @features}%>
+
+<% content_for :side_bar do %>
+	<%= error_messages_for :feature %>
+	<ul id="feature_stories">
+	<% if !@features.blank? %>
+	  <% for feature in @features %>
+			<% if !feature.stories.blank? %>
+			  <% for story in feature.stories %>
+					<li>
+						<div id="feature_<%=feature.id%>_story" style="display: none;">
+							<h3><%=h feature.title %></h3>
+					    <b>Title: </b><%=h story.title %><br/>
+							<b>Scenario: </b><%=h story.scenario %>
+						</div>
+					</li>
+			  <% end %>
+			<% end %>
+	  <% end %>
+	</ul>
+	<% else %>
+	  <p>No stories</p>
+	<% end %>
+<% end %>
+
+<% content_for :js_head do %>
+ <% for feature in @features %>
+   <% if !feature.stories.blank? %>
+	<script type="text/javascript">
+		document.observe('dom:loaded', function() {
+       $('feature_<%=feature.id %>_list').observe('click', displayFeatureInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
+   <% end %>
+ <% end %>
+			$('li.feature_stories').hide();
+		});
+	</script>
+
+<% end %>
+
