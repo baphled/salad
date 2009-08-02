@@ -15,7 +15,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 		And fill in the new steps with no errors
 	 	Then submit the form
 		And the step should be saved
-		And a flash message 'Step: a new step, was created', should be displayed.
+		And a flash message 'Step: a new step, was created' should be displayed
 		
 	Scenario: A user should not be able to create a new step if it is not unique
 		Given I can view the steps page
@@ -46,4 +46,4 @@ Feature: Stories have steps, which help to define what the action taken within a
 		And fill in the new steps with no errors
 		Then submit the form
 		And the step should be saved
-		And a flash message 'Step: a new step was created', should be displayed.
+		And a flash message 'Step: a new step was created', should be displayed

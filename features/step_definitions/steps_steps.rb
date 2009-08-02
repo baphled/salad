@@ -10,7 +10,6 @@ Then /^the step should be saved$/ do
   assert !Step.find_by_title("a new step").title.nil?
 end
 
-Then /^a flash message 'Step: a new step was created', should be displayed\.$/ do
+Then /^a flash message 'Step: a new step was created', should be displayed$/ do
   flash.should contain "Step: a new step was created"
 end
-
