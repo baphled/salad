@@ -1,3 +1,7 @@
+When /^I choose 'New Step' link$/ do
+  click_link 'New step'
+end
+
 Then /^the new step form should be displayed$/ do
   response.should have_selector :form
 end

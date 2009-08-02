@@ -2,8 +2,6 @@
 
 <b>Scenario: </b><%=h @story.scenario %><br/>
 
-<% if !@story.features.blank? %>
-	<%= render :partial => '/common/features_list', :locals => {:features => @story.features}%>
+<% if !@story.steps.blank? %>
+	<%= render :partial => '/common/steps_list', :locals => {:steps => @story.steps}%>
 <% end %>
-
-<%= render :partial => '/common/features_checkboxes', :locals => {:story => @story}%>

@@ -38,10 +38,9 @@ Feature: Stories have steps, which help to define what the action taken within a
 	 	Then submit the form
 		
 	Scenario: A user should be able to create a new step via a story
-		Given I can view the features page
-		And there are features
-    When I select first feature
-		And I click new steps
+		Given I can view the stories page
+		And there are stories
+		And I choose 'New Step' link
 		And fill in the new steps with no errors
 		Then submit the form
 		And the step should be saved

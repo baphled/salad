@@ -8,8 +8,12 @@ class StepsController < ActionController::Base
   end
   
   def new
-    @step = Step.new
-    @stories = Story.all
+    if not params[:story_id].nil?
+      @story = Story.find(params[:story_id])
+      @step = @story.steps.new(:story_ids => [params[:story_id]])
+    else
+      @step = Step.new
+    end
     respond_to do |format|
       format.html
     end
