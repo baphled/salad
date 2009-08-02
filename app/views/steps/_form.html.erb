@@ -1,3 +1,7 @@
+<% content_for :side_bar do %>
+	<%= error_messages_for :step %>
+<% end %>
+
 <% form_for step do |f| -%>
   <%= f.text_field :title %>
 	<%= render :partial => '/common/stories_checkboxes' %>

@@ -35,6 +35,27 @@ class StepsController < ActionController::Base
     
   end
   
+  def update
+    params[:step][:story_ids] ||= []
+    title = @step.title
+    respond_to do |format|
+      if @step.update_attributes(params[:step])
+        flash[:notice] = "Step: #{title} was updated"
+        format.html { redirect_to :step }
+      else
+        flash[:error] = "Step: #{title} was not created"
+        format.html { render :action => "edit" }
+      end
+    end
+  end
+  
+  def destroy
+    @step.destroy
+    respond_to do |format|
+      format.html { redirect_to(steps_path) }
+      format.xml  { head :ok }
+    end
+  end
   private
     def find_step
       @step = Step.find(params[:id])
