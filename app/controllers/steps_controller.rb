@@ -2,11 +2,17 @@ class StepsController < ActionController::Base
   before_filter :find_step, :except => [:index,:new,:create]
   def index
     @steps = Step.all
+    respond_to do |format|
+      format.html
+    end
   end
   
   def new
     @step = Step.new
     @stories = Story.all
+    respond_to do |format|
+      format.html
+    end
   end
   
   def create
