@@ -1,22 +1,2 @@
 <h3>Steps</h3>
-<%= link_to "New Step", new_step_path %>
-<div id="lists" class="steps">
-	<span class="order_icon">Order</span>
-	<ul id="story_steps">
-		<% if !@steps.blank? %>
-		  <% for step in @steps %>
-		    <li>
-					<div>
-						<span class="order_box">1</span>
-			    	<span class="list_content">
-							<b>Title: </b><%=h step.title %><br/>
-						</span>
-						<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
-					</div>
-		    </li>
-		  <% end %>
-		<% else %>
-		<p>No steps present.</p>
-		<% end %>
-	</ul>
-</div>
+<%= render :partial => '/common/steps_list', :locals => {:steps => @steps}%>

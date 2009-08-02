@@ -59,6 +59,13 @@ class StoriesController < ApplicationController
     end
   end
   
+  def steps
+    @steps = @story.steps
+    respond_to do |format|
+      format.html
+    end
+  end
+  
   private
     def find_story
       @story = Story.find(params[:id])
