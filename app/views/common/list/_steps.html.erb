@@ -1,10 +1,10 @@
 <div id="lists" class="steps">
 	<%= link_to "New Step", new_step_path %>
 	<span class="order_icon">Order</span>
-	<ul id="story_steps">
+	<ul id="steps">
 		<% if !steps.blank? %>
 		  <% for step in steps %>
-		    <li>
+		    <% content_tag_for :li, step do %>
 					<div>
 						<span class="order_box">1</span>
 			    	<span class="list_content">
@@ -12,10 +12,12 @@
 						</span>
 						<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
 					</div>
-		    </li>
+		    <% end %>
 		  <% end %>
 		<% else %>
 		<p>No steps present.</p>
 		<% end %>
 	</ul>
 </div>
+
+<%= sortable_element( "steps", :url => sort_steps_path, :handle => "order_box")%>

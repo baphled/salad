@@ -1,5 +1,5 @@
 class StepsController < ActionController::Base
-  before_filter :find_step, :except => [:index,:new,:create]
+  before_filter :find_step, :except => [:index,:new,:create,:sort]
   def index
     @steps = Step.all
     respond_to do |format|
@@ -60,6 +60,15 @@ class StepsController < ActionController::Base
       format.xml  { head :ok }
     end
   end
+  
+  def sort
+    params[:steps].each_with_index do |id, index|
+      @steps = Step.find id
+      @steps.step_stories.update_all(['position=?', index+1])
+    end
+    render :nothing => true
+  end
+  
   private
     def find_step
       @step = Step.find(params[:id])

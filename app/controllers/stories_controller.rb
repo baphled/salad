@@ -60,10 +60,6 @@ class StoriesController < ApplicationController
   end
   
   def steps
-    @steps = @story.steps
-    respond_to do |format|
-      format.html
-    end
   end
   
   def sort

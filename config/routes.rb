@@ -1,9 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
-  map.resources :steps
+  
   map.resources :projects
   map.resources :features, :collection => {:sort => :post}
   map.resources :stories, :collection => {:sort => :post}
+  map.resources :steps, :collection => {:sort => :post}
   
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
