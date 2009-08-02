@@ -1,5 +1,5 @@
 When /^I choose 'New Step' link$/ do
-  click_link 'New step'
+  click_link 'New Step'
 end
 
 Then /^the new step form should be displayed$/ do

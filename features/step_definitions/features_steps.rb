@@ -94,7 +94,6 @@ Then /^I can view all the stories associated to the feature$/ do
     Feature.find(1).stories.each do |story|
       list.should have_selector :li do |content|
         content.should contain story.title
-        content.should contain story.title
       end
     end
   end

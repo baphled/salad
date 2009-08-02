@@ -71,7 +71,6 @@ Then /^the features information should be displayed above the form$/ do
   @feature = Feature.find 1
   response.should have_selector :div do |content|
     content.should contain @feature.title
-    content.should contain @feature.body
   end
 end
 

@@ -5,7 +5,7 @@ describe "projects/show.html.erb" do
     @project = mock_model(Project,
                           :title => "A project",
                           :description => "The project description",
-                          :aim => "The aim of this project is...")
+                          :aim => "The aim of this project is...",:null_object=>true)
     assigns[:project] = @project
     render
   end
