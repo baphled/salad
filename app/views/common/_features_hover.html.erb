@@ -2,8 +2,8 @@
 <script type="text/javascript">
 	document.observe('dom:loaded', function() {
  <% for feature in features %>
-      $('feature_<%=feature.id %>_list').observe('mouseover', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
-		$('feature_<%=feature.id %>_list').observe('mouseout', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
+      $('feature_<%=feature.id %>').observe('mouseover', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
+		$('feature_<%=feature.id %>').observe('mouseout', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
 <% end %>
 		$('li.feature_stories').hide();
 	});
