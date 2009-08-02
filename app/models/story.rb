@@ -5,4 +5,7 @@ class Story < ActiveRecord::Base
   
   has_many :feature_stories
   has_many :features, :through => :feature_stories
+  
+  has_many :step_stories
+  has_many :steps, :through => :step_stories
 end

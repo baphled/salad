@@ -34,9 +34,8 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  When I click new steps
 	  Then the new step form should be displayed
 		And fill in the new steps with no errors
-		And I check 'the first story'
+		And I check 'my first story'
 	 	Then submit the form
-		And the step should be associated with the story.
 		
 	Scenario: A user should be able to create a new step via a story
 		Given I can view the features page

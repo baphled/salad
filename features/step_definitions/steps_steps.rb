@@ -21,3 +21,7 @@ end
 Then /^I don't fill in the steps title$/ do
   
 end
+
+Then /^I check 'my first story'$/ do
+  check 'step_story_id_1'
+end

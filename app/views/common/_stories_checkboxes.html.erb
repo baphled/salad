@@ -1,0 +1,14 @@
+<% if !Story.all.empty? %>
+<h3>Stories</h3>
+<ul id="left_list">
+ <% for story in Story.find :all %>
+   <li>
+	<%= check_box_tag "step[story_ids][]", story.id, story.steps.include?(story), {:id=>"step_story_id_#{story.id}"} %>
+		<%= story.title%>
+	</li>
+<% end %>
+</ul>
+</fieldset>
+<% else %>
+  <b>No story to add</b>
+<% end %>
