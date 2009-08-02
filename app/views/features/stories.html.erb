@@ -2,3 +2,6 @@
 <%= render :partial => '/common/feature_summary', :locals => {:feature => @feature} %>
 <%= render :partial => '/common/stories_list', :locals => {:stories => @feature.stories}%>
 
+
+<%= render :partial => '/common/stories_hover', :locals => {:stories => @feature.stories}%>
+<%= render :partial => 'common/sidebar/story_steps', :locals => {:stories => @feature.stories}%>
