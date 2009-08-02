@@ -1,3 +1,7 @@
+<% content_for :js_head do %>
+<%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
+<% end %>
+
 <div class="features" id="lists">
 	<%= link_to "New Feature", new_feature_path %>
 	<span class="order_icon">Order</span>
@@ -12,5 +16,3 @@
 		  <% end %>
 	</ul>
 </div>
-
-<%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
