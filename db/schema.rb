@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730134544) do
+ActiveRecord::Schema.define(:version => 20090802024150) do
 
   create_table "feature_projects", :id => false, :force => true do |t|
     t.integer "project_id", :null => false
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(:version => 20090730134544) do
     t.string "description"
     t.string "aim",         :limit => 250
     t.string "title"
+  end
+
+  create_table "steps", :force => true do |t|
+    t.string "title", :limit => 100, :null => false
   end
 
   create_table "stories", :force => true do |t|

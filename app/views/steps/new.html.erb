@@ -1,3 +1,4 @@
-<% form_for :steps do |f| -%>
-  
+<% form_for @step do |f| -%>
+  <%= f.text_field :title %>
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>
