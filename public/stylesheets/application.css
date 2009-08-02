@@ -271,3 +271,7 @@ span.order_box {
 	top:4px;
 	display:none;
 }
+
+ul#project_features li {
+	padding:5px;
+}

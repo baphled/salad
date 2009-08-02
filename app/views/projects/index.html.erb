@@ -24,17 +24,16 @@
 
 <% content_for :js_head do %>
 	<script type="text/javascript">
- <% for project in @projects %>
-   <% if !project.features.blank? %>
-
 		document.observe('dom:loaded', function() {
-       $('project_<%=project.id %>_list').observe('mouseover', displayInfo.bindAsEventListener(this, 'project_<%=project.id %>_feature'));
-			$('project_<%=project.id %>_list').observe('mouseout', displayInfo.bindAsEventListener(this, 'project_<%=project.id %>_feature'));
-   <% end %>
+<% if !@projects.blank? %>
+ <% for project in @projects %>
+      $('project_<%=project.id %>_list').observe('mouseover', displayInfo.bindAsEventListener(this, 'project_<%=project.id %>_feature'));
+		$('project_<%=project.id %>_list').observe('mouseout', displayInfo.bindAsEventListener(this, 'project_<%=project.id %>_feature'));
  <% end %>
 			$('li.project_features').hide();
 		});
 	</script>
+	<% end %>
 <% end %>
 
 

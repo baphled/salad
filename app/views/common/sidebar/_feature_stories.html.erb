@@ -2,17 +2,20 @@
 	<ul id="feature_stories">
 	<% if !features.blank? %>
 	  <% for feature in features %>
+			<li id="feature_<%=feature.id%>_story" style="display: none;">
+				<h3><%=h feature.title %></h3>
 			<% if !feature.stories.blank? %>
-				<li id="feature_<%=feature.id%>_story" style="display: none;">
-					<h3><%=h feature.title %></h3>
 			  <% for story in feature.stories %>
 					<div>
 				    <b>Title: </b><%=h story.title %><br/>
 						<b>Scenario: </b><%=h story.scenario %>
 					</div>
 			  <% end %>
-				</li>
+				
+			<%else%>
+				Feature does not have any stories yet.
 			<% end %>
+			</li>
 	  <% end %>
 	</ul>
 	<% else %>
