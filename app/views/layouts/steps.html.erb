@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <title>SaladBowl</title>
+</head>
+<%= stylesheet_link_tag "application" %>
+<%= javascript_include_tag :all, :cache => true %>
+<%= yield :css_head %>
+<%= yield :js_head %>
+<body>
+	<div id="content">
+		<div id="head">
+			<span id="logo">Salad</span><br/>
+			<span id="slogan">Mixing things up</span>
+		</div>
+		<div id="menu">
+			<div id="menu-items">
+				<%= link_to "Projects", projects_path %> | <%= link_to "Features", features_path %> | <%= link_to "Stories", stories_path %> | <%= link_to "Steps", steps_path %>
+			</div>
+		</div>
+		<div id="container">
+			<div>
+				<% flash.each do |key, msg| %>
+					<%= content_tag :div, msg, :id => key %>
+				<% end %>
+				<div id="main">
+			  	<%= yield :layout %>
+				</div>
+			</div>
+			<div id="right_column">
+				<%= yield :side_bar %>
+			</div>
+		</div>
+		<div id="foot">&copy;<%= Time.now.year %> Designed &amp; Developed by <a href="http://boodah.net">boodah.net</a></div>
+	</div>
+</body>
+</html>
