@@ -2,5 +2,4 @@
 	<%= render :partial => '/common/feature_info', :locals => {:feature => @feature} %>
 </div>
 <div style="clear:both">
-	<%= link_to "New Story", new_story_path({:feature_id=>@feature.id}) %>
 <%= render :partial => '/common/stories_list', :locals => {:stories => @feature.stories}%>

@@ -1,5 +1,4 @@
 <h3>Stories</h3>
-<%= link_to "New Story", new_story_path %>
 <%= render :partial => '/common/stories_list', :locals => {:stories => @stories}%>
 
 <% content_for :js_head do %>
