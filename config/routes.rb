@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects
   map.resources :features
   map.resources :stories
+  map.resources :steps
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
   
