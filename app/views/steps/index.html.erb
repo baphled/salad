@@ -8,6 +8,7 @@
 					<div>
 						<span class="order_box">1</span>
 			    	<span class="list_content"><b>Title: </b><%=h step.title %><br/>
+						<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
 					</div>
 		    </li>
 		  <% end %>

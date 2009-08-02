@@ -15,6 +15,10 @@ class StepsController < ActionController::Base
     end
   end
   
+  def edit
+    
+  end
+  
   def create
    @step = Step.new(params[:step])
     respond_to do |format|

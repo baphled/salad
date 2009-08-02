@@ -1,0 +1,5 @@
+<% form_for step do |f| -%>
+  <%= f.text_field :title %>
+	<%= render :partial => '/common/stories_checkboxes' %>
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>
