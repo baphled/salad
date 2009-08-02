@@ -3,7 +3,7 @@
 	<ul id="feature_stories">
 		<% if !stories.blank? %>
 		  <% for story in stories %>
-		    <li>
+		    <li id="story_<%=story.id%>_list">
 					<div>
 						<span class="order_box">1</span>
 			    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>

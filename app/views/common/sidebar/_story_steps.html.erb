@@ -1,0 +1,23 @@
+<% content_for :side_bar do %>
+	<ul id="story_steps">
+	<% if !stories.blank? %>
+	  <% for story in stories %>
+			<li id="story_<%=story.id%>_step" style="display: none;">
+				<h3><%=h story.title %></h3>
+			<% if !story.steps.blank? %>
+			  <% for step in story.steps %>
+					<div>
+				    <b>Title: </b><%=h step.title %><br/>
+					</div>
+			  <% end %>
+			<%else%>
+				Story does not have any steps yet.
+			<% end %>
+			</li>
+	  <% end %>
+	</ul>
+	<% else %>
+	  <p>No stories</p>
+	<% end %>
+<% end %>
+
