@@ -1,16 +1,4 @@
 <h3>Features</h3>
 <%= render :partial => '/common/features_list', :locals => {:features => @features}%>
 <%= render :partial => 'common/sidebar/feature_stories', :locals => {:features => @features}%>
-
-<% content_for :js_head do %>
-<script type="text/javascript">
-	document.observe('dom:loaded', function() {
- <% for feature in @features %>
-      $('feature_<%=feature.id %>_list').observe('mouseover', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
-		$('feature_<%=feature.id %>_list').observe('mouseout', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
-<% end %>
-		$('li.feature_stories').hide();
-	});
-	</script>
-<% end %>
-
+<%= render :partial => '/common/features_hover', :locals => {:features => @features}%>

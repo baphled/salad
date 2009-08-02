@@ -1,16 +1,6 @@
 <h3>Stories</h3>
 <%= render :partial => '/common/stories_list', :locals => {:stories => @stories}%>
 
-<% content_for :js_head do %>
-<script type="text/javascript">
-	document.observe('dom:loaded', function() {
- <% for story in @stories %>
-      $('story_<%=story.id %>_list').observe('mouseover', displayInfo.bindAsEventListener(this, 'story_<%=story.id %>_step'));
-		$('story_<%=story.id %>_list').observe('mouseout', displayInfo.bindAsEventListener(this, 'story_<%=story.id %>_step'));
-<% end %>
-		$('li.story_steps').hide();
-	});
-	</script>
-<% end %>
 
+<%= render :partial => '/common/stories_hover', :locals => {:stories => @stories}%>
 <%= render :partial => 'common/sidebar/story_steps', :locals => {:stories => @stories}%>
