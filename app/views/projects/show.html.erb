@@ -2,3 +2,4 @@
 
 <p><%=h @project.description %></p>
 <p><%=h @project.aim %></p>
+<%= render :partial => '/common/features_list', :locals => {:features => @project.features}%>

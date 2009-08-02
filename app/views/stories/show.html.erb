@@ -2,6 +2,4 @@
 
 <b>Scenario: </b><%=h @story.scenario %><br/>
 
-<% if !@story.steps.blank? %>
-	<%= render :partial => '/common/steps_list', :locals => {:steps => @story.steps}%>
-<% end %>
+<%= render :partial => '/common/steps_list', :locals => {:steps => @story.steps}%>
