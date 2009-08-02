@@ -2,7 +2,7 @@
 
 <p><%=h @project.description %></p>
 <p><%=h @project.aim %></p>
-<%= render :partial => '/common/features_list', :locals => {:features => @project.features}%>
+<%= render :partial => '/common/list/features', :locals => {:features => @project.features}%>
 
 
 <%= render :partial => 'common/sidebar/feature_stories', :locals => {:features => @project.features}%>
