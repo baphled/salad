@@ -13,3 +13,11 @@ end
 Then /^a flash message 'Step: a new step was created', should be displayed$/ do
   flash.should contain "Step: a new step was created"
 end
+
+Then /^the step should be not saved$/ do
+  response.should have_selector :form
+end
+
+Then /^I don't fill in the steps title$/ do
+  
+end

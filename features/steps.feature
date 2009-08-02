@@ -42,8 +42,8 @@ Feature: Stories have steps, which help to define what the action taken within a
 		Given I can view the features page
 		And there are features
     When I select first feature
-		And I create a new step
+		And I click new steps
 		And fill in the new steps with no errors
 		Then submit the form
 		And the step should be saved
-		And a flash message 'Step: a new step was created', should be displayed
+		And a flash message 'Step: a new step, was created' should be displayed
