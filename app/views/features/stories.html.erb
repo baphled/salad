@@ -1,6 +1,6 @@
 <%= render :partial => '/common/feature_info', :locals => {:feature => @feature} %>
 <%= render :partial => '/common/feature_summary', :locals => {:feature => @feature} %>
-<%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories}%>
+<%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories.all(:order=>"feature_stories.position")}%>
 
 
 <%= render :partial => '/common/stories_hover', :locals => {:stories => @feature.stories}%>

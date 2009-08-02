@@ -1,20 +1,22 @@
 <div id="lists" class="stories">
 	<%= link_to "New Story", new_story_path %>
 	<span class="order_icon">Order</span>
-	<ul id="feature_stories">
+	<ul id="stories">
 		<% if !stories.blank? %>
 		  <% for story in stories %>
-		    <li id="story_<%=story.id%>_list">
+		    <% content_tag_for :li, story do %>
 					<div>
 						<span class="order_box">1</span>
 			    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
 						<b>Scenario: </b><%=h story.scenario %><br/></span>
 						<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
 					</div>
-		    </li>
+		    <% end %>
 		  <% end %>
 		<% else %>
 		<p>No stories present.</p>
 		<% end %>
 	</ul>
 </div>
+
+<%= sortable_element( "stories", :url => sort_stories_path, :handle => "order_box")%>

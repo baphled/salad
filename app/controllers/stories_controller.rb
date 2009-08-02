@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :find_story, :except => [:index,:new,:create]
+  before_filter :find_story, :except => [:index,:new,:create,:sort]
   def index
     @stories = Story.find :all
     respond_to do |format|
@@ -64,6 +64,14 @@ class StoriesController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+  
+  def sort
+    params[:stories].each_with_index do |id, index|
+      @story = Story.find id
+      @story.feature_stories.update_all(['position=?', index+1])
+    end
+    render :nothing => true
   end
   
   private

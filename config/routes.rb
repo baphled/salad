@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :steps
   map.resources :projects
   map.resources :features, :collection => {:sort => :post}
-  map.resources :stories
+  map.resources :stories, :collection => {:sort => :post}
   
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'

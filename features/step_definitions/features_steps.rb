@@ -90,7 +90,7 @@ Then /^I should be able to see the first features stories link$/ do
 end
 
 Then /^I can view all the stories associated to the feature$/ do
-  response.should have_selector :ul, attribute = {:id => "feature_stories"} do |list|
+  response.should have_selector :ul, attribute = {:id => "stories"} do |list|
     Feature.find(1).stories.each do |story|
       list.should have_selector :li do |content|
         content.should contain story.title
