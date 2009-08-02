@@ -57,10 +57,6 @@ class ProjectsController < ApplicationController
   end
   
   def features
-    @features = @project.features
-    respond_to do |format|
-      format.html
-    end
   end
   
   private

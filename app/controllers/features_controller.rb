@@ -1,5 +1,5 @@
 class FeaturesController < ApplicationController
-  before_filter :find_feature, :except => [:index,:new,:create]
+  before_filter :find_feature, :except => [:index,:new,:create,:sort]
   
   def index
     @features = Feature.all
@@ -62,6 +62,14 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+  
+  def sort
+    params[:features].each_with_index do |id, index|
+      @feature = Feature.find id
+      @feature.feature_projects.update_all(['position=?', index+1])
+    end
+    render :nothing => true
   end
   
   private

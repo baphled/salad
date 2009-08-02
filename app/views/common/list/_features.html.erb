@@ -3,12 +3,14 @@
 	<span class="order_icon">Order</span>
 	<ul id="features">
 		  <% for feature in features %>
-		    <li id="feature_<%=feature.id%>_list">
-					<span class="order_box">1</span>
+				<% content_tag_for :li, feature do %>
+					<span class="order_box">1 </span>
 		    	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
 					<b>Body: </b><%= feature.body %></span>
 					<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
-				</li>
+				<% end %>
 		  <% end %>
 	</ul>
 </div>
+
+<%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
