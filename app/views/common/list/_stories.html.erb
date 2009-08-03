@@ -1,16 +1,23 @@
 <% content_for :js_head do %>
-<%= sortable_element( "stories", :url => sort_stories_path, :handle => "order_box")%>
+<script type="text/javascript">
+	document.observe('dom:loaded', function() {
+		<% for story in stories do %>
+		$('order_icon').observe('click', toggleOrder.bindAsEventListener(this,"story_<%=story.id%>"));
+		<%end%>
+	});
+</script>
+
 <% end %>
 
 <div id="lists" class="stories">
 	<%= link_to "New Story", new_story_path %>
-	<span class="order_icon">Order</span>
+	<span id="order_icon" class="order_icon">Order</span>
 	<ul id="stories">
 		<% if !stories.blank? %>
 		  <% for story in stories %>
 		    <% content_tag_for :li, story do %>
 					<div>
-						<span class="order_box">1</span>
+						<span id="order_box" class="order_box">1</span>
 			    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
 						<b>Scenario: </b><%=h story.scenario %><br/></span>
 						<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
@@ -22,3 +29,5 @@
 		<% end %>
 	</ul>
 </div>
+
+<%= sortable_element( "stories", :url => sort_stories_path, :handle => "order_box")%>

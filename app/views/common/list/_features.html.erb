@@ -1,5 +1,5 @@
 <% content_for :js_head do %>
-<%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
+
 <% end %>
 
 <div class="features" id="lists">
@@ -16,3 +16,5 @@
 		  <% end %>
 	</ul>
 </div>
+
+<%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
