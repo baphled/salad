@@ -88,7 +88,7 @@ When /^I visit the second projects features$/ do
 end
 
 When /^I create new a feature$/ do
-  click_link 'Add feature'
+  click_link 'New feature'
 end
 
 When /^a project has no features$/ do

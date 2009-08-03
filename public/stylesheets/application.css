@@ -147,7 +147,7 @@ body {
 
 .info {
 	width:300px;
-	height:100px;
+	height:150px;
 	border-top:thin solid #785C17;
 	border-bottom:thin solid #785C17;
 }
@@ -180,7 +180,7 @@ body {
 }
 
 ul {
-	width:97%;
+	width:98%;
 	margin:10px 0px;
 	padding:15px 4px 5px;
 	border-top:thin solid #785C17;
@@ -218,6 +218,7 @@ li span.icons {
 span.order_icon {
 	float:right;
 	margin-right:23px;
+	margin-top:10px;
 	margin-bottom:10px;
 	text-align:center;
 	height:23px;
