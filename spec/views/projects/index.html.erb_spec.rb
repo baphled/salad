@@ -9,7 +9,7 @@ describe "/projects/index.html.erb" do
     end
     
     it "should display a message telling the user no projects are available" do
-      response.should have_selector :span, :content => "No projects available"
+      response.should have_selector :span, :content => "No projects present."
     end
   end
   

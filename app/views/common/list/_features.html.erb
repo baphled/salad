@@ -11,12 +11,12 @@
 <div class="features" id="lists">
 	<%= link_to "New Feature", new_feature_path %>
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
-	<% if !features.blank? %>
+<% if !features.blank? %>
 	<ul id="features">
-<% for feature in features %>
-	<% @index =0 unless !@index.nil?%>
-	<% @index+=1%>
-	<% content_tag_for :li, feature do %>
+	<% for feature in features %>
+		<% @index =0 unless !@index.nil?%>
+		<% @index+=1%>
+		<% content_tag_for :li, feature do %>
 		<div>
 			<span class="order_box" style="display:none;">
 				<%= @index %>
@@ -25,7 +25,8 @@
 			<b>Body: </b><%= feature.body %></span>
 			<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
 		</div>
-	<% end %>
+			<% end %>
+		<% end %>
 		</ul>
 <% else %>
 	<span>No features present</span>
