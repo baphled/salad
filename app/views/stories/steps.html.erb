@@ -1,2 +1,2 @@
 <h3><%=h @story.title%></h3>
-<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps.all(:order=>"step_stories.position")}%>
+<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps.all(:order=>"step_stories.position"), :order =>true}%>

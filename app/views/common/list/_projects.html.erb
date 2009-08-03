@@ -1,0 +1,22 @@
+<div id="lists" class="projects">
+	<%= link_to "New projects", new_project_path %>
+	<%= render :partial => '/common/order', :locals => {:order => order} %>
+<% if !projects.blank? %>
+  <ul>
+<% projects.each do |project| %>
+	<% content_tag_for :li, project do %>
+		<div>
+	  	<span class="list_content">
+				<b>Title: </b><%= project.title %><br/>
+				<b>Description: </b><%= project.description %><br/>
+				<b>Aim: </b><%= project.aim %>
+			</span>
+			<%= render :partial => '/common/project_icons', :locals => {:project => project}%>
+		</div>
+	<% end %>
+<% end %>
+	</ul>
+<% else %>
+  <span>No projects available</span>
+<% end %>
+</div>

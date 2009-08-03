@@ -10,7 +10,7 @@
 <%= render :partial => '/common/project_summary', :locals => {:project => @project}%>
 
 <% if !@project.features.blank? %>
-	<%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position")}%>
+	<%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>false}%>
 <% end %>
 
 

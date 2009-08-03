@@ -2,4 +2,4 @@
 
 <b>Scenario: </b><%=h @story.scenario %><br/>
 
-<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps}%>
+<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps, :order =>true}%>

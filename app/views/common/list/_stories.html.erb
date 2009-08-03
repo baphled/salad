@@ -10,7 +10,7 @@
 
 <div id="lists" class="stories">
 	<%= link_to "New Story", new_story_path %>
-	<span id="order_icon" class="order_icon">Order</span>
+	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="stories">
 		<% if !stories.blank? %>
 		  <% for story in stories %>

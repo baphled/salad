@@ -1,28 +1,5 @@
 <h3>Projects</h3>
-<%= link_to "New projects", new_project_path %>
-<div id="lists" class="projects">
-	<span class="order_icon">Order</span>
-<% if !@projects.blank? %>
-    <ul>
-  <% @projects.each do |project| %>
-	<li id="project_<%=project.id%>_list">
-		<span class="order_box">1</span>
-  	<span class="list_content">
-			<b>Title: </b><%= project.title %><br/>
-			<b>Description: </b><%= project.description %><br/>
-			<b>Aim: </b><%= project.aim %>
-		</span>
-		<%= render :partial => '/common/project_icons', :locals => {:project => project}%>
-	</li>
-  <% end %>
-	</ul>
-<% else %>
-  <span>No projects available</span>
-<% end %>
-</div>
-
-
-
+<%= render :partial => '/common/list/projects', :locals => {:projects => @projects, :order =>false}%>
 
 <%= render :partial => 'common/projects_hover', :locals => {:projects => @projects}%>
 <%= render :partial => 'common/sidebar/project_features', :locals => {:projects => @projects}%>

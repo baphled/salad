@@ -9,7 +9,7 @@
 <% end %>
 <div id="lists" class="steps">
 	<%= link_to "New Step", new_step_path %>
-	<span class="order_icon" id="order_icon">Order</span>
+	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="steps">
 		<% if !steps.blank? %>
 		  <% for step in steps %>
