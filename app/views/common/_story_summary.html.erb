@@ -1,0 +1,10 @@
+<div class="story_summary">
+	<h3>Story Summary</h3>
+	<div class='story info'>
+		<%= link_to "Add Step", new_step_path({:story_id=>story.id})%><br/>
+		<b>Number of Steps: </b><span><%= story.steps.count %></span><br/>
+		<% if not story.steps.blank? %>
+		<b>Last step: </b><span><%= story.steps.last.title %></span><br/>
+		<% end %>
+	</div>
+</div>

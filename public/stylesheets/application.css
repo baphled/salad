@@ -96,13 +96,14 @@ body {
 	margin:32px auto;
 	border:thin solid black;
 	width:900px;
-	postition:relative;
+	position:relative;
 }
 
 #right_column h3 {
 	text-align:center;
 }
 #right_column {
+	overflow:hidden;
 	float:left;
 	width:260px;
 	height:auto;
@@ -285,4 +286,16 @@ span.order_box {
 
 ul#project_features li {
 	padding:5px;
+}
+
+div#right_column ul {
+	border-bottom:medium none;
+	border-top:medium none;
+	margin-top:0;
+	padding-top:0;
+}
+
+div#right_column ul > li{
+	padding-left:15px;
+	padding-right:15px;
 }

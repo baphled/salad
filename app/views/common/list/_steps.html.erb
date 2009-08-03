@@ -16,9 +16,7 @@
 		    <% content_tag_for :li, step do %>
 					<div>
 						<span class="order_box" style="display:none;">1</span>
-			    	<span class="list_content">
-							<b>Title: </b><%=h step.title %><br/>
-						</span>
+			    	<span class="list_content"><%=h step.title %></span>
 						<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
 					</div>
 		    <% end %>

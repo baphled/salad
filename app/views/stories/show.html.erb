@@ -1,5 +1,3 @@
-<h3><%=h @story.title %></h3>
-
-<b>Scenario: </b><%=h @story.scenario %><br/>
-
+<%= render :partial => '/common/story_info', :locals => {:story => @story}%>
+<%= render :partial => '/common/story_summary', :locals => {:story => @story}%>
 <%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps, :order =>true}%>
