@@ -15,9 +15,13 @@
 	<ul id="stories">
 		<% if !stories.blank? %>
 		  <% for story in stories %>
+			<% @index =0 unless !@index.nil?%>
+			<% @index+=1%>
 		    <% content_tag_for :li, story do %>
 					<div>
-						<span class="order_box" style="display:none;">1</span>
+						<span class="order_box" style="display:none;">
+							<%= @index %>
+						</span>
 			    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
 						<b>Scenario: </b><%=h story.scenario %><br/></span>
 						<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>

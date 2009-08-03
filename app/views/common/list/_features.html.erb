@@ -13,9 +13,13 @@
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="features">
 <% for feature in features %>
+	<% @index =0 unless !@index.nil?%>
+	<% @index+=1%>
 	<% content_tag_for :li, feature do %>
 		<div>
-			<span class="order_box" style="display:none;">1</span>
+			<span class="order_box" style="display:none;">
+				<%= @index %>
+			</span>
     	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
 			<b>Body: </b><%= feature.body %></span>
 			<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
