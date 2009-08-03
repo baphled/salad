@@ -6,7 +6,6 @@
 		<%end%>
 	});
 </script>
-
 <% end %>
 
 <div id="lists" class="stories">
@@ -17,7 +16,7 @@
 		  <% for story in stories %>
 		    <% content_tag_for :li, story do %>
 					<div>
-						<span id="order_box" class="order_box">1</span>
+						<span class="order_box" style="display:none;">1</span>
 			    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
 						<b>Scenario: </b><%=h story.scenario %><br/></span>
 						<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
