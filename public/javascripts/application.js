@@ -10,4 +10,5 @@ function displayInfo(e, reg) {
 **/
 function toggleOrder(e,reg) {
 	$(reg).down('div').down('span').toggle('order_box');
+	$('lists').down('span').toggleClassName('active');
 }

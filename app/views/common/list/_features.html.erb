@@ -1,17 +1,25 @@
 <% content_for :js_head do %>
-
+<script type="text/javascript">
+	document.observe('dom:loaded', function() {
+		<% for feature in features do %>
+		$('order_icon').observe('click', toggleOrder.bindAsEventListener(this,"feature_<%=feature.id%>"));
+		<%end%>
+	});
+</script>
 <% end %>
 
 <div class="features" id="lists">
 	<%= link_to "New Feature", new_feature_path %>
-	<span class="order_icon">Order</span>
+	<span class="order_icon" id="order_icon">Order</span>
 	<ul id="features">
 		  <% for feature in features %>
 				<% content_tag_for :li, feature do %>
-					<span class="order_box">1 </span>
-		    	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
-					<b>Body: </b><%= feature.body %></span>
-					<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
+					<div>
+						<span class="order_box" style="display:none;">1</span>
+			    	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
+						<b>Body: </b><%= feature.body %></span>
+						<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
+					</div>
 				<% end %>
 		  <% end %>
 	</ul>
