@@ -13,25 +13,25 @@
 	
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="stories">
-		<% if !stories.blank? %>
-		  <% for story in stories %>
-			<% @index =0 unless !@index.nil?%>
-			<% @index+=1%>
-		    <% content_tag_for :li, story do %>
-					<div>
-						<span class="order_box" style="display:none;">
-							<%= @index %>
-						</span>
-			    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
-						<b>Scenario: </b><%=h story.scenario %><br/></span>
-						<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
-					</div>
-		    <% end %>
-		  <% end %>
-		<% else %>
-		<p>No stories present.</p>
-		<% end %>
-	</ul>
+	<% if !stories.blank? %>
+	  <% for story in stories %>
+		<% @index =0 unless !@index.nil?%>
+		<% @index+=1%>
+	    <% content_tag_for :li, story do %>
+				<div>
+					<span class="order_box" style="display:none;">
+						<%= @index %>
+					</span>
+		    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
+					<b>Scenario: </b><%=h story.scenario %><br/></span>
+					<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
+				</div>
+	    <% end %>
+	  <% end %>
+		</ul>
+	<% else %>
+	<span>No stories present.</span>
+	<% end %>
 </div>
 
 <%= sortable_element( "stories", :url => sort_stories_path, :handle => "order_box")%>

@@ -11,6 +11,7 @@
 <div class="features" id="lists">
 	<%= link_to "New Feature", new_feature_path %>
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
+	<% if !features.blank? %>
 	<ul id="features">
 <% for feature in features %>
 	<% @index =0 unless !@index.nil?%>
@@ -25,8 +26,11 @@
 			<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
 		</div>
 	<% end %>
+		</ul>
+<% else %>
+	<span>No features present</span>
 <% end %>
-	</ul>
+
 </div>
 
 <%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>

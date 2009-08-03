@@ -11,24 +11,25 @@
 	<%= link_to "New Step", new_step_path %>
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="steps">
-		<% if !steps.blank? %>
-		  <% for step in steps %>
-			<% @index =0 unless !@index.nil?%>
-			<% @index+=1%>
-		    <% content_tag_for :li, step do %>
-					<div>
-						<span class="order_box" style="display:none;">
-							<%= @index %>
-						</span>
-			    	<span class="list_content"><%=h step.title %></span>
-						<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
-					</div>
-		    <% end %>
-		  <% end %>
-		<% else %>
-		<p>No steps present.</p>
-		<% end %>
-	</ul>
+	<% if !steps.blank? %>
+	  <% for step in steps %>
+		<% @index =0 unless !@index.nil?%>
+		<% @index+=1%>
+	    <% content_tag_for :li, step do %>
+				<div>
+					<span class="order_box" style="display:none;">
+						<%= @index %>
+					</span>
+		    	<span class="list_content"><%=h step.title %></span>
+					<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
+				</div>
+	    <% end %>
+	  <% end %>
+		</ul>
+	<% else %>
+	<span>No steps present.</span>
+	<% end %>
+
 </div>
 
 <%= sortable_element( "steps", :url => sort_steps_path, :handle => "order_box")%>
