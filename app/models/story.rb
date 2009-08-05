@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+  acts_as_taggable
+  
   validates_presence_of     :title
   validates_presence_of     :scenario
   validates_uniqueness_of   :title

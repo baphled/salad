@@ -4,12 +4,9 @@
 
 <% form_for story,:builder => ValidatingFormBuilder do |f| -%>
 	<div id="form_content">
-	  <p>
-			<%= f.text_field :title %><br/>
-		</p>
-		<p>
-			<%= f.text_area :scenario,:rows=>4 %><br/>
-		</p>
+			<%= f.text_field :title %>
+			<%= f.text_field :tag_list %>
+			<%= f.text_area :scenario,:rows=>4 %>
 	</div>
 	<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>

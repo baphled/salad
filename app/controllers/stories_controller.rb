@@ -1,5 +1,8 @@
 class StoriesController < ApplicationController
-  before_filter :find_story, :except => [:index,:new,:create,:sort]
+  before_filter :find_story, :except => [:index,:new,:create,:sort,:tag]
+  
+  before_filter :find_tags
+  
   def index
     @stories = Story.find :all
     respond_to do |format|
@@ -70,7 +73,17 @@ class StoriesController < ApplicationController
     render :nothing => true
   end
   
+  def tag
+    @stories = Story.find_tagged_with params[:tag]
+    render :index
+  end
+  
   private
+  
+    def find_tags
+      @tags = Story.tag_counts
+    end
+    
     def find_story
       @story = Story.find(params[:id])
     end
