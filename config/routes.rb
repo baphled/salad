@@ -6,7 +6,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :stories, :collection => {:sort => :post}
   map.resources :steps, :collection => {:sort => :post}
   
-  map.project_import 'projects/:id/import', :controller => 'projects', :action => 'import'
   map.project_tag 'projects/tag/:tag', :controller => 'projects', :action => 'tag'
   map.feature_tag 'features/tag/:tag', :controller => 'features', :action => 'tag'
   map.story_tag 'stories/tag/:tag', :controller => 'stories', :action => 'tag'
