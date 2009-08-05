@@ -1,10 +1,10 @@
 class FeaturesController < ApplicationController
-  before_filter :find_feature, :except => [:index,:new,:create,:sort]
+  before_filter :find_feature, :except => [:index,:new,:create,:sort,:tag]
   
   before_filter :find_tag
   
   def index
-    @features = Feature.all
+    @features ||= Feature.all
     respond_to do |format|
       format.html
     end
