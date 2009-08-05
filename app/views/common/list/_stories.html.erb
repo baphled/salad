@@ -10,7 +10,6 @@
 
 <div id="lists" class="stories">
 	<%= link_to "New Story", new_story_path %>
-	
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="stories">
 	<% if !stories.blank? %>

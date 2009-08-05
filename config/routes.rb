@@ -6,9 +6,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :stories, :collection => {:sort => :post}
   map.resources :steps, :collection => {:sort => :post}
   
+  map.project_import 'projects/:id/import', :controller => 'projects', :action => 'import'
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
   map.story_steps 'stories/:id/steps', :controller => 'stories', :action => 'steps'
+  
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

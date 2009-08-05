@@ -1,19 +1,12 @@
 == Salad
 
 === Into
-Helps you to manage your applications and features.
-
-
-Salad will help you to create new project and migrate features and stories from previously created project. You will also be able to create stories and share them across projects, allowing you to quickly build scenarios.
-
-Future releases of Salad will allow you to share scenarios with colleagues and friends.
-
 Salad is a simple application that allow users to manage their projects & their feature, inspired by Cucumber, Salad allows you to create projects and associate features with them.
 
 == Features
-Create projects
-Create & manage project features 
+Manage projects & features
 Create stories for features
+Manage a stories steps
 
 == Future features
 In future releases, users will be able to link these features with LightHouse milestones & export features into Cucumber features & steps.

@@ -21,8 +21,10 @@
 			<span class="order_box" style="display:none;">
 				<%= @index %>
 			</span>
-    	<span class="list_content"><b>Title: </b><%= feature.title %><br/>
-			<b>Body: </b><%= feature.body %></span>
+    	<span class="list_content">
+				<b>Title: </b><%= feature.title %><br/>
+				<b>Body: </b><%= feature.body %>
+			</span>
 			<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
 		</div>
 			<% end %>
@@ -31,7 +33,6 @@
 <% else %>
 	<span>No features present</span>
 <% end %>
-
 </div>
 
 <%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
