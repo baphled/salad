@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
   
-  before_filter :find_project, :except => [:index,:new,:create]
+  before_filter :find_project, :except => [:index,:new,:create,:tag]
+  
+  before_filter :find_tags
   
   def index
-    @tags = Project.tag_counts
     @projects = Project.find(:all)
   end
   
@@ -60,7 +61,17 @@ class ProjectsController < ApplicationController
   def features
   end
   
+  def tag
+    @projects = Project.find_tagged_with params[:tag]
+    render :index
+  end
+  
   private
+  
+    def find_tags
+      @tags = Project.tag_counts
+    end
+    
     def find_project
       @project = Project.find(params[:id])
     end
