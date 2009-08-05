@@ -1,5 +1,5 @@
 <h3>Projects</h3>
-
+<%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 <%= render :partial => '/common/list/projects', :locals => {:projects => @projects, :order =>false}%>
 
 <%= render :partial => 'common/projects_hover', :locals => {:projects => @projects}%>

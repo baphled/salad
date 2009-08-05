@@ -135,4 +135,12 @@ Feature: We need to a way to store our stories within a project, this will help 
 		Then all projects should have a 'Add features' link
 		And I should be able to visit the URL
 	
-	
+	Scenario: I should be able to create a project with tags
+	  Given I can view the projects page
+	  When I click new projects
+	  And fill in the new project with no errors
+		And add 'project, new project' as tags
+	  Then submit the form
+		And the project information should be saved
+	  And I should be redirected to the new project
+	  And a flash message 'Project: A project was created' should be displayed

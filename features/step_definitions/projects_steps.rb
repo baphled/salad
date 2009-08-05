@@ -103,6 +103,10 @@ When /^I visit the first projects features$/ do
   visit('/projects/1/features')
 end
 
+When /^add 'project, new project' as tags$/ do
+  fill_in 'project_tag_list', :with => 'project, new project'
+end
+
 Given /^there are no projects$/ do
     @projects << []
 end
