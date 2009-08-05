@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.project_import 'projects/:id/import', :controller => 'projects', :action => 'import'
   map.project_tag 'projects/tag/:tag', :controller => 'projects', :action => 'tag'
   map.feature_tag 'features/tag/:tag', :controller => 'features', :action => 'tag'
+  map.story_tag 'stories/tag/:tag', :controller => 'stories', :action => 'tag'
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
   map.story_steps 'stories/:id/steps', :controller => 'stories', :action => 'steps'
