@@ -21,6 +21,18 @@ form {
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
 
+#cloud_tag a:hover {
+	color:#89A407;
+}
+
+#cloud_tag {
+	margin:auto;
+	padding:2px;
+	margin-left:10px;
+	margin-top:5px;
+	margin-right:10px;
+}
+
 #menu a:link,
 a:active {
 	color:#785C17;

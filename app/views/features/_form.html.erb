@@ -4,6 +4,7 @@
 
 <% form_for @feature,:builder => ValidatingFormBuilder do |f| %>
 		<%= f.text_field :title %>
+		<%= f.text_field :tag_list %>
 		<%= f.text_area :body %>
 		<% if !Project.all.empty? %>
 	  	<% for project in Project.find :all %>

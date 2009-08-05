@@ -1,6 +1,8 @@
 class FeaturesController < ApplicationController
   before_filter :find_feature, :except => [:index,:new,:create,:sort]
   
+  before_filter :find_tag
+  
   def index
     @features = Feature.all
     respond_to do |format|
@@ -72,9 +74,17 @@ class FeaturesController < ApplicationController
     render :nothing => true
   end
   
-  private
-  
-  def find_feature
-    @feature = Feature.find(params[:id])
+  def tag
+    @features = Feature.find_tagged_with params[:tag]
+    render :index
   end
+  
+  private
+    def find_tag
+      @tags = Feature.tag_counts
+    end
+  
+    def find_feature
+      @feature = Feature.find(params[:id])
+    end
 end
