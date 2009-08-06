@@ -6,8 +6,8 @@
 		<%= f.text_field :title %>
 		<%= f.text_field :in_order %>
 		<%= f.text_field :as_a %>
+		<%= f.text_field :i_want %>
 		<%= f.text_field :tag_list %>
-		<%= f.text_area :body %>
 		<% if !Project.all.empty? %>
 	  	<% for project in Project.find :all %>
 		    <div>

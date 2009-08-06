@@ -21,15 +21,6 @@ Feature: A user should be able to create new features, which can be associated w
 	  And I should be redirected to the form
 	  And a form error must be displayed
 		And the user should be told the must have a title
-		
-	Scenario: As a user when I create a feature with no body, the feature should not be valid
-	  Given I can view the features page
-	  When I click new features
-	  And don't fill in the feature body
-	  Then submit the form
-	  And I should be redirected to the form
-	  And a form error must be displayed
-		And the user should be told the must have a body	
 	
 	Scenario: As a user when I create a feature I should be able to associate the feature to a project
 	  Given I can view the features page

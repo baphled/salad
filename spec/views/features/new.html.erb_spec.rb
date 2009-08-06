@@ -11,7 +11,6 @@ describe "/features/new.html.erb" do
   it "should have a form" do
     response.should have_tag("form[action=#{features_path}][method=post]") do
       with_tag('input#feature_title[name=?]', "feature[title]")
-      with_tag('textarea#feature_body[name=?]', "feature[body]")
       with_tag('input#feature_submit[name=?]', "commit")
     end
   end
@@ -33,6 +32,12 @@ describe "/features/new.html.erb" do
   it "should have a 'As a' field " do
     have_tag("form[action=#{features_path}][method=post]") do
       with_tag('input#feature_as_a[name=?]', "feature[as_a]")
+    end
+  end
+  
+  it "should have a 'I want' field " do
+    have_tag("form[action=#{features_path}][method=post]") do
+      with_tag('input#feature_i_want[name=?]', "feature[i_want]")
     end
   end
 end

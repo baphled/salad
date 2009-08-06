@@ -4,7 +4,6 @@ end
 
 When /^fill in the new feature with no errors$/ do
   fill_in 'feature_title', :with => 'Logging in'
-  fill_in 'feature_body', :with => 'When a user successfully logs in'
 end
 
 Then /^the feature information should be saved$/ do
@@ -19,13 +18,8 @@ Then /^I should have a checkable list of projects$/ do
 end
 
 When /^don't fill in the feature title$/ do
-  fill_in 'feature_body', :with => 'When a user successfully logs in'
-end
 
-When /^don't fill in the feature body$/ do
-  fill_in 'feature_title', :with => 'Logging in'
 end
-
 When /^there are features$/ do
   assert Feature.find :all
 end
@@ -58,6 +52,10 @@ When /^fill in the 'As a' field$/ do
   fill_in 'feature_as_a', :with => 'user'
 end
 
+When /^fill in the 'I want' field$/ do
+  fill_in 'feature_i_want', :with => 'to be able to create a greate app'
+end
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
@@ -68,7 +66,6 @@ Then /^the list should contain features$/ do
   Feature.all.each do |feature|
     response.should have_selector :div do |content|
       content.should contain feature.title
-      content.should contain feature.body
     end
   end
 end

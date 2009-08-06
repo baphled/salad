@@ -11,7 +11,6 @@ describe "/features/show.html.erb" do
     it "should have display the features informaion" do
       response.should have_selector :div, attribute = {:id=>"feature_info"} do |content|
         content.should contain @feature.title
-        content.should contain @feature.body
       end
     end
     
