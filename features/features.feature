@@ -83,3 +83,36 @@ Feature: A user should be able to create new features, which can be associated w
 			And the first feature has stories
 			When I visit the first features stories
 			Then I can view all the stories associated to the feature
+			
+		Scenario: A feature should have a 'In order' field
+		  Given I can view the features page
+			And there are projects
+	    When I click new features
+			And fill in the 'In order' field
+	    And fill in the new feature with no errors
+			Then submit the form
+			And the feature information should be saved
+	    And I should be redirected to the new features
+	    And a flash message 'Feature: Logging in, was created' should be displayed
+	
+		Scenario: A feature should have a 'As a' field
+		  Given I can view the features page
+			And there are projects
+	    When I click new features
+			And fill in the 'As a' field
+	    And fill in the new feature with no errors
+			Then submit the form
+			And the feature information should be saved
+	    And I should be redirected to the new features
+	    And a flash message 'Feature: Logging in, was created' should be displayed
+	
+		Scenario: A feature should have a 'I want' field
+		  Given I can view the features page
+			And there are projects
+	    When I click new features
+			And fill in the 'I want' field
+	    And fill in the new feature with no errors
+			Then submit the form
+			And the feature information should be saved
+	    And I should be redirected to the new features
+	    And a flash message 'Feature: Logging in, was created' should be displayed

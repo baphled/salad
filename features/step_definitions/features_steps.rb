@@ -50,6 +50,10 @@ When /^I visit the first features stories$/ do
   click_link 'feature_1_stories'
 end
 
+When /^fill in the 'In order' field$/ do
+  fill_in 'feature_in_order', :with => 'to create a new feature'
+end
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
