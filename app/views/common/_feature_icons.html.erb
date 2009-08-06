@@ -1,9 +1,9 @@
 <span class="icons">
-	<%= link_to "View", feature_path(feature) %>
-	<%= link_to "Edit", edit_feature_path(feature), {:id=>"edit_feature_#{feature.id}"} %>
+	<%= link_to "View", feature_path(feature),{:class=>"ui-icon-note ui-icon"} %>
+	<%= link_to "Edit", edit_feature_path(feature), {:id=>"edit_feature_#{feature.id}",:class=>"ui-icon-pencil ui-icon"} %>
 	<% if !feature.story_ids.empty? %>
 		<%= link_to "Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"}%>
 	<% end %>
-	<%= link_to "New Story", new_story_path({:feature_id=>feature.id}) %>
-	<%= link_to 'Destroy', feature, :confirm => 'Are you sure?', :method => :delete %>
+	<%= link_to "New Story", new_story_path({:feature_id=>feature.id}), {:class=>"ui-icon-document ui-icon"}%>
+	<%= link_to 'Destroy', feature, {:class=>"ui-icon-trash ui-icon",:method => :delete,:confirm => 'Are you sure?'} %>
 </span>
