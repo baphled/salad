@@ -108,11 +108,20 @@ Feature: A user should be able to create new features, which can be associated w
 	    And I should be redirected to the new features
 	    And a flash message 'Feature: Logging in, was created' should be displayed
 	
-		Scenario: A feature must have the 'In order field filled
+		Scenario: A feature must have the 'In order' field filled
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
 			And do not fill in the 'In order' field
+			Then submit the form
+		  And I should be redirected to the form
+		  And a form error must be displayed
+		
+		Scenario: A feature must have the 'As a' field filled
+		  Given I can view the features page
+			And there are projects
+	    When I click new features
+			And do not fill in the 'As a' field
 			Then submit the form
 		  And I should be redirected to the form
 		  And a form error must be displayed
