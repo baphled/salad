@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/stories/index.html.erb" do
   context "has stories" do
     before(:each) do
+      assigns[:tags] = Story.tag_counts
       assigns[:stories] = Story.find :all
       render
     end

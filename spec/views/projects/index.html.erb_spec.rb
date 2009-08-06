@@ -1,6 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/projects/index.html.erb" do
+  before(:each) do
+    assigns[:tags] = Project.tag_counts
+  end
 
   context "No projects stored" do
     before(:each) do

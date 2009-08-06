@@ -2,6 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/features/index.html.erb" do
   before(:each) do
+    assigns[:tags] = Feature.tag_counts
     assigns[:features] = Feature.all
     render
   end
