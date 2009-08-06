@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
-    @features = Feature.find :all
+    @features ||= Feature.find :all
   end
   
   def create  
@@ -26,11 +26,9 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @project = Project.find(params[:id])
   end
   
   def update
-    @project ||= Project.find(params[:id])
     title = @project.title
     respond_to do |format|
       if @project.update_attributes(params[:project])
@@ -44,9 +42,6 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    respond_to do |format|
-      format.html
-    end
   end
   
   def destroy
@@ -69,7 +64,7 @@ class ProjectsController < ApplicationController
   private
   
     def find_tags
-      @tags = Project.tag_counts
+      @tags ||= Project.tag_counts
     end
     
     def find_project

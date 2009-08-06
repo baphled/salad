@@ -7,8 +7,7 @@
 			<% if !project.features.blank? %>				
 			  <% for feature in project.features %>
 				<div>
-			    <b>Title: </b><%=h feature.title %><br/>
-					<b>Body: </b><%=h truncate(feature.body,:length=>150) %>
+					<%=h truncate(feature.body,:length=>70) %>
 				</div>
 			  <% end %>
 			<%else%>

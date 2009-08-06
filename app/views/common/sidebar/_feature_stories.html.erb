@@ -7,8 +7,7 @@
 			<% if !feature.stories.blank? %>
 			  <% for story in feature.stories %>
 					<div>
-				    <b>Title: </b><%=h story.title %><br/>
-						<b>Scenario: </b><%=h story.scenario %>
+						<%=h story.scenario %>
 					</div>
 			  <% end %>
 				

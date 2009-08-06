@@ -5,11 +5,11 @@
 			<li id="story_<%=story.id%>_step" style="display: none;">
 				<h3><%=h story.title %></h3>
 			<% if !story.steps.blank? %>
+			<ul>
 			  <% for step in story.steps %>
-					<div>
-				    <b>Title: </b><%=h step.title %><br/>
-					</div>
+				    <li><%=h step.title %></li>
 			  <% end %>
+			</ul>
 			<%else%>
 				Story does not have any steps yet.
 			<% end %>
