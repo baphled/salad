@@ -9,7 +9,10 @@
 	  	<span class="list_content">
 				<b>Title: </b><%= project.title %><br/>
 				<b>Description: </b><%= project.description %><br/>
-				<b>Aim: </b><%= project.aim %>
+				<b>Aim: </b><%= project.aim %><br/>
+				<% if !project.feature_ids.empty? %>
+					<%= link_to "Features", project_features_path(project)%>
+				<% end %>
 			</span>
 			<%= render :partial => '/common/project_icons', :locals => {:project => project}%>
 		</div>

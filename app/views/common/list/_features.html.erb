@@ -23,7 +23,10 @@
 			</span>
     	<span class="list_content">
 				<b>Title: </b><%= feature.title %><br/>
-				<b>Body: </b><%= feature.body %>
+				<b>Body: </b><%= feature.body %><br/>
+				<% if !feature.story_ids.empty? %>
+					<%= link_to "Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"}%>
+				<% end %>
 			</span>
 			<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
 		</div>

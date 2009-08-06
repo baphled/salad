@@ -21,8 +21,13 @@
 					<span class="order_box" style="display:none;">
 						<%= @index %>
 					</span>
-		    	<span class="list_content"><b>Title: </b><%=h story.title %><br/>
-					<b>Scenario: </b><%=h story.scenario %><br/></span>
+		    	<span class="list_content">
+						<b>Title: </b><%=h story.title %><br/>
+						<b>Scenario: </b><%=h story.scenario %><br/>
+						<% if !story.step_ids.empty? %>
+							<%= link_to "Steps", story_steps_path(story), {:id=>"story_#{story.id}_steps"} %>
+						<% end %>
+					</span>
 					<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
 				</div>
 	    <% end %>
