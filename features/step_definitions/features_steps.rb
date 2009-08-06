@@ -6,11 +6,18 @@ When /^fill in the new feature with no errors$/ do
   fill_in 'feature_title', :with => 'Logging in'
   fill_in 'feature_in_order', :with => 'to create the best app'
   fill_in 'feature_as_a', :with => 'user'
+  fill_in 'feature_i_want', :with => 'the best project ever'
 end
 
 When /^do not fill in the 'As a' field$/ do
   fill_in 'feature_title', :with => 'Logging in'
   fill_in 'feature_in_order', :with => 'to create the best app'
+end
+
+When /^do not fill in the 'I want' field$/ do
+  fill_in 'feature_title', :with => 'Logging in'
+  fill_in 'feature_in_order', :with => 'to create the best app'
+  fill_in 'feature_as_a', :with => 'user'
 end
 
 Then /^the feature information should be saved$/ do

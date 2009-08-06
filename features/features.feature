@@ -124,4 +124,13 @@ Feature: A user should be able to create new features, which can be associated w
 			And do not fill in the 'As a' field
 			Then submit the form
 		  And I should be redirected to the form
+		  And a form error must be displayed	
+	
+		Scenario: A feature must have the 'I want' field filled
+		  Given I can view the features page
+			And there are projects
+	    When I click new features
+			And do not fill in the 'I want' field
+			Then submit the form
+		  And I should be redirected to the form
 		  And a form error must be displayed
