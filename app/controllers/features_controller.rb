@@ -4,7 +4,7 @@ class FeaturesController < ApplicationController
   before_filter :find_tag
   
   def index
-    @features ||= Feature.all
+    @features = Feature.all
     respond_to do |format|
       format.html
     end
@@ -61,9 +61,6 @@ class FeaturesController < ApplicationController
   end
   
   def stories
-    respond_to do |format|
-      format.html
-    end
   end
   
   def sort
