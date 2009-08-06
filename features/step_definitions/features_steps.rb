@@ -4,6 +4,7 @@ end
 
 When /^fill in the new feature with no errors$/ do
   fill_in 'feature_title', :with => 'Logging in'
+  fill_in 'feature_in_order', :with => 'to create the best app'
 end
 
 Then /^the feature information should be saved$/ do
@@ -20,6 +21,7 @@ end
 When /^don't fill in the feature title$/ do
 
 end
+
 When /^there are features$/ do
   assert Feature.find :all
 end
@@ -54,6 +56,12 @@ end
 
 When /^fill in the 'I want' field$/ do
   fill_in 'feature_i_want', :with => 'to be able to create a greate app'
+end
+
+When /^do not fill in the 'In order' field$/ do
+  fill_in 'feature_title', :with => 'a feature'
+  fill_in 'feature_as_a', :with => 'user'
+  fill_in 'feature_i_want', :with => 'the world'
 end
 
 Then /^I should see a list of features$/ do
