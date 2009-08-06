@@ -29,4 +29,10 @@ describe "/features/new.html.erb" do
       with_tag('input#feature_in_order[name=?]', "feature[in_order]")
     end
   end
+  
+  it "should have a 'As a' field " do
+    have_tag("form[action=#{features_path}][method=post]") do
+      with_tag('input#feature_as_a[name=?]', "feature[as_a]")
+    end
+  end
 end

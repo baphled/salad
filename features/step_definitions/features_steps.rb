@@ -54,6 +54,10 @@ When /^fill in the 'In order' field$/ do
   fill_in 'feature_in_order', :with => 'to create a new feature'
 end
 
+When /^fill in the 'As a' field$/ do
+  fill_in 'feature_as_a', :with => 'user'
+end
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
