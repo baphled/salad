@@ -189,7 +189,7 @@ body {
 }
 
 .list_content {
-	width:300px;
+	width:74%;
 	display:inline-block;
 	padding-left:13px;
 }
@@ -198,7 +198,10 @@ body {
 	float:left;
 }
 
-ul {
+ul#projects,
+ul#steps,
+ul#stories,
+ul#features {
 	width:98%;
 	margin:10px 0px;
 	padding:15px 4px 5px;
@@ -208,7 +211,7 @@ ul {
 }
 
 
-div#lists ul li {
+div#lists ul >li {
 	border-top:thin solid #edf2bf;
 	border-bottom:thin solid #baca54;
 	padding:5px 8px 0px 8px;
@@ -309,8 +312,12 @@ ul#project_features li {
 div#right_column ul {
 	border-bottom:medium none;
 	border-top:medium none;
+	display:block;
 	margin-top:0;
 	padding-top:0;
+	position:relative;
+	width:190px;
+	top:100px;
 }
 
 div#right_column ul > li{
