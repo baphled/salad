@@ -17,11 +17,11 @@ Feature: A user needs to be able to export created features into cucumber featur
 		Then the export link should be viewable
 	  
 	Scenario: When a user selects a feature, which has complete stories & steps, all its stories are exported to scenarios
-	  Given there are features
-		And the feature has stories
-		And at least 1 story has steps
-		When we view first the feature
-		And a user attempts to export a feature
+	  Given we select a feature with stories
+		And the feature has a story with no steps
+		And the feature has other stories with steps
+		When we view the first feature
+	  And a user attempts to export a feature
 		Then the feature should be converted to the necessary cucumber feature format
 		
 	Scenario: A user tries to export a feature which has a story that have no steps
