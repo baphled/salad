@@ -25,5 +25,21 @@ describe "/features/show.html.erb" do
       end
     end
     
+    it "should display an export feature link" do
+      response.should have_selector :a, attribute = {:href=>"/features/1/export"}
+    end
+    
+  end
+  
+  describe "feature with no story" do
+    before(:each) do
+      @feature = Feature.find 2
+      assigns[:feature] = @feature
+      render
+    end
+    
+    it "should not display an export feature link" do
+      response.should_not have_selector :a, attribute = {:href=>"/features/2/export"}
+    end
   end
 end

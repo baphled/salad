@@ -63,6 +63,10 @@ class FeaturesController < ApplicationController
   def stories
   end
   
+  def export
+    render :nothing => true
+  end
+  
   def sort
     params[:features].each_with_index do |id, index|
       @feature = Feature.find id

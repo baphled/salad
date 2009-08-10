@@ -6,18 +6,29 @@ Feature: A user needs to be able to export created features into cucumber featur
 	Scenario: A user should not be able to export a feature if a feature does not have any stories
 	  Given we select a feature with no stories
 	  When the feature with no stories is displayed
-	  Then the the export link should not be viewable
+	  Then the export link should not be viewable
 	
-	Scenario: A user tries to export a feature which has a story that have no steps
+	Scenario: A user is able to export a feature that has stories with no steps
 		Given we select a feature with stories
-	  When a user attempts to export a feature
 		And the feature has a story with no steps
-		Then that story is not added to the exported feature
+		And the feature has other stories with steps
+		When we view the first feature
+	  And a user attempts to export a feature
+		Then the export link should be viewable
 	  
 	Scenario: When a user selects a feature, which has complete stories & steps, all its stories are exported to scenarios
 	  Given there are features
-	  When a user attempts to export a feature
-		And the feature exists
 		And the feature has stories
-		And the stories have steps
+		And at least 1 story has steps
+		When we view first the feature
+		And a user attempts to export a feature
 		Then the feature should be converted to the necessary cucumber feature format
+		
+	Scenario: A user tries to export a feature which has a story that have no steps
+		Given we select a feature with stories
+		And the feature has a story with no steps
+		And the feature has other stories with steps
+		When we view the first feature
+	  And a user attempts to export a feature
+		Then the export link should be viewable
+		And that story is not added to the exported feature
