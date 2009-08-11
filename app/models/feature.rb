@@ -14,7 +14,7 @@ class Feature < ActiveRecord::Base
   
   def export
     @exported = feature_title
-    stories.each do |story|
+    self.stories.each do |story|
       if not story.steps.blank?
         @exported += "  Scenario: #{story.title}\n"
         story.steps.each do |step|
@@ -27,10 +27,8 @@ class Feature < ActiveRecord::Base
   
   private
     def feature_title
-      @head =     "Feature: #{title}\n"
-      @head +=    "  In order #{in_order}\n"
-      @head +=    "  As a #{as_a}\n"
-      @head +=    "  I want #{i_want}\n\n"
+      @head =     "Feature: #{title}\n  In order #{in_order}\n"
+      @head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
     end
     
 end
