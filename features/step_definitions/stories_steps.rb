@@ -23,6 +23,14 @@ When /^uncheck a feature it is associated to$/ do
   uncheck 'story_feature_id_1'
 end
 
+When /^check a pre\-existing step$/ do
+  check 'story_step_id_1'
+end
+
+When /^I select first story$/ do
+  visit('/stories/1')
+end
+
 Then /^there should be a list of stories$/ do
   response.should have_selector :div do |content|
     content.should have_selector :ul do |list|
@@ -80,4 +88,8 @@ end
 
 Then /^the story should no long store the feature$/ do
   assert Story.find(1).feature_ids.empty?
+end
+
+Then /^it should be saved$/ do
+  response.should_not have_selector :form, attribute = {:href=>new_story_path}
 end

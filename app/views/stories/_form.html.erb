@@ -9,5 +9,9 @@
 			<%= f.text_area :scenario,:rows=>4 %>
 	</div>
 	<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
+	
+	<fieldset>
+		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
+	</fieldset>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>
