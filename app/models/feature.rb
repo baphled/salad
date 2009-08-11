@@ -11,4 +11,8 @@ class Feature < ActiveRecord::Base
   
   has_many :feature_stories
   has_many :stories, :through => :feature_stories
+  
+  def export
+    "Feature: #{title}\n\tIn order #{in_order}\n\tAs a #{as_a}\n\tI want #{i_want}"
+  end
 end

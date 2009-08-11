@@ -64,7 +64,7 @@ class FeaturesController < ApplicationController
   end
   
   def export
-    render :nothing => true
+
   end
   
   def sort

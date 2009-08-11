@@ -36,3 +36,7 @@ Then /^the export link should not be viewable$/ do
   response.should_not have_selector :a, attribute = {:href => "/features/2/export"}
 end
 
+Then /^the feature should be converted to the necessary cucumber feature format$/ do
+  @file = File.open("#{RAILS_ROOT}/spec/fixtures/test.feature")
+  response.should contain @file.read
+end
