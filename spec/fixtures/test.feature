@@ -4,9 +4,9 @@ Feature: my first feature
   I want to have the skills
 
 	Scenario: my first story
-	  Given Given I have my marbles
-	  When When I get to 40
-	  Then Then I will do what
+	  Given I have my marbles
+	  When I get to 40
+	  Then I will do what
 	
 	
 	

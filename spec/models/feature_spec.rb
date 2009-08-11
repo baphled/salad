@@ -38,5 +38,27 @@ describe Feature do
     it "should contain a 'i want contents" do
       @feature.export.should contain "\tI want #{@feature.i_want}"
     end
+    
+    it "should should have at least one scenario" do
+      @feature.export.should contain "\tScenario:"
+    end
+    
+    it "should have a scenario for each story" do
+      @feature.stories.each do |story|
+        if not story.steps.blank?
+          @feature.export.should contain "#{story.title}"
+        end
+      end
+    end
+    
+    it "should display each stories steps" do
+      @feature.stories.each do |story|
+        if not story.steps.nil?
+          story.steps.each do |step|
+            @feature.export.should contain "#{step.title}"
+          end
+        end
+      end
+    end
   end
 end

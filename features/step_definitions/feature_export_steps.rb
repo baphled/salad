@@ -7,7 +7,7 @@ Given /^we select a feature with stories$/ do
 end
 
 Given /^the feature has a story with no steps$/ do
-  Feature.find(1).stories.second.steps.should == []
+  Feature.find(1).stories.first.steps.should == []
 end
 
 Given /^the feature has other stories with steps$/ do

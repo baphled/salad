@@ -5,7 +5,3 @@ one:
 two:
   story_id: 2
   feature_id: 1
-
-three:
-  story_id: 2
-  feature_id: 1
