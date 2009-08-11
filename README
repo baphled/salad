@@ -6,7 +6,15 @@ Salad is a simple application that allow users to manage their projects & their 
 == Features
 Manage projects & features
 Create stories for features
+Export features
 Manage a stories steps
 
 == Future features
 In future releases, users will be able to link these features with LightHouse milestones & export features into Cucumber features & steps.
+
+== Installation
+
+Download
+cd to directory
+run scription/server
+point browser to http://localhost:3000/projects
