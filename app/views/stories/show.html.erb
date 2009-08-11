@@ -1,10 +1,12 @@
 <%= render :partial => '/common/story_info', :locals => {:story => @story}%>
 <%= render :partial => '/common/story_summary', :locals => {:story => @story}%>
-<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps.all(:order=>"step_stories.position"), :order =>true}%>
-
+<div style="clear:both"></div>
 <% form_for @story do |f| -%>
   <fieldset>
 		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => @story} %>
 	</fieldset>
 	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
 <% end -%>
+<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps.all(:order=>"step_stories.position"), :order =>true}%>
+
+
