@@ -13,12 +13,7 @@ class Feature < ActiveRecord::Base
   has_many :stories, :through => :feature_stories
   
   def export
-    @title =    "Feature: #{title}\n"
-    @in_order = "  In order #{in_order}\n"
-    @as_a =     "  As a #{as_a}\n"
-    @i_want =   "  I want #{i_want}\n\n"
-    
-    @exported = @title + @in_order + @as_a + @i_want
+    @exported = feature_title
     stories.each do |story|
       if not story.steps.blank?
         @exported += "  Scenario: #{story.title}\n"
@@ -29,4 +24,13 @@ class Feature < ActiveRecord::Base
     end
     @exported
   end
+  
+  private
+    def feature_title
+      @head =     "Feature: #{title}\n"
+      @head +=    "  In order #{in_order}\n"
+      @head +=    "  As a #{as_a}\n"
+      @head +=    "  I want #{i_want}\n\n"
+    end
+    
 end
