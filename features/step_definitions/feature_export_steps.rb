@@ -6,6 +6,7 @@ Given /^we select a feature with stories$/ do
   Feature.find(1).stories.should_not == []
 end
 
+#need a better way to test this
 Given /^the feature has a story with no steps$/ do
   Feature.find(1).stories.first.steps.should == []
 end
