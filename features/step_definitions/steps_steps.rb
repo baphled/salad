@@ -2,6 +2,10 @@ When /^I choose 'New Step' link$/ do
   click_link 'New Step'
 end
 
+When /^I visit the first step$/ do
+  visit('/steps/1')
+end
+
 Then /^the new step form should be displayed$/ do
   response.should have_selector :form
 end
@@ -13,7 +17,7 @@ end
 Then /^the step should be saved$/ do
   assert !Step.find_by_title("a new step").title.nil?
 end
-
+  
 Then /^a flash message 'Step: a new step was created', should be displayed$/ do
   flash.should contain "Step: a new step was created"
 end
@@ -28,4 +32,8 @@ end
 
 Then /^I check 'my first story'$/ do
   check 'step_story_id_1'
+end
+
+Then /^I should see check boxes for all steps it can be linked to$/ do
+  response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"step_story_id_1"}
 end

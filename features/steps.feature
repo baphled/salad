@@ -45,3 +45,10 @@ Feature: Stories have steps, which help to define what the action taken within a
 		Then submit the form
 		And the step should be saved
 		And a flash message 'Step: a new step, was created' should be displayed
+		
+	Scenario: A user should be able to view the stories a step is linked to
+	  When I visit the first step
+	  Then I should see check boxes for all steps it can be linked to
+	
+	
+	
