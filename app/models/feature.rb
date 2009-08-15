@@ -29,17 +29,16 @@ class Feature < ActiveRecord::Base
     end
     
     def story_titles story
-      @_exported = ""
+      @_titles = ""
      story.steps.each do |step|
        if !@_last_step.nil? && @_last_step.title.split(" ").first == step.title.split(" ").first
-         title = step.title.sub(step.title.split(" ").first, "And")
-         @_exported += "    #{title}\n"
+         @_titles += "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
        else
-         @_exported += "    #{step.title}\n"
+         @_titles += "    #{step.title}\n"
        end
        @_last_step = step
      end
-     @_exported
+     @_titles
     end
     
     def feature_title
