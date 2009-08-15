@@ -13,18 +13,17 @@ class Feature < ActiveRecord::Base
   has_many :stories, :through => :feature_stories
   
   def export
-    @exported = feature_title
+    @_exported = feature_title
     self.stories.each do |story|
-      feature_scenarios story
+      @_exported += "#{feature_scenarios story}"
     end
-    @exported
+    @_exported
   end
   
   private
     def feature_scenarios story
       if not story.steps.blank?
-        @exported += "  Scenario: #{story.title}\n"
-        @exported += story_titles story
+        "  Scenario: #{story.title}\n#{story_titles story}"
       end
     end
     
