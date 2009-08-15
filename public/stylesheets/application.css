@@ -309,18 +309,24 @@ ul#project_features li {
 	padding:5px;
 }
 
-div#right_column ul {
+div#right_column > ul {
 	border-bottom:medium none;
 	border-top:medium none;
 	display:block;
 	margin-top:0;
-	padding-top:0;
+	padding:8px;
 	position:relative;
 	width:190px;
 	top:100px;
 }
 
 div#right_column ul > li{
-	padding-left:15px;
-	padding-right:15px;
+	display:inline-block;
+	padding-left:0;
+	padding-right:0;
+	width:250px;
+}
+
+div#right_column ul ul {
+	padding:0px;
 }
