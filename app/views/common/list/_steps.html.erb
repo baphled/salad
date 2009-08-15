@@ -21,15 +21,7 @@
 						<%= @index %>
 					</span>
 		    	<span class="list_content">
-						<%
-							if !@_last_step.nil? && @_last_step.title.split(" ").first == step.title.split(" ").first
-			          @_title = "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
-			        else
-			          @_title = "    #{step.title}\n"
-			        end
-							@_last_step = step
-						%>
-						<%=h @_title %>
+						<%=h format_step step %>
 					</span>
 					<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
 				</div>
