@@ -7,7 +7,7 @@
 			<% if !story.steps.blank? %>
 			<ul>
 			  <% for step in story.steps %>
-				    <li><%=h step.title %></li>
+				    <li><%=h format_step step %></li>
 			  <% end %>
 			</ul>
 			<%else%>
