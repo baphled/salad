@@ -24,25 +24,27 @@ class Feature < ActiveRecord::Base
     def feature_scenarios story
       if not story.steps.blank?
         @exported += "  Scenario: #{story.title}\n"
-        story_titles story
+        @exported += story_titles story
       end
     end
     
     def story_titles story
+      @_exported = ""
      story.steps.each do |step|
-       if !@last_step.nil? && @last_step.title.split(" ").first == step.title.split(" ").first
+       if !@_last_step.nil? && @_last_step.title.split(" ").first == step.title.split(" ").first
          title = step.title.sub(step.title.split(" ").first, "And")
-         @exported += "    #{title}\n"
+         @_exported += "    #{title}\n"
        else
-         @exported += "    #{step.title}\n"
+         @_exported += "    #{step.title}\n"
        end
-       @last_step = step
+       @_last_step = step
      end
+     @_exported
     end
     
     def feature_title
-      @head =     "Feature: #{title}\n  In order #{in_order}\n"
-      @head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
+      @_head =     "Feature: #{title}\n  In order #{in_order}\n"
+      @_head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
     end
     
 end
