@@ -34,20 +34,16 @@ class Feature < ActiveRecord::Base
     end
     
     def story_titles story
-      check_steps story.steps
+      @_titles = ""
+      story.steps.each do |step|
+        @_titles += Feature::format_step step,@_last_step
+        @_last_step = step
+      end
+      @_titles
     end
     
     def feature_title
       @_head =     "Feature: #{title}\n  In order #{in_order}\n"
       @_head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
-    end
-    
-    def check_steps steps
-      @_titles = ""
-      steps.each do |step|
-        @_titles += Feature::format_step step,@_last_step
-        @_last_step = step
-      end
-      @_titles
     end
 end
