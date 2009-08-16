@@ -13,13 +13,11 @@
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
 <% if !features.blank? %>
 	<ul id="features">
-	<% for feature in features %>
-		<% @index =0 unless !@index.nil?%>
-		<% @index+=1%>
+	<% features.each_with_index do |feature,index| %>
 		<% content_tag_for :li, feature do %>
 		<div>
 			<span class="order_box" style="display:none;">
-				<%= @index %>
+				<%= index+1 %>
 			</span>
     	<span class="list_content">
 				<b>Title: </b><%= feature.title %><br/>
