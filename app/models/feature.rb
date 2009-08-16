@@ -20,6 +20,14 @@ class Feature < ActiveRecord::Base
     @_exported
   end
   
+  def self.check_step step,last_step
+    if !last_step.nil? && last_step.title.split(" ").first == step.title.split(" ").first
+      return "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
+    else
+      return "    #{step.title}\n"
+    end
+  end
+  
   private
     def feature_scenarios story
       "  Scenario: #{story.title}\n#{story_titles story}" unless story.steps.blank?
@@ -29,21 +37,17 @@ class Feature < ActiveRecord::Base
       check_steps story.steps
     end
     
-    def check_steps steps
-      @_titles = ""
-      steps.each do |step|
-        if !@_last_step.nil? && @_last_step.title.split(" ").first == step.title.split(" ").first
-          @_titles += "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
-        else
-          @_titles += "    #{step.title}\n"
-        end
-        @_last_step = step
-      end
-      @_titles
-    end
     def feature_title
       @_head =     "Feature: #{title}\n  In order #{in_order}\n"
       @_head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
     end
     
+    def check_steps steps
+      @_titles = ""
+      steps.each do |step|
+        @_titles += Feature::check_step step,@_last_step
+        @_last_step = step
+      end
+      @_titles
+    end
 end

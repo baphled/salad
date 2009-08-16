@@ -1,10 +1,6 @@
 module StepsHelper
   def format_step step
-    if !@last_step.nil? && @last_step.title.split(" ").first == step.title.split(" ").first
-      @_title = "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
-    else
-      @_title = "    #{step.title}\n"
-    end
+    @_title = Feature::check_step step,@last_step
     @last_step = step
     @_title
   end
