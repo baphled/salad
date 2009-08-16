@@ -20,7 +20,7 @@ class Feature < ActiveRecord::Base
     @_exported
   end
   
-  def self.check_step step,last_step
+  def self.format_step step,last_step
     if !last_step.nil? && last_step.title.split(" ").first == step.title.split(" ").first
       return "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
     else
@@ -45,7 +45,7 @@ class Feature < ActiveRecord::Base
     def check_steps steps
       @_titles = ""
       steps.each do |step|
-        @_titles += Feature::check_step step,@_last_step
+        @_titles += Feature::format_step step,@_last_step
         @_last_step = step
       end
       @_titles
