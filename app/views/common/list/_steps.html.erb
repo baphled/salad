@@ -12,13 +12,11 @@
 	<%= render :partial => '/common/order', :locals => {:order => order} %>
 	<ul id="steps">
 	<% if !steps.blank? %>
-	  <% for step in steps %>
-		<% @index =0 unless !@index.nil?%>
-		<% @index+=1%>
+	  <% steps.each_with_index do |step,index| %>
 	    <% content_tag_for :li, step do %>
 				<div>
 					<span class="order_box" style="display:none;">
-						<%= @index %>
+						<%= index+1 %>
 					</span>
 		    	<span class="list_content">
 						<%=h format_step step %>
