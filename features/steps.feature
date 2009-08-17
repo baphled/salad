@@ -14,7 +14,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  Then the new step form should be displayed
 		And fill in the new steps with no errors
 	 	Then submit the form
-		And the step should be saved
+		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
 		
 	Scenario: A user should not be able to create a new step if it is not unique
@@ -43,7 +43,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 		And I choose 'New Step' link
 		And fill in the new steps with no errors
 		Then submit the form
-		And the step should be saved
+		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
 		
 	Scenario: A user should be able to view the stories a step is linked to
@@ -62,5 +62,13 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  When I click new steps
 	  Then the title does start with 'Given'
 	 	Then submit the form
-		And the step should be saved
+		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
+		
+	Scenario: A story must start with 'When' otherwise it does not validate
+	  Given I can view the steps page
+	  When I click new steps
+	  Then the title does start with 'When'
+	 	Then submit the form
+		And the step should be saved as 'When we have a new step'
+		And a flash message 'Step: When we have a new step, was created' should be displayed

@@ -14,8 +14,8 @@ Then /^fill in the new steps with no errors$/ do
   fill_in 'step_title', :with => 'Given we have a new step'
 end
 
-Then /^the step should be saved$/ do
-  assert !Step.find_by_title("Given we have a new step").title.nil?
+Then /^the step should be saved as '(.*)'$/ do |message|
+  assert !Step.find_by_title("#{message}").title.nil?
 end
   
 Then /^a flash message 'Step: Given we have a new step was created', should be displayed$/ do
