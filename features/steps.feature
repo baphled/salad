@@ -56,7 +56,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  Then the title does not start with 'Given'
 	 	Then submit the form
 		Then the step should be not saved
-		And the message 'Title must start with Given, When' should be displayed
+		And the message 'Title must start with Given, When or Then' should be displayed
 	
 	Scenario: A story must start with 'Given' otherwise it does not validate
 	  Given I can view the steps page
@@ -72,7 +72,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  Then the title does not start with 'When'
 	 	Then submit the form
 		Then the step should be not saved
-		And the message 'Title must start with Given, When' should be displayed
+		And the message 'Title must start with Given, When or Then' should be displayed
 			
 	Scenario: A story must start with 'When' otherwise it does not validate
 	  Given I can view the steps page
@@ -88,6 +88,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  Then the title does not start with 'Then'
 	 	Then submit the form
 		Then the step should be not saved
+		And the message 'Title must start with Given, When or Then' should be displayed
 		
 	Scenario: A story must start with 'Then' otherwise it does not validate
 	  Given I can view the steps page
