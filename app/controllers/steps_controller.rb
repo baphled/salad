@@ -28,7 +28,7 @@ class StepsController < ActionController::Base
     respond_to do |format|
       if @step.save
         flash[:notice] = "Step: #{@step.title}, was created"
-        format.html { redirect_to @step }
+        format.html { redirect_to :stories }
       else
         format.html { render :action => "new" }
       end
