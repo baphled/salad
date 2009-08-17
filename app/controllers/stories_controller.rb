@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.save
         flash[:notice] = "Story: #{@story.title}, was created"
-        format.html { redirect_to @story }
+        format.html { redirect_to :stories }
       else
         format.html { render :action => "new" }
       end
