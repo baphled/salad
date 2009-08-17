@@ -18,7 +18,6 @@ describe "/features/show.html.erb" do
       response.should have_selector :ul do |list|
         @feature.stories.each do |story|
           list.should have_selector :li do |content|
-            content.should contain story.title
             content.should contain story.scenario
           end
         end

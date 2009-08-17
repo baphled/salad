@@ -7,7 +7,6 @@ When /^I select first feature new story link$/ do
 end
 
 When /^fill in the new story with no errors$/ do
-  fill_in 'story_title', :with => 'a new story'
   fill_in 'story_scenario', :with => 'this is our stories scenario'
 end
 
@@ -64,7 +63,7 @@ Then /^there should not be a list of stories$/ do
 end
 
 Then /^the story information should be saved$/ do
-  assert !Story.find_by_title("a new story").title.nil?
+  assert !Story.find_by_scenario("this is our stories scenario").scenario.nil?
 end
 
 Then /^I should see a list of stories$/ do

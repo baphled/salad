@@ -19,7 +19,6 @@ describe "/stories/index.html.erb" do
     it "should have a list of stories " do
       Story.all.each do |story|
         response.should have_selector :div, attribute = {:class=>"stories",:id=>"lists"} do |content|
-          content.should contain story.title
           content.should contain story.scenario
         end
       end

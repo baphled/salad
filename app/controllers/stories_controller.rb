@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
     @story = Story.new(params[:story])
     respond_to do |format|
       if @story.save
-        flash[:notice] = "Story: #{@story.title}, was created"
+        flash[:notice] = "Story: #{@story.scenario}, was created"
         format.html { redirect_to :stories }
       else
         format.html { render :action => "new" }
@@ -42,13 +42,13 @@ class StoriesController < ApplicationController
   
   def update
     params[:story][:feature_ids] ||= []
-    title = @story.title
+    scenario = @story.scenario
     respond_to do |format|
       if @story.update_attributes(params[:story])
-        flash[:notice] = "Story: #{title} was updated"
+        flash[:notice] = "Story: #{scenario} was updated"
         format.html { redirect_to :story }
       else
-        flash[:error] = "Story: #{title} was not created"
+        flash[:error] = "Story: #{scenario} was not created"
         format.html { render :action => "edit" }
       end
     end
