@@ -292,6 +292,7 @@ span.order_box {
 
 #errorExplanation ul {
 	border:none;
+	padding:0;
 }
 .fieldWithErrors option,
 .fieldWithErrors textarea,
