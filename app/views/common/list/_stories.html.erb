@@ -15,7 +15,7 @@
 	<% if !stories.blank? %>
 	  <% stories.each_with_index do |story,index| %>
 	    <% content_tag_for :li, story do %>
-				<div>
+				<% div_for(story) do %>
 					<span class="order_box" style="display:none;">
 						<%= index+1 %>
 					</span>
@@ -27,7 +27,7 @@
 						<% end %>
 					</span>
 					<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
-				</div>
+				<% end %>
 	    <% end %>
 	  <% end %>
 		</ul>
