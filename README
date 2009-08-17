@@ -1,20 +1,29 @@
-== Salad
+Salad
 
-=== Into
-Salad is a simple application that allow users to manage their projects & their feature, inspired by Cucumber, Salad allows you to create projects and associate features with them.
+Inspired by Cucumber, Salad mixes clients & developers with a little special sauce, created to help bridge the gap between creative minds and developers.
 
-== Features
+One of the main issues I've come across whilst using Cucumber, is that I end up having to copy and paste various snippets of my existing feature to create new ones. Though Cucumber is a marvelous tool, I still had the need to convert client based specifications into live code.
+
+Salad takes the first step in dealing with this issue. Firstly with Salad it is easy to create features and associate them with projects, building further on them by specifying a features stories and steps need to complete a story.
+
+Imagine, if you will the BS ages, Before Salad, that is. Eating vegetables got boring quite fast, hence us having Salad everywhere, as with vegetables, writing up specs and translating a clients specifications into code can also be boring, leading to mistakes and the most common miscommunication.
+
+Salad makes creating new features & stories easier as you build up a collection, as steps & stories are often reused, Salad gives you the ability to import features, steps & stories into a project, so you don't have to do it all over again. 
+
+This makes Salad a nice simple tool for clarifying feature requirements & rolling out a projects features.
+1
+Features
 Manage projects & features
 Create stories for features
-Export features
 Manage a stories steps
+Export features
 
-== Future features
-In future releases, users will be able to link these features with LightHouse milestones & export features into Cucumber features & steps.
+Future features
+LightHouse integration
+GitHub integration
 
-== Installation
-
-Download
-cd to directory
-run scription/server
-point browser to http://localhost:3000/projects
+Install
+Download via http://github.com/baphled/salad
+cd salad
+script/server
+Then point your browser to http://localhost:3000/projects
