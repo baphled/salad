@@ -20,7 +20,6 @@
 						<%= index+1 %>
 					</span>
 		    	<span class="list_content">
-						<b>Title: </b><%=h story.title %><br/>
 						<b>Scenario: </b><%=h story.scenario %><br/>
 						<% if !story.step_ids.empty? %>
 							<%= link_to "Steps", story_steps_path(story), {:id=>"story_#{story.id}_steps"} %>
