@@ -15,7 +15,7 @@ class Feature < ActiveRecord::Base
   def export
     @_exported = feature_title
     self.stories.each do |story|
-      @_exported += "#{feature_scenarios story}"
+      @_exported += "#{feature_scenarios story}\n"
     end
     @_exported
   end
