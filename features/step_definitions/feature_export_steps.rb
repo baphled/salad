@@ -27,8 +27,7 @@ When /^we view the first feature$/ do
   visit('/features/1')
 end
 
-Then /^the export link should be viewable$/ do
-  visit('/features/1')
+When /^the export link should be viewable$/ do
   response.should have_selector :a, attribute = {:href => "/features/1/export"}
 end
 
@@ -43,6 +42,6 @@ Then /^the feature should be converted to the necessary cucumber feature format$
 end
 
 Then /^that story is not added to the exported feature$/ do
-  response.should_not contain "Scenario: #{Story.find(2).title}"
+  response.should_not contain "Scenario: #{Story.find(2).scenario}"
 end
 

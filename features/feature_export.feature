@@ -13,7 +13,6 @@ Feature: A user needs to be able to export created features into cucumber featur
 		And the feature has a story with no steps
 		And the feature has other stories with steps
 		When we view the first feature
-	  And a user attempts to export a feature
 		Then the export link should be viewable
 	  
 	Scenario: When a user selects a feature, which has complete stories & steps, all its stories are exported to scenarios
@@ -29,6 +28,6 @@ Feature: A user needs to be able to export created features into cucumber featur
 		And the feature has a story with no steps
 		And the feature has other stories with steps
 		When we view the first feature
-	  And a user attempts to export a feature
-		Then the export link should be viewable
-		And that story is not added to the exported feature
+	  And the export link should be viewable
+		And a user attempts to export a feature
+		Then that story is not added to the exported feature

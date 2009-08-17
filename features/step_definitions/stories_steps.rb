@@ -42,7 +42,7 @@ Then /^each story should have a title$/ do
   response.should have_selector :ul do |list|
     Story.all.each do |story|
       list.should have_selector :li do |content|
-        content.should contain story.title
+        content.should contain story.scenario
       end
     end
   end

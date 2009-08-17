@@ -3,7 +3,7 @@
 	<% if !stories.blank? %>
 	  <% for story in stories %>
 			<li id="story_<%=story.id%>_step" style="display: none;">
-				<h3><%=h story.title %></h3>
+				<h3><%=h story.scenario %></h3>
 			<% if !story.steps.blank? %>
 			<ul>
 			  <% for step in story.steps %>

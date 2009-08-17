@@ -4,7 +4,7 @@
  <% for story in Story.find :all %>
    <li>
 	<%= check_box_tag "step[story_ids][]", story.id, step.stories.include?(story), {:id=>"step_story_id_#{story.id}"} %>
-		<%= story.title%>
+		<%= story.scenario%>
 	</li>
 <% end %>
 </ul>

@@ -30,7 +30,7 @@ class Feature < ActiveRecord::Base
   
   private
     def feature_scenarios story
-      "  Scenario: #{story.title}\n#{story_titles story}" unless story.steps.blank?
+      "  Scenario: #{story.scenario}\n#{story_titles story}" unless story.steps.blank?
     end
     
     def story_titles story

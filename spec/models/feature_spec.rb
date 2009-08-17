@@ -46,7 +46,7 @@ describe Feature do
     it "should have a scenario for each story" do
       @feature.stories.each do |story|
         if not story.steps.blank?
-          @feature.export.should contain "#{story.title}"
+          @feature.export.should contain "#{story.scenario}"
         end
       end
     end
