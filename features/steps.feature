@@ -50,9 +50,17 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  When I visit the first step
 	  Then I should see check boxes for all steps it can be linked to
 	
-	Scenario: A story must start with 'Given' otherwise it does not validate
+	Scenario: A story invalid if it does not have 'Given' as a prefix
 	  Given I can view the steps page
 	  When I click new steps
 	  Then the title does not start with 'Given'
 	 	Then submit the form
 		Then the step should be not saved
+	
+	Scenario: A story must start with 'Given' otherwise it does not validate
+	  Given I can view the steps page
+	  When I click new steps
+	  Then the title does start with 'Given'
+	 	Then submit the form
+		And the step should be saved
+		And a flash message 'Step: Given we have a new step, was created' should be displayed
