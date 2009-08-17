@@ -64,7 +64,14 @@ Feature: Stories have steps, which help to define what the action taken within a
 	 	Then submit the form
 		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
-		
+	
+	Scenario: A story invalid if it does not have 'When' as a prefix
+	  Given I can view the steps page
+	  When I click new steps
+	  Then the title does not start with 'When'
+	 	Then submit the form
+		Then the step should be not saved
+			
 	Scenario: A story must start with 'When' otherwise it does not validate
 	  Given I can view the steps page
 	  When I click new steps
@@ -72,6 +79,13 @@ Feature: Stories have steps, which help to define what the action taken within a
 	 	Then submit the form
 		And the step should be saved as 'When we have a new step'
 		And a flash message 'Step: When we have a new step, was created' should be displayed
+		
+	Scenario: A story invalid if it does not have 'Then' as a prefix
+	  Given I can view the steps page
+	  When I click new steps
+	  Then the title does not start with 'Then'
+	 	Then submit the form
+		Then the step should be not saved
 		
 	Scenario: A story must start with 'Then' otherwise it does not validate
 	  Given I can view the steps page
