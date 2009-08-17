@@ -8,4 +8,11 @@ class Step < ActiveRecord::Base
   has_many                :step_stories
   has_many                :stories, :through => :step_stories
   
+  def first_word
+    title.split(" ").first
+  end
+  
+  def convert_prefix
+    title.sub first_word, "And"
+  end
 end

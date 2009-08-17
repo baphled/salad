@@ -21,8 +21,8 @@ class Feature < ActiveRecord::Base
   end
   
   def self.format_step step,last_step
-    if !last_step.nil? && last_step.title.split(" ").first == step.title.split(" ").first
-      return "    #{step.title.sub(step.title.split(" ").first, "And")}\n"
+    if !last_step.nil? && last_step.first_word == step.first_word
+      return "    #{step.convert_prefix}\n"
     else
       return "    #{step.title}\n"
     end
