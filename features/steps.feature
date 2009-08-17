@@ -15,7 +15,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 		And fill in the new steps with no errors
 	 	Then submit the form
 		And the step should be saved
-		And a flash message 'Step: a new step, was created' should be displayed
+		And a flash message 'Step: Given we have a new step, was created' should be displayed
 		
 	Scenario: A user should not be able to create a new step if it is not unique
 		Given I can view the steps page
@@ -44,11 +44,15 @@ Feature: Stories have steps, which help to define what the action taken within a
 		And fill in the new steps with no errors
 		Then submit the form
 		And the step should be saved
-		And a flash message 'Step: a new step, was created' should be displayed
+		And a flash message 'Step: Given we have a new step, was created' should be displayed
 		
 	Scenario: A user should be able to view the stories a step is linked to
 	  When I visit the first step
 	  Then I should see check boxes for all steps it can be linked to
 	
-	
-	
+	Scenario: A story must start with 'Given' otherwise it does not validate
+	  Given I can view the steps page
+	  When I click new steps
+	  Then the title does not start with 'Given'
+	 	Then submit the form
+		Then the step should be not saved
