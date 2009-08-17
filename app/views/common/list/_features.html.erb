@@ -29,10 +29,10 @@
 		</div>
 			<% end %>
 		<% end %>
-		</ul>
+	</ul>
 <% else %>
 	<span>No features present</span>
 <% end %>
 </div>
 
-<%= sortable_element( "features", :url => sort_features_path, :handle => "order_box")%>
+<%= sortable_element( "features", :url => "projects/sort_features", :handle => "order_box") %>
