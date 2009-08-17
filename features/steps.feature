@@ -72,3 +72,11 @@ Feature: Stories have steps, which help to define what the action taken within a
 	 	Then submit the form
 		And the step should be saved as 'When we have a new step'
 		And a flash message 'Step: When we have a new step, was created' should be displayed
+		
+	Scenario: A story must start with 'Then' otherwise it does not validate
+	  Given I can view the steps page
+	  When I click new steps
+	  Then the title does start with 'Then'
+	 	Then submit the form
+		And the step should be saved as 'Then we have a new step'
+		And a flash message 'Step: Then we have a new step, was created' should be displayed
