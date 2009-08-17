@@ -46,3 +46,6 @@ Then /^the title does start with '(.*)'$/ do |prefix|
   fill_in 'step_title', :with => "#{prefix} we have a new step"
 end
 
+Then /^the message '(.*)' should be displayed$/ do |message|
+  response.should have_selector :li, :content => "#{message}"
+end
