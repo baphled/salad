@@ -1,8 +1,9 @@
+<%= viewable_link "view steps", "fieldset_steps" %>
 <% if !Step.all.empty? %>
-<fieldset>
+<fieldset id="fieldset_steps">
 	<legend>Steps</legend>
 	<ul id="left_list">
- <% for step in Step.find :all %>
+ <% for step in Step.find :all, :order => "title" %>
    <li>
 	<%= check_box_tag "story[step_ids][]", step.id, story.steps.include?(step), {:id=>"story_step_id_#{step.id}"} %>
 		<%= step.title%>

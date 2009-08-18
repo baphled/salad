@@ -66,7 +66,6 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given there is a project
 		And I visit its edit view
 	  When we edit the 'A description' project
-	  Then I should be able to edit its title
 		And submit the form
 		Then project description 'A description' should now be 'A different description'
 
@@ -74,7 +73,6 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given there is a project
 		And I visit its edit view
 	  When we edit the 'An aim' project
-	  Then I should be able to edit its title
 		And submit the form
 		Then project aim 'An aim' should now be 'A different aim'
 

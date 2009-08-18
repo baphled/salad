@@ -5,10 +5,6 @@
 <%= render :partial => '/common/list/steps', 
 					 :locals => {:steps => @story.steps.all(:order=>"step_stories.position"), :order =>true}%>
 
-
-<%= render :partial => '/common/viewable_link', 
-					 :locals => {:view_id => "edit_story_#{@story.id}",:link_text => "view steps"} %>
-					
 <% form_for @story do |f| -%>
 	<%= render :partial => '/common/steps_checkboxes', :locals => {:story => @story} %>
 	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
