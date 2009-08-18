@@ -252,3 +252,7 @@ end
 Then /^the project should have link to create new features$/ do
   response.should have_selector :a, attribute = {:href => new_feature_path}
 end
+
+Then /^the order button should not be displayed$/ do
+  response.should_not have_selector :span, attribute = {:id => "order_icon"}
+end

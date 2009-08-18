@@ -144,3 +144,25 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And the project information should be saved
 	  And I should be redirected to the new project
 	  And a flash message 'Project: A project was created' should be displayed
+	
+	Scenario: When creating a new project the user should be directed to it and be able to add features
+	  Given I can view the projects page
+	  When I click new projects
+	  And fill in the new project with no errors
+		And add 'project, new project' as tags
+	  Then submit the form
+		And the project information should be saved
+	  And I should be redirected to the new project
+	  And a flash message 'Project: A project was created' should be displayed
+		And the project should have link to create new features
+	
+	Scenario: When view a project with no feature, the user should not see the order button
+	  Given I can view the projects page
+		When a project has no features
+		And there is a project
+		And it is viewed
+		Then the order button should not be displayed
+	
+	
+	
+	

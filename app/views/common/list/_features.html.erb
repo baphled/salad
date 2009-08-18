@@ -10,7 +10,9 @@
 
 <div class="features" id="lists">
 	<%= link_to "New Feature", new_feature_path %>
-	<%= render :partial => '/common/order', :locals => {:order => order} %>
+	<% if !features.blank? %>
+		<%= render :partial => '/common/order', :locals => {:order => order} %>
+	<% end %>
 	<ul id="features">
 <% if !features.blank? %>
 	<% features.each_with_index do |feature,index| %>
