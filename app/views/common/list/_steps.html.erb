@@ -9,7 +9,7 @@
 <% end %>
 <div id="lists" class="steps">
 	<%= link_to "New Step", new_step_path %>
-	<%= render :partial => '/common/order', :locals => {:order => order} %>
+	<%= order_btn steps, order %>
 	<ul id="steps">
 	<% if !steps.blank? %>
 	  <% steps.each_with_index do |step,index| %>

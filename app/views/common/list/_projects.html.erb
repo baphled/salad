@@ -1,6 +1,6 @@
 <div id="lists" class="projects">
 	<%= link_to "New projects", new_project_path %>
-	<%= render :partial => '/common/order', :locals => {:order => order} %>
+	<%= order_btn projects, order %>
 <% if !projects.blank? %>
   <ul>
 <% projects.each do |project| %>

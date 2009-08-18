@@ -1,5 +1,8 @@
 class StepsController < ActionController::Base
   before_filter :find_step, :except => [:index,:new,:create,:sort]
+  
+  layout "application"
+  
   def index
     @steps = Step.all
     respond_to do |format|
