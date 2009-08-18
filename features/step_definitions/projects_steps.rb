@@ -248,3 +248,7 @@ end
 Then /^I should be able to visit the URL$/ do
   visit('/features/new?id=new_project_feature_1')
 end
+
+Then /^the project should have link to create new features$/ do
+  response.should have_selector :a, attribute = {:href => new_feature_path}
+end
