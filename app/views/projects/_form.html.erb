@@ -18,11 +18,11 @@
 					<%= feature.title%>
 				</li>
 		<% end %>
-			</ul>
-		</fieldset>
+			
 		<% else %>
-		  <b>No features to add</b>
+		  <li>No features to add</li>
 		<% end %>
-		
+		</ul>
+	</fieldset>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 <% end -%>
