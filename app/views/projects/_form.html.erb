@@ -2,12 +2,11 @@
 	<%= error_messages_for :project %>
 <% end %>
 
-<% form_for project,:builder => ValidatingFormBuilder do |f| -%>
+<%- form_for project,:builder => ValidatingFormBuilder do |f| -%>
 		<%= f.text_field :title %>
-		<%= f.text_field :tag_list %>
 		<%= f.text_area :description, :rows => 4 %>
 		<%= f.text_area :aim, :rows => 4 %>
-
+		<%= f.text_field :tag_list %>
 		<% if !Feature.all.empty? %>
 		<fieldset>
 			<legend>Features</legend>
@@ -25,4 +24,4 @@
 		</ul>
 	</fieldset>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
-<% end -%>
+<%- end -%>

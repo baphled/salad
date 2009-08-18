@@ -1,14 +1,16 @@
 <%= render :partial => '/common/story_info', :locals => {:story => @story}%>
 <%= render :partial => '/common/story_summary', :locals => {:story => @story}%>
 <div style="clear:both"></div>
+
+<%= render :partial => '/common/list/steps', 
+					 :locals => {:steps => @story.steps.all(:order=>"step_stories.position"), :order =>true}%>
+
+
 <%= render :partial => '/common/viewable_link', 
 					 :locals => {:view_id => "edit_story_#{@story.id}",:link_text => "view steps"} %>
+					
 <% form_for @story do |f| -%>
-  <fieldset>
-		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => @story} %>
-	</fieldset>
+	<%= render :partial => '/common/steps_checkboxes', :locals => {:story => @story} %>
 	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
 <% end -%>
-<%= render :partial => '/common/list/steps', :locals => {:steps => @story.steps.all(:order=>"step_stories.position"), :order =>true}%>
-
 

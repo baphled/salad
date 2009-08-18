@@ -1,5 +1,6 @@
 <% if !Feature.all.empty? %>
-<h3>Features</h3>
+<fieldset>
+<legend>Features</legend>
 <ul id="left_list">
  <% for feature in Feature.find :all %>
    <li>
@@ -10,5 +11,7 @@
 </ul>
 </fieldset>
 <% else %>
-  <b>No features to add</b>
+	<ul id="left_list">
+  	<li>No features to add</li>
+	</ul>
 <% end %>

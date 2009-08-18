@@ -1,14 +1,17 @@
 <% if !Step.all.empty? %>
-<h3>Steps</h3>
-<ul id="left_list">
+<fieldset>
+	<legend>Steps</legend>
+	<ul id="left_list">
  <% for step in Step.find :all %>
    <li>
 	<%= check_box_tag "story[step_ids][]", step.id, story.steps.include?(step), {:id=>"story_step_id_#{step.id}"} %>
 		<%= step.title%>
 	</li>
 <% end %>
-</ul>
+	</ul>
 </fieldset>
 <% else %>
-  <b>No steps to link to</b>
+	<ul>
+	  <li>No steps to link to</li>
+	</ul>
 <% end %>
