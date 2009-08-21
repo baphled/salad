@@ -6,7 +6,9 @@ Feature: We need to a way to store our stories within a project, this will help 
   Scenario: As a user I need to be able to create a new project
     Given I can view the projects page
     When I click new projects
-    And fill in the new project with no errors
+    And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
     Then submit the form
 		And the project information should be saved
     And I should be redirected to the new project
@@ -136,7 +138,9 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: I should be able to create a project with tags
 	  Given I can view the projects page
 	  When I click new projects
-	  And fill in the new project with no errors
+	  And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
 		And add 'project, new project' as tags
 	  Then submit the form
 		And the project information should be saved
@@ -146,7 +150,9 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: When creating a new project the user should be directed to it and be able to add features
 	  Given I can view the projects page
 	  When I click new projects
-	  And fill in the new project with no errors
+	  And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
 		And add 'project, new project' as tags
 	  Then submit the form
 		And the project information should be saved
@@ -164,7 +170,9 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: When a project is created it should store its creation date
 		Given I can view the projects page
 	  When I click new projects
-	  And fill in the new project with no errors
+	  And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
 	  Then submit the form
 		And the project information should be saved
 		And the project creation date should be stored
@@ -202,7 +210,9 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: A user should not display the date the project was updated if it is the same as the creation date
 	  Given I can view the projects page
     When I click new projects
-    And fill in the new project with no errors
+    And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
     Then submit the form
 		And the project information should be saved
     And I should be redirected to the new project

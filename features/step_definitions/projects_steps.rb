@@ -18,12 +18,6 @@ When "I click (.*) (.*)" do |action,controller|
   visit "/#{controller}/#{action}"
 end
 
-When /^fill in the new project with no errors$/ do
-  fill_in 'project_title', :with => 'A project'
-  fill_in 'project_description', :with => 'This is a description'
-  fill_in 'project_aim', :with => 'the aim of our project is...'
-end
-
 When /^don't fill in the project title$/ do
   fill_in 'project_description', :with => 'This is a description'
   fill_in 'project_aim', :with => 'the aim of our project is...'
