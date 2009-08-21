@@ -31,4 +31,9 @@ describe "projects/new.html.erb" do
     end
   end
   
+  it "should have a 'location' field " do
+    have_tag("form[action=#{projects_path}][method=post]") do
+      with_tag('input#project_location[name=?]', "project[location]")
+    end
+  end
 end

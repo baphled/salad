@@ -220,3 +220,15 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
     And a flash message 'Project: A project was created' should be displayed
 		And the projects updated field will not be displayed
+		
+	Scenario: A user can specify the location of a given project
+	  Given I can view the projects page
+    When I click new projects
+ 		And we fill in the project location with '~/Projects/Rails/Salad'
+   	And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
+    Then submit the form
+		And the project information should be saved
+    And I should be redirected to the new project
+    And a flash message 'Project: A project was created' should be displayed
