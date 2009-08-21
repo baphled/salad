@@ -6,6 +6,10 @@ Given /^there is a feature$/ do
   @feature = Feature.first
 end
 
+When /^the feature is viewed$/ do
+  visit "/features/#{@feature.id}"
+end
+
 Then /^the feature information should be saved$/ do
   assert_response :success
 end
@@ -79,4 +83,8 @@ Then /^I can view all the stories associated to the feature$/ do
       end
     end
   end
+end
+
+Then /^the feature should have a creation date$/ do
+  response.should contain "Created at:"
 end
