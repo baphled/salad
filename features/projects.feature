@@ -48,7 +48,9 @@ Feature: We need to a way to store our stories within a project, this will help 
     Given I can view the projects page
     When I click new projects
     And the project already exists
-    And fill in the new project all details
+    And we fill in the project title with 'A project'
+		And we fill in the project aim with 'A different aim'
+		And we fill in the project description with 'A different description'
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed

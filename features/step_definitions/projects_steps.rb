@@ -18,22 +18,6 @@ When "I click (.*) (.*)" do |action,controller|
   visit "/#{controller}/#{action}"
 end
 
-When /^don't fill in the description$/ do
-  fill_in 'project_title', :with => 'A project'
-  fill_in 'project_aim', :with => 'the aim of our project is...'
-end
-
-When /^don't fill in the aim$/ do
-  fill_in 'project_title', :with => 'A project'
-  fill_in 'project_description', :with => 'This is a description'
-end
-
-When /^fill in the new project all details$/ do
-  fill_in 'project_title', :with => 'A project'
-  fill_in 'project_description', :with => 'This is a description'
-  fill_in 'project_aim', :with => 'the aim of our project is...'
-end
-
 When /^the project already exists$/ do
   @project = Project.new(:title=>"A project",
               :description=>"This is a description",
