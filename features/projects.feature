@@ -65,9 +65,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given there is a project
 		And I visit its edit view
 	  When we fill in the project title with 'A different title'
-	  Then I should be able to edit its title
-		And submit the form
-		Then project title 'A project' should now be 'A different title'
+		Then submit the form
+		And project title 'A project' should now be 'A different title'
 	
 	Scenario: A user should be able to edit projects description
 	  Given there is a project
@@ -197,18 +196,16 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given there is a project
 		And I visit its edit view
 	  When we fill in the project title with 'A different title'
-	  Then I should be able to edit its title
-		And submit the form
-		Then project title 'A project' should now be 'A different title'
+		Then submit the form
+		And project title 'A project' should now be 'A different title'
 		And the projects date should be updated
 		
 	Scenario: When a user edits a project the project's updated date with be displayed
 	  Given there is a project
 		And I visit its edit view
 	  When we fill in the project title with 'A different title'
-	  Then I should be able to edit its title
-		And submit the form
-		Then project title 'A project' should now be 'A different title'
+		Then submit the form
+		And project title 'A project' should now be 'A different title'
 		And the projects date should be updated
 		And the projects updated field will be displayed
 		

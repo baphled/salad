@@ -105,9 +105,6 @@ Then /^I should be able to view its details$/ do
   response.should have_selector(:p, :content =>"This is a description")
 end
 
-Then /^I should be able to edit its title$/ do
-  fill_in 'project_title', :with => 'A different title'
-end
 
 Then /^project title 'A project' should now be 'A different title'$/ do
   response.should contain 'A different title'
