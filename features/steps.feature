@@ -12,7 +12,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  Given I can view the steps page
 	  When I click new steps
 	  Then the new step form should be displayed
-		And we fill in the step title with 'Given we have a new step'
+		When we fill in the step title with 'Given we have a new step'
 	 	Then submit the form
 		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
@@ -25,15 +25,15 @@ Feature: Stories have steps, which help to define what the action taken within a
 		Then submit the form
 		When I click new steps
 	  Then the new step form should be displayed
-		And we fill in the step title with 'Given we have a new step'
-		And submit the form
-		Then the step should be not saved
+		When we fill in the step title with 'Given we have a new step'
+		Then submit the form
+		And the step should be not saved
 		
 	Scenario: A user should be able to associate a step with a story
 		Given I can view the steps page
 	  When I click new steps
 	  Then the new step form should be displayed
-		And we fill in the step title with 'Given we have a new step'
+		When we fill in the step title with 'Given we have a new step'
 		And I check 'my first story'
 	 	Then submit the form
 		
