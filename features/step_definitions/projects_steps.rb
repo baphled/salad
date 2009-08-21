@@ -25,7 +25,7 @@ When /^the project already exists$/ do
   @project.save
 end
 
-When /^it is viewed$/ do
+When /^the project is viewed$/ do
   visit "/projects/#{@project.id}"
 end
 

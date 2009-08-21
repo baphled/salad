@@ -132,3 +132,8 @@ Feature: A user should be able to create new features, which can be associated w
 	Scenario: A user must be able to view all features creation date
 	  Given I can view the features page
 	  Then each of the features should have a creation date
+	
+	Scenario: A user must be able to see a features creation date
+	  Given there is a feature
+		When the feature is viewed
+		Then the feature should have a creation date

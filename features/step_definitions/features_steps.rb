@@ -2,6 +2,10 @@ Given /^the first feature has stories$/ do
   assert !Feature.find(1).stories.nil?
 end
 
+Given /^there is a feature$/ do
+  @feature = Feature.first
+end
+
 Then /^the feature information should be saved$/ do
   assert_response :success
 end

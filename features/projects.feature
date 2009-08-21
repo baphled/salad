@@ -58,7 +58,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 		
 	Scenario: A user should be able to view a single project
 	  Given there is a project
-	  When it is viewed
+	  When the project is viewed
 	  Then I should be able to view its details
 	
 	Scenario: A user should be able to edit projects title
@@ -168,7 +168,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given I can view the projects page
 		When a project has no features
 		And there is a project
-		And it is viewed
+		And the project is viewed
 		Then the order button should not be displayed
 		
 	Scenario: When a project is created it should store its creation date
@@ -189,7 +189,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	
 	Scenario: A user must be able to see a projects creation date
 	  Given there is a project
-		When it is viewed
+		When the project is viewed
 		Then the project should have a creation date
 	
 	Scenario: When a user edits a project the projects date should be updated
