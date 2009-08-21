@@ -17,7 +17,8 @@ Feature: We need to a way to store our stories within a project, this will help 
   Scenario: As a user I must give a new project a title
     Given I can view the projects page
     When I click new projects
-    And don't fill in the project title
+		And we fill in the project aim with 'An aim'
+		And we fill in the project description with 'A description'
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed
@@ -26,7 +27,8 @@ Feature: We need to a way to store our stories within a project, this will help 
   Scenario: As a user I must give the project a brief description
 	  Given I can view the projects page
 	  When I click new projects
-	  And don't fill in the description
+	  And we fill in the project title with 'A project'
+		And we fill in the project aim with 'An aim'
 	  Then submit the form
 	  And I should be redirected to the form
 	  And a form error must be displayed
@@ -35,7 +37,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: As a user I must give the project an aim
 	  Given I can view the projects page
 	  When I click new projects
-	  And don't fill in the aim
+	  And we fill in the project title with 'A project'
+		And we fill in the project description with 'A description'
 	  Then submit the form
 	  And I should be redirected to the form
 	  And a form error must be displayed
