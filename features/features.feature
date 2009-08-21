@@ -19,7 +19,9 @@ Feature: A user should be able to create new features, which can be associated w
   Scenario: As a user when I create a feature with no title, the feature should not be valid
 	  Given I can view the features page
 	  When I click new features
-	  And don't fill in the feature title
+		And we fill in the feature in_order with 'to create the best app'
+		And we fill in the feature as_a with 'user'
+		And we fill in the feature i_want with 'the best project ever'
 	  Then submit the form
 	  And I should be redirected to the form
 	  And a form error must be displayed

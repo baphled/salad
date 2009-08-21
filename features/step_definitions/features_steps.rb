@@ -13,10 +13,6 @@ Then /^I should have a checkable list of projects$/ do
   end
 end
 
-When /^don't fill in the feature title$/ do
-
-end
-
 When /^there are features$/ do
   assert Feature.find :all
 end
