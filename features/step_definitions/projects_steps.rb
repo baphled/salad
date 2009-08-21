@@ -274,3 +274,7 @@ Then /^the projects date should be updated$/ do
   @project = Project.find_by_title "A different title"
   @project.updated_at.should_not be nil
 end
+
+Then /^the projects updated field will be displayed$/ do
+  response.should contain "Updated at: #{@project.updated_at}"
+end

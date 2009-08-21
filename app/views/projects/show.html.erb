@@ -1,8 +1,9 @@
-<h3><%=h @project.title %> - <%=h @project.created_at %></h3>
+<h3><%=h @project.title %></h3>
 
-<p><%=h @project.description %></p>
-<p><%=h @project.aim %></p>
-
+<p>Description: <%=h @project.description %></p>
+<p>Aim: <%=h @project.aim %></p>
+<p>Created at: <%=h @project.created_at %></p>
+<p>Updated at: <%=h @project.updated_at %></p>
 
 <%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>true}%>
 

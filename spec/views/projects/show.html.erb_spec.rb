@@ -27,4 +27,8 @@ describe "projects/show.html.erb" do
   it "should display the created at field" do
     response.should contain "#{@project.created_at}"
   end
+  
+  it "should display the date the project was updated" do
+    response.should contain "#{@project.updated_at}"
+  end
 end
