@@ -237,3 +237,7 @@ end
 Then /^the projects updated field will not be displayed$/ do
   response.should_not contain "Updated at:"
 end
+
+Then /^I should see a import link$/ do
+  response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
+end

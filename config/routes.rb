@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.story_tag 'stories/tag/:tag', :controller => 'stories', :action => 'tag'
   
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
+  map.project_import 'projects/:id/import', :controller => 'projects', :action => 'import'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
   map.story_steps 'stories/:id/steps', :controller => 'stories', :action => 'steps'
   

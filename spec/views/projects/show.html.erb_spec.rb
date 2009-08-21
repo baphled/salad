@@ -58,4 +58,17 @@ describe "projects/show.html.erb" do
       response.should contain "Updated at: #{@project.updated_at}"
     end
   end
+  
+  describe "showing a project" do
+    before(:each) do
+      @project = mock_model(Project,:id=>1,:null_object=>true)
+      assigns[:project] = @project
+      render
+    end
+      
+    it "should have an import link" do
+      response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
+    end
+    
+  end
 end
