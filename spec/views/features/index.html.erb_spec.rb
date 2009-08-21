@@ -7,6 +7,14 @@ describe "/features/index.html.erb" do
     render
   end
   
+  describe "a list of features" do
+    it "should display the features creation date" do
+      assigns[:features].each do |feature|
+        response.should contain "Created at: #{feature.created_at}"
+      end
+    end
+  end 
+  
   context "has features" do    
     it "should have a list" do
       response.should have_selector :div do |content|

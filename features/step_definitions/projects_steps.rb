@@ -217,8 +217,8 @@ Then /^the project creation date should be stored$/ do
   @project.created_at.should_not be nil
 end
 
-Then /^the projects should each have a creation date$/ do
-  response.should contain "Created at: #{Project.find(1).created_at}"
+Then /^each of the (.*) should have a creation date$/ do |controller|
+  response.should contain "Created at:"
 end
 
 Then /^the project should have a creation date$/ do

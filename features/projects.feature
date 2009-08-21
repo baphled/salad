@@ -185,7 +185,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	
 	Scenario: A user must be able to view all projects creation date
 	  Given I can view the projects page
-	  Then the projects should each have a creation date
+	  Then each of the projects should have a creation date
 	
 	Scenario: A user must be able to see a projects creation date
 	  Given there is a project
