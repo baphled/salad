@@ -14,6 +14,14 @@ Given /^there are projects$/ do
   @projects = Project.find :all
 end
 
+Given /^the project does not have a project location$/ do
+
+end
+
+Given /^the project does have a project location$/ do
+  @project.update_attribute(:location,"blah")
+end
+
 When "I click (.*) (.*)" do |action,controller|
   visit "/#{controller}/#{action}"
 end
@@ -240,4 +248,8 @@ end
 
 Then /^I should see a import link$/ do
   response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
+end
+
+Then /^I should not see a import link$/ do
+  response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
 end

@@ -6,8 +6,16 @@ Feature: Users should not have to manually input their features if they have alr
 
 	Scenario: I should be able to import feature into a project
 	  Given there is a project
+		And the project does have a project location
 	  When the project is viewed
 	  Then I should see a import link
+	
+	Scenario: I should not see an import link if the project location is not present
+	  Given there is a project
+		And the project does not have a project location
+	  When the project is viewed
+	  Then I should not see a import link
+	
 	
 	
 

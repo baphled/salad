@@ -59,9 +59,10 @@ describe "projects/show.html.erb" do
     end
   end
   
-  describe "showing a project" do
+  describe "showing a project with a location stored" do
     before(:each) do
       @project = mock_model(Project,:id=>1,:null_object=>true)
+      @project.stub!(:location).and_return "blah"
       assigns[:project] = @project
       render
     end
@@ -70,5 +71,17 @@ describe "projects/show.html.erb" do
       response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
     end
     
+  end
+  
+  describe "showing a project without a location" do
+    before(:each) do
+      @project = mock_model(Project,:id=>1,:null_object=>true)
+      @project.stub!(:location).and_return nil
+      assigns[:project] = @project
+      render
+    end
+    it "should not have an import link" do
+      response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
+    end
   end
 end

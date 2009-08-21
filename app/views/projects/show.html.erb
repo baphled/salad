@@ -6,7 +6,9 @@
 <% if @project.created_at != @project.updated_at %>
 	<p>Updated at: <%=h @project.updated_at %></p>
 <% end %>
-<%= link_to "Import", project_import_path(@project) %>
+<% if not @project.location.nil? %>
+	<%= link_to "Import", project_import_path(@project) %>
+<% end %>
 
 <%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>true}%>
 
