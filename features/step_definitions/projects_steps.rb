@@ -1,3 +1,5 @@
+require "find"
+
 Given /^there is a project$/ do
   @project = Project.new(:title=>"A project",
               :description=>"This is a description",
@@ -19,7 +21,7 @@ Given /^the project does not have a project location$/ do
 end
 
 Given /^the project does have a project location$/ do
-  @project.update_attribute(:location,"blah")
+  @project.update_attribute(:location,"#{RAILS_ROOT}")
 end
 
 When "I click (.*) (.*)" do |action,controller|
@@ -75,6 +77,10 @@ end
 
 Given /^there are no projects$/ do
     @projects << []
+end
+
+When /^I click import$/ do
+  click_link 'Import'
 end
 
 Then /^submit the form$/ do
@@ -252,4 +258,22 @@ end
 
 Then /^I should not see a import link$/ do
   response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
+end
+
+Then /^I should see a list of features that will be imported$/ do
+  response.should have_selector :ul do |list|
+    find_feature("#{RAILS_ROOT}/features").each do |feature|
+      list.should have_selector :li do |content|
+        content.should contain "#{feature}"
+      end
+    end
+  end
+end
+
+def find_feature(dir)
+  list = []
+  Dir.new(dir).entries do |file|
+    list << file
+  end
+  list
 end

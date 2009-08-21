@@ -56,6 +56,10 @@ class ProjectsController < ApplicationController
   def features
   end
   
+  def import    
+    @list = @project.find_features
+  end
+  
   def tag
     @projects = Project.find_tagged_with params[:tag]
     render :index

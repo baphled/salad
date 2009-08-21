@@ -8,4 +8,8 @@ class Project < ActiveRecord::Base
 
   has_many :feature_projects
   has_many :features, :through => :feature_projects
+  
+  def find_features
+    Dir.new("#{location}/features").entries
+  end
 end
