@@ -6,6 +6,10 @@ Given /^there is a feature$/ do
   @feature = Feature.first
 end
 
+Given /^I visit the features edit view$/ do
+  visit("/features/#{@feature.id}/edit")
+end
+
 When /^the feature is viewed$/ do
   visit "/features/#{@feature.id}"
 end
@@ -87,4 +91,9 @@ end
 
 Then /^the feature should have a creation date$/ do
   response.should contain "Created at:"
+end
+
+Then /^the features date should be updated$/ do
+  @feature = Feature.find_by_title "A different title"
+  @feature.updated_at.should_not be nil
 end

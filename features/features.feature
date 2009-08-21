@@ -137,3 +137,10 @@ Feature: A user should be able to create new features, which can be associated w
 	  Given there is a feature
 		When the feature is viewed
 		Then the feature should have a creation date
+		
+	Scenario: When a user edits a project the projects date should be updated
+	  Given there is a feature
+		And I visit the features edit view
+	  When we fill in the feature title with 'A different title'
+		Then submit the form
+		And the features date should be updated

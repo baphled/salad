@@ -6,7 +6,7 @@ Given /^there is a project$/ do
   @project.save
 end
 
-Given /^I visit its edit view$/ do
+Given /^I visit the projects edit view$/ do
   visit("/projects/#{@project.id}/edit")
 end
 
@@ -234,6 +234,6 @@ Then /^the projects updated field will be displayed$/ do
   response.should contain "Updated at: #{@project.updated_at}"
 end
 
-Then /^the projects updated field will not be displayed$/ do
+Then /^the (.*) updated field will not be displayed$/ do |controller|
   response.should_not contain "Updated at:"
 end
