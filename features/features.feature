@@ -7,7 +7,10 @@ Feature: A user should be able to create new features, which can be associated w
     Given I can view the features page
 		And there are projects
     When I click new features
-    And fill in the new feature with no errors
+    And we fill in the feature title with 'Logging in'
+		And we fill in the feature in_order with 'to create the best app'
+		And we fill in the feature as_a with 'user'
+		And we fill in the feature i_want with 'the best project ever'
     Then submit the form
 		And the feature information should be saved
     And I should be redirected to the new features
@@ -26,7 +29,10 @@ Feature: A user should be able to create new features, which can be associated w
 	  Given I can view the features page
 	  When I click new features
 		And there are features
-	  And fill in the new feature with no errors
+	  And we fill in the feature title with 'Logging in'
+		And we fill in the feature in_order with 'to create the best app'
+		And we fill in the feature as_a with 'user'
+		And we fill in the feature i_want with 'the best project ever'
 		Then I should have a checkable list of projects
 	  Then submit the form
 		And the feature information should be saved
@@ -79,49 +85,33 @@ Feature: A user should be able to create new features, which can be associated w
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
-			And fill in the 'In order' field
-	    And fill in the new feature with no errors
-			Then submit the form
-			And the feature information should be saved
-	    And I should be redirected to the new features
-	    And a flash message 'Feature: Logging in, was created' should be displayed
+			And we fill in the feature in_order with 'to create the best app'
 	
 		Scenario: A feature should have a 'As a' field
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
-			And fill in the 'As a' field
-	    And fill in the new feature with no errors
-			Then submit the form
-			And the feature information should be saved
-	    And I should be redirected to the new features
-	    And a flash message 'Feature: Logging in, was created' should be displayed
+			And we fill in the feature as_a with 'user'
 	
 		Scenario: A feature should have a 'I want' field
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
-			And fill in the 'I want' field
-	    And fill in the new feature with no errors
-			Then submit the form
-			And the feature information should be saved
-	    And I should be redirected to the new features
-	    And a flash message 'Feature: Logging in, was created' should be displayed
+			And we fill in the feature i_want with 'the best project ever'
 	
 		Scenario: A feature must have the 'In order' field filled
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
-			And do not fill in the 'In order' field
-			Then submit the form
-		  And I should be redirected to the form
-		  And a form error must be displayed
+			And we fill in the feature in_order with 'to create the best app'
 		
 		Scenario: A feature must have the 'As a' field filled
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
-			And do not fill in the 'As a' field
+			And we fill in the feature title with 'Logging in'
+			And we fill in the feature in_order with 'to create the best app'
+			And we fill in the feature i_want with 'the best project ever'
 			Then submit the form
 		  And I should be redirected to the form
 		  And a form error must be displayed	
@@ -130,7 +120,9 @@ Feature: A user should be able to create new features, which can be associated w
 		  Given I can view the features page
 			And there are projects
 	    When I click new features
-			And do not fill in the 'I want' field
+			And we fill in the feature title with 'Logging in'
+			And we fill in the feature in_order with 'to create the best app'
+			And we fill in the feature as_a with 'user'
 			Then submit the form
 		  And I should be redirected to the form
 		  And a form error must be displayed
