@@ -1,7 +1,3 @@
-Given /^I can view the (.*) page$/ do |controller|
-  visit "/#{controller}"
-end
-
 Given /^there is a project$/ do
   @project = Project.new(:title=>"A project",
               :description=>"This is a description",
