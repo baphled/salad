@@ -56,10 +56,6 @@ When /^it is viewed$/ do
   visit "/projects/#{@project.id}"
 end
 
-When /^we edit the 'A project' project$/ do
-  fill_in 'project_title', :with => 'A different title'
-end
-
 When /^we edit the 'A description' project$/ do
   fill_in 'project_description', :with => 'A different description'
 end
