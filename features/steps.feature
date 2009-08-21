@@ -53,7 +53,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	Scenario: A story invalid if it does not have 'Given' as a prefix
 	  Given I can view the steps page
 	  When I click new steps
-	  Then the title does not start with 'Given'
+	  And we fill in the step title with 'we have a new step'
 	 	Then submit the form
 		Then the step should be not saved
 		And the message 'Title must start with Given, When or Then' should be displayed
@@ -61,7 +61,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	Scenario: A story must start with 'Given' otherwise it does not validate
 	  Given I can view the steps page
 	  When I click new steps
-	  Then the title does start with 'Given'
+	  And we fill in the step title with 'Given we have a new step'
 	 	Then submit the form
 		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
@@ -69,7 +69,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	Scenario: A story invalid if it does not have 'When' as a prefix
 	  Given I can view the steps page
 	  When I click new steps
-	  Then the title does not start with 'When'
+	  And we fill in the step title with 'we have a new step'
 	 	Then submit the form
 		Then the step should be not saved
 		And the message 'Title must start with Given, When or Then' should be displayed
@@ -77,7 +77,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	Scenario: A story must start with 'When' otherwise it does not validate
 	  Given I can view the steps page
 	  When I click new steps
-	  Then the title does start with 'When'
+	  And we fill in the step title with 'When we have a new step'
 	 	Then submit the form
 		And the step should be saved as 'When we have a new step'
 		And a flash message 'Step: When we have a new step, was created' should be displayed
@@ -85,7 +85,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	Scenario: A story invalid if it does not have 'Then' as a prefix
 	  Given I can view the steps page
 	  When I click new steps
-	  Then the title does not start with 'Then'
+	  And we fill in the step title with 'we have a new step'
 	 	Then submit the form
 		Then the step should be not saved
 		And the message 'Title must start with Given, When or Then' should be displayed
@@ -93,7 +93,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	Scenario: A story must start with 'Then' otherwise it does not validate
 	  Given I can view the steps page
 	  When I click new steps
-	  Then the title does start with 'Then'
+	  And we fill in the step title with 'Then we have a new step'
 	 	Then submit the form
 		And the step should be saved as 'Then we have a new step'
 		And a flash message 'Step: Then we have a new step, was created' should be displayed

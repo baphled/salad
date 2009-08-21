@@ -34,14 +34,6 @@ Then /^I should see check boxes for all steps it can be linked to$/ do
   response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"step_story_id_1"}
 end
 
-Then /^the title does not start with '(.*)'$/ do |prefix|
-  fill_in 'step_title', :with => 'a new step'
-end
-
-Then /^the title does start with '(.*)'$/ do |prefix|
-  fill_in 'step_title', :with => "#{prefix} we have a new step"
-end
-
 Then /^the message '(.*)' should be displayed$/ do |message|
   response.should have_selector :li, :content => "#{message}"
 end
