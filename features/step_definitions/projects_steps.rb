@@ -261,3 +261,7 @@ Then /^the project creation date should be stored$/ do
   @project = Project.find_by_title "A project"
   @project.created_at.should_not be nil
 end
+
+Then /^the project should have a creation date$/ do
+  response.should contain "Created at: #{Project.find(1).created_at}"
+end

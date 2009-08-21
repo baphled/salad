@@ -10,6 +10,7 @@
 				<b>Title: </b><%= project.title %><br/>
 				<b>Description: </b><%= project.description %><br/>
 				<b>Aim: </b><%= project.aim %><br/>
+				<b>Created at: </b><%= project.created_at %><br/>
 				<% if !project.feature_ids.empty? %>
 					<%= link_to "Features", project_features_path(project)%>
 				<% end %>

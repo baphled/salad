@@ -31,5 +31,11 @@ describe "/projects/index.html.erb" do
         end
       end
     end
+    
+    it "should display a created at field for each project" do
+      Project.all.each do |project|
+        response.should contain "#{project.created_at}"
+      end
+    end
   end
 end

@@ -170,3 +170,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And the project creation date should be stored
 	  And I should be redirected to the new project
 	  And a flash message 'Project: A project was created' should be displayed
+	
+	Scenario: A user must be able to view a project creation date
+	  Given I can view the projects page
+	  Then the project should have a creation date
+	
