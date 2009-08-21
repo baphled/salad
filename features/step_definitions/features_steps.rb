@@ -29,34 +29,8 @@ When /^I edit the first feature$/ do
   click_link 'edit_feature_1'
 end
 
-When /^the title is edited$/ do
-  fill_in 'feature_title', :with => 'an edited title'
-end
-
-When /^the title is invalid$/ do
-  fill_in 'feature_title', :with => ''
-end
-
 When /^I visit the first features stories$/ do
   click_link 'feature_1_stories'
-end
-
-When /^fill in the 'In order' field$/ do
-  fill_in 'feature_in_order', :with => 'to create a new feature'
-end
-
-When /^fill in the 'As a' field$/ do
-  fill_in 'feature_as_a', :with => 'user'
-end
-
-When /^fill in the 'I want' field$/ do
-  fill_in 'feature_i_want', :with => 'to be able to create a greate app'
-end
-
-When /^do not fill in the 'In order' field$/ do
-  fill_in 'feature_title', :with => 'a feature'
-  fill_in 'feature_as_a', :with => 'user'
-  fill_in 'feature_i_want', :with => 'the world'
 end
 
 Then /^I should see a list of features$/ do

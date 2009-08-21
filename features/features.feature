@@ -47,7 +47,7 @@ Feature: A user should be able to create new features, which can be associated w
 		Scenario: As a user I should be able to edit a feature
 		  Given I can view the features page
 		  When I edit the first feature
-			And the title is edited
+			And we fill in the feature title with 'an edited title'
 			And submit the form
 		  Then the feature should be saved
 			And I should be redirected to the new feature
@@ -56,7 +56,7 @@ Feature: A user should be able to create new features, which can be associated w
 		Scenario: A user who sends an invalid feature update 
 		  Given I can view the features page
 		  When I edit the first feature
-			And the title is invalid
+			And we fill in the feature title with ''
 			And submit the form
 		  Then the form should be rerendered
 			And the flash message 'Feature: my first feature, was not updated'
