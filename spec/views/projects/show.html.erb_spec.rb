@@ -5,7 +5,9 @@ describe "projects/show.html.erb" do
     @project = mock_model(Project,
                           :title => "A project",
                           :description => "The project description",
-                          :aim => "The aim of this project is...",:null_object=>true)
+                          :aim => "The aim of this project is...",
+                          :created_at => Time.now,
+                          :null_object=>true)
     assigns[:project] = @project
     render
   end
@@ -20,5 +22,9 @@ describe "projects/show.html.erb" do
   
   it "should have an aim" do
     response.should have_selector :p, :content => "The aim of this project is..."
+  end
+  
+  it "should display the created at field" do
+    response.should contain "#{@project.created_at}"
   end
 end

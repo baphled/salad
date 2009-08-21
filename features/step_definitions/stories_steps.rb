@@ -31,9 +31,9 @@ When /^I select first story$/ do
 end
 
 Then /^there should be a list of stories$/ do
-  response.should have_selector :div do |content|
-    content.should have_selector :ul do |list|
-      list.should have_selector :li
+  response.should have_selector(:div) do |content|
+    content.should have_selector(:ul) do |list|
+      list.should have_selector(:li)
     end
   end
 end
