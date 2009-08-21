@@ -1,3 +1,3 @@
-When /^we edit the project title with 'A different title'$/ do
-  fill_in 'project_title', :with => 'A different title'
+When /^we edit the project (.*) with '(.*)'$/ do |attr, value|
+  fill_in "project_#{attr}", :with => "#{value}"
 end

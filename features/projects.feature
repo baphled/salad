@@ -65,7 +65,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: A user should be able to edit projects description
 	  Given there is a project
 		And I visit its edit view
-	  When we edit the 'A description' project
+	  When we edit the project description with 'A different description'
 		And submit the form
 		Then project description 'A description' should now be 'A different description'
 
