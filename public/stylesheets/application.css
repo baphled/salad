@@ -26,6 +26,8 @@ form {
 }
 
 #cloud_tag {
+	border-top:#89A407 thin solid;
+	border-bottom:#89A407 thin solid;
 	margin:auto;
 	padding:2px;
 	margin-left:10px;
@@ -317,6 +319,7 @@ div#right_column > ul {
 	margin-top:0;
 	padding:8px;
 	position:relative;
+	top:252px;
 }
 
 div#right_column ul > li{
