@@ -56,10 +56,6 @@ When /^it is viewed$/ do
   visit "/projects/#{@project.id}"
 end
 
-When /^we edit the 'An aim' project$/ do
-  fill_in 'project_aim', :with => 'A different aim'
-end
-
 When /^the project is not able to update$/ do
   @project.stub!(:update_attributes).and_return false
 end

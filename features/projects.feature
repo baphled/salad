@@ -72,14 +72,14 @@ Feature: We need to a way to store our stories within a project, this will help 
 	Scenario: A user should be able to edit projects aim
 	  Given there is a project
 		And I visit its edit view
-	  When we edit the 'An aim' project
+	  When we edit the project aim with 'A different aim'
 		And submit the form
 		Then project aim 'An aim' should now be 'A different aim'
 
 	Scenario: If there is a problem saving the project we should be alerted
 	  Given there is a project
 	  When I visit its edit view
-		And we edit the 'An aim' project
+		And we edit the project aim with 'A different aim'
 		And the project is not able to update
 	  Then the project should not be updated
 	
