@@ -256,3 +256,8 @@ end
 Then /^the order button should not be displayed$/ do
   response.should_not have_selector :span, attribute = {:id => "order_icon"}
 end
+
+Then /^the project creation date should be stored$/ do
+  @project = Project.find_by_title "A project"
+  @project.created_at.should_not be nil
+end

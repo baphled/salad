@@ -160,7 +160,13 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And there is a project
 		And it is viewed
 		Then the order button should not be displayed
-	
-	
-	
-	
+		
+	Scenario: When a project is created it should store its creation date
+		Given I can view the projects page
+	  When I click new projects
+	  And fill in the new project with no errors
+	  Then submit the form
+		And the project information should be saved
+		And the project creation date should be stored
+	  And I should be redirected to the new project
+	  And a flash message 'Project: A project was created' should be displayed
