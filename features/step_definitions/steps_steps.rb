@@ -10,10 +10,6 @@ Then /^the new step form should be displayed$/ do
   response.should have_selector :form
 end
 
-Then /^fill in the new steps with no errors$/ do
-  fill_in 'step_title', :with => 'Given we have a new step'
-end
-
 Then /^the step should be saved as '(.*)'$/ do |message|
   assert !Step.find_by_title("#{message}").title.nil?
 end

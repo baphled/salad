@@ -12,7 +12,7 @@ Feature: Stories have steps, which help to define what the action taken within a
 	  Given I can view the steps page
 	  When I click new steps
 	  Then the new step form should be displayed
-		And fill in the new steps with no errors
+		And we fill in the step title with 'Given we have a new step'
 	 	Then submit the form
 		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
@@ -21,11 +21,11 @@ Feature: Stories have steps, which help to define what the action taken within a
 		Given I can view the steps page
 	  When I click new steps
 	  Then the new step form should be displayed
-		And fill in the new steps with no errors
+		And we fill in the step title with 'Given we have a new step'
 		Then submit the form
 		When I click new steps
 	  Then the new step form should be displayed
-		And fill in the new steps with no errors
+		And we fill in the step title with 'Given we have a new step'
 		And submit the form
 		Then the step should be not saved
 		
@@ -33,15 +33,15 @@ Feature: Stories have steps, which help to define what the action taken within a
 		Given I can view the steps page
 	  When I click new steps
 	  Then the new step form should be displayed
-		And fill in the new steps with no errors
+		And we fill in the step title with 'Given we have a new step'
 		And I check 'my first story'
 	 	Then submit the form
 		
 	Scenario: A user should be able to create a new step via a story
 		Given I can view the stories page
 		And there are stories
-		And I choose 'New Step' link
-		And fill in the new steps with no errors
+		When I choose 'New Step' link
+		And we fill in the step title with 'Given we have a new step'
 		Then submit the form
 		And the step should be saved as 'Given we have a new step'
 		And a flash message 'Step: Given we have a new step, was created' should be displayed
