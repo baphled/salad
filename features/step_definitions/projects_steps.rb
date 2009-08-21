@@ -269,3 +269,8 @@ end
 Then /^the project should have a creation date$/ do
   response.should contain "#{@project.created_at}"
 end
+
+Then /^the projects date should be updated$/ do
+  @project = Project.find_by_title "A different title"
+  @project.updated_at.should_not be nil
+end

@@ -179,3 +179,12 @@ Feature: We need to a way to store our stories within a project, this will help 
 	  Given there is a project
 		When it is viewed
 		Then the project should have a creation date
+	
+	Scenario: When a user edits a project the projects date should be updated
+	  Given there is a project
+		And I visit its edit view
+	  When we edit the 'A project' project
+	  Then I should be able to edit its title
+		And submit the form
+		Then project title 'A project' should now be 'A different title'
+		And the projects date should be updated
