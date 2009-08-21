@@ -97,3 +97,8 @@ Then /^the features date should be updated$/ do
   @feature = Feature.find_by_title "A different title"
   @feature.updated_at.should_not be nil
 end
+
+
+Then /^the features updated field will be displayed$/ do
+  response.should contain "Updated at: #{@feature.updated_at}"
+end

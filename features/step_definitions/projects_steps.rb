@@ -106,8 +106,8 @@ Then /^I should be able to view its details$/ do
 end
 
 
-Then /^project title 'A project' should now be 'A different title'$/ do
-  response.should contain 'A different title'
+Then /^the title should now be '(.*)'$/ do |content|
+  response.should contain "#{content}"
 end
 
 Then /^project description 'A description' should now be 'A different description'$/ do
@@ -234,6 +234,6 @@ Then /^the projects updated field will be displayed$/ do
   response.should contain "Updated at: #{@project.updated_at}"
 end
 
-Then /^the (.*) updated field will not be displayed$/ do |controller|
+Then /^the projects updated field will not be displayed$/ do
   response.should_not contain "Updated at:"
 end

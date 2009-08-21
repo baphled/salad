@@ -144,3 +144,12 @@ Feature: A user should be able to create new features, which can be associated w
 	  When we fill in the feature title with 'A different title'
 		Then submit the form
 		And the features date should be updated
+		
+	Scenario: When a user edits a feature the feature's updated date with be displayed
+	  Given there is a feature
+		And I visit the features edit view
+	  When we fill in the feature title with 'A different title'
+		Then submit the form
+		And the title should now be 'A different title'
+		And the features date should be updated
+		And the features updated field will be displayed
