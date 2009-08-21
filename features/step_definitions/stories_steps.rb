@@ -6,10 +6,6 @@ When /^I select first feature new story link$/ do
   click_link 'New Story'
 end
 
-When /^fill in the new story with no errors$/ do
-  fill_in 'story_scenario', :with => 'this is our stories scenario'
-end
-
 When /^I select first feature$/ do
   click_link 'View'
 end
