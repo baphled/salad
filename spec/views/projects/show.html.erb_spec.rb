@@ -1,34 +1,61 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "projects/show.html.erb" do
+  
   before(:each) do
-    @project = mock_model(Project,
-                          :title => "A project",
-                          :description => "The project description",
-                          :aim => "The aim of this project is...",
-                          :created_at => Time.now,
-                          :null_object=>true)
-    assigns[:project] = @project
-    render
+    @date = Time.now
   end
   
-  it "should have a list the projects title" do
-    response.should have_selector(:h3, :content => "A project")
-  end
+  describe "a newly created project" do
+    before(:each) do
+      @project = mock_model(Project,
+                            :title => "A project",
+                            :description => "The project description",
+                            :aim => "The aim of this project is...",
+                            :null_object=>true,
+                            :created_at => @date,
+                            :updated_at => @date)
+      assigns[:project] = @project
+      render
+    end
+    
+    it "should have a list the projects title" do
+      response.should have_selector(:h3, :content => "A project")
+    end
   
-  it "should have a description" do
-    response.should have_selector :p, :content => "The project description"
-  end
+    it "should have a description" do
+      response.should have_selector :p, :content => "The project description"
+    end
   
-  it "should have an aim" do
-    response.should have_selector :p, :content => "The aim of this project is..."
-  end
+    it "should have an aim" do
+      response.should have_selector :p, :content => "The aim of this project is..."
+    end
   
-  it "should display the created at field" do
-    response.should contain "#{@project.created_at}"
-  end
+    it "should display the created at field" do
+      response.should contain "#{@project.created_at}"
+    end
+    
+    it "should display the date the project was updated" do
+      response.should_not contain "Updated at: #{@project.updated_at}"
+    end
+  end  
   
-  it "should display the date the project was updated" do
-    response.should contain "#{@project.updated_at}"
+  
+  describe "a project is updated" do
+    before(:each) do
+      @project = mock_model(Project,
+                            :title => "A project",
+                            :description => "The project description",
+                            :aim => "The aim of this project is...",
+                            :created_at => @date,
+                            :null_object=>true)
+      @project.update_attribute(:description => "something different")
+      assigns[:project] = @project
+      render
+    end
+    
+    it "should display the date the project was updated" do
+      response.should contain "Updated at: #{@project.updated_at}"
+    end
   end
 end

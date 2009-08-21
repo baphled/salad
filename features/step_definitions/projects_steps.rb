@@ -5,7 +5,8 @@ end
 Given /^there is a project$/ do
   @project = Project.new(:title=>"A project",
               :description=>"This is a description",
-              :aim=>"the aim of our project is...")
+              :aim=>"the aim of our project is...",
+              :created_at => Time.now.yesterday)
   @project.save
 end
 
@@ -60,7 +61,7 @@ When /^it is viewed$/ do
 end
 
 When /^we edit the 'A project' project$/ do
-  @found_project = Project.find_by_title("A project")
+  fill_in 'project_title', :with => 'A different title'
 end
 
 When /^we edit the 'A description' project$/ do
@@ -277,4 +278,8 @@ end
 
 Then /^the projects updated field will be displayed$/ do
   response.should contain "Updated at: #{@project.updated_at}"
+end
+
+Then /^the projects updated field will not be displayed$/ do
+  response.should_not contain "Updated at:"
 end

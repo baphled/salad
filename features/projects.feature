@@ -198,3 +198,13 @@ Feature: We need to a way to store our stories within a project, this will help 
 		Then project title 'A project' should now be 'A different title'
 		And the projects date should be updated
 		And the projects updated field will be displayed
+		
+	Scenario: A user should not display the date the project was updated if it is the same as the creation date
+	  Given I can view the projects page
+    When I click new projects
+    And fill in the new project with no errors
+    Then submit the form
+		And the project information should be saved
+    And I should be redirected to the new project
+    And a flash message 'Project: A project was created' should be displayed
+		And the projects updated field will not be displayed

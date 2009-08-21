@@ -3,8 +3,9 @@
 <p>Description: <%=h @project.description %></p>
 <p>Aim: <%=h @project.aim %></p>
 <p>Created at: <%=h @project.created_at %></p>
-<p>Updated at: <%=h @project.updated_at %></p>
-
+<% if @project.created_at != @project.updated_at %>
+	<p>Updated at: <%=h @project.updated_at %></p>
+<% end %>
 <%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>true}%>
 
 
