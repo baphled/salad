@@ -287,7 +287,11 @@ Then /^each entry should display the features feature text$/ do
 end
 
 Then /^each entry should not have 'Feature:' as a prefix$/ do
-  project = Project.find(1)
-  project.update_attribute(:location,"#{RAILS_ROOT}")
-  content.should_not contain "Feature: "
+  response.should_not contain "Feature: "
+end
+
+Then /^each entry should display the features 'In order' text$/ do
+  response.should have_selector :p do |content|
+    content.should contain "In order"
+  end
 end

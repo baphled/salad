@@ -25,4 +25,10 @@ describe "/projects/import.html.erb" do
       response.should_not contain "Feature: "
     end
   end
+  
+  it "should display a list of feature files which contain the feature in order text" do
+    assigns[:list].each do |file|
+      response.should contain "In order"
+    end
+  end
 end

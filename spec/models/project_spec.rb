@@ -33,8 +33,12 @@ describe Project do
       @project.find_features.should_not include "support"
     end
     
-    it "should should display a features feature text" do
+    it "should display a features feature text" do
       @project.find_features.should contain "We need to a way to store our stories within a project, this will help organise our stories."
+    end
+    
+    it "should display a features in order text" do
+      @project.find_features.should contain "In order to help manage and organise our projects"
     end
   end
 end
