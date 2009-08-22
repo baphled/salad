@@ -10,6 +10,10 @@ class Project < ActiveRecord::Base
   has_many :features, :through => :feature_projects
   
   def find_features
-    Dir.new("#{location}/features").entries
+    list = []
+    Dir.new("#{self.location}/features").entries.each do |file|
+      list << file unless not file =~ /^[a-z]+.feature$/
+    end
+    list
   end
 end
