@@ -261,8 +261,10 @@ Then /^I should not see a import link$/ do
 end
 
 Then /^I should see a list of features that will be imported$/ do
+  project = Project.find(1)
+  project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :ul do |list|
-    find_feature("#{RAILS_ROOT}/features").each do |feature|
+    project.find_features do |feature|
       list.should have_selector :li do |content|
         content.should contain "#{feature}"
       end
@@ -270,10 +272,6 @@ Then /^I should see a list of features that will be imported$/ do
   end
 end
 
-def find_feature(dir)
-  list = []
-  Dir.new(dir).entries do |file|
-    list << file
-  end
-  list
+Then /^each entry should be a feature file$/ do
+  response.should_not have_selector :li, :content => " . " or ".." or "support" or "step_definitions"
 end
