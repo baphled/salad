@@ -31,4 +31,10 @@ describe "/projects/import.html.erb" do
       response.should contain "In order"
     end
   end
+  
+  it "should display a list of feature files which contain the feature as a text" do
+    assigns[:list].each do |file|
+      response.should contain "As a"
+    end
+  end
 end

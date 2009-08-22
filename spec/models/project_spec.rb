@@ -40,5 +40,9 @@ describe Project do
     it "should display a features in order text" do
       @project.find_features.should contain "In order to help manage and organise our projects"
     end
+    
+    it "should display a features as a text" do
+      @project.find_features.should contain "As a user"
+    end
   end
 end

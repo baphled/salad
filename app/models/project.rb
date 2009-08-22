@@ -12,20 +12,22 @@ class Project < ActiveRecord::Base
   def find_features
     list = []
     Dir.new("#{self.location}/features").entries.each do |file|
-      feature_line,in_order = nil
+      feature_line,in_order,as_a = nil
       if file =~ /^(.*).feature$/
         File.new("#{self.location}/features/#{file}").each do |line|
           if line =~ /^Feature: /
             feature_line = line
-          end
-          if line =~ /In order/
+          elsif line =~ /In order/
             in_order = line
+          elsif line =~ /As a/
+            as_a = line
           end
           
         end
         list << {:file => file,
                  :feature_line =>feature_line.sub(/^Feature: /,""),
-                 :in_order =>in_order}
+                 :in_order =>in_order,
+                 :as_a => as_a}
       end
     end
     list

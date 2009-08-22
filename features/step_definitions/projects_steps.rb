@@ -290,8 +290,8 @@ Then /^each entry should not have 'Feature:' as a prefix$/ do
   response.should_not contain "Feature: "
 end
 
-Then /^each entry should display the features 'In order' text$/ do
+Then /^each entry should display the features '(.*)' text$/ do |expected|
   response.should have_selector :p do |content|
-    content.should contain "In order"
+    content.should contain "#{expected}"
   end
 end

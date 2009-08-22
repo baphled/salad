@@ -1,6 +1,6 @@
 Feature: We need to a way to store our stories within a project, this will help organise our stories.
   In order to help manage and organise our projects
-  As a user I want to be able to create a project
+  As a user
   I want to be able to create a problem which I can view, edit and manage
 
   Scenario: As a user I need to be able to create a new project
