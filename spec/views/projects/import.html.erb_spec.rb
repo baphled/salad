@@ -26,15 +26,21 @@ describe "/projects/import.html.erb" do
     end
   end
   
-  it "should display a list of feature files which contain the feature in order text" do
+  it "should display a list of feature files which contain the feature 'In order' text" do
     assigns[:list].each do |file|
       response.should contain "In order"
     end
   end
   
-  it "should display a list of feature files which contain the feature as a text" do
+  it "should display a list of feature files which contain the feature 'As a' text" do
     assigns[:list].each do |file|
       response.should contain "As a"
+    end
+  end
+  
+  it "should display a list of feature files which contain the feature 'I want' text" do
+    assigns[:list].each do |file|
+      response.should contain "I want"
     end
   end
 end

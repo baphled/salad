@@ -44,5 +44,9 @@ describe Project do
     it "should display a features as a text" do
       @project.find_features.should contain "As a user"
     end
+    
+    it "should display a features 'I want' text" do
+      @project.find_features.should contain "I want"
+    end
   end
 end
