@@ -9,19 +9,21 @@ class Project < ActiveRecord::Base
   has_many :feature_projects
   has_many :features, :through => :feature_projects
   
-  @feature_line,@in_order,@as_a,@i_want = nil
+  @feature_line,@in_order,@as_a,@i_want,@scenarios = nil
   
   def find_features
     list = []
     Dir.new("#{self.location}/features").entries.each do |file|
       @feature_line,@in_order,@as_a,@i_want = nil
+      @scenarios = []
       if file =~ /^(.*).feature$/
         import file
         list << {:file => file,
                  :feature_line =>@feature_line.sub(/^Feature: /,""),
                  :in_order =>@in_order,
                  :as_a => @as_a,
-                 :i_want => @i_want}
+                 :i_want => @i_want,
+                 :scenarios => @scenarios}
       end
     end
     list
@@ -37,6 +39,8 @@ class Project < ActiveRecord::Base
         @as_a = line
       elsif @i_want.nil? and line =~ /\sI want/
         @i_want = line
+      elsif line =~ /\sScenario: /
+        @scenarios << line
       end
     end
   end

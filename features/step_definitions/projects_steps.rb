@@ -295,3 +295,10 @@ Then /^each entry should display the features '(.*)' text$/ do |expected|
     content.should contain "#{expected}"
   end
 end
+
+
+Then /^each entry should display the features its stories$/ do
+  response.should have_selector :p  do |content|
+    content.should contain "Scenario: "
+  end
+end

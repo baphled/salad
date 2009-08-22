@@ -84,3 +84,13 @@ Feature: Users should not have to manually input their features if they have alr
 		And each entry should be a feature file
 		And each entry should display the features 'I want' text
 		
+	Scenario: I should be able to see all the stories for each feature
+	  Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		Then I should see a list of features that will be imported
+		And each entry should be a feature file
+		And each entry should display the features its stories
+

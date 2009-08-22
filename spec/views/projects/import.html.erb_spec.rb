@@ -43,4 +43,11 @@ describe "/projects/import.html.erb" do
       response.should contain "I want"
     end
   end
+  
+  it "should display a list of feature files which contain the feature stories" do
+    assigns[:list].each do |file|
+      response.should contain "Scenario: "
+    end
+  end
+  
 end

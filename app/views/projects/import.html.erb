@@ -6,6 +6,11 @@
 			<p><%=h file[:in_order] %></p>
 			<p><%=h file[:as_a] %></p>
 			<p><%=h file[:i_want] %></p>
+			<p>
+				<% file[:scenarios].each do |scenario| %>
+					<%=h scenario %><br/>
+				<% end %>
+			</p>
 		</li>
 	<% end %>
 </ul>
