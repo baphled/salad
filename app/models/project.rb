@@ -11,9 +11,20 @@ class Project < ActiveRecord::Base
   
   def find_features
     list = []
-    Dir.new("#{self.location}/features").entries.each do |file|
-      list << file unless not file =~ /^(.*).feature$/
+    Dir.new("#{self.location}/features").entries.each do |file| 
+      if file =~ /^(.*).feature$/
+        File.new("#{self.location}/features/#{file}").each do |line|
+          list << {:file => file,:feature_line =>line} if line =~ /^Feature: /
+        end
+      end
     end
     list
+  end
+  
+  def feature_info file
+     File.new("#{self.location}/features/#{file}").each do |line|
+        feature_info = line if line =~ /^Feature: /
+      end
+      feature_info
   end
 end

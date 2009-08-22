@@ -275,3 +275,13 @@ end
 Then /^each entry should be a feature file$/ do
   response.should_not have_selector :li, :content => " . " or ".." or "support" or "step_definitions"
 end
+
+Then /^each entry should display the features feature text$/ do
+  project = Project.find(1)
+  project.update_attribute(:location,"#{RAILS_ROOT}")
+  response.should have_selector :ul do |list|
+    list.should have_selector :li do |content|
+      content.should have_selector :span
+    end
+  end
+end

@@ -1,5 +1,8 @@
 <ul>
 	<% @list.each do |file| %>
-	  <li><%=h file %></li>
+	  <li>
+			<%=h file[:file] %><br/>
+			<span><%=h file[:feature_line] %></span><br/>
+		</li>
 	<% end %>
 </ul>
