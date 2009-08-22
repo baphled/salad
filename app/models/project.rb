@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   def find_features
     list = []
     Dir.new("#{self.location}/features").entries.each do |file|
-      list << file unless not file =~ /^[a-z]+.feature$/
+      list << file unless not file =~ /^(.*).feature$/
     end
     list
   end
