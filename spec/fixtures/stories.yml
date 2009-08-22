@@ -5,3 +5,7 @@ one:
 two:
   id: 2
   scenario: my stories 2nd scenario
+
+three:
+  id: 3
+  scenario: As a user I need to be able to create a new project

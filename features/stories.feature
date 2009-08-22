@@ -7,7 +7,6 @@ Feature: Stories will be needed to populate our projects features
 	  Given I can view the stories page
 		And there are stories
 	  Then there should be a list of stories
-		And each story should have a title
 		And each story should have a scenario
 		
 	Scenario: As a user I should be able to create a new story
@@ -25,7 +24,6 @@ Feature: Stories will be needed to populate our projects features
 		And there are features
     When I select first feature
 		Then I should see a list of stories
-		And each story should have a title
 		And each story should have a scenario
 	
 	Scenario: As a user I should be able to create a new story via the stories page

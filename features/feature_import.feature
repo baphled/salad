@@ -93,4 +93,3 @@ Feature: Users should not have to manually input their features if they have alr
 		Then I should see a list of features that will be imported
 		And each entry should be a feature file
 		And each entry should display the features its stories
-

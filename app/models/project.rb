@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
       elsif @i_want.nil? and line =~ /\sI want/
         @i_want = line
       elsif line =~ /\sScenario: /
-        @scenarios << line
+        @scenarios << line if Story.find_by_scenario(line.sub(/\sScenario: /,"").chomp).nil?
       end
     end
   end

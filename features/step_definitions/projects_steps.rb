@@ -302,3 +302,7 @@ Then /^each entry should display the features its stories$/ do
     content.should contain "Scenario: "
   end
 end
+
+Then /^the features the story '(.*)'$/ do |story|
+  response.should contain "#{story}"
+end

@@ -34,22 +34,10 @@ Then /^there should be a list of stories$/ do
   end
 end
 
-Then /^each story should have a title$/ do
-  response.should have_selector :ul do |list|
-    Story.all.each do |story|
-      list.should have_selector :li do |content|
-        content.should contain story.scenario
-      end
-    end
-  end
-end
-
 Then /^each story should have a scenario$/ do
   response.should have_selector :ul do |list|
-    Story.all.each do |story|
-      list.should have_selector :li do |content|
-        content.should contain story.scenario
-      end
+    list.should have_selector :li do |content|
+      content.should contain "Scenario"
     end
   end
 end
