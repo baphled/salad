@@ -14,17 +14,10 @@ class Project < ActiveRecord::Base
     Dir.new("#{self.location}/features").entries.each do |file| 
       if file =~ /^(.*).feature$/
         File.new("#{self.location}/features/#{file}").each do |line|
-          list << {:file => file,:feature_line =>line} if line =~ /^Feature: /
+          list << {:file => file,:feature_line =>line.sub(/^Feature: /,"")} if line =~ /^Feature: /
         end
       end
     end
     list
-  end
-  
-  def feature_info file
-     File.new("#{self.location}/features/#{file}").each do |line|
-        feature_info = line if line =~ /^Feature: /
-      end
-      feature_info
   end
 end

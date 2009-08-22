@@ -285,3 +285,9 @@ Then /^each entry should display the features feature text$/ do
     end
   end
 end
+
+Then /^each entry should not have 'Feature:' as a prefix$/ do
+  project = Project.find(1)
+  project.update_attribute(:location,"#{RAILS_ROOT}")
+  content.should_not contain "Feature: "
+end

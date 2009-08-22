@@ -19,4 +19,10 @@ describe "/projects/import.html.erb" do
       response.should contain "#{file[:feature_line]}"
     end
   end
+  
+  it "should trim from 'Feature:' feature line" do
+    assigns[:list].each do |file|
+      response.should_not contain "Feature: "
+    end
+  end
 end

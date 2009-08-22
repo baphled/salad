@@ -34,7 +34,7 @@ describe Project do
     end
     
     it "should should display a features feature text" do
-      @project.find_features.should contain "Feature: We need to a way to store our stories within a project, this will help organise our stories."
+      @project.find_features.should contain "We need to a way to store our stories within a project, this will help organise our stories."
     end
   end
 end

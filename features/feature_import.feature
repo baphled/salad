@@ -42,3 +42,17 @@ Feature: Users should not have to manually input their features if they have alr
 		Then I should see a list of features that will be imported
 		And each entry should be a feature file
 		And each entry should display the features feature text
+		
+	Scenario: I should not see 'Feature:' in the import display text
+	  Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		Then I should see a list of features that will be imported
+		And each entry should be a feature file
+		And each entry should display the features feature text
+		And each entry should not have 'Feature:' as a prefix
+	
+	
+	
