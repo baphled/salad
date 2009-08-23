@@ -6,7 +6,7 @@
 	</ul>
 	<% @list.each do |file| %>
 	<div id="<%=h file[:file].sub(/\./,"_") %>">
-		<% form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
+		<%- form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
 			<%= text_area_tag "feature_title", file[:feature_title], :name=>"feature[title]", :size=>"35x5" %><br/>
 			<%= text_area_tag "feature_in_order", file[:in_order], :name=>"feature[in_order]", :size=>"35x5" %><br/>
 			<%= text_field_tag "feature_as_a", file[:as_a], :name=>"feature[as_a]", :size=>"35x5" %><br/>
@@ -29,8 +29,7 @@
 		<p>
 			<% file[:scenarios].each do |scenario| %>
 				<%=h scenario %>
-				<% if Story.find_by_scenario(scenario.sub(/^Scenario: /,"").strip)%>
-					<b>Already added</b>
+				<% if Story.find_by_scenario(scenario.sub(/^Scenario: /,"").strip)%><b>Already added</b>
 				<% end %>
 				<br/>
 		<% end %>

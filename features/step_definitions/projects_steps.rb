@@ -299,7 +299,7 @@ Then /^each entry should display the features its stories$/ do
   end
 end
 
-When /^I feature already exists$/ do
+When /^a scenario already exists$/ do
   response.should contain "Scenario: #{Story.find(3).scenario}"
 end
 
@@ -308,9 +308,9 @@ When /^select the features feature$/ do
 end
 
 When /^the feature is visible$/ do
-  response.should have_selector :div, attribute = {:id => "feature_import_feature"}
+  response.should have_selector :div, attribute = {:id => "projects_feature"}
 end
 
 When /^we click import feature$/ do
-  click_button 'Import feature import'
+  click_button 'Import projects'
 end
