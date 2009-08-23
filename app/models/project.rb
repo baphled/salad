@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   has_many :feature_projects
   has_many :features, :through => :feature_projects
   
-  @feature_title,@in_order,@as_a,@i_want,@scenarios = nil
+  @feature_title,@in_order,@as_a,@i_want,@scenarios,@steps = nil
   
   def find_features
     list = []
@@ -30,6 +30,7 @@ class Project < ActiveRecord::Base
   end
   
   def import file
+    @steps = []
     File.new("#{self.location}/features/#{file}").each do |line|
       if line =~ /^Feature: /
         @feature_title = line.strip
@@ -40,7 +41,10 @@ class Project < ActiveRecord::Base
       elsif @i_want.nil? and line =~ /\sI want/
         @i_want = line.strip
       elsif line =~ /\sScenario: /
-        @scenarios << line.strip
+        @scenarios << {:story => line.strip,:steps =>@steps}
+        @steps = [] unless @steps.empty?
+      elsif line =~ /\s(Given|When|Then|And) /
+        @steps << line.strip
       end
     end
   end
