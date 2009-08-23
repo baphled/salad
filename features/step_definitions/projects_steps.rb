@@ -314,3 +314,12 @@ end
 When /^we click import feature$/ do
   click_button 'Import projects'
 end
+
+Then /^we scenario should display that is is already added$/ do
+  response.should have_selector :b, :content => "Already added"
+end
+
+Then /^the scenario should not be duplicationed$/ do
+  response.should_not have_selector :input, 
+                                  attribute = {:value => "Scenario: As a user I must give the project a brief description"}
+end

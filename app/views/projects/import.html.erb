@@ -29,7 +29,8 @@
 		<p>
 			<% file[:scenarios].each do |scenario| %>
 				<%=h scenario %>
-				<% if Story.find_by_scenario(scenario.sub(/^Scenario: /,"").strip)%><b>Already added</b>
+				<% if Story.find_by_scenario(scenario.sub(/^Scenario: /,"").strip)%>
+					<b>Already added</b>
 				<% end %>
 				<br/>
 		<% end %>
