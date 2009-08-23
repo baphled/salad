@@ -1,11 +1,9 @@
 <% content_for :js_head do %>
 <script type="text/javascript">
-	document.observe('dom:loaded', function() {
+	$(document).ready(function() {
  <% for feature in features %>
-      $('feature_<%=feature.id %>').observe('mouseover', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
-		$('feature_<%=feature.id %>').observe('mouseout', displayInfo.bindAsEventListener(this, 'feature_<%=feature.id %>_story'));
-<% end %>
-		$('li.feature_stories').hide();
+      $('#feature_<%=feature.id %>').hover(displayStory, hideStory);
+ <% end %>
 	});
 	</script>
 <% end %>

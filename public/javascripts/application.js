@@ -1,18 +1,39 @@
 /**
 	Helps us display associated information from a list item
 **/
-function displayInfo(e, reg) {
-	$(reg).toggle().visible();
+function displayFeature(event) {
+	$('#' + this["id"] + '_feature').show();
 }
 
+function hideFeature(event) {
+	$('#' + this["id"] + '_feature').hide();
+}
+
+function displayStory(event) {
+	$('#' + this["id"] + '_story').show();
+}
+
+function hideStory(event) {
+	$('#' + this["id"] + '_story').hide();
+}
+
+function displayStep(event) {
+	$('#' + this["id"] + '_step').show();
+}
+
+function hideStep(event) {
+	$('#' + this["id"] + '_step').hide();
+}
 /**
 	Used to toggle our order functionality
 **/
-function toggleOrder(e,reg) {
-	$(reg).down('div').down('span').toggle('order_box');
-	$('lists').down('span').toggleClassName('active');
-}
 
 $(document).ready(function() {
-	$('#accordion').tabs();
+	
+	$('#myTabs').tabs();
+	
+	$('#order_icon').click(function() {
+		$('#lists').toggleClass('active');
+		$('.order_box').toggle();
+	})
 });

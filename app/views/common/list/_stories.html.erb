@@ -1,13 +1,3 @@
-<% content_for :js_head do %>
-<script type="text/javascript">
-	document.observe('dom:loaded', function() {
-		<% for story in stories do %>
-		$('order_icon').observe('click', toggleOrder.bindAsEventListener(this,"story_<%=story.id%>"));
-		<%end%>
-	});
-</script>
-<% end %>
-
 <div id="lists" class="stories">
 	<%= link_to "New Story", new_story_path %>
 	<%= order_btn stories, order %>

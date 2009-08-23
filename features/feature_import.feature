@@ -102,3 +102,15 @@ Feature: Users should not have to manually input their features if they have alr
 		When I click import
 		And I feature already exists
 		Then the feature should be highlighted
+		
+	Scenario: I should be able to select a feature to import
+	  Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		And select the features feature
+		Then the all of the features should be created
+	
+	
+	

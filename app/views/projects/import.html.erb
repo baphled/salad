@@ -1,4 +1,4 @@
-<div id="accordion">
+<div id="myTabs">
 	<ul>
 	<% @list.each do |file| %>
 		<li><a href="#<%=h file[:file].sub(/\./,"-") %>"><%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></a></li>

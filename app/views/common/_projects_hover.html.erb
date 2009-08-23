@@ -1,12 +1,10 @@
 <% content_for :js_head do %>
 	<script type="text/javascript">
-		document.observe('dom:loaded', function() {
+		$(document).ready(function() {
 <% if !@projects.blank? %>
  <% for project in projects %>
-      $('project_<%=project.id %>').observe('mouseover', displayInfo.bindAsEventListener(this, 'project_<%=project.id %>_feature'));
-		$('project_<%=project.id %>').observe('mouseout', displayInfo.bindAsEventListener(this, 'project_<%=project.id %>_feature'));
+      $('#project_<%=project.id %>').hover(displayFeature, hideFeature);
  <% end %>
-			$('li.project_features').hide();
 		});
 	</script>
 	<% end %>
