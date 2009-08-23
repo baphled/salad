@@ -10,7 +10,7 @@ describe "/projects/import.html.erb" do
   
   it "should diplay a list of feature files" do
     assigns[:list].each do |file|
-      response.should contain "#{file[:file]}"
+      response.should contain "#{file[:file]}".sub(/\.feature/,"").sub(/_/," ")
     end
   end
   

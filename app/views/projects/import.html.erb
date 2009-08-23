@@ -6,6 +6,7 @@
 	</ul>
 	<% @list.each do |file| %>
 	<div id="<%=h file[:file].sub(/\./,"-") %>">
+		<p><%=h file[:feature_line] %></p>
 		<p><%=h file[:in_order] %></p>
 		<p><%=h file[:as_a] %></p>
 		<p><%=h file[:i_want] %></p>

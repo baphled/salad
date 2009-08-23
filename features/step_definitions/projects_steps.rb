@@ -277,10 +277,8 @@ Then /^each entry should be a feature file$/ do
 end
 
 Then /^each entry should display the features feature text$/ do
-  response.should have_selector :ul do |list|
-    list.should have_selector :li do |content|
-      content.should have_selector :span
-    end
+  response.should have_selector :div do |list|
+    list.should have_selector :div
   end
 end
 
