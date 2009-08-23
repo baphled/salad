@@ -93,3 +93,12 @@ Feature: Users should not have to manually input their features if they have alr
 		Then I should see a list of features that will be imported
 		And each entry should be a feature file
 		And each entry should display the features its stories
+		
+	Scenario: Stories that are already part of the system should be highlighted
+	  Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		And I feature already exists
+		Then the feature should be highlighted

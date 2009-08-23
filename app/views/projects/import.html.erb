@@ -8,7 +8,14 @@
 			<p><%=h file[:i_want] %></p>
 			<p>
 				<% file[:scenarios].each do |scenario| %>
-					<%=h scenario %><br/>
+					<% if Story.find_by_scenario(scenario.sub(/\sScenario: /,"").strip)%>
+					<b>
+						<%=h scenario %>
+					</b>
+					<% else %>
+						<%=h scenario %>
+					<% end %>
+					<br/>
 				<% end %>
 			</p>
 		</li>

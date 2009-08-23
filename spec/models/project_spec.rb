@@ -52,6 +52,5 @@ describe Project do
     it "should display a features stories text" do
       @project.find_features.should contain "Scenario: "
     end
-    
   end
 end

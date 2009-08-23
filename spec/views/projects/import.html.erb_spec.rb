@@ -49,5 +49,4 @@ describe "/projects/import.html.erb" do
       response.should contain "Scenario: "
     end
   end
-  
 end

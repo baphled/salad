@@ -277,8 +277,6 @@ Then /^each entry should be a feature file$/ do
 end
 
 Then /^each entry should display the features feature text$/ do
-  project = Project.find(1)
-  project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :ul do |list|
     list.should have_selector :li do |content|
       content.should have_selector :span
@@ -287,7 +285,7 @@ Then /^each entry should display the features feature text$/ do
 end
 
 Then /^each entry should not have 'Feature:' as a prefix$/ do
-  response.should_not contain "Feature: "
+  response.should_not =~ /^Feature: /
 end
 
 Then /^each entry should display the features '(.*)' text$/ do |expected|
@@ -303,6 +301,12 @@ Then /^each entry should display the features its stories$/ do
   end
 end
 
-Then /^the features the story '(.*)'$/ do |story|
-  response.should contain "#{story}"
+When /^I feature already exists$/ do
+  response.should contain Story.find(3).scenario
+end
+
+Then /^the feature should be highlighted$/ do
+  response.should have_selector :b do |content|
+    content.should contain "Scenario: #{Story.find(3).scenario}"
+  end
 end
