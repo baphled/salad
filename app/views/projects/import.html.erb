@@ -14,10 +14,8 @@
 			
 			<% if !Project.all.empty? %>
 		  	<% for project in Project.find :all %>
-			    <div>
 					<%= check_box_tag "feature[project_ids][]", project.id %>
-						<%= project.title%>
-					</div>
+					<%= project.title%><br/>
 				<% end %>
 				<% file[:scenarios].each do |scenario| %>
 						<%= hidden_field_tag "feature[stories_attributes][scenario][]", scenario.sub(/^Scenario: /,""), :name=>"feature[stories_attributes][]",:size=>"35x5" %>
