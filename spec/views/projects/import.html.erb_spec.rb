@@ -49,4 +49,16 @@ describe "/projects/import.html.erb" do
       response.should contain "Scenario: "
     end
   end
+  
+  it "should should have a form to submit our features" do
+    response.should have_selector :form
+  end
+  
+  it "should have a text field with the feature title for all features" do
+    assigns[:list].each do |file|
+      response.should have_selector :form do |content|
+        content.should have_selector :textarea
+      end      
+    end
+  end
 end

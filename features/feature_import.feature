@@ -101,6 +101,8 @@ Feature: Users should not have to manually input their features if they have alr
 	  Then I should see a import link
 		When I click import
 		And I feature already exists
+		And select the features feature
+		And the feature is visible
 		Then the feature should be highlighted
 		
 	Scenario: I should be able to select a feature to import
@@ -110,7 +112,9 @@ Feature: Users should not have to manually input their features if they have alr
 	  Then I should see a import link
 		When I click import
 		And select the features feature
-		Then the all of the features should be created
+		And the feature is visible
+		And we click import feature
+    And a flash message 'Users should not have to manually input their features if they have already defined them within cucumber. Users should be able to select import, to which the system will parse over their features and generate the necessary associations for their project.' should be displayed
 	
 	
 	

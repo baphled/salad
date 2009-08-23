@@ -308,3 +308,15 @@ Then /^the feature should be highlighted$/ do
     content.should contain "Scenario: #{Story.find(3).scenario}"
   end
 end
+
+When /^select the features feature$/ do
+  click_link 'feature import'
+end
+
+When /^the feature is visible$/ do
+  response.should have_selector :div, attribute = {:id => "feature_import_feature"}
+end
+
+When /^we click import feature$/ do
+  click_button 'Import feature import'
+end

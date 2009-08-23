@@ -1,15 +1,18 @@
 <div id="myTabs">
 	<ul>
 	<% @list.each do |file| %>
-		<li><a href="#<%=h file[:file].sub(/\./,"-") %>"><%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></a></li>
+		<li><a href="#<%=h file[:file].sub(/\./,"_") %>"><%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></a></li>
 	<% end %>
 	</ul>
 	<% @list.each do |file| %>
-	<div id="<%=h file[:file].sub(/\./,"-") %>">
-		<p><%=h file[:feature_line] %></p>
-		<p><%=h file[:in_order] %></p>
-		<p><%=h file[:as_a] %></p>
-		<p><%=h file[:i_want] %></p>
+	<div id="<%=h file[:file].sub(/\./,"_") %>">
+		<% form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
+			<%= text_area_tag "feature_title", file[:feature_title], :name=>"feature[title]", :size=>"35x5" %><br/>
+			<%= text_area_tag "feature_in_order", file[:in_order], :name=>"feature[in_order]", :size=>"35x5" %><br/>
+			<%= text_field_tag "feature_as_a", file[:as_a], :name=>"feature[as_a]", :size=>"35x5" %><br/>
+			<%= text_area_tag "feature_i_want", file[:i_want],:name=>"feature[i_want]" %><br/>
+			<%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>
+		<% end %>
 		<p>
 			<% file[:scenarios].each do |scenario| %>
 				<% if Story.find_by_scenario(scenario.sub(/\sScenario: /,"").strip)%>
