@@ -44,7 +44,11 @@ class Project < ActiveRecord::Base
         @scenarios << {:story => line.strip,:steps =>@steps}
         @steps = [] unless @steps.empty?
       elsif line =~ /\s(Given|When|Then|And) /
-        @steps << line.strip
+        if @steps.last.to_s.index(/Given/)
+          @steps << line.sub(/\sAnd /,"Given ") 
+        else
+          @steps << line.strip
+        end
       end
     end
   end
