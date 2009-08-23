@@ -11,6 +11,16 @@
 			<%= text_area_tag "feature_in_order", file[:in_order], :name=>"feature[in_order]", :size=>"35x5" %><br/>
 			<%= text_field_tag "feature_as_a", file[:as_a], :name=>"feature[as_a]", :size=>"35x5" %><br/>
 			<%= text_area_tag "feature_i_want", file[:i_want],:name=>"feature[i_want]" %><br/>
+			
+			<% if !Project.all.empty? %>
+		  	<% for project in Project.find :all %>
+			    <div>
+					<%= check_box_tag "feature[project_ids][]", project.id %>
+						<%= project.title%>
+					</div>
+				<% end %>
+			<% end %>
+			
 			<%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>
 		<% end %>
 		<p>
