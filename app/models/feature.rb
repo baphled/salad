@@ -28,6 +28,12 @@ class Feature < ActiveRecord::Base
     end
   end
   
+  def stories_attributes=(stories_attributes)
+    stories_attributes.each do |attributes|
+      stories.build({:scenario => attributes})
+    end
+  end
+  
   private
     def feature_scenarios story
       "  Scenario: #{story.scenario}\n#{story_titles story}" unless story.steps.blank?

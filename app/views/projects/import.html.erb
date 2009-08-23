@@ -19,6 +19,9 @@
 						<%= project.title%>
 					</div>
 				<% end %>
+				<% file[:scenarios].each do |scenario| %>
+						<%= text_field_tag "feature[stories_attributes][scenario][]", scenario, :name=>"feature[stories_attributes][]",:size=>"35x5" %><br/>
+				<% end %>
 			<% end %>
 			
 			<%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>

@@ -32,15 +32,15 @@ class Project < ActiveRecord::Base
   def import file
     File.new("#{self.location}/features/#{file}").each do |line|
       if line =~ /^Feature: /
-        @feature_title = line
+        @feature_title = line.strip
       elsif @in_order.nil? and line =~ /In order/
-        @in_order = line
+        @in_order = line.strip
       elsif @as_a.nil? and line =~ /\sAs a/
-        @as_a = line
+        @as_a = line.strip
       elsif @i_want.nil? and line =~ /\sI want/
-        @i_want = line
+        @i_want = line.strip
       elsif line =~ /\sScenario: /
-        @scenarios << line
+        @scenarios << line.strip
       end
     end
   end
