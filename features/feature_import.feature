@@ -94,17 +94,6 @@ Feature: Users should not have to manually input their features if they have alr
 		And each entry should be a feature file
 		And each entry should display the features its stories
 		
-	Scenario: Stories that are already part of the system should be highlighted
-	  Given there is a project
-		And the project does have a project location
-	  When the project is viewed
-	  Then I should see a import link
-		When I click import
-		And I feature already exists
-		And select the features feature
-		And the feature is visible
-		Then the feature should be highlighted
-		
 	Scenario: I should be able to save a selected feature to import
 	  Given there is a project
 		And the project does have a project location

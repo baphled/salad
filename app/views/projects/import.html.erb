@@ -20,7 +20,7 @@
 					</div>
 				<% end %>
 				<% file[:scenarios].each do |scenario| %>
-						<%= text_field_tag "feature[stories_attributes][scenario][]", scenario, :name=>"feature[stories_attributes][]",:size=>"35x5" %><br/>
+						<%= hidden_field_tag "feature[stories_attributes][scenario][]", scenario.sub(/^Scenario: /,""), :name=>"feature[stories_attributes][]",:size=>"35x5" %>
 				<% end %>
 			<% end %>
 			
@@ -28,12 +28,9 @@
 		<% end %>
 		<p>
 			<% file[:scenarios].each do |scenario| %>
+				<%=h scenario %>
 				<% if Story.find_by_scenario(scenario.sub(/\sScenario: /,"").strip)%>
-				<b>
-					<%=h scenario %>
-				</b>
-				<% else %>
-					<%=h scenario %>
+					<b>Already added</b>
 				<% end %>
 				<br/>
 		<% end %>

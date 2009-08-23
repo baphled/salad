@@ -300,13 +300,7 @@ Then /^each entry should display the features its stories$/ do
 end
 
 When /^I feature already exists$/ do
-  response.should contain Story.find(3).scenario
-end
-
-Then /^the feature should be highlighted$/ do
-  response.should have_selector :b do |content|
-    content.should contain "Scenario: #{Story.find(3).scenario}"
-  end
+  response.should contain "Scenario: #{Story.find(3).scenario}"
 end
 
 When /^select the features feature$/ do

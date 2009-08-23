@@ -30,7 +30,7 @@ class Feature < ActiveRecord::Base
   
   def stories_attributes=(stories_attributes)
     stories_attributes.each do |attributes|
-      stories.build({:scenario => attributes})
+      stories.build({:scenario => attributes.sub(/^Scenario: /,"")})
     end
   end
   
