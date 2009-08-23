@@ -18,7 +18,9 @@
 					<%= project.title%><br/>
 				<% end %>
 				<% file[:scenarios].each do |scenario| %>
-						<%= hidden_field_tag "feature[stories_attributes][scenario][]", scenario.sub(/^Scenario: /,""), :name=>"feature[stories_attributes][]",:size=>"35x5" %>
+					<% if not Story.find_by_scenario(scenario.sub(/^Scenario: /,"").strip)%>
+						<%= hidden_field_tag "feature[stories_attributes][scenario][]", scenario.sub(/^Scenario: /,"").strip, :name=>"feature[stories_attributes][]",:size=>"35x5" %>
+					<% end %>
 				<% end %>
 			<% end %>
 			
@@ -27,7 +29,7 @@
 		<p>
 			<% file[:scenarios].each do |scenario| %>
 				<%=h scenario %>
-				<% if Story.find_by_scenario(scenario.sub(/\sScenario: /,"").strip)%>
+				<% if Story.find_by_scenario(scenario.sub(/^Scenario: /,"").strip)%>
 					<b>Already added</b>
 				<% end %>
 				<br/>
