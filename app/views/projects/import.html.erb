@@ -1,23 +1,26 @@
-<ul>
+<div id="accordion">
+	<ul>
 	<% @list.each do |file| %>
-	  <li>
-			<%=h file[:file] %><br/>
-			<span><%=h file[:feature_line] %></span><br/>
-			<p><%=h file[:in_order] %></p>
-			<p><%=h file[:as_a] %></p>
-			<p><%=h file[:i_want] %></p>
-			<p>
-				<% file[:scenarios].each do |scenario| %>
-					<% if Story.find_by_scenario(scenario.sub(/\sScenario: /,"").strip)%>
-					<b>
-						<%=h scenario %>
-					</b>
-					<% else %>
-						<%=h scenario %>
-					<% end %>
-					<br/>
-				<% end %>
-			</p>
-		</li>
+		<li><a href="#<%=h file[:file].sub(/\./,"-") %>"><%=h file[:file] %></a></li>
 	<% end %>
-</ul>
+	</ul>
+	<% @list.each do |file| %>
+	<div id="<%=h file[:file].sub(/\./,"-") %>">
+		<p><%=h file[:in_order] %></p>
+		<p><%=h file[:as_a] %></p>
+		<p><%=h file[:i_want] %></p>
+		<p>
+			<% file[:scenarios].each do |scenario| %>
+				<% if Story.find_by_scenario(scenario.sub(/\sScenario: /,"").strip)%>
+				<b>
+					<%=h scenario %>
+				</b>
+				<% else %>
+					<%=h scenario %>
+				<% end %>
+				<br/>
+		<% end %>
+		</p>
+	</div>
+	<% end %>
+</div>
