@@ -45,7 +45,11 @@ class Project < ActiveRecord::Base
         @steps = [] unless @steps.empty?
       elsif line =~ /\s(Given|When|Then|And) /
         if @steps.last.to_s.index(/Given/)
-          @steps << line.sub(/\sAnd /,"Given ") 
+          @steps << line.sub(/\sAnd /,"Given ")
+        elsif @steps.last.to_s.index(/When/)
+          @steps << line.sub(/\sAnd /,"When ")
+        elsif @steps.last.to_s.index(/Then/)
+          @steps << line.sub(/\sAnd /,"Then ")
         else
           @steps << line.strip
         end
