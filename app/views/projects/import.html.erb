@@ -28,12 +28,27 @@
 		<% end %>
 		<p>
 			<% file[:scenarios].each do |scenario| %>
-				<%=h scenario[:story] %><br>
-				<% scenario[:steps].each do |step| %>
-					<%=h step %><br/>
-				<% end %>
+
+				<%=h scenario[:story] %>
 				<% if Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
 					<b>Already added</b>
+				<% end %>				
+				<br>
+					<% @last = "" %>
+				<% scenario[:steps].each_with_index do |step,index| %>
+					<% if step.include?("And") %>
+						<% if @last.include?("Given")%>
+							<%=h step.sub(/And /,"Given ") %>
+						<% elsif @last.include?("When")%>
+							<%=h step.sub(/And /,"When ") %>
+						<% else @last.include?("Then")%>
+							<%=h step.sub(/And /,"Then ") %>
+						<% end %>
+					<% else %>
+						<%=h step %>
+					<% end %>
+					<br/>
+					<% @last = step unless step.include?("And") %>
 				<% end %>
 				<br/>
 		<% end %>
