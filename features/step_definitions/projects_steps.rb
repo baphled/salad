@@ -328,8 +328,8 @@ Then /^each story should display its steps$/ do
   response.should have_selector :div, attribute = {:class => "steps"}
 end
 
-Then /^the feature should have at least on 'Given'$/ do
+Then /^the feature should have at least on '(.*)'$/ do |step_prefix|
   response.should have_selector :div, attribute = {:class => "steps"} do |step|
-    step.should contain "Given"
+    step.should contain step_prefix
   end
 end

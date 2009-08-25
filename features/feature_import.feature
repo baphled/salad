@@ -141,3 +141,15 @@ Feature: Users should not have to manually input their features if they have alr
 		And each entry should display the features its stories
 		And each story should display its steps
 		And the feature should have at least on 'Given'
+		
+	Scenario: When should be able to view all 'When' steps
+	  Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		Then I should see a list of features that will be imported
+		And each entry should be a feature file
+		And each entry should display the features its stories
+		And each story should display its steps
+		And the feature should have at least on 'When'

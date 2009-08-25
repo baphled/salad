@@ -69,11 +69,20 @@ describe "/projects/import.html.erb" do
     end
   end
   
-  it "should display a 'Given step" do
+  it "should display a 'Given' step" do
     assigns[:list].each do |file|
       response.should contain "Scenario: "        
       response.should have_selector :div, attribute = {:class => "steps"} do |step|
         step.should contain "Given"
+      end
+    end
+  end
+  
+  it "should display a 'When' step" do
+    assigns[:list].each do |file|
+      response.should contain "Scenario: "        
+      response.should have_selector :div, attribute = {:class => "steps"} do |step|
+        step.should contain "When"
       end
     end
   end
