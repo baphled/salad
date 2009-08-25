@@ -19,7 +19,10 @@
 				<% end %>
 				<% file[:scenarios].each do |scenario| %>
 					<% if not Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
-						<%= hidden_field_tag "feature[stories_attributes][scenario][]", scenario[:story].sub(/^Scenario: /,"").strip, :name=>"feature[stories_attributes][]",:size=>"35x5" %>
+						<%= hidden_field_tag "feature[stories_attributes][][scenario]", scenario[:story].sub(/^Scenario: /,"").strip %>
+						<% Story.formatted_steps(scenario[:steps]).each do |step| %>
+							<%= hidden_field_tag "feature[stories_attributes][][steps][]", step %>
+						<%end %>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -35,7 +38,7 @@
 				<% end %>				
 				<br>
 				<ul class="steps">
-				<% Project.formatted_steps(scenario[:steps]).each do |step| %>
+				<% Story.formatted_steps(scenario[:steps]).each do |step| %>
 					<li>
 						<% if Step.find_by_title step %>
 						<b><%=h step %></b>

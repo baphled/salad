@@ -98,5 +98,5 @@ describe "/projects/import.html.erb" do
   
   it "should highlight a step if it is already part of the system" do
     response.should have_selector :b, :content => "#{Step.find(4).title}"
-  end
+  end  
 end

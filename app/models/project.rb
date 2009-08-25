@@ -49,23 +49,4 @@ class Project < ActiveRecord::Base
     end
   end
   
-  def self.formatted_steps steps
-    last = nil
-    results = []
-     steps.each do |step|
-			 if step.include?("And")
-				 if last.include?("Given")
-				   results << step.sub(/And /,"Given ")
-				 elsif last.include?("When")
-					  results << step.sub(/And /,"When ")
-				 else last.include?("Then")
-					 results << step.sub(/And /,"Then ")
-				 end
-			 else
-				results << step
-			 end
-			 last = step unless step.include?("And")
-		 end
-		results
-  end
 end

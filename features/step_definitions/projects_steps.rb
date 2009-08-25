@@ -266,10 +266,10 @@ Then /^I should not see a import link$/ do
 end
 
 Then /^I should see a list of features that will be imported$/ do
-  project = Project.find(1)
-  project.update_attribute(:location,"#{RAILS_ROOT}")
+  @project = Project.find(1)
+  @project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :ul do |list|
-    project.find_features do |feature|
+    @project.find_features do |feature|
       list.should have_selector :li do |content|
         content.should contain "#{feature}"
       end
@@ -341,4 +341,8 @@ end
 
 Then /^it should be highlighted$/ do
   response.should have_selector :b, :content => "#{Step.find(4).title}"
+end
+
+Then /^each imported stories step should be added$/ do
+  assert(Step.find_by_title("Given I can view the projects page").title)
 end
