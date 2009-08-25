@@ -287,7 +287,7 @@ Then /^each entry should not have 'Feature:' as a prefix$/ do
 end
 
 Then /^each entry should display the features '(.*)' text$/ do |expected|
-  response.should have_selector :p do |content|
+  response.should have_selector :div do |content|
     content.should contain "#{expected}"
   end
 end
@@ -322,4 +322,8 @@ end
 Then /^the scenario should not be duplicationed$/ do
   response.should_not have_selector :input, 
                                   attribute = {:value => "Scenario: As a user I must give the project a brief description"}
+end
+
+Then /^each story should display its steps$/ do
+  response.should have_selector :div, attribute = {:class => "steps"}
 end

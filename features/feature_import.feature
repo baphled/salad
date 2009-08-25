@@ -119,6 +119,14 @@ Feature: Users should not have to manually input their features if they have alr
 		Then the scenario should not be duplicationed
     And a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 	
-	
-	
-	
+	Scenario: All scenario's should display the steps associated to it
+	  Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		Then I should see a list of features that will be imported
+		And each entry should be a feature file
+		And each entry should display the features its stories
+		And each story should display its steps
+		

@@ -22,7 +22,7 @@ describe "/projects/import.html.erb" do
   
   it "should trim from 'Feature:' feature line" do
     assigns[:list].each do |file|
-      response.should_not contain "Feature: "
+      response.should_not =~ "Feature: "
     end
   end
   
@@ -59,6 +59,13 @@ describe "/projects/import.html.erb" do
       response.should have_selector :form do |content|
         content.should have_selector :textarea
       end      
+    end
+  end
+  
+  it "should have a steps contain for each scenario" do
+    assigns[:list].each do |file|
+      response.should contain "Scenario: "        
+      response.should have_selector :div, attribute = {:class => "steps"}
     end
   end
 end

@@ -35,6 +35,7 @@
 				<% end %>				
 				<br>
 					<% @last = "" %>
+				<div class="steps">
 				<% scenario[:steps].each_with_index do |step,index| %>
 					<% if step.include?("And") %>
 						<% if @last.include?("Given")%>
@@ -50,6 +51,7 @@
 					<br/>
 					<% @last = step unless step.include?("And") %>
 				<% end %>
+				</div>
 				<br/>
 		<% end %>
 		</p>
