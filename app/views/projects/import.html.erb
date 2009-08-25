@@ -34,24 +34,17 @@
 					<b>Already added</b>
 				<% end %>				
 				<br>
-					<% @last = "" %>
-				<div class="steps">
-				<% scenario[:steps].each_with_index do |step,index| %>
-					<% if step.include?("And") %>
-						<% if @last.include?("Given")%>
-							<%=h step.sub(/And /,"Given ") %>
-						<% elsif @last.include?("When")%>
-							<%=h step.sub(/And /,"When ") %>
-						<% else @last.include?("Then")%>
-							<%=h step.sub(/And /,"Then ") %>
-						<% end %>
-					<% else %>
+				<ul class="steps">
+				<% Project.formatted_steps(scenario[:steps]).each do |step| %>
+					<li>
+						<% if Step.find_by_title step %>
+						<b><%=h step %></b>
+						<% else %>
 						<%=h step %>
-					<% end %>
-					<br/>
-					<% @last = step unless step.include?("And") %>
+						<% end %>
+					</li>
 				<% end %>
-				</div>
+				</ul>
 				<br/>
 		<% end %>
 		</p>

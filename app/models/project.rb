@@ -41,11 +41,31 @@ class Project < ActiveRecord::Base
       elsif @i_want.nil? and line =~ /\sI want/
         @i_want = line.strip
       elsif line =~ /\sScenario: /
-        @scenarios << {:story => line.strip,:steps =>@steps}
+        @scenarios << {:story => line.strip,:steps =>@steps }
         @steps = [] unless @steps.empty?
       elsif line =~ /\s(Given|When|Then|And) /
           @steps << line.strip
       end
     end
+  end
+  
+  def self.formatted_steps steps
+    last = nil
+    results = []
+     steps.each do |step|
+			 if step.include?("And")
+				 if last.include?("Given")
+				   results << step.sub(/And /,"Given ")
+				 elsif last.include?("When")
+					  results << step.sub(/And /,"When ")
+				 else last.include?("Then")
+					 results << step.sub(/And /,"Then ")
+				 end
+			 else
+				results << step
+			 end
+			 last = step unless step.include?("And")
+		 end
+		results
   end
 end

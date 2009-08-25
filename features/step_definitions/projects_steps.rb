@@ -24,6 +24,11 @@ Given /^the project does have a project location$/ do
   @project.update_attribute(:location,"#{RAILS_ROOT}")
 end
 
+Given /^a step already exists$/ do
+  response.should contain Step.find(4).title
+end
+
+
 When "I click (.*) (.*)" do |action,controller|
   visit "/#{controller}/#{action}"
 end
@@ -325,11 +330,15 @@ Then /^the scenario should not be duplicationed$/ do
 end
 
 Then /^each story should display its steps$/ do
-  response.should have_selector :div, attribute = {:class => "steps"}
+  response.should have_selector :ul, attribute = {:class => "steps"}
 end
 
 Then /^the feature should have at least on '(.*)'$/ do |step_prefix|
-  response.should have_selector :div, attribute = {:class => "steps"} do |step|
+  response.should have_selector :ul, attribute = {:class => "steps"} do |step|
     step.should contain step_prefix
   end
+end
+
+Then /^it should be highlighted$/ do
+  response.should have_selector :b, :content => "#{Step.find(4).title}"
 end

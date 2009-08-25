@@ -65,14 +65,14 @@ describe "/projects/import.html.erb" do
   it "should have a steps contain for each scenario" do
     assigns[:list].each do |file|
       response.should contain "Scenario: "        
-      response.should have_selector :div, attribute = {:class => "steps"}
+      response.should have_selector :ul , attribute = {:class => "steps"}
     end
   end
   
   it "should display a 'Given' step" do
     assigns[:list].each do |file|
       response.should contain "Scenario: "        
-      response.should have_selector :div, attribute = {:class => "steps"} do |step|
+      response.should have_selector :ul, attribute = {:class => "steps"} do |step|
         step.should contain "Given"
       end
     end
@@ -81,9 +81,22 @@ describe "/projects/import.html.erb" do
   it "should display a 'When' step" do
     assigns[:list].each do |file|
       response.should contain "Scenario: "        
-      response.should have_selector :div, attribute = {:class => "steps"} do |step|
+      response.should have_selector :ul, attribute = {:class => "steps"} do |step|
         step.should contain "When"
       end
     end
+  end
+  
+  it "should display a 'Then' step" do
+    assigns[:list].each do |file|
+      response.should contain "Scenario: "        
+      response.should have_selector :ul, attribute = {:class => "steps"} do |step|
+        step.should contain "Then"
+      end
+    end
+  end
+  
+  it "should highlight a step if it is already part of the system" do
+    response.should have_selector :b, :content => "#{Step.find(4).title}"
   end
 end
