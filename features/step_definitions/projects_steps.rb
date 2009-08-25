@@ -327,3 +327,9 @@ end
 Then /^each story should display its steps$/ do
   response.should have_selector :div, attribute = {:class => "steps"}
 end
+
+Then /^the feature should have at least on 'Given'$/ do
+  response.should have_selector :div, attribute = {:class => "steps"} do |step|
+    step.should contain "Given"
+  end
+end
