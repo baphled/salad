@@ -32,6 +32,15 @@ $(document).ready(function() {
 	
 	$('#myTabs').tabs();
 	
+	var accOpts = {
+		event:"click",
+		autoHeight:true,
+		fillSpace:true,
+		alwaysOpen:false,
+		navigation:true
+	}
+	$('#accordion').accordion(accOpts);
+	
 	$('#order_icon').click(function() {
 		$('#lists').toggleClass('active');
 		$('.order_box').toggle();

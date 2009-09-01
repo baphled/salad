@@ -1,19 +1,23 @@
+<ul id="accordion">
 <% scenarios.each do |scenario| %>
-	<%=h scenario[:story] %>
-	<% if Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
-		<b>Already added</b>
-	<% end %>				
-	<br>
-	<ul class="steps">
-	<% Story.formatted_steps(scenario[:steps]).each do |step| %>
-		<li>
-			<% if Step.find_by_title step %>
-			<b><%=h step %></b>
-			<% else %>
-			<%=h step %>
-			<% end %>
-		</li>
-	<% end %>
-	</ul>
-	<br/>
+	<li>
+		<a href="#" title="<%=h scenario[:story] %>">
+			<%=h scenario[:story] %>
+			<% if Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
+				<b>Already added</b>	
+			<% end %>						
+		</a>
+		<ul class="steps">
+		<% Story.formatted_steps(scenario[:steps]).each do |step| %>
+			<li>
+				<% if Step.find_by_title step %>
+				<b><%=h step %></b>
+				<% else %>
+				<%=h step %>
+				<% end %>
+			</li>
+		<% end %>
+		</ul>
+	</li>
 <% end %>
+</ul>

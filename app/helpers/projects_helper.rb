@@ -16,7 +16,7 @@ module ProjectsHelper
   def steps_imported? list
     list.each do |file|
       if Feature.find_by_title(file[:feature_title]).nil?
-        returning false
+        return false
   	  end
 	  end
   end

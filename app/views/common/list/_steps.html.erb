@@ -9,6 +9,7 @@
 <% end %>
 <div id="lists" class="steps">
 	<%= link_to "New Step", new_step_path %>
+	<%= will_paginate steps %>
 	<%= order_btn steps, order %>
 	<ul id="steps">
 	<% if !steps.blank? %>
@@ -26,6 +27,7 @@
 	    <% end %>
 	  <% end %>
 		</ul>
+		<%= will_paginate steps %>
 	<% else %>
 	<span>No steps present.</span>
 	<% end %>
