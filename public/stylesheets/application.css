@@ -46,7 +46,6 @@ a:hover {
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   11px;
-	
   line-height: 18px;
 }
 
@@ -74,7 +73,7 @@ body {
 	bottom:0;
 }
 #container {
-	height:auto;
+	height:100%;
 	width:100%;
 	display:inline-block;
 	position:relative;

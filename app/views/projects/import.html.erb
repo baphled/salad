@@ -9,54 +9,13 @@
 	<% end %>
 	</ul>
 <% @list.each do |file| %>
-<% if Feature.find_by_title(file[:feature_title]).nil? %>
+	<% if Feature.find_by_title(file[:feature_title]).nil? %>
 	<div id="<%=h file[:file].sub(/\./,"_") %>">
-		<%- form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
-			<%= text_area_tag "feature_title", file[:feature_title], :name=>"feature[title]", :size=>"35x5" %><br/>
-			<%= text_area_tag "feature_in_order", file[:in_order], :name=>"feature[in_order]", :size=>"35x5" %><br/>
-			<%= text_field_tag "feature_as_a", file[:as_a], :name=>"feature[as_a]", :size=>"35x5" %><br/>
-			<%= text_area_tag "feature_i_want", file[:i_want],:name=>"feature[i_want]" %><br/>
-		
-			<% if !Project.all.empty? %>
-		  	<% for project in Project.find :all %>
-					<%= check_box_tag "feature[project_ids][]", project.id %>
-					<%= project.title%><br/>
-				<% end %>
-				<% file[:scenarios].each do |scenario| %>
-					<% if not Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
-						<%= hidden_field_tag "feature[stories_attributes][][scenario]", scenario[:story].sub(/^Scenario: /,"").strip %>
-						<% Story.formatted_steps(scenario[:steps]).each do |step| %>
-							<%= hidden_field_tag "feature[stories_attributes][][steps][]", step %>
-						<%end %>
-					<% end %>
-				<% end %>
-			<% end %>
-		
-			<%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>
-		<% end %>
+		<%= render :partial => '/common/forms/feature_import', :locals => {:file => file}%>
 		<p>
-			<% file[:scenarios].each do |scenario| %>
-
-				<%=h scenario[:story] %>
-				<% if Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
-					<b>Already added</b>
-				<% end %>				
-				<br>
-				<ul class="steps">
-				<% Story.formatted_steps(scenario[:steps]).each do |step| %>
-					<li>
-						<% if Step.find_by_title step %>
-						<b><%=h step %></b>
-						<% else %>
-						<%=h step %>
-						<% end %>
-					</li>
-				<% end %>
-				</ul>
-				<br/>
-		<% end %>
+			<%= render :partial => '/common/scenario_steps', :locals => {:scenarios => file[:scenarios]}%>
 		</p>
 	</div>
-<% end %>
+	<% end %>
 <% end %>
 </div>
