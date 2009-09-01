@@ -6,6 +6,8 @@ class Feature < ActiveRecord::Base
   validates_presence_of     :as_a
   validates_presence_of     :i_want
   
+  validates_associated      :stories
+  
   has_many :feature_projects
   has_many :projects, :through => :feature_projects
   
@@ -30,25 +32,22 @@ class Feature < ActiveRecord::Base
   
   def stories_attributes=(stories_attributes)
     stories_attributes.each do |attributes|
-      stories.build({
-                      :scenario => attributes[:scenario].to_s.sub(/^Scenario: /,""),
+      stories.build({:scenario => attributes[:scenario].to_s.sub(/^Scenario: /,""),
                       :steps => build_steps(attributes[:steps]) })
     end
   end
   
   private
     def build_steps steps
-      results = []
+      new_steps = []
       steps.each do |step|
         if Step.find_by_title(step).nil?
-          new_step = Step.new(:title => step)
-          new_step.save
-          results << new_step
+          new_steps << Step.create(:title => step)
         else
-          results << Step.find_by_title(step)
+          new_steps << Step.find_by_title(step)
         end
       end
-      results
+      new_steps
     end
   
     def feature_scenarios story

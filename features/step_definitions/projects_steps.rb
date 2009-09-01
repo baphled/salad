@@ -346,3 +346,8 @@ end
 Then /^each imported stories step should be added$/ do
   assert(Step.find_by_title("Given I can view the projects page").title)
 end
+
+Then /^the project feature will be not be selectable\.$/ do
+  response.should_not have_selector :div,
+                                      attribute = {:id => "feature_project"}
+end
