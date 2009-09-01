@@ -41,10 +41,10 @@ class Project < ActiveRecord::Base
       elsif @i_want.nil? and line =~ /\sI want/
         @i_want = line.strip
       elsif line =~ /\sScenario: /
-        @scenarios << {:story => line.strip,:steps =>@steps }
         @steps = [] unless @steps.empty?
+        @scenarios << {:story => line.strip,:steps =>@steps }
       elsif line =~ /\s(Given|When|Then|And) /
-          @steps << line.strip
+          @scenarios.last[:steps] << line.strip
       end
     end
   end
