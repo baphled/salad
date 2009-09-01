@@ -28,6 +28,9 @@ Given /^a step already exists$/ do
   response.should contain Step.find(4).title
 end
 
+Given /^there are no features to import$/ do
+  Project.stub(:find_features).and_return []
+end
 
 When "I click (.*) (.*)" do |action,controller|
   visit "/#{controller}/#{action}"
@@ -351,3 +354,4 @@ Then /^the project feature will be not be selectable\.$/ do
   response.should_not have_selector :div,
                                       attribute = {:id => "feature_project"}
 end
+
