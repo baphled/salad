@@ -281,6 +281,7 @@ Then /^I should see a list of features that will be imported$/ do
 end
 
 Then /^each entry should be a feature file$/ do
+
   response.should_not have_selector :li, :content => " . " or ".." or "support" or "step_definitions"
 end
 
@@ -302,7 +303,7 @@ end
 
 
 Then /^each entry should display the features its stories$/ do
-  response.should have_selector :p  do |content|
+  response.should have_selector :li  do |content|
     content.should contain "Scenario: "
   end
 end
