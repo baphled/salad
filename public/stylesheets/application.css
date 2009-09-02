@@ -1,3 +1,10 @@
+* {
+	list-style:none;
+	list-style-position:outside;
+	list-type:none;
+	border-color:gray;
+	font: arial, serif;
+}
 
 a {
 	text-decoration:none;
@@ -319,4 +326,8 @@ div#right_column ul ul {
 	width:100%;
 	position:relative;
 	left:0;
+}
+
+#accordion li >a {
+	display:block;
 }
