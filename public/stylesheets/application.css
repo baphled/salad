@@ -319,7 +319,7 @@ div#right_column ul ul {
 	padding:0px;
 }
 
-#accordion {
+.accordion {
 	list-style-type:none;
 	padding-left:0;
 	margin:20px 0 0 0;
@@ -328,6 +328,6 @@ div#right_column ul ul {
 	left:0;
 }
 
-#accordion li >a {
+.accordion li >a {
 	display:block;
 }

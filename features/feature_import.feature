@@ -213,8 +213,3 @@ Feature: Users should not have to manually input their features if they have alr
 		  Then I should see a import link
 			When I click import
 			Then the message 'No features to import.' should be displayed
-	
-	
-	
-	
-	
