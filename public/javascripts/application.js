@@ -34,11 +34,11 @@ $(document).ready(function() {
 	
 	var accOpts = {
 		event:"click",
-		autoHeight:true,
+		autoHeight:false,
 		fillSpace:false,
 		navigation:true
 	}
-	$('#accordion').accordion(accOpts);
+	$('.accordion').accordion(accOpts);
 	
 	$('#order_icon').click(function() {
 		$('#lists').toggleClass('active');
