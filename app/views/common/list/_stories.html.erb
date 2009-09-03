@@ -1,9 +1,10 @@
 <div id="lists" class="stories">
 	<%= link_to "New Story", new_story_path %>
 	<%= order_btn stories, order %>
-	<ul id="stories">
 	<% if !stories.blank? %>
-	  <% stories.each_with_index do |story,index| %>
+		<%= will_paginate stories %>
+		<ul id="stories">
+		  <% stories.each_with_index do |story,index| %>
 	    <% content_tag_for :li, story do %>
 				<% div_for(story) do %>
 					<span class="order_box" style="display:none;">
@@ -20,9 +21,11 @@
 	    <% end %>
 	  <% end %>
 		</ul>
+		<%= will_paginate stories %>
 	<% else %>
 	<span>No stories present.</span>
 	<% end %>
+	
 </div>
 
 <%= sortable_element( "stories", :url => sort_stories_path, :handle => "order_box")%>

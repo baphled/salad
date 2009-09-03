@@ -5,6 +5,6 @@
 <% if !@feature.stories.blank? %>
 	<%= link_to "export feature", feature_export_path(@feature) %>
 <% end %>
-<%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories.all(:order=>"feature_stories.position"), :order =>true}%>
+<%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories.paginate(:page=>1,:per_page=>10,:order=>"feature_stories.position"), :order =>true}%>
 <%= render :partial => '/common/stories_hover', :locals => {:stories => @feature.stories}%>
 <%= render :partial => 'common/sidebar/story_steps', :locals => {:stories => @feature.stories}%>
