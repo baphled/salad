@@ -35,8 +35,7 @@ $(document).ready(function() {
 	var accOpts = {
 		event:"click",
 		autoHeight:true,
-		fillSpace:true,
-		alwaysOpen:false,
+		fillSpace:false,
 		navigation:true
 	}
 	$('#accordion').accordion(accOpts);

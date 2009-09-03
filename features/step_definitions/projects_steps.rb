@@ -301,7 +301,6 @@ Then /^each entry should display the features '(.*)' text$/ do |expected|
   end
 end
 
-
 Then /^each entry should display the features its stories$/ do
   response.should have_selector :li  do |content|
     content.should contain "Scenario: "
@@ -339,7 +338,7 @@ end
 
 Then /^the feature should have at least on '(.*)'$/ do |step_prefix|
   response.should have_selector :ul, attribute = {:class => "steps"} do |step|
-    step.should contain step_prefix
+    step.should contain step_prefix 
   end
 end
 
@@ -355,4 +354,3 @@ Then /^the project feature will be not be selectable\.$/ do
   response.should_not have_selector :div,
                                       attribute = {:id => "feature_project"}
 end
-
