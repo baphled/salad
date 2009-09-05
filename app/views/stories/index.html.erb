@@ -1,7 +1,13 @@
+<% content_for :js_head do %>
+	<%= javascript_include_tag "pagination" %>
+<% end %>
+
 <h3>Stories</h3>
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 
-<%= render :partial => '/common/list/stories', :locals => {:stories => @stories, :order =>false}%>
+<div id="stories">
+	<%= render :partial => '/common/list/stories', :locals => {:stories => @stories, :order =>false}%>
+</div>
 
 
 <%= render :partial => '/common/stories_hover', :locals => {:stories => @stories}%>
