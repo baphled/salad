@@ -1,16 +1,18 @@
 module ProjectsHelper
   def format_step step
     if step.include?("And")
-  		if @last.include?("Given")
-  			step.sub(/And /,"Given ")
-  		elsif @last.include?("When")
-  			step.sub(/And /,"When ")
-  		else @last.include?("Then")
-  			step.sub(/And /,"Then ")
-  	  end
-  	else
-  		step
-  	end    
+      prefix_check
+  	end
+  end
+  
+  def prefix_check
+    w%("Given, When, Then").each do |prefix|
+      if @last.include?(prefix)
+  			step.sub(/And /,"#{prefix} ")
+    	else
+    		step
+    	end
+  	end
   end
   
   def steps_imported? list
