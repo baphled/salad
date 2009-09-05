@@ -14,7 +14,7 @@
 <% @list.each do |file| %>
 	<% if Feature.find_by_title(file[:feature_title]).nil? %>
 	<div id="<%=h file[:file].sub(/\./,"_") %>">
-		<%= render :partial => '/common/forms/feature_import', :locals => {:file => file}%>
+		<%= render :partial => '/common/forms/feature_import', :locals => {:file => file, :feature => @feature}%>
 		<p>
 			<%= render :partial => '/common/scenario_steps', :locals => {:scenarios => file[:scenarios],:feature => file[:file].sub(/\./,"_")}%>
 		</p>

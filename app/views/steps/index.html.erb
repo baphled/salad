@@ -1,2 +1,8 @@
+<% content_for :js_head do %>
+	<%= javascript_include_tag "pagination" %>
+<% end %>
+
 <h3>Steps</h3>
+<div id="steps_list">
 <%= render :partial => '/common/list/steps', :locals => {:steps => @steps, :order =>false}%>
+</div>
