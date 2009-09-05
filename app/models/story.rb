@@ -15,13 +15,13 @@ class Story < ActiveRecord::Base
     results = []
      steps.each do |step|
 			 if step.include?("And")
-				 if last.include?("Given")
-				   results << step.sub(/And /,"Given ")
-				 elsif last.include?("When")
-					  results << step.sub(/And /,"When ")
-				 else last.include?("Then")
-					 results << step.sub(/And /,"Then ")
-				 end
+				 ["Given", "When", "Then"].each do |prefix|
+           if last.include?(prefix)
+       			step.sub(/And /,"#{prefix} ")
+         	else
+         		step
+         	end
+       	end
 			 else
 				results << step
 			 end
