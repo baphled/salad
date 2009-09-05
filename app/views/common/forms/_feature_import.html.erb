@@ -1,12 +1,16 @@
 <%- form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
-	<%= text_area_tag "feature_title", file[:feature_title], :name=>"feature[title]", :size=>"35x5" %><br/>
-	<%= text_area_tag "feature_in_order", file[:in_order], :name=>"feature[in_order]", :size=>"35x5" %><br/>
-	<%= text_field_tag "feature_as_a", file[:as_a], :name=>"feature[as_a]", :size=>"35x5" %><br/>
-	<%= text_area_tag "feature_i_want", file[:i_want],:name=>"feature[i_want]" %><br/>
-
+	<%= hidden_field_tag "feature[title]", file[:feature_title] %>
+	<%= hidden_field_tag "feature[in_order]", file[:in_order] %>
+	<%= hidden_field_tag "feature[as_a]", file[:as_a] %>
+	<%= hidden_field_tag "feature[i_want]", file[:i_want] %>
+	<label>Feature:</label>
+	<p><%= file[:feature_title]%></p>
+	<p><%= file[:in_order]%> </p>
+	<p><%= file[:as_a]%> </p>
+	<p><%= file[:i_want]%></p>
 	<% if !Project.all.empty? %>
   	<% for project in Project.find :all %>
-			<%= check_box_tag "feature[project_ids][]", project.id %>
+			<%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
 			<%= project.title%><br/>
 		<% end %>
 		<% file[:scenarios].each do |scenario| %>

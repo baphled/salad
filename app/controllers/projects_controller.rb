@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
   end
   
   def import
-    @feature = @project.features.new
+    @feature = @project.features.new(:projects=>[@project])
     @list = @project.find_features
   end
   
