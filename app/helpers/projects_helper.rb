@@ -1,11 +1,11 @@
 module ProjectsHelper
   def format_step step
     if step.include?("And")
-      prefix_check
+      check_step_prefix
   	end
   end
   
-  def prefix_check
+  def check_step_prefix
     w%("Given, When, Then").each do |prefix|
       if @last.include?(prefix)
   			step.sub(/And /,"#{prefix} ")
