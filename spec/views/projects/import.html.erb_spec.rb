@@ -4,6 +4,7 @@ describe "/projects/import.html.erb" do
   before(:each) do
     @project =Project.find(1)
     @project.location = "#{RAILS_ROOT}"
+    assigns[:feature] = mock_model(Feature,:null_object=>true)
     assigns[:list] = @project.find_features
   end
   
@@ -58,10 +59,10 @@ describe "/projects/import.html.erb" do
       response.should have_selector :form
     end
   
-    it "should have a text field with the feature title for all features" do
+    it "should have a hidden field with the feature title for all features" do
       assigns[:list].each do |file|
         response.should have_selector :form do |content|
-          content.should have_selector :textarea
+          content.should have_selector :input, attribute = {:type => "hidden"}
         end      
       end
     end

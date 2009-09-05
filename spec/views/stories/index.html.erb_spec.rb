@@ -4,7 +4,7 @@ describe "/stories/index.html.erb" do
   context "has stories" do
     before(:each) do
       assigns[:tags] = Story.tag_counts
-      assigns[:stories] = Story.find :all
+      assigns[:stories] = Story.paginate(:page => params[:page],:per_page => 10)
       render
     end
     
