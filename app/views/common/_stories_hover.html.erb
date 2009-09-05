@@ -1,9 +1,9 @@
 <% content_for :js_head do %>
 <script type="text/javascript">
 	$(document).ready(function() {
-	<% for story in stories %>
-		$('#story_<%=story.id %>').hover(displayStep,hideStep);
-	<% end %>
+		<% for story in stories %>
+			$('#story_<%=story.id %>').hover(displayStep,hideStep);
+		<% end %>
 	});
 	</script>
 <% end %>
