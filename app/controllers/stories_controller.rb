@@ -24,10 +24,7 @@ class StoriesController < ApplicationController
   end
   
   def edit
-    @steps = append_steps(params[:steps])
-    @story.steps.each do |step|
-      @steps << step
-    end
+    @steps = append_steps(params[:step_ids])
   end
   
   def new
@@ -37,20 +34,18 @@ class StoriesController < ApplicationController
     else
       @story = Story.new
     end
-    @steps = append_steps(params[:steps])
-    @story.steps.each do |step|
-      @steps << step
-    end
+    @steps = append_steps(params[:step_ids])
   end
   
-  def append_steps steps
+  def append_steps step_ids
     new_steps = []
-    if steps
-      steps.each do |step|
+    if step_ids
+      step_ids.each do |step|
         new_steps << Step.find(step)
       end
-    else
-      new_steps = @story.steps
+    end
+    @story.steps.each do |step|
+      new_steps << step
     end
     new_steps
   end
@@ -77,18 +72,6 @@ class StoriesController < ApplicationController
     end
   end
   
-  def add_step
-    @steps = Step.search(params[:search_text])
-    respond_to do |format|
-      if params[:id].nil?
-        format.html { redirect_to new_story_path(:steps=>@steps) }
-      else
-        @story = Story.find params[:id]
-        format.html { redirect_to edit_story_path(:story=>@story,:steps=>@steps) }
-      end
-    end
-  end
-  
   def steps
     @steps = @story.steps
   end
@@ -104,6 +87,18 @@ class StoriesController < ApplicationController
   def tag
     @stories = Story.find_tagged_with params[:tag]
     render :index
+  end
+  
+  def add_step
+    @steps = Step.search(params[:search_text])
+    respond_to do |format|
+      if params[:id].nil?
+        format.html { redirect_to new_story_path(:step_ids=>@steps) }
+      else
+        @story = Story.find params[:id]
+        format.html { redirect_to edit_story_path(:step_ids=>@steps) }
+      end
+    end
   end
   
   private

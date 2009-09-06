@@ -39,7 +39,7 @@ $(document).ready(function() {
 							$addr = $('form').attr('action') + "/new";
 						}
 						$('<li></li>')
-								.html('<a href="' + $addr + '?steps[]=' + step['step']['id'] + '">'+step['step']['title'] + '</a>')
+								.html('<a href="' + $addr + '?step_ids[]=' + step['step']['id'] + '">'+step['step']['title'] + '</a>')
 								.appendTo($autoComplete);
 					});
 					$autoComplete.show();
