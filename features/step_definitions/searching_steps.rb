@@ -1,5 +1,5 @@
 When /^I search for steps contain '(.*)'$/ do |search|
-  fill_in 'search', :with => "#{search}"
+  fill_in 'search_text', :with => "#{search}"
 end
 
 Then /^we should have a list of results$/ do
