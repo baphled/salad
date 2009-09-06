@@ -1,10 +1,12 @@
 <div id="lists" class="steps">
 	<%= link_to "New Step", new_step_path %>
-	<%= will_paginate steps %>
-	<%= order_btn steps, order %>
+	<% if @steps.methods.include? :total %>
+		<%= will_paginate @steps %>
+	<% end %>
+	<%= order_btn @steps, order %>
 	<ul id="steps">
-	<% if !steps.blank? %>
-	  <% steps.each_with_index do |step,index| %>
+	<% if !@steps.blank? %>
+	  <% @steps.each_with_index do |step,index| %>
 	    <% content_tag_for :li, step do %>
 				<div>
 					<span class="order_box" style="display:none;">
@@ -18,7 +20,9 @@
 	    <% end %>
 	  <% end %>
 		</ul>
-		<%= will_paginate steps %>
+		<% if @steps.methods.include? :total %>
+			<%= will_paginate steps %>
+		<% end %>
 	<% else %>
 	<span>No steps present.</span>
 	<% end %>

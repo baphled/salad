@@ -27,7 +27,7 @@ class FeaturesController < ApplicationController
         flash[:notice] = "Feature: #{@feature.title}, was created"
         format.html { redirect_to @feature }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "edit" }
       end
     end
   end

@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :find_story, :except => [:index,:new,:create,:sort,:tag]
+  before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag]
   
   before_filter :find_tags
   
@@ -20,9 +20,14 @@ class StoriesController < ApplicationController
   end
   
   def show
+    @steps = @story.steps
   end
   
   def edit
+    @steps = append_steps(params[:steps])
+    @story.steps.each do |step|
+      @steps << step
+    end
   end
   
   def new
@@ -32,9 +37,22 @@ class StoriesController < ApplicationController
     else
       @story = Story.new
     end
-    respond_to do |format|
-      format.html
+    @steps = append_steps(params[:steps])
+    @story.steps.each do |step|
+      @steps << step
     end
+  end
+  
+  def append_steps steps
+    new_steps = []
+    if steps
+      steps.each do |step|
+        new_steps << Step.find(step)
+      end
+    else
+      new_steps = @story.steps
+    end
+    new_steps
   end
   
   def update
@@ -59,7 +77,20 @@ class StoriesController < ApplicationController
     end
   end
   
+  def add_step
+    @steps = Step.search(params[:search_text])
+    respond_to do |format|
+      if params[:id].nil?
+        format.html { redirect_to new_story_path(:steps=>@steps) }
+      else
+        @story = Story.find params[:id]
+        format.html { redirect_to edit_story_path(:story=>@story,:steps=>@steps) }
+      end
+    end
+  end
+  
   def steps
+    @steps = @story.steps
   end
   
   def sort

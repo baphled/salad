@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :projects
   map.resources :features, :collection => {:sort => :post}
-  map.resources :stories, :collection => {:sort => :post}
+  map.resources :stories, :collection => {:sort => :post,:add_step => :get}
   map.resources :steps, :collection => {:sort => :post}
   
   map.project_tag 'projects/tag/:tag', :controller => 'projects', :action => 'tag'
@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.feature_export 'features/:id/export', :controller => 'features', :action => 'export'
   map.story_tag 'stories/tag/:tag', :controller => 'stories', :action => 'tag'
   
+  map.add_stories_step 'stories/:id/add_step', :controller => 'stories', :action => 'add_step'
   map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
   map.project_import 'projects/:id/import', :controller => 'projects', :action => 'import'
   map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'

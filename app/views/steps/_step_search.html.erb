@@ -1,0 +1,18 @@
+<% content_for :css_head do %>
+	<%= stylesheet_link_tag "search" %>
+<% end %>
+
+<% content_for :js_head do %>
+	<%= javascript_include_tag "search" %>
+	<%= javascript_include_tag "step_finder" %>
+<% end %>
+
+<% form_tag steps_path, :method=>'get', :id=>"search" do -%>
+	<%= label_tag :attribute, "Search for steps" %>
+  <%= text_field_tag "search_text" %>
+	<%= submit_tag "Search", :disable_with => 'Searching...', :name=>nil %>
+<% end -%>
+
+<% if not @search.nil? %>
+<span>Results (<%= @search.size.to_s %>)<span>
+<% end %>

@@ -11,3 +11,23 @@
 	<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
 	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
 <% end -%>
+
+<% content_for :css_head do %>
+	<%= stylesheet_link_tag "search" %>
+<% end %>
+
+<% content_for :js_head do %>
+	<%= javascript_include_tag "add_step" %>
+<% end %>
+
+<% if not @story.id.nil? %>
+	<% @path = add_stories_step_path(@story)%>
+<% else %>
+	<% @path = add_step_stories_path %>
+<% end %>
+
+<% form_tag @path, :method=>'get', :id=>"search" do -%>
+	<%= label_tag :search_text, "Search for steps" %>
+  <%= text_field_tag :search_text %>
+	<%= submit_tag "Search", :disable_with => 'Searching...' %>
+<% end -%>
