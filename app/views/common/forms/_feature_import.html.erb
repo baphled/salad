@@ -3,16 +3,17 @@
 	<%= hidden_field_tag "feature[in_order]", file[:in_order] %>
 	<%= hidden_field_tag "feature[as_a]", file[:as_a] %>
 	<%= hidden_field_tag "feature[i_want]", file[:i_want] %>
-	<label>Feature:</label>
+	<h3>Feature</h3>
 	<p><%= file[:feature_title]%></p>
-	<p><%= file[:in_order]%> </p>
-	<p><%= file[:as_a]%> </p>
-	<p><%= file[:i_want]%></p>
+	<p>
+		<%= file[:in_order]%>, <%= file[:as_a]%>, <%= file[:i_want].capitalize%>
+	</p>
 	<% if !Project.all.empty? %>
   	<% for project in Project.find :all %>
 			<%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
 			<%= project.title%><br/>
 		<% end %>
+		
 		<% file[:scenarios].each do |scenario| %>
 			<% if not Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
 				<%= hidden_field_tag "feature[stories_attributes][][scenario]", scenario[:story].sub(/^Scenario: /,"").strip %>
