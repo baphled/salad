@@ -8,6 +8,18 @@ class Step < ActiveRecord::Base
   has_many                :step_stories
   has_many                :stories, :through => :step_stories
   
+  def self.pagination_search search, page
+    if search
+      Step.paginate(:page => page,:per_page => 10, :conditions => ["title LIKE ?", "%#{search}%"])
+    else
+      Step.paginate(:page => page,:per_page => 10)
+    end
+  end
+  
+  def self.search search
+    Step.all(:all,:conditions => ["title LIKE ?", "%#{search}%"])
+  end
+  
   def first_word
     title.split(" ").first
   end

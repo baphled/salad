@@ -2,7 +2,8 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/steps/index.html.erb" do
   before(:each) do
-    assigns[:steps] = Step.paginate(:page => params[:page], :conditions => ["title LIKE ?", "%#Given%"])
+    assigns[:steps] = Step.pagination_search "Given",1
+    assigns[:search] = Step.search "Given"
     render
   end
   

@@ -5,10 +5,12 @@
 
 <% form_tag steps_path, :method=>'get' do -%>
   <%= text_field_tag :search %>
-	<%= submit_tag "Submit", :disable_with => 'Submitting...', :name=>nil %>
+	<%= submit_tag "Search", :disable_with => 'Searching...', :name=>nil %>
 <% end -%>
-<% if not :search.nil? %>
+
+<% if not @search.nil? %>
 <span>Results (<%= @search.size.to_s %>)<span>
+
 <% end %>
 <h3>Steps</h3>
 <div id="steps_list">

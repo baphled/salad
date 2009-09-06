@@ -8,6 +8,10 @@ Then /^we should have a list of results$/ do
   end
 end
 
+Then /^we click search$/ do
+  click_button 'Search'
+end
+
 Then /^all results should contain 'Given'$/ do
   results = Step.find(:all, :conditions => ["title LIKE ?", "%Given%"])
   response.should contain "Results (#{results.size.to_s})"

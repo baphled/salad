@@ -4,12 +4,8 @@ class StepsController < ActionController::Base
   layout "application"
   
   def index
-    if params[:search]
-      @steps = Step.paginate(:page => params[:page],:per_page => 10, :conditions => ["title LIKE ?", "%#{params[:search]}%"])
-      @search = Step.find(:all, :conditions => ["title LIKE ?", "%#{params[:search]}%"])
-    else
-      @steps = Step.paginate(:page => params[:page],:per_page => 10)
-    end
+    @steps = Step.pagination_search(params[:search],params[:page])
+    @search = Step.search(params[:search])
   end
   
   def new
