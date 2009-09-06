@@ -26,7 +26,6 @@ $(document).ready(function() {
 		$searchInput.trigger('focus');
 	});
 	
-	$('#search_text').attr('autocomplete', 'off');
 	$('#search_text').keyup(function() {
 		$.ajax({
 			'url': '/steps',

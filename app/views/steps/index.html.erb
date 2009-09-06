@@ -1,22 +1,5 @@
-<% content_for :css_head do %>
-	<%= stylesheet_link_tag "search" %>
-<% end %>
+<%= render 'step_search' %>
 
-<% content_for :js_head do %>
-	<%= javascript_include_tag "pagination" %>
-	<%= javascript_include_tag "search" %>
-<% end %>
-
-<% form_tag steps_path, :method=>'get', :id=>"search" do -%>
-	<%= label_tag :attribute, "Search for steps" %>
-  <%= text_field_tag "search_text" %>
-	<%= submit_tag "Search", :disable_with => 'Searching...', :name=>nil %>
-<% end -%>
-
-<% if not @search.nil? %>
-<span>Results (<%= @search.size.to_s %>)<span>
-
-<% end %>
 <h3>Steps</h3>
 <div id="steps_list">
 <%= render :partial => '/common/list/steps', :locals => {:steps => @steps, :order =>false}%>
