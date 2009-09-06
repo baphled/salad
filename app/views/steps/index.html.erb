@@ -8,7 +8,7 @@
 	<%= submit_tag "Submit", :disable_with => 'Submitting...', :name=>nil %>
 <% end -%>
 <% if not :search.nil? %>
-<span>Results (<%= @steps.size.to_s %>)<span>
+<span>Results (<%= @search.size.to_s %>)<span>
 <% end %>
 <h3>Steps</h3>
 <div id="steps_list">
