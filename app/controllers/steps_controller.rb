@@ -4,7 +4,11 @@ class StepsController < ActionController::Base
   layout "application"
   
   def index
-    @steps = Step.paginate(:page => params[:page],:per_page => 10)
+    if params[:search]
+      @steps = Step.paginate(:page => params[:page], :conditions => ["title LIKE ?", "%#{params[:search]}%"])
+    else
+      @steps = Step.paginate(:page => params[:page],:per_page => 10)
+    end
   end
   
   def new

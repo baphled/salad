@@ -2,6 +2,13 @@
 	<%= javascript_include_tag "pagination" %>
 <% end %>
 
+<span>Results (<%= @steps.size.to_s %>)<span>
+
+<% form_tag steps_path, :method=>'get' do -%>
+  <%= text_field_tag :search %>
+	<%= submit_tag "Submit", :disable_with => 'Submitting...' %>
+<% end -%>
+
 <h3>Steps</h3>
 <div id="steps_list">
 <%= render :partial => '/common/list/steps', :locals => {:steps => @steps, :order =>false}%>
