@@ -102,7 +102,7 @@ Feature: Users should not have to manually input their features if they have alr
 		When I click import
 		And select the features feature
 		And the feature is visible
-		And we click import feature
+		And we click import projects
     Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 	
 	Scenario: When importing a new feature, we should not add scenarios that already exist
@@ -115,7 +115,7 @@ Feature: Users should not have to manually input their features if they have alr
 		And the feature is visible
 		And a scenario already exists
 		Then we scenario should display that is is already added
-		And we click import feature
+		And we click import projects
 		Then the scenario should not be duplicationed
     And a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 	
@@ -186,7 +186,7 @@ Feature: Users should not have to manually input their features if they have alr
 	  Then I should see a import link
 		When I click import
 		Then I should see a list of features that will be imported
-		And we click import feature
+		And we click import projects
     Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 		And each imported stories step should be added
 		
@@ -197,7 +197,7 @@ Feature: Users should not have to manually input their features if they have alr
 	  Then I should see a import link
 		When I click import
 		Then I should see a list of features that will be imported
-		And we click import feature
+		And we click import projects
     Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 		And each imported stories step should be added
 		When the project is viewed
@@ -221,15 +221,6 @@ Feature: Users should not have to manually input their features if they have alr
   Then I should see a import link
 	When I click import
 	Then I should see a list of features that will be imported
-	And we click import feature
+	And we click import projects
   Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 	And we should be redirected to the projects import page
-	
-	Scenario: A user must give a feature a tag before if they want to import it
-	  Given there is a project
-		And the project does have a project location
-		And there are no features to import
-	  When the project is viewed
-	  Then I should see a import link
-		When I click import
-		Then the tags should be save

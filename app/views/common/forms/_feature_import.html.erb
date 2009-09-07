@@ -8,6 +8,8 @@
 	<p>
 		<%= file[:in_order]%>, <%= file[:as_a]%>, <%= file[:i_want].capitalize%>
 	</p>
+	<%= label_tag "feature tags:"%>
+	<%= text_field_tag "feature[tag_list]" %><br/>
 	<% if !Project.all.empty? %>
   	<% for project in Project.find :all %>
 			<%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>

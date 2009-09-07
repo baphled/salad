@@ -91,6 +91,10 @@ When /^I click import$/ do
   click_link 'Import'
 end
 
+When /^we fill in the features tags$/ do
+  fill_in 'feature_tag_list', :with => 'new feature, something cool'
+end
+
 Then /^submit the form$/ do
   click_button 'Submit'
 end
@@ -319,7 +323,7 @@ When /^the feature is visible$/ do
   response.should have_selector :div, attribute = {:id => "projects_feature"}
 end
 
-When /^we click import feature$/ do
+When /^we click import projects$/ do
   click_button 'Import projects'
 end
 
@@ -357,8 +361,4 @@ end
 
 Then /^we should be redirected to the projects import page$/ do
   current_url.should =~ /import/
-end
-
-Then /^the tags should be save$/ do
-  pending
 end
