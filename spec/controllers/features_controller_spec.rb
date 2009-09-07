@@ -8,6 +8,7 @@ describe FeaturesController do
   describe "POST, create" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature",:null_object=>true)
+      request.env["HTTP_REFERER"] = projects_path mock_model(Project,:id=>1,:null_object=>true)
       Feature.stub!(:new).and_return @feature
       
     end

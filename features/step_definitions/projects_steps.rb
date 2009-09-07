@@ -354,3 +354,11 @@ Then /^the project feature will be not be selectable\.$/ do
   response.should_not have_selector :div,
                                       attribute = {:id => "feature_project"}
 end
+
+Then /^we should be redirected to the projects import page$/ do
+  current_url.should =~ /import/
+end
+
+Then /^the tags should be save$/ do
+  pending
+end

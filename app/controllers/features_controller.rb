@@ -25,7 +25,11 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.save
         flash[:notice] = "Feature: #{@feature.title}, was created"
-        format.html { redirect_to @feature }
+        if "Submit" == params[:commit]
+          format.html { redirect_to @feature }
+        else
+          format.html { redirect_to :back }
+        end
       else
         format.html { render :action => "edit" }
       end
