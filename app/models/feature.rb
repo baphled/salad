@@ -55,12 +55,12 @@ class Feature < ActiveRecord::Base
     end
     
     def story_titles story
-      @_titles = ""
+      titles = ""
       story.steps.each do |step|
-        @_titles += Feature::format_step step, @_last_step
+        titles += Feature::format_step step, @_last_step
         @_last_step = step
       end
-      @_titles
+      titles
     end
     
     def feature_title
