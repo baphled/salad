@@ -3,15 +3,19 @@
 <p>Description: <%=h @project.description %></p>
 <p>Aim: <%=h @project.aim %></p>
 <p>Created at: <%=h @project.created_at %></p>
+
 <% if @project.created_at != @project.updated_at %>
 	<p>Updated at: <%=h @project.updated_at %></p>
 <% end %>
+
 <% if not @project.location.nil? %>
-	<%= link_to "Import", project_import_path(@project) %>
+	<%= link_to "Import", project_import_path(@project) %> |
 <% end %>
 
-<%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>true}%>
+<%= link_to "Edit project", edit_project_path(@project) %> |
 
+<%= render :partial => '/common/list/features', :locals => {:features => 	@project.features.all(:order=>"feature_projects.position"), :order =>true}%>
 
 <%= render :partial => 'common/sidebar/feature_stories', :locals => {:features => @project.features}%>
+
 <%= render :partial => '/common/features_hover', :locals => {:features => @project.features}%>

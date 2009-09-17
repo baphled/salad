@@ -232,3 +232,11 @@ Feature: We need to a way to store our stories within a project, this will help 
 		And the project information should be saved
     And I should be redirected to the new project
     And a flash message 'Project: A project was created' should be displayed
+
+	Scenario: A user can edit a project when it is being viewed
+		Given there is a project
+	  When the project is viewed
+		Then I should be able to edit a the project information
+	
+	
+	

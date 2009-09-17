@@ -371,3 +371,10 @@ end
 When /^we export the features$/ do
   click_link 'export feature'
 end
+
+
+
+Then /^I should be able to edit a the project information$/ do
+	save_and_open_page
+	click_link 'Edit project'
+end
