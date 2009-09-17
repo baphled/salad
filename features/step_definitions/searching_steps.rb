@@ -26,3 +26,7 @@ Then /^the resulting step should be added to the story$/ do
     end
   end
 end
+
+Then /^there should be 'Given' steps listed$/ do
+  pending
+end

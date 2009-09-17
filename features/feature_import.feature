@@ -215,12 +215,12 @@ Feature: Users should not have to manually input their features if they have alr
 		Then the message 'No features to import.' should be displayed
 	
 	Scenario: We should be redirected to the projects view when we import a new feature
-  Given there is a project
-	And the project does have a project location
-  When the project is viewed
-  Then I should see a import link
-	When I click import
-	Then I should see a list of features that will be imported
-	And we click import projects
-  Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
-	And we should be redirected to the projects import page
+  	Given there is a project
+		And the project does have a project location
+	  When the project is viewed
+	  Then I should see a import link
+		When I click import
+		Then I should see a list of features that will be imported
+		And we click import projects
+	  Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
+		And we should be redirected to the projects import page

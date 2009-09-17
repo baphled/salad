@@ -362,3 +362,12 @@ end
 Then /^we should be redirected to the projects import page$/ do
   current_url.should =~ /import/
 end
+
+When /^we visit the new feature$/ do
+  feature = Feature.find_by_title("We need to a way to store our stories within a project, this will help organise our stories.")
+  visit feature_path(feature)
+end
+
+When /^we export the features$/ do
+  click_link 'export feature'
+end

@@ -37,19 +37,6 @@ class StoriesController < ApplicationController
     @steps = append_steps(params[:step_ids])
   end
   
-  def append_steps step_ids
-    new_steps = []
-    if step_ids
-      step_ids.each do |step|
-        new_steps << Step.find(step)
-      end
-    end
-    @story.steps.each do |step|
-      new_steps << step
-    end
-    new_steps
-  end
-  
   def update
     params[:story][:feature_ids] ||= []
     scenario = @story.scenario
@@ -102,6 +89,19 @@ class StoriesController < ApplicationController
   end
   
   private
+  def append_steps step_ids
+    new_steps = []
+    if step_ids
+      step_ids.each do |step|
+        new_steps << Step.find(step)
+      end
+    end
+    @story.steps.each do |step|
+      new_steps << step
+    end
+    new_steps
+  end
+  
   
     def find_tags
       @tags = Story.tag_counts

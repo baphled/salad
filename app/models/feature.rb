@@ -32,17 +32,18 @@ class Feature < ActiveRecord::Base
   
   def stories_attributes=(stories_attributes)
     stories_attributes.each do |attributes|
-      stories.build({:scenario => attributes[:scenario].to_s.sub(/^Scenario: /,""),
-                      :steps => build_steps(attributes[:steps]) })
+      stories.create({:scenario => attributes[:scenario].to_s.sub(/^Scenario: /,""),
+                      :steps => build_steps(Story.formatted_steps attributes[:steps]) })
     end
   end
   
   private
     def build_steps steps
-      new_steps = []
+      new_steps = [] if new_steps.nil?
       steps.each do |step|
         if Step.find_by_title(step).nil?
           new_step = Step.create(:title => step)
+          new_step.save!
           new_steps << new_step
         else
           new_steps << Step.find_by_title(step)

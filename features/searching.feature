@@ -15,7 +15,15 @@ Feature: We need to be able to carry out searches on various parts of the applic
 	  When I edit the first story
 		And I search for steps contain 'Given'
 		And we click search
-		And the resulting step should be added to the story
-	
-	
-	
+		Then the resulting step should be added to the story
+		
+	Scenario: We need to make sure that already stored steps retained in the search results
+	  Given I can view the stories page
+	  When I edit the first story
+		And I search for steps contain 'Given'
+		And we click search
+		Given I can view the stories page
+	  When I edit the first story
+		And I search for steps contain 'Then'
+		And we click search
+		Then there should be 'Given' steps listed

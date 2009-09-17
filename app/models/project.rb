@@ -30,20 +30,18 @@ class Project < ActiveRecord::Base
   end
   
   def import file
-    @steps = []
     File.new("#{self.location}/features/#{file}").each do |line|
-      if line =~ /^Feature: /
+      if line.strip =~ /^Feature: /
         @feature_title = line.strip
-      elsif @in_order.nil? and line =~ /In order/
+      elsif @in_order.nil? and line.strip =~ /^In order/
         @in_order = line.strip
-      elsif @as_a.nil? and line =~ /\sAs a/
+      elsif @as_a.nil? and line.strip =~ /^As a/
         @as_a = line.strip
-      elsif @i_want.nil? and line =~ /\sI want/
+      elsif @i_want.nil? and line.strip =~ /^I want/
         @i_want = line.strip
-      elsif line =~ /\sScenario: /
-        @steps = [] unless @steps.empty?
-        @scenarios << {:story => line.strip,:steps =>@steps }
-      elsif line =~ /\s(Given|When|Then|And) /
+      elsif line.strip =~ /^Scenario: /
+        @scenarios << {:story => line.strip,:steps => [] }
+      elsif line.strip =~ /^(Given|When|Then|And)/
           @scenarios.last[:steps] << line.strip
       end
     end
