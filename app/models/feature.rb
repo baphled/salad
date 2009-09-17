@@ -42,9 +42,7 @@ class Feature < ActiveRecord::Base
       new_steps = [] if new_steps.nil?
       steps.each do |step|
         if Step.find_by_title(step).nil?
-          new_step = Step.create(:title => step)
-          new_step.save!
-          new_steps << new_step
+          new_steps << Step.create(:title => step)
         else
           new_steps << Step.find_by_title(step)
         end
