@@ -15,11 +15,11 @@ class Feature < ActiveRecord::Base
   has_many :stories, :through => :feature_stories
   
   def export
-    @_exported = feature_title
+    exported = feature_title
     self.stories.each do |story|
-      @_exported += "#{feature_scenarios story}\n"
+      exported += "#{feature_scenarios story}\n"
     end
-    @_exported
+    exported
   end
   
   def self.format_step step,last_step
@@ -56,15 +56,16 @@ class Feature < ActiveRecord::Base
     
     def story_titles story
       titles = ""
+			last_step = nil
       story.steps.each do |step|
-        titles += Feature::format_step step, @_last_step
-        @_last_step = step
+        titles += Feature::format_step step, last_step
+        last_step = step
       end
       titles
     end
     
     def feature_title
-      @_head =     "Feature: #{title}\n  In order #{in_order}\n"
-      @_head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
+      head =     "Feature: #{title}\n  In order #{in_order}\n"
+      head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
     end
 end
