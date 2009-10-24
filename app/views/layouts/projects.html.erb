@@ -8,7 +8,6 @@
 <!--[if lt IE 8]>
   <link rel="stylesheet" href="/stylesheets/compiled/ie.css" type="text/css" media="screen, projection">
 <![endif]-->
-<%= stylesheet_link_tag "application" %>
 <%= stylesheet_link_tag "jquery-ui" %>
 
 <%= yield :css_head %>
@@ -26,18 +25,18 @@
 				</div>
 			</div>
 		</div>
-		<div id="flash" class="span-24">
+		<div id="flash">
 			<% flash.each do |key, msg| %>
 				<%= content_tag :div, msg, :id => key %>
 			<% end %>
 		</div>
-		<div id="content" class="span-16">
+		<div id="content">
 			  	<%= yield :layout %>
 		</div>
-		<div id="sidebar" class="span-8">
+		<div id="sidebar">
 			<%= yield :side_bar %>
 		</div>
-		<div id="footer" class="span-24">
+		<div id="footer">
 			&copy;<%= Time.now.year %> Designed &amp; Developed by 
 			<a href="http://boodah.net">boodah.net</a>
 		</div>

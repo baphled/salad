@@ -2,7 +2,7 @@
 	<ul id="project_features">
 	<% if !projects.blank? %>
 	  <% for project in projects %>
-			<li id="project_<%=project.id%>_feature">
+			<li id="project_<%=project.id%>_feature" style="display: none;">
 				<h3><%=h project.title %></h3>
 			<% if !project.features.blank? %>				
 			  <% for feature in project.features %>
