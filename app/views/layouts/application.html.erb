@@ -25,6 +25,7 @@
 				</div>
 			</div>
 		</div>
+		<% if not flash.empty? %>
 		<div id="flash">
 			<% flash.each do |key, msg| %>
 				<% content_tag :div, :class => key do -%>
@@ -32,6 +33,7 @@
 				<% end -%>
 			<% end %>
 		</div>
+		<% end%>
 		<div id="content">
 			  	<%= yield :layout %>
 		</div>
