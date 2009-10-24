@@ -1,11 +1,15 @@
 // This import applies a global reset to any page that imports this stylesheet.
 @import blueprint/reset.sass
+
 // To configure blueprint, edit the partials/base.sass file.
 @import partials/base.sass
+
 // Styles for listing application information
 @import partials/lists.sass
+
 // Styles for applications cloud
 @import partials/cloud.sass
+
 // Styles for applications search functionality
 @import partials/search.sass
 
@@ -14,6 +18,7 @@
 
 // Styles for custom errors
 @import partials/custom_errors.sass
+
 // Import all the default blueprint modules so that we can access their mixins.
 @import blueprint
 
@@ -28,8 +33,6 @@
 //Recommended Blueprint configuration with scoping and semantic layout:
 +blueprint-typography("body.salad")
 +blueprint-scaffolding("body.salad")
-
-
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body.salad

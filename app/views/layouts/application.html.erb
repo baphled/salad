@@ -27,7 +27,9 @@
 		</div>
 		<div id="flash">
 			<% flash.each do |key, msg| %>
-				<%= content_tag :div, msg, :id => key %>
+				<% content_tag :div, :class => key do -%>
+					msg
+				<% end -%>
 			<% end %>
 		</div>
 		<div id="content">
