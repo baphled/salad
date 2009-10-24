@@ -7,34 +7,92 @@
 // Import the non-default scaffolding module.
 @import blueprint/modules/scaffolding.sass
 
-// To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
-+blueprint
+@import blueprint/modules/form.sass
+@import blueprint/modules/grid.sass
+
++blueprint-grid
 
 //Recommended Blueprint configuration with scoping and semantic layout:
 +blueprint-typography("body.salad")
 +blueprint-scaffolding("body.salad")
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
 body.salad
   +blueprint-utilities
   +blueprint-debug
   +blueprint-interaction
-  // Remove the scaffolding when you're ready to start doing visual design.
-  // Or leave it in if you're happy with how blueprint looks out-of-the-box
-form.salad
   +blueprint-form
-
-// Page layout can be done using mixins applied to your semantic classes and IDs:
-body.salad
+  #header
+    :height 80px
+    #menu
+      :background #4B5425
+      :color #C1C4B5
+      :display block
+      :height 30px
+    #logo
+      :font-size 32px
+    #slogan, #logo
+      :padding-left 30px
+  #footer
+    :text-align center
+  #header, #footer
+    :height 80px
+    :color #c1c4b5
+    :background #89a407
+    :height auto
+    +column(!blueprint_grid_columns)
   #container
     +container
-  #header, #footer
-    +column(!blueprint_grid_columns)
-  #sidebar
-    // One third of the grid columns, rounding down. With 24 cols, this is 8.
-    !sidebar_columns = floor(!blueprint_grid_columns / 3)
-    +column(!sidebar_columns)
-  #content
-    // Two thirds of the grid columns, rounding up.
-    // With 24 cols, this is 16.
-    !content_columns = ceil(2 * !blueprint_grid_columns / 3)
-    // true means it's the last column in the row
-    +column(!content_columns, true)
+    :background #F5F9DD
+    :border thin solid black
+    #sidebar
+      // One third of the grid columns, rounding down. With 24 cols, this is 8.
+      !sidebar_columns = floor(!blueprint_grid_columns / 3)
+      +column(!sidebar_columns)
+      :height auto
+      :min-height 500px
+      :width 259px
+      :background #785c17
+      :border-left thin solid #89A407
+      :margin-right 0px
+      :display inline-block
+      :margin-top 0px
+      :margin-bottom 0px
+      :overflow hidden
+      :position relative
+      :right 0
+      :top 0
+    #content
+      :padding 30px
+      // Two thirds of the grid columns, rounding up.
+      // With 24 cols, this is 16.
+      !content_columns = ceil(2 * !blueprint_grid_columns / 3)
+      // true means it's the last column in the row
+      +column(!content_columns, true)
+      #lists ul, #sidebar ul
+        :list-style none
+        :list-style-position outside
+      #lists ul > li.project
+        :background #FCFDEF none repeat scroll 0 0
+        :border-bottom thin solid #BACA54
+        :border-top thin solid #EDF2BF
+        :margin 3px
+        :min-height 35px
+        :padding 5px 8px 0
+        .list_content
+          :display inline-block
+          :padding-left 13px
+          :width 74%
+      li span.icons
+        :bottom 5px
+        :float right
+        :height 20px
+        :top 4px
+        :width 88px
+        a
+          :float left
+      span.active, span.order_box, li span.icons
+        :background #89A407 none repeat scroll 0 0
+        :border thin solid #785C17
+        :display inline-block
+        :position relative
