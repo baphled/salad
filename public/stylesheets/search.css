@@ -5,9 +5,9 @@
 .overlabel label {
 	color:#999999;
 	cursor:text;
-	left:6px;
+	left:9px;
 	position:absolute;
-	top:13px;
+	top:23px;
 }
 
 ul.autocomplete {

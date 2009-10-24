@@ -1,1 +1,2 @@
 $('#stories').html("<%= escape_javascript(render :partial => '/common/list/stories', :locals => {:stories => @stories, :order =>false})%>");
+$('ul#story_steps').html("<%= escape_javascript(render :partial => '/common/list/story_steps', :locals => {:stories => @stories})%>");

@@ -1,0 +1,18 @@
+<% if !stories.blank? %>
+  <% for story in stories %>
+		<li id="story_<%=story.id%>_step" style="display: none;">
+			<h3><%=h story.scenario %></h3>
+		<% if !story.steps.blank? %>
+		<ul>
+		  <% for step in story.steps %>
+			    <li><%=h format_step(step) %></li>
+		  <% end %>
+		</ul>
+		<%else%>
+			Story does not have any steps yet.
+		<% end %>
+		</li>
+  <% end %>
+<% else %>
+  <li>No stories</li>
+<% end %>

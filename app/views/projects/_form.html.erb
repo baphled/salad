@@ -3,11 +3,14 @@
 <% end %>
 
 <%- form_for project,:builder => ValidatingFormBuilder do |f| -%>
+	<fieldset>
+		<legend>New Project</legend>
 		<%= f.text_field :title %>
 		<%= f.text_area :description, :rows => 4 %>
 		<%= f.text_area :aim, :rows => 4 %>
 		<%= f.text_field :location %>
 		<%= f.text_field :tag_list %>
+		
 		<% if !Feature.all.empty? %>
 		<fieldset>
 			<legend>Features</legend>
@@ -25,4 +28,5 @@
 		</ul>
 	</fieldset>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
-<%- end -%>
+	</fieldset>
+<%- end -%>	

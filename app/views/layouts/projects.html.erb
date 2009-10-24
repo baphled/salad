@@ -26,18 +26,18 @@
 				</div>
 			</div>
 		</div>
-		<div id="flash">
+		<div id="flash" class="span-24">
 			<% flash.each do |key, msg| %>
 				<%= content_tag :div, msg, :id => key %>
 			<% end %>
 		</div>
-		<div id="content">
+		<div id="content" class="span-16">
 			  	<%= yield :layout %>
 		</div>
-		<div id="sidebar">
+		<div id="sidebar" class="span-8">
 			<%= yield :side_bar %>
 		</div>
-		<div id="footer">
+		<div id="footer" class="span-24">
 			&copy;<%= Time.now.year %> Designed &amp; Developed by 
 			<a href="http://boodah.net">boodah.net</a>
 		</div>

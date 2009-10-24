@@ -3,7 +3,10 @@
 <% end %>
 
 <% form_for step,:builder => ValidatingFormBuilder do |f| -%>
-  <%= f.text_field :title %>
-	<%= render :partial => '/common/stories_checkboxes', :locals => {:step => step} %>
-	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+	<fieldset>		
+		<legend>New Step</legend>
+	  <%= f.text_field :title %>
+		<%= render :partial => '/common/stories_checkboxes', :locals => {:step => step} %>
+		<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+	</fieldset>
 <% end -%>

@@ -3,22 +3,28 @@
 <% end %>
 
 <% form_for @feature,:builder => ValidatingFormBuilder do |f| %>
+	<fieldset>
+		<legend>New Feature</legend>
 		<%= f.text_field :title %>
 		<%= f.text_field :in_order %>
 		<%= f.text_field :as_a %>
 		<%= f.text_field :i_want %>
 		<%= f.text_field :tag_list %>
-		<% if !Project.all.empty? %>
-	  	<% for project in Project.find :all %>
-		    <div>
-				<%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"project_id_#{project.id}"} %>
-					<%= project.title%>
-				</div>
+		
+		<fieldset>			
+			<legend>Projects</legend>
+			<% if !Project.all.empty? %>
+		  	<% for project in Project.find :all %>
+			    <div>
+					<%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"project_id_#{project.id}"} %>
+						<%= project.title%>
+					</div>
+				<% end %>
+			
+			
 			<% end %>
-			
-			
-		<% end %>
-	</p>
+		</fieldset>
 
 	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+	</fieldset>
 <% end -%>

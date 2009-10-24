@@ -3,13 +3,16 @@
 <% end %>
 
 <% form_for story,:builder => ValidatingFormBuilder do |f| -%>
-	<div id="form_content">
-			<%= f.text_area :scenario,:rows=>4 %>
-			<%= f.text_field :tag_list %>
-	</div>
-	<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
-	<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
-	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+	<fieldset>
+		<legend>New Story</legend>
+		<div id="form_content">
+				<%= f.text_area :scenario,:rows=>4 %>
+				<%= f.text_field :tag_list %>
+		</div>
+		<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
+		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
+		<%= f.submit "Submit", :disable_with => 'Submitting...' %>		
+	</fieldset>
 <% end -%>
 
 <% content_for :css_head do %>

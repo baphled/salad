@@ -1,23 +1,6 @@
 <% content_for :side_bar do %>
 	<ul id="story_steps">
-	<% if !stories.blank? %>
-	  <% for story in stories %>
-			<li id="story_<%=story.id%>_step" style="display: none;">
-				<h3><%=h story.scenario %></h3>
-			<% if !story.steps.blank? %>
-			<ul>
-			  <% for step in story.steps %>
-				    <li><%=h format_step(step) %></li>
-			  <% end %>
-			</ul>
-			<%else%>
-				Story does not have any steps yet.
-			<% end %>
-			</li>
-	  <% end %>
+	<%= render :partial => '/common/list/story_steps', :locals => {:stories => @stories} %>
 	</ul>
-	<% else %>
-	  <p>No stories</p>
-	<% end %>
 <% end %>
 
