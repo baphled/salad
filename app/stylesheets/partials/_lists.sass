@@ -1,9 +1,28 @@
 #content
   #lists
     :margin 23px
+    .order_icon
+      :bottom 5px
+      :float right
+      :height 20px
+      :width 88px
+      :top 4px
+    .order_box
+      :float left
+      :width 15px
+      :height 15px
+      :display inline-block
+      :text-align center
+      :margin 2px
+      :top 2px
     ul
       :list-style none
       :list-style-position outside
+    span.active, span.order_box, li span.icons
+      :background #89A407 none repeat scroll 0 0
+      :border thin solid #785C17
+      :display inline-block
+      :position relative
   #lists ul > li
     :background #FCFDEF none repeat scroll 0 0
     :border-bottom thin solid #BACA54
@@ -23,8 +42,3 @@
     :width 88px
     a
       :float left
-  span.active, span.order_box, li span.icons
-    :background #89A407 none repeat scroll 0 0
-    :border thin solid #785C17
-    :display inline-block
-    :position relative
