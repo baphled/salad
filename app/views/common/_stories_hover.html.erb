@@ -1,8 +1,8 @@
 <% content_for :js_head do %>
 <script type="text/javascript">
 	$(document).ready(function() {
-		<% for story in stories %>
-			$('#story_<%=story.id %>').hover(displayStep,hideStep);
+		<% stories.each_with_index do |story,index| %>
+			$('li.item_<%=index %>').hover(displayHoverList,hideHoverList);
 		<% end %>
 	});
 </script>

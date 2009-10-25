@@ -1,6 +1,6 @@
 <% if !stories.blank? %>
-  <% for story in stories %>
-		<li id="story_<%=story.id%>_step" style="display: none;">
+  <% stories.each_with_index do |story,index| %>
+		<li class="story_item_<%= index %>" style="display: none;">
 			<h3><%=h story.scenario %></h3>
 		<% if !story.steps.blank? %>
 		<ul>

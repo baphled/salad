@@ -1,6 +1,14 @@
 /**
 	Helps us display associated information from a list item
 **/
+function displayHoverList(event) {
+	$('li.' + this["className"].replace(' ','_')).show();
+}
+
+function hideHoverList(event) {
+	$('li.' + this["className"].replace(' ','_')).hide();
+}
+
 function displayFeature(event) {
 	$('#' + this["id"] + '_feature').show();
 }
@@ -17,13 +25,6 @@ function hideStory(event) {
 	$('#' + this["id"] + '_story').hide();
 }
 
-function displayStep(event) {
-	$('#' + this["id"] + '_step').show();
-}
-
-function hideStep(event) {
-	$('#' + this["id"] + '_step').hide();
-}
 /**
 	Used to toggle our order functionality
 **/
