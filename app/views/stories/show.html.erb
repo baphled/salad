@@ -7,6 +7,6 @@
 
 <% form_for @story do |f| -%>
 	<%= render :partial => '/common/steps_checkboxes', :locals => {:story => @story} %>
-	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+	<%= render :partial => "/common/save_button" %>
 <% end -%>
 

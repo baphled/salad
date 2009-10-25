@@ -1,4 +1,6 @@
 <% content_for :side_bar do %>
+	<%= render :partial => '/steps/step_search', :locals => {:story => story}%>
+	<br />
 	<%= error_messages_for :story %>
 <% end %>
 <%- semantic_form_for @story do |form| -%>
@@ -7,8 +9,7 @@
 		<%= form.inputs %>
 		<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
 		
-		<%= render :partial => '/steps/step_search', :locals => {:story => story}%>
-		<br />
+
 		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
 	
 		<%= render :partial => "/common/save_button" %>

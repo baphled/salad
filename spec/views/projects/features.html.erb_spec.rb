@@ -37,7 +37,7 @@ describe "/projects/features.html.erb" do
       end
 
       it "should display projects summary" do
-        response.should have_selector :div, attribute = {:class=>"project info"} do |project_info|
+        response.should have_selector :div, attribute = {:class=>"info"} do |project_info|
           project_info.should have_selector :span, :content => @project.title
           project_info.should have_selector :span, :content => @project.description
           project_info.should have_selector :span, :content => @project.aim

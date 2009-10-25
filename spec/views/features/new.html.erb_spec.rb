@@ -9,10 +9,7 @@ describe "/features/new.html.erb" do
   end
   
   it "should have a form" do
-    response.should have_tag("form[action=#{features_path}][method=post]") do
-      with_tag('input#feature_title[name=?]', "feature[title]")
-      with_tag('input#feature_submit[name=?]', "commit")
-    end
+    response.should have_tag("form[action=#{features_path}][method=post]")
   end
   
   it "should have a list of checkboxes for each project that is avaiable" do
