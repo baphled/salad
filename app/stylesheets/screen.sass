@@ -77,19 +77,19 @@ body.salad
       +no-bullets
       padding-top: 10px
     #content
+      // Two thirds of the grid columns, rounding up.
       !content_columns = ceil(2 * !blueprint_grid_columns / 3)
       // With 24 cols, this is 16.
       +column(!content_columns)
       padding-top: 10px
       margin: 10px 3px 10px 3px
-      // Two thirds of the grid columns, rounding up.
       :background #F5F9DD
       h3
         :padding 13px
       #info
-        +column(16, true)
         :margin-left 23px
-        :padding-bottom 10px
+        :padding-bottom 32px
+        :display inline-block
       .info, .summary
         +column(7.5)
         :height 150px

@@ -12,7 +12,7 @@ table { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inhe
 a img { border: none; }
 
 #content #lists { margin: 23px; }
-#content #lists span.order_icon { background: #785C17 none repeat scroll 0 0; border: thin solid #89A407; color: #C1C4B5; float: right; position: relative; right: 30px; top: -13px; text-align: center; height: 23px; width: 40px; }
+#content #lists span.order_icon { background: #785C17 none repeat scroll 0 0; border: thin solid #89A407; color: #C1C4B5; float: right; position: relative; right: 30px; top: -42px; text-align: center; height: 23px; width: 40px; }
 #content #lists .order_box { float: left; width: 15px; height: 15px; display: inline-block; text-align: center; margin: 2px; top: 2px; }
 #content #lists ul { list-style: none; list-style-position: outside; }
 #content #lists span.active, #content #lists span.order_box, #content #lists li span.icons { background: #89A407 none repeat scroll 0 0; border: thin solid #785C17; display: inline-block; position: relative; }
@@ -433,7 +433,6 @@ body.salad #container #sidebar li { list-style-type: none; margin-left: 0px; }
 body.salad #container #content { display: inline; float: left; margin-right: 10px; width: 630px; padding-top: 10px; margin: 10px 3px 10px 3px; background: #F5F9DD; }
 * html body.salad #container #content { overflow-x: hidden; }
 body.salad #container #content h3 { padding: 13px; }
-body.salad #container #content #info { display: inline; float: left; margin-right: 0; width: 630px; margin-left: 23px; padding-bottom: 10px; }
-* html body.salad #container #content #info { overflow-x: hidden; }
+body.salad #container #content #info { margin-left: 23px; padding-bottom: 32px; display: inline-block; }
 body.salad #container #content .info, body.salad #container #content .summary { display: inline; float: left; margin-right: 10px; width: 290px; height: 150px; border-top: thin solid #785C17; border-bottom: thin solid #785C17; }
 * html body.salad #container #content .info, * html body.salad #container #content .summary { overflow-x: hidden; }
