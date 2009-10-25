@@ -1,3 +1,6 @@
+@import compass/utilities/general.sass
+@import compass/utilities/links.sass
+
 // This import applies a global reset to any page that imports this stylesheet.
 @import blueprint/reset.sass
 
@@ -81,6 +84,8 @@ body.salad
       +column(!content_columns)
       #info
         +column(16, true)
+        :margin-left 23px
+        :padding-bottom 10px
       .info, .summary
         +column(7.5)
         :height 150px

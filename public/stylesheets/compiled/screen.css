@@ -21,7 +21,16 @@ a img { border: none; }
 #content li span.icons { bottom: 5px; float: right; height: 20px; top: 4px; width: 88px; }
 #content li span.icons a { float: left; }
 
-#cloud_tag { border-top: #89A407 thin solid; border-bottom: #89A407 thin solid; margin: auto; padding: 2px; margin-left: 10px; margin-top: 5px; margin-right: 10px; }
+#cloud_tag { font-size: 1em; line-height: 1.2em; border-top: #89A407 thin solid; border-bottom: #89A407 thin solid; margin: auto; padding: 2px; margin-left: 10px; margin-top: 5px; margin-right: 10px; }
+#cloud_tag .xxs, #cloud_tag .xs, #cloud_tag .s, #cloud_tag .l, #cloud_tag .xl, #cloud_tag .xxl { line-height: 1.2em; }
+#cloud_tag .xxs { font-size: 0.5em; }
+#cloud_tag .xs { font-size: 0.667em; }
+#cloud_tag .s { font-size: 0.75em; }
+#cloud_tag .l { font-size: 1.333em; }
+#cloud_tag .xl { font-size: 1.5em; }
+#cloud_tag .xxl { font-size: 2em; }
+#cloud_tag a { text-decoration: none; }
+#cloud_tag a:hover { text-decoration: underline; }
 #cloud_tag a:hover { color: #89A407; }
 #cloud_tag .css1 { font-size: 1.0em; }
 #cloud_tag .css2 { font-size: 1.2em; }
@@ -420,7 +429,7 @@ body.salad #container #sidebar { display: inline; float: left; margin-right: 0; 
 body.salad #container #sidebar li { padding-top: 20px; list-style: none; list-style-position: outside; }
 body.salad #container #content { display: inline; float: left; margin-right: 10px; width: 630px; }
 * html body.salad #container #content { overflow-x: hidden; }
-body.salad #container #content #info { display: inline; float: left; margin-right: 0; width: 630px; }
+body.salad #container #content #info { display: inline; float: left; margin-right: 0; width: 630px; margin-left: 23px; padding-bottom: 10px; }
 * html body.salad #container #content #info { overflow-x: hidden; }
 body.salad #container #content .info, body.salad #container #content .summary { display: inline; float: left; margin-right: 10px; width: 290px; height: 150px; border-top: thin solid #785C17; border-bottom: thin solid #785C17; }
 * html body.salad #container #content .info, * html body.salad #container #content .summary { overflow-x: hidden; }
