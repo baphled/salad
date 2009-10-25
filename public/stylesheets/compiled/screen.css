@@ -429,10 +429,10 @@ body.salad #header, body.salad #footer { height: 80px; color: #c1c4b5; backgroun
 * html body.salad #header, * html body.salad #footer { overflow-x: hidden; }
 body.salad #container { width: 950px; margin: 0 auto; overflow: hidden; display: inline-block; background: #F5F9DD; border: thin solid black; }
 body.salad #container { display: block; }
-body.salad #container #sidebar { display: inline; float: left; margin-right: 0; width: 310px; }
+body.salad #container #sidebar { display: inline; float: left; margin-right: 0; width: 310px; margin: 1px; }
 * html body.salad #container #sidebar { overflow-x: hidden; }
 body.salad #container #sidebar li { list-style-type: none; margin-left: 0px; }
-body.salad #container #content { display: inline; float: left; margin-right: 10px; width: 630px; }
+body.salad #container #content { display: inline; float: left; margin-right: 10px; width: 630px; margin: 1px; background: #F5F9DD; }
 * html body.salad #container #content { overflow-x: hidden; }
 body.salad #container #content #info { display: inline; float: left; margin-right: 0; width: 630px; margin-left: 23px; padding-bottom: 10px; }
 * html body.salad #container #content #info { overflow-x: hidden; }

@@ -3,8 +3,8 @@
 	<%= order_btn projects, order %>
 <% if !projects.blank? %>
   <ul>
-<% projects.each do |project| %>
-	<% content_tag_for :li, project do %>
+<% projects.each_with_index do |project, index| %>
+	<% content_tag_for(:li, project, :class=> "item_" + index.to_s ) do %>
 		<div>
 	  	<span class="list_content">
 				<b>Title: </b><%= project.title %><br/>

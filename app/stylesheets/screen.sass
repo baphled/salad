@@ -71,11 +71,14 @@ body.salad
       // true means it's the last column in the row
       +column(!sidebar_columns, true)
       +no-bullets
+      :margin 1px
     #content
       // Two thirds of the grid columns, rounding up.
-      // With 24 cols, this is 16.
       !content_columns = ceil(2 * !blueprint_grid_columns / 3)
+      // With 24 cols, this is 16.
       +column(!content_columns)
+      :margin 1px
+      :background #F5F9DD
       #info
         +column(16, true)
         :margin-left 23px
