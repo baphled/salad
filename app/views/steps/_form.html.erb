@@ -6,7 +6,7 @@
 	<fieldset>		
 		<legend>New Step</legend>
 	  <%= form.inputs %>
-		<%= form.buttons %>
+		<%= render :partial => "/common/save_button" %>
 		<%= render :partial => '/common/stories_checkboxes', :locals => {:step => step} %>
 	</fieldset>
 <% end %>

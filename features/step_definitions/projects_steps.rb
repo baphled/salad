@@ -96,7 +96,8 @@ When /^we fill in the features tags$/ do
 end
 
 Then /^submit the form$/ do
-  click_button 'Submit'
+	
+  click_button 'Save'
 end
 
 Then /^the project information should be saved$/ do
