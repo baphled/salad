@@ -1,9 +1,11 @@
-<% content_for :js_head do %>
-<script type="text/javascript">
-	$(document).ready(function() {
-		<% items.each_with_index do |item,index| %>
-			$('li.item_<%=index %>').hover(displayHoverList,hideHoverList);
-		<% end %>
-	});
-</script>
+<% if not items.nil? %>
+	<% content_for :js_head do %>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			<% items.each_with_index do |item,index| %>
+				$('li.item_<%=index %>').hover(displayHoverList,hideHoverList);
+			<% end %>
+		});
+	</script>
+	<% end %>
 <% end %>
