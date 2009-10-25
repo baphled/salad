@@ -1,4 +1,5 @@
 class Feature < ActiveRecord::Base
+	include MyActiveRecordExtensions
   acts_as_taggable
   
   validates_presence_of     :title

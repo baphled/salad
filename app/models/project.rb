@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+	include MyActiveRecordExtensions
   acts_as_taggable
   
   validates_presence_of     :title
@@ -46,5 +47,4 @@ class Project < ActiveRecord::Base
       end
     end
   end
-  
 end

@@ -32,11 +32,11 @@ describe "projects/show.html.erb" do
     end
   
     it "should display the created at field" do
-      response.should contain "#{@project.created_at}"
+      response.should contain "#{@project.creation_date}"
     end
     
     it "should display the date the project was updated" do
-      response.should_not contain "Updated at: #{@project.updated_at}"
+      response.should_not contain "Updated at: #{@project.updated_date}"
     end
   end  
   
@@ -55,7 +55,7 @@ describe "projects/show.html.erb" do
     end
     
     it "should display the date the project was updated" do
-      response.should contain "Updated at: #{@project.updated_at}"
+      response.should contain "Updated at: #{@project.updated_date}"
     end
   end
   

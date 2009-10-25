@@ -1,4 +1,5 @@
 class Step < ActiveRecord::Base
+	include MyActiveRecordExtensions
   validates_uniqueness_of :title
   validates_presence_of   :title
   validates_format_of     :title,
