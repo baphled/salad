@@ -32,7 +32,7 @@
 		<div id="flash">
 			<% flash.each do |key, msg| %>
 				<% content_tag :div, :class => key do -%>
-					msg
+					<%= msg %>
 				<% end -%>
 			<% end %>
 		</div>

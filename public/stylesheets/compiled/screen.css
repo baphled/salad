@@ -31,7 +31,6 @@ a img { border: none; }
 #cloud_tag .xxl { font-size: 2em; }
 #cloud_tag a { text-decoration: none; }
 #cloud_tag a:hover { text-decoration: underline; }
-#cloud_tag a:hover { color: #89A407; }
 #cloud_tag .css1 { font-size: 1.0em; }
 #cloud_tag .css2 { font-size: 1.2em; }
 #cloud_tag .css3 { font-size: 1.4em; }
@@ -42,7 +41,11 @@ a img { border: none; }
 .overlabel { position: relative; }
 .overlabel label { color: #999999; cursor: text; left: 9px; position: absolute; top: 9px; }
 
-#menu { padding-top: 6px; font-size: 16px; padding-left: 29px; background: #4B5425; color: #C1C4B5; display: block; height: 30px; }
+#menu { margin: 0; padding: 0; border: 0; outline: 0; overflow: hidden; display: inline-block; font-size: 16px; padding-left: 29px; background: #4B5425; color: #C1C4B5; height: 30px; }
+#menu { display: block; }
+#menu li { list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: [padding]; padding-right: [padding]; }
+#menu li.first { padding-left: 0px; }
+#menu li.last { padding-right: 0px; }
 #menu #menu-item { margin: auto; padding-left: 29px; padding-top: 4px; }
 #menu a:link, #menu a:active { color: #785C17; }
 #menu a:visited { color: #C1C4B5; }
@@ -413,9 +416,11 @@ body.salad input.text, body.salad input.title, body.salad textarea, body.salad s
 body.salad input.text:focus, body.salad input.title:focus, body.salad textarea:focus, body.salad select:focus { border: 1px solid #666666; }
 body.salad input.text, body.salad input.title { width: 300px; }
 body.salad textarea { width: 390px; height: 250px; }
-body.salad a { color: color #C1C4B5; text-decoration: none; }
-body.salad a:link, body.salad a:active, body.salad a:visited { color: #C1C4B5; }
-body.salad a:hover { color: #785C17; }
+body.salad a { color: #c1c4b5; color: inherit; text-decoration: inherit; cursor: inherit; }
+body.salad a:visited { color: #c1c4b5; }
+body.salad a:focus { color: #c1c4b5; }
+body.salad a:hover { color: #785c17; }
+body.salad a:active { color: #c1c4b5; }
 body.salad #header { height: 80px; }
 body.salad #header #logo { font-size: 32px; }
 body.salad #header #slogan, body.salad #header #logo { padding-left: 30px; }
@@ -426,7 +431,7 @@ body.salad #container { width: 950px; margin: 0 auto; overflow: hidden; display:
 body.salad #container { display: block; }
 body.salad #container #sidebar { display: inline; float: left; margin-right: 0; width: 310px; }
 * html body.salad #container #sidebar { overflow-x: hidden; }
-body.salad #container #sidebar li { padding-top: 20px; list-style: none; list-style-position: outside; }
+body.salad #container #sidebar li { list-style-type: none; margin-left: 0px; }
 body.salad #container #content { display: inline; float: left; margin-right: 10px; width: 630px; }
 * html body.salad #container #content { overflow-x: hidden; }
 body.salad #container #content #info { display: inline; float: left; margin-right: 0; width: 630px; margin-left: 23px; padding-bottom: 10px; }
