@@ -2,7 +2,7 @@
 	<ul id="project_features">
 	<% if !projects.blank? %>
 	  <% projects.each_with_index do |project, index| %>
-			<li id="project_<%=project.id%>_feature" class="project_item_<%= index %>" style="display: none;">
+			<li id="project_<%=project.id%>_feature" class="project_item_<%= index %> side_hover" style="display: none;">
 				<h3><%=h project.title %></h3>
 			<% if !project.features.blank? %>				
 			  <% for feature in project.features %>

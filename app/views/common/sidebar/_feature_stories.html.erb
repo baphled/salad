@@ -2,7 +2,7 @@
 	<ul id="feature_stories">
 	<% if !features.blank? %>
 	  <% features.each_with_index do |feature, index| %>
-			<li id="feature_<%=feature.id%>_story" class="feature_item_<%= index %>" style="display: none;">
+			<li id="feature_<%=feature.id%>_story" class="feature_item_<%= index %> side_hover" style="display: none;">
 				<h3><%=h feature.title %></h3>
 			<% if !feature.stories.blank? %>
 			  <% for story in feature.stories %>

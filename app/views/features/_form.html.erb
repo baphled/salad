@@ -2,7 +2,13 @@
 	<%= error_messages_for :feature %>
 <% end %>
 <%- semantic_form_for @feature do |form| -%>
-	<%= form.inputs :name => form_title(@feature, "Feature") %>
+	<% form.inputs :name => form_title(@feature, "Feature") do %>
+		<%= form.input :title %>
+		<%= form.input :in_order %>
+		<%= form.input :as_a %>
+		<%= form.input :i_want %>
+		<%= form.input :tag_list %>
+	<% end %>
 		<fieldset>			
 			<legend>Projects</legend>
 			<% if !Project.all.empty? %>
