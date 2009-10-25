@@ -2,11 +2,11 @@
 	<%= error_messages_for :step %>
 <% end %>
 
-<% form_for step,:builder => ValidatingFormBuilder do |f| -%>
+<%- semantic_form_for @step do |form| -%>
 	<fieldset>		
 		<legend>New Step</legend>
-	  <%= f.text_field :title %>
+	  <%= form.inputs %>
+		<%= form.buttons %>
 		<%= render :partial => '/common/stories_checkboxes', :locals => {:step => step} %>
-		<%= f.submit "Submit", :disable_with => 'Submitting...' %>
 	</fieldset>
-<% end -%>
+<% end %>

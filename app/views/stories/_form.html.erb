@@ -1,22 +1,15 @@
 <% content_for :side_bar do %>
 	<%= error_messages_for :story %>
 <% end %>
-
-<% form_for story,:builder => ValidatingFormBuilder do |f| -%>
+<%- semantic_form_for @story do |form| -%>
 	<fieldset>
 		<legend>New Story</legend>
-		<div id="form_content">
-				<%= f.text_area :scenario,:rows=>4 %>
-				<%= f.text_field :tag_list %>
-		</div>
+		<%= form.inputs %>
 		<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
 		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
-		<%= f.submit "Submit", :disable_with => 'Submitting...' %>		
+	
+		<%= form.buttons %>
 	</fieldset>
-<% end -%>
-
-<% content_for :css_head do %>
-	<%= stylesheet_link_tag "search" %>
 <% end %>
 
 <% content_for :js_head do %>

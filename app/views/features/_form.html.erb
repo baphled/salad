@@ -1,15 +1,10 @@
 <% content_for :side_bar do %>
 	<%= error_messages_for :feature %>
 <% end %>
-
-<% form_for @feature,:builder => ValidatingFormBuilder do |f| %>
+<%- semantic_form_for @feature do |form| -%>
 	<fieldset>
-		<legend>New Feature</legend>
-		<%= f.text_field :title %>
-		<%= f.text_field :in_order %>
-		<%= f.text_field :as_a %>
-		<%= f.text_field :i_want %>
-		<%= f.text_field :tag_list %>
+		<legend>New Feature</legend>		
+		<%= form.inputs %>
 		
 		<fieldset>			
 			<legend>Projects</legend>
@@ -20,11 +15,9 @@
 						<%= project.title%>
 					</div>
 				<% end %>
-			
-			
 			<% end %>
 		</fieldset>
-
-	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+		
+		<%= form.buttons %>
 	</fieldset>
 <% end -%>
