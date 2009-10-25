@@ -1,6 +1,6 @@
 <% content_for :side_bar do %>
 	<b>Tags</b><br/>
-	<div id="cloud_tag">
+	<div id="cloud_tag" class="ui-widget ui-widget-content ui-corner-all">
 		<% tag_cloud tags, %w(xxs, xs, s, l, xl, xxl) do |tag, css_class| %>
 		  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
 		<% end %>
