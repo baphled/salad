@@ -9,7 +9,7 @@
 @import partials/base.sass
 
 // Styles for listing application information
-@import partials/lists.sass
+/@import partials/lists.sass
 
 // Styles for applications cloud
 @import partials/cloud.sass
@@ -23,6 +23,7 @@
 // Styles for custom errors
 @import partials/custom_errors.sass
 
+@import partials/accordion.sass
 // Import all the default blueprint modules so that we can access their mixins.
 @import blueprint
 
@@ -44,6 +45,7 @@ body.salad
   +blueprint-debug
   +blueprint-interaction
   +blueprint-form
+  +no-bullets
   a
     +link-colors(#C1C4B5, #785C17, #C1C4B5, #C1C4B5, #C1C4B5)
     +unstyled-link
