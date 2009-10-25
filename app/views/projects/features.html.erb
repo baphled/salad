@@ -2,8 +2,11 @@
 	<%= stylesheet_link_tag 'features' %>
 <% end %>
 
-<%= render :partial => '/common/project_info', :locals => {:project => @project}%>
-<%= render :partial => '/common/project_summary', :locals => {:project => @project}%>
+<div id="project_info">
+	<h4>Project Info</h4>	
+	<%= render :partial => '/common/project_info', :locals => {:project => @project}%>
+	<%= render :partial => '/common/project_summary', :locals => {:project => @project}%>
+</div>
 
 <% if !@project.features.blank? %>
 	<%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>true}%>

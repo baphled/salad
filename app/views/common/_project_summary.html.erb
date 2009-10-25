@@ -1,9 +1,6 @@
-<div class="project_summary">
-	<h3>Project Summary</h3>
-	<div class='project info'>
-		<b>Number of features: </b><span><%= project.features.count %></span><br/>
-		<% if not project.features.blank? %>
-		<b>Last feature: </b><span><%= project.features.last.title %></span><br/>
-		<% end %>
-	</div>
+<div class='summary info'>
+	<b>Number of features: </b><span><%= project.features.count %></span><br/>
+	<% if not project.features.blank? %>
+	<b>Last feature: </b><span><%= project.features.last.title %></span><br/>
+	<% end %>
 </div>

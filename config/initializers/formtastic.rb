@@ -18,11 +18,11 @@
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)
-# Formtastic::SemanticFormBuilder.optional_string = "(optional)"
+Formtastic::SemanticFormBuilder.optional_string = "(optional)"
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list and :none
-# Formtastic::SemanticFormBuilder.inline_errors = :sentence
+Formtastic::SemanticFormBuilder.inline_errors = :list
 
 # Set the method to call on label text to transform or format it for human-friendly
 # reading when formtastic is user without object. Defaults to :humanize.
