@@ -40,15 +40,6 @@ body.salad
   +blueprint-debug
   +blueprint-interaction
   +blueprint-form
-  .info
-    +column(3)
-  .summary
-    +column(3,true)
-  .info
-    :width 300px
-    :height 150px
-    :border-top thin solid #785C17
-    :border-bottom thin solid #785C17
   a
     :color color #C1C4B5
     :text-decoration none
@@ -88,3 +79,11 @@ body.salad
       // With 24 cols, this is 16.
       !content_columns = ceil(2 * !blueprint_grid_columns / 3)
       +column(!content_columns)
+      #info
+        +column(16, true)
+      .info, .summary
+        +column(7.5)
+        :height 150px
+        :border-top thin solid #785C17
+        :border-bottom thin solid #785C17
+      

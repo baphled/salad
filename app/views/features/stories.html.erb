@@ -1,5 +1,9 @@
-<%= render :partial => '/common/feature_info', :locals => {:feature => @feature} %>
-<%= render :partial => '/common/feature_summary', :locals => {:feature => @feature} %>
+<div id="info">
+	<h4>Feature Info</h4>	
+	<%= render :partial => '/common/feature_info', :locals => {:feature => @feature} %>
+	<%= render :partial => '/common/feature_summary', :locals => {:feature => @feature} %>
+</div>
+
 <%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories.paginate(:page=>1,:order=>"feature_stories.position"), :order =>true} %>
 
 <%= render :partial => '/common/stories_hover', :locals => {:stories => @feature.stories.all(:order=>"feature_stories.position"), :order =>true} %>
