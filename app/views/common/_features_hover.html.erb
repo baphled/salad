@@ -1,9 +1,0 @@
-<% content_for :js_head do %>
-<script type="text/javascript">
-	$(document).ready(function() {
-		<% for feature in features %>
-			$('#feature_<%=feature.id %>').hover(displayStory, hideStory);
-		<% end %>
-	});
-	</script>
-<% end %>
