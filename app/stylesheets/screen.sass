@@ -44,12 +44,8 @@ body.salad
   +blueprint-interaction
   +blueprint-form
   a
-    :color color #C1C4B5
-    :text-decoration none
-    &:link, &:active, &:visited
-      :color #C1C4B5
-    &:hover
-      :color #785C17
+    +link-colors(#C1C4B5, #785C17, #C1C4B5, #C1C4B5, #C1C4B5)
+    +unstyled-link
   #header
     :height 80px
     #logo
