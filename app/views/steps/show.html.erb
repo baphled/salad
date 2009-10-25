@@ -1,5 +1,5 @@
 <b>Title: </b><%= @step.title %>
-<% form_for @step, :builder => ValidatingFormBuilder do |f| -%>
+<% semantic_form_for @step do |form| -%>
 <%= render :partial => '/common/stories_checkboxes', :locals => {:step => @step} %>
-<%= f.submit "Update", :disable_with => 'Updating...' %>  
+<%= form.buttons %>  
 <% end -%>

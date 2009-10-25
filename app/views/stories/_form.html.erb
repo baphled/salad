@@ -6,6 +6,9 @@
 		<legend>New Story</legend>
 		<%= form.inputs %>
 		<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
+		
+		<%= render :partial => '/steps/step_search', :locals => {:story => story}%>
+		<br />
 		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
 	
 		<%= form.buttons %>
@@ -22,8 +25,3 @@
 	<% @path = add_step_stories_path %>
 <% end %>
 
-<% form_tag @path, :method=>'get', :id=>"search" do -%>
-	<%= label_tag :search_text, "Search for steps" %>
-  <%= text_field_tag :search_text %>
-	<%= submit_tag "Search", :disable_with => 'Searching...' %>
-<% end -%>
