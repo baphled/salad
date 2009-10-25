@@ -2,10 +2,7 @@
 	<%= error_messages_for :feature %>
 <% end %>
 <%- semantic_form_for @feature do |form| -%>
-	<fieldset>
-		<legend>New Feature</legend>		
-		<%= form.inputs %>
-		
+	<%= form.inputs :name => form_title(@feature, "Feature") %>
 		<fieldset>			
 			<legend>Projects</legend>
 			<% if !Project.all.empty? %>

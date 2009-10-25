@@ -3,10 +3,7 @@
 <% end %>
 
 <%- semantic_form_for @step do |form| -%>
-	<fieldset>		
-		<legend>New Step</legend>
-	  <%= form.inputs %>
-		<%= render :partial => "/common/save_button" %>
+		<%= form.inputs :name => form_title(@step, "Step") %>
 		<%= render :partial => '/common/stories_checkboxes', :locals => {:step => step} %>
-	</fieldset>
+		<%= render :partial => "/common/save_button" %>
 <% end %>

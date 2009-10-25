@@ -3,11 +3,7 @@
 <% end %>
 
 <%- semantic_form_for @project do |form| -%>
-	<fieldset>
-		<legend>
-			<%= form_title(@project, "Project") %>
-		</legend>
-		<% form.inputs do %>
+		<% form.inputs :name => form_title(@project, "Project") do %>
 			<%= form.input :title %>
 			<%= form.input :description, :rows => 4 %>
 			<%= form.input :aim, :rows => 4 %>
@@ -33,5 +29,5 @@
 		</fieldset>
 		
 		<%= render :partial => "/common/save_button" %>
-	</fieldset>
+
 <% end -%>
