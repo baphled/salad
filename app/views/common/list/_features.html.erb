@@ -4,8 +4,8 @@
 	<ul id="features">
 <% if !features.blank? %>
 	<% features.each_with_index do |feature,index| %>
-		<% content_tag_for(:li, feature, :class=> "item_" + index.to_s ) do %>
-		<div>
+		<% content_tag_for(:li, feature) do %>
+			<% content_tag_for(:div, feature, :class=> "item_" + index.to_s ) do %>
 			<span class="order_box" style="display:none;">
 				<%= index+1 %>
 			</span>
@@ -17,9 +17,9 @@
 				<% end %>
 			</span>
 			<%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
-		</div>
 			<% end %>
 		<% end %>
+	<% end %>
 <% else %>
 	<li>No features present</li>
 <% end %>

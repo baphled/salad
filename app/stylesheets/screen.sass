@@ -67,24 +67,18 @@ body.salad
     +column(!blueprint_grid_columns)
   #container
     +container
+    :height auto
     :background #F5F9DD
     :border thin solid black
-    #sidebar
-      // One third of the grid columns, rounding down. With 24 cols, this is 8.
-      !sidebar_columns = floor(!blueprint_grid_columns / 3)
-      // true means it's the last column in the row
-      +column(!sidebar_columns, true)
-      +no-bullets
-      padding-top: 10px
-      .side_hover
-        padding-top: 10px
     #content
       // Two thirds of the grid columns, rounding up.
       !content_columns = ceil(2 * !blueprint_grid_columns / 3)
       // With 24 cols, this is 16.
       +column(!content_columns)
       margin: 10px 3px 10px 3px
-      :background #F5F9DD
+      background: #F5F9DD
+      min-height: 500px
+      height: auto
       h3
         :padding 13px
       #info
@@ -96,4 +90,13 @@ body.salad
         :height 150px
         :border-top thin solid #785C17
         :border-bottom thin solid #785C17
-      
+    #sidebar
+      // One third of the grid columns, rounding down. With 24 cols, this is 8.
+      !sidebar_columns = floor(!blueprint_grid_columns / 3)
+      // true means it's the last column in the row
+      +column(!sidebar_columns, true)
+      +no-bullets
+      :height auto
+      padding-top: 10px
+      .side_hover
+        padding-top: 10px      

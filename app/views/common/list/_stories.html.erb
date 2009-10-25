@@ -5,8 +5,8 @@
 		<%= will_paginate stories %>
 		<ul id="stories">
 		  <% stories.each_with_index do |story,index| %>
-	    <% content_tag_for(:li, story, :class=> "item_" + index.to_s ) do %>
-				<% div_for(story) do %>
+	    <% content_tag_for(:li, story) do %>
+				<% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
 					<span class="order_box" style="display:none;">
 						<%= index+1 %>
 					</span>

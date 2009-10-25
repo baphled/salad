@@ -9,14 +9,6 @@ function hideHoverList(event) {
 	$('li.' + this["className"].replace(' ','_')).hide();
 }
 
-function displayStory(event) {
-	$('#' + this["id"] + '_story').show();
-}
-
-function hideStory(event) {
-	$('#' + this["id"] + '_story').hide();
-}
-
 /**
 	Used to toggle our order functionality
 **/
@@ -34,6 +26,7 @@ $(document).ready(function() {
 	$('.accordion').accordion(accOpts);
 	
 	$('#lists').addClass('ui-widget ui-widget-content ui-corner-all');
+
 	
 	$('#order_icon').click(function() {
 		$('#lists').toggleClass('active');
