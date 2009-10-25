@@ -249,7 +249,7 @@ Then /^each of the (.*) should have a creation date$/ do |controller|
 end
 
 Then /^the project should have a creation date$/ do
-  response.should contain "#{@project.created_at}"
+  response.should contain "#{@project.creation_date}"
 end
 
 Then /^the projects date should be updated$/ do
@@ -258,7 +258,7 @@ Then /^the projects date should be updated$/ do
 end
 
 Then /^the projects updated field will be displayed$/ do
-  response.should contain "Updated at: #{@project.updated_at}"
+  response.should contain "Updated at: #{@project.updated_date}"
 end
 
 Then /^the projects updated field will not be displayed$/ do

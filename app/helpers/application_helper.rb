@@ -12,4 +12,12 @@ module ApplicationHelper
       render :partial => '/common/order', :locals => {:order => order}
   	end
   end
+
+	def form_title item, title
+		if item.id
+			"Edit " + title
+		else
+			"New " + title
+		end
+	end
 end

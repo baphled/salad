@@ -100,5 +100,5 @@ end
 
 
 Then /^the features updated field will be displayed$/ do
-  response.should contain "Updated at: #{@feature.updated_at}"
+  response.should contain "Updated at: #{@feature.updated_date}"
 end

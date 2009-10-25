@@ -4,7 +4,9 @@
 
 <%- semantic_form_for @project do |form| -%>
 	<fieldset>
-		<legend>New Project</legend>
+		<legend>
+			<%= form_title(@project, "Project") %>
+		</legend>
 		<% form.inputs do %>
 			<%= form.input :title %>
 			<%= form.input :description, :rows => 4 %>
