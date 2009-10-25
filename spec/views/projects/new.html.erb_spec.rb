@@ -13,15 +13,6 @@ describe "projects/new.html.erb" do
   
   describe "new project form" do
     
-    it "should have a title" do
-      response.should have_tag("form[action=#{projects_path}][method=post]") do
-        with_tag('input#project_title[name=?]', "project[title]")
-        with_tag('textarea#project_description[name=?]', "project[description]")
-        with_tag('textarea#project_aim[name=?]', "project[aim]")
-        with_tag('input#project_submit[name=?]', "commit")
-      end
-    end
-    
     it "should have a list of checkboxes for each project that is avaiable" do
       response.should have_selector :form do |content|
         @features.each do |feature|

@@ -9,14 +9,6 @@ function hideHoverList(event) {
 	$('li.' + this["className"].replace(' ','_')).hide();
 }
 
-function displayFeature(event) {
-	$('#' + this["id"] + '_feature').show();
-}
-
-function hideFeature(event) {
-	$('#' + this["id"] + '_feature').hide();
-}
-
 function displayStory(event) {
 	$('#' + this["id"] + '_story').show();
 }
@@ -32,14 +24,6 @@ function hideStory(event) {
 $(document).ready(function() {
 	
 	$('#myTabs').tabs();
-	
-	var accOpts = {
-		event:"click",
-		autoHeight:false,
-		fillSpace:false,
-		navigation:true
-	}
-	$('.accordion').accordion(accOpts);
 	
 	$('#order_icon').click(function() {
 		$('#lists').toggleClass('active');
