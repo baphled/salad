@@ -1,4 +1,5 @@
 <% content_for :side_bar do %>
+	<% if not tags.empty? %>
 	<div id="cloud_tag" class="ui-widget ui-widget-content ui-corner-all">
 	<h5>Tags</h5>
 	<hr />
@@ -6,5 +7,6 @@
 		  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
 		<% end %>
 	</div>
+	<% end %>
 <% end %>
 

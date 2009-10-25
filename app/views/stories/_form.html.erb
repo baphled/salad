@@ -4,9 +4,10 @@
 	<%= error_messages_for :story %>
 <% end %>
 <%- semantic_form_for @story do |form| -%>
-	<fieldset>
-		<legend>New Story</legend>
-		<%= form.inputs %>
+		<% form.inputs :name => form_title(@story, "Project") do %>
+			<%= form.input :scenario %>
+			<%= form.input :tag_list %>
+		<% end %>
 		<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
 		
 

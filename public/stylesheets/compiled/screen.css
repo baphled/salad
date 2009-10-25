@@ -964,7 +964,6 @@ body.salad #container {
     float: left;
     margin-right: 10px;
     width: 630px;
-    padding-top: 10px;
     margin: 10px 3px 10px 3px;
     background: #F5F9DD; }
     * html body.salad #container #content {
