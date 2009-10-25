@@ -2,8 +2,9 @@
 	<%= javascript_include_tag "pagination" %>
 <% end %>
 
-<%= render 'step_search' %>
-
+<% content_for :side_bar do %>
+	<%= render 'step_search' %>
+<% end %>
 <h3>Steps</h3>
 <div id="steps_list">
 <%= render :partial => '/common/list/steps', :locals => {:steps => @steps, :order =>false}%>

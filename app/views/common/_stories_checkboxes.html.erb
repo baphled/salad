@@ -1,6 +1,6 @@
 <%= viewable_link "view steps", "fieldset_stories" %>
 <% if !Story.all.empty? %>
-<fieldset id="fieldset_stories">
+<fieldset id="fieldset_stories" class="views">
 	<legend>Stories</legend>
 	<ul id="left_list">
 	 <% for story in Story.find :all %>

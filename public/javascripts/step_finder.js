@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  var $autoComplete = $('<ul class="autocomplete"></ul>')
+			.hide()
+			.insertAfter('#search_text');
+			
 	$('#search_text').keyup(function() {
 		$.ajax({
 			'url': '/steps',

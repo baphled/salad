@@ -9,7 +9,8 @@
 		<%= form.input :i_want %>
 		<%= form.input :tag_list %>
 	<% end %>
-		<fieldset>			
+		<%= viewable_link "view projects", "fieldset_projects" %>
+		<fieldset id="fieldset_projects" class="views">
 			<legend>Projects</legend>
 			<% if !Project.all.empty? %>
 		  	<% for project in Project.find :all %>

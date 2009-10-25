@@ -1,7 +1,7 @@
 <%= viewable_link "view features", "fieldset_features" %>
 
 <% if !Feature.all.empty? %>
-<fieldset id="fieldset_features">
+<fieldset id="fieldset_features" class="views">
 <legend>Features</legend>
 <ul id="left_list">
  <% for feature in Feature.find :all %>
