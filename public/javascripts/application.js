@@ -34,7 +34,10 @@ $(document).ready(function() {
 	}
 	$('.accordion').accordion(accOpts);
 	
+
 	$('#lists').addClass('ui-widget ui-widget-content ui-corner-all');
+	$('#lists > ul > li').addClass('ui-widget ui-widget-content ui-corner-all');
+	
   $('.views').hide();
 	
 	$('#order_icon').click(function() {
