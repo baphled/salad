@@ -11,6 +11,15 @@ table { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inhe
 
 a img { border: none; }
 
+#content #lists { margin: 23px; }
+#content #lists .order_icon { bottom: 5px; float: right; height: 20px; width: 88px; top: 4px; }
+#content #lists .order_box { float: left; width: 15px; height: 15px; display: inline-block; text-align: center; margin: 2px; top: 2px; }
+#content #lists ul { list-style: none; list-style-position: outside; }
+#content #lists span.active, #content #lists span.order_box, #content #lists li span.icons { background: #89A407 none repeat scroll 0 0; border: thin solid #785C17; display: inline-block; position: relative; }
+#content #lists ul > li { background: #FCFDEF none repeat scroll 0 0; border-bottom: thin solid #BACA54; border-top: thin solid #EDF2BF; margin: 3px; min-height: 35px; padding: 5px 8px 0; }
+#content #lists ul > li .list_content { display: inline-block; padding-left: 13px; width: 74%; }
+#content li span.icons { bottom: 5px; float: right; height: 20px; top: 4px; width: 88px; }
+#content li span.icons a { float: left; }
 
 #cloud_tag { font-size: 1em; line-height: 1.2em; border-top: #89A407 thin solid; border-bottom: #89A407 thin solid; margin: auto; padding: 2px; margin-left: 10px; margin-top: 5px; margin-right: 10px; }
 #cloud_tag .xxs, #cloud_tag .xs, #cloud_tag .s, #cloud_tag .l, #cloud_tag .xl, #cloud_tag .xxl { line-height: 1.2em; }
