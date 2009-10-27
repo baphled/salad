@@ -33,8 +33,7 @@ $(document).ready(function() {
 	  navigation: true
 	}
 	$('.accordion').accordion(accOpts);
-	
-
+  
 	$('#lists').addClass('ui-widget ui-widget-content ui-corner-all');
 	$('#lists > ul > li').addClass('ui-widget ui-widget-content ui-corner-all');
 	
@@ -43,5 +42,5 @@ $(document).ready(function() {
 	$('#order_icon').click(function() {
 		$('#lists').toggleClass('active');
 		$('.order_box').toggle();
-	})
+	});
 });

@@ -1,6 +1,9 @@
 <% content_for :side_bar do %>
 	<%= error_messages_for :feature %>
 <% end %>
+
+<%= render :partial => "/common/hover_dialog" %>
+
 <%- semantic_form_for @feature do |form| -%>
 	<% form.inputs :name => form_title(@feature, "Feature") do %>
 		<%= form.input :title %>

@@ -2,6 +2,8 @@
 	<%= error_messages_for :project %>
 <% end %>
 
+<%= render :partial => "/common/hover_dialog" %>
+
 <%- semantic_form_for @project do |form| -%>
 		<% form.inputs :name => form_title(@project, "Project") do %>
 			<%= form.input :title %>

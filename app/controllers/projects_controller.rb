@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   
-  before_filter :find_project, :except => [:index,:new,:create,:tag]
+  before_filter :find_project, :except => [:index,:new,:create,:tag,:tags]
   
   before_filter :find_tags
   
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
   
   def show
   end
-  
+	
   def destroy
     @project.destroy
 
@@ -60,12 +60,18 @@ class ProjectsController < ApplicationController
     @feature = @project.features.new(:projects=>[@project])
     @list = @project.find_features
   end
-  
+  	
   def tag
     @projects = Project.find_tagged_with params[:tag]
     render :index
   end
   
+	def tags
+		respond_to do |format|
+			format.json  { render :json => @tags }
+		end
+	end
+	
   private
   
     def find_tags

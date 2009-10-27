@@ -3,6 +3,9 @@
 	<br />
 	<%= error_messages_for :story %>
 <% end %>
+
+<%= render :partial => "/common/hover_dialog" %>
+
 <%- semantic_form_for @story do |form| -%>
 		<% form.inputs :name => form_title(@story, "Project") do %>
 			<%= form.input :scenario %>

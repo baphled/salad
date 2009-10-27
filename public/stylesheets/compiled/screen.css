@@ -50,6 +50,8 @@ a img { border: none; }
 
 .ui-accordion .ui-accordion-content-active { display: block; margin: 0px; }
 
+.hover { position: relative; top: 10px; }
+
 .container { width: 950px; margin: 0 auto; overflow: hidden; display: inline-block; }
 .container { display: block; }
 
