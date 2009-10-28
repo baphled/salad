@@ -1,7 +1,12 @@
 $(document).ready(function() {
   
-  var $resource = 'project'
-  var $tagInput = $('input#'+ $resource + '_tag_list');
+  var $formAction = $('form').attr('action');
+  var $formID = $('form').attr('id');
+  
+  var $resourceSingular = $formID.substring(4,$formID.length);
+  var $resourcePlural = $formAction.substring(1,$formAction.length);
+  
+  var $tagInput = $('input#'+ $resourceSingular + '_tag_list');
   
   var $hoverDialog = $("<div></div>")
       .addClass('hover')
@@ -14,9 +19,9 @@ $(document).ready(function() {
   var $hoverSelect = $('<li></li>').addClass('hover_select');
 
   $tagInput.focus(function() {
-    $('.hover').fadeIn();
+    $url = '/' + $resourcePlural + "/tags.json";
     $.ajax({
-    	'url': "/projects/tags.json",
+    	'url': $url,
     	'dataType': 'json',
     	'type': 'GET',
     	'success': function(data) {
@@ -36,6 +41,7 @@ $(document).ready(function() {
     			});
     		}
     	}
-    });    
+    });
+    $('.hover').fadeIn();
   });
 });

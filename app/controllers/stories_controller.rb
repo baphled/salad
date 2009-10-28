@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag]
+  before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag, :tags]
   
   before_filter :find_tags
   

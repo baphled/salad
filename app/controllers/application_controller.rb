@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+	def tags
+		respond_to do |format|
+			format.json  { render :json => @tags }
+		end
+	end
 end

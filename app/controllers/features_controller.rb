@@ -1,5 +1,5 @@
 class FeaturesController < ApplicationController
-  before_filter :find_feature, :except => [:index,:new,:create,:sort,:tag]
+  before_filter :find_feature, :except => [:index,:new,:create,:sort,:tag, :tags]
   
   before_filter :find_tag
   
