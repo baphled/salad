@@ -2,3 +2,4 @@ log
 tmp
 app/stylesheets/.sass-cache
 config/database.yml
+vendor
