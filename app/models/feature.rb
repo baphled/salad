@@ -23,14 +23,6 @@ class Feature < ActiveRecord::Base
     exported
   end
   
-  def self.format_step step,last_step
-    if !last_step.nil? && last_step.first_word == step.first_word
-      return "    #{step.convert_prefix}\n"
-    else
-      return "    #{step.title}\n"
-    end
-  end
-  
   def stories_attributes=(stories_attributes)
     stories_attributes.each do |attributes|
       stories.create({:scenario => attributes[:scenario].to_s.sub(/^Scenario: /,""),
@@ -39,6 +31,14 @@ class Feature < ActiveRecord::Base
   end
   
   private
+    def self.format_step step,last_step
+      if !last_step.nil? && last_step.first_word == step.first_word
+        return "    #{step.convert_prefix}\n"
+      else
+        return "    #{step.title}\n"
+      end
+    end
+    
     def build_steps steps
       new_steps = [] if new_steps.nil?
       steps.each do |step|

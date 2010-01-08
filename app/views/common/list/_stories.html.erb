@@ -6,18 +6,18 @@
 		<ul id="stories">
 		  <% stories.each_with_index do |story,index| %>
 	    <% content_tag_for(:li, story) do %>
-				<% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
-					<span class="order_box" style="display:none;">
-						<%= index+1 %>
-					</span>
-		    	<span class="list_content">
-						<b>Scenario: </b><%=h story.scenario %><br/>
-						<% if !story.step_ids.empty? %>
-							<%= link_to "Steps", story_steps_path(story), {:id=>"story_#{story.id}_steps"} %>
-						<% end %>
-					</span>
-					<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
+			<% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
+				<span class="order_box" style="display:none;">
+					<%= index+1 %>
+				</span>
+	    	<span class="list_content">
+				<b>Scenario: </b><%=h story.scenario %><br/>
+			</span>
+				<% if !story.step_ids.empty? %>
+					<%= link_to "Steps", story_steps_path(story), {:id=>"story_#{story.id}_steps"} %>
 				<% end %>
+				<%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
+			<% end %>
 	    <% end %>
 	  <% end %>
 		</ul>
