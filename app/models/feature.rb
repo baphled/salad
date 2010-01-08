@@ -31,14 +31,6 @@ class Feature < ActiveRecord::Base
   end
   
   private
-    def self.format_step step,last_step
-      if !last_step.nil? && last_step.first_word == step.first_word
-        return "    #{step.convert_prefix}\n"
-      else
-        return "    #{step.title}\n"
-      end
-    end
-    
     def build_steps steps
       new_steps = [] if new_steps.nil?
       steps.each do |step|
@@ -59,7 +51,7 @@ class Feature < ActiveRecord::Base
       titles = ""
 			last_step = nil
       story.steps.each do |step|
-        titles += Feature::format_step step, last_step
+        titles += step.formatted last_step
         last_step = step
       end
       titles
