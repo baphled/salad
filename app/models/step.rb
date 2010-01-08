@@ -28,4 +28,12 @@ class Step < ActiveRecord::Base
   def convert_prefix
     title.sub first_word, "And"
   end
+  
+  def formatted last_step
+    if !last_step.nil? && last_step.first_word == self.first_word
+      return "    #{self.convert_prefix}\n"
+    else
+      return "    #{title}\n"
+    end
+  end
 end

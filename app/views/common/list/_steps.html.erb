@@ -13,7 +13,7 @@
 						<%= index+1 %>
 					</span>
 		    	<span class="list_content">
-						<%=h format_step step %>
+						<%=h step.formatted @steps[index -1] %>
 					</span>
 					<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
 				</div>

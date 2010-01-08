@@ -1,11 +1,11 @@
 <% if !stories.blank? %>
   <% stories.each_with_index do |story,index| %>
 		<li class="story_item_<%= index %> side_hover" style="display: none;">
-			<h3><%=h story.scenario %></h3>
+		<h3><%=h story.scenario %></h3>
 		<% if !story.steps.blank? %>
 		<ul>
-		  <% for step in story.steps %>
-			    <li><%=h format_step(step) %></li>
+		  <% story.steps.each_with_index do |step, index| %>
+			    <li><%=h step.formatted story.steps[index -1] %></li>
 		  <% end %>
 		</ul>
 		<%else%>
