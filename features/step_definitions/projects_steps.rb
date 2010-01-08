@@ -32,10 +32,6 @@ Given /^there are no features to import$/ do
   Project.stub(:find_features).and_return []
 end
 
-When "I click (.*) (.*)" do |action,controller|
-  visit "/#{controller}/#{action}"
-end
-
 When /^the project already exists$/ do
   @project = Project.new(:title=>"A project",
               :description=>"This is a description",
@@ -108,9 +104,6 @@ Then "I should be redirected to the new $controller" do |controller|
   current_url.should_not eql "/#{controller}/new"
 end
 
-Then "a flash message '(.*)' should be displayed" do |message|
-  flash.should contain "#{message}"
-end
 
 Then /^I should be redirected to the form$/ do
   response.should have_selector :form
