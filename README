@@ -28,5 +28,9 @@ GitHub integration
 Install
 Download via http://github.com/baphled/salad
 cd salad
+rake gems:install &&
+rake gems:unpack &&
+rake gems:unpack:dependencies
+
 script/server
 Then point your browser to http://localhost:3000/projects
