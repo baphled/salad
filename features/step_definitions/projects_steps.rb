@@ -17,7 +17,7 @@ Given /^there are projects$/ do
 end
 
 Given /^the project does not have a project location$/ do
-
+ @project.stub!(:location).and_return nil
 end
 
 Given /^the project does have a project location$/ do
@@ -32,11 +32,12 @@ Given /^there are no features to import$/ do
   Project.stub(:find_features).and_return []
 end
 
+Given /^there are no projects$/ do
+  Project.stub!(:find).with(:all).and_return []
+end
+
 When /^the project already exists$/ do
-  @project = Project.new(:title=>"A project",
-              :description=>"This is a description",
-              :aim=>"the aim of our project is...")
-  @project.save
+  @project.stub!(:save).and_return false
 end
 
 When /^the project is viewed$/ do
@@ -51,6 +52,7 @@ When /^I visit the projects index page$/ do
   visit('/projects')
   assigns[:projects] = @projects
 end
+
 When /^we view the second projects features$/ do
   visit('/projects/2/features')
 end
@@ -77,10 +79,6 @@ end
 
 When /^add 'project, new project' as tags$/ do
   fill_in 'project_tag_list', :with => 'project, new project'
-end
-
-Given /^there are no projects$/ do
-    @projects << []
 end
 
 When /^I click import$/ do
