@@ -1,5 +1,10 @@
 Given /^there is a last project$/ do
-  Project.stub(:last).and_return mock_model(Project,:null_object=>true)
+  @last_project = mock_model(Project,
+                            :title => 'A project',
+                            :creation_date => Time.now.to_s(:long),
+                            :features => [mock_model(Feature).as_new_record],
+                            :null_object => true).as_new_record
+  Project.stub(:last).and_return @last_project
 end
 
 Given /^there is no last project$/ do
@@ -16,14 +21,26 @@ end
 
 Then /^I should be instructed on how to add a project$/ do
   response.should have_selector :div do |instructions|
-    instructions.should contain "Add a project"
+    instructions.should contain "add a project"
   end
 end
 
-Then /^the latest projects should be displayed$/ do
+Then /^it should be displayed$/ do
   response.should have_selector :div, attribute = {:id=>"latest_project"}
 end
 
 Then /^there should not be instructions on how to add a project$/ do
   response.should_not have_selector :div, attribute = {:id => 'instructions'}
+end
+
+Then /^it should display its title$/ do
+  response.should contain @last_project.title
+end
+
+Then /^it should display when the project was created$/ do
+  response.should contain @last_project.creation_date
+end
+
+Then /^how many features the project has$/ do
+  response.should contain "#{@last_project.features.count} features"
 end

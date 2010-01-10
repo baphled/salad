@@ -16,7 +16,7 @@ describe "/welcome/index" do
 
     it "should display a link to the projects page" do
       response.should have_selector :div do |instructions|
-        instructions.should contain 'Add a project'
+        instructions.should contain 'add a project'
       end
     end
 
@@ -36,8 +36,6 @@ describe "/welcome/index" do
     it "should display the last project" do
       response.should have_selector :div, attribute = {:id=>"latest_project"} do |project_info|
         project_info.should have_selector :span, :content => @project.title
-        project_info.should have_selector :span, :content => @project.description
-        project_info.should have_selector :span, :content => @project.aim
       end
     end
   end
