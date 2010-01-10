@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/features/new.html.erb" do
   before(:each) do
-    @projects = Project.find :all
+    @projects = [stub_model(Project).as_null_object,stub_model(Project).as_null_object]
+    Project.stub(:all).and_return @projects
     assigns[:feature] = Feature.new
-    assigns[:projects] = @projects
     render
   end
   

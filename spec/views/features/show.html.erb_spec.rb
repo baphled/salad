@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/features/show.html.erb" do
   describe "viewing feature" do
     before(:each) do
-      @feature = Feature.find 1
+      @feature = stub_model(Feature, :title => 'story').as_null_object
+      @feature.stub(:stories).and_return [stub_model(Story, :scenario => 'Some scenario').as_null_object]
       assigns[:feature] = @feature
       render
     end
@@ -33,7 +34,7 @@ describe "/features/show.html.erb" do
     end
     
     it "should display an export feature link" do
-      response.should have_selector :a, attribute = {:href=>"/features/1/export"}
+      response.should have_selector :a, attribute = {:href=> feature_export_path(@feature) }
     end
     
   end

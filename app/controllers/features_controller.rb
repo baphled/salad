@@ -17,7 +17,7 @@ class FeaturesController < ApplicationController
     else
       @feature = Feature.new
     end
-    @projects = Project.find :all
+    @projects = Project.all
   end
   
   def create

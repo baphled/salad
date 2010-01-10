@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/features/export.html.erb" do
   before(:each) do
-    @feature = mock_model(Feature).as_null_object
+    @feature = stub_model(Feature).as_null_object
     assigns[:feature] = @feature
     render
   end
