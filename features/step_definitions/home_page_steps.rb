@@ -15,6 +15,10 @@ Given /^the project has no features$/ do
   @last_project.features.stub(:count).and_return 0
 end
 
+Given /^the project has more than 1 project$/ do
+  @last_project.features.stub(:count).and_return 2
+end
+
 When /^we view the home page$/ do
   visit('/')
 end
@@ -46,9 +50,13 @@ Then /^it should display when the project was created$/ do
 end
 
 Then /^how many features the project has$/ do
-  response.should contain "#{@last_project.features.count} features"
+  response.should contain "#{@last_project.features.count} feature"
 end
 
 Then /^it should display a message about the project not having any features$/ do
   response.should contain "has no features"
+end
+
+Then /^it should display the word features$/ do
+  response.should contain "#{@last_project.features.count} features"
 end

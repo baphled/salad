@@ -25,3 +25,10 @@ Feature: Home page must display the intent of the site
     When we view the home page
     Then it should be displayed
     And it should display a message about the project not having any features
+
+  Scenario: We should pluralise the features amount copy for proper pluralisation
+    Given there is a last project
+    And the project has more than 1 project
+    When we view the home page
+    Then it should be displayed
+    And it should display the word features

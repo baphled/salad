@@ -33,7 +33,7 @@ describe "/welcome/index" do
       
     end
 
-    context "with a feature" do
+    context "with a single feature" do
       before(:each) do
         assigns[:project].stub(:features).and_return [mock_model(Feature).as_new_record]
         render 'welcome/index'
@@ -45,19 +45,32 @@ describe "/welcome/index" do
         end
       end
 
-      it "should display the number of features the latest project has" do
+      it "should display a message stating there is a single feature" do
+        response.should have_selector :div, attribute = {:id=>"latest_project"} do |project_info|
+          project_info.should contain "#{@project.features.count} feature"
+        end
+      end
+    end
+    
+    context "with more than 1 feature" do
+      before(:each) do
+        assigns[:project].stub(:features).and_return [mock_model(Feature).as_new_record,mock_model(Feature).as_new_record]
+        render 'welcome/index'
+      end
+
+      it "should display a pluralised message for the amount of features the project has" do
         response.should have_selector :div, attribute = {:id=>"latest_project"} do |project_info|
           project_info.should contain "#{@project.features.count} features"
         end
       end
     end
-    
 
     context "when the latest project has no features" do
       before(:each) do
         assigns[:project].stub(:features).and_return []
         render 'welcome/index'
       end
+
       it "should display a message stating that the project has no features" do
         response.should have_selector :div, attribute = {:id=>"latest_project"} do |project_info|
           project_info.should contain "which has no features"
