@@ -28,7 +28,6 @@ describe "/welcome/index" do
       @project = stub_model(Project,
                       :title => 'A project',
                       :creation_date => Time.now.to_s(:long),
-                      :features => [],
                       :null_object => true).as_new_record
       assigns[:project] = @project
       
