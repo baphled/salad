@@ -3,27 +3,27 @@ Feature: We need to be able to carry out searches on various parts of the applic
   As a user
   I want to be able to search for items within salad
 
-	Scenario: I need to be able to search for steps
-	  Given I can view the steps page
-	  When I search for steps contain 'Given'
-		And we click search
-	  Then we should have a list of results
-		And all results should contain 'Given'
-		
-	Scenario: We should be able to use the search functionality to add a step to a story
-	  Given I can view the stories page
-	  When I edit the first story
-		And I search for steps contain 'Given'
-		And we click search
-		Then the resulting step should be added to the story
-		
-	Scenario: We need to make sure that already stored steps retained in the search results
-	  Given I can view the stories page
-	  When I edit the first story
-		And I search for steps contain 'Given'
-		And we click search
-		Given I can view the stories page
-	  When I edit the first story
-		And I search for steps contain 'Then'
-		And we click search
-		Then there should be 'Given' steps listed
+  Scenario: I need to be able to search for steps
+    Given I can view the steps page
+    When I search for steps contain 'Given'
+    And we click search
+    Then we should have a list of results
+    And all results should contain 'Given'
+
+  Scenario: We should be able to use the search functionality to add a step to a story
+    Given I can view the stories page
+    When I edit the first story
+    And I search for steps contain 'Given'
+    And we click search
+    Then the resulting step should be added to the story
+
+  Scenario: We need to make sure that already stored steps retained in the search results
+    Given I can view the stories page
+    When I edit the first story
+    And I search for steps contain 'Given'
+    And we click search
+    Given I can view the stories page
+    When I edit the first story
+    And I search for steps contain 'Then'
+    And we click search
+    Then there should be 'Given' steps listed
