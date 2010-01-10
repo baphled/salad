@@ -25,10 +25,11 @@ describe "/welcome/index" do
   context "when there are projects" do
 
     before(:each) do
-      @project = stub(Project,
-                      :title => 'a project',
-                      :description => 'a description',
-                      :aim => 'An aim')
+      @project = stub_model(Project,
+                      :title => 'A project',
+                      :creation_date => Time.now.to_s(:long),
+                      :features => [mock_model(Feature).as_new_record],
+                      :null_object => true).as_new_record
       assigns[:project] = @project
       render 'welcome/index'
     end
