@@ -54,6 +54,7 @@ class ProjectsController < ApplicationController
   end
   
   def features
+    @project_features = @project.features.all(:order=>"feature_projects.position")
   end
   
   def import

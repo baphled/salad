@@ -2,11 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/projects/edit.html.erb" do
   before(:each) do
-    @project = mock_model(Project,
-                          :null_object=>true,
-                          :title=>"Some different",
-													:description=>"A good description",
-													:aim=>"A simple aim")
+    @project = stub_model(Project).as_null_object
     assigns[:project] = @project
   end
   

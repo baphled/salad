@@ -9,7 +9,7 @@
 </div>
 
 <% if !@project.features.blank? %>
-	<%= render :partial => '/common/list/features', :locals => {:features => @project.features.all(:order=>"feature_projects.position"), :order =>true}%>
+	<%= render :partial => '/common/list/features', :locals => {:features => @project_features, :order =>true}%>
 <% end %>
 
 <%= render :partial => '/common/hover', :locals => {:items => @project.features}%>

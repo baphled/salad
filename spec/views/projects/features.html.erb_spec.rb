@@ -1,13 +1,14 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/projects/features.html.erb" do
-  
+  before(:each) do
+    @project = stub_model(Project).as_null_object
+    assigns[:project] = @project
+  end
+
   describe "GET, projects" do
     context "project has no features"  do
       before(:each) do
-        @project = Project.find(1)
-        @features = @project.features
-        assigns[:project] = @project
         render
       end
       
@@ -22,25 +23,22 @@ describe "/projects/features.html.erb" do
     
     context "project has features"  do
       before(:each) do
-        @project = Project.find(2)
-        @features = @project.features
-        assigns[:project] = @project
-        render
+        @project_features = [stub_model(Feature,:title=>'first feature').as_null_object]
+        render :partial => '/common/list/features', :locals => {:features => @project_features, :order =>true}
       end
 
       it "should display a list of features" do
-        response.should have_selector :ul do |list|
-          @features.each do |feature|
+        response.should have_selector :ul, attribute = {:id => 'features'} do |list|
+          @project.features.each do |feature|
             list.should have_selector :li, :content => feature.title
           end
         end
       end
 
       it "should display projects summary" do
-        response.should have_selector :div, attribute = {:class=>"info"} do |project_info|
-          project_info.should have_selector :span, :content => @project.title
-          project_info.should have_selector :span, :content => @project.description
-          project_info.should have_selector :span, :content => @project.aim
+        response.should have_selector :span, attribute = {:class=>"list_content"} do |project_info|
+          project_info.should contain "Title: #{@project.title}"
+          project_info.should contain "Created at: #{@project.description}"
         end
       end
     end
