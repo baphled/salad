@@ -1,19 +1,23 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Project do
+  before(:each) do
+    @project = stub_model(Project).as_new_record.as_null_object
+  end
+
   context "has invalid input" do
     before(:each) do
-      @project = Project.new(:description=>"hey",:aim=>"our aim")
+      @project.should_receive(:save).and_return false
     end
     
     it "should not save if project has no title" do
-      @project.save.should eql false
+      @project.stub(:title).and_return nil  
+      @project.save
     end
   end
   
   context "importing a projects features" do
     before(:each) do
-      @project = Project.find(1)
       @project.location = "#{RAILS_ROOT}"
     end
     

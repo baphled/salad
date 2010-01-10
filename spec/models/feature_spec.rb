@@ -4,7 +4,7 @@ describe Feature do
   
   context "exporting features" do
     before(:each) do
-      @feature = Feature.find 1
+      @feature ||= Feature.first
     end
     
     it "should display the 'Feature:' prefix" do
