@@ -11,6 +11,10 @@ Given /^there is no last project$/ do
   Project.stub(:last).and_return nil
 end
 
+Given /^the project has no features$/ do
+  @last_project.features.stub(:count).and_return 0
+end
+
 When /^we view the home page$/ do
   visit('/')
 end
@@ -43,4 +47,8 @@ end
 
 Then /^how many features the project has$/ do
   response.should contain "#{@last_project.features.count} features"
+end
+
+Then /^it should display a message about the project not having any features$/ do
+  response.should contain "has no features"
 end

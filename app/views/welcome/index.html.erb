@@ -8,6 +8,8 @@
 <% else %>
 <div id="latest_project" class="ui-widget ui-widget-content ui-corner-all">
   <p>
-    The latest project was: <span><%=h @project.title %></span>, which was created on <%=h @project.creation_date %>, with <%=h @project.features.count %> features</p>
+    The latest project was: <span><%=h @project.title %></span>, which was created on <%=h @project.creation_date %>
+    <%=h display_features_message @project %>.
+  </p>
 </div>
 <% end %>
