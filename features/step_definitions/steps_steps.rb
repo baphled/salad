@@ -31,7 +31,7 @@ Then /^I check 'my first story'$/ do
 end
 
 Then /^I should see check boxes for all steps it can be linked to$/ do
-  response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"step_story_id_1"}
+  response.should have_selector :input, attribute = {:type=>"checkbox",:value=>"1",:id=>"step_story_id_1"}
 end
 
 Then /^the message '(.*)' should be displayed$/ do |message|

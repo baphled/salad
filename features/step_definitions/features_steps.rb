@@ -11,7 +11,7 @@ Given /^I visit the features edit view$/ do
 end
 
 When /^the feature is viewed$/ do
-  visit "/features/#{@feature.id}"
+  visit feature_path @feature
 end
 
 Then /^the feature information should be saved$/ do

@@ -1,5 +1,3 @@
-require "find"
-
 Given /^there is a project$/ do
   @project = Project.new(:title=>"A project",
               :description=>"This is a description",
