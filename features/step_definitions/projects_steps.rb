@@ -33,7 +33,7 @@ Given /^there are no features to import$/ do
 end
 
 Given /^there are no projects$/ do
-  Project.stub!(:find).with(:all).and_return []
+  @projects = Project.stub(:last).and_return nil
 end
 
 When /^the project already exists$/ do

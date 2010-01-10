@@ -1,5 +1,13 @@
+<% if @project.nil? %>
 <p>There are no projects</p>
 
 <div id="instructions">
   <%= link_to 'Add a project', new_project_path %>
 </div>
+<% else %>
+<div id="latest_project">
+  <span><%=h @project.title %></span>
+  <span><%=h @project.description %></span>
+  <span><%=h @project.aim %></span>
+</div>
+<% end %>
