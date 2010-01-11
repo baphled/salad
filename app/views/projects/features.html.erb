@@ -8,9 +8,9 @@
 	<%= render :partial => '/common/project_summary', :locals => {:project => @project}%>
 </div>
 
-<% if !@project.features.blank? %>
-	<%= render :partial => '/common/list/features', :locals => {:features => @project_features, :order =>true}%>
-<% end %>
+
+<%= render :partial => '/common/list/features', :locals => {:features => @project_features, :order =>true}%>
+
 
 <%= render :partial => '/common/hover', :locals => {:items => @project.features}%>
 <%= render :partial => 'common/sidebar/feature_stories', :locals => {:features => @project.features}%>

@@ -49,9 +49,9 @@ Feature: We need to a way to store our stories within a project, this will help 
     And there is a project
     When I click new projects
     And the project already exists
-    And we fill in the project title with 'A project'
-	And we fill in the project aim with 'A different aim'
-	And we fill in the project description with 'A different description'
+    And we fill in the project title with 'A fixture project'
+	And we fill in the project aim with 'A description for our project'
+	And we fill in the project description with 'A projects aims'
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed
@@ -100,19 +100,22 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
 
 	Scenario: I should be able to click a link which takes me to the projects features
-	  Given I can view the projects page
-	  When I visit the second projects features
+      Given there is a project
+	  When I visit the projects features
 	  Then the project features page will be displayed
 	
 	Scenario: I should be able to view the project information in details
-	  Given I can view the projects page
-	  When I visit the second projects features
+      Given there is a project
+      And the project has features
+      And I can view the projects page
+	  When I visit the projects features
 	  Then the project features page will be displayed
-		And a summary of the project should be displayed
+      And a summary of the project should be displayed
 	
 	Scenario: I should be able to add new features a project within the project features
 	  Given I can view the projects page
-	  When we view the second projects features
+      And there is a project
+	  When I visit the projects features
 	  Then the project features page will be displayed
 		When I create new a feature
 		Then I should be sent to the new feature page

@@ -1,9 +1,5 @@
 Given /^there is a project$/ do
-  @project = Project.new(:title=>"A project",
-              :description=>"This is a description",
-              :aim=>"the aim of our project is...",
-              :created_at => Time.now.yesterday)
-  @project.save
+  @project = Project.first
 end
 
 Given /^I visit the projects edit view$/ do
@@ -11,7 +7,8 @@ Given /^I visit the projects edit view$/ do
 end
 
 Given /^there are projects$/ do
-  @projects = Project.find :all
+  @projects = []
+  3.times { |project_number| @projects << mock_model(Project,:title => "A project #{project_number}").as_null_object }
 end
 
 Given /^the project does not have a project location$/ do
@@ -34,12 +31,18 @@ Given /^there are no projects$/ do
   @projects = Project.stub(:last).and_return nil
 end
 
+Given /^the project has features$/ do
+  @features = []
+  3.times{ |feature_num| @features << mock_model(Feature, :title => "feature #{feature_num}").as_null_object }
+  
+end
+
 When /^the project already exists$/ do
-  @project.stub!(:save).and_return false
+  @project.should_receive(:save).and_return false
 end
 
 When /^the project is viewed$/ do
-  visit "/projects/#{@project.id}"
+  visit project_path @project
 end
 
 When /^the project is not able to update$/ do
@@ -51,12 +54,9 @@ When /^I visit the projects index page$/ do
   assigns[:projects] = @projects
 end
 
-When /^we view the second projects features$/ do
-  visit('/projects/2/features')
-end
-
-When /^I visit the second projects features$/ do
-  visit('/projects/2/features')
+When /^I visit the projects features$/ do
+  visit project_features_path @project
+  assigns[:project_features] = @features
 end
 
 When /^I create new a feature$/ do
@@ -64,11 +64,11 @@ When /^I create new a feature$/ do
 end
 
 When /^a project has no features$/ do
-  assert Project.find(1).feature_ids.empty?
+  Project.stub(:features).and_return []
 end
 
 When /^I visit the project$/ do
-  visit('/projects/2/features')
+  visit project_path @project
 end
 
 When /^I visit the first projects features$/ do
@@ -118,7 +118,7 @@ Then /^the user should be told the project already exists$/ do
 end
 
 Then /^I should be able to view its details$/ do
-  response.should have_selector(:p, :content =>"This is a description")
+  response.should have_selector(:p, :content => @project.description)
 end
 
 
@@ -160,8 +160,8 @@ Then /^we must be able to select 1 feature$/ do
 end
 
 Then /^the project features page will be displayed$/ do
-  response.should have_selector :ul do |list|
-    Project.find(1).features.each do |feature|
+  response.should have_selector :ul, attribute = {:id => 'features'} do |list|
+    @project.features.each do |feature|
       list.should have_selector :li do |content|
         content.should contain => feature.title
       end
@@ -170,7 +170,6 @@ Then /^the project features page will be displayed$/ do
 end
 
 Then /^a summary of the project should be displayed$/ do
-  @project = Project.find 2
   response.should have_selector :div, attribute = {:class=>"info"} do |project_info|
     project_info.should have_selector :span, :content => @project.title
     project_info.should have_selector :span, :content => @project.description
@@ -263,7 +262,6 @@ Then /^I should not see a import link$/ do
 end
 
 Then /^I should see a list of features that will be imported$/ do
-  @project = Project.find(1)
   @project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :ul do |list|
     @project.find_features do |feature|
@@ -275,7 +273,6 @@ Then /^I should see a list of features that will be imported$/ do
 end
 
 Then /^each entry should be a feature file$/ do
-
   response.should_not have_selector :li, :content => " . " or ".." or "support" or "step_definitions"
 end
 
