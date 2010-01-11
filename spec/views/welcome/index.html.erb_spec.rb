@@ -54,7 +54,9 @@ describe "/welcome/index" do
     
     context "with more than 1 feature" do
       before(:each) do
-        assigns[:project].stub(:features).and_return [mock_model(Feature).as_new_record,mock_model(Feature).as_new_record]
+        @features = []
+        3.times { |feature_number | @features << mock_model(Feature).as_new_record }
+        assigns[:project].stub(:features).and_return @features
         render 'welcome/index'
       end
 

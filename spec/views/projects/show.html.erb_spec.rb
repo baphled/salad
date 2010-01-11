@@ -8,12 +8,12 @@ describe "projects/show.html.erb" do
                             :title => 'A project',
                             :description => 'A description',
                             :aim => 'An aim',
-                            :created_at => @date,
-                            :updated_at => nil).as_null_object
+                            :created_at => @date).as_null_object
   end
   
   describe "a newly created project" do
     before(:each) do
+      @project.stub(:updated_at).and_return nil
       assigns[:project] = @project
       render
     end

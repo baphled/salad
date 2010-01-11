@@ -2,9 +2,10 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/steps/_step_search.html.erb" do
   before(:each) do
-    assigns[:steps] = Step.pagination_search "Given",1
-    assigns[:search] = Step.search "Given"
-    render :locals => {:steps => @steps, :order =>false}
+    @given_steps = []
+    3.times { |step_number| @given_steps << mock_model(Step,:title => "Given #{step_number +1}")  }
+    assigns[:search] = @given_steps
+    render
   end
   
   describe "GET, search" do
@@ -25,7 +26,7 @@ describe "/steps/_step_search.html.erb" do
     end
     
     it "should display the number of results found" do
-      response.should contain "Results (#{assigns[:steps].size.to_s})"
+      response.should contain "Results (#{assigns[:search].size.to_s})"
     end
   end
 end

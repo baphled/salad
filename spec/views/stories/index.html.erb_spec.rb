@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/stories/index.html.erb" do
   context "has stories" do
     before(:each) do
-      assigns[:tags] = Story.tag_counts
+      assigns[:tags] = []
       assigns[:stories] = Story.paginate(:page => params[:page],:per_page => 10)
       render
     end
