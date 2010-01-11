@@ -26,11 +26,10 @@ describe "/welcome/index" do
 
     before(:each) do
       @project = stub_model(Project,
-                      :title => 'A project',
-                      :creation_date => Time.now.to_s(:long),
-                      :null_object => true).as_new_record
+                            :title => 'A project',
+                            :creation_date => Time.now.to_s(:long)
+                          ).as_new_record.as_null_object
       assigns[:project] = @project
-      
     end
 
     context "with a single feature" do
