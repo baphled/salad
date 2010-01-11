@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/projects/import.html.erb" do
   before(:each) do
-    @project =Project.find(1)
+    @project = stub_model(Project).as_null_object
     @project.location = "#{RAILS_ROOT}"
     assigns[:feature] = mock_model(Feature,:null_object=>true)
     assigns[:list] = @project.find_features

@@ -4,7 +4,7 @@
 <p>Aim: <%=h @project.aim %></p>
 <p>Created at: <%=h @project.creation_date %></p>
 
-<% if @project.created_at != @project.updated_at %>
+<% if @project.updated_at %>
 	<p>Updated at: <%=h @project.updated_date %></p>
 <% end %>
 

@@ -4,31 +4,30 @@ describe "projects/show.html.erb" do
   
   before(:each) do
     @date = Time.now
+    @project = mock_model(Project,
+                            :title => 'A project',
+                            :description => 'A description',
+                            :aim => 'An aim',
+                            :created_at => @date,
+                            :updated_at => nil).as_null_object
   end
   
   describe "a newly created project" do
     before(:each) do
-      @project = mock_model(Project,
-                            :title => "A project",
-                            :description => "The project description",
-                            :aim => "The aim of this project is...",
-                            :null_object=>true,
-                            :created_at => @date,
-                            :updated_at => @date)
       assigns[:project] = @project
       render
     end
     
     it "should have a list the projects title" do
-      response.should have_selector(:h3, :content => "A project")
+      response.should have_selector(:h3, :content => @project.title)
     end
   
     it "should have a description" do
-      response.should have_selector :p, :content => "The project description"
+      response.should have_selector :p, :content => @project.description
     end
   
     it "should have an aim" do
-      response.should have_selector :p, :content => "The aim of this project is..."
+      response.should have_selector :p, :content => @project.aim
     end
   
     it "should display the created at field" do
@@ -43,13 +42,7 @@ describe "projects/show.html.erb" do
   
   describe "a project is updated" do
     before(:each) do
-      @project = mock_model(Project,
-                            :title => "A project",
-                            :description => "The project description",
-                            :aim => "The aim of this project is...",
-                            :created_at => @date,
-                            :null_object=>true)
-      @project.update_attribute(:description => "something different")
+      @project.stub(:updated_at).and_return @date.tomorrow
       assigns[:project] = @project
       render
     end
@@ -61,7 +54,6 @@ describe "projects/show.html.erb" do
   
   describe "showing a project with a location stored" do
     before(:each) do
-      @project = mock_model(Project,:id=>1,:null_object=>true)
       @project.stub!(:location).and_return "blah"
       assigns[:project] = @project
       render
@@ -75,7 +67,6 @@ describe "projects/show.html.erb" do
   
   describe "showing a project without a location" do
     before(:each) do
-      @project = mock_model(Project,:id=>1,:null_object=>true)
       @project.stub!(:location).and_return nil
       assigns[:project] = @project
       render

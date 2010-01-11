@@ -2,9 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "projects/new.html.erb" do
   before(:each) do 
-    @features = Feature.find :all
-    assigns[:features] = @features
-    assigns[:project] = Project.new
+    @features = []
+    3.times { |project_number| @features << mock_model(Feature, :title => "Feature number #{project_number}").as_null_object }
+    Feature.stub(:all).and_return @features
+    assigns[:project] = stub_model(Project).as_new_record
     render
   end
   it "should display a form" do

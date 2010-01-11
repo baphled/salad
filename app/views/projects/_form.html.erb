@@ -17,7 +17,7 @@
 		<fieldset>
 			<legend>Features</legend>
 			<ul id="left_list">
-		  <% for feature in Feature.find :all %>
+		  <% for feature in Feature.all %>
 		    <li>
 				<%= check_box_tag "project[feature_ids][]", feature.id, @project.features.include?(feature) %>
 					<%= feature.title%>
