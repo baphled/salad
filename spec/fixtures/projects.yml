@@ -3,7 +3,7 @@ one:
   title: A fixture project
   description: A description for our project
   aim: A projects aims
-  location: #{RAILS_ROOT}
+  location: <%= "#{RAILS_ROOT}" %>
 
 two:
   id: 2
