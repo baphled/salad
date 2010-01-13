@@ -20,6 +20,12 @@ namespace :rcov do
     t.rcov_opts = IO.readlines("#{RAILS_ROOT}/spec/rcov.opts").map {|l| l.chomp.split " "}.flatten
   end
 
+  Cucumber::Rake::Task.new(:selenium, 'Run Selenium based features') do |t|
+    t.rcov = true
+    t.cucumber_opts = %w{-p selenium}
+    t.rcov_opts = IO.readlines("#{RAILS_ROOT}/spec/rcov.opts").map {|l| l.chomp.split " "}.flatten
+  end
+
   Spec::Rake::SpecTask.new(:rspec) do |t|
     t.spec_opts = ['--options', "\"#{RAILS_ROOT}/spec/spec.opts\""]
     t.spec_files = FileList['spec/**/*_spec.rb']
@@ -33,6 +39,7 @@ namespace :rcov do
   task :all do |t|
     rm "coverage.data" if File.exist?("coverage.data")
     Rake::Task["rcov:cucumber"].invoke
+    Rake::Task["rcov:selenium"].invoke
     Rake::Task["rcov:rspec"].invoke
   end
 end
