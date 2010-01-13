@@ -22,19 +22,6 @@ Webrat.configure do |config|
   config.open_error_files = false # Set to true if you want error pages to pop up in the browser
 end
 
-require 'spec/mocks/framework'
-require 'spec/mocks/extensions'
- 
-World(Spec::Mocks::ExampleMethods)
- 
-Before do
-  $rspec_stubs ||= Spec::Mocks::Space.new
-end
- 
-After do
-  $rspec_stubs.reset_all
-end
-
 # If you set this to false, any error raised from within your app will bubble 
 # up to your step definition and out to cucumber unless you catch it somewhere
 # on the way. You can make Rails rescue errors and render error pages on a
