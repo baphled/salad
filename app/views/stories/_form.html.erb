@@ -7,6 +7,7 @@
 <%= render :partial => "/common/hover_dialog" %>
 
 <%- semantic_form_for @story do |form| -%>
+    <fieldset>
 		<% form.inputs :name => form_title(@story, "Project") do %>
 			<%= form.input :scenario %>
 			<%= form.input :tag_list %>
