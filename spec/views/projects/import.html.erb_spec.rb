@@ -4,7 +4,7 @@ describe "/projects/import.html.erb" do
   before(:each) do
     @project = stub_model(Project).as_null_object
     @project.location = "#{RAILS_ROOT}"
-    assigns[:feature] = mock_model(Feature,:null_object=>true)
+    assigns[:feature] = mock_model(Feature).as_null_object
     assigns[:list] = @project.find_features
   end
   
@@ -75,8 +75,7 @@ describe "/projects/import.html.erb" do
     end
   
     it "should display a 'Given' step" do
-      assigns[:list].each do |file|
-        response.should contain "Scenario: "        
+      assigns[:list].each do |file|   
         response.should have_selector :ul, attribute = {:class => "steps"} do |step|
           step.should contain "Given"
         end
@@ -102,7 +101,8 @@ describe "/projects/import.html.erb" do
     end
   
     it "should highlight a step if it is already part of the system" do
-      response.should have_selector :b, :content => "#{Step.find(4).title}"
+      step = stub_model(Step, :title => 'Given I can view the projects page')
+      response.should have_selector :b, :content => "#{step.title}"
     end    
   end
 
