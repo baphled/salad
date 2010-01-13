@@ -28,3 +28,4 @@ config.gem 'rspec',            :lib => false, :version => '>=1.2.9' unless File.
 config.gem 'rspec-rails',      :lib => false, :version => '>=1.2.9' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
 config.gem 'heckle',           :lib => false
 config.gem 'rcov',             :lib => false, :version => '>=0.9.7.1'
+config.gem 'selenium-client',  :lib => false, :version => '=1.2.18'

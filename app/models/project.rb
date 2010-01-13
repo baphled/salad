@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
   
   def find_features
     list = []
-    Dir.new("#{self.location}/features").entries.each do |file|
+    Dir.new("#{self.location}/features/plain").entries.each do |file|
       @feature_title,@in_order,@as_a,@i_want = nil
       @scenarios = []
       if file =~ /^(.*).feature$/
@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
   end
   
   def import file
-    File.new("#{self.location}/features/#{file}").each do |line|
+    File.new("#{self.location}/features/plain/#{file}").each do |line|
       if line.strip =~ /^Feature: /
         @feature_title = line.strip
       elsif @in_order.nil? and line.strip =~ /^In order/

@@ -43,6 +43,7 @@ end
 
 When /^the project is viewed$/ do
   visit project_path @project
+
 end
 
 When /^the project is not able to update$/ do

@@ -12,6 +12,8 @@ require 'tasks/rails'
 require 'cucumber/rake/task'
 require 'spec/rake/spectask'
 
+require 'selenium/rake/tasks'
+
 namespace :rcov do
   Cucumber::Rake::Task.new(:cucumber) do |t|
     t.rcov = true
@@ -34,4 +36,19 @@ namespace :rcov do
     Rake::Task["rcov:cucumber"].invoke
     Rake::Task["rcov:rspec"].invoke
   end
+end
+
+Selenium::Rake::RemoteControlStartTask.new do |rc|
+  rc.port = 4444
+  rc.timeout_in_seconds = 5 * 60
+  rc.background = true
+  rc.wait_until_up_and_running = true
+  rc.jar_file = "~/selenium-remote-control-1.0.1/selenium-server-1.0.1/selenium-server.jar"
+  rc.additional_args << "-singleWindow"
+end
+
+Selenium::Rake::RemoteControlStopTask.new do |rc|
+  rc.host = "localhost"
+  rc.port = 4444
+  rc.timeout_in_seconds = 3 * 60
 end
