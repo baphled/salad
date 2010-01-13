@@ -17,8 +17,7 @@ require 'selenium/rake/tasks'
 namespace :rcov do
   Cucumber::Rake::Task.new(:cucumber) do |t|
     t.rcov = true
-    t.rcov_opts = %w{--rails --exclude ~/.gems\/,spec\/,features\/ --aggregate coverage.data}
-    t.rcov_opts << %[-o "coverage"]
+    t.rcov_opts = IO.readlines("#{RAILS_ROOT}/spec/rcov.opts").map {|l| l.chomp.split " "}.flatten
   end
 
   Spec::Rake::SpecTask.new(:rspec) do |t|
