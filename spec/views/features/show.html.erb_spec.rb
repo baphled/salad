@@ -1,9 +1,13 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/features/show.html.erb" do
+
+  before(:each) do
+    @feature = stub_model(Feature, :title => 'story').as_null_object
+  end
+
   describe "viewing feature" do
     before(:each) do
-      @feature = stub_model(Feature, :title => 'story').as_null_object
       @feature.stub(:stories).and_return [stub_model(Story, :scenario => 'Some scenario').as_null_object]
       assigns[:feature] = @feature
       render
@@ -41,13 +45,13 @@ describe "/features/show.html.erb" do
   
   describe "feature with no story" do
     before(:each) do
-      @feature = Feature.find 2
+      @feature.stub!(:stories).and_return []
       assigns[:feature] = @feature
       render
     end
     
     it "should not display an export feature link" do
-      response.should_not have_selector :a, attribute = {:href=>"/features/2/export"}
+      response.should_not have_selector :a, attribute = {:href=> feature_export_path(@feature) }
     end
   end
 end
