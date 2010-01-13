@@ -4,6 +4,6 @@ Feature: Search
   I want to find more information
 
   Scenario: Find what I'm looking for
-    Given I am on the Google search page
+    Given Google is still alive
     When I search for "rspec"
     Then I should see a link to http://rspec.info/

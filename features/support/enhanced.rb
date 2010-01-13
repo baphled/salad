@@ -1,8 +1,10 @@
 require 'webrat'
 
+require 'spec/expectations'
+require 'selenium'
+
 Webrat.configure do |config|
   config.mode = :selenium
-  config.selenium_wait_timeout = 10
 end
 
 class ActiveSupport::TestCase
@@ -37,6 +39,14 @@ DatabaseCleaner.strategy = :truncation
 # when writing steps that match against the response body returned by selenium
 World(Webrat::Selenium::Matchers)
 
+# "before all"
+browser = Selenium::SeleniumDriver.new("localhost", 4444, "*chrome", "http://localhost", 15000)
+
 Before do
-  # truncate your tables here, since you can't use transactional fixtures*
+  @browser = browser
+  @browser.start
+end
+
+After do
+  @browser.stop
 end
