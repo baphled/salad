@@ -36,25 +36,27 @@ describe Project do
     it "should not include support" do
       @project.find_features.should_not include "support"
     end
-    
-    it "should display a features feature text" do
-      @project.find_features.should contain "We need to a way to store our stories within a project, this will help organise our stories."
-    end
-    
-    it "should display a features in order text" do
-      @project.find_features.should contain "In order to help manage and organise our projects"
-    end
-    
-    it "should display a features as a text" do
-      @project.find_features.should contain "As a user"
-    end
-    
-    it "should display a features 'I want' text" do
-      @project.find_features.should contain "I want"
-    end
-    
-    it "should display a features stories text" do
-      @project.find_features.should contain "Scenario: "
+
+    context "when displaying import data, ir should " do
+      it "have a feature text" do
+        @project.find_features.should contain "We need to a way to store our stories within a project, this will help organise our stories."
+      end
+
+      it "have a features in order text" do
+        @project.find_features.should contain "In order to help manage and organise our projects"
+      end
+
+      it "have a features as a text" do
+        @project.find_features.should contain "As a user"
+      end
+
+      it "have a features 'I want' text" do
+        @project.find_features.should contain "I want"
+      end
+
+      it "have a features stories text" do
+        @project.find_features.should contain "Scenario: "
+      end
     end
   end
 end
