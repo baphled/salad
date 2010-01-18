@@ -18,16 +18,11 @@ Then /^all results should contain 'Given'$/ do
 end
 
 Then /^the resulting step should be added to the story$/ do
-	pending
   response.should have_selector :ul, attribute = {:id => "steps"} do |list|
-    Step.find(:all, :conditions => ["title LIKE ?", "%Given%"]).each do |result|          
+    Step.search("Given").each do |result|
       list.should have_selector :li do |content|
-        content.should contain "#{result.title}"
+        content.should contain result.title.sub result.first_word, ""
       end
     end
   end
-end
-
-Then /^there should be 'Given' steps listed$/ do
-  pending
 end

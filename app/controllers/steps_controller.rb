@@ -4,8 +4,8 @@ class StepsController < ActionController::Base
   layout "application"
   
   def index
-    @steps = Step.pagination_search(params[:search_text],params[:page])
     @search = Step.search(params[:search_text])
+    @steps = Step.pagination_search(params[:search_text],params[:page])
     respond_to do |format|
       format.html
       format.json { render :json => @steps }

@@ -13,7 +13,11 @@
 						<%= index+1 %>
 					</span>
 		    	<span class="list_content">
-						<%=h step.formatted @steps[index -1] %>
+                  <% if  step != @steps.first %>
+                    <%=h step.formatted @steps[index -1] %>
+                  <% else %>
+                    <%=h step.title %>
+                  <% end  %>
 					</span>
 					<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
 				</div>
