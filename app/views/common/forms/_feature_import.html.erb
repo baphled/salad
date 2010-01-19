@@ -6,7 +6,9 @@
 	<h3>Feature: <%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></h3>
 	<p><%= file[:feature].title%></p>
 	<p>
-		<%= file[:feature].in_order%>, <%= file[:feature].as_a%>, <%= file[:feature].i_want.capitalize%>
+		In order <%= file[:feature].in_order %><br />
+        As a <%= file[:feature].as_a %><br />
+        I want <%= file[:feature].i_want.capitalize %>
 	</p>
 	<%= label_tag "feature tags:"%>
 	<%= text_field_tag "feature[tag_list]" %><br/>
