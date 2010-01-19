@@ -4,6 +4,7 @@ Feature: Hovering over a project item
     I want to be able to hover over the item, which in turn displays more information
 
     Scenario: Hovering over a project item
-      Given I open the projects index page
+      Given there are projects
+      And I visit the projects index page
       When the first project is hovered over
       Then the project's information will be display in the sidebar

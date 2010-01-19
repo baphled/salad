@@ -7,8 +7,8 @@ Given /^I visit the projects edit view$/ do
 end
 
 Given /^there are projects$/ do
-  @projects = []
-  3.times { |project_number| @projects << mock_model(Project,:title => "A project #{project_number}").as_null_object }
+  @projects = Project.find(:all)
+  @projects.should_not be_empty
 end
 
 Given /^the project does not have a project location$/ do
@@ -51,8 +51,7 @@ When /^the project is not able to update$/ do
 end
 
 When /^I visit the projects index page$/ do
-  visit('/projects')
-  assigns[:projects] = @projects
+  visit projects_path
 end
 
 When /^I visit the projects features$/ do
