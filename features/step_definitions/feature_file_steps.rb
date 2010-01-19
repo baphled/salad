@@ -42,6 +42,6 @@ Then /^each scenario should have the expected steps$/ do
   @file.scenarios.first[:steps].should_not be_nil
 end
 
-Then /^import will return true$/ do
-  @file.export.should be_true
+Then /^export will return a Feature object$/ do
+  @file.export.should be_a Feature
 end
