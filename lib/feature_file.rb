@@ -8,35 +8,15 @@ class FeatureFile < File
   end
 
   def feature
-    @feature = nil
-    self.each do |line|
-      if line.strip =~ /^Feature: /
-        @feature = line.strip
-      end
-    end
-    @feature
+    read_properties /^Feature: /
   end
 
   def in_order
-    @in_order = nil
-    self.reopen path if self.eof?
-    self.each do |line|
-      if line.strip =~ /In order/
-        @in_order = line.strip
-      end
-    end
-    @in_order
+    read_properties /^In order/
   end
 
   def i_want
-    @i_want = nil
-    self.reopen path if self.eof?
-    self.each do |line|
-      if line.strip =~ /^I want/
-        @i_want = line.strip
-      end
-    end
-    @i_want
+    read_properties /^I want/
   end
 
   def scenarios
@@ -55,5 +35,17 @@ class FeatureFile < File
     Feature.new(:title => feature,
                :in_order => in_order,
                :i_want => i_want)
+  end
+
+  private
+  def read_properties property
+    @value = nil
+    self.reopen path if self.eof?
+    self.each do |line|
+      if line.strip =~ property
+        @value = line.strip
+      end
+    end
+    @value
   end
 end
