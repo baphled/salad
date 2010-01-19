@@ -1,7 +1,9 @@
 coverage
+coverage.dat
 log
 tmp
 app/stylesheets/.sass-cache
+public/stylesheets/compiled
 config/database.yml
 vendor
 rerun.txt
