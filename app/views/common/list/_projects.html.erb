@@ -4,7 +4,7 @@
 <% if !projects.blank? %>
   <ul>
 <% projects.each_with_index do |project, index| %>
-	<% content_tag_for(:li, project) do %>
+    <li>
 		<% content_tag_for(:div, project, :class=> "item_" + index.to_s ) do %>
 	  	<span class="list_content">
 				<b>Title: </b><%= project.title %><br/>
@@ -17,7 +17,7 @@
 			</span>
 			<%= render :partial => '/common/project_icons', :locals => {:project => project}%>
 		<% end %>
-	<% end %>
+      </li>
 <% end %>
 	</ul>
 <% else %>
