@@ -29,3 +29,4 @@ config.gem 'rspec-rails',      :lib => false, :version => '>=1.2.9' unless File.
 config.gem 'heckle',           :lib => false
 config.gem 'rcov',             :lib => false, :version => '>=0.9.7.1'
 config.gem 'selenium-client',  :lib => false, :version => '=1.2.18'
+config.gem 'mongrel',          :version => '>=1.1.5'
