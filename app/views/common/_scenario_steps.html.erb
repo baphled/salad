@@ -1,19 +1,19 @@
 <ul class="accordion">
-<% scenarios.each do |scenario| %>
+<% scenarios.each do |story| %>
 	<li>
-		<a href="#" title="<%=h scenario[:story] %>">
-			<%=h scenario[:story] %>
-			<% if Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
+		<a href="#" title="<%=h story.scenario %>">
+			Scenario: <%=h story.scenario %>
+			<% if Story.find_by_scenario(story.scenario.sub(/^Scenario: /,"").strip)%>
 				<b>Already added</b>	
 			<% end %>						
 		</a>
 		<ul class="steps">
-		<% scenario[:steps].each do |step| %>
+		<% story.steps.each do |step| %>
 			<li>
-				<% if Step.find_by_title step %>
-					<b><%=h step %></b>
+				<% if Step.find_by_title step.title %>
+					<b><%=h step.title %></b>
 				<% else %>
-					<%=h step %>
+					<%=h step.title %>
 				<% end %>
 			</li>
 		<% end %>

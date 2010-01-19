@@ -22,40 +22,40 @@ describe Project do
     end
     
     it "should not include ." do
-      @project.find_features.should_not include "."
+      @project.import_features.should_not include "."
     end
     
     it "should not include .." do
-      @project.find_features.should_not include ".."
+      @project.import_features.should_not include ".."
     end
     
     it "should not include step_definitions" do
-      @project.find_features.should_not include "step_definitions"
+      @project.import_features.should_not include "step_definitions"
     end
     
     it "should not include support" do
-      @project.find_features.should_not include "support"
+      @project.import_features.should_not include "support"
     end
 
-    context "when displaying import data, it should" do
+     context "when displaying the features import data, it should" do
       it "have a feature text" do
-        @project.find_features.should contain "We need to a way to store our stories within a project, this will help organise our stories."
+        @project.import_features.last[:feature].title.should contain "We need to be able to carry out searches on various parts of the application"
       end
 
       it "have a features in order text" do
-        @project.find_features.should contain "In order to help manage and organise our projects"
+        @project.import_features.last[:feature].in_order.should contain "to help find items in the application"
       end
 
       it "have a features as a text" do
-        @project.find_features.should contain "As a user"
+        @project.import_features.last[:feature].as_a.should contain "user"
       end
 
       it "have a features 'I want' text" do
-        @project.find_features.should contain "I want"
+        @project.import_features.last[:feature].i_want.should contain "to be able to search for items within salad"
       end
 
       it "have a features stories text" do
-        @project.find_features.should contain "Scenario: "
+        @project.import_features.last[:feature].stories.first.scenario.should contain "I need to be able to search for steps"
       end
     end
   end

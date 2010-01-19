@@ -5,7 +5,7 @@ describe "/projects/import.html.erb" do
     @project = stub_model(Project).as_null_object
     @project.location = "#{RAILS_ROOT}"
     assigns[:feature] = mock_model(Feature).as_null_object
-    assigns[:list] = @project.find_features
+    assigns[:imported] = @project.import_features
   end
   
   describe "viewing the import form" do
@@ -14,45 +14,31 @@ describe "/projects/import.html.erb" do
     end
   
     it "should diplay a list of feature files" do
-      assigns[:list].each do |file|
-        response.should contain "#{file[:file]}".sub(/\.feature/,"").sub(/_/," ")
+      assigns[:imported].each do |feature|
+        response.should contain "#{feature[:file]}".sub(/\.feature/,"").sub(/_/," ")
       end
     end
   
     it "should diplay a list of feature files which contain feature text" do
-      assigns[:list].each do |file|
-        response.should contain "#{file[:feature_line]}"
+      assigns[:imported].each do |file|
+        response.should contain "#{file[:feature].title}"
       end
     end
   
     it "should trim from 'Feature:' feature line" do
-      assigns[:list].each do |file|
         response.should_not =~ "Feature: "
-      end
     end
   
     it "should display a list of feature files which contain the feature 'In order' text" do
-      assigns[:list].each do |file|
         response.should contain "In order"
-      end
     end
   
     it "should display a list of feature files which contain the feature 'As a' text" do
-      assigns[:list].each do |file|
         response.should contain "As a"
-      end
     end
   
     it "should display a list of feature files which contain the feature 'I want' text" do
-      assigns[:list].each do |file|
         response.should contain "I want"
-      end
-    end
-  
-    it "should display a list of feature files which contain the feature stories" do
-      assigns[:list].each do |file|
-        response.should contain "Scenario: "
-      end
     end
   
     it "should should have a form to submit our features" do
@@ -60,44 +46,31 @@ describe "/projects/import.html.erb" do
     end
   
     it "should have a hidden field with the feature title for all features" do
-      assigns[:list].each do |file|
-        response.should have_selector :form do |content|
-          content.should have_selector :input, attribute = {:type => "hidden"}
-        end      
+      response.should have_selector :form do |content|
+        content.should have_selector :input, attribute = {:type => "hidden"}
       end
     end
   
     it "should have a steps contain for each scenario" do
-      assigns[:list].each do |file|
-        response.should contain "Scenario: "        
-        response.should have_selector :ul , attribute = {:class => "steps"}
-      end
+      response.should have_selector :ul , attribute = {:class => "steps"}
     end
   
     it "should display a 'Given' step" do
-      assigns[:list].each do |file|   
-        response.should have_selector :ul, attribute = {:class => "steps"} do |step|
-          step.should contain "Given"
-        end
+      response.should have_selector :ul, attribute = {:class => "steps"} do |step|
+        step.should contain "Given"
       end
     end
   
     it "should display a 'When' step" do
-      assigns[:list].each do |file|
-        response.should contain "Scenario: "        
-        response.should have_selector :ul, attribute = {:class => "steps"} do |step|
-          step.should contain "When"
-        end
+      response.should have_selector :ul, attribute = {:class => "steps"} do |step|
+        step.should contain "When"
       end
     end
   
     it "should display a 'Then' step" do
-      assigns[:list].each do |file|
-        response.should contain "Scenario: "        
         response.should have_selector :ul, attribute = {:class => "steps"} do |step|
           step.should contain "Then"
         end
-      end
     end
   
     it "should highlight a step if it is already part of the system" do

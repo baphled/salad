@@ -1,22 +1,22 @@
-<% if @list.blank? or steps_imported? @list %>
+<% if @imported.blank? or steps_imported? @imported %>
 	<p>No features to import.</p>
 <% else %>
 <div id="myTabs">
 	<ul>
-	<% @list.each do |file| %>
-		<% if Feature.find_by_title(file[:feature_title]).nil? %>
+	<% @imported.each do |file| %>
+		<% if Feature.find_by_title(file[:feature].title).nil? %>
 		<li>
 			<a href="#<%=h file[:file].sub(/\./,"_") %>"><%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></a>
 		</li>
 		<% end%>
 	<% end %>
 	</ul>
-<% @list.each do |file| %>
-	<% if Feature.find_by_title(file[:feature_title]).nil? %>
+<% @imported.each do |file| %>
+	<% if Feature.find_by_title(file[:feature].title).nil? %>
 	<div id="<%=h file[:file].sub(/\./,"_") %>">
 		<%= render :partial => '/common/forms/feature_import', :locals => {:file => file, :feature => @feature}%>
 		<p>
-			<%= render :partial => '/common/scenario_steps', :locals => {:scenarios => file[:scenarios],:feature => file[:file].sub(/\./,"_")}%>
+			<%= render :partial => '/common/scenario_steps', :locals => {:scenarios => file[:feature].stories,:feature => file[:file].sub(/\./,"_")}%>
 		</p>
 	</div>
 	<% end %>

@@ -265,9 +265,9 @@ end
 Then /^I should see a list of features that will be imported$/ do
   @project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :ul do |list|
-    @project.find_features do |feature|
+    @project.import_features do |feature|
       list.should have_selector :li do |content|
-        content.should contain "#{feature}"
+        content.should contain "#{feature[:feature].title}"
       end
     end
   end

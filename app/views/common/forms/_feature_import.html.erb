@@ -1,12 +1,12 @@
 <%- form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
-	<%= hidden_field_tag "feature[title]", file[:feature_title] %>
-	<%= hidden_field_tag "feature[in_order]", file[:in_order] %>
-	<%= hidden_field_tag "feature[as_a]", file[:as_a] %>
-	<%= hidden_field_tag "feature[i_want]", file[:i_want] %>
+	<%= hidden_field_tag "feature[title]", file[:feature].title %>
+	<%= hidden_field_tag "feature[in_order]", file[:feature].in_order %>
+	<%= hidden_field_tag "feature[as_a]", file[:feature].as_a %>
+	<%= hidden_field_tag "feature[i_want]", file[:feature].i_want %>
 	<h3>Feature: <%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></h3>
-	<p><%= file[:feature_title]%></p>
+	<p><%= file[:feature].title%></p>
 	<p>
-		<%= file[:in_order]%>, <%= file[:as_a]%>, <%= file[:i_want].capitalize%>
+		<%= file[:feature].in_order%>, <%= file[:feature].as_a%>, <%= file[:feature].i_want.capitalize%>
 	</p>
 	<%= label_tag "feature tags:"%>
 	<%= text_field_tag "feature[tag_list]" %><br/>
@@ -16,11 +16,11 @@
 			<%= project.title%><br/>
 		<% end %>
 		
-		<% file[:scenarios].each do |scenario| %>
-			<% if not Story.find_by_scenario(scenario[:story].sub(/^Scenario: /,"").strip)%>
-				<%= hidden_field_tag "feature[stories_attributes][][scenario]", scenario[:story].sub(/^Scenario: /,"").strip %>
-				<% scenario[:steps].each do |step| %>
-					<%= hidden_field_tag "feature[stories_attributes][][steps][]", step %>
+		<% file[:feature].stories.each do |story| %>
+			<% if not Story.find_by_scenario(story.scenario.sub(/^Scenario: /,"").strip)%>
+				<%= hidden_field_tag "feature[stories_attributes][][scenario]", story.scenario.sub(/^Scenario: /,"").strip %>
+				<% story.steps.each do |step| %>
+					<%= hidden_field_tag "feature[stories_attributes][][steps][]", step.title %>
 				<%end %>
 			<% end %>
 		<% end %>
