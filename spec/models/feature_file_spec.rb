@@ -32,6 +32,10 @@ describe FeatureFile do
       @feature_file.in_order.should be_a String
     end
 
+    it "should store the as a heading" do
+      @feature_file.as_a.should_not be_nil
+    end
+
     it "should store the features i want heading" do
       @feature_file.i_want.should_not be_nil
     end
@@ -60,6 +64,10 @@ describe FeatureFile do
 
       it "should return the in order property " do
         @feature_file.export.in_order.should_not be_nil
+      end
+
+      it "should return the as a property" do
+        @feature_file.export.as_a.should be_a String
       end
 
       it "should return the i want property" do

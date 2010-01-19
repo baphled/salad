@@ -14,6 +14,10 @@ class FeatureFile < File
     read_properties /^In order/
   end
 
+  def as_a
+    read_properties /^As a/
+  end
+
   def i_want
     read_properties /^I want/
   end
@@ -42,6 +46,7 @@ class FeatureFile < File
   def export
     Feature.new(:title => feature,
                :in_order => in_order,
+               :as_a => as_a,
                :i_want => i_want,
                :stories => scenarios)
   end
