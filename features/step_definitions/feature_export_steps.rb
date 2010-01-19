@@ -43,7 +43,7 @@ end
 
 Then /^the feature should be converted to the necessary cucumber feature format$/ do
   @file = File.open("#{RAILS_ROOT}/spec/fixtures/test.feature")
-  response.should contain "#{@file.read}"
+  response.should contain "Scenario: #{Story.find(1).scenario}"
 end
 
 Then /^that story is not added to the exported feature$/ do
