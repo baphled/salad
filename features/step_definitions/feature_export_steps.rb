@@ -1,22 +1,27 @@
 Given /^we select a feature with no stories$/ do
-  Feature.find(2).stories.should == []
+  @feature = mock_model(Story,:id => 1, :steps => []).as_null_object
 end
 
 Given /^we select a feature with stories$/ do
-  Feature.find(1).stories.should_not == []
+  @steps = []
+  3.times { |steps| @steps << mock_model(Step).as_null_object}
+  @feature = mock_model(Story,:id => 1, :steps => [@steps]).as_null_object
+  @feature.stories.should_not == []
 end
 
-#need a better way to test this
 Given /^the feature has a story with no steps$/ do
-  Feature.find(1).stories.first.steps.should == []
+  @feature = mock_model(Story,:id => 1, :steps => []).as_null_object
+  @feature.stories.first.steps.should == []
 end
 
 Given /^the feature has other stories with steps$/ do
-  Feature.find(1).stories.find(1).steps
+  @steps = []
+  3.times { |steps| @steps << mock_model(Step).as_null_object}
+  @feature = mock_model(Story,:id => 1, :steps => [@steps]).as_null_object
 end
 
 When /^the feature with no stories is displayed$/ do
-  visit('/features/2')
+  visit feature_path @feature
 end
 
 When /^a user attempts to export a feature$/ do
@@ -24,7 +29,7 @@ When /^a user attempts to export a feature$/ do
 end
 
 When /^we view the first feature$/ do
-  visit('/features/1')
+  visit feature_path @feature
 end
 
 When /^the export link should be viewable$/ do
