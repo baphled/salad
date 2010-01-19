@@ -43,3 +43,5 @@ Feature: We need a way to handle out feature files
       When a feature is valid
       And it has more than one scenario
       Then export will return a Feature object
+      And the feature should have stories
+      And these stores should have steps

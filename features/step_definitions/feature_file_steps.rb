@@ -45,3 +45,11 @@ end
 Then /^export will return a Feature object$/ do
   @file.export.should be_a Feature
 end
+
+Then /^the feature should have stories$/ do
+  @file.export.stories.should_not be_empty
+end
+
+Then /^these stores should have steps$/ do
+  @file.export.stories.each { |story| story.each { |step| step.title.should_not be_empty }  }
+end

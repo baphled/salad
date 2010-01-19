@@ -41,15 +41,16 @@ describe FeatureFile do
     end
 
     it "should contain a scenario" do
-      @feature_file.scenarios.should contain "Scenario: my stories 1st scenario"
+      @feature_file.scenarios.should_not be_nil
     end
 
     it "should contain a scenario with steps" do
-      @feature_file.scenarios.first[:steps].should contain "Given I have my marbles"
+      step = @feature_file.scenarios.first.steps.first
+      step.title.should contain "Given I have my marbles"
     end
 
     it "should store the expected amount of steps" do
-      @feature_file.scenarios.first[:steps].count.should eql 3
+      @feature_file.scenarios.first.steps.count == 3
     end
 
     context "exporting the feature files information" do
@@ -63,6 +64,10 @@ describe FeatureFile do
 
       it "should return the i want property" do
         @feature_file.export.i_want.should be_a String
+      end
+
+      it "should return a list of stories" do
+        @feature_file.export.stories.should_not be_empty
       end
     end
   end

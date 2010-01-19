@@ -1,3 +1,9 @@
+# FeatureFile
+# Used to handle and manipulate cucumber feature files
+#
+# @author Yomi Colledge
+# @email yomi@boodah.net
+#
 class FeatureFile < File
   def invalid?
     if self.path =~ /^(.*).feature$/
@@ -21,11 +27,12 @@ class FeatureFile < File
 
   def scenarios
     @scenarios = [] if @scenarios.nil?
+    self.reopen path if self.eof?
     self.each do |line|
       if line.strip =~ /^Scenario: /
-        @scenarios << {:scenario => line.strip,:steps => [] }
+        @scenarios << Story.new(:scenario => line.strip)
       elsif line.strip =~ /^(Given|When|Then|And)/
-        @scenarios.last[:steps] << line.strip
+        @scenarios.last.steps << Step.new(:title => line.strip)
       end
     end
     @scenarios
@@ -34,18 +41,21 @@ class FeatureFile < File
   def export
     Feature.new(:title => feature,
                :in_order => in_order,
-               :i_want => i_want)
+               :i_want => i_want,
+               :stories => scenarios)
   end
 
   private
-  def read_properties property
-    @value = nil
-    self.reopen path if self.eof?
-    self.each do |line|
-      if line.strip =~ property
-        @value = line.strip
+
+    # @TODO refactor to take a block, allowing us to use this method for scenarios
+    def read_properties property
+      @value = nil
+      self.reopen path
+      self.each do |line|
+        if line.strip =~ property
+          @value = line.strip
+        end
       end
+      @value
     end
-    @value
-  end
 end
