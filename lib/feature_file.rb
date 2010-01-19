@@ -37,6 +37,8 @@ class FeatureFile < File
     self.each do |line|
       if line.strip =~ /^Scenario: /
         @scenarios << {:scenario => line.strip,:steps => [] }
+      elsif line.strip =~ /^(Given|When|Then|And)/
+        @scenarios.last[:steps] << line.strip
       end
     end
     @scenarios

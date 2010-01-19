@@ -31,3 +31,6 @@ Then /^the object should have 1 or more scenarios$/ do
   @file.scenarios.should_not be_nil
 end
 
+Then /^each scenario should have the expected steps$/ do
+  @file.scenarios.first[:steps].should_not be_nil
+end
