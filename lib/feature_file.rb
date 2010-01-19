@@ -1,6 +1,5 @@
 class FeatureFile < File
-  @file = nil
-
+  
   def invalid?
     if self.path =~ /^(.*).feature$/
       false
