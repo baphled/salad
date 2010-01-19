@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FeatureFile do
   before(:each) do
-    @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/projects.yml")
+    @feature_file = FeatureFile.open("#{RAILS_ROOT}/spec/fixtures/projects.yml")
   end
 
   it "should be a child of the File object" do
@@ -17,7 +17,7 @@ describe FeatureFile do
   
   context "a valid feature file" do
     before(:each) do
-      @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/test.feature")
+      @feature_file = FeatureFile.open("#{RAILS_ROOT}/spec/fixtures/test.feature")
     end
 
     it "should be a cucumber feature file" do
@@ -51,5 +51,21 @@ describe FeatureFile do
     it "should store the expected amount of steps" do
       @feature_file.scenarios.first[:steps].count.should eql 3
     end
+  end
+
+  context "exporting the feature files information" do
+
+    it "return the features title" do
+      @feature_file.export.should be_a Feature
+    end
+
+    it "should return the in order property " do
+      @feature_file.export.in_order.should_not be_nil
+    end
+
+    it "should return the i want property" do
+      @feature_file.export.i_want.should_not be_nil
+    end
+
   end
 end

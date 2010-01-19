@@ -1,5 +1,4 @@
 class FeatureFile < File
-  
   def invalid?
     if self.path =~ /^(.*).feature$/
       false
@@ -42,5 +41,11 @@ class FeatureFile < File
       end
     end
     @scenarios
+  end
+
+  def export
+    Feature.new(:title => feature,
+                :in_order => in_order,
+                :i_want => i_want)
   end
 end

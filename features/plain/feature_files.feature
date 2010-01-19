@@ -37,3 +37,9 @@ Feature: We need a way to handle out feature files
       Then the object should be valid
       And the object should have 1 or more scenarios
       And each scenario should have the expected steps
+
+    Scenario: A FeatureFile should be able to save a features scenarios & steps
+      Given we create a FeatureFile from a cucumber feature file
+      When a feature is valid
+      And it has more than one scenario
+      Then import will return true
