@@ -15,4 +15,30 @@ class FeatureFile < File
       end
     end
   end
+
+  def in_order
+    self.each do |line|
+      if line.strip =~ /^In order/
+        line.strip
+      end
+    end
+  end
+
+  def i_want
+    self.each do |line|
+      if line.strip =~ /^I want/
+        line.strip
+      end
+    end
+  end
+
+  def scenarios
+    @scenarios = [] if @scenarios.nil?
+    self.each do |line|
+      if line.strip =~ /^Scenario: /
+        @scenarios << {:scenario => line.strip,:steps => [] }
+      end
+    end
+    @scenarios
+  end
 end

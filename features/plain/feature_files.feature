@@ -18,5 +18,22 @@ Feature: We need a way to handle out feature files
       And the feature property should not be nil
       
     Scenario: A FeatureFile should store the 'In order' heading
+      Given we create a FeatureFile from a cucumber feature file
+      Then the object should be valid
+      And the 'In order' property should not be nil
+      
     Scenario: A FeatureFile should store the 'I want' heading
+      Given we create a FeatureFile from a cucumber feature file
+      Then the object should be valid
+      And the 'I want' property should not be nil
+
     Scenario: A FeatureFile should store the feature files scenario's
+      Given we create a FeatureFile from a cucumber feature file
+      Then the object should be valid
+      And the object should have 1 or more scenarios
+
+    Scenario: A FeatureFile should store a scenarios steps
+      Given we create a FeatureFile from a cucumber feature file
+      Then the object should be valid
+      And the object should have 1 or more scenarios
+      And each scenario should have the expected steps

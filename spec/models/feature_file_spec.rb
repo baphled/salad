@@ -25,5 +25,21 @@ describe FeatureFile do
     it "should store the feature heading within the feature properties" do
       @feature_file.feature.should_not be_nil
     end
+
+    it "should store the features in order heading" do
+      @feature_file.in_order.should_not be_nil
+    end
+
+    it "should store the features i want heading" do
+      @feature_file.i_want.should_not be_nil
+    end
+
+    it "should store the scenario's for the feature" do
+      @feature_file.scenarios.should_not be_nil
+    end
+
+    it "should contain a scenario" do
+      @feature_file.scenarios.should contain "Scenario: my stories 1st scenario"
+    end
   end
 end
