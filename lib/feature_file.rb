@@ -1,15 +1,19 @@
 class FeatureFile < File
   @file = nil
 
-  def initialize featureFile
-    @file = featureFile
-  end
-
   def invalid?
-    if @file =~ /^(.*).feature$/
+    if self.path =~ /^(.*).feature$/
       false
     else
       true
+    end
+  end
+
+  def feature
+    self.each do |line|
+      if line.strip =~ /^Feature: /
+        line.strip
+      end
     end
   end
 end

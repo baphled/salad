@@ -15,7 +15,7 @@ Feature: We need a way to handle out feature files
     Scenario: A FeatureFile should store the 'Feature' heading
       Given we create a FeatureFile from a cucumber feature file
       Then the object should be valid
-      And the feature property should not be null
+      And the feature property should not be nil
       
     Scenario: A FeatureFile should store the 'In order' heading
     Scenario: A FeatureFile should store the 'I want' heading
