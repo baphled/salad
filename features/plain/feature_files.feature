@@ -42,4 +42,4 @@ Feature: We need a way to handle out feature files
       Given we create a FeatureFile from a cucumber feature file
       When a feature is valid
       And it has more than one scenario
-      Then import will return true
+      Then export will return a Feature object
