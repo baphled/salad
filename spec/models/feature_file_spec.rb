@@ -9,16 +9,18 @@ describe FeatureFile do
     @feature_file.should be_a File
   end
 
-  it "should be invalid" do
-    @feature_file.should be_invalid
+  context "an invalid feature file" do
+    it "should be invalid" do
+      @feature_file.should be_invalid
+    end
   end
-
+  
   context "a valid feature file" do
     before(:each) do
       @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/test.feature")
     end
 
-    it "should be valid if the file is a feature file" do
+    it "should be a cucumber feature file" do
       @feature_file.should_not be_invalid
     end
 
@@ -40,6 +42,14 @@ describe FeatureFile do
 
     it "should contain a scenario" do
       @feature_file.scenarios.should contain "Scenario: my stories 1st scenario"
+    end
+
+    it "should contain a scenario with steps" do
+      @feature_file.scenarios.first[:steps].should contain "Given I have my marbles"
+    end
+
+    it "should store the expected amount of steps" do
+      @feature_file.scenarios.first[:steps].count.should eql 3
     end
   end
 end
