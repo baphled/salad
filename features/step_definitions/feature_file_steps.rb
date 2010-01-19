@@ -39,7 +39,7 @@ Then /^the object should have 1 or more scenarios$/ do
 end
 
 Then /^each scenario should have the expected steps$/ do
-  @file.scenarios.first[:steps].should_not be_nil
+  @file.scenarios.first.steps.should_not be_empty
 end
 
 Then /^export will return a Feature object$/ do
@@ -51,5 +51,5 @@ Then /^the feature should have stories$/ do
 end
 
 Then /^these stores should have steps$/ do
-  @file.export.stories.each { |story| story.each { |step| step.title.should_not be_empty }  }
+  @file.export.stories.each { |story| story.steps.should_not be_nil  }
 end
