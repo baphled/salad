@@ -37,7 +37,7 @@ describe Project do
       @project.find_features.should_not include "support"
     end
 
-    context "when displaying import data, ir should " do
+    context "when displaying import data, it should" do
       it "have a feature text" do
         @project.find_features.should contain "We need to a way to store our stories within a project, this will help organise our stories."
       end
