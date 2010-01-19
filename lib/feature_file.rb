@@ -45,7 +45,7 @@ class FeatureFile < File
 
   def export
     Feature.new(:title => feature,
-                :in_order => in_order,
-                :i_want => i_want)
+               :in_order => in_order,
+               :i_want => i_want)
   end
 end

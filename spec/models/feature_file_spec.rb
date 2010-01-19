@@ -66,6 +66,5 @@ describe FeatureFile do
     it "should return the i want property" do
       @feature_file.export.i_want.should_not be_nil
     end
-
   end
 end
