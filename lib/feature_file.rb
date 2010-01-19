@@ -27,7 +27,7 @@ class FeatureFile < File
     self.reopen path if self.eof?
     self.each do |line| 
       if line.strip =~ /^Scenario: /
-        @scenarios << Story.new(:scenario => line.strip)
+        @scenarios << Story.new(:scenario => line.strip.sub(/^Scenario: /, ''))
       elsif line.strip =~ /^(Given|When|Then|And)/
         @scenarios.last.steps << Step.new(:title => line.strip)
       end
@@ -59,7 +59,7 @@ class FeatureFile < File
       self.reopen path if self.eof?
       self.each do |line|
         if line.strip =~ property
-          @value = line.strip
+          @value = line.strip.sub(property, '')
         end
       end
       @value
