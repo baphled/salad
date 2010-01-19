@@ -8,27 +8,35 @@ class FeatureFile < File
   end
 
   def feature
+    @feature = nil
     self.each do |line|
       if line.strip =~ /^Feature: /
-        line.strip
+        @feature = line.strip
       end
     end
+    @feature
   end
 
   def in_order
+    @in_order = nil
+    self.reopen path if self.eof?
     self.each do |line|
-      if line.strip =~ /^In order/
-        line.strip
+      if line.strip =~ /In order/
+        @in_order = line.strip
       end
     end
+    @in_order
   end
 
   def i_want
+    @i_want = nil
+    self.reopen path if self.eof?
     self.each do |line|
       if line.strip =~ /^I want/
-        line.strip
+        @i_want = line.strip
       end
     end
+    @i_want
   end
 
   def scenarios
