@@ -5,13 +5,6 @@
 # @email yomi@boodah.net
 #
 class FeatureFile < File
-  def invalid?
-    if self.path =~ /^(.*).feature$/
-      false
-    else
-      true
-    end
-  end
 
   def feature
     read_properties /^Feature: /
@@ -28,7 +21,7 @@ class FeatureFile < File
   def scenarios
     @scenarios = [] if @scenarios.nil?
     self.reopen path if self.eof?
-    self.each do |line|
+    self.each do |line| 
       if line.strip =~ /^Scenario: /
         @scenarios << Story.new(:scenario => line.strip)
       elsif line.strip =~ /^(Given|When|Then|And)/
@@ -36,6 +29,14 @@ class FeatureFile < File
       end
     end
     @scenarios
+  end
+
+  def invalid?
+    if self.path =~ /^(.*).feature$/
+      false
+    else
+      true
+    end
   end
 
   def export
@@ -50,7 +51,7 @@ class FeatureFile < File
     # @TODO refactor to take a block, allowing us to use this method for scenarios
     def read_properties property
       @value = nil
-      self.reopen path
+      self.reopen path if self.eof?
       self.each do |line|
         if line.strip =~ property
           @value = line.strip
