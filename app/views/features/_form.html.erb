@@ -5,26 +5,24 @@
 <%= render :partial => "/common/hover_dialog" %>
 
 <%- semantic_form_for @feature do |form| -%>
-	<% form.inputs :name => form_title(@feature, "Feature") do %>
-		<%= form.input :title %>
-		<%= form.input :in_order %>
-		<%= form.input :as_a %>
-		<%= form.input :i_want %>
-		<%= form.input :tag_list %>
-	<% end %>
-		<%= viewable_link "view projects", "fieldset_projects" %>
-		<fieldset id="fieldset_projects" class="views">
-			<legend>Projects</legend>
-			<% if !Project.all.empty? %>
-		  	<% for project in Project.all %>
-			    <div>
-					<%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"project_id_#{project.id}"} %>
-						<%= project.title%>
-					</div>
-				<% end %>
-			<% end %>
-		</fieldset>
-		
-		<%= render :partial => "/common/save_button" %>
-	</fieldset>
+  <% form.inputs :name => form_title(@feature, "Feature") do %>
+    <%= form.input :title %>
+    <%= form.input :in_order %>
+    <%= form.input :as_a %>
+    <%= form.input :i_want %>
+    <%= form.input :tag_list %>
+  <% end %>
+  <%= viewable_link "view projects", "fieldset_projects" %>
+  <fieldset id="fieldset_projects" class="views">
+      <legend>Projects</legend>
+      <% if !Project.all.empty? %>
+      <% for project in Project.all %>
+          <div>
+              <%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"project_id_#{project.id}"} %>
+                  <%= project.title%>
+              </div>
+          <% end %>
+      <% end %>
+  </fieldset>
+  <%= render :partial => "/common/save_button" %>
 <% end -%>
