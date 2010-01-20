@@ -2,9 +2,18 @@
 	<% content_for :js_head do %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			<% items.each_with_index do |item,index| %>
-				$('div.item_<%=index %>').hover(displayHoverList,hideHoverList);
-			<% end %>
+          $("div.<%= items %>").each(function(event) {
+            
+            $(this).mouseover(function() {
+              $hover_class = 'li.' + $(this).attr('class').replace(' ','_');
+              $($hover_class).toggle();
+            });
+
+            $(this).mouseout(function() {
+              $hover_class = 'li.' + $(this).attr('class').replace(' ','_');
+              $($hover_class).toggle();
+            });
+          });
 		});
 	</script>
 	<% end %>
