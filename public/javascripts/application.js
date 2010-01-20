@@ -23,18 +23,7 @@ function displayInfo(event,selector) {
 **/
 
 $(document).ready(function() {
-  $('div.project').each(function(event) {
-    $(this).mouseover(function() {
-      $hover_class = 'li.' + $(this).attr('class').replace(' ','_');
-      $($hover_class).toggle();
-    });
-
-    $(this).mouseout(function() {
-      $hover_class = 'li.' + $(this).attr('class').replace(' ','_');
-      $($hover_class).toggle();
-    });
-  });
-
+  
   $('#myTabs').tabs();
 	
   var accOpts = {
