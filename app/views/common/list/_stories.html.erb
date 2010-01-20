@@ -5,7 +5,8 @@
     <%= will_paginate stories %>
     <ul>
       <% stories.each_with_index do |story,index| %>
-        <% content_tag_for(:li, story, :class=> "item_" + index.to_s ) do %>
+      <li>
+        <% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
           <span class="order_box" style="display:none;">
             <%= index+1 %>
           </span>
@@ -16,9 +17,9 @@
             <% end %>
           </span>
           <%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
-          <% end %>
-        <% end %>
-    <% end %>
+         <% end %>
+      </li>
+      <% end %>
     </ul>
     <%= will_paginate stories %>
   <% else %>

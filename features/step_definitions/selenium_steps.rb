@@ -13,3 +13,7 @@ end
 Then /^the story's information will be display in the sidebar$/ do
   selenium.wait_for_visible("story_1_step")
 end
+
+Then /^the feature's information will be display in the sidebar$/ do
+  selenium.wait_for_visible("feature_1_story")
+end
