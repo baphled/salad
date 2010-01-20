@@ -34,7 +34,7 @@ end
 Given /^the project has features$/ do
   @features = []
   3.times{ |feature_num| @features << mock_model(Feature, :title => "feature #{feature_num}").as_null_object }
-  
+  Project.stub!(:feature).with(:order => "feature_projects.position").and_return @feature
 end
 
 When /^the project already exists$/ do
@@ -56,7 +56,6 @@ end
 
 When /^I visit the projects features$/ do
   visit project_features_path @project
-  assigns[:project_features] = @features
 end
 
 When /^I create new a feature$/ do
