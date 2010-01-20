@@ -1,9 +1,9 @@
-Given /^I visit the stories index page$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 When /^the first (.*) is hovered over$/ do |model|
   selenium.mouse_over("#{model}_1")
+end
+
+When /^the (.*) page is loaded$/ do |model|
+  selenium.wait_for_element("#{model}_1")
 end
 
 Then /^the project's information will be display in the sidebar$/ do

@@ -6,17 +6,20 @@ Feature: Hovering over a project item
     Scenario: Hovering over a project item
       Given there are projects
       And I visit the projects index page
-      When the first project is hovered over
+      When the project page is loaded
+      And the first project is hovered over
       Then the project's information will be display in the sidebar
 
     Scenario: Hovering over a feature item
       Given there are features
       And I can view the features page
-      When the first feature is hovered over
+      When the feature page is loaded
+      And the first feature is hovered over
       Then the feature's information will be display in the sidebar
 
     Scenario: Hovering over a story item
       Given there are stories
       And I can view the stories page
-      When the first story is hovered over
+      When the story page is loaded
+      And the first story is hovered over
       Then the story's information will be display in the sidebar
