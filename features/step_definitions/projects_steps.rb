@@ -32,9 +32,7 @@ Given /^there are no projects$/ do
 end
 
 Given /^the project has features$/ do
-  @features = []
-  3.times{ |feature_num| @features << mock_model(Feature, :title => "feature #{feature_num}").as_null_object }
-  Project.stub!(:feature).with(:order => "feature_projects.position").and_return @feature
+  @project = Project.find 2
 end
 
 When /^the project already exists$/ do

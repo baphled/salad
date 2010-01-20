@@ -10,14 +10,21 @@ Feature: Hovering over a project item
       And the first project is hovered over
       Then the project's information will be display in the sidebar
 
-    Scenario: Hovering over a feature item
+    Scenario: Hovering over a project's feature item
+      Given there is a project
+      And the project has features
+      And I visit the projects features
+      When the first feature is hovered over
+      Then the feature's information will be display in the sidebar
+
+  Scenario: Hovering over a feature item
       Given there are features
       And I can view the features page
       When the feature page is loaded
       And the first feature is hovered over
       Then the feature's information will be display in the sidebar
 
-    Scenario: Hovering over a story item
+  Scenario: Hovering over a story item
       Given there are stories
       And I can view the stories page
       When the story page is loaded
