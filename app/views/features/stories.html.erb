@@ -6,6 +6,6 @@
 
 <%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories.paginate(:page=>params[:page],:order=>"feature_stories.position"), :order =>true} %>
 
-<%= render :partial => '/common/hover', :locals => {:items => @feature.stories.all(:order=>"feature_stories.position"), :order =>true} %>
+<%= render :partial => '/common/hover', :locals => {:items => 'story', :order =>true} %>
 
 <%= render :partial => 'common/sidebar/story_steps', :locals => {:stories => @feature.stories.all(:order=>"feature_stories.position"), :order =>true} %>
