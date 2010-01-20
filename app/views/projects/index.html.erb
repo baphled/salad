@@ -2,4 +2,5 @@
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 <%= render :partial => '/common/list/projects', :locals => {:projects => @projects, :order =>false}%>
 
+<%= render :partial => 'common/hover', :locals => {:items => 'project'}%>
 <%= render :partial => 'common/sidebar/project_features', :locals => {:projects => @projects}%>
