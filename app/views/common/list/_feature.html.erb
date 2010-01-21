@@ -1,0 +1,7 @@
+<span class="list_content">
+  <b>Title: </b><%= feature.title %><br/>
+  <b>Created at: </b><%= feature.creation_date %><br/>
+  <% if !feature.story_ids.empty? %>
+    <%= link_to "Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"}%>
+  <% end %>
+</span>
