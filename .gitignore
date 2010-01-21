@@ -1,9 +1,10 @@
 coverage
-coverage.dat
+coverage.data
 log
 tmp
 app/stylesheets/.sass-cache
 public/stylesheets/compiled
 config/database.yml
+nbproject
 vendor
 rerun.txt
