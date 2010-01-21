@@ -4,9 +4,9 @@
 	<ul id="features">
 	<% if !features.blank? %>
 		<% features.each_with_index do |feature,index| %>
-          <li>
+          <% content_tag_for(:li, feature) do %>
             <% content_tag_for(:div, feature, :class=> "item_" + index.to_s ) do %>
-              <span class="order_box" style="display:none;">
+              <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
                   <%= index+1 %>
               </span>
               <span class="list_content">
@@ -18,7 +18,7 @@
               </span>
               <%= render :partial => '/common/feature_icons', :locals => {:feature => feature}%>
             <% end %>
-          </li>
+          <% end %>
 		<% end %>
 	<% else %>
 		<li>No features present</li>
@@ -26,4 +26,22 @@
 	</ul>
 </div>
 
-<%= sortable_element( "features", :url => "projects/sort_features", :handle => "order_box") %>
+<script type="text/javascript">
+
+  //<![CDATA[
+  $('#features').sortable({
+    axis:'y',
+    dropOnEmpty:false,
+    handle:'.order_box',
+    cursor: 'crosshair',
+    items: 'li',
+    update:function(){
+      $.ajax({
+        data:$(this).sortable('serialize'),
+        dataType:'script',
+        type:'post',
+        url:'/features/sort'})
+    }
+  });
+  //]]>
+</script>

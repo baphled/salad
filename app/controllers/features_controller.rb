@@ -70,7 +70,7 @@ class FeaturesController < ApplicationController
   end
   
   def sort
-    params[:features].each_with_index do |id, index|
+    params[:feature].each_with_index do |id, index|
       @feature = Feature.find id
       @feature.feature_projects.update_all(['position=?', index+1])
     end
