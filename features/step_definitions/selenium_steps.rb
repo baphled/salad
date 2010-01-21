@@ -23,7 +23,6 @@ Then /^the feature's information will be display in the sidebar$/ do
 end
 
 Then /^I should see the order handler$/ do
-  save_and_open_page
   selenium.wait_for_visible("order_btn_1")
 end
 

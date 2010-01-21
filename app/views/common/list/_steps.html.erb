@@ -8,19 +8,19 @@
 	<% if !@steps.blank? %>
 	  <% @steps.each_with_index do |step,index| %>
 	    <% content_tag_for :li, step do %>
-				<div>
-					<span class="order_box" style="display:none;">
-						<%= index+1 %>
-					</span>
-		    	<span class="list_content">
-                  <% if  step != @steps.first %>
-                    <%=h step.formatted @steps[index -1] %>
-                  <% else %>
-                    <%=h step.title %>
-                  <% end  %>
-					</span>
-					<%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
-				</div>
+          <div>
+            <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
+                <%= index+1 %>
+            </span>
+            <span class="list_content">
+              <% if  step != @steps.first %>
+                <%=h step.formatted @steps[index -1] %>
+              <% else %>
+                <%=h step.title %>
+              <% end  %>
+            </span>
+            <%= render :partial => '/common/steps_icons', :locals => {:step => step}%>
+          </div>
 	    <% end %>
 	  <% end %>
 		</ul>
@@ -33,4 +33,6 @@
 
 </div>
 
-<%= sortable_element( "steps", :url => sort_steps_path, :handle => "order_box")%>
+<% content_for :js_head do %>
+  <%= javascript_include_tag "sortable_list" %>
+<% end %>

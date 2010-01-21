@@ -2,6 +2,14 @@ Given /^there are stories$/ do
   assert !Story.find(:all).nil?
 end
 
+Given /^the story has steps$/ do
+  @story ||= Story.first
+end
+
+When /^I visit the stories steps$/ do
+  visit story_steps_path @story
+end
+
 When /^I select first feature new story link$/ do
   click_link 'New Story'
 end
