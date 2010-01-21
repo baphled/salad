@@ -25,23 +25,6 @@
 	<% end %>
 	</ul>
 </div>
-
-<script type="text/javascript">
-
-  //<![CDATA[
-  $('#features').sortable({
-    axis:'y',
-    dropOnEmpty:false,
-    handle:'.order_box',
-    cursor: 'crosshair',
-    items: 'li',
-    update:function(){
-      $.ajax({
-        data:$(this).sortable('serialize'),
-        dataType:'script',
-        type:'post',
-        url:'/features/sort'})
-    }
-  });
-  //]]>
-</script>
+<% content_for :js_head do %>
+  <%= javascript_include_tag "sortable_list" %>
+<% end %>
