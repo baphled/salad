@@ -8,8 +8,7 @@
 	<%= render :partial => '/common/project_summary', :locals => {:project => @project}%>
 </div>
 
-
-<%= render :partial => '/common/list/features', :locals => {:features => @project_features, :order =>true}%>
+<%= render :partial => '/common/sortable_list', :locals => {:models => @project_features, :order =>true}%>
 
 
 <%= render :partial => '/common/hover', :locals => {:items => 'feature'}%>
