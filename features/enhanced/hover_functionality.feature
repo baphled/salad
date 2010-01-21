@@ -49,6 +49,3 @@ Feature: Hovering over a project item
     When the story page is loaded
     And the first story is hovered over
     Then the story's information will be display in the sidebar
-
-  Scenario: When viewing a feature's story we must be able to hover of its items
-  Scenario: When viewing a story we must be able to hover of its items
