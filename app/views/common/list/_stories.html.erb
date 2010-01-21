@@ -7,7 +7,7 @@
       <% stories.each_with_index do |story,index| %>
       <li>
         <% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
-          <span class="order_box" style="display:none;">
+          <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
             <%= index+1 %>
           </span>
           <span class="list_content">

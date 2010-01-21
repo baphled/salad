@@ -37,6 +37,9 @@ When /^I visit the index features page$/ do
   visit('/features')
 end
 
+When /^I visit the features stories$/ do
+  visit feature_stories_path @feature
+end
 When /^I edit the first feature$/ do
   click_link 'edit_feature_1'
 end

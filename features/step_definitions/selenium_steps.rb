@@ -23,10 +23,11 @@ Then /^the feature's information will be display in the sidebar$/ do
 end
 
 Then /^I should see the order handler$/ do
+  save_and_open_page
   selenium.wait_for_visible("order_btn_1")
 end
 
-Then /^I should be able to move the second feature to the first position$/ do
+Then /^I should be able to move the second item to the first position$/ do
   selenium.drag_and_drop_to_object("id=order_btn_2","id=order_btn_1")
 end
 
