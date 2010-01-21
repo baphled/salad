@@ -160,7 +160,7 @@ Then /^the project features page will be displayed$/ do
   response.should have_selector :ul, attribute = {:id => 'features'} do |list|
     @project.features.each do |feature|
       list.should have_selector :li do |content|
-        content.should contain => feature.title
+        content.should contain feature.title
       end
     end
   end
