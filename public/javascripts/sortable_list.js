@@ -1,6 +1,8 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * Centralised sortable functionality used through out the site
+ * 
+ * @author Yomi Colledge
+ *
  */
 $('div#lists ul').sortable({
   axis:'y',
