@@ -9,3 +9,4 @@ Feature: Order items
       And I press order
       Then I should see the order handler
       And I should be able to move the second feature to the first position
+      And the items should be reordered

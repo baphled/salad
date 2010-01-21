@@ -28,6 +28,9 @@ end
 
 Then /^I should be able to move the second feature to the first position$/ do
   selenium.drag_and_drop_to_object("id=order_btn_2","id=order_btn_1")
+end
+
+Then /^the items should be reordered$/ do
   selenium.wait_for(:wait_for => :ajax, :javascript_framework => :jquery) do
     assert selenium.is_ordered("id=order_btn_2", "id=order_btn_1")
   end
