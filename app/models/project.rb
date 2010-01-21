@@ -19,5 +19,4 @@ class Project < ActiveRecord::Base
       end
     list
   end
-  
 end
