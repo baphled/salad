@@ -17,3 +17,11 @@ end
 Then /^the feature's information will be display in the sidebar$/ do
   selenium.wait_for_visible("feature_1_story")
 end
+
+Then /^each feature should have a order handle$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should be able to move the second feature to the first position$/ do
+  pending # express the regexp above with the code you wish you had
+end

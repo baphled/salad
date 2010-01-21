@@ -10,6 +10,10 @@ Given /^I visit the features edit view$/ do
   visit("/features/#{@feature.id}/edit")
 end
 
+Given /^the feature has stories$/ do
+  @feature = Feature.first
+end
+
 When /^the feature is viewed$/ do
   visit feature_path @feature
 end
