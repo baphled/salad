@@ -27,4 +27,6 @@
   <% end %>
 </div>
 
-<%= sortable_element( "stories", :url => sort_stories_path, :handle => "order_box")%>
+<% content_for :js_head do %>
+  <%= javascript_include_tag "sortable_list" %>
+<% end %>
