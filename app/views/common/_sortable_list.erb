@@ -1,0 +1,25 @@
+<div class="features" id="lists">
+  <%= link_to "New #{models.first.class.to_s}", :controller => models.first.class.to_s.downcase %>
+  <%= order_btn models, order %>
+  <ul id="features">
+  <% if !models.blank? %>
+      <% models.each_with_index do |model,index| %>
+        <% content_tag_for(:li, model) do %>
+          <% content_tag_for(:div, model, :class=> "item_" + index.to_s ) do %>
+            <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
+              <%= index+1 %>
+            </span>
+            <%= render :partial => "/common/list/#{models.first.class.to_s.downcase}", :locals => {models.first.class.to_s.downcase.to_sym => model } %>
+            <%= render :partial => "/common/#{models.first.class.to_s.downcase}_icons", :locals => {models.first.class.to_s.downcase.to_sym => model } %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% else %>
+      <li>No features present</li>
+  <% end %>
+  </ul>
+</div>
+
+<% content_for :js_head do %>
+  <%= javascript_include_tag "sortable_list" %>
+<% end %>
