@@ -10,16 +10,13 @@ class Project < ActiveRecord::Base
   has_many :feature_projects
   has_many :features, :through => :feature_projects
   
-  @feature_title,@in_order,@as_a,@i_want,@scenarios,@steps = nil
-
   def import_features
     list = []
-    Dir.new("#{self.location}/features/plain").entries.each do |file|
-      if file =~ /^(.*).feature$/
-        file = FeatureFile.new "#{self.location}/features/plain/#{file}"
-        list << {:file => File.basename(file.path), :feature => file.export}
+    feature_files = File.join("#{self.location}", "features", "**", "*.feature")
+      Dir.glob(feature_files).each do |file|
+        featurefile = FeatureFile.new file
+        list << {:file => File.basename(file), :feature => featurefile.export}
       end
-    end
     list
   end
   
