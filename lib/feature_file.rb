@@ -23,16 +23,16 @@ class FeatureFile < File
   end
 
   def scenarios
-    @scenarios = [] if @scenarios.nil?
+    scenarios = [] if scenarios.nil?
     self.reopen path if self.eof?
     self.each do |line| 
       if line.strip =~ /^Scenario: /
-        @scenarios << Story.new(:scenario => line.strip.sub(/^Scenario: /, ''))
+        scenarios << Story.new(:scenario => line.strip.sub(/^Scenario: /, ''))
       elsif line.strip =~ /^(Given|When|Then|And)/
-        @scenarios.last.steps << Step.new(:title => line.strip)
+        scenarios.last.steps << Step.new(:title => line.strip)
       end
     end
-    @scenarios
+    scenarios
   end
 
   def invalid?
