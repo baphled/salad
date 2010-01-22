@@ -1,14 +1,7 @@
 /**
-	Helps us display associated information from a list item
-**/
-function displayHoverList(event) {
-	$('li.' + this["className"].replace(' ','_')).show();
-}
-
-function hideHoverList(event) {
-	$('li.' + this["className"].replace(' ','_')).hide();
-}
-
+ * Helper method to display further information,
+ * will refactor to make non-obtrusive later
+ */
 function displayInfo(event,selector) {
   if("view" == $(event).html()) {
     $(event).html("hide");
