@@ -12,7 +12,11 @@
               <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
                 <%= index+1 %>
               </span>
+              <% if :formatted %>
+                <%= model.send(method,method_arg[index -1])%>
+            <% else  %>
               <%= render :partial => "/common/list/#{models.first.class.to_s.downcase}", :locals => {models.first.class.to_s.downcase.to_sym => model } %>
+            <% end %>
               <%= render :partial => "/common/#{models.first.class.to_s.downcase}_icons", :locals => {models.first.class.to_s.downcase.to_sym => model } %>
             <% end %>
           <% end %>

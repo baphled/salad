@@ -4,4 +4,6 @@
     :page=> params[:page],
     :order=>"step_stories.position"),
   :item_name => 'step',
+  :method => :formatted,
+  :method_arg => @story.steps,
   :order =>true}%>
