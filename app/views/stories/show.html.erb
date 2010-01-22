@@ -1,5 +1,5 @@
 <%= render :partial => '/common/model_information', :locals => {:model => @story}%>
-<%= render :partial => '/common/story_summary', :locals => {:story => @story}%>
+<%= render :partial => '/common/model_summary', :locals => {:model => @story, :assoc => :steps}%>
 <div style="clear:both"></div>
 
 <%= render :partial => '/common/sortable_list',
