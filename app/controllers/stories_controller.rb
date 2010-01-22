@@ -64,7 +64,7 @@ class StoriesController < ApplicationController
   end
   
   def sort
-    params[:story].each_with_index do |id, index|
+    params[:stories].each_with_index do |id, index|
       @story = Story.find id
       @story.feature_stories.update_all(['position=?', index+1])
     end

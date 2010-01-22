@@ -67,7 +67,7 @@ class StepsController < ActionController::Base
   end
   
   def sort
-    params[:steps].each_with_index do |id, index|
+    params[:step].each_with_index do |id, index|
       @steps = Step.find id
       @steps.step_stories.update_all(['position=?', index+1])
     end
