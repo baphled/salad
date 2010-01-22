@@ -1,7 +1,9 @@
 <div class="features" id="lists">
-  <%= link_to "New #{models.first.class.to_s}", :controller => models.first.class.to_s.downcase %>
+  <%= link_to "New #{item_name.pluralize.capitalize}",
+      :controller => item_name.pluralize.downcase,
+      :action => :new %>
   <%= order_btn models, order %>
-  <ul id="features">
+  <ul id="<%= item_name.pluralize.downcase %>">
   <% if !models.blank? %>
       <% models.each_with_index do |model,index| %>
         <% content_tag_for(:li, model) do %>
@@ -15,7 +17,7 @@
         <% end %>
       <% end %>
   <% else %>
-      <li>No features present</li>
+      <li>No <%= item_name.pluralize.downcase %> present</li>
   <% end %>
   </ul>
 </div>
