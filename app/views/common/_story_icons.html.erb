@@ -1,0 +1,6 @@
+<span class="icons">
+	<%= link_to "View", story_path(story),{:class=>"ui-icon-note ui-icon"} %>
+	<%= link_to "Edit", edit_story_path(story), {:id=>"edit_story_#{story.id}",:class=>"ui-icon-pencil ui-icon"} %>
+	<%= link_to "New Step", new_step_path({:story_id=>story.id}), {:class=>"ui-icon-document ui-icon"} %>
+	<%= link_to 'Delete', story, {:class=>"ui-icon-trash ui-icon",:method => :delete,:confirm => 'Are you sure?'} %>
+</span>
