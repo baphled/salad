@@ -4,8 +4,7 @@
 	<%= render :partial => '/common/feature_summary', :locals => {:feature => @feature} %>
 </div>
 
-<%= render :partial => '/common/list/stories', :locals => {:stories => @feature.stories.paginate(:page=>params[:page],:order=>"feature_stories.position"), :order =>true} %>
-
+<%= render :partial => '/common/sortable_list',:locals => {:models => @feature.stories.paginate(:page=>params[:page],:order=>"feature_stories.position"), :item_name => 'story', :order =>true}%>
 <%= render :partial => '/common/hover', :locals => {:items => 'story', :order =>true} %>
 
 <%= render :partial => 'common/sidebar/story_steps', :locals => {:stories => @feature.stories.all(:order=>"feature_stories.position"), :order =>true} %>
