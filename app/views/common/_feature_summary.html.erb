@@ -1,7 +1,0 @@
-<div class='summary'>
-	<%= link_to "Add Story", new_story_path({:feature_id=>feature.id})%><br/>
-	<b>Number of Stories: </b><span><%= feature.stories.count %></span><br/>
-	<% if not feature.stories.blank? %>
-	<b>Last story: </b><span><%= feature.stories.last.scenario %></span><br/>
-	<% end %>
-</div>
