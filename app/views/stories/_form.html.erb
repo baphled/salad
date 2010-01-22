@@ -8,14 +8,12 @@
 
 <%- semantic_form_for @story do |form| -%>
     <fieldset>
-		<% form.inputs :name => form_title(@story, "Project") do %>
+		<% form.inputs :name => form_title(@story, "Story") do %>
 			<%= form.input :scenario %>
 			<%= form.input :tag_list %>
 		<% end %>
-		<%= render :partial => '/common/features_checkboxes', :locals => {:story => story}%>
-		
-
-		<%= render :partial => '/common/steps_checkboxes', :locals => {:story => story} %>
+		<%= render :partial => '/common/checkboxes', :locals => {:model => story, :item_name => Feature}%>
+		<%= render :partial => '/common/checkboxes', :locals => {:model => story, :item_name => Step}%>
 	
 		<%= render :partial => "/common/save_button" %>
 	</fieldset>
