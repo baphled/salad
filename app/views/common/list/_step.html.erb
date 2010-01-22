@@ -1,1 +1,6 @@
 <%=h step.title %>
+<ul>
+  <% story.steps.each_with_index do |step, index| %>
+        <li><%=h step.formatted story.steps[index -1] %></li>
+  <% end %>
+</ul>
