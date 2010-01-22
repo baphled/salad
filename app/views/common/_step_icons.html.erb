@@ -1,0 +1,5 @@
+<span class="icons">
+	<%= link_to "View", step_path(step), {:class=>"ui-icon-note ui-icon"} %>
+	<%= link_to "Edit", edit_step_path(step), {:id=>"edit_step_#{step.id}",:class=>"ui-icon-pencil ui-icon"} %>
+	<%= link_to 'Delete', step, {:class=>"ui-icon-trash ui-icon",:method => :delete,:confirm => 'Are you sure?'} %>
+</span>
