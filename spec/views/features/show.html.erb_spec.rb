@@ -20,13 +20,13 @@ describe "/features/show.html.erb" do
     end
     
     it "should have display the features informaion" do
-      response.should have_selector :div, attribute = {:id=>"info"} do |content|
+      response.should have_selector :div, attribute = {:class=>"info"} do |content|
         content.should contain @feature.title
       end
     end
     
     it "should have a created date" do
-      response.should contain "Created date: #{@feature.creation_date}"
+      response.should contain "Creation date: #{@feature.creation_date}"
     end
     
     it "should have an updated date" do
