@@ -3,9 +3,9 @@
   <%= order_btn stories, order %>
   <% if !stories.blank? %>
     <%= will_paginate stories %>
-    <ul>
+    <ul id="stories">
       <% stories.each_with_index do |story,index| %>
-      <li>
+      <% content_tag_for(:li, story) do %>
         <% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
           <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
             <%= index+1 %>
@@ -18,7 +18,7 @@
           </span>
           <%= render :partial => '/common/stories_icons', :locals => {:story => story}%>
          <% end %>
-      </li>
+        <% end %>
       <% end %>
     </ul>
     <%= will_paginate stories %>
