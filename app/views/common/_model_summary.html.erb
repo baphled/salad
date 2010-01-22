@@ -1,4 +1,5 @@
 <div class='<%=  model.class.to_s.downcase %> info'>
+  <%= link_to "Add #{model.class.to_s}'s #{assoc.to_s.capitalize.singularize}", :controller => assoc, :action => :new, "#{model.class.to_s.downcase.singularize}_id".to_sym =>model.id%><br/>
   <b>Number of <%= model.class.to_s.capitalize %> : </b><span><%= model.send(assoc.to_s).count %></span><br/>
     <% if not model.send(assoc).blank? %>
     <b>Last step: </b><span><%= model.send(assoc).last.title %></span><br/>
