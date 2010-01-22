@@ -1,0 +1,13 @@
+<div class='info'>
+  <% model.attribute_names.reverse.each do |attribute|%>
+    <% if not ["id", "created_at", "updated_at"].include?(attribute) %>
+      <% if not model.send(attribute.to_sym).nil? %>
+        <%= render :partial => "/common/caption_and_value", :locals => { :model => model, :attribute => attribute } %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <br />
+  <% ["creation_date", "updated_date"].each do |attribute| %>
+    <%= render :partial => "/common/caption_and_value", :locals => { :model => model, :attribute => attribute } %>
+  <% end %>
+</div>
