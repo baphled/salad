@@ -26,11 +26,11 @@ describe "/features/show.html.erb" do
     end
     
     it "should have a created date" do
-      response.should contain "Created at: #{@feature.creation_date}"
+      response.should contain "Created date: #{@feature.creation_date}"
     end
     
     it "should have an updated date" do
-      response.should contain "Updated at: #{@feature.updated_date}"
+      response.should contain "Updated date: #{@feature.updated_date}"
     end
     
     it "should have a list of stories associated to it" do
