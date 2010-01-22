@@ -5,17 +5,17 @@
 	<ul id="left_list">
  <% for item in item_name.send(:all) %>
    <li>
-     <%= check_box_tag "#{model.class.to_s.downcase.singularize}[#{item_name.to_s.downcase.singularize}_ids][]",
+    <%= check_box_tag "#{model.class.to_s.downcase.singularize}[#{item_name.to_s.downcase.singularize}_ids][]",
        item.id,
        model.send(item_name.to_s.downcase.pluralize).include?(item),
        {:id=>"#{model.class.to_s.downcase.singularize}_#{item_name.to_s.downcase.singularize}_id_#{item.id}"} %>
-		<%= item.title%>
+     <%= display_item_title(item) %>
 	</li>
 <% end %>
 	</ul>
 </fieldset>
 <% else %>
 	<ul>
-	  <li>No steps to link to</li>
+	  <li>No items to</li>
 	</ul>
 <% end %>

@@ -21,7 +21,16 @@ module ApplicationHelper
 		end
 	end
 
+  # TODO rename so that is is more readable or refactor so that is is part of our models
   def model_name_to_sym models
     models.first.class.to_s.downcase.to_sym
+  end
+
+  def display_item_title item
+    if 'Story' == item.class.to_s
+      item.scenario
+    else
+      item.title
+    end
   end
 end
