@@ -1,0 +1,6 @@
+<div class='<%=  model.class.to_s.downcase %> info'>
+  <b>Number of <%= model.class.to_s.capitalize %> : </b><span><%= model.send(assoc.to_s).count %></span><br/>
+    <% if not model.send(assoc).blank? %>
+    <b>Last step: </b><span><%= model.send(assoc).last.title %></span><br/>
+    <% end %>
+</div>
