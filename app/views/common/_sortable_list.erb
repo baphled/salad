@@ -1,5 +1,5 @@
 <div class="features" id="lists">
-  <%= link_to "New #{item_name.pluralize.capitalize}",
+  <%= link_to "New #{item_name.singularize.capitalize}",
       :controller => item_name.pluralize.downcase,
       :action => :new %>
   <%= order_btn models, order %>
