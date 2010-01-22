@@ -21,7 +21,7 @@ class Step < ActiveRecord::Base
     Step.all(:all,:conditions => ["title LIKE ?", "%#{search}%"])
   end
   
-  def self.first_word
+  def first_word
     title.split(" ").first
   end
   
