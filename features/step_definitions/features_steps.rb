@@ -97,7 +97,7 @@ Then /^I can view all the stories associated to the feature$/ do
 end
 
 Then /^the feature should have a creation date$/ do
-  response.should contain "Created at:"
+  response.should contain "Creation date:"
 end
 
 Then /^the features date should be updated$/ do
@@ -107,5 +107,5 @@ end
 
 
 Then /^the features updated field will be displayed$/ do
-  response.should contain "Updated at: #{@feature.updated_date}"
+  response.should contain "Updated date: #{@feature.updated_date}"
 end
