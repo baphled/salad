@@ -20,4 +20,8 @@ module ApplicationHelper
 			"New " + title
 		end
 	end
+
+  def model_name_to_sym models
+    models.first.class.to_s.downcase.to_sym
+  end
 end
