@@ -1,4 +1,5 @@
 $('#steps_list').html("<%= escape_javascript(render :partial => '/common/sortable_list',
   :locals => {:models => @steps,
   :item_name => 'step',
+  :assoc => nil,
   :order => false})%>");

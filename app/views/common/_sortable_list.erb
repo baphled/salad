@@ -17,7 +17,7 @@
             <% else  %>
               <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
             <% end %>
-              <%= render :partial => "/common/icons", :locals => {:model => model } %>
+              <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
             <% end %>
           <% end %>
         <% end %>

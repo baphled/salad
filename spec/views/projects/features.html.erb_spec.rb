@@ -9,7 +9,7 @@ describe "/projects/features.html.erb" do
   describe "GET, projects" do
     context "project has no features"  do
       before(:each) do
-        render :partial => '/common/sortable_list', :locals => {:models => @project.features.all(:order=>"feature_projects.position"), :item_name => 'feature', :order =>true}
+        render :partial => '/common/sortable_list', :locals => {:models => @project.features.all(:order=>"feature_projects.position"), :item_name => 'feature', :assoc => 'step', :order =>true}
       end
       
       it "should not display a list of features" do
@@ -24,7 +24,7 @@ describe "/projects/features.html.erb" do
     context "project has features"  do
       before(:each) do
         @project_features = [stub_model(Feature,:title=>'first feature').as_null_object]
-        render :partial => '/common/sortable_list', :locals => {:models => @project_features, :item_name => 'feature', :order =>true}
+        render :partial => '/common/sortable_list', :locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true}
       end
 
       it "should display a list of features" do

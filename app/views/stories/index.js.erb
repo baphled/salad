@@ -1,1 +1,1 @@
-$('#stories').html("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @stories, :item_name => 'story', :order =>false})%>");
+$('#stories').html("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @stories, :item_name => 'story', :assoc => 'step', :order =>false})%>");

@@ -10,6 +10,7 @@
   :method => :formatted,
   :method_arg => @story.steps(:page=> params[:page],
     :order=>"step_stories.position"),
+  :assoc => nil,
   :order =>true}%>
 
 <% form_for @story do |f| -%>
