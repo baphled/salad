@@ -1,1 +1,4 @@
-$('#steps_list').html("<%= escape_javascript(render :partial => '/common/list/steps', :locals => {:steps => @steps, :order =>false})%>");
+$('#steps_list').html("<%= escape_javascript(render :partial => '/common/sortable_list',
+  :locals => {:models => @steps,
+  :item_name => 'step',
+  :order => false})%>");

@@ -6,6 +6,8 @@
 	<%= render 'step_search' %>
 <% end %>
 <h3>Steps</h3>
-<div id="steps_list">
-<%= render :partial => '/common/list/steps', :locals => {:steps => @steps, :order =>false}%>
-</div>
+
+<%= render :partial => '/common/sortable_list',
+  :locals => {:models => @steps,
+  :item_name => 'step',
+  :order => false}%>
