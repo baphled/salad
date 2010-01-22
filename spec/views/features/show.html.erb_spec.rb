@@ -8,9 +8,15 @@ describe "/features/show.html.erb" do
 
   describe "viewing feature" do
     before(:each) do
-      @feature.stub(:stories).and_return [stub_model(Story, :scenario => 'Some scenario').as_null_object]
+      @feature = Feature.first
       assigns[:feature] = @feature
-      render
+      render :locals => {
+                    :models => @feature.stories.paginate(
+                      :page=>1,
+                      :per_page=>10,
+                      :order=>"feature_stories.position"),
+                    :item_name => 'story',
+                    :order =>true}
     end
     
     it "should have display the features informaion" do
