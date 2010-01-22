@@ -1,16 +1,3 @@
-/**
- * Helper method to display further information,
- * will refactor to make non-obtrusive later
- */
-function displayInfo(event,selector) {
-  if("view" == $(event).html()) {
-    $(event).html("hide");
-  } else {    
-    $(event).html("view");
-  }
-  $('#' +selector).toggle();
-}
-
 // This sets up the proper header for rails to understand the request type,
 // and therefore properly respond to js requests (via respond_to block, for example)
 $.ajaxSetup({ 
@@ -18,6 +5,30 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
+
+  /**
+   * Selector for our item fieldsets
+   */
+  var display_info = $("a.display_info");
+
+  /**
+   * We don't want our checkboxes viewable initially
+   */
+  $('.views').hide();
+  
+  /**
+   * Handling the viewing and hiding of our item checkboxes
+   */
+  display_info.click(function(event) {
+    $('fieldset.views').toggle(function() {
+      if( 'view' == display_info.text().substr(0,4)) {
+        display_info.text(display_info.text().replace('view', 'hide'));
+      } else  {
+        display_info.text(display_info.text().replace('hide', 'view'));
+      }
+    });
+  });
+
   // UJS authenticity token fix: add the authenticy_token parameter
   // expected by any Rails POST request.
   $(document).ajaxSend(function(event, request, settings) {
@@ -41,8 +52,6 @@ $(document).ready(function() {
   $('.accordion').accordion(accOpts);
 
   $('#lists').addClass('ui-widget ui-widget-content ui-corner-all');
-	
-  $('.views').hide();
 	
   $('#order_icon').click(function() {
       $('#lists').toggleClass('active');
