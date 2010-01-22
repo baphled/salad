@@ -1,7 +1,6 @@
-<div id="feature_info">
-	<%= render :partial => '/common/feature_info', :locals => {:feature => @feature} %>
-</div>
+<%= render :partial => '/common/model_information', :locals => {:model => @feature}%>
 <div style="clear:both"></div>
+
 <% if !@feature.stories.blank? %>
 	<%= link_to "export feature", feature_export_path(@feature) %>
 <% end %>

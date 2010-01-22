@@ -1,4 +1,4 @@
 <% if !@feature.nil? %>
-	<%= render :partial => '/common/feature_info' %>
+  <%= render :partial => '/common/model_information', :locals => {:model => @feature}%>
 <% end %>
 <%= render :partial => 'form', :locals => {:story => @story}%>
