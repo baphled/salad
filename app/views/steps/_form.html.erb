@@ -5,7 +5,7 @@
 <%= render :partial => "/common/hover_dialog" %>
 
 <%- semantic_form_for @step do |form| -%>
-		<%= form.inputs :name => form_title(@step, "Step") %>
-        <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
-		<%= render :partial => "/common/save_button" %>
+  <%= form.inputs :name => form_title(@step, "Step") %>
+  <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
+  <%= render :partial => "/common/save_button" %>
 <% end %>

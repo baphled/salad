@@ -1,5 +1,5 @@
 <b>Title: </b><%= @step.title %>
 <% semantic_form_for @step do |form| -%>
-<%= render :partial => '/common/stories_checkboxes', :locals => {:step => @step} %>
-<%= form.buttons %>  
+  <%= render :partial => '/common/checkboxes', :locals => {:model => @step, :item_name => Story}%>
+  <%= form.buttons %>
 <% end -%>
