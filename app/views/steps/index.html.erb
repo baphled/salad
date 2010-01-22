@@ -10,4 +10,6 @@
 <%= render :partial => '/common/sortable_list',
   :locals => {:models => @steps,
   :item_name => 'step',
+  :method => :formatted,
+  :method_arg => @steps,
   :order => false}%>
