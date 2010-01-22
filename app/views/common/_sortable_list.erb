@@ -12,12 +12,12 @@
               <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
                 <%= index+1 %>
               </span>
-              <% if :formatted %>
+            <% if 'step' == model.class.to_s.downcase %>
                 <%= model.send(method,method_arg[index -1])%>
             <% else  %>
-              <%= render :partial => "/common/list/#{models.first.class.to_s.downcase}", :locals => {models.first.class.to_s.downcase.to_sym => model } %>
+              <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
             <% end %>
-              <%= render :partial => "/common/#{models.first.class.to_s.downcase}_icons", :locals => {models.first.class.to_s.downcase.to_sym => model } %>
+              <%= render :partial => "/common/#{model.class.to_s.downcase}_icons", :locals => {model_name_to_sym(models) => model } %>
             <% end %>
           <% end %>
         <% end %>

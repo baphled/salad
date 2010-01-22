@@ -1,4 +1,27 @@
 <% content_for :side_bar do %>
-  <%= render :partial => '/common/list/story_steps', :locals => {:stories => stories} %>
+  <% if !stories.blank? %>
+    <ul id="story_steps">
+      <% stories.each_with_index do |story,index| %>
+          <li id="story_<%=story.id%>_step" class="story_item_<%= index %> side_hover" style="display: none;">
+            <% content_tag_for(:div, story, :class=> "item_" + index.to_s ) do %>
+            <span class="list_content">
+              <h3><%=h story.scenario %></h3>
+              <% if !story.steps.blank? %>
+                <ul>
+                  <% story.steps.each_with_index do |step, index| %>
+                        <li><%=h step.formatted story.steps[index -1] %></li>
+                  <% end %>
+                </ul>
+              <%else%>
+                  Story does not have any steps yet.
+              <% end %>
+             <% end %>
+            </span>
+          </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <li>No stories</li>
+  <% end %>
 <% end %>
 
