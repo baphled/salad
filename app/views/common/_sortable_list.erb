@@ -1,4 +1,4 @@
-<div class="features" id="lists">
+<div class="<%= item_name.pluralize.downcase %>" id="lists">
   <%= link_to "New #{item_name.singularize.capitalize}",
       :controller => item_name.pluralize.downcase,
       :action => :new %>

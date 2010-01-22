@@ -4,8 +4,8 @@ describe "/stories/index.html.erb" do
   context "has stories" do
     before(:each) do
       assigns[:tags] = []
-      assigns[:stories] = Story.paginate(:page => params[:page],:per_page => 10)
-      render
+      @stories = Story.paginate(:page => params[:page],:per_page => 10)
+      render :partial => '/common/sortable_list', :locals => {:models => @stories, :item_name => 'story', :order =>false}
     end
     
     it "should have a list" do
