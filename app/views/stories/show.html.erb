@@ -2,8 +2,12 @@
 <%= render :partial => '/common/story_summary', :locals => {:story => @story}%>
 <div style="clear:both"></div>
 
-<%= render :partial => '/common/list/steps', 
-					 :locals => {:steps => @story.steps.paginate(:page=>1,:order=>"step_stories.position"), :order =>true}%>
+<%= render :partial => '/common/sortable_list',
+  :locals => {:models => @story.steps.paginate(
+    :page=> params[:page],
+    :order=>"step_stories.position"),
+  :item_name => 'step',
+  :order =>true}%>
 
 <% form_for @story do |f| -%>
 	<%= render :partial => '/common/steps_checkboxes', :locals => {:story => @story} %>
