@@ -1,4 +1,4 @@
-<%= viewable_link "view #{item_name.to_s.downcase}", "fieldset_#{item_name.to_s.downcase.pluralize}" %>
+<a href="javascript://" class="display_info"><%= "view #{item_name.to_s.downcase}" %></a>
 <% if !item_name.send(:all).nil? %>
   <fieldset id="fieldset_<%= item_name.to_s.downcase.pluralize %>" class="views">
 	<legend><%= item_name.to_s.pluralize %></legend>
