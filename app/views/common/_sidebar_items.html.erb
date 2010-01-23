@@ -2,21 +2,19 @@
   <ul id="<%= models.first.class.to_s.singularize.downcase %>_<%=assoc%>">
 	<% if !models.blank? %>
 	  <% models.each_with_index do |model, index| %>
-			<li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_item_<%= index %> side_hover" style="display: none;">
-				<h3><%=h model.title %></h3>
-			<% if !model.send(assoc.to_sym).blank? %>
-			  <% for item in model.send(assoc.to_sym)%>
-					<div>
-						<%= display_item_title(item) %>
-					</div>
-			  <% end %>
-			<%else%>
-				<%= model.class.to_s.singularize %>  does not have any <%= assoc %>  yet.
-			<% end %>
-			</li>
+        <li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_item_<%= index %> side_hover" style="display: none;">
+          <h3><%=h display_item_title(model) %></h3>
+        <% if !model.send(assoc.to_sym).blank? %>
+          <ul>
+            <% for item in model.send(assoc.to_sym)%>
+              <li><%= display_item_title(item) %></li>
+            <% end %>
+          </ul>
+        <%else%>
+          <%= model.class.to_s.singularize %> does not have any <%= assoc %>  yet.
+        <% end %>
+        </li>
 	  <% end %>
 	</ul>
-	<% else %>
-	  <p>No stories</p>
 	<% end %>
 <% end %>
