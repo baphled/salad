@@ -7,7 +7,11 @@
         <% if !model.send(assoc.to_sym).blank? %>
           <ul>
             <% for item in model.send(assoc.to_sym)%>
+              <% if 'Step' == item.class.to_s.to_sym %>
+              <li><%=h item.formatted model.send(assoc.to_sym)[index -1] %></li>
+              <% else %>
               <li><%= display_item_title(item) %></li>
+              <%  end %>
             <% end %>
           </ul>
         <%else%>
