@@ -1,10 +1,24 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/stories/index.html.erb" do
+  before(:each) do
+    assigns[:tags] = []
+  end
+
+  context "there are no stories" do
+    before(:each) do@stories = []
+      Story.stub(:paginate).with(:page => params[:page],:per_page => 10).and_return @stories
+      render
+    end
+
+    it "should display a message stating there are no stories" do
+      response.should contain "No stories present"
+    end
+  end
+
   context "has stories" do
     before(:each) do
-      assigns[:tags] = []
-      @stories = Story.paginate(:page => params[:page],:per_page => 10)
+      @stories = [mock_model(Story).as_null_object]
       render :partial => '/common/sortable_list', :locals => {:models => @stories, :item_name => 'story', :assoc => 'step', :order =>false}
     end
     
@@ -17,7 +31,7 @@ describe "/stories/index.html.erb" do
     end
     
     it "should have a list of stories " do
-      Story.all.each do |story|
+      @stories.each do |story|
         response.should have_selector :div, attribute = {:class=>"stories",:id=>"lists"} do |content|
           content.should contain "Scenario: #{story.scenario}"
         end
