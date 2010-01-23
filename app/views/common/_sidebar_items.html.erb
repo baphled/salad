@@ -1,17 +1,19 @@
 <% content_for :side_bar do %>
-  <ul id="<%= models.first.class.to_s.singularize.downcase %>_<%=assoc%>">
-	<% if !models.blank? %>
+  <% if !models.blank? %>
+    <ul id="<%= models.first.class.to_s.singularize.downcase %>_<%=assoc%>">
 	  <% models.each_with_index do |model, index| %>
         <li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_item_<%= index %> side_hover" style="display: none;">
           <h3><%=h display_item_title(model) %></h3>
         <% if !model.send(assoc.to_sym).blank? %>
           <ul>
             <% for item in model.send(assoc.to_sym)%>
+            <li>
               <% if 'Step' == item.class.to_s.to_sym %>
-              <li><%=h item.formatted model.send(assoc.to_sym)[index -1] %></li>
+              <%=h item.formatted model.send(assoc.to_sym)[index -1] %>
               <% else %>
-              <li><%= display_item_title(item) %></li>
-              <%  end %>
+              <%= display_item_title(item) %>
+              <% end %>
+            </li>
             <% end %>
           </ul>
         <%else%>
@@ -19,6 +21,6 @@
         <% end %>
         </li>
 	  <% end %>
-	</ul>
 	<% end %>
+  </ul>
 <% end %>
