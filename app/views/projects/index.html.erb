@@ -3,4 +3,4 @@
 <%= render :partial => '/common/sortable_list',:locals => {:models => @projects, :item_name => 'project', :assoc => 'feature', :order =>false}%>
 
 <%= render :partial => 'common/hover', :locals => {:items => 'project'}%>
-<%= render :partial => 'common/sidebar/project_features', :locals => {:projects => @projects}%>
+<%= render :partial => 'common/sidebar_items', :locals => {:models => @projects, :assoc => 'features'}%>
