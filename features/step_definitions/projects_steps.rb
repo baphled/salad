@@ -179,7 +179,7 @@ Then /^I should be sent to the new feature page$/ do
 end
 
 Then /^the project should already be selected$/ do
-  response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"project_id_1"}
+  response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"feature_project_id_1"}
 end
 
 Then /^I should not see the project features section$/ do
