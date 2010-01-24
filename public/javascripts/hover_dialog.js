@@ -20,9 +20,6 @@ $(document).ready(function() {
       .addClass('ui-corner-all')
       .insertAfter($tagInput)
       .hide();
-  
-  // Container that our tags are wrapped in
-  var $hoverSelect = $('<li></li>').addClass('hover_select');
 
   $tagInput.focus(function() {
     $url = '/' + $resourcePlural + "/tags.json";
