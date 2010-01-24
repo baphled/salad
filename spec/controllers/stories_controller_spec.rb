@@ -9,6 +9,14 @@ describe StoriesController do
     Story.stub(:new).and_return @story
   end
 
+  describe "GET, index" do
+    it "should have a list of stories" do
+      Story.should_receive(:paginate).
+        with(:page => "1", :per_page => 10)
+      post :index, {:page => 1}
+    end
+  end
+  
   describe "POST, create" do
 
     context "a valid story" do
