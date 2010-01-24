@@ -69,7 +69,10 @@ describe StoriesController do
       Story.should_receive(:find).and_return @story
       get :show, {:id => @story.id}
     end
-    it "should have a list of associated steps"
+    it "should have a list of associated steps" do
+      @story.should_receive(:steps)
+      get :show
+    end
   end
 end
 
