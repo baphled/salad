@@ -111,10 +111,6 @@ describe StoriesController do
         get :new, {:feature_id => 1}
       end
     end
-
-    context "has step ids" do
-      it "should appended selected to associated steps"
-    end
   end
 
   describe "POST, update" do
