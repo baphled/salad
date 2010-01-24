@@ -97,8 +97,19 @@ describe StoriesController do
     end
 
     context "is associated with a feature" do
-      it "should find the associated feature"
-      it "should create a new story, associated to the feature"
+      before(:each) do
+        @feature = mock_model(Feature, :stories => mock_model(Story).as_null_object).as_null_object
+        Feature.stub(:find).and_return @feature
+      end
+      
+      it "should find the associated feature" do
+        get :new, {:feature_id => 1}
+      end
+
+      it "should create a new story, associated to the feature" do
+        @feature.stories.should_receive(:new)
+        get :new, {:feature_id => 1}
+      end
     end
 
     context "has step ids" do
