@@ -5,12 +5,6 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
-
-  /**
-   * Selector for our item fieldsets
-   */
-  var display_info = $("a.display_info");
-
   /**
    * We don't want our checkboxes viewable initially
    */
@@ -19,12 +13,16 @@ $(document).ready(function() {
   /**
    * Handling the viewing and hiding of our item checkboxes
    */
-  display_info.click(function(event) {
-    $('fieldset.views').toggle(function() {
-      if( 'view' == display_info.text().substr(0,4)) {
-        display_info.text(display_info.text().replace('view', 'hide'));
-      } else  {
-        display_info.text(display_info.text().replace('hide', 'view'));
+  $("a.display_info").click(function(event) {
+    var checkbox_link = $(this);
+    var id_attribute_name = checkbox_link.attr('id').split('_');
+    var title_array = checkbox_link.text().split(' ');
+
+    $('fieldset.views#fieldset_' + id_attribute_name[0]).toggle(function() {
+      if('view' == checkbox_link.text().substr(0,4)) {
+        checkbox_link.text('hide ' + title_array[1]);
+      } else {
+        checkbox_link.text('view ' + title_array[1]);
       }
     });
   });
