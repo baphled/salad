@@ -96,8 +96,10 @@ class StoriesController < ApplicationController
         new_steps << Step.find(step)
       end
     end
-    @story.steps.each do |step|
-      new_steps << step
+    if @story
+      @story.steps.each do |step|
+        new_steps << step
+      end
     end
     new_steps
   end

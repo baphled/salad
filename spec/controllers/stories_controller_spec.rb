@@ -65,14 +65,62 @@ describe StoriesController do
     before(:each) do
       Story.stub(:find).and_return @story
     end
-    it "should find the story" do
+
+    it "should find the current story" do
       Story.should_receive(:find).and_return @story
       get :show, {:id => @story.id}
     end
+    
     it "should have a list of associated steps" do
       @story.should_receive(:steps)
       get :show
     end
+  end
+
+  describe "GET, edit" do
+    before(:each) do
+      Story.stub(:find).and_return @story
+    end
+
+    it "should find the current story" do
+      Story.should_receive(:find).and_return @story
+      get :show, {:id => @story.id}
+    end
+  end
+
+  describe "GET, new" do
+    context "not associated to a feature" do
+      it "should create a new story" do
+        Story.should_receive(:new)
+        get :new
+      end
+    end
+
+    context "is associated with a feature" do
+      it "should find the associated feature"
+      it "should create a new story, associated to the feature"
+    end
+
+    context "has step ids" do
+      it "should appended selected to associated steps"
+    end
+  end
+
+  describe "POST, update" do
+    context "successful" do
+      it "should update the story"
+      it "should display a flash[:notice] message"
+      it "should redirect to the updated story"
+    end
+
+    context "unsucessful" do
+      it "should display a flash[:error] message"
+      it "should render the edit template"
+    end
+  end
+
+  describe "GET, steps" do
+    it "should have a list of associated steps"
   end
 end
 
