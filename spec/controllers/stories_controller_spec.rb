@@ -6,18 +6,21 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe StoriesController do
   before(:each) do
     @story = mock_model(Story, :save => nil).as_null_object
-    Story.stub(:new).and_return @story
   end
 
   describe "GET, index" do
     it "should have a list of stories" do
       Story.should_receive(:paginate).
         with(:page => "1", :per_page => 10)
-      post :index, {:page => 1}
+      get :index, {:page => 1}
     end
   end
   
   describe "POST, create" do
+
+    before(:each) do
+      Story.stub(:new).and_return @story
+    end
 
     context "a valid story" do
       before(:each) do
@@ -58,5 +61,15 @@ describe StoriesController do
     end
   end
 
+  describe "GET, show" do
+    before(:each) do
+      Story.stub(:find).and_return @story
+    end
+    it "should find the story" do
+      Story.should_receive(:find).and_return @story
+      get :show, {:id => @story.id}
+    end
+    it "should have a list of associated steps"
+  end
 end
 
