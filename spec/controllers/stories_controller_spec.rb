@@ -155,6 +155,11 @@ describe StoriesController do
     end
   end
 
+  describe "POST, delete" do
+    it "should delete the story"
+    it "should redirect to the stories index page"
+  end
+
   describe "GET, steps" do
     before(:each) do
       Story.stub(:find).and_return @story
@@ -165,5 +170,38 @@ describe StoriesController do
       get :steps
     end
   end
-end
 
+  describe "GET, sort" do
+    it "should loop through each of the stories" do
+      @story.should_receive(:each_with_index)
+      get :sort, :story => @story
+    end
+
+    it "should update all stories attributes"
+    it "should render nothing"
+  end
+
+  describe "GET, tag" do
+    it "should have a list of stories associated with the given tag" do
+      Story.should_receive :find_tagged_with
+      get :tag, {:tag => 'Given'}
+    end
+
+    it "should render the index page" do
+      get :tag, {:tag => 'Given'}
+      response.should render_template :index
+    end
+  end
+
+  describe "GET, add_step" do
+    it "should search for steps with the given search string"
+
+    context "is a new story" do
+      it "should redirect to the new story form"
+    end
+
+    context "are editing a story" do
+      it "should redirect to the edit story form"
+    end
+  end
+end
