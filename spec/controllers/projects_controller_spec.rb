@@ -166,7 +166,7 @@ describe ProjectsController do
 
     it "should get all features related to the project" do
       @project.stub(:features).and_return mock_model(Feature).as_null_object
-      @project.should_receive(:all).with(:order => "feature_projects.position")
+      @project.should_receive(:features)
       get :features
     end
   end
