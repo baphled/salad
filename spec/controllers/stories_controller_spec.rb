@@ -114,15 +114,44 @@ describe StoriesController do
   end
 
   describe "POST, update" do
+    before(:each) do
+      Story.stub(:find).and_return @story
+    end
+
     context "successful" do
-      it "should update the story"
-      it "should display a flash[:notice] message"
-      it "should redirect to the updated story"
+      before(:each) do
+        @story.stub(:update_attributes).and_return true
+      end
+      
+      it "should update the story" do
+        @story.should_receive(:update_attributes).with(@story).and_return true
+        post :update, :story => @story
+      end
+
+      it "should display a flash[:notice] message" do
+        post :update, :story => @story
+        flash[:notice].should contain "Story: #{@story.scenario} was updated"
+      end
+      it "should redirect to the updated story" do
+        post :update, :story => @story
+        response.should redirect_to story_path(@story)
+      end
     end
 
     context "unsucessful" do
-      it "should display a flash[:error] message"
-      it "should render the edit template"
+      before(:each) do
+        @story.stub(:update_attributes).and_return false
+      end
+
+      it "should display a flash[:error] message" do
+        post :update, :story => @story
+        flash[:error].should contain "Story: #{@story.scenario} was not created"
+      end
+
+      it "should render the edit template" do
+        post :update, :story => @story
+        response.should render_template(:edit)
+      end
     end
   end
 
