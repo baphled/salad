@@ -41,12 +41,34 @@ describe StepsController do
   end
 
   describe "POST, create" do
-    it "should create a new step"
+    before(:each) do
+      @step = mock_model(Step).as_null_object
+      Step.stub(:new).and_return @step
+    end
+    
+    it "should create a new step" do
+      Step.should_receive(:new).with(@step)
+      post :create, {:step => @step}
+    end
 
     context "valid step" do
-      it "should save the step"
-      it "should display a flash[:notice] message"
-      it "should redirect to the step"
+      before(:each) do
+        @step.stub(:save).and_return true
+      end
+
+      it "should save the step" do
+        @step.should_receive(:save).and_return true
+        post :create
+      end
+
+      it "should display a flash[:notice] message" do
+        post :create
+        flash[:notice].should contain "Step: #{@step.title}, was created"
+      end
+      it "should redirect to the step" do
+        post :create
+        response.should redirect_to step_path(@step)
+      end
     end
 
     context "invalid step" do

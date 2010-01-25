@@ -5,7 +5,7 @@ class StepsController < ActionController::Base
   
   def index
     @search = Step.search(params[:search_text])
-    @steps = Step.pagination_search(params[:search_text],params[:page])
+    @steps = Step.paginate(:page => params[:page])
     respond_to do |format|
       format.html
       format.json { render :json => @steps }
@@ -33,7 +33,7 @@ class StepsController < ActionController::Base
     respond_to do |format|
       if @step.save
         flash[:notice] = "Step: #{@step.title}, was created"
-        format.html { redirect_to :stories }
+        format.html { redirect_to step_path(@step) }
       else
         format.html { render :action => "new" }
       end
