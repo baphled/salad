@@ -6,7 +6,10 @@ describe ProjectsController do
   end
 
   describe "GET, index" do
-    it "should get a list of all projects"
+    it "should get a list of all projects" do
+      Project.should_receive(:find).with(:all)
+      get :index
+    end
   end
 
   describe "GET, new" do
@@ -87,7 +90,7 @@ describe ProjectsController do
     it "should get all features related to the project"
   end
 
-  dscribe "GET, import" do
+  describe "GET, import" do
     it "should find the project"
     it "should create a feature associated to the project"
     it "should retreive a list of features to import"
