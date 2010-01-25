@@ -1,5 +1,4 @@
 Feature: We need a way to handle out feature files
-    # Main goal of this project
     In order to improve the way we handle feature imports
     As Salad
     I want to be able to read feature files and store its information

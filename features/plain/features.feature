@@ -153,3 +153,11 @@ Feature: A user should be able to create new features, which can be associated w
 		And the title should now be 'A different title'
 		And the features date should be updated
 		And the features updated field will be displayed
+
+    Scenario: When adding a new feature story the associated features should be saved
+      Given there is a feature
+      And I visit the features edit view
+      When we fill in the feature title with 'A different title'
+      And we check the first story checkbox
+      Then submit the form
+      And the feature should be associated to the first story
