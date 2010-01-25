@@ -193,7 +193,14 @@ describe ProjectsController do
   end
 
   describe "GET, tag" do
-    it "should find all projects with the given tag"
-    it "shold render the index page"
+    it "should find all projects with the given tag" do
+      Project.should_receive(:find_tagged_with)
+      get :tag, {:tag => 'Given'}
+    end
+    
+    it "shold render the index page" do
+      get :tag
+      response.should render_template :index
+    end
   end
 end
