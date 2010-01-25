@@ -165,13 +165,10 @@ describe StepsController do
   end
 
   describe "GET, sort" do
-    before(:each) do
-      @steps_to_sort = Step.stub(:find).and_return @step
-    end
-    
     it "should loop through each of the steps" do
-      @step.should_receive(:each_with_index)
-      get :sort, :step => @step
+      @step_ids = Step.stub(:find).with(["2", "1", "3"])
+      @step_ids.should_receive(:each_with_index)
+      get :sort, {:step => @step_ids}
     end
   end
 
