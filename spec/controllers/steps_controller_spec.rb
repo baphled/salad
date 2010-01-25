@@ -121,9 +121,20 @@ describe StepsController do
       end
     end
 
-    context "unsuccessfully  updates" do
-      it "should display a flash[:error] message"
-      it "should render the edit form"
+    context "unsuccessfully updates" do
+      before(:each) do
+        @step.stub(:update_attributes).and_return false
+      end
+
+      it "should display a flash[:error] message" do
+        put :update, {:step => @step}
+        flash[:error].should contain "Step: #{@step.title} was not updated"
+      end
+
+      it "should render the edit form" do
+        put :update, {:step => @step}
+        response.should render_template :edit
+      end
     end
   end
 
