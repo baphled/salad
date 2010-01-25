@@ -43,7 +43,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.update_attributes(params[:story])
         flash[:notice] = "Story: #{scenario} was updated"
-        format.html { redirect_to :story }
+        format.html { redirect_to @story }
       else
         flash[:error] = "Story: #{scenario} was not created"
         format.html { render :action => "edit" }
