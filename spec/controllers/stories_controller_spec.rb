@@ -156,7 +156,14 @@ describe StoriesController do
   end
 
   describe "GET, steps" do
-    it "should have a list of associated steps"
+    before(:each) do
+      Story.stub(:find).and_return @story
+    end
+    
+    it "should have the stories associated steps" do
+      @story.should_receive(:steps)
+      get :steps
+    end
   end
 end
 
