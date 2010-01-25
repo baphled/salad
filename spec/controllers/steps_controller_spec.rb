@@ -1,6 +1,3 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe StepsController do
@@ -32,7 +29,15 @@ describe StepsController do
   end
 
   describe "GET, index" do
-    it "should have a list of steps"
+    it "should have a list of steps" do
+      Step.should_receive(:paginate)
+      get :index
+    end
+
+    it "should have a list of steps search for" do
+      Step.should_receive(:search).with('Given')
+      get :index, {:search_text => 'Given'}
+    end
   end
 
   describe "POST, create" do
