@@ -172,9 +172,24 @@ describe ProjectsController do
   end
 
   describe "GET, import" do
-    it "should find the project"
-    it "should create a feature associated to the project"
-    it "should retreive a list of features to import"
+    before(:each) do
+      Project.stub(:find).and_return @project
+    end
+
+    it "should find the project" do
+      Project.should_receive(:find).and_return @project
+      get :import
+    end
+    
+    it "should create a feature associated to the project" do
+      @project.features.should_receive(:new)
+      get :import
+    end
+    
+    it "should retreive a list of features to import" do
+      @project.should_receive(:import_features)
+      get :import
+    end
   end
 
   describe "GET, tag" do
