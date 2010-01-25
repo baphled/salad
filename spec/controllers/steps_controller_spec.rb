@@ -1,6 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe StepsController do
+  before(:each) do
+    @step = mock_model(Step).as_null_object
+  end
+
   describe "GET, new" do
     
     context "is associated to a story" do
@@ -42,7 +46,6 @@ describe StepsController do
 
   describe "POST, create" do
     before(:each) do
-      @step = mock_model(Step).as_null_object
       Step.stub(:new).and_return @step
     end
     
@@ -82,8 +85,9 @@ describe StepsController do
       end
 
       it "should render the new form" do
-      post :create
-      response.should render_template :new
+        post :create
+        response.should render_template :new
+      end
     end
   end
 
@@ -139,15 +143,36 @@ describe StepsController do
   end
 
   describe "DELETE, destroy" do
-    it "should find the step"
+    before(:each) do
+      Step.stub(:find).and_return @step
+    end
+    it "should find the step" do
+      Step.should_receive(:find).and_return @step
+      delete :destroy
+    end
+
     context "found step" do
-      it "should destroy the step"
-      it "should redirect to the steps path"
+      it "should destroy the step" do
+        @step.should_receive(:destroy).and_return true
+        delete :destroy
+      end
+
+      it "should redirect to the steps path" do
+        delete :destroy
+        response.should redirect_to steps_path
+      end
     end
   end
 
   describe "GET, sort" do
-    it "should loop through each of the steps"
+    before(:each) do
+      @steps_to_sort = Step.stub(:find).and_return @step
+    end
+    
+    it "should loop through each of the steps" do
+      @step.should_receive(:each_with_index)
+      get :sort, :step => @step
+    end
   end
-end
+
 end
