@@ -50,9 +50,9 @@ class StepsController < ActionController::Base
     respond_to do |format|
       if @step.update_attributes(params[:step])
         flash[:notice] = "Step: #{title} was updated"
-        format.html { redirect_to :step }
+        format.html { redirect_to @step }
       else
-        flash[:error] = "Step: #{title} was not created"
+        flash[:error] = "Step: #{title} was not updated"
         format.html { render :action => "edit" }
       end
     end
