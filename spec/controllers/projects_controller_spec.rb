@@ -13,8 +13,15 @@ describe ProjectsController do
   end
 
   describe "GET, new" do
-    it "renders the new form template"
-    it "gets a list of features"
+    it "renders the new form template" do
+      get :new
+      response.should render_template :new
+    end
+
+    it "gets a list of features" do
+      Feature.should_receive(:find).with(:all)
+      get :new
+    end
   end
 
   describe "POST, create" do
