@@ -221,6 +221,9 @@ describe StoriesController do
     end
 
     context "are editing a story" do
+      before(:each) do
+        Story.stub(:find).and_return @story
+      end
       it "should redirect to the edit story form" do
         get :add_step, {:id => 1, :search_text => 'Given'}
         response.should redirect_to edit_story_path(:step_ids => [1,2,3])
