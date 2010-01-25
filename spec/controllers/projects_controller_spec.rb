@@ -155,8 +155,20 @@ describe ProjectsController do
   end
 
   describe "GET, features" do
-    it "should get the project"
-    it "should get all features related to the project"
+    before(:each) do
+      Project.stub(:find).and_return @project
+    end
+    
+    it "should get the project" do
+      Project.should_receive(:find).and_return @project
+      get :features
+    end
+
+    it "should get all features related to the project" do
+      @project.stub(:features).and_return mock_model(Feature).as_null_object
+      @project.should_receive(:all).with(:order => "feature_projects.position")
+      get :features
+    end
   end
 
   describe "GET, import" do
