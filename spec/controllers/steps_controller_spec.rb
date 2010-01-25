@@ -72,20 +72,53 @@ describe StepsController do
     end
 
     context "invalid step" do
-      it "should not save the step"
-      it "should render the new form"
+      before(:each) do
+        @step.stub(:save).and_return false
+      end
+      
+      it "should not save the step" do
+        @step.should_receive(:save).and_return false
+        post :create
+      end
+
+      it "should render the new form" do
+      post :create
+      response.should render_template :new
     end
   end
 
   describe "GET, edit" do
-    it "should find the step"
+    it "should find the step" do
+      Step.stub(:find).and_return @step
+      Step.should_receive(:find)
+      get :edit
+    end
   end
 
   describe "PUT, update" do
+    before(:each) do
+      Step.stub(:find).and_return @step
+    end
+    
     context "successfully  updates" do
-      it "should update the step"
-      it "should display a flash[:notice] message"
-      it "should redirect to the step"
+      before(:each) do
+        @step.stub(:update_attributes).and_return true
+      end
+
+      it "should update the step" do
+        @step.should_receive(:update_attributes).and_return true
+        put :update, {:step => @step}
+      end
+
+      it "should display a flash[:notice] message" do
+        put :update, {:step => @step}
+        flash[:notice].should contain "Step: #{@step.title} was updated"
+      end
+
+      it "should redirect to the step" do
+        put :update, {:step => @step}
+        response.should redirect_to step_path(@step)
+      end
     end
 
     context "unsuccessfully  updates" do
@@ -106,4 +139,4 @@ describe StepsController do
     it "should loop through each of the steps"
   end
 end
-
+end
