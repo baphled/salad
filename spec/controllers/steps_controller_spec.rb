@@ -24,7 +24,10 @@ describe StepsController do
     end
 
     context "is not associated to a story" do
-      it "should create a new story"
+      it "should create a new story" do
+        Step.should_receive(:new)
+        get :new
+      end
     end
   end
 
