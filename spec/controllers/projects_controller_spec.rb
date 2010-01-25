@@ -136,9 +136,22 @@ describe ProjectsController do
   end
 
   describe "DELETE, destroy" do
-    it "should find the project"
-    it "should destroy the project"
-    it "should redirect to the projects path"
+    before(:each) do
+      Project.stub(:find).and_return @project
+    end
+    it "should find the project" do
+      Project.should_receive(:find)
+      delete :destroy, {:project => @project}
+    end
+    
+    it "should destroy the project" do
+      @project.should_receive(:destroy).and_return true
+      delete :destroy
+    end
+    it "should redirect to the projects path" do
+      delete :destroy
+      response.should redirect_to projects_path
+    end
   end
 
   describe "GET, features" do
