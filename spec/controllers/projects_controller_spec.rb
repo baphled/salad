@@ -64,8 +64,19 @@ describe ProjectsController do
   end
 
   describe "GET, edit" do
-    it "should get the related project"
-    it "should render the edit form template"
+    before(:each) do
+      Project.stub(:find).and_return @project
+    end
+    
+    it "should find the project" do
+      Project.should_receive(:find).and_return @project
+      get :edit
+    end
+
+    it "should render the edit form template" do
+      get :edit
+      response.should render_template :edit
+    end
   end
 
   describe "PUT, update" do
