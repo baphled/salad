@@ -125,15 +125,15 @@ describe StoriesController do
       
       it "should update the story" do
         @story.should_receive(:update_attributes).with(@story).and_return true
-        post :update, :story => @story
+        post :update, {:story => @story}
       end
 
       it "should display a flash[:notice] message" do
-        post :update, :story => @story
+        post :update, {:story => @story}
         flash[:notice].should contain "Story: #{@story.scenario} was updated"
       end
       it "should redirect to the updated story" do
-        post :update, :story => @story
+        post :update, {:story => @story}
         response.should redirect_to story_path(@story)
       end
     end
