@@ -129,7 +129,10 @@ describe ProjectsController do
   end
 
   describe "GET, show" do
-    it "should get the project"
+    it "should get the project" do
+      Project.should_receive(:find).and_return @project
+      get :show
+    end
   end
 
   describe "DELETE, destroy" do
