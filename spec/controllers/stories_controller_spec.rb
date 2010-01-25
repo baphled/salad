@@ -155,9 +155,19 @@ describe StoriesController do
     end
   end
 
-  describe "POST, delete" do
-    it "should delete the story"
-    it "should redirect to the stories index page"
+  describe "DELETE, destroy" do
+    before(:each) do
+      Story.stub(:find).and_return @story
+    end
+    it "should delete the story" do
+      @story.should_receive :destroy
+      delete :destroy
+    end
+
+    it "should redirect to the stories index page" do
+      delete :destroy
+      response.should redirect_to stories_path
+    end
   end
 
   describe "GET, steps" do
