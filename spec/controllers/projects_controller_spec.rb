@@ -80,10 +80,30 @@ describe ProjectsController do
   end
 
   describe "PUT, update" do
+    before(:each) do
+      @project.stub(:id).and_return 1
+      Project.stub(:find).and_return @project
+    end
+
     context "successfully update a project" do
-      it "should update the project"
-      it "should display a flash message"
-      it "should redirect to the project"
+      before(:each) do
+        @project.stub(:update_attributes).and_return true
+      end
+      
+      it "should update the project" do
+        @project.should_receive(:update_attributes).with(@project)
+        put :update, {:project => @project}
+      end
+
+      it "should display a flash message" do
+        put :update, {:project => @project}
+        flash[:notice].should contain "Project: #{@project.title} was updated"
+      end
+
+      it "should redirect to the project" do
+        put :update, {:project => @project}
+        response.should redirect_to projects_path
+      end
     end
 
     context "unsuccessfully update a project" do
