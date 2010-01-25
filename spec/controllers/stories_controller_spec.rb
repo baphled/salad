@@ -194,14 +194,27 @@ describe StoriesController do
   end
 
   describe "GET, add_step" do
-    it "should search for steps with the given search string"
+    before(:each) do
+      Step.stub(:search).and_return [1,2,3]
+    end
+    
+    it "should search for steps with the given search string" do
+      Step.should_receive(:search).with('Given')
+      get :add_step, {:search_text => 'Given'}
+    end
 
     context "is a new story" do
-      it "should redirect to the new story form"
+      it "should redirect to the new story form" do
+        get :add_step, {:search_text => 'Given'}
+        response.should redirect_to new_story_path(:step_ids => [1,2,3])
+      end
     end
 
     context "are editing a story" do
-      it "should redirect to the edit story form"
+      it "should redirect to the edit story form" do
+        get :add_step, {:id => 1, :search_text => 'Given'}
+        response.should redirect_to edit_story_path(:step_ids => [1,2,3])
+      end
     end
   end
 end
