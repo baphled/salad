@@ -107,9 +107,24 @@ describe ProjectsController do
     end
 
     context "unsuccessfully update a project" do
-      it "should not update the project"
-      it "should display a flash[:error] message"
-      it "should render the edit form template"
+      before(:each) do
+        @project.stub(:update_attributes).and_return false
+      end
+
+      it "should not update the project" do
+        @project.should_receive(:update_attributes).and_return false
+        put :update, {:project => @project}
+      end
+
+      it "should display a flash[:error] message" do
+        put :update, {:project => @project}
+        flash[:error].should contain "Project: #{@project.title} was not created"
+      end
+      
+      it "should render the edit form template" do
+        put :update, {:project => @project}
+        response.should render_template :edit
+      end
     end
   end
 
