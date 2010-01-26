@@ -4,7 +4,7 @@
         :controller => item_name.pluralize.downcase,
         :action => :new %>
     <%= order_btn models, order %>
-    <ul id="<%= item_name.pluralize.downcase %>">
+    <ul id="<%= models.first.class.to_s.pluralize.downcase %>">
     <% if !models.blank? %>
         <% models.each_with_index do |model,index| %>
           <% content_tag_for(:li, model) do %>
