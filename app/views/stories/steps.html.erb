@@ -5,6 +5,8 @@
     :order=>"step_stories.position"),
   :item_name => 'step',
   :method => :formatted,
-  :method_arg => @story.steps,
+  :method_arg => @story.steps.paginate(
+    :page=> params[:page],
+    :order=>"step_stories.position"),
   :assoc => nil,
   :order =>true}%>
