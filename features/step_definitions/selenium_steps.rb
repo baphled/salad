@@ -11,15 +11,15 @@ When /^I press order$/ do
 end
 
 Then /^the project's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("project_1_feature")
+  selenium.wait_for_visible("project_1_features")
 end
 
 Then /^the story's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("story_1_step")
+  selenium.wait_for_visible("story_1_steps")
 end
 
 Then /^the feature's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("feature_1_story")
+  selenium.wait_for_visible("feature_1_stories")
 end
 
 Then /^I should see the order handler$/ do
