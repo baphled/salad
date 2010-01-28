@@ -9,9 +9,9 @@ $(document).ready(function() {
   $('#lists, .order_icon, .icons').addClass('ui-widget ui-widget-content ui-corner-all');
 
   // Toggle our position handler
-  $('#handler').click(function() {
+  $('span.order_icon').click(function() {
       $('#lists').toggleClass('active');
-      $('.order_box').toggle();
+      $('.handler').toggle();
   });
 
   // sort our list

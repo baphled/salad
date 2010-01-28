@@ -1,5 +1,5 @@
 #content
-  .order_icon
+  .order_icon, .handler
     background: #785C17 none repeat scroll 0 0
     border: thin solid #89A407
     color: #C1C4B5
@@ -20,7 +20,7 @@
       :text-align center
       :margin 2px
       :top 2px
-    span.active, span.order_box, li span.icons
+    span.active, .order_box, li span.icons
       :background #89A407 none repeat scroll 0 0
       :border thin solid #785C17
       :display inline-block
@@ -37,6 +37,10 @@
       :width 74%
     .list_item
       :width 70%
+    .handler
+      :position relative
+      :float left
+      :right 3px
     li span.icons
       :height 20px
       :width 88px

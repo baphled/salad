@@ -1,5 +1,5 @@
-    <%= order_btn models, order %>
 <span class="list_content">
+    <%= order_btn models, order %>
   <div class="<%= item_name.pluralize.downcase %>" id="lists">
     <%= link_to "New #{item_name.singularize.capitalize}",
         :controller => item_name.pluralize.downcase,
@@ -15,7 +15,7 @@
               </span>
             <% if 'step' == model.class.to_s.downcase %>
                 <%= model.send(method,method_arg[index -1])%>
-            <% else  %>
+            <% else %>
               <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
             <% end %>
             <% end %>
