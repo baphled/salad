@@ -36,7 +36,7 @@ Then /^the items should be reordered$/ do
   end
 end
 
-Then /^an error message associated with the description should be displayed$/ do
+Then /^an error message should be displayed$/ do
   selenium.wait_for_element("css=label.error")
 end
 
