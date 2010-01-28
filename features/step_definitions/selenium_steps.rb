@@ -35,3 +35,11 @@ Then /^the items should be reordered$/ do
     assert selenium.is_ordered("id=order_btn_2", "id=order_btn_1")
   end
 end
+
+Then /^an error message associated with the description should be displayed$/ do
+  selenium.wait_for_element("css=label.error")
+end
+
+Then /^the description field should have an error class$/ do
+  selenium.wait_for_text "This field is required."
+end
