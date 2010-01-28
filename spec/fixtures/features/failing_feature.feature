@@ -9,5 +9,5 @@
 Feature: Manage Articles
     # Main goal of this project
     In order to make a blog
-    As author
-    I want to create and manage articles
+    As cucumber
+    I want to create and manage features
