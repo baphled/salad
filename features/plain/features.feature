@@ -149,10 +149,21 @@ Feature: A user should be able to create new features, which can be associated w
     And the features date should be updated
     And the features updated field will be displayed
 
-  Scenario: When adding a new feature story the associated features should be saved
+  Scenario: We should be able to easily associate a story with a feature
+    Given there is a feature
+    And I visit the features edit view
+    When the feature has stories
+    Then the stories should be listed
+    
+  Scenario: When adding a new feature story the associated story should be saved
     Given there is a feature
     And I visit the features edit view
     When we fill in the feature title with 'A different title'
-    And we check the first story checkbox
+    Then the stories should be listed
+    When I uncheck "feature_story_id_1"
     Then submit the form
-    And the feature should be associated to the first story
+    And the feature should be not associated to the first story
+
+  Scenario: When create a scenario the 'In order' field must be valid
+  Scenario: When create a scenario the 'As a' field must be valid
+  Scenario: When create a scenario the 'I want' field must be valid

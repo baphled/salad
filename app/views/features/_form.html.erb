@@ -13,5 +13,6 @@
     <%= form.input :tag_list %>
   <% end %>
   <%= render :partial => '/common/checkboxes', :locals => {:model => @feature, :item_name => Project}%>
+  <%= render :partial => '/common/checkboxes', :locals => {:model => @feature, :item_name => Story}%>
   <%= render :partial => "/common/save_button" %>
 <% end -%>

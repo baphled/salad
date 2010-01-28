@@ -109,3 +109,13 @@ end
 Then /^the features updated field will be displayed$/ do
   response.should contain "Updated date: #{@feature.updated_date}"
 end
+
+Then /^the (.*) should be listed$/ do |item|
+  response.should have_selector :ul do |list|
+    list.should have_selector :input, attribute = {:type => "checkbox", :name => "feature[#{item.to_s.singularize}_ids][]"}
+  end
+end
+
+Then /^the feature should be not associated to the first story$/ do
+  @feature.stories.should_not contain Feature.first.stories.first
+end
