@@ -1,5 +1,5 @@
 <span class="list_content">
-    <%= order_btn models, order %>
+    <%= order_btn models, order  if order == false%>
   <div class="<%= item_name.pluralize.downcase %>" id="lists">
     <%= link_to "New #{item_name.singularize.capitalize}",
         :controller => item_name.pluralize.downcase,
