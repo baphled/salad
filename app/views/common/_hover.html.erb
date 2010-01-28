@@ -5,12 +5,14 @@
           $("div.<%= items %>").each(function(event) {
             
             $(this).mouseover(function() {
-              $hover_class = 'li.' + $(this).attr('class').replace(' ','_');
+              $classArray = $(this).attr('class').replace(' ','_').split(' ');
+              $hover_class = 'li.' + $classArray[1];
               $($hover_class).toggle();
             });
 
             $(this).mouseout(function() {
-              $hover_class = 'li.' + $(this).attr('class').replace(' ','_');
+              $classArray = $(this).attr('class').replace(' ','_').split(' ');
+              $hover_class = 'li.' + $classArray[1];
               $($hover_class).toggle();
             });
           });
