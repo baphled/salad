@@ -25,14 +25,6 @@ describe "/features/show.html.erb" do
       end
     end
     
-    it "should have a created date" do
-      response.should contain "Creation date: #{@feature.creation_date}"
-    end
-    
-    it "should have an updated date" do
-      response.should contain "Updated date: #{@feature.updated_date}"
-    end
-    
     it "should have a list of stories associated to it" do
       response.should have_selector :ul do |list|
         @feature.stories.each do |story|
