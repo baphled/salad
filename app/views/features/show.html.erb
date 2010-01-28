@@ -1,4 +1,8 @@
-<%= render :partial => '/common/model_information', :locals => {:model => @feature}%>
+<h4>Feature Info</h4>
+<div id="info">
+	<%= render :partial => '/common/model_information', :locals => {:model => @feature}%>
+    <%= render :partial => '/common/model_summary', :locals => {:model => @feature, :assoc => :stories}%>
+</div>
 <div style="clear:both"></div>
 
 <% if !@feature.stories.blank? %>
