@@ -6,11 +6,13 @@ $(document).ready(function() {
   var $formID = $('form').attr('id');
   
   // We need singular & plural resource names to take advantage of hover dialog
-  var $resourceSingular = $formID.substring(4,$formID.length);
-  var $resourcePlural = $formAction.substring(1,$formAction.length);
+  var formIdArray = $formID.split('_');
+  var $resourceSingular = formIdArray[1];
+  var $resourcePlural = formIdArray[1] + 's';
   
   // Selector for our tag input
   var $tagInput = $('input#'+ $resourceSingular + '_tag_list');
+  var $tagInputWrapper = $('li#'+ $resourceSingular + '_tag_list_input');
   
   // The hover dialog we'll use to populate our tags
   var $hoverDialog = $("<div></div>")
@@ -25,6 +27,7 @@ $(document).ready(function() {
     $url = '/' + $resourcePlural + "/tags.json";
     $.ajax({
     	'url': $url,
+        'data': $tagInput.serialize(),
     	'dataType': 'json',
     	'type': 'GET',
     	'success': function(data) {
@@ -45,7 +48,11 @@ $(document).ready(function() {
     		  }
     		}
     	}
-    });    
+    });
     $('.hover').fadeIn();
+  });
+
+  $tagInputWrapper.blur(function() {
+    $('.hover').fadeOut();
   });
 });

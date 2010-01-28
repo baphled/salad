@@ -7,33 +7,18 @@
 <% end %>
 
 <%= render :partial => "/common/hover_dialog" %>
+<fieldset>
+  <%- semantic_form_for @project do |form| -%>
+    <% form.inputs :name => form_title(@project, "Project") do %>
+        <%= form.input :title, :hint => 'e.g. A project that creates world peace.' %>
+        <%= form.input :description, :as => :text, :hint => 'e.g. A solutions to all the worlds woes' %>
+        <%= form.input :aim, :as => :text, :hint => 'Our aim is the to solve the worlds problems' %>
+        <%= form.input :location, :hint => '/home/projects/salad' %>
+        <%= form.input :tag_list %>
 
-<%- semantic_form_for @project do |form| -%>
-		<% form.inputs :name => form_title(@project, "Project") do %>
-			<%= form.input :title %>
-			<%= form.input :description, :rows => 4 %>
-			<%= form.input :aim, :rows => 4 %>
-			<%= form.input :location %>
-			<%= form.input :tag_list %>
-		<% end %>
-			
-		<% if !Feature.all.empty? %>
-		<fieldset>
-			<legend>Features</legend>
-			<ul id="left_list">
-		  <% for feature in Feature.all %>
-		    <li>
-				<%= check_box_tag "project[feature_ids][]", feature.id, @project.features.include?(feature) %>
-					<%= feature.title%>
-				</li>
-			<% end %>
-			
-		<% else %>
-			  <li>No features to add</li>
-		<% end %>
-			</ul>
-		</fieldset>
-		
-		<%= render :partial => "/common/save_button" %>
+        <%= render :partial => "/common/save_button" %>
+    <% end %>
 
-<% end -%>
+    <%= render :partial => '/common/checkboxes', :locals => {:model => @project, :item_name => Feature}%>
+  <% end -%>
+</fieldset>
