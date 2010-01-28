@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "common/_sortable_list.html.erb" do
   before(:each) do
     @projects = [mock_model(Project).as_new_record.as_null_object]
-    render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => false}
+    render :partial => '/common/sortable_list', :locals => {:models => "",  :item_name => 'feature', :assoc => 'story', :order => false}
   end
 
   it "should have a list of items" do
@@ -18,7 +18,10 @@ describe "common/_sortable_list.html.erb" do
       response.should have_selector :a do |content|
         content.should contain /^New /
       end
-    it "should display the items name"
+    end
+
+    it "should display the items name" do
+
     end
 
     it "should display an icon set for each item"
@@ -39,4 +42,3 @@ describe "common/_sortable_list.html.erb" do
     it "renders a sortable list"
   end
 end
-
