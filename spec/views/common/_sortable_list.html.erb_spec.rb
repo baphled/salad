@@ -58,10 +58,12 @@ describe "common/_sortable_list.html.erb" do
   describe "list has items" do
       before(:each) do
         @projects = [mock_model(Project).as_new_record.as_null_object]
-        render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => false}
       end
 
     context "display an unsortable list" do
+      before(:each) do
+        render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => false}
+      end
       it "should display an icon set for each item" do
         response.should have_selector :ul do |list_item|
           list_item.should have_selector :li, attribute = {:class => 'project'} do |content|
@@ -80,9 +82,22 @@ describe "common/_sortable_list.html.erb" do
     end
 
     context "display a sortable list" do
-      it "should display the order button"
-      it "should have a sorting handler"
-      it "renders a sortable list"
+      before(:each) do
+        render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => true}
+      end
+      it "should display the order button" do
+        response.should have_selector :span, attribute = {:id => 'order_icon'}
+      end
+
+      it "should display any of the items handler elements" do
+        response.should have_selector :span, attribute = {:class => 'handler'}
+      end
+      
+      it "renders a sortable list" do
+        response.should have_selector :ul, attribute = {:id => 'features'} do |list|
+          list.should have_selector :li
+        end
+      end
     end
   end
 end
