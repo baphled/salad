@@ -3,17 +3,11 @@ module ApplicationHelper
   include TagsHelper
   
   def order_btn object, order
-    if !object.blank?
-      render :partial => '/common/order', :locals => {:order => order}
-  	end
+    render :partial => '/common/order', :locals => {:order => order} if !object.blank?
   end
 
 	def form_title item, title
-		if item.id
-			"Edit " + title
-		else
-			"New " + title
-		end
+		(item.id)? "Edit #{title}"  : "New #{title}"
 	end
 
   # TODO rename so that is is more readable or refactor so that is is part of our models
@@ -22,10 +16,6 @@ module ApplicationHelper
   end
 
   def display_item_title item
-    if 'Story' == item.class.to_s
-      item.scenario
-    else
-      item.title
-    end
+    item.class.to_s.eql?('Story')? item.scenario : item.title
   end
 end
