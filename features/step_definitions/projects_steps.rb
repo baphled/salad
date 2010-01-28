@@ -35,6 +35,10 @@ Given /^the project has features$/ do
   @project = Project.find 2
 end
 
+Given /^the project does have a project location to an invalid feature$/ do
+  @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures")
+end
+
 When /^the project already exists$/ do
   @project.should_receive(:save).and_return false
 end
@@ -358,4 +362,14 @@ end
 
 Then /^I should be able to edit a the project information$/ do
 	click_link 'Edit project'
+end
+
+Then /^the project has an invalid feature$/ do
+  response.should have_selector(:li) do |content|
+      content.should contain "failing feature"
+  end
+end
+
+Then /^the submit button will be disabled for that feature$/ do
+  response.should_not have_selector :input, attribute = {:value => "Import failing feature"}
 end

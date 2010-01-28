@@ -4,11 +4,11 @@
 	<%= hidden_field_tag "feature[as_a]", file[:feature].as_a %>
 	<%= hidden_field_tag "feature[i_want]", file[:feature].i_want %>
 	<h3>Feature: <%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></h3>
-	<p><%= file[:feature].title%></p>
+	<p id="title"><%= file[:feature].title%></p>
 	<p>
 		In order <%= file[:feature].in_order %><br />
         As a <%= file[:feature].as_a %><br />
-        I want <%= file[:feature].i_want.capitalize %>
+        I want <%= file[:feature].i_want %>
 	</p>
 	<%= label_tag "feature tags:"%>
 	<%= text_field_tag "feature[tag_list]" %><br/>
@@ -27,6 +27,9 @@
 			<% end %>
 		<% end %>
 	<% end %>
-
+  <% if file[:feature].title.nil? || file[:feature].in_order.nil? ||  file[:feature].as_a.nil? || file[:feature].i_want.nil?%>
+    <p id="error">Invalid feature</p>
+  <% else %>
 	<%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>
+  <% end %>
 <% end %>
