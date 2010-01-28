@@ -1,7 +1,7 @@
+<h4>Feature Info</h4>
 <div id="info">
-	<h4>Feature Info</h4>	
-	<%= render :partial => '/common/model_information', :locals => {:model => @feature}%>
-    <%= render :partial => '/common/model_summary', :locals => {:model => @feature, :assoc => :stories}%>
+  <%= render :partial => '/common/model_information', :locals => {:model => @feature}%>
+  <%= render :partial => '/common/model_summary', :locals => {:model => @feature, :assoc => :stories}%>
 </div>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @feature.stories.paginate(:page=>params[:page],:order=>"feature_stories.position"), :item_name => 'story', :assoc => 'step', :order =>true}%>

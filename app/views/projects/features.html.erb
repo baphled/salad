@@ -2,10 +2,10 @@
 	<%= stylesheet_link_tag 'features' %>
 <% end %>
 
+<h4>Project Info</h4>
 <div id="info">
-	<h4>Project Info</h4>	
-	<%= render :partial => '/common/model_information', :locals => {:model => @project}%>
-	<%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
+  <%= render :partial => '/common/model_information', :locals => {:model => @project}%>
+  <%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
 </div>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'story', :order =>true}%>
