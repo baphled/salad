@@ -5,7 +5,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "common/_sortable_list.html.erb" do
   context "it has no list of items" do
-    it "should display a message stating there are no items present"
+    it "should display a message stating there are no items present" do
+      render :partial => '/common/sortable_list', :locals => {:models => "",  :item_name => 'feature', :assoc => 'story', :order => false}
+      response.should contain "No features present"
+    end
   end
 
   context "display a basic list with no items" do
