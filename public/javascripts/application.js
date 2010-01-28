@@ -48,11 +48,4 @@ $(document).ready(function() {
     navigation: true
   }
   $('.accordion').accordion(accOpts);
-
-  $('#lists').addClass('ui-widget ui-widget-content ui-corner-all');
-	
-  $('#order_icon').click(function() {
-      $('#lists').toggleClass('active');
-      $('.order_box').toggle();
-  });
 });

@@ -1,16 +1,16 @@
+    <%= order_btn models, order %>
 <span class="list_content">
   <div class="<%= item_name.pluralize.downcase %>" id="lists">
     <%= link_to "New #{item_name.singularize.capitalize}",
         :controller => item_name.pluralize.downcase,
         :action => :new %>
-    <%= order_btn models, order %>
     <ul id="<%= item_name.pluralize.downcase %>">
     <% if !models.blank? %>
         <% models.each_with_index do |model,index| %>
           <% content_tag_for(:li, model) do %>
               <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
             <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
-              <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
+              <span id="order_btn_<%=(index+1).to_s %>" class="handler" style="display:none;">
                 <%= index+1 %>
               </span>
             <% if 'step' == model.class.to_s.downcase %>

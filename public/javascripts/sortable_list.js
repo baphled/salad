@@ -5,10 +5,20 @@
  *
  */
 $(document).ready(function() {
+  // Dynamically style our list
+  $('#lists, .order_icon, .icons').addClass('ui-widget ui-widget-content ui-corner-all');
+
+  // Toggle our position handler
+  $('#handler').click(function() {
+      $('#lists').toggleClass('active');
+      $('.order_box').toggle();
+  });
+
+  // sort our list
   $('div#lists ul').sortable({
     axis:'y',
     dropOnEmpty:false,
-    handle:'.order_box',
+    handle:'.handler',
     cursor: 'crosshair',
     items: 'li',
 
