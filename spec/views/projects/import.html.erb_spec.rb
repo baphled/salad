@@ -9,22 +9,12 @@ describe "/projects/import.html.erb" do
   end
   
   describe "viewing the import form" do
-    before(:each) do
-      @project.location = "#{RAILS_ROOT}"
-    end
-
     context "invalid feature" do
       before(:each) do
         assigns[:imported] = @project.import_features
-        
       end
 
       context "disabling submit if" do
-        before(:each) do
-          assigns[:imported] = @project.import_features
-          
-        end
-
         it "should has an invalid title" do
           assigns[:imported].first[:feature].title = nil
           render
@@ -59,6 +49,7 @@ describe "/projects/import.html.erb" do
 
         it "should not have an import button" do
           assigns[:imported].first[:feature].i_want = nil
+          render
           response.should_not have_selector :input, attribute = {:value => "Import failing feature"}
         end
       end
