@@ -8,7 +8,8 @@
     <% if !models.blank? %>
         <% models.each_with_index do |model,index| %>
           <% content_tag_for(:li, model) do %>
-            <% content_tag_for(:div, model, :class=> "item_" + index.to_s ) do %>
+              <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
+            <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
               <span id="order_btn_<%=(index+1).to_s %>" class="order_box" style="display:none;">
                 <%= index+1 %>
               </span>
@@ -17,7 +18,6 @@
             <% else  %>
               <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
             <% end %>
-              <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
             <% end %>
           <% end %>
         <% end %>
