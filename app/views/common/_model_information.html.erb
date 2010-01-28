@@ -7,9 +7,5 @@
     <% end %>
   <% end %>
   <br />
-  <% if model.respond_to?(:created_at) %>
-    <% ["creation_date", "updated_date"].each do |attribute| %>
-      <%= render :partial => "/common/caption_and_value", :locals => { :model => model, :attribute => attribute } %>
-    <% end %>
-  <% end %>
+  
 </div>
