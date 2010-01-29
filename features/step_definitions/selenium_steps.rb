@@ -10,6 +10,10 @@ When /^I press order$/ do
   selenium.click "order_icon"
 end
 
+When /^I press view features checkbox list$/ do
+  selenium.click "features_checkbox", {:wait_for => :visible, :element => "fieldset_features"}
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1_features")
 end
@@ -42,4 +46,12 @@ end
 
 Then /^the description field should have an error class$/ do
   selenium.wait_for_text "This field is required."
+end
+
+Then /^I should see a "([^\"]*)" link$/ do |model|
+  selenium.wait_for_text "#{model}"
+end
+
+Then /^the list of feature checkboxes should be viewable$/ do
+  selenium.wait_for_visible("fieldset_features")
 end

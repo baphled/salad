@@ -1,4 +1,4 @@
-<a href="javascript://" class="display_info" id="<%= item_name.to_s.downcase.pluralize %>_checkbox"><%= "view #{item_name.to_s.downcase}" %></a>
+<a href="javascript://" class="display_info" id="<%= item_name.to_s.downcase.pluralize %>_checkbox"><%= "view #{item_name.to_s.downcase.pluralize}" %></a>
 <br />
 <% if !item_name.send(:all).nil? %>
   <fieldset id="fieldset_<%= item_name.to_s.downcase.pluralize %>" class="views">
