@@ -1,22 +1,3 @@
-<% if not items.nil? %>
-	<% content_for :js_head do %>
-	<script type="text/javascript">
-		$(document).ready(function() {
-          $("div.<%= items %>").each(function(event) {
-            
-            $(this).mouseover(function() {
-              $classArray = $(this).attr('class').replace(' ','_').split(' ');
-              $hover_class = 'li.' + $classArray[1];
-              $($hover_class).toggle();
-            });
-
-            $(this).mouseout(function() {
-              $classArray = $(this).attr('class').replace(' ','_').split(' ');
-              $hover_class = 'li.' + $classArray[1];
-              $($hover_class).toggle();
-            });
-          });
-		});
-	</script>
-	<% end %>
+<% content_for :js_head do %>
+  <%= javascript_include_tag "item_hover" %>
 <% end %>
