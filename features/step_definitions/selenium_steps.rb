@@ -44,7 +44,7 @@ Then /^an error message should be displayed$/ do
   selenium.wait_for_element("css=label.error")
 end
 
-Then /^the description field should have an error class$/ do
+Then /^the form should have an error class$/ do
   selenium.wait_for_text "This field is required."
 end
 
@@ -54,4 +54,8 @@ end
 
 Then /^the list of feature checkboxes should be viewable$/ do
   selenium.wait_for_visible("fieldset_features")
+end
+
+Then /^the the error message should be "([^\"]*)"$/ do |message|
+  selenium.wait_for_text "#{message}"
 end
