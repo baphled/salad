@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   
-  before_filter :find_project, :except => [:index,:new,:create,:tag,:tags]
+  before_filter :find_project, :except => [:index,:new,:create,:tag,:tags, :valid_directory]
   
   before_filter :find_tags
   
@@ -66,7 +66,17 @@ class ProjectsController < ApplicationController
     @projects = Project.find_tagged_with params[:tag]
     render :index
   end
-  
+
+  def valid_directory
+    result = ""
+    if not File.directory?(params[:location])
+        result = "Must be a valid project location on your system."
+    end
+    respond_to do |format|
+      format.json  { render :json => result.to_json }
+    end
+  end
+
   private
   
     def find_tags
