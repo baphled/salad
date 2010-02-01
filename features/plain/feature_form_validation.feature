@@ -1,8 +1,7 @@
 Feature: Feature forms should have client side validations
-    # Main goal of this project
   In order to improve the performance of the salad
-  As the system
-  I want to allow for client side validation of the feature forms
+  As a system feature
+  I want to allow for validation of the feature forms
 
   Scenario: The "title" field should have more than 6 characters
     Given I can view the features page
