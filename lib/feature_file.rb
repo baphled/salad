@@ -15,7 +15,7 @@ class FeatureFile < File
   end
 
   def as_a
-    read_properties /^As a/
+    read_properties /^As/
   end
 
   def i_want
