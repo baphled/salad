@@ -88,6 +88,11 @@ When /^we fill in the features tags$/ do
   fill_in 'feature_tag_list', :with => 'new feature, something cool'
 end
 
+When /^we fill in the project location$/ do
+  fill_in 'project_location', :with => "#{RAILS_ROOT}"
+end
+
+
 Then /^submit the form$/ do
 	
   click_button 'Save'
