@@ -5,6 +5,21 @@ describe Project do
     @project = stub_model(Project).as_new_record.as_null_object
   end
 
+  context "validation a location directory" do
+    it "should have a validates_project_directory validation helper" do
+      Project.respond_to?(:directory_is_valid?).should be_true
+    end
+  end
+
+  context "project location is invalid" do
+
+    it "should be valid in it is blank" do
+      @project.stub(:location).and_return nil
+      @project.errors[:location].should be_nil
+    end
+    
+    it "should should display an error message"
+  end
   context "has invalid input" do
     before(:each) do
       @project.should_receive(:save).and_return false
@@ -55,7 +70,7 @@ describe Project do
       end
 
       it "have a features as a text" do
-        @project.import_features.last[:feature].as_a.should_not be_nil
+        @project.import_features.first[:feature].as_a.should_not be_nil
       end
 
       it "have a features 'I want' text" do

@@ -61,4 +61,4 @@ Feature: Must be able to deal with our projects validations on our forms
       When I click new projects
       And we fill in the project location with '/blah/'
       Then submit the form
-      And the error message should be "Must be a valid project location on your system.'
+      And the error message should be "Must be a valid project location on your system."

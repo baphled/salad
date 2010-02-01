@@ -24,4 +24,9 @@ class Project < ActiveRecord::Base
       end
     list
   end
+
+  def self.directory_is_valid? directory
+    errors.add(:discount, "can't be greater than total value") if
+      File.directory directory
+  end
 end
