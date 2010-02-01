@@ -68,3 +68,11 @@ Feature: Must be able to do client side validations on our forms
       Then submit the form
       And a JS based error message should be displayed
       And the client side error message should be "Please enter at least 12 characters."
+
+    Scenario: A projects location must be a valid project location on their system
+      Given I can view the projects page
+      When I click new projects
+      And we fill in the project location with '/s'
+      Then submit the form
+      And a JS based error message should be displayed
+      And the client side error message should be "Must be a valid project location on your system."
