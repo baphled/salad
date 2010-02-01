@@ -12,6 +12,8 @@ class Project < ActiveRecord::Base
   validates_length_of :aim, :minimum => 6, :too_short => @error_message
   validates_length_of :description, :minimum => 12, :too_short => @error_message
 
+  validate :directory_is_valid, :if => :directory_present?
+
   has_many :feature_projects
   has_many :features, :through => :feature_projects
   
@@ -25,8 +27,12 @@ class Project < ActiveRecord::Base
     list
   end
 
-  def self.directory_is_valid? directory
-    errors.add(:discount, "can't be greater than total value") if
-      File.directory directory
+  def directory_is_valid
+    errors.add(:location, "Directory is not valid") if
+      File.directory?(self.location) == false
+  end
+
+  def directory_present?
+    self.location.blank? == false
   end
 end

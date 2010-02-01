@@ -389,3 +389,4 @@ Then /^the error message should be "([^\"]*)"$/ do |message|
     content.should contain "#{message}"
   end
 end
+
