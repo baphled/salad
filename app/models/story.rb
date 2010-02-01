@@ -4,6 +4,7 @@ class Story < ActiveRecord::Base
   
   validates_presence_of     :scenario
   validates_uniqueness_of   :scenario
+  validates_length_of :scenario, :minimum => 7, :too_short => @@error_message
   
   validates_associated      :steps
   
