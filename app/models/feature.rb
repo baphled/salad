@@ -1,4 +1,5 @@
 class Feature < ActiveRecord::Base
+  @error_message = "Please enter at least {{count}} characters."
 	include MyActiveRecordExtensions
   acts_as_taggable
   
@@ -8,6 +9,8 @@ class Feature < ActiveRecord::Base
   validates_presence_of     :i_want
   
   validates_associated      :stories
+
+  validates_length_of :title, :minimum => 6, :too_short => @error_message
   
   has_many :feature_projects
   has_many :projects, :through => :feature_projects
