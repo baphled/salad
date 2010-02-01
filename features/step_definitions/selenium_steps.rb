@@ -36,14 +36,14 @@ Then /^the items should be reordered$/ do
   end
 end
 
-Then /^an error message should be displayed$/ do
+Then /^a JS based error message should be displayed$/ do
   selenium.wait_for_element("css=label.error")
 end
 
-Then /^the form should have an error class$/ do
+Then /^the form should have an client side error$/ do
   selenium.wait_for_text "This field is required."
 end
 
-Then /^the the error message should be "([^\"]*)"$/ do |message|
+Then /^the client side error message should be "([^\"]*)"$/ do |message|
   selenium.wait_for_text "#{message}"
 end
