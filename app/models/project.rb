@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
   end
 
   def directory_is_valid
-    errors.add(:location, "Directory is not valid") if
+    errors.add(:location, "Must be a valid project location on your system.") if
       File.directory?(self.location) == false
   end
 
