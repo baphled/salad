@@ -377,3 +377,15 @@ end
 Then /^it should include features from all sub directories within the feature directory$/ do
   response.should contain "Feature: hover functionality"
 end
+
+Then /^the "([^\"]*)" "([^\"]*)" "([^\"]*)" should have an error class$/ do |model, attribute, input|
+  response.should have_selector :li, attribute = {:id => "#{model}_#{attribute}_#{input}"} do |content|
+    content.should have_selector :ul, attribute = {:class => "errors"}
+  end
+end
+
+Then /^the error message should be "([^\"]*)"$/ do |message|
+  response.should have_selector :ul, attribute = {:class => "errors"} do |content|
+    content.should contain "#{message}"
+  end
+end
