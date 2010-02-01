@@ -7,7 +7,7 @@ describe Project do
 
   context "validation a location directory" do
     it "should have a validates_project_directory validation helper" do
-      @project.respond_to?(:directory_is_valid).should be_true
+      @project.respond_to?(:directory_is_valid?).should be_true
     end
   end
 

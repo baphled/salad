@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   validates_length_of :aim, :minimum => 6, :too_short => @error_message
   validates_length_of :description, :minimum => 12, :too_short => @error_message
 
-  validate :directory_is_valid, :if => :directory_present?
+  validate :directory_is_valid?, :if => :directory_present?
 
   has_many :feature_projects
   has_many :features, :through => :feature_projects
@@ -27,7 +27,7 @@ class Project < ActiveRecord::Base
     list
   end
 
-  def directory_is_valid
+  def directory_is_valid?
     errors.add(:location, "Must be a valid project location on your system.") if
       File.directory?(self.location) == false
   end
