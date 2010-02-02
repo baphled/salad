@@ -11,23 +11,6 @@ describe "projects/show.html.erb" do
                             :created_at => @date).as_null_object
   end
   
-  describe "a newly created project" do
-    before(:each) do
-      @project.stub(:updated_at).and_return nil
-      assigns[:project] = @project
-      render
-    end
-    
-    it "should display the created at field" do
-      response.should contain "#{@project.creation_date}"
-    end
-    
-    it "should display the date the project was updated" do
-      response.should_not contain "Updated at: #{@project.updated_date}"
-    end
-  end  
-  
-  
   describe "a project is updated" do
     before(:each) do
       @project.stub(:updated_at).and_return @date.tomorrow
