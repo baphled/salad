@@ -3,7 +3,7 @@
 	<%= hidden_field_tag "feature[in_order]", file[:feature].in_order %>
 	<%= hidden_field_tag "feature[as_a]", file[:feature].as_a %>
 	<%= hidden_field_tag "feature[i_want]", file[:feature].i_want %>
-	<h3>Feature: <%=h file[:file].sub(/\.feature/,"").sub(/_/," ") %></h3>
+	<h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ')%></h3>
 	<p id="title"><%= file[:feature].title%></p>
 	<p>
 		In order <%= file[:feature].in_order %><br />

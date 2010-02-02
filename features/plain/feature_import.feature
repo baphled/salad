@@ -248,7 +248,6 @@ Feature: Users should not have to manually input their features if they have alr
 	  When the project is viewed
 	  Then I should see a import link
       When I click import
-      Given the features scenario has no steps
       Then the submit button will be disabled for that feature
 
     Scenario: The feature file heading should not contain any underscores
@@ -257,7 +256,8 @@ Feature: Users should not have to manually input their features if they have alr
 	  When the project is viewed
 	  Then I should see a import link
       When I click import
-      Then each features should not include any underscores
+      Then each of the features tabs should not include any underscores
+      And each of the features title should not include any underscores
 
     Scenario: When importing features and a feature file name is shared with another
       Given there is a project
