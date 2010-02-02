@@ -177,7 +177,7 @@ Then /^the project features page will be displayed$/ do
 end
 
 Then /^a summary of the project should be displayed$/ do
-  response.should have_selector :div, attribute = {:class=>"project_info"} do |project_info|
+  response.should have_selector :div do |project_info|
     project_info.should have_selector :span, :content => @project.title
     project_info.should have_selector :span, :content => @project.description
     project_info.should have_selector :span, :content => @project.aim
