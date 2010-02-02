@@ -1,4 +1,4 @@
-<div class="<%= model.class.to_s.downcase %>_info">
+<div class="<%= model.class.to_s.downcase %>_info info">
   <% model.attribute_names.reverse.each do |attribute|%>
     <% if not ["id", "created_at", "updated_at"].include?(attribute) %>
       <% if not model.send(attribute.to_sym).nil? %>
