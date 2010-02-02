@@ -244,7 +244,7 @@ Then /^the project creation date should be stored$/ do
 end
 
 Then /^each of the (.*) should have a creation date$/ do |controller|
-  response.should contain "Creation date:"
+  response.should contain "Created at:"
 end
 
 Then /^the project should have a creation date$/ do
