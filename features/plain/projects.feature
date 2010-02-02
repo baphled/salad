@@ -104,7 +104,7 @@ And a flash message 'Project: A project was created' should be displayed
     When I visit the projects features
     Then the project features page will be displayed
 
-  Scenario: I should be able to view the project information in details
+  Scenario: I should be able to view the project information in detail
     Given there is a project
     And the project has features
     And I can view the projects page
@@ -168,7 +168,7 @@ And a flash message 'Project: A project was created' should be displayed
     And a flash message 'Project: A project was created' should be displayed
     And the project should have link to create new features
 
-  Scenario: When view a project with no feature, the user should not see the order button
+  Scenario: When viewing a project with no feature, the user should not see the order button
     Given I can view the projects page
     When a project has no features
     And there is a project
