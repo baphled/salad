@@ -250,3 +250,21 @@ Feature: Users should not have to manually input their features if they have alr
       When I click import
       Given the features scenario has no steps
       Then the submit button will be disabled for that feature
+
+    Scenario: The feature file heading should not contain any underscores
+      Given there is a project
+      And the project does have a project location to an invalid feature
+	  When the project is viewed
+	  Then I should see a import link
+      When I click import
+      Then each features should not include any underscores
+
+    Scenario: When importing features and a feature file name is shared with another
+      Given there is a project
+      And the project does have a project location to an invalid feature
+	  When the project is viewed
+	  Then I should see a import link
+      When I click import
+      When a feature file shares its name with another feature file
+      Then display the feature file already exists
+      And display the location in which the original was found
