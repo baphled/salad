@@ -31,8 +31,9 @@ Given /^there are no projects$/ do
   @projects = Project.stub(:last).and_return nil
 end
 
+#TODO refactor so that the steps action is clearer
 Given /^the project has features$/ do
-  @project = Project.find 2
+  @project = Project.first
 end
 
 Given /^the project does have a project location to an invalid feature$/ do
