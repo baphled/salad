@@ -27,7 +27,7 @@
 			<% end %>
 		<% end %>
 	<% end %>
-  <% if file[:feature].title.nil? || file[:feature].in_order.nil? ||  file[:feature].as_a.nil? || file[:feature].i_want.nil?%>
+  <% if file[:feature].title.blank? || file[:feature].in_order.blank? ||  file[:feature].as_a.blank? || file[:feature].i_want.blank?%>
     <p id="error">Invalid feature</p>
   <% else %>
 	<%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>
