@@ -1,5 +1,4 @@
 class Project < ActiveRecord::Base
-  @error_message = "Please enter at least {{count}} characters."
 	include MyActiveRecordExtensions
   acts_as_taggable
   
@@ -8,9 +7,9 @@ class Project < ActiveRecord::Base
   validates_presence_of     :aim
   validates_uniqueness_of   :title
 
-  validates_length_of :title, :minimum => 3, :too_short => @error_message
-  validates_length_of :aim, :minimum => 6, :too_short => @error_message
-  validates_length_of :description, :minimum => 12, :too_short => @error_message
+  validates_length_of :title, :minimum => 3, :too_short => @@error_message
+  validates_length_of :aim, :minimum => 6, :too_short => @@error_message
+  validates_length_of :description, :minimum => 12, :too_short => @@error_message
 
   validate :directory_is_valid?, :if => :directory_present?
 
