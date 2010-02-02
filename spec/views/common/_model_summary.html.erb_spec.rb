@@ -17,11 +17,11 @@ describe "/common/_model_summary.html.erb" do
       end
 
       it "should display the created at field" do
-        response.should contain "Created at:"
+        response.should contain "Creation date:"
       end
 
       it "should display the date the project was updated" do
-        response.should_not contain "Updated at: #{@project.updated_date}"
+        response.should_not contain "Updated date:"
       end
     end
 
@@ -32,7 +32,7 @@ describe "/common/_model_summary.html.erb" do
       end
 
       it "should display the date the project was updated" do
-        response.should contain "Updated date: #{@project.updated_date}"
+        response.should contain "Updated date:"
       end
     end
   end
