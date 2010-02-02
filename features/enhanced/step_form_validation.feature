@@ -27,4 +27,4 @@ Feature: Step needs client side validations
     Then submit the form
     Then the step should be not saved
     And a JS based error message should be displayed
-    And the client side error message should be "Title must start with Given, When or Then"
+    And the client side error message should be "must start with Given, When or Then"
