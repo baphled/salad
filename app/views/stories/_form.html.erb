@@ -6,6 +6,11 @@
 
 <%= render :partial => "/common/hover_dialog" %>
 
+<% content_for :js_head do %>
+  <%= javascript_include_tag "/javascripts/validations/story" %>
+  <%= javascript_include_tag "add_step" %>
+<% end %>
+
 <%- semantic_form_for @story do |form| -%>
     <fieldset>
 		<% form.inputs :name => form_title(@story, "Story") do %>
@@ -17,10 +22,6 @@
 	
 		<%= render :partial => "/common/save_button" %>
 	</fieldset>
-<% end %>
-
-<% content_for :js_head do %>
-	<%= javascript_include_tag "add_step" %>
 <% end %>
 
 <% if not @story.id.nil? %>

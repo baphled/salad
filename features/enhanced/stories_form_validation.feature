@@ -3,7 +3,7 @@ Feature: Stories need client side validation
   As a system process
   I want to validate story attributes
 
-  Scenario: An client side error is returned if there is not story
+  Scenario: An client side error is returned if there is no story
     Given I can view the stories page
     When I use the "New Story" link
     Then submit the form
@@ -16,4 +16,4 @@ Feature: Stories need client side validation
     And we fill in the story scenario with 'this'
     Then submit the form
     And a JS based error message should be displayed
-    And the client side error message should be "Please enter at least 3 characters."
+    And the client side error message should be "Please enter at least 7 characters."
