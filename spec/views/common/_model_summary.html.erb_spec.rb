@@ -17,7 +17,7 @@ describe "/common/_model_summary.html.erb" do
       end
 
       it "should display the created at field" do
-        response.should contain "#{@project.creation_date}"
+        response.should contain "Created at:"
       end
 
       it "should display the date the project was updated" do
