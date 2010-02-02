@@ -18,18 +18,6 @@ describe "projects/show.html.erb" do
       render
     end
     
-    it "should have a list the projects title" do
-      response.should have_selector(:span, :content => @project.title)
-    end
-  
-    it "should have a description" do
-      response.should have_selector :span, :content => @project.description
-    end
-  
-    it "should have an aim" do
-      response.should have_selector :span, :content => @project.aim
-    end
-  
     it "should display the created at field" do
       response.should contain "#{@project.creation_date}"
     end
