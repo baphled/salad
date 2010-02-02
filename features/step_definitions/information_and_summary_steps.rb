@@ -20,9 +20,16 @@ end
 
 Then /^it should display all the feature information$/ do
   Then %{the "feature" information header should be displayed}
-  ["Title", "In order","I want", "As a",].each do |attribute|
+  ["Title", "In order","I want", "As a"].each do |attribute|
     Then %{the "#{attribute}" should be displayed}
   end
   Then %{a "Total number of Stories"}
   Then %{a "Last Story"}
+end
+
+Then /^it should display all the story information$/ do
+  Then %{the "story" information header should be displayed}
+  Then %{the "Scenario" should be displayed}
+  Then %{a "Total number of Steps"}
+  Then %{a "Last Step"}
 end

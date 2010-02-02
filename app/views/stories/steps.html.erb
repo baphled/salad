@@ -1,4 +1,10 @@
-<h3><%=h @story.scenario%></h3>
+<h4>Story Info</h4>
+<div id="info">
+  <%= render :partial => '/common/model_information', :locals => {:model => @story}%>
+  <%= render :partial => '/common/model_summary', :locals => {:model => @story, :assoc => :steps}%>
+</div>
+<div style="clear:both"></div>
+
 <%= render :partial => '/common/sortable_list',
   :locals => {:models => @story.steps.paginate(
     :page=> params[:page],
