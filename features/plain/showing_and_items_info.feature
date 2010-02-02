@@ -38,6 +38,8 @@ Feature: All item information should be layed out in a similar way
       Then it should display all the feature information
 
     Scenario: Viewing a story should display the story information in a pre defined layout
+      Given there is a story
+      When the story is viewed
       Then the "story" information header should be displayed
       And the "Scenario" should be displayed
       And a "Total number of Steps"
@@ -49,5 +51,7 @@ Feature: All item information should be layed out in a similar way
       Then it should display all the story information
 
     Scenario: Viewing a step should display the step information in a pre defined layout
+      Given there is a step
+      When the step is viewed
       Then the "step" information header should be displayed
       And the "Title" should be displayed

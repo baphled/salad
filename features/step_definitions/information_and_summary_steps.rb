@@ -17,3 +17,12 @@ Then /^it should display all the project information$/ do
   end
   Then %{a "Total number of Features"}
 end
+
+Then /^it should display all the feature information$/ do
+  Then %{the "feature" information header should be displayed}
+  ["Title", "In order","I want", "As a",].each do |attribute|
+    Then %{the "#{attribute}" should be displayed}
+  end
+  Then %{a "Total number of Stories"}
+  Then %{a "Last Story"}
+end
