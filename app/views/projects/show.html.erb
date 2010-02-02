@@ -1,12 +1,8 @@
-<h3><%=h @project.title %></h3>
-
-<p>Description: <%=h @project.description %></p>
-<p>Aim: <%=h @project.aim %></p>
-<p>Created at: <%=h @project.creation_date %></p>
-
-<% if @project.created_at != @project.updated_at and not @project.updated_at.nil? %>
-	<p>Updated at: <%=h @project.updated_date %></p>
-<% end %>
+<h4>Project Info</h4>
+<div id="info">
+  <%= render :partial => '/common/model_information', :locals => {:model => @project}%>
+  <%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
+</div>
 
 <% if not @project.location.nil? %>
 	<%= link_to "Import", project_import_path(@project) %> |
