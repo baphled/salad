@@ -19,15 +19,15 @@ describe "projects/show.html.erb" do
     end
     
     it "should have a list the projects title" do
-      response.should have_selector(:h3, :content => @project.title)
+      response.should have_selector(:span, :content => @project.title)
     end
   
     it "should have a description" do
-      response.should have_selector :p, :content => @project.description
+      response.should have_selector :span, :content => @project.description
     end
   
     it "should have an aim" do
-      response.should have_selector :p, :content => @project.aim
+      response.should have_selector :span, :content => @project.aim
     end
   
     it "should display the created at field" do
@@ -48,7 +48,7 @@ describe "projects/show.html.erb" do
     end
     
     it "should display the date the project was updated" do
-      response.should contain "Updated at: #{@project.updated_date}"
+      response.should contain "Updated date: #{@project.updated_date}"
     end
   end
   
