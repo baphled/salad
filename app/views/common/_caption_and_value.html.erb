@@ -1,4 +1,4 @@
-<% if not attribute.blank? %>
+<% if not attribute.blank? && model.respond_to?(attribute)%>
 <b><%= attribute.capitalize.gsub("_", " ") %>: </b>
 <span><%= model.send(attribute.to_sym) %></span><br/>
 <% end %>
