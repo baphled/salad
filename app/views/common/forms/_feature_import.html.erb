@@ -1,4 +1,4 @@
-<h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ')%></h3>
+<h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></h3>
 <%- form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
   <fieldset>
     <%= hidden_field_tag "feature[title]", file[:feature].title %>
@@ -14,19 +14,18 @@
     <%= label_tag "feature tags:"%>
     <%= text_field_tag "feature[tag_list]" %><br/>
     <% if !Project.all.empty? %>
-    <% for project in Project.find :all %>
-            <%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
-            <%= project.title%><br/>
+      <% for project in Project.find :all %>
+          <%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
+          <%= project.title%><br/>
+      <% end %>
+      <% file[:feature].stories.each do |story| %>
+        <% if not Story.find_by_scenario(story.scenario.sub(/^Scenario: /,"").strip)%>
+            <%= hidden_field_tag "feature[stories_attributes][][scenario]", story.scenario.sub(/^Scenario: /,"").strip %>
+            <% story.steps.each do |step| %>
+                <%= hidden_field_tag "feature[stories_attributes][][steps][]", step.title %>
+            <%end %>
         <% end %>
-
-        <% file[:feature].stories.each do |story| %>
-            <% if not Story.find_by_scenario(story.scenario.sub(/^Scenario: /,"").strip)%>
-                <%= hidden_field_tag "feature[stories_attributes][][scenario]", story.scenario.sub(/^Scenario: /,"").strip %>
-                <% story.steps.each do |step| %>
-                    <%= hidden_field_tag "feature[stories_attributes][][steps][]", step.title %>
-                <%end %>
-            <% end %>
-        <% end %>
+      <% end %>
     <% end %>
     <% if file[:feature].title.blank? || file[:feature].in_order.blank? ||  file[:feature].as_a.blank? || file[:feature].i_want.blank?%>
       <p id="error">Invalid feature</p>

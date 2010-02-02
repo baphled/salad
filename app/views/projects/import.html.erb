@@ -6,7 +6,7 @@
 	<% @imported.each do |file| %>
 		<% if Feature.find_by_title(file[:feature].title).nil? %>
 		<li>
-			<a href="#<%=h file[:file].sub(/\./,"_") %>"><%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></a>
+          <a href="#<%=h file[:file].sub(/\./,"_") %>"><%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ').capitalize %></a>
 		</li>
 		<% end%>
 	<% end %>
