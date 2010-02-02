@@ -51,7 +51,6 @@ Feature: All item information should be layed out in a similar way
       Then it should display all the story information
 
     Scenario: Viewing a step should display the step information in a pre defined layout
-      Given there is a step
-      When the step is viewed
+      When I visit the first step
       Then the "step" information header should be displayed
       And the "Title" should be displayed

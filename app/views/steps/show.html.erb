@@ -1,4 +1,10 @@
-<b>Title: </b><%= @step.title %>
+<h4>Step Info</h4>
+<div id="info">
+  <%= render :partial => '/common/model_information', :locals => {:model => @step}%>
+  <%= render :partial => '/common/model_summary', :locals => {:model => @step}%>
+</div>
+<div style="clear:both"></div>
+
 <% semantic_form_for @step do |form| -%>
   <%= render :partial => '/common/checkboxes', :locals => {:model => @step, :item_name => Story}%>
   <%= form.buttons %>
