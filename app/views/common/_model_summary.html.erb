@@ -2,10 +2,12 @@
   <% if defined? assoc %>
   <%= link_to "Add #{model.class.to_s}'s #{assoc.to_s.capitalize.singularize}", :controller => assoc, :action => :new, "#{model.class.to_s.downcase.singularize}_id".to_sym =>model.id%><br/>
   <% end %>
-  <% if model.respond_to?(:created_at) %>
+  <% if model.respond_to?(:created_at) && (model.send(:updated_at) != model.send(:created_at)) %>
     <% ["creation_date", "updated_date"].each do |attribute| %>
       <%= render :partial => "/common/caption_and_value", :locals => { :model => model, :attribute => attribute } %>
     <% end %>
+  <% else %>
+    <%= render :partial => "/common/caption_and_value", :locals => { :model => model, :attribute => "created_at" } %>
   <% end %>
   <br />
   <% if defined? assoc %>
