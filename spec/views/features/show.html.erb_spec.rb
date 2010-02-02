@@ -20,7 +20,7 @@ describe "/features/show.html.erb" do
     end
     
     it "should have display the features informaion" do
-      response.should have_selector :div, attribute = {:class=>"feature_info"} do |content|
+      response.should have_selector :div do |content|
         content.should contain @feature.title
       end
     end
