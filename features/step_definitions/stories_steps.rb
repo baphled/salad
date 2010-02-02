@@ -6,6 +6,10 @@ Given /^the story has steps$/ do
   @story ||= Story.first
 end
 
+Given /^there is a story$/ do
+  @story = Story.first
+end
+
 When /^I visit the stories steps$/ do
   visit story_steps_path @story
 end
@@ -32,6 +36,10 @@ end
 
 When /^I select first story$/ do
   visit('/stories/1')
+end
+
+When /^the story is viewed$/ do
+  visit story_path @story
 end
 
 Then /^there should be a list of stories$/ do
