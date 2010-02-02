@@ -5,6 +5,7 @@ Feature: All item information should be layed out in a similar way
 
     Scenario: Viewing a project should display the project information in a pre defined layout
       Given there is a project
+      And the projects creation date is not the same as the updated date
       When the project is viewed
       Then the "project" information header should be displayed
       And the "Title" should be displayed
@@ -16,11 +17,13 @@ Feature: All item information should be layed out in a similar way
 
     Scenario: Viewing a project features should display the project information in a pre defined layout
       Given the project has features
+      And the projects creation date is not the same as the updated date
       When I visit the projects features
       Then it should display all the project information
 
     Scenario: Viewing a feature should display the feature information in a pre defined layout
       Given there is a feature
+      And the features creation date is not the same as the updated date
       When the feature is viewed
       Then the "feature" information header should be displayed
       And the "Title" should be displayed

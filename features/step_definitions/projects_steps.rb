@@ -40,6 +40,10 @@ Given /^the project does have a project location to an invalid feature$/ do
   @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures")
 end
 
+Given /^the projects creation date is not the same as the updated date$/ do
+  @project.update_attribute(:updated_at, Time.now.next_year)
+end
+
 When /^the project already exists$/ do
   @project.should_receive(:save).and_return false
 end

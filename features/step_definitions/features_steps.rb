@@ -14,6 +14,10 @@ Given /^the feature has stories$/ do
   @feature = Feature.first
 end
 
+Given /^the features creation date is not the same as the updated date$/ do
+  @feature.update_attribute(:updated_at, Time.now.next_year)
+end
+
 When /^the feature is viewed$/ do
   visit feature_path @feature
 end
