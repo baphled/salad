@@ -124,7 +124,7 @@ Then /^the user should be told the project already exists$/ do
 end
 
 Then /^I should be able to view its details$/ do
-  response.should have_selector(:p, :content => @project.description)
+  response.should have_selector(:span, :content => @project.description)
 end
 
 
@@ -176,7 +176,7 @@ Then /^the project features page will be displayed$/ do
 end
 
 Then /^a summary of the project should be displayed$/ do
-  response.should have_selector :div, attribute = {:class=>"info"} do |project_info|
+  response.should have_selector :div, attribute = {:class=>"project_info"} do |project_info|
     project_info.should have_selector :span, :content => @project.title
     project_info.should have_selector :span, :content => @project.description
     project_info.should have_selector :span, :content => @project.aim
@@ -252,11 +252,11 @@ Then /^the projects date should be updated$/ do
 end
 
 Then /^the projects updated field will be displayed$/ do
-  response.should contain "Updated at: #{@project.updated_date}"
+  response.should contain "Updated date: #{@project.updated_date}"
 end
 
 Then /^the projects updated field will not be displayed$/ do
-  response.should_not contain "Updated at:"
+  response.should_not contain "Updated date:"
 end
 
 Then /^I should see a import link$/ do
