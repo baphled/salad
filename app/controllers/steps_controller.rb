@@ -1,5 +1,5 @@
 class StepsController < ActionController::Base
-  before_filter :find_step, :except => [:index,:new,:create,:sort]
+  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate]
   
   layout "application"
   
@@ -72,6 +72,16 @@ class StepsController < ActionController::Base
       @steps.step_stories.update_all(['position=?', index+1])
     end
     render :nothing => true
+  end
+
+  def validate
+    result = ''
+    if (params[:title].split(" ").first =~ /^(Given|When|Then).*$/) == nil
+      result = "must start with Given, When or Then"
+    end
+    respond_to do |format|
+      format.json  { render :json => result.to_json }
+    end
   end
   
   private
