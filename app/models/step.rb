@@ -5,7 +5,9 @@ class Step < ActiveRecord::Base
   validates_format_of     :title,
                           :with => /^(Given|When|Then).*$/,
                           :message => "must start with Given, When or Then"
-                          
+
+  validates_length_of :title, :minimum => 12, :too_short => @@error_message
+  
   has_many                :step_stories
   has_many                :stories, :through => :step_stories
   
