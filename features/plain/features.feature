@@ -163,7 +163,3 @@ Feature: A user should be able to create new features, which can be associated w
     When I uncheck "feature_story_id_1"
     Then submit the form
     And the feature should be not associated to the first story
-
-  Scenario: When create a scenario the 'In order' field must be valid
-  Scenario: When create a scenario the 'As a' field must be valid
-  Scenario: When create a scenario the 'I want' field must be valid
