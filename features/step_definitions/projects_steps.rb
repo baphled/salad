@@ -264,25 +264,6 @@ Then /^the projects updated field will not be displayed$/ do
   response.should_not contain "Updated date:"
 end
 
-Then /^I should see a import link$/ do
-  response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
-end
-
-Then /^I should not see a import link$/ do
-  response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
-end
-
-Then /^I should see a list of features that will be imported$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}")
-  response.should have_selector :ul do |list|
-    @project.import_features do |feature|
-      list.should have_selector :li do |content|
-        content.should contain "#{feature[:feature].title}"
-      end
-    end
-  end
-end
-
 Then /^each entry should be a feature file$/ do
   response.should_not have_selector :li, :content => " . " or ".." or "support" or "step_definitions"
 end
