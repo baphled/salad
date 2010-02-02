@@ -12,7 +12,7 @@ Given /^there are projects$/ do
 end
 
 Given /^the project does not have a project location$/ do
- @project.update_attribute(:location,nil)
+ @project.update_attribute(:location,"")
 end
 
 Given /^the project does have a project location$/ do

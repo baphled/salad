@@ -4,7 +4,7 @@
   <%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
 </div>
 
-<% if not @project.location.nil? %>
+<% if not @project.location.blank? %>
 	<%= link_to "Import", project_import_path(@project) %> |
 <% end %>
 
