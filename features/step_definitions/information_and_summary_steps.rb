@@ -1,5 +1,5 @@
-Then /^the project information header should be displayed$/ do
-  response.should have_selector :h4, :content => "Project Info"
+Then /^the "([^\"]*)" information header should be displayed$/ do |model|
+  response.should have_selector :h4, :content => "#{model.capitalize} Info"
 end
 
 Then /^the "([^\"]*)" should be displayed$/ do |message|
