@@ -357,7 +357,7 @@ end
 
 Then /^the project has an invalid feature$/ do
   response.should have_selector(:li) do |content|
-      content.should contain "failing feature"
+      content.should contain "Failing feature"
   end
 end
 
