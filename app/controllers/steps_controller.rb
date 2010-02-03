@@ -77,13 +77,11 @@ class StepsController < ActionController::Base
   end
 
   def validate
-    result = ""
+    result = true
     if (params[:title].split(" ").first =~ /^(Given|When|Then).*$/) == nil
-      result = "must start with Given, When or Then"
-      render :json => result.to_json
-    else
-      render :nothing => true
+      result = %{false, "must start with Given, When or Then"}.to_json
     end
+      render :json => result.to_json
   end
 
   def tags
