@@ -33,7 +33,7 @@ end
 
 #TODO refactor so that the steps action is clearer
 Given /^the project has features$/ do
-  @project = Project.first
+  @project = Project.find 2
 end
 
 Given /^the project does have a project location to an invalid feature$/ do

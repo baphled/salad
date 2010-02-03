@@ -17,6 +17,7 @@ Feature: All item information should be layed out in a similar way
 
     Scenario: Viewing a project features should display the project information in a pre defined layout
       Given the project has features
+      And the project does have a project location
       And the projects creation date is not the same as the updated date
       When I visit the projects features
       Then it should display all the project information
