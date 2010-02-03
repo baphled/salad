@@ -84,12 +84,6 @@ class StepsController < ActionController::Base
       render :json => result.to_json
   end
 
-  def tags
-		respond_to do |format|
-			format.json  { render :json => @tags }
-		end
-	end
-  
   private
     def find_tags
       @tags = Step.tag_counts
