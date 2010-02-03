@@ -9,7 +9,11 @@
 <% end %>
 
 <%- semantic_form_for @step do |form| -%>
-  <%= form.inputs :name => form_title(@step, "Step") %>
+  <% form.inputs :name => form_title(@step, "Step") do %>
+    <%= form.input :title %>
+    <%= form.input :tag_list %>
+    <%= render :partial => "/common/save_button" %>
+
+  <% end %>
   <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
-  <%= render :partial => "/common/save_button" %>
 <% end %>

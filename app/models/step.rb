@@ -1,5 +1,7 @@
 class Step < ActiveRecord::Base
 	include MyActiveRecordExtensions
+  acts_as_taggable
+  
   validates_uniqueness_of :title
   validates_presence_of   :title
   validates_format_of     :title,

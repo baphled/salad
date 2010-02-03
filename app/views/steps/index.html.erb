@@ -2,10 +2,9 @@
 	<%= javascript_include_tag "pagination" %>
 <% end %>
 
-<% content_for :side_bar do %>
-	<%= render 'step_search' %>
-<% end %>
+
 <h3>Steps</h3>
+<%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 
 <%= render :partial => '/common/sortable_list',
   :locals => {:models => @steps,

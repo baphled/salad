@@ -1,5 +1,7 @@
 class StepsController < ActionController::Base
-  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate]
+  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate, :tags]
+
+  before_filter :find_tags
   
   layout "application"
   
@@ -75,16 +77,26 @@ class StepsController < ActionController::Base
   end
 
   def validate
-    result = ''
+    result = ""
     if (params[:title].split(" ").first =~ /^(Given|When|Then).*$/) == nil
       result = "must start with Given, When or Then"
-    end
-    respond_to do |format|
-      format.json  { render :json => result.to_json }
+      render :json => result.to_json
+    else
+      render :nothing => true
     end
   end
+
+  def tags
+		respond_to do |format|
+			format.json  { render :json => @tags }
+		end
+	end
   
   private
+    def find_tags
+      @tags = Step.tag_counts
+    end
+    
     def find_step
       @step = Step.find(params[:id])
     end
