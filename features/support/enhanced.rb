@@ -10,6 +10,8 @@ require "webrat/selenium/selenium_session"
 require "webrat/selenium/matchers"
 require "webrat/core_extensions/tcp_socket"
 
+ENV["RAILS_ENV"] ||= "selenium"
+
 Webrat.configure do |config|
   config.mode = :selenium
   config.application_port = 3001
