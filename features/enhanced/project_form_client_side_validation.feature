@@ -76,3 +76,12 @@ Feature: Must be able to do client side validations on our forms
       Then submit the form
       And a JS based error message should be displayed
       And the client side error message should be "Must be a valid project location on your system."
+
+    Scenario: A project with valid input should save the project and be redirected to the new project
+      Given I can view the projects page
+      When I click new projects
+      And we fill in the project title with 'WorldPeace2.0'
+      And we fill in the project aim with 'An aim'
+      And we fill in the project description with 'A description'
+      Then submit the form
+      And I should be redirected to the new project
