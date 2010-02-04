@@ -1,8 +1,6 @@
-require 'webrat'
-
-require 'spec/expectations'
-require 'selenium'
-
+#TODO work out why db cleaner is truncating our test db instead of the selenium one
+ENV[RAILS_ENV] = 'selenium'
+require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require "selenium/client"
 
 require "webrat/selenium/silence_stream"
@@ -10,10 +8,13 @@ require "webrat/selenium/selenium_session"
 require "webrat/selenium/matchers"
 require "webrat/core_extensions/tcp_socket"
 
-ENV["RAILS_ENV"] ||= "selenium"
+require 'spec/expectations'
+require 'selenium'
+require 'webrat'
 
 Webrat.configure do |config|
   config.mode = :selenium
+  config.application_environment = :selenium
   config.application_port = 3001
 end
 
@@ -22,7 +23,6 @@ class ActiveSupport::TestCase
     session.host! "localhost:4444"
   end
 end
-
 
 ActionController::Base.allow_rescue = false
 
@@ -38,11 +38,12 @@ ActionController::Base.allow_rescue = false
 # after each scenario, which can lead to hard-to-debug failures in
 # subsequent scenarios. If you do this, we recommend you create a Before
 # block that will explicitly put your database in a known state.
-Cucumber::Rails::World.use_transactional_fixtures = false
+Cucumber::Rails::World.use_transactional_fixtures = true
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
 require 'database_cleaner'
+require 'database_cleaner/cucumber'
 DatabaseCleaner.strategy = :truncation
 
 # this is necessary to have webrat "wait_for" the response body to be available
@@ -53,6 +54,10 @@ World(Webrat::Selenium::Matchers)
 browser = Selenium::SeleniumDriver.new("localhost", 4444, "*chrome", "http://localhost", 15000)
 #
 Before do
+#  Fixtures.reset_cache
+#  fixtures_folder = File.join(RAILS_ROOT, 'spec', 'fixtures')
+#  fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }
+#  Fixtures.create_fixtures(fixtures_folder, fixtures)
   @browser = browser
 #  @browser.start
 end
