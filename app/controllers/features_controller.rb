@@ -61,6 +61,7 @@ class FeaturesController < ApplicationController
   end
   
   def stories
+    @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5, :order=>"feature_stories.position")
   end
   
   def export
