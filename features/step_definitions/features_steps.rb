@@ -42,7 +42,7 @@ When /^I visit the index features page$/ do
 end
 
 When /^I visit the features stories$/ do
-  visit feature_stories_path @feature
+  visit stories_feature_path @feature
 end
 When /^I edit the first feature$/ do
   click_link 'edit_feature_1'
@@ -75,7 +75,7 @@ Then /^the flash message 'Feature: my first feature, was updated'$/ do
 end
 
 Then /^the form should be rerendered$/ do
-  response.should render :template => "edit"
+  response.should render_template "edit"
 end
 
 Then /^the flash message 'Feature: my first feature, was not updated'$/ do
