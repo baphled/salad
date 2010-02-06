@@ -3,5 +3,5 @@
 <b>Aim: </b><%= project.aim %><br/>
 <b>Created at: </b><%= project.creation_date %><br/>
 <% if !project.feature_ids.empty? %>
-    <%= link_to "Features", project_features_path(project)%>
+    <%= link_to "Features", features_project_path(project)%>
 <% end %>

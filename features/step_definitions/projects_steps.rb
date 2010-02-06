@@ -62,7 +62,7 @@ When /^I visit the projects index page$/ do
 end
 
 When /^I visit the projects features$/ do
-  visit project_features_path @project
+  visit features_project_path @project
 end
 
 When /^I create new a feature$/ do
