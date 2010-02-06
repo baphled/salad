@@ -11,11 +11,11 @@ Given /^there is a story$/ do
 end
 
 When /^I visit the stories steps$/ do
-  visit story_steps_path @story
+  visit steps_story_path @story
 end
 
 When /^I visit the storys steps$/ do
-  visit story_steps_path @story
+  visit steps_story_path @story
 end
 
 When /^I select first feature new story link$/ do

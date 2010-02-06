@@ -1,24 +1,34 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   
-  map.resources :projects, :collection => {:tags => :get, :valid_directory => :get}
-  map.resources :features, :collection => {:tags => :get,:sort => :post}
-  map.resources :stories, :collection => {:tags => :get,:sort => :post,:add_step => :get}
-  map.resources :steps, :collection => {:tags => :get, :sort => :post, :validate => :get}
+  map.resources :projects,
+    :collection => {:tags => :get,
+                    :valid_directory => :get},
+    :member => {:features => :get,
+                :import => :get}
+              
+  map.resources :features,
+    :collection => {:tags => :get,
+                    :sort => :post},
+    :member => {:stories => :get,
+                :export => :get}
+
+  map.resources :stories,
+    :collection => {:tags => :get,
+                    :sort => :post},
+    :member => {:steps => :get,
+                :add_step => :post}
+
+  map.resources :steps,
+    :collection => {:tags => :get,
+                    :sort => :post,
+                    :validate => :get}
 
   
   map.project_tag 'projects/tag/:tag', :controller => 'projects', :action => 'tag'
   map.feature_tag 'features/tag/:tag', :controller => 'features', :action => 'tag'
   map.story_tag 'stories/tag/:tag', :controller => 'stories', :action => 'tag'
 
-  map.feature_export 'features/:id/export', :controller => 'features', :action => 'export'
-  
-  map.add_stories_step 'stories/:id/add_step', :controller => 'stories', :action => 'add_step'
-  map.project_features 'projects/:id/features', :controller => 'projects', :action => 'features'
-  map.project_import 'projects/:id/import', :controller => 'projects', :action => 'import'
-  map.feature_stories 'features/:id/stories', :controller => 'features', :action => 'stories'
-  map.story_steps 'stories/:id/steps', :controller => 'stories', :action => 'steps'
-  
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

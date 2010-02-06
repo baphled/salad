@@ -36,7 +36,7 @@ describe "/features/show.html.erb" do
     end
     
     it "should display an export feature link" do
-      response.should have_selector :a, attribute = {:href=> feature_export_path(@feature) }
+      response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
     end
     
   end
@@ -49,7 +49,7 @@ describe "/features/show.html.erb" do
     end
     
     it "should not display an export feature link" do
-      response.should_not have_selector :a, attribute = {:href=> feature_export_path(@feature) }
+      response.should_not have_selector :a, attribute = {:href=> export_feature_path(@feature) }
     end
   end
 end

@@ -5,7 +5,7 @@
 </div>
 
 <% if not @project.location.blank? %>
-	<%= link_to "Import", project_import_path(@project) %> |
+	<%= link_to "Import", import_project_path(@project) %> |
 <% end %>
 
 <%= link_to "Edit project", edit_project_path(@project) %> |
