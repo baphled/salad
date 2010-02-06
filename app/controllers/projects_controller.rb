@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   end
   
   def features
-    @project_features = @project.features.all(:order=>"feature_projects.position")
+    @project_features = @project.features.paginate(:page => params[:page],:per_page => 5, :order=>"feature_projects.position")
   end
   
   def import
