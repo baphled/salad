@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_filter :find_tags
   
   def index
-    @projects = Project.find(:all)
+    @projects = Project.paginate(:page => params[:page],:per_page => 5)
   end
   
   def new

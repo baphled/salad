@@ -7,11 +7,7 @@ class StepsController < ActionController::Base
   
   def index
     @search = Step.search(params[:search_text])
-    @steps = Step.paginate(:page => params[:page])
-    respond_to do |format|
-      format.html
-      format.json { render :json => @steps }
-    end
+    @steps = Step.paginate(:page => params[:page],:per_page => 5)
   end
   
   def new

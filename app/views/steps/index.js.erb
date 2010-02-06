@@ -1,5 +1,7 @@
-$('#steps_list').html("<%= escape_javascript(render :partial => '/common/sortable_list',
+$('.list_content').html("<%= escape_javascript(render :partial => '/common/sortable_list',
   :locals => {:models => @steps,
   :item_name => 'step',
+  :method => :formatted,
+  :method_arg => @steps,
   :assoc => nil,
   :order => false})%>");

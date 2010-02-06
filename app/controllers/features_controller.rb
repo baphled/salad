@@ -4,10 +4,7 @@ class FeaturesController < ApplicationController
   before_filter :find_tag
   
   def index
-    @features = Feature.all
-    respond_to do |format|
-      format.html
-    end
+    @features = Feature.paginate(:page => params[:page],:per_page => 5)
   end
   
   def new

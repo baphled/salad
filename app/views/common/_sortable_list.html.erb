@@ -1,10 +1,11 @@
 <% if defined?([models,item_name,assoc]) %>
   <span class="list_content">
       <%= order_btn models, order  if defined? order%>
-    <div class="<%= item_name.pluralize.downcase %>" id="lists">
+    <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
       <%= link_to "New #{item_name.singularize.capitalize}",
           :controller => item_name.pluralize.downcase,
           :action => :new %>
+      <%= will_paginate models %>
       <ul id="<%= item_name.pluralize.downcase %>">
       <% if !models.blank? %>
           <% models.each_with_index do |model,index| %>
@@ -33,6 +34,8 @@
 <% else %>
 <span id="error">Experiencing problems with displaying the view</span>
 <% end %>
+
 <% content_for :js_head do %>
   <%= javascript_include_tag "sortable_list" %>
+  <%= javascript_include_tag "pagination" %>
 <% end %>

@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
   before_filter :find_tags
   
   def index
-    @stories = Story.paginate(:page => params[:page],:per_page => 10)
+    @stories = Story.paginate(:page => params[:page],:per_page => 5)
   end
   
   def create
