@@ -42,9 +42,9 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
-require 'database_cleaner'
-require 'database_cleaner/cucumber'
-DatabaseCleaner.strategy = :truncation
+#require 'database_cleaner'
+#require 'database_cleaner/cucumber'
+#DatabaseCleaner.strategy = :truncation
 
 # this is necessary to have webrat "wait_for" the response body to be available
 # when writing steps that match against the response body returned by selenium
