@@ -75,7 +75,7 @@ Then /^the flash message 'Feature: my first feature, was updated'$/ do
 end
 
 Then /^the form should be rerendered$/ do
-  response.should render_template("edit")
+  response.should render :template => "edit"
 end
 
 Then /^the flash message 'Feature: my first feature, was not updated'$/ do
