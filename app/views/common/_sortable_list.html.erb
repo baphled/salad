@@ -5,7 +5,6 @@
       <%= link_to "New #{item_name.singularize.capitalize}",
           :controller => item_name.pluralize.downcase,
           :action => :new %>
-      <%= will_paginate models %>
       <ul id="<%= item_name.pluralize.downcase %>">
       <% if !models.blank? %>
           <% models.each_with_index do |model,index| %>
