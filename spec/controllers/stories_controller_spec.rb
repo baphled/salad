@@ -11,7 +11,7 @@ describe StoriesController do
   describe "GET, index" do
     it "should have a list of stories" do
       Story.should_receive(:paginate).
-        with(:page => "1", :per_page => 10)
+        with(:page => "1", :per_page => 5)
       get :index, {:page => 1}
     end
   end

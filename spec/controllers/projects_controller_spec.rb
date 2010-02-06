@@ -7,7 +7,7 @@ describe ProjectsController do
 
   describe "GET, index" do
     it "should get a list of all projects" do
-      Project.should_receive(:find).with(:all)
+      Project.should_receive(:paginate)
       get :index
     end
   end
