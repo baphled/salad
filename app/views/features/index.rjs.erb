@@ -1,0 +1,1 @@
+$('.list_content').html("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order =>false})%>");
