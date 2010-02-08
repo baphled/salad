@@ -28,7 +28,7 @@ class FeatureFile < File
     self.each do |line| 
       if line.strip =~ /^Scenario: /
         scenarios << Story.new(:scenario => line.strip.sub(/^Scenario: /, ''))
-      elsif line.strip =~ /^(Given|When|Then|And)/
+      elsif line.strip =~ /^(Given|When|Then|And)/ and scenarios.last.nil? == false
         scenarios.last.steps << Step.new(:title => line.strip)
       end
     end
