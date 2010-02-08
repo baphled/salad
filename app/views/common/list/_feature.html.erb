@@ -1,5 +1,5 @@
 <b>Title: </b><%= feature.title %><br/>
 <b>Created at: </b><%= feature.creation_date %><br/>
 <% if !feature.story_ids.empty? %>
-  <%= link_to "Stories", feature_stories_path(feature), {:id=>"feature_#{feature.id}_stories"}%>
+  <%= link_to "Stories", stories_feature_path(feature), {:id=>"feature_#{feature.id}_stories"}%>
 <% end %>
