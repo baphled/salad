@@ -1,4 +1,4 @@
-Given /^there is a "([^\"]*)"$/ do |model|
+Given /^there are "([^\"]*)"$/ do |model|
   model.capitalize.singularize.constantize.all.should_not be_empty
 end
 
