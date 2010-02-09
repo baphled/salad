@@ -10,13 +10,8 @@ describe "/features/show.html.erb" do
     before(:each) do
       @feature = Feature.first
       assigns[:feature] = @feature
-      render :locals => {
-                    :models => @feature.stories.paginate(
-                      :page=>1,
-                      :per_page=>10,
-                      :order=>"feature_stories.position"),
-                    :item_name => 'story',
-                    :order =>true}
+      assigns[:feature_stories] = @feature.stories.paginate(:page=>1)
+      render
     end
     
     it "should have display the features informaion" do
