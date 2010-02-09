@@ -1,0 +1,8 @@
+  $('#list').html("<%= escape_javascript(render :partial => '/common/sortable_list',
+    :locals => {:models => @story_steps,
+    :item_name => 'step',
+    :method => :formatted,
+    :method_arg => @story_steps,
+    :assoc => nil,
+    :order =>true})%>");
+$('div#lists ul').customSortable();

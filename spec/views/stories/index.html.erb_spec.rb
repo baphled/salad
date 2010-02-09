@@ -8,7 +8,7 @@ describe "/stories/index.html.erb" do
   context "there are no stories" do
     before(:each) do
       @stories = []
-      Story.stub(:paginate).with(:page => params[:page],:per_page => 5).and_return @stories
+      Story.stub(:paginate).with(:page => 1,:per_page => 5).and_return @stories
       render
     end
 

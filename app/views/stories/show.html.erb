@@ -5,16 +5,16 @@
 </div>
 <div style="clear:both"></div>
 
-<%= render :partial => '/common/sortable_list',
-  :locals => {:models => @story.steps.paginate(
-    :page=> params[:page],
-    :order=>"step_stories.position"),
-  :item_name => 'step',
-  :method => :formatted,
-  :method_arg => @story.steps(:page=> params[:page],
-    :order=>"step_stories.position"),
-  :assoc => nil,
-  :order =>true}%>
+<div id="list">
+  <%= render :partial => '/common/sortable_list',
+    :locals => {:models => @story_steps,
+    :item_name => 'step',
+    :method => :formatted,
+    :method_arg => @story_steps,
+    :assoc => nil,
+    :order =>true}%>
+
+</div>
 
 <% form_for @story do |f| -%>
     <%= render :partial => '/common/checkboxes', :locals => {:model => @story, :item_name => Step}%>
