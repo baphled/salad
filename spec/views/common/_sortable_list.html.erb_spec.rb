@@ -61,6 +61,7 @@ describe "common/_sortable_list.html.erb" do
   describe "list has items" do
       before(:each) do
         @projects = [mock_model(Project).as_new_record.as_null_object]
+        @projects.stub(:total_pages).and_return 1
       end
 
     context "display an unsortable list" do

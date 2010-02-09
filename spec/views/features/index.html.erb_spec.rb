@@ -5,6 +5,7 @@ describe "/features/index.html.erb" do
     assigns[:tags] = []
     assigns[:features] = [stub_model(Feature,:title => 'nu', :created_at => Time.now).as_null_object,
                           stub_model(Feature,:title => 'suttin else', :created_at => Time.now).as_null_object]
+    assigns[:features].stub(:total_pages).and_return 1
     render
   end
   

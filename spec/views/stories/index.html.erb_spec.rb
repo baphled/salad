@@ -6,8 +6,9 @@ describe "/stories/index.html.erb" do
   end
 
   context "there are no stories" do
-    before(:each) do@stories = []
-      Story.stub(:paginate).with(:page => params[:page],:per_page => 10).and_return @stories
+    before(:each) do
+      @stories = []
+      Story.stub(:paginate).with(:page => params[:page],:per_page => 5).and_return @stories
       render
     end
 
@@ -19,7 +20,9 @@ describe "/stories/index.html.erb" do
   context "has stories" do
     before(:each) do
       @stories = [mock_model(Story).as_null_object]
-      render :partial => '/common/sortable_list', :locals => {:models => @stories, :item_name => 'story', :assoc => 'step', :order =>false}
+      assigns[:stories] = @stories
+      assigns[:stories].stub(:total_pages).and_return 1
+      render 
     end
     
     it "should have a list" do

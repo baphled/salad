@@ -21,6 +21,7 @@ describe "/projects/index.html.erb" do
       @projects = []
       3.times { |project_number| @projects << mock_model(Project, :title => "Project number #{project_number}").as_null_object }
       assigns[:projects] = @projects
+      assigns[:projects].stub(:total_pages).and_return 1
       render
     end
     
