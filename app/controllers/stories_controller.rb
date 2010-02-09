@@ -64,7 +64,11 @@ class StoriesController < ApplicationController
   end
   
   def steps
-    @steps = @story.steps
+    @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
+    respond_to do |format|
+      format.html
+      format.js { render "show.rjs" }
+    end
   end
   
   def sort
