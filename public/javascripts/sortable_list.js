@@ -9,25 +9,29 @@ $(document).ready(function() {
   $('#lists, .order_icon, .icons').addClass('ui-widget ui-widget-content ui-corner-all');
 
   // Toggle our position handler
-  $('span.order_icon').click(function() {
+  $('span.order_icon').live("click",function() {
       $('#lists').toggleClass('active');
       $('.handler').toggle();
   });
 
-  // sort our list
-  $('div#lists ul').sortable({
-    axis:'y',
-    dropOnEmpty:false,
-    handle:'.handler',
-    cursor: 'crosshair',
-    items: 'li',
+  $.fn.customSortable = function() {
+      $(this).sortable({
+        axis:'y',
+        dropOnEmpty:false,
+        handle:'.handler',
+        cursor: 'crosshair',
+        items: 'li',
 
-    update:function(){
-      $.ajax({
-        data:$(this).sortable('serialize'),
-        dataType:'script',
-        type:'post',
-        url: "/" + $(this).attr('id') + "/sort"})
-    }
-  });
+        update:function(){
+          $.ajax({
+            data:$(this).sortable('serialize'),
+            dataType:'script',
+            type:'post',
+            url: "/" + $(this).attr('id') + "/sort"})
+        }
+    });
+  }
+
+  // sort our list
+  $('div#lists ul').customSortable();
 });
