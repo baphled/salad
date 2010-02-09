@@ -5,6 +5,10 @@ class FeaturesController < ApplicationController
   
   def index
     @features = Feature.paginate(:page => params[:page],:per_page => 5)
+    respond_to do |format|
+      format.html
+      format.js { render "index.rjs" }
+    end
   end
   
   def new
@@ -37,6 +41,11 @@ class FeaturesController < ApplicationController
   end
   
   def show
+    @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5,:order=>"feature_stories.position")
+    respond_to do |format|
+      format.html
+      format.js { render "show.rjs" }
+    end
   end
   
   def update
@@ -62,6 +71,10 @@ class FeaturesController < ApplicationController
   
   def stories
     @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5, :order=>"feature_stories.position")
+    respond_to do |format|
+      format.html
+      format.js { render "show.rjs" }
+    end
   end
   
   def export

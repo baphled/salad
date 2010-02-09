@@ -1,6 +1,9 @@
 <h3>Features</h3>
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 
-<%= render :partial => '/common/sortable_list',:locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order =>false}%>
+<div id="list">
+  <%= render :partial => '/common/sortable_list',:locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order =>false}%>
+</div>
+
 <%= render :partial => 'common/sidebar_items', :locals => {:models => @features, :assoc => 'stories'}%>
 <%= render :partial => '/common/hover', :locals => {:items => 'feature'}%>
