@@ -43,11 +43,14 @@ class ProjectsController < ApplicationController
   
   def show
     @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
+    respond_to do |format|
+      format.html
+      format.js { render "show.rjs" }
+    end
   end
 	
   def destroy
     @project.destroy
-
     respond_to do |format|
       format.html { redirect_to(projects_path) }
       format.xml  { head :ok }
@@ -56,6 +59,10 @@ class ProjectsController < ApplicationController
   
   def features
     @project_features = @project.features.paginate(:page => params[:page],:per_page => 5, :order=>"feature_projects.position")
+    respond_to do |format|
+      format.html
+      format.js { render "show.rjs" }
+    end
   end
   
   def import

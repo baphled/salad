@@ -8,7 +8,9 @@
   <%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
 </div>
 
-<%= render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'story', :order =>true}%>
+<div id="list">
+  <%= render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'story', :order =>true}%>
+</div>
 
 <%= render :partial => '/common/hover', :locals => {:items => 'feature'}%>
 <%= render :partial => 'common/sidebar_items', :locals => {:models => @project_features, :assoc => 'stories'}%>
