@@ -5,9 +5,9 @@
       <%= link_to "New #{item_name.singularize.capitalize}",
           :controller => item_name.pluralize.downcase,
           :action => :new %>
+      <%= will_paginate models unless models.nil? %>
       <ul id="<%= item_name.pluralize.downcase %>">
       <% if !models.blank? %>
-        <%= will_paginate models %>
           <% models.each_with_index do |model,index| %>
             <% content_tag_for(:li, model) do %>
                 <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
@@ -29,6 +29,9 @@
           <li>No <%= item_name.pluralize.downcase %> present</li>
       <% end %>
       </ul>
+      <div>
+        <%= page_entries_info models unless models.nil? %>
+      </div>
     </div>
   </span>
 <% else %>
