@@ -1,7 +1,7 @@
 <% if defined?([models,item_name,assoc]) %>
   <span class="list_content">
-      <%= order_btn models, order  if defined? order%>
     <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
+      <%= order_btn models, order  if defined? order%>
       <%= link_to "New #{item_name.singularize.capitalize}",
           :controller => item_name.pluralize.downcase,
           :action => :new %>
