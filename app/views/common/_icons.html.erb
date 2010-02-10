@@ -1,4 +1,4 @@
-<span class="icons">
+<span class="icons ui-widget ui-widget-content ui-corner-all">
   <%= link_to "View", {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'show'}, {:class=>"ui-icon-note ui-icon"} %>
   <%= link_to "Edit", {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'edit'}, {:id=>"edit_#{model.class.to_s.downcase}_#{model.id}",:class=>"ui-icon-pencil ui-icon"} %>
   <% if not assoc.nil? %>

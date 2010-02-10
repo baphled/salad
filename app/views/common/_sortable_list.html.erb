@@ -13,7 +13,7 @@
                 <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
               <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
                 <%if order == true %>
-                <span id="order_btn_<%=(index+1).to_s %>" class="handler" style="display:none;">
+                <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
                   <%= index+1 %>
                 </span>
                 <% end %>

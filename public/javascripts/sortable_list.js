@@ -5,9 +5,6 @@
  *
  */
 $(document).ready(function() {
-  // Dynamically style our list
-  $('#lists, .order_icon, .icons').addClass('ui-widget ui-widget-content ui-corner-all');
-
   // Toggle our position handler
   $('span.order_icon').live("click",function() {
       $('#lists').toggleClass('active');
