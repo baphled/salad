@@ -1,11 +1,11 @@
 <% if defined?([models,item_name,assoc]) %>
   <span class="list_content">
-    <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
       <%= order_btn models, order  if defined? order%>
+      <%= will_paginate models unless models.nil? %>
+    <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
       <%= link_to "New #{item_name.singularize.capitalize}",
           :controller => item_name.pluralize.downcase,
           :action => :new %>
-      <%= will_paginate models unless models.nil? %>
       <ul id="<%= item_name.pluralize.downcase %>">
       <% if !models.blank? %>
           <% models.each_with_index do |model,index| %>
@@ -29,9 +29,9 @@
           <li>No <%= item_name.pluralize.downcase %> present</li>
       <% end %>
       </ul>
-      <div>
-        <%= page_entries_info models unless models.nil? %>
-      </div>
+    </div>
+    <div class="pagination">
+      <%= page_entries_info models unless models.nil? %>
     </div>
   </span>
 <% else %>
