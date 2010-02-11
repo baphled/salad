@@ -1,6 +1,3 @@
-<% content_for :side_bar do %>
-	<%= render 'step_search' %>
-<% end %>
 
 <h3>Steps</h3>
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
@@ -12,3 +9,7 @@
   :method_arg => @steps,
   :assoc => nil,
   :order => false}%>
+
+<% content_for :side_bar do %>
+	<%= render 'step_search' %>
+<% end %>
