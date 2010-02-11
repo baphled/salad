@@ -218,7 +218,7 @@ end
 
 Then /^all projects should have a 'Add features' link$/ do
   response.should have_selector :li do |list|
-    list.should have_selector :span, attribute = {:class=>"icons"} do |content|
+    list.should have_selector :span do |content|
       content.should have_selector :a do |link|
         link.should contain "New Feature"
       end
