@@ -38,7 +38,9 @@ Then /^it should be displayed$/ do
 end
 
 Then /^there should not be instructions on how to add a project$/ do
-  response.should_not have_selector :div, attribute = {:id => 'instructions'}
+  response.should_not have_selector :div do |instructions|
+    instructions.should_not contain "add a project"
+  end
 end
 
 Then /^it should display its title$/ do
