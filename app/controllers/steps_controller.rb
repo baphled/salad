@@ -1,5 +1,5 @@
 class StepsController < ActionController::Base
-  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate, :tags]
+  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate, :tags, :tag]
 
   before_filter :find_tags
   
@@ -78,6 +78,11 @@ class StepsController < ActionController::Base
       result = %{false, "must start with Given, When or Then"}.to_json
     end
       render :json => result.to_json
+  end
+
+  def tag
+    @steps = Step.find_tagged_with params[:tag]
+    render :index
   end
 
   private
