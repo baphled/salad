@@ -31,7 +31,7 @@ describe "common/_sortable_list.html.erb" do
     end
 
     it "should not display any of the items handler elements" do
-      response.should_not have_selector :span, attribute = {:class => 'handler'}
+      response.should_not have_selector :span, attribute = {:class => 'handler ui-widget ui-widget-content ui-corner-all'}
     end
   end
 
@@ -71,7 +71,7 @@ describe "common/_sortable_list.html.erb" do
       it "should display an icon set for each item" do
         response.should have_selector :ul do |list_item|
           list_item.should have_selector :li, attribute = {:class => 'project'} do |content|
-            content.should have_selector :span, attribute = {:class => 'icons'}
+            content.should have_selector :span, attribute = {:class => 'icons ui-widget ui-widget-content ui-corner-all'}
           end
         end
       end
@@ -81,7 +81,7 @@ describe "common/_sortable_list.html.erb" do
       end
 
       it "should not display any of the items handler elements" do
-        response.should_not have_selector :span, attribute = {:class => 'handler'}
+        response.should_not have_selector :span, attribute = {:class => 'handler ui-widget ui-widget-content ui-corner-all'}
       end
     end
 
@@ -94,7 +94,7 @@ describe "common/_sortable_list.html.erb" do
       end
 
       it "should display any of the items handler elements" do
-        response.should have_selector :span, attribute = {:class => 'handler'}
+        response.should have_selector :span, attribute = {:class => 'handler ui-widget ui-widget-content ui-corner-all'}
       end
       
       it "renders a sortable list" do
