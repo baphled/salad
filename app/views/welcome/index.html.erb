@@ -1,14 +1,14 @@
-<% if @project.nil? %>
 <div id="instructions" class="ui-widget ui-widget-content ui-corner-all">
-  <p>There are no projects</p>
   <p>Welcome to Salad, where we mix Clients & Developers with a little special Ruby sauce.</p>
   <p>It seems as though you do not have any projects yet, you can <%= link_to 'add a project here', new_project_path %>.</p>
   <p>Salad allows users to create and manage projects and their functionality, allowing clients to easily manage new functionality and features.</p>
-</div>
+<% if @project.nil? %>
+  <p>There are no projects</p>
 <% else %>
-<div id="latest_project" class="ui-widget ui-widget-content ui-corner-all">
+<div id="latest_project">
   <p>
     The latest project was: <b><%=h @project.title %></b>, which was created on <%=h @project.creation_date %>, <%=h display_features_message @project %>.
   </p>
 </div>
 <% end %>
+</div>

@@ -67,12 +67,13 @@ body.salad
       :padding-left 30px
   #footer
     :text-align center
+    +column(!blueprint_grid_columns, true)
   #header, #footer
     :height 80px
     :color #c1c4b5
     :background #89a407
     :height auto
-    +column(!blueprint_grid_columns)
+    +column(!blueprint_grid_columns, true)
   #container
     +container
     :height auto
@@ -87,8 +88,8 @@ body.salad
       background: #F5F9DD
       min-height: 500px
       height: auto
-      h3
-        :padding 13px
+      #wrapper
+        :margin 16px 23px 0 23px
       #info
         :margin-left 23px
         :margin-right 23px
@@ -109,4 +110,6 @@ body.salad
       :height auto
       padding-top: 10px
       .side_hover
-        padding-top: 10px      
+        padding-top: 10px
+      li
+        :padding 5px 0px

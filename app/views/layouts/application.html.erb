@@ -39,7 +39,9 @@
 		</div>
 		<% end%>
 		<div id="content">
-			  	<%= yield :layout %>
+          <div id="wrapper">
+            <%= yield :layout %>
+          </div>
 		</div>
 		<div id="sidebar">
 			<%= yield :side_bar %>
