@@ -57,6 +57,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
         flash[:notice] = "Feature: #{title}, was updated"
+        format.js { render "create.rjs" }
         format.html { redirect_to @feature }
       else
         flash[:error] = "Feature: #{title}, was not updated"

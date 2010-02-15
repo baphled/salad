@@ -38,3 +38,13 @@ Feature: All our forms need to be passed to the server via AJAX
       And a summary of the project should be displayed
       And the form should be hidden
       And a flash message "Feature: Logging in via ajax, was created" should be dynamically displayed
+
+    Scenario: As a user I should be able to edit a feature
+      Given I can view the features page
+      When I edit the first feature
+      And we fill in the feature title with 'an edited title'
+      And submit the form
+      And there should be an AJAX request
+      And a summary of the project should be displayed
+      And the form should be hidden
+      And a flash message "was updated" should be dynamically displayed
