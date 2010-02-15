@@ -24,3 +24,17 @@ Feature: All our forms need to be passed to the server via AJAX
       And a summary of the project should be displayed
       And the form should be hidden
       And a flash message "was updated" should be dynamically displayed
+
+    Scenario: We should be able to submit a new feature form via AJAX
+      Given I can view the features page
+      And there are projects
+      When I click new features
+      And we fill in the feature title with 'Logging in via ajax'
+      And we fill in the feature in_order with 'to create the best app'
+      And we fill in the feature as_a with 'user'
+      And we fill in the feature i_want with 'the best project ever'
+      Then submit the form
+      And there should be an AJAX request
+      And a summary of the project should be displayed
+      And the form should be hidden
+      And a flash message "Feature: Logging in via ajax, was created" should be dynamically displayed

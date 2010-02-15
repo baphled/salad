@@ -26,12 +26,16 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.save
         flash[:notice] = "Feature: #{@feature.title}, was created"
+        @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5,:order=>"feature_stories.position")
         if "Submit" == params[:commit]
+          format.js { render "create.rjs" }
           format.html { redirect_to @feature }
         else
+          format.js { render "create.rjs" }
           format.html { redirect_to :back }
         end
       else
+        format.js { render :action => "edit" }
         format.html { render :action => "edit" }
       end
     end
