@@ -16,20 +16,6 @@ $('#wrapper > fieldset')
 .prepend('<a class="display_form" href="javascript://">view form</a>')
 .addClass('ui-widget ui-widget-content ui-corner-all');
 
-$("a.display_form").click(function(event) {
-  var link = $(this);
-  var id_attribute_name = link.attr('id').split('_');
-  var title_array = link.text().split(' ');
-
-  $('form').toggle(function() {
-    if('view' == link.text().substr(0,4)) {
-      link.text('hide ' + title_array[1]);
-    } else {
-      link.text('view ' + title_array[1]);
-    }
-  });
-});
-
 $('#wrapper form').hide();
 
 var flashDiv = $("<div></div>")
