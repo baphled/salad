@@ -47,3 +47,15 @@ end
 Then /^the client side error message should be "([^\"]*)"$/ do |message|
   selenium.wait_for_text "#{message}"
 end
+
+Then /^there should be an AJAX request$/ do
+  selenium.wait_for(:wait_for => :ajax, :javascript_framework => :jquery)
+end
+
+Then /^the form should be hidden$/ do
+  response.should contain "view form"
+end
+
+Then /^a flash message "([^\"]*)" should be dynamically displayed$/ do |message|
+  response.should contain "#{message}"
+end

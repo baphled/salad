@@ -17,9 +17,12 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     respond_to do |format|
       if @project.save
+        @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
         flash[:notice] = "Project: #{@project.title} was created"
+        format.js { render "create.rjs" }
         format.html { redirect_to @project }
       else
+        format.js { render :action => "new" }
         format.html { render :action => "new" }
       end
     end

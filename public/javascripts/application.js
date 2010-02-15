@@ -13,7 +13,7 @@ $(document).ready(function() {
   /**
    * Handling the viewing and hiding of our item checkboxes
    */
-  $("a.display_info").click(function(event) {
+  $("a.display_info").live("click", function(event) {
     var checkbox_link = $(this);
     var id_attribute_name = checkbox_link.attr('id').split('_');
     var title_array = checkbox_link.text().split(' ');
