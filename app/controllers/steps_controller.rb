@@ -79,7 +79,7 @@ class StepsController < ActionController::Base
   def validate
     result = true
     if (params[:title].split(" ").first =~ /^(Given|When|Then).*$/) == nil
-      result = %{false, "must start with Given, When or Then"}.to_json
+      result = %{Must start with Given, When or Then}.to_json
     end
       render :json => result.to_json
   end
