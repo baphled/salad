@@ -1,6 +1,6 @@
 <h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></h3>
 <%- form_tag features_path, :id => "new_feature",:class => "new_feature", :method => :post do %>
-  <fieldset>
+<fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
     <%= hidden_field_tag "feature[title]", file[:feature].title %>
     <%= hidden_field_tag "feature[in_order]", file[:feature].in_order %>
     <%= hidden_field_tag "feature[as_a]", file[:feature].as_a %>
@@ -27,12 +27,15 @@
         <% end %>
       <% end %>
     <% end %>
+    <br />
     <% if invalid_import? file[:feature] %>
       <p id="error">Invalid feature</p>
     <% elsif has_no_stories? file[:feature] %>
       <p id="error">No Scenario's found</p>
     <% else %>
-      <%= submit_tag "Import #{file[:file].sub(/\.feature/,"").gsub(/_/," ")}"%>
+      <button type="submit" class="button positive">
+        <img src="/images/buttons/tick.png" alt=""/> <%= "Import #{file[:file].sub(/\.feature/,"").gsub(/_/," ")}" %>
+      </button>
     <% end %>
   </fieldset>
 <% end %>
