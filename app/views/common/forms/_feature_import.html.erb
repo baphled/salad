@@ -27,10 +27,10 @@
         <% end %>
       <% end %>
     <% end %>
-    <% if file[:feature].title.blank? || file[:feature].in_order.blank? ||  file[:feature].as_a.blank? || file[:feature].i_want.blank?%>
+    <% if invalid_import? file[:feature] %>
       <p id="error">Invalid feature</p>
     <% else %>
-      <%= submit_tag "Import #{file[:file].sub(/\.feature/,"").sub(/_/," ")}"%>
+      <%= submit_tag "Import #{file[:file].sub(/\.feature/,"").gsub(/_/," ")}"%>
     <% end %>
   </fieldset>
 <% end %>
