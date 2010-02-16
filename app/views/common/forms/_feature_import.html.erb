@@ -29,6 +29,8 @@
     <% end %>
     <% if invalid_import? file[:feature] %>
       <p id="error">Invalid feature</p>
+    <% elsif has_no_stories? file[:feature] %>
+      <p id="error">No Scenario's found</p>
     <% else %>
       <%= submit_tag "Import #{file[:file].sub(/\.feature/,"").gsub(/_/," ")}"%>
     <% end %>

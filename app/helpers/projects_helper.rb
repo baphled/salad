@@ -7,8 +7,16 @@ module ProjectsHelper
 	  end
   end
 
+  def has_no_stories? feature
+    if feature.stories.blank?
+      true
+    else
+      false
+    end
+  end
+
   def invalid_import? feature
-    if feature.title.blank? || feature.in_order.blank? ||  feature.as_a.blank? || feature.i_want.blank? || feature.stories.blank?
+    if feature.title.blank? || feature.in_order.blank? ||  feature.as_a.blank? || feature.i_want.blank?
       true
     else
       false
