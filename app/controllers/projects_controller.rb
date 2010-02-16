@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :find_project, :except => [:index,:new,:create,:tag,:tags, :valid_directory]
   
   before_filter :find_tags
-  
+  before_filter :find_projects_features, :only => [:update,:show, :features]
   def index
     @projects = Project.paginate(:page => params[:page],:per_page => 5)
   end
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     respond_to do |format|
       if @project.save
-        @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
+        find_projects_features
         flash[:notice] = "Project: #{@project.title} was created"
         format.js { render "create.rjs" }
         format.html { redirect_to @project }
@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
     title = @project.title
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
         flash[:notice] = "Project: #{title} was updated"
         format.js { render "create.rjs" }
         format.html { redirect_to @project }
@@ -47,7 +46,6 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
@@ -63,7 +61,6 @@ class ProjectsController < ApplicationController
   end
   
   def features
-    @project_features = @project.features.paginate(:page => params[:page],:per_page => 5, :order=>"feature_projects.position")
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
@@ -96,5 +93,9 @@ class ProjectsController < ApplicationController
     
     def find_project
       @project ||= Project.find(params[:id])
+    end
+
+    def find_projects_features
+      @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
     end
 end
