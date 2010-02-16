@@ -1,0 +1,5 @@
+<h4><%= model.class.to_s %> Info</h4>
+<div id="info" class="ui-widget ui-widget-content ui-corner-all">
+  <%= render :partial => '/common/model_information', :locals => {:model => model}%>
+  <%= render :partial => '/common/model_summary', :locals => {:model => model, :assoc => assoc}%>
+</div>

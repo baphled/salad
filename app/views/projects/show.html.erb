@@ -1,8 +1,4 @@
-<h4>Project Info</h4>
-<div id="info" class="ui-widget ui-widget-content ui-corner-all">
-  <%= render :partial => '/common/model_information', :locals => {:model => @project}%>
-  <%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
-</div>
+<%= render :partial => '/common/model_info_and_summary', :locals => {:model => @project, :assoc => :features } %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to "Import", import_project_path(@project) unless @project.location.blank? %> | 
