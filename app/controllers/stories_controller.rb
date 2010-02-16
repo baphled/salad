@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag, :tags]
-  
+  before_filter :find_storys_steps, :only => [ :show, :update, :steps]
   before_filter :find_tags
   
   def index
@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
     @story = Story.new(params[:story])
     respond_to do |format|
       if @story.save
-        @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
+        find_storys_steps
         flash[:notice] = "Story: #{@story.scenario}, was created"
         format.js { render "create.rjs" }
         format.html { redirect_to :stories }
@@ -27,7 +27,6 @@ class StoriesController < ApplicationController
   end
   
   def show
-    @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
@@ -73,7 +72,6 @@ class StoriesController < ApplicationController
   end
   
   def steps
-    @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
@@ -106,22 +104,25 @@ class StoriesController < ApplicationController
   end
   
   private
-  def append_steps step_ids
-    new_steps = []
-    if step_ids
-      step_ids.each do |step|
-        new_steps << Step.find(step)
+    def append_steps step_ids
+      new_steps = []
+      if step_ids
+        step_ids.each do |step|
+          new_steps << Step.find(step)
+        end
       end
-    end
-    if @story
-      @story.steps.each do |step|
-        new_steps << step
+      if @story
+        @story.steps.each do |step|
+          new_steps << step
+        end
       end
+      new_steps
     end
-    new_steps
-  end
   
-  
+    def find_storys_steps
+      @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
+    end
+
     def find_tags
       @tags = Story.tag_counts
     end

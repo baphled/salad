@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
   before_filter :find_feature, :except => [:index,:new,:create,:sort,:tag, :tags]
-  
+  before_filter :find_features_stories, :only => [:show, :stories]
   before_filter :find_tag
   
   def index
@@ -26,7 +26,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.save
         flash[:notice] = "Feature: #{@feature.title}, was created"
-        @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5,:order=>"feature_stories.position")
+        find_features_stories
         if "Submit" == params[:commit]
           format.js { render "create.rjs" }
           format.html { redirect_to @feature }
@@ -45,7 +45,6 @@ class FeaturesController < ApplicationController
   end
   
   def show
-    @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5,:order=>"feature_stories.position")
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
@@ -75,7 +74,6 @@ class FeaturesController < ApplicationController
   end
   
   def stories
-    @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5, :order=>"feature_stories.position")
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
@@ -105,5 +103,9 @@ class FeaturesController < ApplicationController
   
     def find_feature
       @feature = Feature.find(params[:id])
+    end
+
+    def find_features_stories
+      @feature_stories = @feature.stories.paginate(:page=>params[:page],:per_page=>5, :order=>"feature_stories.position")
     end
 end
