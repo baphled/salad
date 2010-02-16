@@ -1,14 +1,13 @@
 <h4>Project Info</h4>
-<div id="info">
+<div id="info" class="ui-widget ui-widget-content ui-corner-all">
   <%= render :partial => '/common/model_information', :locals => {:model => @project}%>
   <%= render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features}%>
 </div>
 
-<% if not @project.location.blank? %>
-	<%= link_to "Import", import_project_path(@project) %> |
-<% end %>
-
-<%= link_to "Edit project", edit_project_path(@project) %> |
+<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
+  <%= link_to "Import", import_project_path(@project) unless @project.location.blank? %> | 
+  <%= link_to "Edit project", edit_project_path(@project) %>
+</span>
 
 <div id="list">
   <%= render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'story', :order =>true}%>
