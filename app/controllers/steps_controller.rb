@@ -31,8 +31,10 @@ class StepsController < ActionController::Base
     respond_to do |format|
       if @step.save
         flash[:notice] = "Step: #{@step.title}, was created"
+        format.js { render "create.rjs" }
         format.html { redirect_to step_path(@step) }
       else
+        format.js { render :action => "new" }
         format.html { render :action => "new" }
       end
     end
@@ -48,9 +50,11 @@ class StepsController < ActionController::Base
     respond_to do |format|
       if @step.update_attributes(params[:step])
         flash[:notice] = "Step: #{title} was updated"
+        format.js { render "create.rjs" }
         format.html { redirect_to @step }
       else
         flash[:error] = "Step: #{title} was not updated"
+        format.js { render :action => "edit" }
         format.html { render :action => "edit" }
       end
     end

@@ -6,14 +6,17 @@
 
 <% content_for :js_head do %>
   <%= javascript_include_tag "/javascripts/validations/step" %>
+  <%= javascript_include_tag "/javascripts/form" %>
 <% end %>
 
-<%- semantic_form_for @step do |form| -%>
-  <% form.inputs :name => form_title(@step, "Step") do %>
-    <%= form.input :title %>
-    <%= form.input :tag_list %>
-    <%= render :partial => "/common/save_button" %>
+<fieldset>
+  <%- semantic_form_for @step do |form| -%>
+    <% form.inputs :name => form_title(@step, "Step") do %>
+      <%= form.input :title %>
+      <%= form.input :tag_list %>
+      <%= render :partial => "/common/save_button" %>
 
+    <% end %>
+    <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
   <% end %>
-  <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
-<% end %>
+</fieldset>

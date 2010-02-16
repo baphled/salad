@@ -37,7 +37,7 @@ Feature: Stories will be needed to populate our projects features
     When I edit the first story
     And uncheck a feature it is associated to
     Then submit the form
-And the story should no long store the feature
+    And the story should no long store the feature
 
   Scenario: I should be able to select a pre-existing step, which we can use instead
     Given there are stories
