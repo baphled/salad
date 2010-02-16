@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
     title = @project.title
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        @project_features = @project.features.paginate(:page => params[:page],:per_page => 5,:order=>"feature_projects.position")
         flash[:notice] = "Project: #{title} was updated"
         format.js { render "create.rjs" }
         format.html { redirect_to @project }
