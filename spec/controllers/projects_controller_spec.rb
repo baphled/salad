@@ -40,9 +40,13 @@ describe ProjectsController do
         flash.should contain "Project: #{@project.title} was created"
       end
 
-      it "should redirect to the projects page" do
-        post :create
-        response.should redirect_to projects_path
+
+      context "not using XHR" do
+        it "should redirect to the projects page" do
+          pending
+          post :create
+          response.should redirect_to projects_path
+        end
       end
     end
 
@@ -100,9 +104,12 @@ describe ProjectsController do
         flash[:notice].should contain "Project: #{@project.title} was updated"
       end
 
-      it "should redirect to the project" do
-        put :update, {:project => @project}
-        response.should redirect_to projects_path
+      context "not using XHR" do
+        it "should redirect to the project" do
+          pending
+          put :update, {:project => @project}
+          response.should redirect_to projects_path
+        end
       end
     end
 

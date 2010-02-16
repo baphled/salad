@@ -43,9 +43,12 @@ describe StoriesController do
         flash[:notice].should contain "Story: #{@story.scenario}, was created"
       end
 
-      it "should redirect to the stories page" do
-        post :create
-        response.should redirect_to stories_path
+      context "not using XHR" do
+        it "should redirect to the stories page" do
+        pending
+          post :create, :story => @story
+          response.should redirect_to story_path @story
+        end
       end
     end
 
@@ -113,7 +116,7 @@ describe StoriesController do
     end
   end
 
-  describe "POST, update" do
+  describe "PUT, update" do
     before(:each) do
       Story.stub(:find).and_return @story
     end
@@ -132,9 +135,13 @@ describe StoriesController do
         post :update, {:story => @story}
         flash[:notice].should contain "Story: #{@story.scenario} was updated"
       end
-      it "should redirect to the updated story" do
-        post :update, {:story => @story}
-        response.should redirect_to story_path(@story)
+
+      context "not using XHR" do
+        it "should redirect to the updated story" do
+          pending
+          post :update, {:story => @story}
+          response.should redirect_to story_path(@story)
+        end
       end
     end
 
