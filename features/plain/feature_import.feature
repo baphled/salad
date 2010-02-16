@@ -242,7 +242,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has an invalid feature
       Then the submit button will be disabled for that feature
 
-    Scenario: When a scenario has no step. we should not import it
+    Scenario: When we try to import an invalid feature
       Given there is a project
       And the project does have a project location to an invalid feature
 	  When the project is viewed
