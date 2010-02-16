@@ -39,11 +39,33 @@ Feature: All our forms need to be passed to the server via AJAX
       And the form should be hidden
       And a flash message "Feature: Logging in via ajax, was created" should be dynamically displayed
 
-    Scenario: As a user I should be able to edit a feature
-      Given I can view the features page
-      When I edit the first feature
+    Scenario: We should be able to submit an editted storyform via AJAX
+      Given I can view the stories page
+      When I click new features
       And we fill in the feature title with 'an edited title'
       And submit the form
+      And there should be an AJAX request
+      And a summary of the project should be displayed
+      And the form should be hidden
+      And a flash message "was updated" should be dynamically displayed
+
+    Scenario: We should be able to submit a new story form via AJAX
+      Given I can view the features page
+      And there are features
+      When I select first feature new story link
+      And we fill in the story scenario with 'this is our AJAX based stories scenario'
+      Then submit the form
+      And there should be an AJAX request
+      And a summary of the project should be displayed
+      And the form should be hidden
+      And a flash message "was created" should be dynamically displayed
+
+    Scenario: I should be able to edit a story
+      Given I can view the stories page
+      And there are stories
+      When I edit the first story
+      And uncheck a feature it is associated to
+      Then submit the form
       And there should be an AJAX request
       And a summary of the project should be displayed
       And the form should be hidden

@@ -15,9 +15,12 @@ class StoriesController < ApplicationController
     @story = Story.new(params[:story])
     respond_to do |format|
       if @story.save
+        @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
         flash[:notice] = "Story: #{@story.scenario}, was created"
+        format.js { render "create.rjs" }
         format.html { redirect_to :stories }
       else
+        format.js { render :action => "new" }
         format.html { render :action => "new" }
       end
     end
@@ -50,7 +53,9 @@ class StoriesController < ApplicationController
     scenario = @story.scenario
     respond_to do |format|
       if @story.update_attributes(params[:story])
+        @story_steps = @story.steps.paginate(:page=> params[:page], :per_page => 10, :order=>"step_stories.position") unless @story.steps.nil?
         flash[:notice] = "Story: #{scenario} was updated"
+        format.js { render "create.rjs" }
         format.html { redirect_to @story }
       else
         flash[:error] = "Story: #{scenario} was not created"
