@@ -1,0 +1,35 @@
+var form = $('#wrapper >fieldset').clone();
+
+var projectInfo = $("<div></div>").attr('id','info');
+$('#wrapper').html($(projectInfo));
+
+$('#info').html("<%= escape_javascript(render :partial => '/common/model_information', :locals => {:model => @story})%>");
+$('#info').append("<%= escape_javascript(render :partial => '/common/model_summary', :locals => {:model => @story, :assoc => :steps})%>");
+
+var listContent = $("<span></span>").addClass('list_content');
+
+$('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable_list',
+    :locals => {:models => @story_steps,
+    :item_name => 'step',
+    :method => :formatted,
+    :method_arg => @story_steps,
+    :assoc => nil,
+    :order =>true})%>");
+
+$('#wrapper').append($(form));
+
+$('#wrapper > fieldset')
+.prepend('<a class="display_form" href="javascript://">view form</a>')
+.addClass('ui-widget ui-widget-content ui-corner-all');
+
+$('#wrapper form').hide();
+
+var flashDiv = $("<div></div>")
+                  .addClass("flash");
+                  
+var flashNoticeDiv = $("<div></div>")
+                        .addClass("notice")
+                        .html('<%=escape_javascript(flash.delete(:notice)) %>');
+
+var flashMsg = flashDiv.html($(flashNoticeDiv));
+$('#content').before($(flashMsg));
