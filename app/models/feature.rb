@@ -37,14 +37,8 @@ class Feature < ActiveRecord::Base
   
   private
     def build_steps steps
-      new_steps = [] if new_steps.nil?
-      steps.each do |step|
-        if Step.find_by_title(step).nil?
-          new_steps << Step.create(:title => step)
-        else
-          new_steps << Step.find_by_title(step)
-        end
-      end
+      new_steps = []
+      steps.each { |step| new_steps << Step.find_or_create_by_title(:title => step) }
       new_steps
     end
   
