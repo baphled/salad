@@ -11,7 +11,9 @@ require 'tasks/rails'
 
 require 'cucumber/rake/task' unless FileTest.exists?("cucumber/rake/task") == false
 require 'spec/rake/spectask' unless FileTest.exists?("spec/rake/spectask") == false
-require 'selenium/rake/tasks'
+
+# todo Do a check to make sure the selenium tasks are accessible
+require 'selenium/rake/tasks' 
 
 namespace :rcov do
   if defined? Cucumber
@@ -45,7 +47,7 @@ namespace :rcov do
   end
 end
 
-if defined? Selenium::Rake::RemoteControlStartTask
+if defined? Selenium
   Selenium::Rake::RemoteControlStartTask.new do |rc|
     rc.port = 4444
     rc.timeout_in_seconds = 3 * 60
