@@ -9,7 +9,8 @@ ActionController::Routing::Routes.draw do |map|
               
   map.resources :features,
     :collection => {:tags => :get,
-                    :sort => :post},
+                    :sort => :post,
+                    :validate => :get},
     :member => {:stories => :get,
                 :export => :get}
 

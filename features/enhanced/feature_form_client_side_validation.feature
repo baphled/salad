@@ -74,3 +74,16 @@ Feature: Feature forms should have client side validations
     Then submit the form
     And a JS based error message should be displayed
     And the client side error message should be "Please enter at least 7 characters."
+    
+  Scenario: A feature must be unique
+    Given I can view the features page
+    And the feature already exists
+    When I click new features
+    And there are features
+    And we fill in the feature title with 'my first feature'
+    And we fill in the feature in_order with 'to create an project'
+    And we fill in the feature as_a with 'developer'
+    And we fill in the feature i_want with 'to have the skills'
+    Then submit the form
+    And a JS based error message should be displayed
+    And the client side error message should be "Must be a unique feature."

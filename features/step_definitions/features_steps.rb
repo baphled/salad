@@ -18,6 +18,13 @@ Given /^the features creation date is not the same as the updated date$/ do
   @feature.update_attribute(:updated_at, Time.now.next_year)
 end
 
+Given /^the feature already exists$/ do
+  Feature.create :title => 'my first feature',
+                 :in_order => 'to create an project',
+                 :as_a => 'developer',
+                 :i_want => 'to have the skills'
+end
+
 When /^the feature is viewed$/ do
   visit feature_path @feature
 end
@@ -123,3 +130,8 @@ end
 Then /^the feature should be not associated to the first story$/ do
   @feature.stories.should_not contain Feature.first.stories.first
 end
+
+Then /^the feature information should be not saved$/ do
+  response.should_not contain "was created"
+end
+
