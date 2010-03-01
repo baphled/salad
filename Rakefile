@@ -10,9 +10,7 @@ require 'rake/rdoctask'
 require 'tasks/rails'
 
 require 'cucumber/rake/task' unless FileTest.exists?("cucumber/rake/task") == false
-
 require 'spec/rake/spectask' unless FileTest.exists?("spec/rake/spectask") == false
-
 require 'selenium/rake/tasks' unless FileTest.exists?("selenium/rake/tasks") == false
 
 namespace :rcov do
