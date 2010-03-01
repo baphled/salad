@@ -27,8 +27,9 @@ LightHouse integration
 GitHub integration
 
 Install
-Download via http://github.com/baphled/salad
-cd salad
+git export http://github.com/baphled/salad &&
+cd salad &&
+cp database .example database.yml &&
 rake gems:install &&
 rake gems:unpack &&
 rake gems:unpack:dependencies &&
