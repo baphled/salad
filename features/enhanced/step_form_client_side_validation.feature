@@ -34,4 +34,4 @@ Feature: Step needs client side validations
     When I click new steps
     And we fill in the step title with 'Given we have a new step'
     Then submit the form
-    And I should not be redirected to the form
+    And the form should be hidden

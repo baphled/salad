@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :steps,
     :collection => {:tags => :get,
                     :sort => :post,
-                    :validate => :get}
+                    :validate_prefix => :get}
 
   
   map.project_tag 'projects/tag/:tag', :controller => 'projects', :action => 'tag'

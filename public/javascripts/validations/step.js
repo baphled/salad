@@ -6,7 +6,7 @@ $(document).ready(function () {
         minlength: 12,
         
         remote: {
-          url: "/steps/validate.json",
+          url: "/steps/validate_prefix.json",
           type: "get",
           data: {
             "title": function() {

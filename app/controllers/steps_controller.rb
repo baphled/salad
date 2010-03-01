@@ -1,5 +1,5 @@
 class StepsController < ActionController::Base
-  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate, :tags, :tag]
+  before_filter :find_step, :except => [:index,:new,:create,:sort, :validate_prefix, :tags, :tag]
 
   before_filter :find_tags
   
@@ -76,10 +76,10 @@ class StepsController < ActionController::Base
     render :nothing => true
   end
 
-  def validate
+  def validate_prefix
     result = true
     if (params[:title].split(" ").first =~ /^(Given|When|Then).*$/) == nil
-      result = %{false, "must start with Given, When or Then"}.to_json
+      result = "must start with Given, When or Then"
     end
       render :json => result.to_json
   end
