@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
-  before_filter :find_feature, :except => [:index,:new,:create,:sort,:tag, :tags, :validate]
-  # before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export]
+  # before_filter :find_feature, :except => [:index,:new,:create,:sort,:tag, :tags, :validate]
+  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export]
   before_filter :find_tag
   
   def index
@@ -101,7 +101,7 @@ class FeaturesController < ApplicationController
   def validate
     result = true
     if Feature.find_by_title params[:title]
-      result = %{false, "Must be a unique feature."}
+      result = "Must be a unique feature."
     end
     render :json => result.to_json
   end
