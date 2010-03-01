@@ -11,7 +11,7 @@ require 'tasks/rails'
 
 require 'cucumber/rake/task' unless FileTest.exists?("cucumber/rake/task") == false
 require 'spec/rake/spectask' unless FileTest.exists?("spec/rake/spectask") == false
-require 'selenium/rake/tasks' unless FileTest.exists?("selenium/rake/tasks") == false
+require 'selenium/rake/tasks'
 
 namespace :rcov do
   if defined? Cucumber
@@ -45,13 +45,13 @@ namespace :rcov do
   end
 end
 
-if defined? Selenium
+if defined? Selenium::Rake::RemoteControlStartTask
   Selenium::Rake::RemoteControlStartTask.new do |rc|
     rc.port = 4444
     rc.timeout_in_seconds = 3 * 60
     rc.background = true
     rc.wait_until_up_and_running = true
-    rc.jar_file = "~/selenium-remote-control-1.0.1/selenium-server-1.0.1/selenium-server.jar"
+    rc.jar_file = "~/selenium-server/selenium-server.jar"
     rc.additional_args << "-singleWindow"
   end
 
