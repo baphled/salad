@@ -101,7 +101,7 @@ class FeaturesController < ApplicationController
   def validate
     result = true
     if Feature.find_by_title params[:title]
-      result = "Must be a unique feature."
+        result = "Must be a unique feature."
     end
     render :json => result.to_json
   end
