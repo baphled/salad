@@ -12,7 +12,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
     And the project information should be saved
     And I should be redirected to the new project
-And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'Project: A project was created' should be displayed
 
   Scenario: As a user I must give a new project a title
     Given I can view the projects page
