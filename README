@@ -30,9 +30,9 @@ Install
 git export http://github.com/baphled/salad &&
 cd salad &&
 cp database.example database.yml &&
-rake gems:install &&
-rake gems:unpack &&
-rake gems:unpack:dependencies &&
+sudo rake gems:install &&
+sudo rake gems:unpack &&
+sudo rake gems:unpack:dependencies &&
 rake db:create &&
 rake db:migrate &&
 script/server
@@ -42,9 +42,8 @@ Then point your browser to http://localhost:3000
 Testing
 Salad is tested using Cucumber & RSpec, to get the test running simple run the following command:
 
-RAILS_ENV=cucumber &&
-rake gems:install &&
-rake gems:unpack &&
-rake gems:unpack:dependencies &&
+sudo RAILS_ENV=cucumber rake gems:install &&
+sudo RAILS_ENV=cucumber rake gems:unpack &&
+sudo RAILS_ENV=cucumber rake gems:unpack:dependencies &&
 script/generate rspec &&
 script/generate cucumber
