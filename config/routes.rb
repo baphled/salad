@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :projects,
     :collection => {:tags => :get,
-                    :valid_directory => :get},
+                    :valid_directory => :get,
+                    :validate => :get},
     :member => {:features => :get,
                 :import => :get}
               

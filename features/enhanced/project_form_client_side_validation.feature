@@ -85,3 +85,13 @@ Feature: Must be able to do client side validations on our forms
       And we fill in the project description with 'A description'
       Then submit the form
       And I should be redirected to the new project
+      
+   Scenario: An project that is not unique must return the relivant client side error
+      Given I can view the projects page
+      When I click new projects
+      And we fill in the project title with 'A fixture project'
+      And we fill in the project aim with 'A description for our project'
+      And we fill in the project description with 'A projects aims'
+      Then submit the form
+      And a JS based error message should be displayed
+      And the client side error message should be "Must be a unique feature."
