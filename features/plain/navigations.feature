@@ -9,8 +9,20 @@ Feature: We need to be able to easily navigate the website
   
   Scenarios:
   | page     |
-  | /     |
   | projects |
   | features |
   | stories  |
   | steps    |
+
+  Scenario Outline: When navigating to a page we want to make sure the menu item is actually selected
+    Given I can view the "<page>" page
+    Then the navigation should be displayed
+    And the "<menu_item>" will be selected
+  
+  Scenarios:
+  | page     | menu_item |
+  | projects | projects  |
+  | features | features  |
+  | stories  | stories   |
+  | steps    | steps     |
+
