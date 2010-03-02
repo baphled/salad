@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
   def validate
     result = true
     if Project.find_by_title params[:title]
-        result = "Must be a unique feature."
+        result = "Must be a unique project."
     end
     render :json => result.to_json
   end

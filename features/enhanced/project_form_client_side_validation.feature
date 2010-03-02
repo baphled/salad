@@ -94,4 +94,4 @@ Feature: Must be able to do client side validations on our forms
       And we fill in the project description with 'A projects aims'
       Then submit the form
       And a JS based error message should be displayed
-      And the client side error message should be "Must be a unique feature."
+      And the client side error message should be "Must be a unique project."
