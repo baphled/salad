@@ -43,9 +43,9 @@ describe StoriesController do
         flash[:notice].should contain "Story: #{@story.scenario}, was created"
       end
 
-      it "should redirect to the stories page" do
+      it "should save the story" do
         post :create
-        response.should redirect_to stories_path
+        response.should be_success
       end
     end
 
@@ -132,9 +132,10 @@ describe StoriesController do
         post :update, {:story => @story}
         flash[:notice].should contain "Story: #{@story.scenario} was updated"
       end
-      it "should redirect to the updated story" do
+      
+      it "should updat the story" do
         post :update, {:story => @story}
-        response.should redirect_to story_path(@story)
+        response.should be_success
       end
     end
 

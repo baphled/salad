@@ -30,6 +30,10 @@ describe ProjectsController do
     end
 
     context "a valid project" do
+      before(:each) do
+        Project.stub!(:save).and_return true
+      end
+      
       it "should save the project" do
         @project.should_receive(:save).and_return true
         post :create
@@ -40,9 +44,9 @@ describe ProjectsController do
         flash.should contain "Project: #{@project.title} was created"
       end
 
-      it "should redirect to the projects page" do
+      it "should save the project" do
         post :create
-        response.should redirect_to projects_path
+        response.should be_success
       end
     end
 
@@ -100,9 +104,9 @@ describe ProjectsController do
         flash[:notice].should contain "Project: #{@project.title} was updated"
       end
 
-      it "should redirect to the project" do
+      it "should update the project" do
         put :update, {:project => @project}
-        response.should redirect_to projects_path
+        response.should be_success
       end
     end
 
