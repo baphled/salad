@@ -1,4 +1,4 @@
-Given /^I can view the (.*) page$/ do |controller|
+Given /^I can view the "(.*)" page$/ do |controller|
   visit "/#{controller}"
 end
 
@@ -9,4 +9,8 @@ end
 
 When /^I use the "([^\"]*)" link$/ do |link|
   click_link link
+end
+
+Then /^the navigation should be displayed$/ do
+  response.should have_selector :div, attribute = {:id => 'menu'}
 end
