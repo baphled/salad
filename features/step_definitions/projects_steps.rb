@@ -97,7 +97,6 @@ When /^we fill in the project location$/ do
   fill_in 'project_location', :with => "#{RAILS_ROOT}"
 end
 
-
 Then /^submit the form$/ do
 	
   click_button 'Save'

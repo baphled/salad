@@ -152,6 +152,7 @@ describe ProjectsController do
       @project.should_receive(:destroy).and_return true
       delete :destroy
     end
+
     it "should redirect to the projects path" do
       delete :destroy
       response.should redirect_to projects_path
