@@ -18,10 +18,10 @@ class Feature < ActiveRecord::Base
   
   validate :is_unique?
   
-  has_many :feature_projects
+  has_many :feature_projects, :order => 'position'
   has_many :projects, :through => :feature_projects
   
-  has_many :feature_stories
+  has_many :feature_stories, :order => 'position'
   has_many :stories, :through => :feature_stories
   
   def export

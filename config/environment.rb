@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'chriseppstein-compass', :lib => 'compass', :source => 'http://gems.github.com/'
 	config.gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
   config.gem "acts_as_taggable_on_steroids"
+  config.gem 'acts_as_list', :source => 'http://gems.github.com'
   config.gem 'jrails', :source => 'http://gemcutter.org'
   config.gem 'validation_reflection'
   config.gem 'will_paginate', :version => '>=2.3.6'
