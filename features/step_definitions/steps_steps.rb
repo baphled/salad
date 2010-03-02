@@ -35,5 +35,5 @@ Then /^I should see check boxes for all steps it can be linked to$/ do
 end
 
 Then /^the message '(.*)' should be displayed$/ do |message|
-  response.should have_selector :li, :content => "#{message}"
+  response.should contain "#{message}"
 end
