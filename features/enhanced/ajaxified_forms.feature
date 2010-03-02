@@ -37,8 +37,8 @@ Feature: All our forms need to be passed to the server via AJAX
       And a flash message "Feature: Logging in via ajax, was created" should be dynamically displayed
 
     Scenario: We should be able to submit an editted feature form via AJAX
-      Given I can view the stories page
-      When I click new features
+      Given I can view the features page
+      When I edit the first feature
       And we fill in the feature title with 'an edited title'
       And submit the form
       And there should be an AJAX request
