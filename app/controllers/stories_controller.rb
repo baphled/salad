@@ -1,9 +1,9 @@
 class StoriesController < ApplicationController
   
-  before_filter :find_storys_steps, :only => [ :show, :update, :steps]
-
   before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag, :tags, :validate]
   
+  before_filter :find_storys_steps, :only => [ :show, :update, :steps]
+
   before_filter :find_tags
   
   def index
