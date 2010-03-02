@@ -19,6 +19,7 @@
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
 <body class="salad">
+  <noscript><div class='notice'>This site works best with Javascript enabled</div></noscript>
 	<div id="container">
 		<div id="header">
 			<span id="logo"><%= link_to "Salad", root_url %></span><br/>
@@ -29,7 +30,6 @@
 				</div>
 			</div>
 		</div>
-    <noscript><div class='notice'>This site works best with Javascript enabled</div></noscript>
 		<% if not flash.empty? %>
 		<div id="flash">
 			<% flash.each do |key, msg| %>
