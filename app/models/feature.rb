@@ -46,7 +46,7 @@ class Feature < ActiveRecord::Base
     
     def build_steps steps
       new_steps = [] if new_steps.nil?
-      steps.each do |step|
+      steps.each_with_index do |step,index|
         if Step.find_by_title(step).nil?
           new_steps << Step.create(:title => step)
         else
