@@ -8,7 +8,7 @@ class Story < ActiveRecord::Base
   
   validates_associated      :steps
   
-  has_many :feature_stories
+  has_many :feature_stories, :order => 'position'
   has_many :features, :through => :feature_stories
   
   has_many :step_stories

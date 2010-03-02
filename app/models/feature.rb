@@ -1,6 +1,8 @@
 class Feature < ActiveRecord::Base
 	include MyActiveRecordExtensions
   acts_as_taggable
+
+  validates_uniqueness_of   :title
   
   validates_presence_of     :title
   validates_presence_of     :in_order
@@ -14,10 +16,12 @@ class Feature < ActiveRecord::Base
   validates_length_of :as_a, :minimum => 4, :too_short => @@error_message
   validates_length_of :i_want, :minimum => 7, :too_short => @@error_message
   
-  has_many :feature_projects
+  validate :is_unique?
+  
+  has_many :feature_projects, :order => 'position'
   has_many :projects, :through => :feature_projects
   
-  has_many :feature_stories
+  has_many :feature_stories, :order => 'position'
   has_many :stories, :through => :feature_stories
   
   def export
@@ -36,6 +40,10 @@ class Feature < ActiveRecord::Base
   end
   
   private
+    def is_unique?
+      Feature.find_by_title self.title == nil
+    end
+    
     def build_steps steps
       new_steps = []
       steps.each { |step| new_steps << Step.find_or_create_by_title(:title => step) }

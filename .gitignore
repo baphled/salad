@@ -1,3 +1,4 @@
+nbproject
 coverage
 coverage.data
 log
@@ -8,3 +9,7 @@ config/database.yml
 nbproject
 vendor
 rerun.txt
+features/step_definitions/web_steps.rb
+features/support/paths.rb
+lib/tasks/rspec.rake
+lib/tasks/cucumber.rake

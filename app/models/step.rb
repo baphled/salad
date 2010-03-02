@@ -10,7 +10,7 @@ class Step < ActiveRecord::Base
 
   validates_length_of :title, :minimum => 12, :too_short => @@error_message
   
-  has_many                :step_stories
+  has_many                :step_stories, :order => 'position'
   has_many                :stories, :through => :step_stories
   
   def self.pagination_search search, page

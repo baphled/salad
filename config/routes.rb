@@ -3,26 +3,29 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :projects,
     :collection => {:tags => :get,
-                    :valid_directory => :get},
+                    :valid_directory => :get,
+                    :validate => :get},
     :member => {:features => :get,
                 :import => :get}
               
   map.resources :features,
     :collection => {:tags => :get,
-                    :sort => :post},
+                    :sort => :post,
+                    :validate => :get},
     :member => {:stories => :get,
                 :export => :get}
 
   map.resources :stories,
     :collection => {:tags => :get,
-                    :sort => :post},
+                    :sort => :post,
+                    :validate => :get},
     :member => {:steps => :get,
                 :add_step => :post}
 
   map.resources :steps,
     :collection => {:tags => :get,
                     :sort => :post,
-                    :validate => :get}
+                    :validate_prefix => :get}
 
   
   map.project_tag 'projects/tag/:tag', :controller => 'projects', :action => 'tag'

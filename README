@@ -27,8 +27,9 @@ LightHouse integration
 GitHub integration
 
 Install
-Download via http://github.com/baphled/salad
-cd salad
+git export http://github.com/baphled/salad &&
+cd salad &&
+cp database.example database.yml &&
 rake gems:install &&
 rake gems:unpack &&
 rake gems:unpack:dependencies &&
@@ -41,9 +42,12 @@ Then point your browser to http://localhost:3000
 Testing
 Salad is tested using Cucumber & RSpec, to get the test running simple run the following command:
 
-RAILS_ENV=cucumber &&
-rake gems:install &&
-rake gems:unpack &&
-rake gems:unpack:dependencies &&
+sudo RAILS_ENV=cucumber rake gems:install &&
+RAILS_ENV=cucumber rake gems:unpack &&
+RAILS_ENV=cucumber rake gems:unpack:dependencies &&
 script/generate rspec &&
 script/generate cucumber
+
+Setting up the Selenium testing environment
+
+See http://wiki.github.com/aslakhellesoy/cucumber/setting-up-selenium for instructions on setting up Selenium.

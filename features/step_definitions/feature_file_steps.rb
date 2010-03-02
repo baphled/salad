@@ -6,12 +6,24 @@ Given /^we create a FeatureFile from a cucumber feature file$/ do
   @file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/test.feature")
 end
 
+Given /^we have a feature file$/ do
+  File.exists?("#{RAILS_ROOT}/spec/fixtures/test.feature").should be_true
+end
+
+Given /^the feature file can be opened with Cucumbers FeatureFile object$/ do
+  @cf = Cucumber::FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+end
+
 When /^a feature is valid$/ do
   @file.should_not be_invalid
 end
 
 When /^it has more than one scenario$/ do
   @file.scenarios.count.should >= 1
+end
+
+When /^we parse a file$/ do
+  @file = @cf.parse Cucumber::StepMother.new, {}
 end
 
 Then /^the object should be valid$/ do
@@ -75,4 +87,12 @@ end
 
 Then /^each scenario should not be prefixed with 'Scenario;'$/ do
   @file.export.stories.each { |story| story.scenario.should_not contain "Scenario:"}
+end
+
+Then /^our parse FeatureFile should be called$/ do
+  @file.should_receive :parse
+end
+
+Then /^a scenario outline should be found$/ do
+  @file.to_sexp[3][0].should == :scenario_outline
 end

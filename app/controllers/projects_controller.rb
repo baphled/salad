@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   
-  before_filter :find_project, :except => [:index,:new,:create,:tag,:tags, :valid_directory]
+  before_filter :find_project, :except => [:index,:new,:create,:tag,:tags, :valid_directory, :validate]
   
   before_filter :find_tags
   before_filter :find_projects_features, :only => [:update,:show, :features]
@@ -85,6 +85,14 @@ class ProjectsController < ApplicationController
     render :json => result.to_json
   end
 
+  def validate
+    result = true
+    if Project.find_by_title params[:title]
+        result = "Must be a unique project."
+    end
+    render :json => result.to_json
+  end
+  
   private
   
     def find_tags

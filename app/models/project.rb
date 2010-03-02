@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
 
   validate :directory_is_valid?, :if => :directory_present?
 
-  has_many :feature_projects
+  has_many :feature_projects, :order => 'position'
   has_many :features, :through => :feature_projects
   
   def import_features

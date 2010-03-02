@@ -19,14 +19,16 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+  
   config.gem 'haml', :lib => 'haml', :version => '>=2.2.0'
   config.gem 'chriseppstein-compass', :lib => 'compass', :source => 'http://gems.github.com/'
 	config.gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
   config.gem "acts_as_taggable_on_steroids"
+  config.gem 'acts_as_list'
   config.gem 'jrails', :source => 'http://gemcutter.org'
   config.gem 'validation_reflection'
   config.gem 'will_paginate', :version => '>=2.3.6'
-  
+  config.gem 'simple-navigation', :lib => 'simple_navigation'
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

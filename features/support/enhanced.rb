@@ -52,14 +52,13 @@ World(Webrat::Selenium::Matchers)
 
 # "before all"
 browser = Selenium::SeleniumDriver.new("localhost", 4444, "*chrome", "http://localhost", 15000)
-#
+
 Before do
 #  Fixtures.reset_cache
 #  fixtures_folder = File.join(RAILS_ROOT, 'spec', 'fixtures')
 #  fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }
 #  Fixtures.create_fixtures(fixtures_folder, fixtures)
   @browser = browser
-#  @browser.start
 end
 #
 #After do

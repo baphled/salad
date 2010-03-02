@@ -1,6 +1,9 @@
 class StoriesController < ApplicationController
-  before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag, :tags]
+  
   before_filter :find_storys_steps, :only => [ :show, :update, :steps]
+
+  before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag, :tags, :validate]
+  
   before_filter :find_tags
   
   def index
@@ -101,6 +104,14 @@ class StoriesController < ApplicationController
         format.html { redirect_to edit_story_path(:step_ids=>@steps) }
       end
     end
+  end
+  
+  def validate
+    result = true
+    if Story.find_by_scenario params[:scenario]
+        result = "Must be a unique story."
+    end
+    render :json => result.to_json
   end
   
   private
