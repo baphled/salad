@@ -4,7 +4,7 @@ Feature: We need to be able to easily navigate the website
   I want to be able to easily move around the site using the sites navigation
   
   Scenario Outline: We need to make sure that all pages have navigation
-    Given I can view the "<page>" page
+    Given I can view the <page> page
     Then the navigation should be displayed
   
   Scenarios:
@@ -15,7 +15,7 @@ Feature: We need to be able to easily navigate the website
   | steps    |
 
   Scenario Outline: When navigating to a page we want to make sure the menu item is actually selected
-    Given I can view the "<page>" page
+    Given I can view the <page> page
     Then the navigation should be displayed
     And the "<menu_item>" will be selected
   
