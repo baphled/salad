@@ -24,4 +24,4 @@ Feature: Stories need client side validation
     And we fill in the story scenario with 'my stories 1st scenario'
     Then submit the form
     And a JS based error message should be displayed
-    And the client side error message should be "Must be unique"
+    And the client side error message should be "Must be a unique story."

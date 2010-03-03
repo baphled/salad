@@ -3,10 +3,10 @@ $(document).ready(function () {
     rules: {
       "story[scenario]": {required: true, minlength: 7,
         remote: {
-          url: "/story/validate.json",
+          url: "/stories/validate.json",
           type: "get",
           data: {
-            "title": function() {
+            "scenario": function() {
               return $('#story_scenario').val();
             }
           }
