@@ -9,11 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100303162751) do
+ActiveRecord::Schema.define(:version => 20100303175719) do
 
   create_table "action_examples", :id => false, :force => true do |t|
     t.integer "action_id",  :null => false
     t.integer "example_id", :null => false
+  end
+
+  create_table "action_items", :id => false, :force => true do |t|
+    t.integer "action_id", :null => false
+    t.integer "item_id",   :null => false
   end
 
   create_table "actions", :force => true do |t|
@@ -48,6 +53,10 @@ ActiveRecord::Schema.define(:version => 20100303162751) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title",      :limit => 300, :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.string "title", :limit => 75, :default => "", :null => false
   end
 
   create_table "projects", :force => true do |t|

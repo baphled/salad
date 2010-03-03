@@ -95,14 +95,3 @@ Feature: We need a way to handle out feature files
       Then the example should have a list of actions
       And the actions should only contain "items,action,state"
     
-    Scenario: When parsing the actions we need to make sure that we don't store their associated items
-      Given we create a FeatureFile from a cucumber feature file with a scenario outline
-      When a feature is valid
-      And it has a scenario outline
-      And the scenario outline should precede its examples
-      Then the example should have a list of actions
-      And the actions should only contain "items,action,state"
-      And there should only be 3 actions
-    
-    
-    

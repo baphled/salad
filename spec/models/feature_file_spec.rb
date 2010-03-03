@@ -37,7 +37,11 @@ describe FeatureFile do
     end
     
     it "should story the actions in the expected format" do
-      "items,action,state".split(',').each_with_index { |word,index| @feature_file.scenarios.first.examples.first.actions[index].title.should == word }
+      "items,action,state".split(',').each_with_index { |word,index| @feature_file.scenarios.last.examples.last.actions[index].title.should == word }
+    end
+    
+    it "should store the actions items" do
+      @feature_file.scenarios.last.examples.last.actions.last.items.should_not be_empty
     end
   end
   
