@@ -12,17 +12,18 @@
             <% content_tag_for(:li, model) do %>
               <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
               <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
+                <%if order == true %>
+                <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
+                  <%= index+1 %>
+                </span>
+                <% end %>
                 <% if 'step' == model.class.to_s.downcase %>
-                    <%= model.send(method,method_arg[index -1])%>
+                      <%= model.send(method,method_arg[index -1])%>
                 <% else %>
                   <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
                 <% end %>
               <% end %>
-              <%if order == true %>
-              <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
-                <%= index+1 %>
-              </span>
-              <% end %>
+              
             <% end %>
           <% end %>
       <% else %>
