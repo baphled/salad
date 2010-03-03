@@ -59,4 +59,4 @@ Feature: We need a way to handle out feature files
       And exported features 'in_order' will not contain 'In order' prefix
       And exported features 'i_want' will not contain 'I want' prefix
       And exported features 'as_a' will not contain 'As a' prefix
-      And each scenario should not be prefixed with 'Scenario;'
+      And each scenario should not be prefixed with 'Scenario:'
