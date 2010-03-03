@@ -85,8 +85,8 @@ Then /^exported features 'as_a' will not contain '(.*)' prefix$/ do |content|
   @file.export.as_a.should_not contain content
 end
 
-Then /^each scenario should not be prefixed with 'Scenario;'$/ do
-  @file.export.stories.each { |story| story.scenario.should_not contain "Scenario:"}
+Then /^each scenario should not be prefixed with 'Scenario:'$/ do
+  @file.export.stories.each { |story| story.scenario.should_not contain /^Scenario:/}
 end
 
 Then /^our parse FeatureFile should be called$/ do
