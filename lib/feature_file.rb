@@ -26,10 +26,14 @@ class FeatureFile < File
     scenarios = [] if scenarios.nil?
     self.reopen path if self.eof?
     self.each do |line| 
-      if line.strip =~ /^Scenario: /
-        scenarios << Story.new(:scenario => line.strip.sub(/^Scenario: /, ''))
+      if line.strip =~ /^(Scenario Outline|Scenario):/
+        scenarios << Story.new(:scenario => line.strip.sub(/^(Scenario|Scenario Outline): /, ''))
       elsif line.strip =~ /^(Given|When|Then|And)/ and scenarios.last.nil? == false
         scenarios.last.steps << Step.new(:title => line.strip)
+      elsif line.strip =~ /^Examples:/ and scenarios.last.nil? == false
+        scenarios.last.examples << Example.new(:heading => line.strip.sub(/^Examples:/, ''))
+      elsif (line.strip =~ /^\|\w*|/ and scenarios.last.nil? == false) and scenarios.last.examples.last.nil? == false
+        line.strip.split('|').each { |action| scenarios.last.examples.last.actions << Action.new(:title => action.gsub(/ /,'')) unless action.blank?}
       end
     end
     scenarios

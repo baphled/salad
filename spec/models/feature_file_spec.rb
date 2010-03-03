@@ -15,6 +15,32 @@ describe FeatureFile do
     end
   end
   
+  context "importing a feature file which contains scenario outlines" do
+    before(:each) do
+      @feature_file = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+    end
+    
+    it "should store scenario outlines" do
+      @feature_file.scenarios.first.scenario.should contain 'Users viewing an index page which is not projects should display a most used section'
+    end
+    
+    it "should store the outlines steps" do
+      @feature_file.scenarios.first.steps.should_not be_empty
+    end
+    
+    it "should have a list of examples associated to it" do
+      @feature_file.scenarios.first.examples.should_not be_empty
+    end
+    
+    it "should have a list of associated actions" do
+      @feature_file.scenarios.first.examples.first.actions.should_not be_empty
+    end
+    
+    it "should story the actions in the expected format" do
+      "items,action,state".split(',').each_with_index { |word,index| @feature_file.scenarios.first.examples.first.actions[index].title.should == word }
+    end
+  end
+  
   context "a valid feature file" do
     before(:each) do
       @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/test.feature")

@@ -14,6 +14,10 @@ Given /^the feature file can be opened with Cucumbers FeatureFile object$/ do
   @cf = Cucumber::FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
 end
 
+Given /^we create a FeatureFile from a cucumber feature file with a scenario outline$/ do
+  @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+end
+
 When /^a feature is valid$/ do
   @file.should_not be_invalid
 end
@@ -24,6 +28,10 @@ end
 
 When /^we parse a file$/ do
   @file = @cf.parse Cucumber::StepMother.new, {}
+end
+
+When /^it has a scenario outline$/ do
+  @file.read.should contain "Scenario Outline:"
 end
 
 Then /^the object should be valid$/ do
@@ -89,10 +97,30 @@ Then /^each scenario should not be prefixed with 'Scenario:'$/ do
   @file.export.stories.each { |story| story.scenario.should_not contain /^Scenario:/}
 end
 
+When /^each scenario should not be prefixed with 'Scenario Outline:'$/ do
+  @file.export.stories.each { |story| story.scenario.should_not contain /^Scenario Outline:/}
+end
+
 Then /^our parse FeatureFile should be called$/ do
   @file.should_receive :parse
 end
 
 Then /^a scenario outline should be found$/ do
   @file.to_sexp[3][0].should == :scenario_outline
+end
+
+Then /^each scenario outline should have the expected steps$/ do
+  @file.export.stories.first.steps.should_not be_empty
+end
+
+Then /^the scenario outline should precede its examples$/ do
+  @file.export.stories.first.examples.should_not be_empty
+end
+
+Then /^the example should have a list of actions$/ do
+  @file.export.stories.first.examples.first.actions.should_not be_empty
+end
+
+Then /^the actions should only contain "([^\"]*)"$/ do |words|
+  words.split(',').each_with_index { |word,index|  @file.export.stories.first.examples.first.actions[index].title.should == word }
 end

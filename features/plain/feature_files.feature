@@ -60,3 +60,49 @@ Feature: We need a way to handle out feature files
       And exported features 'i_want' will not contain 'I want' prefix
       And exported features 'as_a' will not contain 'As a' prefix
       And each scenario should not be prefixed with 'Scenario:'
+      
+    Scenario: We need a way to get Scenario Outlines
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      Then each scenario outline should have the expected steps
+      
+    Scenario: We should not have the Scenario Outline as a prefix
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      And each scenario should not be prefixed with 'Scenario Outline:'
+      
+    Scenario: When a we have a scenario outline we also want to parse its examples
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      Then each scenario outline should have the expected steps
+      And the scenario outline should precede its examples
+      
+    Scenario: When saving a scenario outlines examples we want to associate the example heading with the associated actions
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      And the scenario outline should precede its examples
+      Then the example should have a list of actions
+    
+    Scenario: When saving an examples actions, the actions should be seperated and not in the format they are in within cucumber
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      And the scenario outline should precede its examples
+      Then the example should have a list of actions
+      And the actions should only contain "items,action,state"
+    
+    Scenario: When parsing the actions we need to make sure that we don't store their associated items
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      And the scenario outline should precede its examples
+      Then the example should have a list of actions
+      And the actions should only contain "items,action,state"
+      And there should only be 3 actions
+    
+    
+    

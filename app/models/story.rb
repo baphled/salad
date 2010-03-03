@@ -14,6 +14,8 @@ class Story < ActiveRecord::Base
   has_many :step_stories
   has_many :steps, :through => :step_stories
   
+  has_many :examples
+  
   def self.formatted_steps steps
     last = nil
     results = []
