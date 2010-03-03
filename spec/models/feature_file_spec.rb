@@ -43,6 +43,8 @@ describe FeatureFile do
     it "should store the actions items" do
       @feature_file.scenarios.last.examples.last.actions.last.items.should_not be_empty
     end
+    
+    it "should link an action to its associated items"
   end
   
   context "a valid feature file" do
