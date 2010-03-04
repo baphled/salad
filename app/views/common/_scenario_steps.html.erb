@@ -19,9 +19,7 @@
             <% end %>
         </li>
       <% end %>
-      <% if not story.examples.empty? %>
-        <%= render :partial => '/common/example_table', :locals => {:story => story}%>
-      <% end %>
+      <%= render :partial => '/common/example_table', :locals => {:story => story}%>
       </ul>
     </li>
 <% end %>
