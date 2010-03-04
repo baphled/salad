@@ -87,11 +87,30 @@ Feature: We need a way to handle out feature files
       And the scenario outline should precede its examples
       Then the example should have a list of actions
     
-    Scenario: When saving an examples actions, the actions should be seperated and not in the format they are in within cucumber
+    Scenario: The associated actions should be seperated and not in the format they are in within cucumber
       Given we create a FeatureFile from a cucumber feature file with a scenario outline
       When a feature is valid
       And it has a scenario outline
       And the scenario outline should precede its examples
       Then the example should have a list of actions
       And the actions should only contain "items,action,state"
-    
+
+    Scenario Outline: All actions should be correctly associated to each of  their items
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
+      When a feature is valid
+      And it has a scenario outline
+      And the scenario outline should precede its examples
+      Then the example should have a list of actions
+      And the actions should only contain "items,action,state"
+      And the "<action>" should have "<item>" associated to it "<amount>" of times
+
+    Examples:
+      |action |item       |amount |
+      |items  |features   |4      |
+      |items  |stories    |3      |
+      |items  |steps      |2      |
+      |action |features   |2      |
+      |action |stories    |4      |
+      |action |steps      |3      |
+      |state  |being      |4      |
+      |state  |not being  |5      |
