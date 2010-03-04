@@ -53,5 +53,6 @@ Then /^the first story should contain its examples$/ do
 end
 
 Then /^the features scenario examples should be saved\.$/ do
+  pending 'Need to implement this step'
   Example.find_by_heading('action').should_not be_nil
 end
