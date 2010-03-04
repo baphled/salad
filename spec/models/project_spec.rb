@@ -87,6 +87,15 @@ describe Project do
       it "have a features stories text" do
         @project.import_features.last[:feature].stories.first.scenario.should_not be_nil
       end
+      
+    end
+    
+    context "saving import data" do
+      context "with a scenario that has an example" do
+        it "should store the scenario's example"
+        it "should store the examples actions"
+        it "should store the actions items"
+      end
     end
   end
 end
