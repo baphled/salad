@@ -25,4 +25,7 @@ Feature: We need to be able to easily navigate the website
   | features | features  |
   | stories  | stories   |
   | steps    | steps     |
-
+  | projects/1 | projects  |
+  | features/1 | features  |
+  | stories/1  | stories   |
+  | steps/1    | steps     |
