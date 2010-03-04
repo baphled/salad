@@ -1,4 +1,5 @@
 class FeaturesController < ApplicationController
+  navigation :features
   
   before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export]
   before_filter :find_features_stories, :only => [:show, :stories]

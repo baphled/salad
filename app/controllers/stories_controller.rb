@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  navigation :stories
   
   before_filter :find_story, :except => [:index,:new,:create,:add_step,:sort,:tag, :tags, :validate]
   

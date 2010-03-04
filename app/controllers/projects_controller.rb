@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  navigation :projects
   
   before_filter :find_project, :except => [:index,:new,:create,:tag,:tags, :valid_directory, :validate]
   

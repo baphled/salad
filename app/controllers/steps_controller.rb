@@ -1,4 +1,7 @@
 class StepsController < ActionController::Base
+  
+  navigation :steps
+
   before_filter :find_step, :except => [:index,:new,:create,:sort, :validate_prefix, :tags, :tag]
 
   before_filter :find_tags
