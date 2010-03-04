@@ -1,3 +1,7 @@
+When /^we click import "([^\"]*)"$/ do |button|
+  click_link button
+end
+
 Then /^I should see a import link$/ do
   response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
 end
@@ -46,4 +50,8 @@ Then /^the first story should contain its examples$/ do
     end
   end
   response.should contain 'Examples:'
+end
+
+Then /^the features scenario examples should be saved\.$/ do
+  Example.find_by_heading('action').should_not be_nil
 end

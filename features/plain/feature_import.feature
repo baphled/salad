@@ -276,5 +276,10 @@ Feature: Users should not have to manually input their features if they have alr
       When I click import
       Then the first story should contain its examples
     
-    
-    
+    Scenario: We want to make sure that a scenario's example are imported along with its scenario
+      Given there is a project
+  	  When the project is viewed
+  	  Then I should see a import link
+      When I click import
+      And we click import "most used"
+      Then the features scenario examples should be saved.
