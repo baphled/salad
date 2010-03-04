@@ -11,13 +11,13 @@
       </h5>
       <ul class="steps">
       <% story.steps.each do |step| %>
-          <li>
-              <% if Step.find_by_title step.title %>
-                  <b><%=h step.title %></b>
-              <% else %>
-                  <%=h step.title %>
-              <% end %>
-          </li>
+        <li>
+            <% if Step.find_by_title step.title %>
+                <b><%=h step.title %></b>
+            <% else %>
+                <%=h step.title %>
+            <% end %>
+        </li>
       <% end %>
       <% if not story.examples.empty? %>
         <br /><p>Examples:</p>
