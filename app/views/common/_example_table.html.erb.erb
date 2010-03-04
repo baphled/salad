@@ -1,6 +1,6 @@
 <% if not story.examples.empty? %>
 <hr />
-<table>
+<table class="ui-tabs ui-widget ui-widget-content ui-corner-all">
   <thead>
     <tr>
       <td colspan="<%=story.examples.first.actions.size%>">Examples</td>
@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <% story.examples.first.actions.first.items.each_with_index do |item, index| %>
-    <tr>
+    <tr class="<%=  (index.even?)? 'even' : 'odd' %>">
       <% story.examples.first.actions.each_with_index do |action, width_index| %>
       <td><%= story.examples.first.actions[width_index].items[index].title %></td>
       <% end %>

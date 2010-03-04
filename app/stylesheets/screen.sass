@@ -2,6 +2,7 @@
 @import compass/utilities/links.sass
 @import compass/utilities/lists/horizontal_list.sass
 @import compass/utilities/lists/inline_list.sass
+@import compass/utilities/tables.sass
 // This import applies a global reset to any page that imports this stylesheet.
 @import blueprint/reset.sass
 
@@ -58,6 +59,9 @@ body.salad
   +blueprint-interaction
   +blueprint-form
   +no-bullets
+  table
+    +outer-table-borders(1px, #89A407)
+    +inner-table-borders(1px, #C1C4B5)
   a
     +link-colors(#C1C4B5, #785C17, #C1C4B5, #C1C4B5, #C1C4B5)
     +unstyled-link
