@@ -126,5 +126,5 @@ Then /^the actions should only contain "([^\"]*)"$/ do |words|
 end
 
 Then /^the "([^\"]*)" should have "([^\"]*)" associated to it "([^\"]*)" of times$/ do |action, current_item, amount|
-  @file.export.stories.first.examples.first.actions.each {|action| count = 0; action.items.each {|item| (item.title == 'features')? count += 1 :nil;  } ;puts count }
+  @file.export.stories.first.examples.first.actions.each {|current_action| count = 0; current_action.items.each {|item| (item.title == current_item)? count += 1 :nil;  } ; count.to_s.should eql amount if current_action.title == action }
 end
