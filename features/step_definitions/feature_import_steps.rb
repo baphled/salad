@@ -37,3 +37,13 @@ Then /^each of the features title should not include any underscores$/ do
     end
   end
 end
+
+Then /^the first story should contain its examples$/ do
+  @project.update_attribute(:location,"#{RAILS_ROOT}")
+  @project.import_features do |feature|
+    if feature[:file] == 'most_used.feature'
+      response.should contain feature[:feature].stories.first.examples.first
+    end
+  end
+  response.should contain 'Examples:'
+end

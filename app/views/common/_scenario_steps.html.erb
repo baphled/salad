@@ -19,7 +19,30 @@
               <% end %>
           </li>
       <% end %>
+      <% if not story.examples.empty? %>
+        <br /><p>Examples:</p>
+        <table>
+          <thead>
+            <tr>
+            <% story.examples.each do |example| %>
+              <% example.actions.each do |action| %>
+                <td><%= action.title%></td>
+              <% end %>
+            <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% story.examples.first.actions.first.items.each_with_index do |item, index| %>
+            <tr>
+              <% story.examples.first.actions.each_with_index do |action, width_index| %>
+              <td><%= story.examples.first.actions[width_index].items[index].title %></td>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
       </ul>
-	</li>
+    </li>
 <% end %>
 </ul>

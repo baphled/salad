@@ -123,6 +123,23 @@ describe "/projects/import.html.erb" do
         step = stub_model(Step, :title => 'Given I can view the projects page')
         response.should have_selector :b, :content => "#{step.title}"
       end
+      
+      context "A scenario has examples" do
+        it "should display the examples" do
+          response.should have_selector :p, :content => 'Examples:'
+        end
+        
+        it "should display the examples actions" do
+          response.should have_selector :table do |table|
+            table.should have_selector :td, :content => 'action'
+          end
+        end
+        it "should display each of the actions items" do
+          response.should have_selector :table do |table|
+            table.should have_selector :td, :content => 'features'
+          end
+        end
+      end
     end
   end
 

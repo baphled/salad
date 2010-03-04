@@ -217,27 +217,27 @@ Feature: Users should not have to manually input their features if they have alr
 	Scenario: We should be redirected to the projects view when we import a new feature
       Given there is a project
       And the project does have a project location
-	  When the project is viewed
-	  Then I should see a import link
+	    When the project is viewed
+  	  Then I should see a import link
       When I click import
       Then I should see a list of features that will be imported
       And we click import projects
-	  Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
+  	  Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
       And we should be redirected to the projects import page
 
     Scenario: When importing features, we should be able to find feature regardless of the feature directory structure
       Given there is a project
       And the project does have a project location
-	  When the project is viewed
-	  Then I should see a import link
+  	  When the project is viewed
+  	  Then I should see a import link
       When I click import
       Then it should include features from all sub directories within the feature directory
 
     Scenario: When importing a feature file if the file is invalid then an error is displayed
       Given there is a project
       And the project does have a project location to an invalid feature
-	  When the project is viewed
-	  Then I should see a import link
+  	  When the project is viewed
+  	  Then I should see a import link
       When I click import
       And the project has an invalid feature
       Then the submit button will be disabled for that feature
@@ -245,16 +245,16 @@ Feature: Users should not have to manually input their features if they have alr
     Scenario: When we try to import an invalid feature
       Given there is a project
       And the project does have a project location to an invalid feature
-	  When the project is viewed
-	  Then I should see a import link
+	    When the project is viewed
+  	  Then I should see a import link
       When I click import
       Then the submit button will be disabled for that feature
 
     Scenario: The feature file heading should not contain any underscores
       Given there is a project
       And the project does have a project location to an invalid feature
-	  When the project is viewed
-	  Then I should see a import link
+  	  When the project is viewed
+  	  Then I should see a import link
       When I click import
       Then each of the features tabs should not include any underscores
       And each of the features title should not include any underscores
@@ -262,9 +262,19 @@ Feature: Users should not have to manually input their features if they have alr
     Scenario: When importing features and a feature file name is shared with another
       Given there is a project
       And the project does have a project location to an invalid feature
-	  When the project is viewed
-	  Then I should see a import link
+  	  When the project is viewed
+  	  Then I should see a import link
       When I click import
       When a feature file shares its name with another feature file
       Then display the feature file already exists
       And display the location in which the original was found
+      
+    Scenario: When importing a feature which has examples, these should be displayed within the given scenario
+      Given there is a project
+  	  When the project is viewed
+  	  Then I should see a import link
+      When I click import
+      Then the first story should contain its examples
+    
+    
+    
