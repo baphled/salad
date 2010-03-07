@@ -126,7 +126,7 @@ describe "/projects/import.html.erb" do
       
       context "A scenario has examples" do
         it "should display the examples" do
-          response.should have_selector :p, :content => 'Examples:'
+          response.should have_selector :td, :content => 'Examples'
         end
         
         it "should display the examples actions" do
