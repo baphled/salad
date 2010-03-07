@@ -79,8 +79,7 @@ describe FeatureFile do
     end
 
     it "should contain a scenario with steps" do
-      step = @feature_file.scenarios.first.steps.first
-      step.title.should contain "Given I have my marbles"
+      @feature_file.scenarios.first.steps.should_not be_nil
     end
 
     it "should store the expected amount of steps" do
