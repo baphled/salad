@@ -1,4 +1,4 @@
 class ExampleStory < ActiveRecord::Base
-  belongs_to :stories
-  belongs_to :examples
+  belongs_to :story
+  belongs_to :example
 end
