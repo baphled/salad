@@ -4,4 +4,6 @@ class Example < ActiveRecord::Base
 
   has_many :example_stories
   has_many :stories, :through => :example_stories
+
+  accepts_nested_attributes_for :actions
 end

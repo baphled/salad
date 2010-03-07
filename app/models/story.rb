@@ -17,6 +17,8 @@ class Story < ActiveRecord::Base
   has_many :example_stories
   has_many :examples, :through => :example_stories
 
+  accepts_nested_attributes_for :steps
+  accepts_nested_attributes_for :examples
   
   def self.formatted_steps steps
     last = nil

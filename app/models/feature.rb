@@ -23,6 +23,8 @@ class Feature < ActiveRecord::Base
   
   has_many :feature_stories, :order => 'position'
   has_many :stories, :through => :feature_stories
+
+  accepts_nested_attributes_for :stories
   
   def export
     exported = feature_title
@@ -32,24 +34,11 @@ class Feature < ActiveRecord::Base
     exported
   end
   
-  def stories_attributes=(stories_attributes)
-    stories_attributes.each do |attributes|
-      stories.create({:scenario => attributes[:scenario].to_s.sub(/^Scenario: /,""),
-                      :steps => build_steps(Story.formatted_steps attributes[:steps]) })
-    end
-  end
-  
   private
     def is_unique?
       Feature.find_by_title self.title == nil
     end
     
-    def build_steps steps
-      new_steps = []
-      steps.each { |step| new_steps << Step.find_or_create_by_title(:title => step) }
-      new_steps
-    end
-  
     def feature_scenarios story
       "  Scenario: #{story.scenario}\n#{story_titles story}" unless story.steps.blank?
     end
