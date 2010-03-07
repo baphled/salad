@@ -7,7 +7,7 @@ Feature: We need to be able to easily navigate the website
     Given I can view the <page> page
     Then the navigation should be displayed
   
-  Scenarios:
+  Examples:
   | page     |
   | projects |
   | features |
@@ -19,7 +19,7 @@ Feature: We need to be able to easily navigate the website
     Then the navigation should be displayed
     And the "<menu_item>" will be selected
   
-  Scenarios:
+  Examples:
   | page     | menu_item |
   | projects | projects  |
   | features | features  |

@@ -89,13 +89,5 @@ describe Project do
       end
       
     end
-    
-    context "saving import data" do
-      context "with a scenario that has an example" do
-        it "should store the scenario's example"
-        it "should store the examples actions"
-        it "should store the actions items"
-      end
-    end
   end
 end
