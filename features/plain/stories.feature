@@ -45,3 +45,8 @@ Feature: Stories will be needed to populate our projects features
     And check a pre-existing step
     Then submit the form
     And it should be saved
+
+  Scenario: If a scenario has examples we must be able to see them.
+    Given we have a stories with examples
+    When we view the story
+    Then we should the example should be displayed
