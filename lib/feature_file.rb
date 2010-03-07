@@ -27,16 +27,18 @@ class FeatureFile < File
     self.reopen path if self.eof?
     self.each do |line| 
       if line.strip =~ /^(Scenario Outline|Scenario):/
-        scenarios << Story.new(:scenario => line.strip.sub(/^(Scenario|Scenario Outline): /, ''))
+        scenarios << Story.find_or_initialize_by_scenario(:scenario => line.strip.sub(/^(Scenario|Scenario Outline): /, ''))
       elsif line.strip =~ /^(Given|When|Then|And)/ and scenarios.last.nil? == false
-        scenarios.last.steps << Step.new(:title => line.strip)
+        str = line.strip
+        str = line.strip.sub('And', scenarios.last.steps.last.first_word) if line.strip =~ /^And/
+        scenarios.last.steps << Step.find_or_create_by_title(str)
       elsif line.strip =~ /^Examples:/ and scenarios.last.nil? == false
         scenarios.last.examples << Example.new(:heading => line.strip.sub(/^Examples:/, ''))
       elsif (line.strip =~ /^\|\w*|/ and scenarios.last.nil? == false) and scenarios.last.examples.last.nil? == false
         if scenarios.last.examples.last.actions.empty?
           line.strip.split('|').each { |action| scenarios.last.examples.last.actions << Action.new(:title => action.gsub(/ /,'')) unless action.blank?}
         else
-          line.strip.split('|').each_with_index { |item, index| scenarios.last.examples.last.actions[index-1].items << Item.new(:title => item.strip) unless item.blank?}
+          line.strip.split('|').each_with_index { |item, index| scenarios.last.examples.last.actions[index-1].items << Item.find_or_initialize_by_title(:title => item.strip) unless item.blank?}
         end
       end
     end
