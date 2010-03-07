@@ -49,7 +49,7 @@ Then /^the first story should contain its examples$/ do
       response.should contain feature[:feature].stories.first.examples.first
     end
   end
-  response.should contain 'Examples:'
+  response.should contain 'Examples'
 end
 
 Then /^the features scenario examples should be saved\.$/ do
