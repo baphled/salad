@@ -1,5 +1,5 @@
 <h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></h3>
-<%- form_for file[:feature], :id => "new_feature",:class => "new_feature", :method => :post do |f|%>
+<%- form_for file[:feature], :id => "new_feature",:class => "new_feature hidden", :method => :post do |f|%>
   <fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
     <%= f.hidden_field :title %>
     <%= f.hidden_field :in_order %>
@@ -7,18 +7,18 @@
     <%= f.hidden_field :i_want %>
     <p id="title"><%= file[:feature].title%></p>
     <p>
-        In order <%= file[:feature].in_order %><br />
-        As <%= file[:feature].as_a %><br />
-        I want <%= file[:feature].i_want %>
+        In order <%=h file[:feature].in_order %><br />
+        As <%=h file[:feature].as_a %><br />
+        I want <%=h file[:feature].i_want %>
     </p>
-    <%= f.label "feature tags:"%>
+    <%= f.label :tag_list %>
     <%= f.text_field :tag_list %><br/>
     <% if !Project.all.empty? %>
       <% for project in Project.find :all %>
           <%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
           <%= project.title%><br/>
       <% end %>
-      <% f.fields_for :stories do |stories_f| -%>
+      <% f.fields_for :stories, {:class => 'hidden'} do |stories_f| -%>
         <%= stories_f.hidden_field :scenario %>
         <% stories_f.fields_for :steps do |step_f| -%>
           <%= step_f.hidden_field :title -%>
