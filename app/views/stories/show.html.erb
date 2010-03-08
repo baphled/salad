@@ -1,6 +1,6 @@
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps } %>
 
-<div id="list">
+<div>
   <%= render :partial => '/common/sortable_list',
     :locals => {:models => @story_steps,
     :item_name => 'step',
@@ -9,12 +9,11 @@
     :assoc => nil,
     :order =>true}%>
 
+  <%= render :partial => '/common/example_table', :locals => {:story => @story}%>
 </div>
 
-<%= render :partial => '/common/example_table', :locals => {:story => @story}%>
 
 <% form_for @story do |f| -%>
     <%= render :partial => '/common/checkboxes', :locals => {:model => @story, :item_name => Step}%>
-	<%= render :partial => "/common/save_button" %>
 <% end -%>
 

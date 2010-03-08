@@ -3,11 +3,11 @@
 <table class="ui-tabs ui-widget ui-widget-content ui-corner-all">
   <thead>
     <tr>
-      <td colspan="<%=story.examples.first.actions.size%>">Examples</td>
+      <td colspan="<%=story.examples.first.actions.size%>"><b>Examples:</b> <%=h story.examples.first.heading %></td>
     </tr>
     <tr>
     <% story.examples.first.actions.each do |action| %>
-      <td><%= action.title%></td>
+      <td><b><%= action.title%></b></td>
     <% end %>
     </tr>
   </thead>
