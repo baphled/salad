@@ -8,4 +8,4 @@ two:
 
 three:
   id: 3
-  scenario: As a user I need to be able to create a new project
+  scenario: As a user I need to be able to create something
