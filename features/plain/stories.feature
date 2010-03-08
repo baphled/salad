@@ -48,5 +48,5 @@ Feature: Stories will be needed to populate our projects features
 
   Scenario: If a scenario has examples we must be able to see them.
     Given we have a stories with examples
-    When we view the story
+    When the story is viewed
     Then we should the example should be displayed

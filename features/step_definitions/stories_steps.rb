@@ -10,6 +10,13 @@ Given /^there is a story$/ do
   @story = Story.first
 end
 
+Given /^we have a stories with examples$/ do
+  f = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+  @story = f.scenarios.first
+  @story.save
+  @story.examples.size.should eql 1
+end
+
 When /^I visit the stories steps$/ do
   visit steps_story_path @story
 end
@@ -95,4 +102,9 @@ end
 
 Then /^it should be saved$/ do
   response.should_not have_selector :form, attribute = {:href=>new_story_path}
+end
+
+
+Then /^we should the example should be displayed$/ do
+  response.should have_selector :td, :content => "Examples"
 end
