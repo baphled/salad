@@ -1,0 +1,12 @@
+<% f.fields_for :examples do |example_f| -%>
+  <%= example_f.hidden_field :heading -%>
+
+  <% example_f.fields_for :actions do |action_f| -%>
+  <%= action_f.hidden_field :title -%>
+
+    <% action_f.fields_for :items do |item_f| -%>
+        <%= item_f.hidden_field :title -%>
+    <% end %>
+
+  <% end -%>
+<% end -%>

@@ -18,20 +18,11 @@
           <%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
           <%=h project.title%><br/>
       <% end %>
+
       <% f.fields_for :stories, {:class => 'hidden'} do |stories_f| -%>
         <%= stories_f.hidden_field :scenario %>
-        <% stories_f.fields_for :steps do |step_f| -%>
-          <%= step_f.hidden_field :title -%>
-        <% end -%>
-        <% stories_f.fields_for :examples do |example_f| -%>
-          <%= example_f.hidden_field :heading -%>
-          <% example_f.fields_for :actions do |action_f| -%>
-            <%= action_f.hidden_field :title -%>
-            <% action_f.fields_for :items do |item_f| -%>
-              <%= item_f.hidden_field :title -%>
-            <% end %>
-          <% end -%>
-        <% end -%>
+        <%= render :partial => '/common/forms/story_steps', :locals => { :f => stories_f } %>
+        <%= render :partial => '/common/forms/story_examples', :locals => { :f => stories_f } %>
       <% end -%>
     <% end %>
     <br />
