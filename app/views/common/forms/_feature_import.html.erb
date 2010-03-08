@@ -16,7 +16,7 @@
     <% if !Project.all.empty? %>
       <% for project in Project.find :all %>
           <%= check_box_tag "feature[project_ids][]", project.id, feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
-          <%= project.title%><br/>
+          <%=h project.title%><br/>
       <% end %>
       <% f.fields_for :stories, {:class => 'hidden'} do |stories_f| -%>
         <%= stories_f.hidden_field :scenario %>
