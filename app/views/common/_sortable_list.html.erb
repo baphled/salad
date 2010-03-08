@@ -18,7 +18,7 @@
                 </span>
                 <% end %>
                 <% if 'step' == model.class.to_s.downcase %>
-                      <%= model.send(method,method_arg[index -1])%>
+                      <%=h model.send(method,method_arg[index -1])%>
                 <% else %>
                   <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
                 <% end %>

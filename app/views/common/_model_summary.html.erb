@@ -13,11 +13,11 @@
   <% if defined? assoc %>
     <b>Total number of <%= assoc.to_s.capitalize %> : </b><span><%= model.send(assoc.to_s).count %></span><br/>
     <% if not model.send(assoc).blank? %>
-      <b>Last <%= assoc.to_s.capitalize.singularize %>: </b>
+      <b>Last <%=h assoc.to_s.capitalize.singularize %>: </b>
       <% if model.send(assoc).last.respond_to? :scenario %>
-        <span><%= model.send(assoc).last.scenario %></span>
+        <span><%=h model.send(assoc).last.scenario %></span>
       <% else %>
-        <span><%= model.send(assoc).last.title %></span>
+        <span><%=h model.send(assoc).last.title %></span>
       <% end %>
         <br/>
     <% end %>
