@@ -104,7 +104,7 @@ Feature: We need a way to handle out feature files
       And the actions should only contain "items,action,state"
       And the "<action>" should have "<item>" associated to it "<amount>" of times
 
-    Examples:
+    Examples: Actions and the number of times an action item should be stored
       |action |item       |amount |
       |items  |features   |4      |
       |items  |stories    |3      |

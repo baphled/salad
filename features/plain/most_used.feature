@@ -8,7 +8,7 @@ Feature: To provide more information to the user we should display the most used
       When we visit the "<action>" index
       Then we get the most used items
 
-    Examples: Our actions
+    Examples: Our actions that we want to check states for
       |items    |action   |state      |
       |features |features |being      |
       |features |features |not being  |

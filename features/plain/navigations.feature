@@ -7,7 +7,7 @@ Feature: We need to be able to easily navigate the website
     Given I can view the <page> page
     Then the navigation should be displayed
   
-  Examples:
+  Examples: Basic pages that we want to have navigation highlighting
   | page     |
   | projects |
   | features |
@@ -19,7 +19,7 @@ Feature: We need to be able to easily navigate the website
     Then the navigation should be displayed
     And the "<menu_item>" will be selected
   
-  Examples:
+  Examples: More advanced pages which need to have navigation highlighting
   | page     | menu_item |
   | projects | projects  |
   | features | features  |

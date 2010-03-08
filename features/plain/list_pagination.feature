@@ -9,7 +9,7 @@ Feature: All lists should have pagination functionality if there are more than 5
       When I visit the "<items>"
       Then we should not see our pagination
 
-    Scenarios: All non-associated lists
+    Examples: All non-associated lists
       |items    |moreorless |
       |projects |less       |
       |features |less       |

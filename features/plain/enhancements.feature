@@ -7,7 +7,7 @@ Feature: We want to make sure that users use javascript to take advantage of all
     Given I can view the <page> page
     Then the message 'This site works best with Javascript enabled' should be displayed
   
-  Scenarios:
+  Examples: Basic pages we want to visit to check for JS enabled
   | page     |
   | /        |
   | projects |
