@@ -11,6 +11,8 @@
 
 </div>
 
+<%= render :partial => '/common/example_table', :locals => {:story => @story}%>
+
 <% form_for @story do |f| -%>
     <%= render :partial => '/common/checkboxes', :locals => {:model => @story, :item_name => Step}%>
 	<%= render :partial => "/common/save_button" %>

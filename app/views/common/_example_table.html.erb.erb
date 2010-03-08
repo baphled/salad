@@ -6,10 +6,8 @@
       <td colspan="<%=story.examples.first.actions.size%>">Examples</td>
     </tr>
     <tr>
-    <% story.examples.each do |example| %>
-      <% example.actions.each do |action| %>
-        <td><%= action.title%></td>
-      <% end %>
+    <% story.examples.first.actions.each do |action| %>
+      <td><%= action.title%></td>
     <% end %>
     </tr>
   </thead>
