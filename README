@@ -29,7 +29,7 @@ GitHub integration
 Install
 git export http://github.com/baphled/salad &&
 cd salad &&
-cp database.example database.yml &&
+cp config/database.example config/database.yml &&
 rake gems:install &&
 rake gems:unpack &&
 rake gems:unpack:dependencies &&
