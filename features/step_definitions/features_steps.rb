@@ -25,6 +25,10 @@ Given /^the feature already exists$/ do
                  :i_want => 'to have the skills'
 end
 
+When /^I view the feature$/ do
+  visit feature_path @feature
+end
+
 When /^the feature is viewed$/ do
   visit feature_path @feature
 end

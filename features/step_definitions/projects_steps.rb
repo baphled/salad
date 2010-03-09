@@ -50,7 +50,10 @@ end
 
 When /^the project is viewed$/ do
   visit project_path @project
+end
 
+When /^I view the project$/ do
+  When %{the project is viewed}
 end
 
 When /^the project is not able to update$/ do
