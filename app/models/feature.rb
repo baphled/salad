@@ -33,7 +33,10 @@ class Feature < ActiveRecord::Base
     end
     exported
   end
-  
+
+  def is_diff?
+
+  end
   private
     def is_unique?
       Feature.find_by_title self.title == nil
