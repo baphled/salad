@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20100311211233) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title",      :limit => 300, :null => false
-    t.string   "path",       :limit => 250, :null => false
+    t.string   "path",       :limit => 250
   end
 
   create_table "items", :force => true do |t|

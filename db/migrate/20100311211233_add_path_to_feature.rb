@@ -1,6 +1,6 @@
 class AddPathToFeature < ActiveRecord::Migration
   def self.up
-    add_column :features, :path, :string, :limit => 250, :null => false
+    add_column :features, :path, :string, :limit => 250
   end
 
   def self.down
