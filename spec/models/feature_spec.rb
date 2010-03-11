@@ -42,7 +42,7 @@ describe Feature do
     end
     
     it "should contain a 'as a' contents" do
-      @feature.export.should contain "As a #{@feature.as_a}"
+      @feature.export.should contain "As #{@feature.as_a}"
     end
     
     it "should contain a 'i want' line" do
@@ -76,18 +76,21 @@ describe Feature do
     end
   end
 
-  context "non-exported features" do
-    it "should allow a user to submit a feature file location"
-  end
-
   context "checking the difference between a stored feature and the source file" do
     before(:each) do
-      @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/most_used.feature").export
+      @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/navigations.feature").export
+      @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/navigations.feature")
     end
+    
     it "should be able to export a feature for comparison" do
       @feature.export.should_not be_empty
     end
-    it "should be able to get the features feature file"
+
+    it "should be able to get the features feature file" do
+      pending
+      @feature.get_source_file.should contain @feature.export
+    end
+
     it "should be able to compare the feature and its related feature file"
     it "should return true if there is no diff"
     it "should return true if there is a diff"

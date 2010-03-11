@@ -2,12 +2,12 @@ one:
   id: 1
   title: my first feature
   in_order: to create an project
-  as_a: developer
+  as_a: a developer
   i_want: to have the skills
 
 two:
   id: 2
   title: my second feature
   in_order: to create the best app
-  as_a: developer
+  as_a: a developer
   i_want: I should know best practices

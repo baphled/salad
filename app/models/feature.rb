@@ -66,7 +66,7 @@ class Feature < ActiveRecord::Base
     end
     
     def feature_title
-      head =     "Feature: #{title}\n  In order #{in_order}\n"
-      head +=    "  As a #{as_a}\n  I want #{i_want}\n\n"
+      head =     "Feature: #{title.strip}\n  In order #{in_order.strip}\n"
+      head +=    "  As #{as_a.strip}\n  I want #{i_want.strip}\n\n"
     end
 end
