@@ -2,6 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Feature do
   
+  
   context "exporting features" do
     before(:each) do
       @feature ||= Feature.first
@@ -61,5 +62,29 @@ describe Feature do
       end
     end
    
+   it "should save the features file location"
+  end
+
+  context "non-exported features" do
+    it "should allow a user to submit a feature file location"
+  end
+
+  context "checking the difference between a stored feature and the source file" do
+    before(:each) do
+      @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/most_used.feature").export
+    end
+    it "should be able to export a feature for comparison" do
+      @feature.export.should_not be_empty
+    end
+    it "should be able to get the features feature file"
+    it "should be able to compare the feature and its related feature file"
+    it "should return true if there is no diff"
+    it "should return true if there is a diff"
+    
+    context "storing the diff" do
+      it "should save the file in tmp"
+      it "should save the diff file with the feature name as its filename"
+      it "should save over any existing diff file"
+    end
   end
 end
