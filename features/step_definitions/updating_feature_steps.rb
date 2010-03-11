@@ -8,10 +8,11 @@ Given /^the feature file is saved$/ do
 end
 
 When /^the feature has changed$/ do
-  @feature.update_attribute(:title, 'something totally different').should be_true
+  feature.stub!(:is_diff?).and_return true
+  @feature.is_diff?.should be_true
 end
 
 Then /^I should be alerted if a feature file has changed$/ do
 #  pending "Need to rollout implement via specs"
-  flash[:notice].should contain "This feature has changed."
+  response.should contain "This feature has been changed."
 end

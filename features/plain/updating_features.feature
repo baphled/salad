@@ -14,8 +14,8 @@ Feature: We need a way to keep our local feature files in sync with what is on t
     Scenario: An existing features story has changed
       Given we have a valid feature file
       And the feature is saved
-      When the feature has changed
-      And I view the feature
+      When I view the feature
+      And the feature has changed
       Then I should be alerted if a feature file has changed
       When we click the features "view changes"
       Then we should see the changes to the files
