@@ -86,6 +86,12 @@ describe FeatureFile do
       @feature_file.scenarios.first.steps.count == 3
     end
 
+    it "should have access to the files path" do
+      @feature_file.path.should eql "#{RAILS_ROOT}/spec/fixtures/test.feature"
+    end
+    
+    it "should store the path in the Feature when it is exported"
+    
     context "exporting the feature files information" do
       it "return the features title" do
         @feature_file.export.should be_a Feature

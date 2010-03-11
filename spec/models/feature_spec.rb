@@ -2,6 +2,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Feature do
   
+  it "can store the features file location"
+  
+  context "storing the features file location" do
+    it "should not save if the feature location is not valid"
+    it "should save if the feature location is valid"
+  end
   
   context "exporting features" do
     before(:each) do
