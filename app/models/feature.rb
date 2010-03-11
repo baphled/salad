@@ -36,9 +36,12 @@ class Feature < ActiveRecord::Base
   end
 
   def is_diff?
-
   end
 
+  def get_source_file
+    File.new(self.path).readlines if not self.path.nil?
+  end
+  
   private
 
     def valid_feature_path?
@@ -66,7 +69,7 @@ class Feature < ActiveRecord::Base
     end
     
     def feature_title
-      head =     "Feature: #{title.strip}\n  In order #{in_order.strip}\n"
-      head +=    "  As #{as_a.strip}\n  I want #{i_want.strip}\n\n"
+      head =     "Feature: #{title}\n  In order #{in_order}\n"
+      head +=    "  As #{as_a}\n  I want #{i_want}\n\n"
     end
 end

@@ -83,7 +83,6 @@ describe Feature do
     end
     
     it "should be able to export a feature for comparison" do
-      pending 'need to resolve tomorrow'
       @feature.export.should_not be_empty
     end
 
