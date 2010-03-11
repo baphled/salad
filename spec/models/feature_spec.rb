@@ -1,18 +1,25 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Feature do
-  
-  it "can store the features file location"
-  
-  context "storing the features file location" do
-    it "should not save if the feature location is not valid"
-    it "should save if the feature location is valid"
+  before(:each) do
+    @feature ||= Feature.first
+  end
+
+  it "can store the features file location" do
+    @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/most_used.feature"
+    @feature.path.should contain "#{RAILS_ROOT}/features/plain/most_used.feature"
+  end
+
+  it "should save if the feature location is valid" do
+    @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/most_used.feature").should be_true
   end
   
+  it "should not save if the feature location is not valid" do
+    @feature.path = 'foo'
+    @feature.save.should be_true
+  end
+
   context "exporting features" do
-    before(:each) do
-      @feature ||= Feature.first
-    end
     
     it "should display the 'Feature:' prefix" do
       @feature.export.should contain "Feature:"
@@ -67,8 +74,6 @@ describe Feature do
         end
       end
     end
-   
-   it "should save the features file location"
   end
 
   context "non-exported features" do

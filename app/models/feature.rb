@@ -17,7 +17,8 @@ class Feature < ActiveRecord::Base
   validates_length_of :i_want, :minimum => 7, :too_short => @@error_message
   
   validate :is_unique?
-  
+  validate :valid_feature_path?
+
   has_many :feature_projects, :order => 'position'
   has_many :projects, :through => :feature_projects
   
@@ -37,7 +38,15 @@ class Feature < ActiveRecord::Base
   def is_diff?
 
   end
+
   private
+
+    def valid_feature_path?
+      if not self.path.nil?
+        errors.add(:path, "Must be a valid feature location on your system.") if File.file? self.path
+      end
+    end
+    
     def is_unique?
       Feature.find_by_title self.title == nil
     end
