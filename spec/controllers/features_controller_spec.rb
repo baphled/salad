@@ -38,4 +38,19 @@ describe FeaturesController do
       
     end
   end
+  
+  describe "GET, show" do
+    context "feature has been changed" do
+      before(:each) do
+        @feature = mock_model(Feature,:title=>"A new feature").as_null_object
+        @feature.stub!(:is_diff?).and_return true
+        Feature.stub!(:find).and_return @feature
+        get :show, {:feature => @feature}
+      end
+      
+      it "should generate a flash message if the feature has changed" do
+        @feature.is_diff.should be_true
+      end
+    end
+  end
 end

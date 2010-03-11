@@ -47,4 +47,17 @@ describe "/features/show.html.erb" do
       response.should_not have_selector :a, attribute = {:href=> export_feature_path(@feature) }
     end
   end
+  
+  describe "feature that has changed" do
+    before(:each) do
+      @feature = mock_model(Feature,:title=>"A new feature").as_null_object
+      @feature.stub!(:is_diff?).and_return true
+      assigns[:feature] = @feature
+      render
+    end
+    
+    it "should display a flash message" do
+      flash[:notice] = 'This feature has changed.'
+    end
+  end
 end
