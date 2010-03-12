@@ -93,27 +93,13 @@ describe Feature do
       file.should_not == ''
     end
 
-    it "should be able to compare the feature and its related feature file" do
-      FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
-      file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
-      file.write(@feature.export)
-      result = %x{diff #{RAILS_ROOT}/features/plain/tag_cloud.feature #{RAILS_ROOT}/tmp/feature.tmp}
-      result.should == ''
-    end
-    
-    it "should return false if there is no diff" do
-      @feature.is_diff?.should be_false
-    end
-    
     it "should return true if there is a diff" do
       @feature.update_attribute(:title, 'Something different')
       @feature.is_diff?.should be_true
     end
-    
-    context "storing the diff" do
-      it "should save the file in tmp"
-      it "should save the diff file with the feature name as its filename"
-      it "should save over any existing diff file"
+
+    it "should return false if there is no diff" do
+      @feature.is_diff?.should be_false
     end
   end
 end

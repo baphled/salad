@@ -32,15 +32,20 @@ class Feature < ActiveRecord::Base
     self.stories.each do |story|
       exported += "#{feature_scenarios story}"
     end
-    exported
+    exported.rstrip
   end
 
   def is_diff?
-    FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
-    file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
-    file.write(self.export)
-    result = %w{diff "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
-    (result.empty?)? false : true
+    if not self.path == ''
+      FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
+      file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+      file.write(self.export)
+      file.close
+      (FileUtils.compare_file("#{self.path}", "#{RAILS_ROOT}/tmp/feature.tmp"))? false : true
+      # could easily use
+      # result = %x{diff "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
+      # (result.empty?)? false : true
+    end
   end
 
   def get_source_file
@@ -60,7 +65,7 @@ class Feature < ActiveRecord::Base
     end
     
     def feature_scenarios story
-      "\n    Scenario: #{story.scenario}\n#{story_titles story}".rstrip unless story.steps.blank?
+      result = "\n    Scenario: #{story.scenario}\n#{story_titles story}"unless story.steps.blank?
     end
     
     def story_titles story
