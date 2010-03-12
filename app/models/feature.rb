@@ -30,16 +30,21 @@ class Feature < ActiveRecord::Base
   def export
     exported = feature_title
     self.stories.each do |story|
-      exported += "#{feature_scenarios story}\n"
+      exported += "#{feature_scenarios story}"
     end
     exported
   end
 
   def is_diff?
+    FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
+    file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+    file.write(self.export)
+    result = %w{diff "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
+    (result.empty?)? false : true
   end
 
   def get_source_file
-    File.new(self.path).readlines if not self.path.nil?
+    File.read self.path if not self.path.nil?
   end
   
   private
@@ -55,21 +60,21 @@ class Feature < ActiveRecord::Base
     end
     
     def feature_scenarios story
-      "  Scenario: #{story.scenario}\n#{story_titles story}" unless story.steps.blank?
+      "\n    Scenario: #{story.scenario}\n#{story_titles story}".rstrip unless story.steps.blank?
     end
     
     def story_titles story
       titles = ""
 			last_step = nil
       story.steps.each do |step|
-        titles += step.formatted last_step
+        titles += "  #{step.formatted(last_step)}"
         last_step = step
       end
       titles
     end
     
     def feature_title
-      head =     "Feature: #{title}\n  In order #{in_order}\n"
-      head +=    "  As #{as_a}\n  I want #{i_want}\n\n"
+      head = "Feature: #{title.lstrip}\n    In order #{in_order.lstrip}\n"
+      head += "    As #{as_a.lstrip}\n    I want #{i_want.lstrip}\n"
     end
 end

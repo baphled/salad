@@ -86,14 +86,29 @@ describe Feature do
       @feature.export.should_not be_empty
     end
 
-    it "should be able to get the features feature file" do
-      pending 'Need to export a features scenario outlines before this will work with all our current feature file'
-      @feature.get_source_file.should contain @feature.export
+    it "should store the system based feature in a temp file" do
+      FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
+      file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+      file.write(@feature.export)
+      file.should_not == ''
     end
 
-    it "should be able to compare the feature and its related feature file"
-    it "should return true if there is no diff"
-    it "should return true if there is a diff"
+    it "should be able to compare the feature and its related feature file" do
+      FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
+      file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+      file.write(@feature.export)
+      result = %x{diff #{RAILS_ROOT}/features/plain/tag_cloud.feature #{RAILS_ROOT}/tmp/feature.tmp}
+      result.should == ''
+    end
+    
+    it "should return false if there is no diff" do
+      @feature.is_diff?.should be_false
+    end
+    
+    it "should return true if there is a diff" do
+      @feature.update_attribute(:title, 'Something different')
+      @feature.is_diff?.should be_true
+    end
     
     context "storing the diff" do
       it "should save the file in tmp"
