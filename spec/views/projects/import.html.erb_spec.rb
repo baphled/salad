@@ -139,6 +139,7 @@ describe "/projects/import.html.erb" do
             table.should have_selector :td, :content => 'features'
           end
         end
+        
       end
     end
   end
