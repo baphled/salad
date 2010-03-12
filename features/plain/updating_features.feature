@@ -6,6 +6,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
     Scenario: An existing feature has been changed
       Given we have a valid feature file
       And the feature file is saved
+      And the feature has a path
       When the feature has changed
       And I view the feature
       Then I should be alerted if a feature file has changed
@@ -13,9 +14,10 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       
     Scenario: An existing features story has changed
       Given we have a valid feature file
-      And the feature is saved
-      When I view the feature
-      And the feature has changed
+      And the feature file is saved
+      And the feature has a path
+      When the feature has changed
+      And I view the feature
       Then I should be alerted if a feature file has changed
       When we click the features "view changes"
       Then we should see the changes to the files

@@ -16,6 +16,9 @@ When /^the feature has changed$/ do
 end
 
 Then /^I should be alerted if a feature file has changed$/ do
-#  pending "Need to rollout implement via specs"
   response.should contain "This feature has been changed."
+end
+
+Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
+  response.should contain message
 end

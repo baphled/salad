@@ -1,5 +1,8 @@
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @feature, :assoc => :stories } %>
 
+<% if @feature.is_diff? %>
+  <%= link_to "view changes", changes_feature_path(@feature) %>
+<% end %>
 <% if !@feature.stories.blank? %>
 	<%= link_to "export feature", export_feature_path(@feature) %>
 <% end %>
