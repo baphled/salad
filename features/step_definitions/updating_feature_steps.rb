@@ -8,8 +8,7 @@ Given /^the feature file is saved$/ do
 end
 
 When /^the feature has changed$/ do
-  feature.stub!(:is_diff?).and_return true
-  @feature.is_diff?.should be_true
+  @feature.update_attribute(:title, 'Something different')
 end
 
 Then /^I should be alerted if a feature file has changed$/ do
