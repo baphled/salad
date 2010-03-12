@@ -1,10 +1,14 @@
 Given /^we have a valid feature file$/ do
-  Given %{we create a FeatureFile from a cucumber feature file with a scenario outline}
+  @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
   @feature = @file.export
 end
 
 Given /^the feature file is saved$/ do
   @feature.save.should be_true
+end
+
+Given /^the feature has a path$/ do
+  @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
 end
 
 When /^the feature has changed$/ do
