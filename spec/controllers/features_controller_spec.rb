@@ -53,4 +53,16 @@ describe FeaturesController do
       end
     end
   end
+
+  describe "GET, changes" do
+    before(:each) do
+      @feature = mock_model(Feature,:title=>"A new feature")
+      Feature.stub(:find).and_return @feature
+    end
+
+    it "should display the changes" do
+      @feature.should_receive(:diff)
+      get :changes, {:feature => @feature}
+    end
+  end
 end

@@ -1,7 +1,8 @@
 class FeaturesController < ApplicationController
+
   navigation :features
   
-  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export]
+  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes]
   before_filter :find_features_stories, :only => [:show, :stories]
 
   before_filter :find_tag
@@ -100,6 +101,10 @@ class FeaturesController < ApplicationController
   def tag
     @features = Feature.find_tagged_with params[:tag]
     render :index
+  end
+
+  def changes
+    @pretty = @feature.diff
   end
   
   def validate
