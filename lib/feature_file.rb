@@ -58,7 +58,8 @@ class FeatureFile < File
                :in_order => in_order,
                :as_a => as_a,
                :i_want => i_want,
-               :stories => scenarios)
+               :stories => scenarios,
+               :path => self.path)
   end
 
   private
