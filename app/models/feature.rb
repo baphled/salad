@@ -1,3 +1,5 @@
+require 'pretty_diff'
+
 class Feature < ActiveRecord::Base
 	include MyActiveRecordExtensions
   acts_as_taggable
@@ -51,11 +53,20 @@ class Feature < ActiveRecord::Base
   def get_source_file
     File.read self.path if not self.path.nil?
   end
+
+  def diff
+    FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
+    file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+    file.write(self.export)
+    file.close
+    result = %x{diff -pu "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
+    PrettyDiff::Diff.new(result)
+  end
   
   private
 
     def valid_feature_path?
-      if not self.path.nil?
+      if self.path.nil?
         errors.add(:path, "Must be a valid feature location on your system.") if File.file? self.path
       end
     end
