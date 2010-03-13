@@ -36,7 +36,7 @@ class Feature < ActiveRecord::Base
   end
 
   def is_diff?
-    if not self.path == ''
+    if not self.path.nil?
       FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
       file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
       file.write(self.export)
