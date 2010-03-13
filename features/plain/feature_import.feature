@@ -105,20 +105,6 @@ Feature: Users should not have to manually input their features if they have alr
       And we click import projects
       Then a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
 	
-	Scenario: When importing a new feature, we should not add scenarios that already exist
-      Given there is a project
-      And the project does have a project location
-      When the project is viewed
-      Then I should see a import link
-      When I click import
-      And select the features feature
-      And the feature is visible
-      And a scenario already exists
-      Then we scenario should display that is is already added
-      And we click import projects
-      Then the scenario should not be duplicationed
-      And a flash message 'We need to a way to store our stories within a project, this will help organise our stories.' should be displayed
-	
 	Scenario: All scenario's should display the steps associated to it
       Given there is a project
       And the project does have a project location
