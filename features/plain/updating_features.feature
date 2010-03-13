@@ -7,7 +7,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
-      When the feature has changed
+      When the feature has changed "Something different"
       And I view the feature
       Then I should be alerted if a feature file has changed
       And a "view changes" link should be displayed within the feature
@@ -16,8 +16,9 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
-      When the feature has changed
+      When the feature has changed "Something different"
       And I view the feature
       Then I should be alerted if a feature file has changed
       When we click the features "view changes"
       Then we should see the changes to the files
+      And "Something different" should be highlighted
