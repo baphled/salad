@@ -74,12 +74,25 @@ describe Feature do
         end
       end
     end
+
+    context "exporting a scenario with examples" do
+      before(:each) do
+      end
+
+      it "should display the example heading" do
+        @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/navigations.feature").export
+        @feature.export.should contain "| page"
+      end
+      
+      it "should display the examples action headings"
+      it "should have items"
+      it "each action should have the same number of items"
+    end
   end
 
   context "checking the difference between a stored feature and the source file" do
     before(:each) do
       @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export
-      @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
     end
     
     it "should be able to export a feature for comparison" do

@@ -33,6 +33,7 @@ class Feature < ActiveRecord::Base
     exported = feature_title
     self.stories.each do |story|
       exported += "#{feature_scenarios story}"
+      exported += "#{feature_examples story}"
     end
     exported.rstrip
   end
@@ -74,21 +75,37 @@ class Feature < ActiveRecord::Base
     end
     
     def feature_scenarios story
-      result = "\n    Scenario: #{story.scenario}\n#{story_titles story}"unless story.steps.blank?
+      result = (story.examples.first.blank?)? "\n  Scenario:" : "\n  Scenario Outline:"
+      result += " #{story.scenario}\n#{story_titles story}"unless story.steps.blank?
     end
-    
+
+    def feature_examples story
+      if not story.examples.first.nil?
+        result = "\n\tExamples: #{story.examples.first.heading.lstrip}\n"
+        story.examples.first.actions.each { |action| result += "| #{action.title}" }
+        result += "|\n"
+        story.examples.first.actions.first.items.each_with_index do |item, index|
+          story.examples.first.actions.each do |action|
+            result += "\t| #{action.items[index].title}"
+          end
+          result += " |\n"
+        end
+        result
+      end
+    end
+
     def story_titles story
       titles = ""
 			last_step = nil
       story.steps.each do |step|
-        titles += "  #{step.formatted(last_step)}"
+        titles += "#{step.formatted(last_step)}"
         last_step = step
       end
       titles
     end
     
     def feature_title
-      head = "Feature: #{title.lstrip}\n    In order #{in_order.lstrip}\n"
-      head += "    As #{as_a.lstrip}\n    I want #{i_want.lstrip}\n"
+      head = "Feature: #{title.lstrip}\n\  In order #{in_order.lstrip}\n"
+      head += "\  As #{as_a.lstrip}\n\  I want #{i_want.lstrip}\n"
     end
 end

@@ -5,7 +5,7 @@ end
 Given /^we select a feature with stories$/ do
   @steps = []
   3.times { |steps| @steps << mock_model(Step).as_null_object}
-  @feature = mock_model(Story,:id => 1, :steps => [@steps]).as_null_object
+  @feature.stub!(:stories).and_return mock_model(Story,:id => 1, :steps => [@steps]).as_null_object
   @feature.stories.should_not == []
 end
 
@@ -49,4 +49,3 @@ end
 Then /^that story is not added to the exported feature$/ do
   response.should_not contain "Scenario: #{Story.find(2).scenario}"
 end
-
