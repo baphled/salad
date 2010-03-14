@@ -1,11 +1,13 @@
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @feature, :assoc => :stories } %>
 
-<% if @feature.is_diff? %>
-  <%= link_to "view changes", changes_feature_path(@feature) %>
-<% end %>
-<% if !@feature.stories.blank? %>
-	<%= link_to "export feature", export_feature_path(@feature) %>
-<% end %>
+<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
+  <% if @feature.is_diff? %>
+    <%= link_to "view changes", changes_feature_path(@feature) %>
+  <% end %>
+  <% if !@feature.stories.blank? %>
+      <%= link_to "export feature", export_feature_path(@feature) %>
+  <% end %>
+</span>
 
 <div id="list">
   <%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>

@@ -5,6 +5,7 @@
 @import compass/utilities/tables.sass
 // This import applies a global reset to any page that imports this stylesheet.
 @import blueprint/reset.sass
+@import blueprint/modules/link_icons.sass
 
 // To configure blueprint, edit the partials/base.sass file.
 @import partials/base.sass
@@ -54,11 +55,14 @@
 html, body
   height: 100%
 body.salad
+  +blueprint-interaction
   +blueprint-utilities
   +blueprint-debug
-  +blueprint-interaction
   +blueprint-form
   +no-bullets
+  #content
+    +link-icon-base
+    +link-icons
   table
     +outer-table-borders(1px, #89A407)
     +inner-table-borders(1px, #C1C4B5)
@@ -107,7 +111,7 @@ body.salad
         :min-height 150px
     #sidebar
       // One third of the grid columns, rounding down. With 24 cols, this is 8.
-      !sidebar_columns = floor(!blueprint_grid_columns / 3)
+      !sidebar_columns = floor(!blueprint_grid_columns / 3.1)
       // true means it's the last column in the row
       +column(!sidebar_columns, true)
       +no-bullets
@@ -118,4 +122,7 @@ body.salad
       li
         :padding 5px 0px
     #panel
-      :padding 12px
+      :display inline-block
+      :height 32px
+      :padding 13px 12px 3px 12px
+      :margin-bottom 23px
