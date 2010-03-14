@@ -3,7 +3,7 @@ Feature: Must be able to do client side validations on our forms
     As a user
     I want the form to be validated on the client side
 
-    Scenario: As a user I must give the project a title
+    Scenario: A user gets a JS error if the title is not valid
       Given I can view the projects page
       When I click new projects
       And we fill in the project aim with 'An aim'
@@ -12,7 +12,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the form should have an client side error
 
-    Scenario: As a user I must give the project a brief description
+    Scenario: A user gets a JS error if the description is not valid
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
@@ -21,7 +21,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the form should have an client side error
 
-    Scenario: As a user I must give the project an aim
+    Scenario: A user gets a JS error if the aim is not valid
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
@@ -30,7 +30,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the form should have an client side error
 
-    Scenario: As a user I must give the project a brief description when editing a project
+    Scenario: A user gets a JS error if the description is not valid when editing a project
       Given there is a project
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
@@ -39,7 +39,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the form should have an client side error
 
-    Scenario: A projects title should be no less than 3 letters long
+    Scenario: A user gets a JS error if the title is less than 3 letters long
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'so'
@@ -49,7 +49,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the client side error message should be "Please enter at least 3 characters."
 
-    Scenario: A projects aim should be no less than 6 characters long
+    Scenario: A user gets a JS error if the aim is less than 6 characters long
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
