@@ -16,7 +16,7 @@ describe Feature do
   
   it "should not save if the feature location is not valid" do
     @feature.path = 'foo'
-    @feature.save.should be_true
+    @feature.save.should_not be_true
   end
 
   context "exporting features" do
