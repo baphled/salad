@@ -51,7 +51,7 @@ class Feature < ActiveRecord::Base
 
   def diff
     generate_diff
-    result = %x{diff -pu "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
+    result = %x{diff -uB "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
     PrettyDiff::Diff.new(result)
   end
   
@@ -81,12 +81,12 @@ class Feature < ActiveRecord::Base
 
     def feature_examples story
       if not story.examples.first.nil?
-        result = "\n\tExamples: #{story.examples.first.heading.lstrip}\n"
-        story.examples.first.actions.each { |action| result += "\t| #{action.title}" }
+        result = "\n\t\tExamples: #{story.examples.first.heading.lstrip}\n"
+        story.examples.first.actions.each { |action| result += "\t\t| #{action.title}" }
         result += " |\n"
         story.examples.first.actions.first.items.each_with_index do |item, index|
           story.examples.first.actions.each do |action|
-            result += "\t| #{action.items[index].title}"
+            result += "\t\t| #{action.items[index].title}"
           end
           result += " |\n"
         end
