@@ -82,8 +82,8 @@ class Feature < ActiveRecord::Base
     def feature_examples story
       if not story.examples.first.nil?
         result = "\n\tExamples: #{story.examples.first.heading.lstrip}\n"
-        story.examples.first.actions.each { |action| result += "| #{action.title}" }
-        result += "|\n"
+        story.examples.first.actions.each { |action| result += "\t| #{action.title}" }
+        result += " |\n"
         story.examples.first.actions.first.items.each_with_index do |item, index|
           story.examples.first.actions.each do |action|
             result += "\t| #{action.items[index].title}"

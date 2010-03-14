@@ -31,3 +31,11 @@ Feature: A user needs to be able to export created features into cucumber featur
 	And the export link should be viewable
 	And a user attempts to export a feature
 	Then that story is not added to the exported feature
+
+  Scenario: A user must be able to export a feature that has examples
+    Given we select a feature with examples
+    When we view the first feature
+	Then the export link should be viewable
+    When I use the "export feature" link
+    And the headings "foo" shold be displayed
+    Then we should see the changes to the files

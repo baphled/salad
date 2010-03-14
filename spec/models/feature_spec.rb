@@ -77,16 +77,26 @@ describe Feature do
 
     context "exporting a scenario with examples" do
       before(:each) do
+        @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/navigations.feature").export
       end
 
       it "should display the example heading" do
-        @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/navigations.feature").export
-        @feature.export.should contain "| page"
+        @feature.export.should contain "Examples:#{@feature.stories.first.examples.first.heading}"
       end
       
-      it "should display the examples action headings"
-      it "should have items"
-      it "each action should have the same number of items"
+      it "should display the examples action headings" do
+        @feature.stories.first.examples.first.actions.each do |action|
+          @feature.export.should contain "| #{action.title} |"
+        end
+      end
+      
+      it "should have items" do
+        @feature.stories.first.examples.first.actions.each do |action|
+          action.items.each do |item|
+            @feature.export.should contain "| #{item.title} |"
+          end
+        end
+      end
     end
   end
 
