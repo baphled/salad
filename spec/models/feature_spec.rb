@@ -16,7 +16,7 @@ describe Feature do
   
   it "should not save if the feature location is not valid" do
     @feature.path = 'foo'
-    @feature.save.should be_true
+    @feature.save.should_not be_true
   end
 
   context "exporting features" do
@@ -74,12 +74,35 @@ describe Feature do
         end
       end
     end
+
+    context "exporting a scenario with examples" do
+      before(:each) do
+        @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/navigations.feature").export
+      end
+
+      it "should display the example heading" do
+        @feature.export.should contain "Examples:#{@feature.stories.first.examples.first.heading}"
+      end
+      
+      it "should display the examples action headings" do
+        @feature.stories.first.examples.first.actions.each do |action|
+          @feature.export.should contain "| #{action.title} |"
+        end
+      end
+      
+      it "should have items" do
+        @feature.stories.first.examples.first.actions.each do |action|
+          action.items.each do |item|
+            @feature.export.should contain "| #{item.title} |"
+          end
+        end
+      end
+    end
   end
 
   context "checking the difference between a stored feature and the source file" do
     before(:each) do
       @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export
-      @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
     end
     
     it "should be able to export a feature for comparison" do

@@ -11,8 +11,12 @@ Given /^the feature has a path$/ do
   @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
 end
 
-When /^the feature has changed$/ do
-  @feature.update_attribute(:title, 'Something different')
+When /^the feature has changed "([^\"]*)"$/ do |message|
+  @feature.update_attribute(:title, message)
+end
+
+When /^we click the features "([^\"]*)"$/ do |arg1|
+  click_link "view changes"
 end
 
 Then /^I should be alerted if a feature file has changed$/ do
@@ -21,4 +25,14 @@ end
 
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
   response.should contain message
+end
+
+Then /^we should see the changes to the files$/ do
+  response.should have_selector :table, attribute = {:class => 'highlighttable'}
+end
+
+Then /^"([^\"]*)" should be highlighted$/ do |message|
+  response.should have_selector :span, attribute = {:class => 'gi'} do |highlighted|
+    highlighted.should contain message
+  end
 end
