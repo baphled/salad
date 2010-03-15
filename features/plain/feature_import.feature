@@ -264,10 +264,27 @@ Feature: Users should not have to manually input their features if they have alr
     
     Scenario: When importing features, we should be warned if a scenario title has been duplicated
       Given there is a project
-      And the "projects.feature" feature has a title identical to "project_form_client_side_validation.feature"
+      And the project has a project path
+      And the project has a feature to export with duplicate scenarios
   	  When the project is viewed
   	  Then I should see a import link
       When I click import
       Then the submit button will be disabled for "projects"
     
-    
+    Scenario: We want to make sure that a scenario's example are imported along with its scenario
+      Given there is a project
+      And the project has a project path
+  	  When the project is viewed
+  	  Then I should see a import link
+      When I click import
+      And we click import "most used"
+      Then the features scenario examples should be saved.
+
+    Scenario: A feature should not be created if the feature has a story that already exists in the system
+      Given there is a project
+      And the project has a feature
+      And the feature has a duplicate story title
+      When the project is viewed
+  	  Then I should see a import link
+      When I click import "projects"
+      Then the submit button will be disabled for that feature
