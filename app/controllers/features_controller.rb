@@ -88,6 +88,10 @@ class FeaturesController < ApplicationController
   end
   
   def export
+    respond_to do |format|
+      format.html
+      format.txt { render :text => "#{@feature.export}" }
+    end
   end
   
   def sort
