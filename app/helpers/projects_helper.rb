@@ -12,4 +12,11 @@ module ProjectsHelper
   def invalid_import? feature
     (feature.title.blank? || feature.in_order.blank? ||  feature.as_a.blank? || feature.i_want.blank?)? true : false
   end
+
+  def has_duplicate_feature? list
+    found = []
+    list.each do |file|
+      file[:feature].stories.each { |story| return true if found.include?(story.scenario) ;found << story.scenario }
+    end
+  end
 end
