@@ -59,7 +59,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the client side error message should be "Please enter at least 6 characters."
 
-    Scenario: A projects description should be no less than 12 characters long
+    Scenario: A user gets a JS error if A projects description should be no less than 12 characters long
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
@@ -69,7 +69,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the client side error message should be "Please enter at least 12 characters."
 
-    Scenario: A projects location must be a valid project location on their system
+    Scenario: A user gets a JS error if A projects location must be a valid project location on their system
       Given I can view the projects page
       When I click new projects
       And we fill in the project location with '/s'
@@ -77,7 +77,7 @@ Feature: Must be able to do client side validations on our forms
       And a JS based error message should be displayed
       And the client side error message should be "Must be a valid project location on your system."
 
-    Scenario: A project with valid input should save the project and be redirected to the new project
+    Scenario: No JS errors should be shown if the project is valid
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
@@ -86,7 +86,7 @@ Feature: Must be able to do client side validations on our forms
       Then submit the form
       And I should be redirected to the new project
       
-   Scenario: An project that is not unique must return the relivant client side error
+   Scenario: An project that is not unique must return the relevant client side error
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'A fixture project'
