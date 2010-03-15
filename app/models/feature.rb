@@ -51,7 +51,7 @@ class Feature < ActiveRecord::Base
 
   def diff
     generate_diff
-    result = %x{diff -uB "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
+    result = %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
     PrettyDiff::Diff.new(result)
   end
   
