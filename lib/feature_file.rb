@@ -66,13 +66,13 @@ class FeatureFile < File
 
     # @TODO refactor to take a block, allowing us to use this method for scenarios
     def read_properties property
-      @value = nil
+      value = nil
       self.reopen path if self.eof?
       self.each do |line|
         if line.strip =~ property
-          @value = line.strip.sub(property, '')
+          value = line.strip.sub(property, '')
         end
       end
-      @value
+      value.strip
     end
 end
