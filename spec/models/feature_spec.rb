@@ -98,6 +98,7 @@ describe Feature do
         end
       end
     end
+    
   end
 
   context "checking the difference between a stored feature and the source file" do
@@ -110,8 +111,8 @@ describe Feature do
     end
 
     it "should store the system based feature in a temp file" do
-      FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
-      file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+      FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(@feature.path)}.tmp")
+      file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(@feature.path)}.tmp", 'w')
       file.write(@feature.export)
       file.should_not == ''
     end

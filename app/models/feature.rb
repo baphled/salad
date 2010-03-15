@@ -41,7 +41,7 @@ class Feature < ActiveRecord::Base
   def is_diff?
     if not self.path.nil?
       generate_diff
-      (FileUtils.compare_file("#{self.path}", "#{RAILS_ROOT}/tmp/feature.tmp"))? false : true
+      (FileUtils.compare_file("#{self.path}", "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"))? false : true
     end
   end
 
@@ -51,15 +51,15 @@ class Feature < ActiveRecord::Base
 
   def diff
     generate_diff
-    result = %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/feature.tmp"}
+    result = %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
     PrettyDiff::Diff.new(result)
   end
   
   private
 
     def generate_diff
-      FileUtils.touch("#{RAILS_ROOT}/tmp/feature.tmp")
-      file = File.new("#{RAILS_ROOT}/tmp/feature.tmp", 'w')
+      FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp")
+      file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp", 'w')
       file.write(self.export)
       file.close
     end
