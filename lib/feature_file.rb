@@ -27,11 +27,11 @@ class FeatureFile < File
     self.reopen path if self.eof?
     self.each do |line| 
       if line.strip =~ /^(Scenario Outline|Scenario):/
-        scenarios << Story.find_or_initialize_by_scenario(:scenario => line.strip.sub(/^(Scenario|Scenario Outline): /, ''))
+        scenarios << Story.new(:scenario => line.strip.sub(/^(Scenario|Scenario Outline): /, ''))
       elsif line.strip =~ /^(Given|When|Then|And)/ and scenarios.last.nil? == false
         str = line.strip
         str = line.strip.sub('And', scenarios.last.steps.last.first_word) if line.strip =~ /^And/
-        scenarios.last.steps << Step.find_or_create_by_title(str)   # need to clean this up
+        scenarios.last.steps << Step.find_or_initialize_by_title(:title => str)   # need to clean this up
       elsif line.strip =~ /^Examples:/
         scenarios.last.examples << Example.new(:heading => line.strip.sub(/^Examples:/, ''))
       elsif (line.strip =~ /^\|\w*|/ and scenarios.last.nil? == false) and scenarios.last.examples.last.nil? == false
