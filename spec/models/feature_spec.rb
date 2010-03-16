@@ -81,7 +81,7 @@ describe Feature do
       end
 
       it "should display the example heading" do
-        @feature.export.should contain "Examples:#{@feature.stories.first.examples.first.heading}"
+        @feature.export.should contain "Examples: #{@feature.stories.first.examples.first.heading}"
       end
       
       it "should display the examples action headings" do
