@@ -13,15 +13,18 @@ module ProjectsHelper
     (feature.title.blank? || feature.in_order.blank? ||  feature.as_a.blank? || feature.i_want.blank?)? true : false
   end
 
-  def has_duplicate_feature? features
-    features.each do |file|
-      found = []
-      result = false
+  def has_duplicate_feature? feature_import, list
+    found = []
+    result = false
+    list.each do |file|
       file[:feature].stories.each do |story|
-        result = true if found.include? story.scenario
+        result = true if found.member?(story.scenario) and (file[:file] == feature_import)
+        return result if result
         found << story.scenario
       end
-      return result
+      return result if result
     end
+    result
   end
+  
 end

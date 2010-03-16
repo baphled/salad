@@ -27,8 +27,10 @@
       <% end -%>
     <% end %>
     <br />
-    <% if invalid_import? file[:feature] or has_duplicate_feature? @imported %>
+    <% if invalid_import? file[:feature] %>
       <p id="error">Invalid feature</p>
+    <% elsif has_duplicate_feature? file[:file], @imported %>
+      <p id="error">Feature has duplicate scenario</p>    
     <% elsif has_no_stories? file[:feature] %>
       <p id="error">No Scenario's found</p>
     <% else %>
