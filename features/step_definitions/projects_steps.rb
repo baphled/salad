@@ -368,6 +368,10 @@ Then /^the submit button will be disabled for that feature$/ do
   response.should_not have_selector :input, attribute = {:value => "Import failing feature"}
 end
 
+Then /^the submit button will be disabled for that feature "([^\"]*)"$/ do |button_name|
+  response.should_not have_selector :input, attribute = {:value => "#{button_name}"}
+end
+
 Then /^it should include features from all sub directories within the feature directory$/ do
   response.should contain "Feature: hover functionality"
 end
