@@ -33,7 +33,7 @@ class FeatureFile < File
         str = line.strip.sub('And', scenarios.last.steps.last.first_word) if line.strip =~ /^And/
         scenarios.last.steps << Step.find_or_initialize_by_title(:title => str)   # need to clean this up
       elsif line.strip =~ /^Examples:/
-        scenarios.last.examples << Example.new(:heading => line.strip.sub(/^Examples:/, ''))
+        scenarios.last.examples << Example.new(:heading => line.strip.sub(/^Examples:/, '').strip)
       elsif (line.strip =~ /^\|\w*|/ and scenarios.last.nil? == false) and scenarios.last.examples.last.nil? == false
         if scenarios.last.examples.last.actions.empty?
           line.strip.split('|').each { |action| scenarios.last.examples.last.actions << Action.new(:title => action.gsub(/ /,'').strip) unless action.strip.blank?}
