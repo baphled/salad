@@ -269,7 +269,7 @@ Feature: Users should not have to manually input their features if they have alr
   	  When the project is viewed
   	  Then I should see a import link
       When I click import
-      Then the submit button will be disabled for "projects"
+      Then the submit button will be disabled for "sample_one"
     
     Scenario: We want to make sure that a scenario's example are imported along with its scenario
       Given there is a project
