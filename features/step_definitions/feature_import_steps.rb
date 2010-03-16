@@ -3,7 +3,7 @@ Given /^the project has a feature to export with duplicate scenarios$/ do
 end
 
 Given /^the project has a project path$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}")
+  @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures")
 end
 
 Then /^I should see a import link$/ do
