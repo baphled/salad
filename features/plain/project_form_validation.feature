@@ -3,7 +3,7 @@ Feature: Must be able to deal with our projects validations on our forms
     As a user
     I want the form to be validated on the back end
 
-    Scenario: As a user I must give the project a title
+    Scenario: A user must input a valid title
       Given I can view the projects page
       When I click new projects
       And we fill in the project aim with 'An aim'
@@ -11,7 +11,7 @@ Feature: Must be able to deal with our projects validations on our forms
       Then submit the form
       And the "project" "title" "input" should have an error class
 
-    Scenario: As a user I must give the project an aim
+    Scenario: A user must input a valid aim
       Given I can view the projects page
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'
@@ -19,7 +19,7 @@ Feature: Must be able to deal with our projects validations on our forms
       Then submit the form
       And the "project" "aim" "input" should have an error class
 
-    Scenario: As a user I must give the project a brief description when editing a project
+    Scenario: A user must input a valid description
       Given there is a project
       When I click new projects
       And we fill in the project title with 'WorldPeace2.0'

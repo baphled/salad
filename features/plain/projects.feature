@@ -14,7 +14,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
     And a flash message 'Project: A project was created' should be displayed
 
-  Scenario: As a user I must give a new project a title
+  Scenario: As a user I must give the project a title
     Given I can view the projects page
     When I click new projects
     And we fill in the project aim with 'An aim'
@@ -24,7 +24,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a form error must be displayed
     And the user should be told the must have a title
 		
-  Scenario: As a user I must give the project a brief description
+  Scenario: As a user I must give the project a brief description when editing a project
     Given I can view the projects page
     When I click new projects
     And we fill in the project title with 'A project'
