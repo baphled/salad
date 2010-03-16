@@ -47,6 +47,18 @@ describe "/projects/import.html.erb" do
           end
         end
 
+        context "when a feature file has a local duplicate" do
+          before(:each) do
+            @project.stub!(:location).and_return "#{RAILS_ROOT}/spec/fixtures"
+          end
+          it "should display the location of the duplicate file" do
+            render
+            response.should have_selector :p, attribute = {:id => 'error'} do |content|
+              content.should contain "Feature already exists in features/sample_one.feature"
+            end
+          end
+        end
+
         it "should not have an import button" do
           assigns[:imported].first[:feature].i_want = nil
           render

@@ -245,14 +245,14 @@ Feature: Users should not have to manually input their features if they have alr
       Then each of the features tabs should not include any underscores
       And each of the features title should not include any underscores
 
+    # @todo Find a better way to implement this step
     Scenario: When importing features and a feature file name is shared with another
       Given there is a project
       And the project does have a project location to an invalid feature
   	  When the project is viewed
   	  Then I should see a import link
       When I click import
-      When a feature file shares its name with another feature file
-      Then display the feature file already exists
+      Then display the feature file for "sample_one" already exists
       And display the location in which the original was found
       
     Scenario: When importing a feature which has examples, these should be displayed within the given scenario

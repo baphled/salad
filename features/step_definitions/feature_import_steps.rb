@@ -71,3 +71,16 @@ Then /^the submit button will be disabled for "([^\"]*)"$/ do |container|
     end
   end
 end
+
+Then /^display the feature file for "([^\"]*)" already exists$/ do |feature_file|
+  save_and_open_page
+  response.should have_selector :div, attribute = {:id => "#{feature_file}_feature"} do |container|
+    container.should have_selector :form, attribute = {:id => "new_feature"} do |form|
+      form.should have_selector :fieldset do |fieldset|
+        fieldset.should have_selector :p, attribute = {:id => "error"} do |error|
+          error.should contain "Feature already exists in features/sample_one.feature"
+        end
+      end
+    end
+  end
+end
