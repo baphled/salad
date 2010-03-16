@@ -279,7 +279,6 @@ Feature: Users should not have to manually input their features if they have alr
       When I click import
       And we click import "most used"
       Then the features scenario "Our actions that we want to check states for" should be saved
-      Then the features scenario examples should be saved.
 
     Scenario: A feature should not be submittable if a duplicate scenario is found in the new feature
       Given there is a project
