@@ -3,11 +3,7 @@ Given /^the project has a feature to export with duplicate scenarios$/ do
 end
 
 Given /^the project has a project path$/ do
-  @project.update_attribute :location, "#{RAILS_ROOT}/spec/fixtures"
-end
-
-When /^we click import "([^\"]*)"$/ do |button|
-  click_link button
+  @project.update_attribute(:location,"#{RAILS_ROOT}")
 end
 
 Then /^I should see a import link$/ do
@@ -65,11 +61,13 @@ Then /^the features scenario examples should be saved\.$/ do
   Example.find_by_heading('Our actions that we want to check states for').should_not be_nil
 end
 
-Then /^the submit button will be disabled for "([^\"]*)"$/ do |arg1|
-  response.should have_selector :form, attribute = {:id => "new_feature"} do |form|
-    form.should have_selector :fieldset do |fieldset|
-      fieldset.should have_selector :p, attribute = {:id => "error"} do |error|
-        error.should contain "Invalid feature"
+Then /^the submit button will be disabled for "([^\"]*)"$/ do |container|
+  response.should have_selector :div, attribute = {:id => "#{container}_feature"} do |container|    
+    container.should have_selector :form, attribute = {:id => "new_feature"} do |form|
+      form.should have_selector :fieldset do |fieldset|
+        fieldset.should have_selector :p, attribute = {:id => "error"} do |error|
+          error.should contain "Feature has duplicate scenario"
+        end
       end
     end
   end

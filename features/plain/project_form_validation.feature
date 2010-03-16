@@ -11,14 +11,6 @@ Feature: Must be able to deal with our projects validations on our forms
       Then submit the form
       And the "project" "title" "input" should have an error class
 
-    Scenario: As a user I must give the project a brief description
-      Given I can view the projects page
-      When I click new projects
-      And we fill in the project title with 'WorldPeace2.0'
-      And we fill in the project aim with 'An aim'
-      Then submit the form
-      And the "project" "description" "input" should have an error class
-
     Scenario: As a user I must give the project an aim
       Given I can view the projects page
       When I click new projects
@@ -49,7 +41,7 @@ Feature: Must be able to deal with our projects validations on our forms
       Then submit the form
       And the error message should be "Please enter at least 6 characters."
 
-    Scenario: A projects description should be no less than 12 characters long
+    Scenario: A JS error is displayed if a projects description is less than 12 characters long
       Given I can view the projects page
       When I click new projects
       And we fill in the project description with 'too short'
