@@ -51,7 +51,9 @@ describe "/projects/import.html.erb" do
           before(:each) do
             @project.stub!(:location).and_return "#{RAILS_ROOT}/spec/fixtures"
           end
+
           it "should display the location of the duplicate file" do
+            pending 'Need to implement functionality'
             render
             response.should have_selector :p, attribute = {:id => 'error'} do |content|
               content.should contain "Feature already exists in features/sample_one.feature"
