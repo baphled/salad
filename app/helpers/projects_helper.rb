@@ -14,9 +14,5 @@ module ProjectsHelper
   end
 
   def has_duplicate_feature? list
-    found = []
-    list.each do |file|
-      file[:feature].stories.each { |story| return true if found.include?(story.scenario) ;found << story.scenario }
-    end
   end
 end
