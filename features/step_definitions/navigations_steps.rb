@@ -11,6 +11,10 @@ When /^I use the "([^\"]*)" link$/ do |link|
   click_link link
 end
 
+When /^we click import "([^\"]*)"$/ do |feature_title|
+  click_button "Import #{feature_title}"
+end
+
 Then /^the navigation should be displayed$/ do
   response.should have_selector :div, attribute = {:id => 'menu'}
 end

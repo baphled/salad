@@ -56,9 +56,8 @@ Then /^the first story should contain its examples$/ do
   response.should contain 'Examples'
 end
 
-Then /^the features scenario examples should be saved\.$/ do
-  pending 'Need to implement this step'
-  Example.find_by_heading('Our actions that we want to check states for').should_not be_nil
+Then /^the features scenario "([^\"]*)" should be saved$/ do |arg1|
+  Example.first.heading.should eql 'Our actions that we want to check states for'
 end
 
 Then /^the submit button will be disabled for "([^\"]*)"$/ do |container|
