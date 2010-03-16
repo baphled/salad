@@ -41,7 +41,7 @@ describe ProjectsHelper do
       end
       
       it "should return true" do
-        helper.has_duplicate_feature?('foo', @feature_import).should be_true
+        helper.has_duplicate_feature?('bar', @feature_import).should be_true
       end
     end
 
