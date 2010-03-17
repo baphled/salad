@@ -21,4 +21,4 @@ Feature: Patching modified feature files
       Then I should be alerted if a feature file has changed
       And a "patch changes" link should be displayed within the feature
       When we click the features "patch changes"
-      Then we should display a patch with the changes
+      Then we should display the patch

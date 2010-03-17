@@ -65,4 +65,16 @@ describe FeaturesController do
       get :changes, {:feature => @feature}
     end
   end
+  
+  describe "GET, patch" do
+    before(:each) do
+      @feature = mock_model(Feature,:title=>"A new feature")
+      Feature.stub(:find).and_return @feature
+    end
+    
+    it "should display the patch file" do
+      @feature.should_receive(:patch)
+      get :patch, {:feature => @feature}
+    end
+  end
 end

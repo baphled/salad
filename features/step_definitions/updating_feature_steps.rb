@@ -15,8 +15,8 @@ When /^the feature has changed "([^\"]*)"$/ do |message|
   @feature.update_attribute(:title, message)
 end
 
-When /^we click the features "([^\"]*)"$/ do |arg1|
-  click_link "view changes"
+When /^we click the features "([^\"]*)"$/ do |link|
+  click_link link
 end
 
 Then /^I should be alerted if a feature file has changed$/ do
@@ -35,4 +35,8 @@ Then /^"([^\"]*)" should be highlighted$/ do |message|
   response.should have_selector :span, attribute = {:class => 'gi'} do |highlighted|
     highlighted.should contain message
   end
+end
+
+Then /^we should display the patch$/ do
+  response.should have_selector :textarea, :content => "+Feature: Something different"
 end

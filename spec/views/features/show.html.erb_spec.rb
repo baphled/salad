@@ -59,5 +59,10 @@ describe "/features/show.html.erb" do
     it "should display a flash message" do
       flash[:notice] = 'This feature has changed.'
     end
+    
+    it "should display a patch link" do
+      response.should have_selector :a, attribute = {:href=> patch_feature_path(@feature) }
+    end
   end
+  
 end
