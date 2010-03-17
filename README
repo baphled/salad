@@ -16,13 +16,15 @@ What Salad does
 Helps organise features & their stories
 Manage a stories steps
 Allows you to import features
+Allows you to export features
+Patch & diff features
 
 What Salad doesn't do
 Automatically generate cucumber steps
 Make your coffee (yet)
 
 Future features
-Allows you to export features
+Display which features a features status (pending,complete,etc)
 LightHouse integration
 GitHub integration
 
@@ -30,7 +32,7 @@ Install
 git export http://github.com/baphled/salad &&
 cd salad &&
 cp config/database.example config/database.yml &&
-rake gems:install &&
+sudo rake gems:install &&
 rake gems:unpack &&
 rake gems:unpack:dependencies &&
 rake db:create &&
@@ -51,3 +53,9 @@ script/generate cucumber
 Setting up the Selenium testing environment
 
 See http://wiki.github.com/aslakhellesoy/cucumber/setting-up-selenium for instructions on setting up Selenium.
+
+TODO
+Improve the speed of the file import tests
+Refactor cucumber steps
+Rehaul of the layout
+AJAXify site
