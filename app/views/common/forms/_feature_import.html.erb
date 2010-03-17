@@ -30,7 +30,7 @@
     <% end %>
     <br />
     <% if has_duplicate_feature_name?(file[:feature].path, @imported) %>
-    <p id="error"><%= has_duplicate_feature_name?(file[:feature].path, @imported) %></p>
+    <p id="error">Feature already exists in <%= has_duplicate_feature_name?(file[:feature].path, @imported) %></p>
     <% end %>
     <% if invalid_import? file[:feature] %>
       <p id="error">Invalid feature</p>

@@ -253,7 +253,6 @@ Feature: Users should not have to manually input their features if they have alr
   	  Then I should see a import link
       When I click import
       Then display the feature file for "sample_one" already exists
-      And display the location in which the original was found
       
     Scenario: When importing a feature which has examples, these should be displayed within the given scenario
       Given there is a project
