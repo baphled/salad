@@ -27,4 +27,15 @@ module ProjectsHelper
     result
   end
   
+  def has_duplicate_feature_name? feature_path, list
+    feature_titles = []
+    list.each do |file|
+      feature_titles << File.basename(file[:file])
+    end
+    if feature_titles.dups.empty? == false and feature_titles.dups.member?(File.basename(feature_path))
+      return feature_path
+    end
+    false
+  end
+  
 end

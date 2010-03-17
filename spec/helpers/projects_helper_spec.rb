@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe ProjectsHelper do
+  before(:each) do
+    @feature = stub_model(Feature).as_null_object
+  end
 
-  describe  "#has_duplicate_feature?(:list)" do
-    before(:each) do
-      @feature = mock_model(Feature).as_null_object
-    end
-    
+  describe  "#has_duplicate_feature?(:list)" do    
     context "When there a single feature are no duplicate scenario's" do
       before(:each) do
         stories = []
@@ -58,4 +57,22 @@ describe ProjectsHelper do
       end
     end
   end
+  describe  "#has_duplicate_feature_name?(:list)" do
+
+    before(:each) do
+      @feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature"
+    end
+    
+    it "should return false if the feature shares its name wuth another feature" do
+      @feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature"
+      @feature_import = [{:file => "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", :feature => @feature}]
+      helper.has_duplicate_feature_name?("#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", @feature_import).should be_false
+    end
+    
+    it "should return true if the feature shares its name with another feature" do
+      @feature_import = [{:file => "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", :feature => @feature}, {:file => "#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature", :feature => @feature}]
+      helper.has_duplicate_feature_name?("#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature", @feature_import).should == "#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature"
+    end
+  end
+  
 end

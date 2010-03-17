@@ -29,6 +29,9 @@
       <% end -%>
     <% end %>
     <br />
+    <% if has_duplicate_feature_name?(file[:feature].path, @imported) %>
+    <p id="error"><%= has_duplicate_feature_name?(file[:feature].path, @imported) %></p>
+    <% end %>
     <% if invalid_import? file[:feature] %>
       <p id="error">Invalid feature</p>
     <% elsif has_duplicate_feature? file[:file], @imported %>
