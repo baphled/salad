@@ -22,3 +22,18 @@ Feature: Patching modified feature files
       And a "patch changes" link should be displayed within the feature
       When we click the features "patch changes"
       Then we should display the patch
+
+    Scenario: A user should be redirected if they try to acess a feature with no patch file
+      Given I can view the features page
+      And there are features
+      And there is a feature that is different from the source file
+      When we view the feature with the "patch" format
+      Then the user should be redirected back
+      And the flash message "No patch available" should be displayed
+
+    Scenario: A user should be able to acess a features patch in a RESTful way
+      Given I can view the features page
+      And there are features
+      And there is a feature that is different from the source file
+      When we view the feature with the "patch" format
+      Then the patch should be displayed

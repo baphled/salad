@@ -22,3 +22,18 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       When we click the features "view changes"
       Then we should see the changes to the files
       And "Something different" should be highlighted
+
+    Scenario: A user should be redirected if they try to access a feature that has no changes
+      Given I can view the features page
+      And there are features
+      And there is a feature that is different from the source file
+      When we view the feature with the "diff" format
+      Then the user should be redirected back
+      And the flash message "No diff available" should be displayed
+
+    Scenario: A user should be able to acess a features diff in a RESTful way
+      Given I can view the features page
+      And there are features
+      And there is a feature that is different from the source file
+      When we view the feature with the "diff" format
+      Then the diff should be displayed
