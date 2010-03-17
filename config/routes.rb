@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
                     :validate => :get},
     :member => {:stories => :get,
                 :changes => :get,
+                :patch  =>  :get,
                 :export => :get}
 
   map.resources :stories,

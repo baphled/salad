@@ -45,6 +45,10 @@ class Feature < ActiveRecord::Base
     end
   end
 
+  def patch
+    %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
+  end
+  
   def get_source_file
     File.read self.path if not self.path.nil?
   end

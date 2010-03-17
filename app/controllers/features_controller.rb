@@ -2,7 +2,7 @@ class FeaturesController < ApplicationController
 
   navigation :features
   
-  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes]
+  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes, :patch]
   before_filter :find_features_stories, :only => [:show, :stories]
 
   before_filter :find_tag
@@ -109,6 +109,10 @@ class FeaturesController < ApplicationController
 
   def changes
     @pretty = @feature.diff
+  end
+  
+  def patch
+    @patch = @feature.patch
   end
   
   def validate
