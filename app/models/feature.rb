@@ -46,7 +46,7 @@ class Feature < ActiveRecord::Base
   end
 
   def patch
-    %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
+    generate_diff
   end
   
   def get_source_file
@@ -54,8 +54,7 @@ class Feature < ActiveRecord::Base
   end
 
   def diff
-    generate_diff
-    result = %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
+    result = generate_diff
     PrettyDiff::Diff.new(result)
   end
   
@@ -66,6 +65,7 @@ class Feature < ActiveRecord::Base
       file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp", 'w')
       file.write(self.export)
       file.close
+      %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
     end
 
     def valid_feature_path?
