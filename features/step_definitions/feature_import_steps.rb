@@ -61,14 +61,8 @@ Then /^the features scenario "([^\"]*)" should be saved$/ do |arg1|
 end
 
 Then /^the submit button will be disabled for "([^\"]*)"$/ do |container|
-  response.should have_selector :div, attribute = {:id => "#{container}_feature"} do |container|    
-    container.should have_selector :form, attribute = {:id => "new_feature"} do |form|
-      form.should have_selector :fieldset do |fieldset|
-        fieldset.should have_selector :p, attribute = {:id => "error"} do |error|
-          error.should contain "Feature has duplicate scenario"
-        end
-      end
-    end
+  response.should have_selector :p, attribute = {:id => "error"} do |error|
+    error.should contain "Feature has duplicate scenario"
   end
 end
 
