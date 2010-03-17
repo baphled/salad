@@ -302,7 +302,9 @@ When /^select the features feature$/ do
 end
 
 When /^the feature is visible$/ do
-  response.should have_selector :div, attribute = {:id => "projects_feature"}
+  response.should have_selector :div do |content|
+    content.should have_selector :h3, :content => "Feature: projects"
+  end
 end
 
 When /^we click import projects$/ do
