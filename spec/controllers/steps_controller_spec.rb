@@ -69,12 +69,6 @@ describe StepsController do
         flash[:notice].should contain "Step: #{@step.title}, was created"
       end
 
-      it "should redirect to the step" do
-        pending
-        post :create
-        response.should redirect_to step_path(@step)
-      end
-      
       it "should save the step" do
         post :create
         response.should be_success
@@ -124,12 +118,6 @@ describe StepsController do
       it "should display a flash[:notice] message" do
         put :update, {:step => @step}
         flash[:notice].should contain "Step: #{@step.title} was updated"
-      end
-
-      it "should redirect to the step" do
-        pending
-        put :update, {:step => @step}
-        response.should redirect_to step_path(@step)
       end
 
       it "should save the step" do

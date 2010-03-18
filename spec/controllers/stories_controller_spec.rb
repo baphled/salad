@@ -43,12 +43,6 @@ describe StoriesController do
         flash[:notice].should contain "Story: #{@story.scenario}, was created"
       end
 
-      it "should redirect to the stories page" do
-      pending
-        post :create, :story => @story
-        response.should redirect_to story_path @story
-      end
-
       it "should save the story" do
         post :create
         response.should be_success
@@ -138,12 +132,6 @@ describe StoriesController do
         post :update, {:story => @story}
         flash[:notice].should contain "Story: #{@story.scenario} was updated"
       end
-
-      it "should redirect to the updated story" do
-        pending
-        post :update, {:story => @story}
-        response.should redirect_to story_path(@story)
-      end
       
       it "should updat the story" do
         post :update, {:story => @story}
@@ -200,8 +188,9 @@ describe StoriesController do
       get :sort, :story => @story
     end
 
-    it "should update all stories attributes"
-    it "should render nothing"
+    it "should update all stories attributes" do
+      @story.each { |story| story.should_receive(:update_all)}
+    end
   end
 
   describe "GET, tag" do

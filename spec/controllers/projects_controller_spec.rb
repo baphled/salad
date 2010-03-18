@@ -44,12 +44,6 @@ describe ProjectsController do
         flash.should contain "Project: #{@project.title} was created"
       end
 
-      it "should redirect to the projects page" do
-        pending
-        post :create
-        response.should redirect_to projects_path
-      end
-
       it "should save the project" do
         post :create
         response.should be_success
