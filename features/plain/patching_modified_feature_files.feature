@@ -23,6 +23,7 @@ Feature: Patching modified feature files
       When we click the features "patch changes"
       Then we should display the patch
 
+    @wip
     Scenario: A user should be redirected if they try to acess a feature with no patch file
       Given I can view the features page
       And there are features
@@ -31,6 +32,7 @@ Feature: Patching modified feature files
       Then the user should be redirected back
       And the flash message "No patch available" should be displayed
 
+    @wip
     Scenario: A user should be able to acess a features patch in a RESTful way
       Given I can view the features page
       And there are features
