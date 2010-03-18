@@ -48,7 +48,7 @@ describe "/features/show.html.erb" do
     end
   end
   
-  describe "feature that has changed" do
+  context "feature that has changed" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature").as_null_object
       @feature.stub!(:is_diff?).and_return true
@@ -56,8 +56,8 @@ describe "/features/show.html.erb" do
       render
     end
     
-    it "should display a flash message" do
-      flash[:notice] = 'This feature has changed.'
+    it "should display a view diff link" do
+      response.should have_selector :a, attribute = {:href=> changes_feature_path(@feature) }
     end
     
     it "should display a patch link" do

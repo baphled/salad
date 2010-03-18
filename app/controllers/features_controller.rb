@@ -54,6 +54,7 @@ class FeaturesController < ApplicationController
     end
     respond_to do |format|
       format.html
+      format.patch { handle_patch_view(@feature) }
       format.js { render "show.rjs" }
     end
   end
@@ -124,6 +125,15 @@ class FeaturesController < ApplicationController
   end
   
   private
+    def handle_patch_view feature
+      if feature.is_diff?
+        render :text => feature.patch
+      else
+        flash[:error] = 'No patch available'
+        redirect_to feature_path(feature)
+      end
+    end
+    
     def find_tag
       @tags = Feature.tag_counts
     end
