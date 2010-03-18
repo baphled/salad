@@ -19,6 +19,10 @@ When /^we click the features "([^\"]*)"$/ do |link|
   click_link link
 end
 
+When /^the features changes are viewed$/ do
+  visit feature_path(@feature,:format => :patch)
+end
+
 Then /^I should be alerted if a feature file has changed$/ do
   response.should contain "This feature has been changed."
 end
@@ -39,4 +43,8 @@ end
 
 Then /^we should display the patch$/ do
   response.should contain "+Feature: Something different"
+end
+
+Then /^we should be redirected to the feature page$/ do
+  response.should contain 'Feature does not have any changes'
 end
