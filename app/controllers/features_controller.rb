@@ -55,6 +55,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       format.html
       format.patch { handle_patch_view(@feature) }
+      format.feature { render :text => @feature.export }
       format.js { render "show.rjs" }
     end
   end

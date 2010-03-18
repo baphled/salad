@@ -49,3 +49,7 @@ end
 Then /^that story is not added to the exported feature$/ do
   response.should_not contain "Scenario: #{Story.find(2).scenario}"
 end
+
+Then /^the feature should be displayed$/ do
+  response.should be_success
+end

@@ -31,3 +31,8 @@ Feature: A user needs to be able to export created features into cucumber featur
 	And the export link should be viewable
 	And a user attempts to export a feature
 	Then that story is not added to the exported feature
+
+  Scenario: We want to be able to export the feature in a RESTful manner
+    Given there is a feature
+	When we view the feature with the "feature" format
+    Then the feature should be displayed
