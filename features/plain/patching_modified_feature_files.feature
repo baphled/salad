@@ -32,3 +32,9 @@ Feature: Patching modified feature files
       Given  there is a feature that is different from the source file
       When we view the feature with the "patch" format
       Then the patch should be displayed
+      
+    Scenario: A user should be redirected back to the feature when they try to access a patch that does not exist
+      Given we have a valid feature file
+      And the feature file is saved
+      When the features diff is viewed
+      Then the flash message "No patch available" should be displayed

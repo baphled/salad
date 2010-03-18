@@ -83,9 +83,27 @@ describe FeaturesController do
       Feature.stub(:find).and_return @feature
     end
 
-    it "should display the changes" do
-      @feature.should_receive(:diff)
-      get :changes, {:feature => @feature}
+    context "has changes" do
+      before(:each) do
+        @feature.stub!(:is_diff?).and_return true
+      end
+      
+      it "should display the changes" do
+        @feature.should_receive(:diff)
+        get :changes, {:feature => @feature}
+      end
     end
+    
+    context "has no changes" do
+      before(:each) do
+        @feature.stub!(:is_diff?).and_return false
+      end
+      
+      it "should redirect to the feature" do
+        get :changes, {:feature => @feature}
+        response.should redirect_to feature_path(@feature)
+      end
+    end
+    
   end
 end

@@ -19,8 +19,12 @@ When /^we click the features "([^\"]*)"$/ do |link|
   click_link link
 end
 
-When /^the features changes are viewed$/ do
+When /^the features diff is viewed$/ do
   visit feature_path(@feature,:format => :patch)
+end
+
+When /^the features changes is viewed$/ do
+  visit changes_feature_path(@feature)
 end
 
 Then /^I should be alerted if a feature file has changed$/ do

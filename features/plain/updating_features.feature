@@ -22,9 +22,9 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       When we click the features "view changes"
       Then we should see the changes to the files
       And "Something different" should be highlighted
-      
-    Scenario: A user should be redirected back to the feature when they try to access a patch that does not exist
+          
+    Scenario: A user should be redirected back to the feature when they try to access changes that does not exist
       Given we have a valid feature file
       And the feature file is saved
-      When the features changes are viewed
-      Then the flash message "No patch available" should be displayed
+      When the features changes is viewed
+      Then the flash message "No changes available" should be displayed
