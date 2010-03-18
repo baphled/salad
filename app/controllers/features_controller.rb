@@ -109,7 +109,12 @@ class FeaturesController < ApplicationController
   end
 
   def changes
-    @pretty = @feature.diff
+    if @feature.is_diff?
+      @pretty = @feature.diff
+    else
+      flash[:error] = "No changes available"
+      redirect_to feature_path @feature
+    end
   end
 
   def validate
