@@ -65,7 +65,7 @@ class Feature < ActiveRecord::Base
       file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp", 'w')
       file.write(self.export)
       file.close
-      %x{diff -u "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
+      %x{diff -u "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp" "#{self.path}"}
     end
 
     def valid_feature_path?
