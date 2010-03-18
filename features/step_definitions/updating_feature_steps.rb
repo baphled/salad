@@ -38,5 +38,5 @@ Then /^"([^\"]*)" should be highlighted$/ do |message|
 end
 
 Then /^we should display the patch$/ do
-  response.should have_selector :textarea, :content => "+Feature: Something different"
+  response.should contain "+Feature: Something different"
 end

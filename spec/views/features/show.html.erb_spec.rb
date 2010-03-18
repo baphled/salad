@@ -61,7 +61,7 @@ describe "/features/show.html.erb" do
     end
     
     it "should display a patch link" do
-      response.should have_selector :a, attribute = {:href=> patch_feature_path(@feature) }
+      response.should have_selector :a, attribute = {:href=> feature_path(@feature, :format => :patch) }
     end
   end
   

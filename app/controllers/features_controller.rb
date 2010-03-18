@@ -111,11 +111,7 @@ class FeaturesController < ApplicationController
   def changes
     @pretty = @feature.diff
   end
-  
-  def patch
-    @patch = @feature.patch
-  end
-  
+
   def validate
     result = true
     if Feature.find_by_title params[:title]

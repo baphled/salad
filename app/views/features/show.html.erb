@@ -3,7 +3,7 @@
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <% if @feature.is_diff? %>
     <%= link_to "view changes", changes_feature_path(@feature) %>
-    <%= link_to "patch changes", patch_feature_path(@feature) %>
+    <%= link_to "patch changes", feature_path(@feature, :format => :patch) %>
   <% end %>
   <% if !@feature.stories.blank? %>
       <%= link_to "export feature", export_feature_path(@feature) %>
