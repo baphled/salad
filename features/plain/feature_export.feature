@@ -42,6 +42,3 @@ Feature: A user needs to be able to export created features into cucumber featur
     And the features system version is not newer than the source file
     When When we view the feature
     Then we should not see the export link
-  
-  
-  

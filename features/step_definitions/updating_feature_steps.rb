@@ -46,7 +46,7 @@ Then /^"([^\"]*)" should be highlighted$/ do |message|
 end
 
 Then /^we should display the patch$/ do
-  response.should contain "-Feature: Something different"
+  response.should contain "+Feature: Something different"
 end
 
 Then /^we should be redirected to the feature page$/ do
