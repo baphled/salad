@@ -126,4 +126,10 @@ describe Feature do
       @feature.is_diff?.should be_false
     end
   end
+  
+  context "searching for features that have not been added to the system yet" do
+    it "should parse the features directory for features"
+    it "should determine which features have not been added yet"
+    it "should return a list of features to be imported"
+  end
 end

@@ -104,6 +104,12 @@ describe FeaturesController do
         response.should redirect_to feature_path(@feature)
       end
     end
-    
+  end
+  
+  describe "GET, show" do
+    context "there are features to import" do
+      it "should search all feature files"
+      it "should gather a list of all features that are not on the system"
+    end
   end
 end
