@@ -40,13 +40,13 @@ Then /^we should see the changes to the files$/ do
 end
 
 Then /^"([^\"]*)" should be highlighted$/ do |message|
-  response.should have_selector :span, attribute = {:class => 'gi'} do |highlighted|
+  response.should have_selector :span, attribute = {:class => 'gd'} do |highlighted|
     highlighted.should contain message
   end
 end
 
 Then /^we should display the patch$/ do
-  response.should contain "+Feature: Something different"
+  response.should contain "-Feature: Something different"
 end
 
 Then /^we should be redirected to the feature page$/ do
