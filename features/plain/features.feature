@@ -36,7 +36,7 @@ Feature: A user should be able to create new features, which can be associated w
     And we fill in the feature as_a with 'user'
     And we fill in the feature i_want with 'the best project ever'
     Then I should have a checkable list of projects
-    Then submit the form
+    And submit the form
     And the feature information should be saved
     And I should be redirected to the new feature
 
