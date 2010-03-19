@@ -1,6 +1,16 @@
 <h3>Features</h3>
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
-
+<% if not @to_import.nil? %>
+<div id='features_to_import'>
+  <ul id="import_list">
+    <% @to_import.each do |feature|%>
+    <li>
+      <%= link_to "Import #{feature.title}", "..." %>      
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div id="list">
   <%= render :partial => '/common/sortable_list',:locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order =>false}%>
 </div>

@@ -6,10 +6,40 @@ describe "/features/index.html.erb" do
     assigns[:features] = [stub_model(Feature,:title => 'nu', :created_at => Time.now).as_null_object,
                           stub_model(Feature,:title => 'suttin else', :created_at => Time.now).as_null_object]
     assigns[:features].stub(:total_pages).and_return 1
-    render
+  end
+  
+  describe "importing a feature" do
+    
+    context "no features to import" do
+      before(:each) do
+        render
+      end
+      it "should not display a list of feature files to import" do
+        response.should_not have_selector :ul, attribute = {:id => 'import_list'}
+      end
+    end
+    
+    context "new features to import" do
+      before(:each) do
+        assigns[:to_import] = [stub_model(Feature,:title => 'nu', :created_at => Time.now).as_null_object]
+        render
+      end
+      
+      it "has a list of feature files to import" do
+        response.should have_selector :ul, attribute = {:id => 'import_list'}
+      end
+      
+      it "should have a link to import that feature" do
+        response.should have_selector :a, :content => "Import #{assigns[:to_import].first.title}"
+      end
+    end
   end
   
   describe "a list of features" do
+    before(:each) do
+      render
+    end
+    
     it "should display the features creation date" do
       assigns[:features].each do |feature|
         response.should contain "Created at: #{feature.creation_date}"
@@ -17,7 +47,10 @@ describe "/features/index.html.erb" do
     end
   end 
   
-  context "has features" do    
+  context "has features" do
+    before(:each) do
+      render
+    end
     it "should have a list" do
       response.should have_selector :div do |content|
         content.should have_selector :ul do |list|
@@ -37,6 +70,9 @@ describe "/features/index.html.erb" do
   end
   
   context "feature with stories associated to it" do
+    before(:each) do
+      render
+    end
     it "should have a view stories link" do
       response.should have_selector :a, attribute = {:href=> feature_path(assigns[:features].first)}
     end

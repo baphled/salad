@@ -10,12 +10,12 @@ Given /^we have a feature file$/ do
   File.exists?("#{RAILS_ROOT}/spec/fixtures/test.feature").should be_true
 end
 
-Given /^the feature file can be opened with Cucumbers FeatureFile object$/ do
-  @cf = Cucumber::FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
-end
-
 Given /^we create a FeatureFile from a cucumber feature file with a scenario outline$/ do
   @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+end
+
+Given /^the feature file is not present in the system$/ do
+  Feature.find_by_title(@feature.title).should be_nil
 end
 
 When /^a feature is valid$/ do
@@ -127,4 +127,8 @@ end
 
 Then /^the "([^\"]*)" should have "([^\"]*)" associated to it "([^\"]*)" of times$/ do |action, current_item, amount|
   @file.export.stories.first.examples.first.actions.each {|current_action| count = 0; current_action.items.each {|item| (item.title == current_item)? count += 1 :nil;  } ; count.to_s.should eql amount if current_action.title == action }
+end
+
+Then /^we want to be able to import the feature$/ do
+  response.should have_selector :a, :content => "Import tag cloud"
 end
