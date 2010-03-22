@@ -46,11 +46,7 @@ class FeatureFile < File
   end
 
   def invalid?
-    if self.path =~ /^(.*).feature$/
-      false
-    else
-      true
-    end
+    (self.path =~ /^(.*).feature$/)? false : true
   end
 
   def export

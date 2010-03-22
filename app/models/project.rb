@@ -20,10 +20,10 @@ class Project < ActiveRecord::Base
   def import_features
     list = []
     feature_files = File.join("#{self.location}", "features", "**", "*.feature")
-      Dir.glob(feature_files).each do |file|
-        featurefile = FeatureFile.new file
-        list << {:file => File.basename(file), :feature => featurefile.export}
-      end
+    Dir.glob(feature_files).each do |file|
+      featurefile = FeatureFile.new file
+      list << {:file => File.basename(file), :feature => featurefile.export}
+    end
     list
   end
 
