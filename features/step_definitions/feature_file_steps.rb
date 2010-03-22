@@ -10,6 +10,10 @@ Given /^we have a feature file$/ do
   File.exists?("#{RAILS_ROOT}/spec/fixtures/test.feature").should be_true
 end
 
+Given /^the feature file can be opened with Cucumbers FeatureFile object$/ do
+  @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+end
+
 Given /^we create a FeatureFile from a cucumber feature file with a scenario outline$/ do
   @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
 end
@@ -24,10 +28,6 @@ end
 
 When /^it has more than one scenario$/ do
   @file.scenarios.count.should >= 1
-end
-
-When /^we parse a file$/ do
-  @file = @cf.parse Cucumber::StepMother.new, {}
 end
 
 When /^it has a scenario outline$/ do
@@ -106,7 +106,7 @@ Then /^our parse FeatureFile should be called$/ do
 end
 
 Then /^a scenario outline should be found$/ do
-  @file.to_sexp[3][0].should == :scenario_outline
+  @file.export.stories.first.examples.first.should_not be_nil
 end
 
 Then /^each scenario outline should have the expected steps$/ do
@@ -119,6 +119,10 @@ end
 
 Then /^the example should have a list of actions$/ do
   @file.export.stories.first.examples.first.actions.should_not be_empty
+end
+
+Then /^the scenario outlines example should be found$/ do
+  @file.export.stories.first.examples.first.should_not be_nil
 end
 
 Then /^the actions should only contain "([^\"]*)"$/ do |words|
