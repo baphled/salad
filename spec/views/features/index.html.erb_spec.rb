@@ -21,7 +21,7 @@ describe "/features/index.html.erb" do
     
     context "new features to import" do
       before(:each) do
-        assigns[:to_import] = [stub_model(Feature,:title => 'nu', :created_at => Time.now).as_null_object]
+        assigns[:to_import] = ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
         render
       end
       
@@ -30,7 +30,7 @@ describe "/features/index.html.erb" do
       end
       
       it "should have a link to import that feature" do
-        response.should have_selector :a, :content => "Import #{assigns[:to_import].first.title}"
+        response.should have_selector :a, :content => "Import #{File.basename(assigns[:to_import].first).sub('.feature', '').gsub('_',' ')}"
       end
     end
   end

@@ -11,6 +11,14 @@ Given /^the feature has a path$/ do
   @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
 end
 
+Given /^the feature is found$/ do
+  Feature.find_by_title(@feature.title).should be_true
+end
+
+Given /^the feature is not found$/ do
+  Feature.find_by_title(@feature.title).should be_nil
+end
+
 When /^the feature has changed "([^\"]*)"$/ do |message|
   @feature.update_attribute(:title, message)
 end

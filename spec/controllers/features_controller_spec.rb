@@ -75,6 +75,33 @@ describe FeaturesController do
         response.should redirect_to feature_path(@feature)
       end
     end
+    
+    context "there are features to import" do
+      context "no features to import" do
+        before(:each) do
+          Feature.stub!(:imports_found).and_return []
+          get :show
+        end
+        it "should have an empty list" do
+          Feature.imports_found.should be_empty
+        end
+      end
+      
+      context "features to import" do
+        before(:each) do
+          Feature.stub!(:imports_found).and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+          get :show
+        end
+        
+        it "should search all feature files" do
+          Feature.imports_found.should_not be_empty
+        end
+      
+        it "should have an array of features file locations" do
+          Feature.imports_found.first.should == "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
+        end
+      end
+    end
   end
 
   describe "GET, changes" do
@@ -103,13 +130,6 @@ describe FeaturesController do
         get :changes, {:feature => @feature}
         response.should redirect_to feature_path(@feature)
       end
-    end
-  end
-  
-  describe "GET, show" do
-    context "there are features to import" do
-      it "should search all feature files"
-      it "should gather a list of all features that are not on the system"
     end
   end
 end
