@@ -121,6 +121,12 @@ class FeaturesController < ApplicationController
     end
   end
 
+  def import
+    if not params[:path].nil?
+      @feature = FeatureFile.new(params[:path]).export
+    end
+  end
+    
   def validate
     result = true
     if Feature.find_by_title params[:title]

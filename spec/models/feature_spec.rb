@@ -133,7 +133,7 @@ describe Feature do
     end
     
     it "contains all valid feature paths" do
-      Feature.imports_found.each { |file| File.exist?(file).should be_true }
+      Feature.imports_found.each { |feature| File.exist?(feature.path).should be_true }
     end
   end
 end

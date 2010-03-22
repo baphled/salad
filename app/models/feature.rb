@@ -66,7 +66,8 @@ class Feature < ActiveRecord::Base
     found = []
     feature_files = File.join("#{RAILS_ROOT}", "features", "**", "*.feature")
     Dir.glob(feature_files).each { |file| lists << file }
-    lists.each { |path| found << path if Feature.find_by_path(path).nil? }
+    lists.each { |path| found << FeatureFile.new(path).export if Feature.find_by_path(path).nil? }
+    found
   end
   
   private

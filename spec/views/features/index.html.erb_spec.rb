@@ -21,7 +21,7 @@ describe "/features/index.html.erb" do
     
     context "new features to import" do
       before(:each) do
-        assigns[:to_import] = ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+        assigns[:to_import] = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
         render
       end
       
@@ -30,7 +30,7 @@ describe "/features/index.html.erb" do
       end
       
       it "should have a link to import that feature" do
-        response.should have_selector :a, :content => "Import #{File.basename(assigns[:to_import].first).sub('.feature', '').gsub('_',' ')}"
+        response.should have_selector :a, :content => "Import #{File.basename(assigns[:to_import].first.path).sub('.feature', '').gsub('_',' ')}"
       end
     end
   end

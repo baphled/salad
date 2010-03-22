@@ -5,7 +5,7 @@
   <div id='features_to_import'>
     <ul id="import_list">
       <% @to_import.each do |feature|%>
-      <li><%= link_to "Import #{File.basename(feature).sub('.feature', '').gsub('_',' ')}", "..." %></li>
+      <li><%= link_to "Import #{File.basename(feature.path).sub('.feature', '').gsub('_',' ')}", import_features_path(:path => feature.path) %></li>
       <% end %>
     </ul>
   </div>

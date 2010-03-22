@@ -60,3 +60,7 @@ end
 Then /^we should be redirected to the feature page$/ do
   response.should contain 'Feature does not have any changes'
 end
+
+Then /^the feature should be save$/ do
+  Feature.find_by_title(@feature.title).should_not be_nil
+end

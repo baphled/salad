@@ -1,0 +1,41 @@
+<% if Feature.find_by_title(@feature.title).nil? %>
+<div id="<%=h @feature.path.gsub(/\./,"_")%>>">
+	<h3>Feature: <%=h File.basename(@feature.path).sub(/\.feature/,"").gsub(/_/,' ') %></h3>
+  <%- form_for @feature, :id => "new_feature",:class => "new_feature", :method => :post do |f|%>
+    <fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :in_order %>
+      <%= f.hidden_field :as_a %>
+      <%= f.hidden_field :i_want %>
+      <%= f.hidden_field :path %>
+      <p id="title"><%=h @feature.title%></p>
+      <p>
+          In order <%=h @feature.in_order %><br />
+          As <%=h @feature.as_a %><br />
+          I want <%=h @feature.i_want %>
+      </p>
+      <%= f.label :tag_list %>
+      <%= f.text_field :tag_list %><br/>
+      <% if !Project.all.empty? %>
+        <p>
+        <% for project in Project.find :all %>
+          <%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
+          <%=h project.title%><br/>
+        <% end %>
+        </p>
+
+        <% f.fields_for :stories, {:class => 'hidden'} do |stories_f| -%>
+          <%= stories_f.hidden_field :scenario %>
+          <%= render :partial => '/common/forms/story_steps', :locals => { :f => stories_f } %>
+          <%= render :partial => '/common/forms/story_examples', :locals => { :f => stories_f } %>
+        <% end -%>
+      <% end %>
+  
+    	<%= render :partial => "/common/save_button" %>
+    </fieldset>
+  <% end %>
+	<p>
+		<%= render :partial => '/common/scenario_steps', :locals => {:scenarios => @feature.stories,:feature => @feature.path.sub(/\./,"_")}%>
+	</p>
+</div>
+<% end %>
