@@ -127,7 +127,7 @@ describe Feature do
     end
   end
   
-  context "searching for features that have not been added to the system yet" do
+  context "finding for features that have not been added to the system yet" do
     it "should return a list of files to import" do
       Feature.imports_found.should_not be_empty
     end
