@@ -20,7 +20,7 @@ Feature: Pagination should be done with AJAX if possible
       And the feature page is loaded
       And we click page "2"
       Then the JS message "Page loading..." should be displayed
-      Then the current page number should be displayed
+      And the current page number should be displayed
 
     Scenario: Requesting a new page should not refresh the whole page
       Given there is a project
