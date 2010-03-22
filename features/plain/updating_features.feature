@@ -39,3 +39,28 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       When we click the features "view changes"
       Then we should see the changes in the file
       And there should be a link to merge the change
+      
+    Scenario: We need a way to keep track of when a feature source file was last modified
+      Given we have a valid feature file
+      And the feature file is saved
+      And the feature has a path
+      Given the feature file has changed
+      And the system feature has not
+      When we view the feature
+      Then we should be notified that the feature may need updating
+      
+    Scenario: We need a way to update our system features with the source file version
+      Given we have a valid feature file
+      And the feature file is saved
+      And the feature has a path
+      Given the feature file has changed
+      When the feature is updated
+      Then the system feature should be identical to the source file
+      
+    Scenario: We need to be able to update a source file with changes made to a system feature
+      Given we have a valid feature file
+      And the feature file is saved
+      And the feature has a path
+      Given the system feature has changed
+      When view the feature
+      Then we should be able to update our source file
