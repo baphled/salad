@@ -69,3 +69,11 @@ end
 Then /^the feature should be save$/ do
   Feature.find_by_title(@feature.title).should_not be_nil
 end
+
+Then /^we should see the changes on the system$/ do
+  response.should contain "+Feature: Something different"
+end
+
+When /^there should be a link to merge the change$/ do
+  response.should contain "merge changes"
+end

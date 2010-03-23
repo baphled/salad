@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
                     :import => :get,
                     :validate => :get},
     :member => {:stories => :get,
+                :merge => :get,
                 :changes => :get,
                 :export => :get}
 

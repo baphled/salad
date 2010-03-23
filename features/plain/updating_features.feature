@@ -29,22 +29,23 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       When the features changes is viewed
       Then the flash message "No changes available" should be displayed
       
-    Scenario: A user should be able to update the system with the changes made to a feature file
+    Scenario: A user should be able to update the system with the changes made to a feature on the system
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
       And I view the feature
       Then I should be alerted if a feature file has changed
-      When we click the features "view changes"
-      Then we should see the changes in the file
+      When we click the features "patch changes"
+      Then we should see the changes on the system
+      When I view the feature
       And there should be a link to merge the change
       
     Scenario: We need a way to keep track of when a feature source file was last modified
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
-      Given the feature file has changed
+      And the feature file has changed
       And the system feature has not
       When we view the feature
       Then we should be notified that the feature may need updating
@@ -53,7 +54,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
-      Given the feature file has changed
+      And the feature file has changed
       When the feature is updated
       Then the system feature should be identical to the source file
       
@@ -61,6 +62,6 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
-      Given the system feature has changed
+      And the system feature has changed
       When view the feature
       Then we should be able to update our source file
