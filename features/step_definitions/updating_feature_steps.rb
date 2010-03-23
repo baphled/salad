@@ -35,6 +35,11 @@ When /^the features changes is viewed$/ do
   visit changes_feature_path(@feature)
 end
 
+
+When /^we visit the feature via import feature$/ do
+  visit import_features_path(:path => @feature.path)
+end
+
 Then /^I should be alerted if a feature file has changed$/ do
   response.should contain "This feature has been changed."
 end

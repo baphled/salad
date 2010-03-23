@@ -18,3 +18,12 @@ Feature: Import a single feature
     Then the feature should be displayed
     When we submit the new feature
     Then the feature should be save
+    
+  Scenario: We need to make sure that we do not import a feature that is already added to the system
+    Given there is a feature
+    And the feature has a path
+    When we visit the feature via import feature
+    And the flash message "Feature is already added to the system" should be displayed
+  
+  
+  

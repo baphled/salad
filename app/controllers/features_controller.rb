@@ -123,6 +123,10 @@ class FeaturesController < ApplicationController
 
   def import
     if not params[:path].nil?
+      if not Feature.find_by_path(params[:path]).nil?
+        redirect_to features_path
+        flash[:error] = 'Feature is already added to the system'
+      end
       @feature = FeatureFile.new(params[:path]).export
     end
   end
