@@ -65,17 +65,17 @@ describe FeaturesController do
         @feature.stub!(:is_diff?).and_return false
         get :show, {:feature => @feature, :format => :patch}
       end
-      
+
       it "expects is_diff to be false" do
         @feature.is_diff?.should be_false
       end
-      
+
       it "should redirect" do
         pending 'Have an issue with testing our redirect'
         response.should redirect_to feature_path(@feature)
       end
     end
-    
+
     context "there are features to import" do
       context "no features to import" do
         before(:each) do
@@ -86,7 +86,7 @@ describe FeaturesController do
           Feature.imports_found.should be_empty
         end
       end
-      
+
       context "features to import" do
         before(:each) do
           Feature.stub!(:imports_found).and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
