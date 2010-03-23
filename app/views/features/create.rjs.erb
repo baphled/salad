@@ -13,13 +13,13 @@ $('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable
 $('#wrapper').append($(form));
 
 $('#wrapper > fieldset')
-.prepend('<a class="display_form" href="javascript://">view form</a>')
-.addClass('ui-widget ui-widget-content ui-corner-all');
+  .prepend('<a class="display_form" href="javascript://">view form</a>')
+  .addClass('ui-widget ui-widget-content ui-corner-all');
 
 $('#wrapper form').hide();
 
 var flashDiv = $("<div></div>")
-                  .addClass("flash");
+  .addClass("flash");
                   
 var flashNoticeDiv = $("<div></div>")
                         .addClass("notice")
