@@ -47,7 +47,8 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature has a path
       And the feature file has changed
       When I view the feature
-      And we click the features "view changes"
+      And we click the features "merge changes"
+      And we click the "Save to system"
       Then the source file should be identical to the system file
       
     Scenario: We need a way to update our system features with the source file version
