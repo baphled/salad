@@ -1,6 +1,9 @@
 <% content_for :css_head do %>
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
-<%= link_to 'Save to system', system_sync_feature_path(@feature) %>
+
+<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
+  <%= link_to 'Save to system', system_sync_feature_path(@feature) %>
+</span>
 
 <%= @pretty.to_html %>
