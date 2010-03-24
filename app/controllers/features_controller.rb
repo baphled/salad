@@ -39,7 +39,7 @@ class FeaturesController < ApplicationController
           format.js { render "create.rjs" }
         else
           format.html { redirect_to :back }
-          format.js { render "create.rjs" }
+          format.js { render "index.rjs" }
         end
       else
         format.js { render :action => "edit" }
@@ -130,7 +130,11 @@ class FeaturesController < ApplicationController
       @feature = FeatureFile.new(params[:path]).export
     end
   end
+
+  def merge
     
+  end
+  
   def validate
     result = true
     if Feature.find_by_title params[:title]

@@ -36,7 +36,7 @@ describe "/features/show.html.erb" do
     
   end
   
-  describe "feature with no story" do
+  context "feature with no story" do
     before(:each) do
       @feature.stub!(:stories).and_return []
       assigns[:feature] = @feature
