@@ -63,6 +63,10 @@ describe "/features/show.html.erb" do
     it "should display a patch link" do
       response.should have_selector :a, attribute = {:href=> feature_path(@feature, :format => :patch) }
     end
+    
+    it "should display a link to merge the source" do
+      response.should have_selector :a, attribute = {:href=> merge_feature_path(@feature) }
+    end
   end
   
 end

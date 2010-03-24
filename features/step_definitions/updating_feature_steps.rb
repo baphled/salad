@@ -19,6 +19,10 @@ Given /^the feature is not found$/ do
   Feature.find_by_title(@feature.title).should be_nil
 end
 
+Given /^the feature file has changed$/ do
+  @feature.update_attribute(:path, "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature")
+end
+
 When /^the feature has changed "([^\"]*)"$/ do |message|
   @feature.update_attribute(:title, message)
 end
@@ -35,9 +39,12 @@ When /^the features changes is viewed$/ do
   visit changes_feature_path(@feature)
 end
 
-
 When /^we visit the feature via import feature$/ do
   visit import_features_path(:path => @feature.path)
+end
+
+When /^there should be a link to merge the change$/ do
+  response.should contain "merge changes"
 end
 
 Then /^I should be alerted if a feature file has changed$/ do
@@ -72,8 +79,4 @@ end
 
 Then /^we should see the changes on the system$/ do
   response.should contain "+Feature: Something different"
-end
-
-When /^there should be a link to merge the change$/ do
-  response.should contain "merge changes"
 end

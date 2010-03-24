@@ -46,9 +46,9 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file is saved
       And the feature has a path
       And the feature file has changed
-      And the system feature has not
-      When we view the feature
-      Then we should be notified that the feature may need updating
+      When I view the feature
+      And we click the features "view changes"
+      Then the source file should be identical to the system file
       
     Scenario: We need a way to update our system features with the source file version
       Given we have a valid feature file
