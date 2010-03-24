@@ -61,6 +61,12 @@ class Feature < ActiveRecord::Base
     PrettyDiff::Diff.new(result)
   end
   
+  def diff_reverse
+    generate_diff
+    result = %x{diff -uaw "#{self.path}" "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp"}
+    PrettyDiff::Diff.new(result)
+  end
+  
   def self.imports_found
     lists = []
     found = []
@@ -71,7 +77,6 @@ class Feature < ActiveRecord::Base
   end
   
   private
-
     def generate_diff
       FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp")
       file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp", 'w')

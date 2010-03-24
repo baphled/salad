@@ -21,7 +21,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Then I should be alerted if a feature file has changed
       When we click the features "view changes"
       Then we should see the changes to the files
-      And "Something different" should be highlighted
+      And "Something different" should be highlighted as added
 
     Scenario: A user should be redirected back to the feature when they try to access changes that does not exist
       Given we have a valid feature file

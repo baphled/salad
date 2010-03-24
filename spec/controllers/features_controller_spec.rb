@@ -116,7 +116,7 @@ describe FeaturesController do
       end
       
       it "should display the changes" do
-        @feature.should_receive(:diff)
+        @feature.should_receive(:diff_reverse)
         get :changes, {:feature => @feature}
       end
     end
@@ -130,6 +130,18 @@ describe FeaturesController do
         get :changes, {:feature => @feature}
         response.should redirect_to feature_path(@feature)
       end
+    end
+  end
+  
+  describe "GET, merge" do
+    before(:each) do
+      @feature.stub!(:is_diff?).and_return true
+      Feature.stub(:find).and_return @feature
+    end
+    
+    it "should display the changes" do
+      @feature.should_receive(:diff)
+      get :merge, {:feature => @feature}
     end
   end
 end

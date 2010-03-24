@@ -2,7 +2,7 @@ class FeaturesController < ApplicationController
 
   navigation :features
   
-  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes, :patch]
+  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes, :patch, :merge]
   before_filter :find_features_stories, :only => [:show, :stories]
 
   before_filter :find_tag
@@ -114,7 +114,7 @@ class FeaturesController < ApplicationController
 
   def changes
     if @feature.is_diff?
-      @pretty = @feature.diff
+      @pretty = @feature.diff_reverse
     else
       flash[:error] = "No changes available"
       redirect_to feature_path @feature
@@ -132,6 +132,15 @@ class FeaturesController < ApplicationController
   end
 
   def merge
+    if @feature.is_diff?
+      @pretty = @feature.diff
+    else
+      flash[:error] = "No changes available"
+      redirect_to feature_path @feature
+    end
+  end
+  
+  def system_sync
     
   end
   

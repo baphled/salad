@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     :member => {:stories => :get,
                 :merge => :get,
                 :changes => :get,
+                :system_sync => :get,
                 :export => :get}
 
   map.resources :stories,
