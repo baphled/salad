@@ -149,7 +149,6 @@ describe ProjectsController do
     
     context "features to import" do
       before(:each) do
-        Project.stub(:find).and_return @project
         @feature = Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
         assigns[:to_import] = @feature
       end
@@ -157,7 +156,7 @@ describe ProjectsController do
       context "has a project path" do
         before(:each) do
           assigns[:project] = @project.stub(:location).and_return "#{RAILS_ROOT}"
-          get :show
+          get :import_feature
         end
 
         it "should search all feature files" do
@@ -175,7 +174,7 @@ describe ProjectsController do
       before(:each) do
         Project.stub(:find).and_return @project
         assigns[:project] = @project.stub(:location).and_return nil
-        get :show
+        get :import_feature
       end
 
       it "should not display a list of features to import" do

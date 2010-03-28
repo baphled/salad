@@ -47,7 +47,6 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @to_import = Feature.imports_found @project.location
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
