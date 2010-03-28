@@ -100,6 +100,10 @@ When /^we fill in the project location$/ do
   fill_in 'project_location', :with => "#{RAILS_ROOT}"
 end
 
+When /^the project single import is viewed$/ do
+  visit import_feature_project_path @project
+end
+
 Then /^submit the form$/ do
 	
   click_button 'Save'
