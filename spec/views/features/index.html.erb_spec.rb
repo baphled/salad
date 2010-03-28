@@ -8,33 +8,6 @@ describe "/features/index.html.erb" do
     assigns[:features].stub(:total_pages).and_return 1
   end
   
-  describe "importing a feature" do
-    
-    context "no features to import" do
-      before(:each) do
-        render
-      end
-      it "should not display a list of feature files to import" do
-        response.should_not have_selector :ul, attribute = {:id => 'import_list'}
-      end
-    end
-    
-    context "new features to import" do
-      before(:each) do
-        assigns[:to_import] = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
-        render
-      end
-      
-      it "has a list of feature files to import" do
-        response.should have_selector :ul, attribute = {:id => 'import_list'}
-      end
-      
-      it "should have a link to import that feature" do
-        response.should have_selector :a, :content => "Import #{File.basename(assigns[:to_import].first.path).sub('.feature', '').gsub('_',' ')}"
-      end
-    end
-  end
-  
   describe "a list of features" do
     before(:each) do
       render
