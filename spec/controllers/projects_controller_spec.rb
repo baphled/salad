@@ -140,10 +140,16 @@ describe ProjectsController do
       Project.should_receive(:find).and_return @project
       get :show
     end
+  end
 
+  describe "GET, import_feature" do
+    before(:each) do
+      Project.stub(:find).and_return @project
+    end
     
     context "features to import" do
       before(:each) do
+        Project.stub(:find).and_return @project
         @feature = Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
         assigns[:to_import] = @feature
       end
@@ -167,6 +173,7 @@ describe ProjectsController do
 
     context "does not have a project path" do
       before(:each) do
+        Project.stub(:find).and_return @project
         assigns[:project] = @project.stub(:location).and_return nil
         get :show
       end
@@ -175,7 +182,6 @@ describe ProjectsController do
         assigns[:to_import].should be_empty
       end
     end
-
   end
 
   describe "DELETE, destroy" do

@@ -73,7 +73,12 @@ class ProjectsController < ApplicationController
     @feature = @project.features.new(:projects=>[@project])
     @imported = @project.import_features
   end
-  	
+
+  def to_import
+    @to_import = Feature.imports_found @project.location
+    render :import
+  end
+  
   def tag
     @projects = Project.find_tagged_with params[:tag]
     render :index
