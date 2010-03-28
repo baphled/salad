@@ -22,11 +22,14 @@ Feature: Import a single feature
     Then the feature should be save
     
   Scenario: We need to make sure that we do not import a feature that is already added to the system
-    Given there is a feature
-    And the feature has a path
+    Given we have a valid feature file
+    And the feature is not found
     When there is a project
     And the project is viewed
-    Then the flash message "Feature is already added to the system" should be displayed
+    And we click the "Import tag cloud" feature
+    Then the feature should be displayed
+    When we submit the new feature
+    Then the feature should be save
   
   
   
