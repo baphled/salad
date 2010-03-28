@@ -133,10 +133,49 @@ describe ProjectsController do
   end
 
   describe "GET, show" do
+    before(:each) do
+      Project.stub!(:find).and_return @project
+    end
     it "should get the project" do
       Project.should_receive(:find).and_return @project
       get :show
     end
+
+    
+    context "features to import" do
+      before(:each) do
+        @feature = Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+        assigns[:to_import] = @feature
+      end
+
+      context "has a project path" do
+        before(:each) do
+          assigns[:project] = @project.stub(:location).and_return "#{RAILS_ROOT}"
+          get :show
+        end
+
+        it "should search all feature files" do
+          assigns[:to_import].should_not be_empty
+        end
+
+        it "should have an array of features file locations" do
+          assigns[:to_import].should == ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+        end
+      end
+
+    end
+
+    context "does not have a project path" do
+      before(:each) do
+        assigns[:project] = @project.stub(:location).and_return nil
+        get :show
+      end
+
+      it "should not display a list of features to import" do
+        assigns[:to_import].should be_empty
+      end
+    end
+
   end
 
   describe "DELETE, destroy" do
