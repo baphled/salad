@@ -86,21 +86,6 @@ describe FeaturesController do
           Feature.imports_found.should be_empty
         end
       end
-
-      context "features to import" do
-        before(:each) do
-          Feature.stub!(:imports_found).and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
-          get :show
-        end
-        
-        it "should search all feature files" do
-          Feature.imports_found.should_not be_empty
-        end
-      
-        it "should have an array of features file locations" do
-          Feature.imports_found.first.should == "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
-        end
-      end
     end
   end
 
