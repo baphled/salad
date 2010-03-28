@@ -1,5 +1,16 @@
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @project, :assoc => :features } %>
 
+<h2>Features to import</h2>
+<% if not @to_import.nil? %>
+  <div id='features_to_import'>
+    <ul id="import_list">
+      <% @to_import.each do |feature|%>
+      <li><%= link_to "Import #{File.basename(feature.path).sub('.feature', '').gsub('_',' ')}", import_features_path(:path => feature.path) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to "Import", import_project_path(@project) unless @project.location.blank? %> | 
   <%= link_to "Edit project", edit_project_path(@project) %>
