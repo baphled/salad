@@ -129,11 +129,11 @@ describe Feature do
   
   context "finding for features that have not been added to the system yet" do
     it "should return a list of files to import" do
-      Feature.imports_found.should_not be_empty
+      Feature.imports_found("#{RAILS_ROOT}").should_not be_empty
     end
     
     it "contains all valid feature paths" do
-      Feature.imports_found.each { |feature| File.exist?(feature.path).should be_true }
+      Feature.imports_found("#{RAILS_ROOT}").each { |feature| File.exist?(feature.path).should be_true }
     end
   end
 end

@@ -67,12 +67,10 @@ class Feature < ActiveRecord::Base
     PrettyDiff::Diff.new(result)
   end
   
-  def self.imports_found
-    lists = []
+  def self.imports_found project_path
     found = []
-    feature_files = File.join("#{RAILS_ROOT}", "features", "**", "*.feature")
-    Dir.glob(feature_files).each { |file| lists << file }
-    lists.each { |path| found << FeatureFile.new(path).export if Feature.find_by_path(path).nil? }
+    feature_files = File.join("#{project_path}", "features", "**", "*.feature")
+    Dir.glob(feature_files).each { |file| found << FeatureFile.new(file).export if Feature.find_by_path(file).nil? }
     found
   end
   

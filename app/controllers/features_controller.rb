@@ -9,9 +9,6 @@ class FeaturesController < ApplicationController
   
   def index
     @features = Feature.paginate(:page => params[:page],:per_page => 5)
-    if not Feature.imports_found.empty?
-      @to_import = Feature.imports_found
-    end
     respond_to do |format|
       format.html
       format.js { render "index.rjs" }
