@@ -74,9 +74,8 @@ class ProjectsController < ApplicationController
     @imported = @project.import_features
   end
 
-  def to_import
+  def import_feature
     @to_import = Feature.imports_found @project.location
-    render :import
   end
   
   def tag
