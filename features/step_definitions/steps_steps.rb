@@ -1,3 +1,7 @@
+Given /^the step "([^\"]*)" is created$/ do |step|
+  Step.create(:title => step)
+end
+
 When /^I choose 'New Step' link$/ do
   click_link 'New Step'
 end

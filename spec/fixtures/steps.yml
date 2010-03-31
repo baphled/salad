@@ -9,7 +9,3 @@ two:
 three:
   id: 3
   title: Then I will do what
-
-four:
-  id: 4
-  title: Given I can view the projects page 

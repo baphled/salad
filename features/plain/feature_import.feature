@@ -154,6 +154,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: A step should be highlighted if it already exists in the system
       Given there is a project
+      And the step "When I click new projects" is created
       And the project does have a project location
       When the project is viewed
       Then I should see a import link

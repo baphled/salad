@@ -20,7 +20,7 @@ Given /^the project does have a project location$/ do
 end
 
 Given /^a step already exists$/ do
-  response.should contain Step.find(4).title
+  response.should contain "When I click new projects"
 end
 
 Given /^there are no features to import$/ do
@@ -335,7 +335,7 @@ Then /^the feature should have at least on '(.*)'$/ do |step_prefix|
 end
 
 Then /^it should be highlighted$/ do
-  response.should have_selector :b, :content => "#{Step.find(4).title}"
+  response.should have_selector :b, :content => "When I click new projects"
 end
 
 Then /^each imported stories step should be added$/ do
