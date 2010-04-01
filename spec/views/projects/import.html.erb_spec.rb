@@ -63,8 +63,10 @@ describe "/projects/import.html.erb" do
 
     context "valid feature" do
       before(:each) do
+        Step.create(:title => 'Given I can view the projects page')
         render
       end
+      
       it "should diplay a list of feature files" do
         assigns[:imported].each do |feature|
           response.should contain "#{feature[:file]}".sub(/\.feature/,"").gsub(/_/," ")
