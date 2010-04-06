@@ -2,7 +2,8 @@ class FeaturesController < ApplicationController
 
   navigation :features
   
-  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes, :patch, :merge]
+#  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes, :patch, :merge]
+  before_filter :find_feature, :except => [:index, :new, :create, :tag, :tags, :validate, :import]
   before_filter :find_features_stories, :only => [:show, :stories]
 
   before_filter :find_tag
@@ -98,7 +99,6 @@ class FeaturesController < ApplicationController
   
   def sort
     params[:feature].each_with_index do |id, index|
-      @feature = Feature.find id
       @feature.feature_projects.update_all(['position=?', index+1])
     end
     render :nothing => true
