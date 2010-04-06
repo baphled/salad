@@ -125,6 +125,7 @@ describe FeaturesController do
     end
     
     it "should display the changes" do
+      @feature.stub(:diff).and_return nil
       @feature.should_receive(:diff)
       get :merge, {:feature => @feature}
     end
