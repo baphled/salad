@@ -152,7 +152,9 @@ describe FeaturesController do
       end
 
       context "unsuccessfully merging changes" do
-        it "should display a error flash message"
+        it "should display a error flash message" do
+          flash.should contain 'Unable to merge changes'
+        end
       end
     end
     
