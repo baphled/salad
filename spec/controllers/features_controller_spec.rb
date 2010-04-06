@@ -137,11 +137,19 @@ describe FeaturesController do
 
       it "should return true if the changes were merged to the file"
       it "should return false if the changes were not merged to the file"
-    end
+      it "should redirect to the feature"
 
+      context "successfully merging changes" do
+        it "should display a successfully flash message"
+      end
+
+      context "unsuccessfully merging changes" do
+        it "should display a error flash message"
+      end
+    end
+    
     context "There are system no change to sync to the file" do
-      it "should redirect back to the feature"
-      it "should display a flash message"
+      it "should display an error flash message"
     end
   end
 end
