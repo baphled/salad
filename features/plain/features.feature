@@ -160,6 +160,6 @@ Feature: A user should be able to create new features, which can be associated w
     And I visit the features edit view
     When we fill in the feature title with 'A different title'
     Then the stories should be listed
-    When I uncheck "feature_1_story_id_1"
+    When I uncheck "feature_story_id_1"
     Then submit the form
     And the feature should be not associated to the first story
