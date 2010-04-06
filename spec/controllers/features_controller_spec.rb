@@ -130,4 +130,18 @@ describe FeaturesController do
       get :merge, {:feature => @feature}
     end
   end
+
+  describe "GET, file_sync" do
+    context "There are system change to sync to the file" do
+      it "should make a call to the features sync method"
+
+      it "should return true if the changes were merged to the file"
+      it "should return false if the changes were not merged to the file"
+    end
+
+    context "There are system no change to sync to the file" do
+      it "should redirect back to the feature"
+      it "should display a flash message"
+    end
+  end
 end
