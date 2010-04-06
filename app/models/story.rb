@@ -6,7 +6,7 @@ class Story < ActiveRecord::Base
   validates_uniqueness_of   :scenario
   validates_length_of :scenario, :minimum => 7, :too_short => @@error_message
   
-  # validates_associated      :steps
+  validates_associated      :steps, :on => :create
   
   has_many :feature_stories, :order => 'position'
   has_many :features, :through => :feature_stories
