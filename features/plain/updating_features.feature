@@ -40,7 +40,16 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Then we should see the changes on the system
       When I view the feature
       And there should be a link to merge the change
-      
+
+    Scenario: We must be able to view the changes we are about to merge
+      Given we have a valid feature file
+      And the feature file is saved
+      And the feature has a path
+      And the feature file has changed
+      When I view the feature
+      And we click the features "merge changes"
+      Then I should see "Save to system"
+
     Scenario: We need a way to update our system features with the source file version
       Given we have a valid feature file
       And the feature file is saved
@@ -49,7 +58,8 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       When I view the feature
       And we click the features "merge changes"
       And we click the "Save to system"
-      Then the source file should be identical to the system file
+      Then the flash message "Feature merged" should be displayed
+      And the source file should be identical to the system file
       
     Scenario: We need to be able to update a source file with changes made to a system feature
       Given we have a valid feature file

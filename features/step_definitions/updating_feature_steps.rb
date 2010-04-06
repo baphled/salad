@@ -86,3 +86,7 @@ end
 Then /^we should see the changes on the system$/ do
   response.should contain "+Feature: Something different"
 end
+
+When /^we click the "([^\"]*)"$/ do |link|
+  click_button link
+end
