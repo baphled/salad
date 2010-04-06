@@ -4,14 +4,14 @@ class Feature < ActiveRecord::Base
 	include MyActiveRecordExtensions
   acts_as_taggable
 
-  validates_uniqueness_of   :title
+  validates_uniqueness_of   :title, :on => :create
   
   validates_presence_of     :title
   validates_presence_of     :in_order
   validates_presence_of     :as_a
   validates_presence_of     :i_want
   
-  validates_associated      :stories
+  validates_associated      :stories, :on => :create
 
   validates_length_of :title, :minimum => 6, :too_short => @@error_message
   validates_length_of :in_order, :minimum => 7, :too_short => @@error_message
