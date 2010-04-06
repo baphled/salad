@@ -132,12 +132,20 @@ describe FeaturesController do
   end
 
   describe "GET, file_sync" do
-    context "There are system change to sync to the file" do
-      it "should make a call to the features sync method"
+    before(:each) do
+      @feature = mock_model(Feature,:title=>"A new feature").as_null_object
+      Feature.stub!(:find).and_return @feature
+      get :file_merge, {:feature => @feature}
+    end
 
+    context "There are system change to sync to the file" do
+      it "should redirect to the feature" do
+        response.should redirect_to feature_path(@feature)
+      end
+
+      it "should make a call to the features sync method"
       it "should return true if the changes were merged to the file"
       it "should return false if the changes were not merged to the file"
-      it "should redirect to the feature"
 
       context "successfully merging changes" do
         it "should display a successfully flash message"

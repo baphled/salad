@@ -130,7 +130,7 @@ class FeaturesController < ApplicationController
   end
   
   def file_merge
-    
+    redirect_to feature_path @feature
   end
   
   def validate
