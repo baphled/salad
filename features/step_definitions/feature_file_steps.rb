@@ -134,5 +134,5 @@ Then /^the "([^\"]*)" should have "([^\"]*)" associated to it "([^\"]*)" of time
 end
 
 Then /^we want to be able to import the feature$/ do
-  response.should have_selector :a, :content => "Import tag cloud"
+  response.should have_selector :a
 end
