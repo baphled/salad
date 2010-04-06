@@ -57,7 +57,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
-      And we click the "Save to system"
+      And I use the "Save to system" link
       Then the flash message "Feature merged" should be displayed
       And the source file should be identical to the system file
       
