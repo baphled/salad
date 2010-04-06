@@ -27,7 +27,7 @@ Feature: All our forms need to be passed to the server via AJAX
       Given I can view the features page
       And there are projects
       When I click new features
-      And we fill in the feature title with 'Logging in via ajax'
+      And we fill in the feature title with 'Logging in via an ajax request'
       And we fill in the feature in_order with 'to create the best app'
       And we fill in the feature as_a with 'user'
       And we fill in the feature i_want with 'the best project ever'
