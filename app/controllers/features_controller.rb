@@ -1,11 +1,9 @@
 class FeaturesController < ApplicationController
 
   navigation :features
-  
-#  before_filter :find_feature, :only => [:edit, :show, :update, :destroy, :stories, :export, :changes, :patch, :merge]
+
   before_filter :find_feature, :except => [:index, :new, :create, :tag, :tags, :validate, :import]
   before_filter :find_features_stories, :only => [:show, :stories]
-
   before_filter :find_tag
   
   def index
@@ -131,7 +129,7 @@ class FeaturesController < ApplicationController
     end
   end
   
-  def system_sync
+  def file_merge
     
   end
   
