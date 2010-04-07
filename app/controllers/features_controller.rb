@@ -130,7 +130,11 @@ class FeaturesController < ApplicationController
   end
   
   def file_merge
-    flash[:error] = "Unable to merge changes"
+    if @feature.sync
+      flash[:notice] = "Feature successfully merged"
+    else
+      flash[:error] = "Unable to merge changes"
+    end
     redirect_to feature_path @feature
   end
   

@@ -135,23 +135,52 @@ describe FeaturesController do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature").as_null_object
       Feature.stub!(:find).and_return @feature
-      get :file_merge, {:feature => @feature}
     end
 
     context "There are system change to sync to the file" do
       it "should redirect to the feature" do
+        get :file_merge, {:feature => @feature}
         response.should redirect_to feature_path(@feature)
       end
 
-      it "should make a call to the features sync method"
-      it "should return true if the changes were merged to the file"
-      it "should return false if the changes were not merged to the file"
+      it "should make a call to the features sync method" do
+        @feature.should_receive(:sync)
+        get :file_merge, {:feature => @feature}
+      end
+
+      context "when sync is called" do
+        before(:each) do
+          @feature.stub!(:sync).and_return true
+        end
+
+        it "should return true if the changes were merged to the file" do
+          @feature.should_receive(:sync).and_return true
+          get :file_merge, {:feature => @feature}
+        end
+
+        it "should return false if the changes were not merged to the file" do
+          @feature.stub!(:sync).and_return false
+          @feature.should_receive(:sync).and_return false
+          get :file_merge, {:feature => @feature}
+        end
+      end
 
       context "successfully merging changes" do
-        it "should display a successfully flash message"
+        before(:each) do
+          @feature.stub!(:sync).and_return true
+          get :file_merge, {:feature => @feature}
+        end
+
+        it "should display a successfully flash message" do
+          flash.should contain 'Feature successfully merged'
+        end
       end
 
       context "unsuccessfully merging changes" do
+        before(:each) do
+          get :file_merge, {:feature => @feature}
+        end
+        
         it "should display a error flash message" do
           flash.should contain 'Unable to merge changes'
         end

@@ -73,7 +73,10 @@ class Feature < ActiveRecord::Base
     Dir.glob(feature_files).each { |file| found << FeatureFile.new(file).export if Feature.find_by_path(file).nil? }
     found
   end
-  
+
+  def sync
+
+  end
   private
     def generate_diff
       FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp")
