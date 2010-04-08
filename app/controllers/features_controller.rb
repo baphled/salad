@@ -139,6 +139,9 @@ class FeaturesController < ApplicationController
       if @feature.sync(false)
         flash[:notice] = "Feature has been patched"
         redirect_to feature_path @feature
+      else
+        flash[:error] = "Errors encountered whilst patching file"
+        redirect_to merge_feature_path(@feature)
       end
     end
   end

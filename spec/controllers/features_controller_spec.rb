@@ -205,8 +205,18 @@ describe FeaturesController do
       end
       
       context "unsuccessfully patched a file" do
-        it "should display a error message"
-        it "should redirect back to the features merge action"
+        before(:each) do
+          @feature.stub!(:sync).and_return false
+          get :file_merge, {:feature => @feature, :dry_run => false}
+        end
+        
+        it "should display a error message" do
+          flash.should contain 'Errors encountered whilst patching file'
+        end
+        
+        it "should redirect back to the features merge action" do
+          response.should redirect_to merge_feature_path(@feature)
+        end
       end
     end
     
