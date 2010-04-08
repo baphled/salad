@@ -18,6 +18,7 @@ Manage a stories steps
 Allows you to import features
 Allows you to export features
 Patch & diff features
+Synchronises a system feature with its associated feature file
 
 What Salad doesn't do
 Automatically generate cucumber steps
