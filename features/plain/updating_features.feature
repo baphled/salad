@@ -45,7 +45,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
-      Then I should see "Save to system"
+      Then I should see "Dry-run"
 
     Scenario: We need a way to update our system features with the source file version
       Given we have a valid feature file
@@ -54,7 +54,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
-      And I use the "Save to system" link
+      And I use the "Dry-run" link
       Then the flash message "Feature merged" should be displayed
       And the source file should be identical to the system file
       

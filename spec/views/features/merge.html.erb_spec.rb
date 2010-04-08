@@ -16,9 +16,10 @@ describe "/features/merge.html.erb" do
       response.should contain "+Feature: A different title"
     end
     
-    it "should have a link to save the changes to the system" do
-      response.should have_selector :a, :content => 'Save to system'
+    it "should have a link to do a dry-run" do
+      response.should have_selector :a, :content => 'Dry-run'
     end
+    it "should have a link to actually merge the changes"
   end
   
   context "system feature is newer than the feature file" do
