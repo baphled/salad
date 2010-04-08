@@ -78,27 +78,25 @@ class Feature < ActiveRecord::Base
     if self.patch.nil? or self.patch.empty?
       false
     else
-      File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
-      if dry_run
-        result = %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
-      else
-        result = %x{patch -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
-      end
-      if result.include? 'patching file'
-        true
-      else
-        false
-      end
+      (self.run_patch.include? 'patching file')? true : false
     end
   end
 
   private
+    def run_patch
+      File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
+      if dry_run
+        %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
+      else
+        %x{patch -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
+      end
+    end
+    
     def generate_diff
       FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp")
       file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp", 'w')
       file.write(self.export)
-      file.close
-      
+      file.close  
     end
 
     def valid_feature_path?
