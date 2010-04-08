@@ -138,14 +138,16 @@ describe FeaturesController do
     end
 
     context "There are system change to sync to the file" do
+      
       it "should redirect to the feature" do
-        get :file_merge, {:feature => @feature}
+        @feature.stub!(:sync).and_return false
+        get :file_merge, {:feature => @feature, :dry_run => true}
         response.should redirect_to feature_path(@feature)
       end
 
       it "should make a call to the features sync method" do
         @feature.should_receive(:sync)
-        get :file_merge, {:feature => @feature}
+        get :file_merge, {:feature => @feature, :dry_run => true}
       end
 
       context "when sync is called" do
@@ -155,20 +157,20 @@ describe FeaturesController do
 
         it "should return true if the changes were merged to the file" do
           @feature.should_receive(:sync).and_return true
-          get :file_merge, {:feature => @feature}
+          get :file_merge, {:feature => @feature, :dry_run => true}
         end
 
         it "should return false if the changes were not merged to the file" do
           @feature.stub!(:sync).and_return false
           @feature.should_receive(:sync).and_return false
-          get :file_merge, {:feature => @feature}
+          get :file_merge, {:feature => @feature, :dry_run => true}
         end
       end
 
-      context "successfully merging changes" do
+      context "successfully merging changes with a dry-run" do
         before(:each) do
           @feature.stub!(:sync).and_return true
-          get :file_merge, {:feature => @feature}
+          get :file_merge, {:feature => @feature, :dry_run => true}
         end
 
         it "should display a successfully flash message" do
@@ -176,10 +178,10 @@ describe FeaturesController do
         end
       end
 
-      context "unsuccessfully merging changes" do
+      context "unsuccessfully merging changes with a dry-run" do
         before(:each) do
           @feature.stub!(:sync).and_return false
-          get :file_merge, {:feature => @feature}
+          get :file_merge, {:feature => @feature, :dry_run => true}
         end
         
         it "should display a error flash message" do

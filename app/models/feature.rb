@@ -74,12 +74,14 @@ class Feature < ActiveRecord::Base
     found
   end
 
-  def sync
+  def sync(dry_run = true)
     if self.patch.nil? or self.patch.empty?
       false
     else
       File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
-      result = %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
+      if dry_run
+        result = %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
+      end
       if result.include? 'patching file'
         true
       else

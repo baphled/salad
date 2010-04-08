@@ -19,7 +19,9 @@ describe "/features/merge.html.erb" do
     it "should have a link to do a dry-run" do
       response.should have_selector :a, :content => 'Dry-run'
     end
-    it "should have a link to actually merge the changes"
+    it "should have a link to actually merge the changes" do
+      response.should have_selector :a, :content => 'Patch'
+    end      
   end
   
   context "system feature is newer than the feature file" do

@@ -127,12 +127,14 @@ class FeaturesController < ApplicationController
   end
   
   def file_merge
-    if @feature.sync
-      flash[:notice] = "No errors whilst doing dry-run"
-      redirect_to merge_feature_path(@feature)
-    else
-      flash[:error] = "Unable to merge changes"
-      redirect_to feature_path @feature
+    if params[:dry_run]
+      if @feature.sync(params[:dry_run])
+        flash[:notice] = "No errors whilst doing dry-run"
+        redirect_to merge_feature_path(@feature)
+      else
+        flash[:error] = "Unable to merge changes"
+        redirect_to feature_path @feature
+      end
     end
   end
   
