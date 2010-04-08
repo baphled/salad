@@ -172,12 +172,13 @@ describe FeaturesController do
         end
 
         it "should display a successfully flash message" do
-          flash.should contain 'Feature successfully merged'
+          flash.should contain 'Feature merged'
         end
       end
 
       context "unsuccessfully merging changes" do
         before(:each) do
+          @feature.stub!(:sync).and_return false
           get :file_merge, {:feature => @feature}
         end
         

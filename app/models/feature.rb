@@ -75,8 +75,19 @@ class Feature < ActiveRecord::Base
   end
 
   def sync
-
+    if self.patch.nil? or self.patch.empty?
+      false
+    else
+      File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
+      result = %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
+      if result.include? 'patching file'
+        true
+      else
+        false
+      end
+    end
   end
+
   private
     def generate_diff
       FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp")
