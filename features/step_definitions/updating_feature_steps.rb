@@ -47,6 +47,10 @@ When /^there should be a link to merge the change$/ do
   response.should contain "merge changes"
 end
 
+When /^we click the "([^\"]*)"$/ do |link|
+  click_button link
+end
+
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
   response.should contain message
 end
@@ -83,6 +87,6 @@ Then /^we should see the changes on the system$/ do
   response.should contain "+Feature: Something different"
 end
 
-When /^we click the "([^\"]*)"$/ do |link|
-  click_button link
+Then /^we should be redirected back to "([^\"]*)"$/ do |path|
+  current_url.should contain path
 end
