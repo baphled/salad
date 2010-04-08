@@ -78,12 +78,12 @@ class Feature < ActiveRecord::Base
     if self.patch.nil? or self.patch.empty?
       false
     else
-      (self.run_patch.include? 'patching file')? true : false
+      (self.run_patch(dry_run).include? 'patching file')? true : false
     end
   end
 
   private
-    def run_patch
+    def run_patch dry_run
       File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
       if dry_run
         %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
