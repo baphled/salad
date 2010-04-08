@@ -57,6 +57,16 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And I use the "Dry-run" link
       Then the flash message "No errors whilst doing dry-run" should be displayed
       And we should be redirected back to "merge"
+
+    Scenario: We need a way to to patch on our feature file
+      Given we have a valid feature file
+      And the feature file is saved
+      And the feature has a path
+      And the feature file has changed
+      When I view the feature
+      And we click the features "merge changes"
+      And I use the "Patch" link
+      Then the flash message "Feature successfully patched" should be displayed
       
     Scenario: We need to be able to update a source file with changes made to a system feature
       Given we have a valid feature file
