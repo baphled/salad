@@ -188,6 +188,26 @@ describe FeaturesController do
           flash.should contain 'Unable to merge changes'
         end
       end
+      
+      context "successfully patched a file" do
+        before(:each) do
+          @feature.stub!(:sync).and_return true
+          get :file_merge, {:feature => @feature, :dry_run => false}
+        end
+        
+        it "should display a success message" do
+          flash.should contain 'Feature has been patched'
+        end
+        
+        it "should redirect to the feature show action" do
+          response.should redirect_to feature_path(@feature)
+        end
+      end
+      
+      context "unsuccessfully patched a file" do
+        it "should display a error message"
+        it "should redirect back to the features merge action"
+      end
     end
     
     context "There are system no change to sync to the file" do

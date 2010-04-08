@@ -135,6 +135,11 @@ class FeaturesController < ApplicationController
         flash[:error] = "Unable to merge changes"
         redirect_to feature_path @feature
       end
+    else
+      if @feature.sync(false)
+        flash[:notice] = "Feature has been patched"
+        redirect_to feature_path @feature
+      end
     end
   end
   
