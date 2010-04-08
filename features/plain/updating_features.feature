@@ -42,6 +42,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
+      When the feature has changed "Something different"
       And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
@@ -51,6 +52,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
+      When the feature has changed "Something different"
       And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
@@ -62,11 +64,12 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
+      When the feature has changed "Something different"
       And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
       And I use the "Patch" link
-      Then the flash message "Feature successfully patched" should be displayed
+      Then the flash message "Feature has been patched" should be displayed
       
     Scenario: We need to be able to update a source file with changes made to a system feature
       Given we have a valid feature file

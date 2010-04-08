@@ -78,11 +78,11 @@ class Feature < ActiveRecord::Base
     if self.patch.nil? or self.patch.empty?
       false
     else
-      (self.run_patch(dry_run).include? 'patching file')? true : false
+      (run_patch(dry_run).include? 'patching file')? true : false
     end
   end
 
-  private
+  protected
     def run_patch dry_run
       File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
       if dry_run
@@ -92,6 +92,7 @@ class Feature < ActiveRecord::Base
       end
     end
     
+  private
     def generate_diff
       FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp")
       file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.tmp", 'w')
