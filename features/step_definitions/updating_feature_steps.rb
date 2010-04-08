@@ -29,7 +29,6 @@ When /^the feature has changed "([^\"]*)"$/ do |message|
 end
 
 When /^we click the features "([^\"]*)"$/ do |link|
-  save_and_open_page
   click_link link
 end
 
