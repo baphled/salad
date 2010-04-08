@@ -1,5 +1,6 @@
 Given /^we have a valid feature file$/ do
   @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
+  File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@file) }
   @feature = @file.export
 end
 
@@ -20,7 +21,7 @@ Given /^the feature is not found$/ do
 end
 
 Given /^the feature file has changed$/ do
-  @feature.update_attribute(:path, "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature")
+  @feature.update_attribute(:path, "#{RAILS_ROOT}/tmp/tag_cloud.feature")
 end
 
 When /^the feature has changed "([^\"]*)"$/ do |message|

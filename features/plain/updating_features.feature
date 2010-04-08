@@ -43,7 +43,6 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
       Then I should see "Dry-run"
@@ -53,7 +52,6 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      And the feature file has changed
       When I view the feature
       And we click the features "merge changes"
       And I use the "Dry-run" link
@@ -66,7 +64,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature has a path
       When the feature has changed "Something different"
       And the feature file has changed
-      When I view the feature
+      And I view the feature
       And we click the features "merge changes"
       And I use the "Patch" link
       Then the flash message "Feature has been patched" should be displayed
