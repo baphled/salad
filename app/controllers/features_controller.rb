@@ -127,7 +127,7 @@ class FeaturesController < ApplicationController
   end
   
   def file_merge
-    if params[:dry_run] or params[:dry_run].empty?
+    if params[:dry_run]
       if @feature.sync(params[:dry_run])
         flash[:notice] = "No errors whilst doing dry-run"
         redirect_to merge_feature_path(@feature)

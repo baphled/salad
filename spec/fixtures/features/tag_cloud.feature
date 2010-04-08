@@ -1,4 +1,4 @@
-Feature: A different title
+Feature: Viewing an items tags
   In order to view tags associated to a item
   As a user
   I want to be able to view them on each item index
