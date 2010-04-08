@@ -81,6 +81,8 @@ class Feature < ActiveRecord::Base
       File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
       if dry_run
         result = %x{patch --dry-run -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
+      else
+        result = %x{patch -p1 "#{self.path}" -i "#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch"}
       end
       if result.include? 'patching file'
         true

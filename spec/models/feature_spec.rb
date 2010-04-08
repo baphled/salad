@@ -138,13 +138,13 @@ describe Feature do
   end
 
   describe "#sync" do
-    context "synchronising a system feature with its corresponding feature file" do
-      before(:each) do
-        content = "Feature: A different title\n  In order to view tags associated to a item\n  As a user\n  I want to be able to view them on each item index\n\n  Scenario: Displaying the projects tags cloud when there are associated tags available\n    Given there are \"project\" tags\n    And the \"project\" tags are not empty\n    When we visit the \"projects\" index\n    Then the tags cloud should be displayed\n\n  Scenario: Displaying the features tags cloud when there are associated tags available\n    Given there are \"feature\" tags\n    And the \"feature\" tags are not empty\n    When we visit the \"features\" index\n    Then the tags cloud should be displayed\n\n  Scenario: Displaying the stories tags cloud when there are associated tags available\n    Given there are \"story\" tags\n    And the \"story\" tags are not empty\n    When we visit the \"stories\" index\n    Then the tags cloud should be displayed\n\n  Scenario: Displaying the steps tags cloud when there are associated tags available\n    Given there are \"step\" tags\n    And the \"step\" tags are not empty\n    When we visit the \"steps\" index\n    Then the tags cloud should be displayed"
-        Feature.stub!(:export).and_return content
-        Feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature"
-      end
-
+    before(:each) do
+      content = "Feature: A different title\n  In order to view tags associated to a item\n  As a user\n  I want to be able to view them on each item index\n\n  Scenario: Displaying the projects tags cloud when there are associated tags available\n    Given there are \"project\" tags\n    And the \"project\" tags are not empty\n    When we visit the \"projects\" index\n    Then the tags cloud should be displayed\n\n  Scenario: Displaying the features tags cloud when there are associated tags available\n    Given there are \"feature\" tags\n    And the \"feature\" tags are not empty\n    When we visit the \"features\" index\n    Then the tags cloud should be displayed\n\n  Scenario: Displaying the stories tags cloud when there are associated tags available\n    Given there are \"story\" tags\n    And the \"story\" tags are not empty\n    When we visit the \"stories\" index\n    Then the tags cloud should be displayed\n\n  Scenario: Displaying the steps tags cloud when there are associated tags available\n    Given there are \"step\" tags\n    And the \"step\" tags are not empty\n    When we visit the \"steps\" index\n    Then the tags cloud should be displayed"
+      Feature.stub!(:export).and_return content
+      Feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature"
+    end
+    
+    context "patching a feature file in dry-run mode" do
       it "should create a new patch file" do
         pending 'Need to work out why the path is nil'
         File.should_receive(:open)
@@ -174,6 +174,18 @@ describe Feature do
         it "should return false" do
           @feature.sync.should == false
         end
+      end
+    end
+
+    context "patching a feature file" do
+      it "should return true" do
+        @feature.stub!(:sync).with(false).and_return true
+        @feature.sync(false).should == true
+      end
+    
+      it "should display false" do
+        @feature.stub!(:sync).with(false).and_return false
+        @feature.sync(false).should == false
       end
     end
   end
