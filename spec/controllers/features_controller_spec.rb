@@ -172,7 +172,7 @@ describe FeaturesController do
         end
 
         it "should display a successfully flash message" do
-          flash.should contain 'Feature merged'
+          flash.should contain 'No errors whilst doing dry-run'
         end
       end
 

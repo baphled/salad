@@ -128,7 +128,7 @@ class FeaturesController < ApplicationController
   
   def file_merge
     if @feature.sync
-      flash[:notice] = "Feature merged"
+      flash[:notice] = "No errors whilst doing dry-run"
     else
       flash[:error] = "Unable to merge changes"
     end
