@@ -47,7 +47,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And we click the features "merge changes"
       Then I should see "Dry-run"
 
-    Scenario: We need a way to update our system features with the source file version
+    Scenario: We need a way to do a dry-run patch on our feature file
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
@@ -56,7 +56,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And we click the features "merge changes"
       And I use the "Dry-run" link
       Then the flash message "No errors whilst doing dry-run" should be displayed
-      And the source file should be identical to the system file
+      And the "merge changes" link should not be displayed
       
     Scenario: We need to be able to update a source file with changes made to a system feature
       Given we have a valid feature file
@@ -66,6 +66,6 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       When view the feature
       And we click the features "merge changes"
       And I use the "Patch file" link
-      Then the flash message "No errors whilst doing dry-run" should be displayed
+      Then the flash message "Feature has successfully been patched" should be displayed
       And the source file should be identical to the system file
       Then we should be able to update our source file
