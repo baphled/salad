@@ -47,10 +47,6 @@ When /^there should be a link to merge the change$/ do
   response.should contain "merge changes"
 end
 
-Then /^I should be alerted if a feature file has changed$/ do
-  response.should contain "This feature has been changed."
-end
-
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
   response.should contain message
 end

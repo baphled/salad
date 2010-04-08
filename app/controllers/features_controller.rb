@@ -48,9 +48,6 @@ class FeaturesController < ApplicationController
   end
   
   def show
-    if @feature.is_diff?
-      flash[:notice] = 'This feature has been changed.'
-    end
     respond_to do |format|
       format.html
       format.patch { handle_patch_view(@feature) }
