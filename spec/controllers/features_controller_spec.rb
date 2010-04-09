@@ -69,11 +69,6 @@ describe FeaturesController do
       it "expects is_diff to be false" do
         @feature.is_diff?.should be_false
       end
-
-      it "should redirect" do
-        pending 'Have an issue with testing our redirect'
-        response.should redirect_to feature_path(@feature)
-      end
     end
 
     context "there are features to import" do
@@ -82,6 +77,7 @@ describe FeaturesController do
           Feature.stub!(:imports_found).and_return []
           get :show
         end
+        
         it "should have an empty list" do
           Feature.imports_found.should be_empty
         end
