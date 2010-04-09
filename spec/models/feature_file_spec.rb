@@ -17,7 +17,7 @@ describe FeatureFile do
   
   context "importing a feature file which contains scenario outlines" do
     before(:each) do
-      @feature_file = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
+      @feature_file = FeatureFile.new "#{RAILS_ROOT}/spec/fixtures/features/most_used.feature"
     end
     
     it "should store scenario outlines" do
