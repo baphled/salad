@@ -3,7 +3,7 @@ Given /^there is a feature that is not different from the source file$/ do
 end
 
 Given /^there is a feature that is different from the source file$/ do
-  @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/most_used.feature").export
+  @feature = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/features/most_used.feature").export
   @feature.save
 end
 

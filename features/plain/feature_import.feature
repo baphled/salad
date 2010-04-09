@@ -277,8 +277,8 @@ Feature: Users should not have to manually input their features if they have alr
   	  When the project is viewed
   	  Then I should see a import link
       When I click import
-      And we click import "most used"
-      Then the features scenario "Our actions that we want to check states for" should be saved
+      And we click import "enhancements"
+      Then the features scenario "Basic pages we want to visit to check for JS enabled" should be saved
 
     Scenario: A feature should not be submittable if a duplicate scenario is found in the new feature
       Given there is a project
