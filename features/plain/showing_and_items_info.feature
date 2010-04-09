@@ -13,7 +13,6 @@ Feature: All item information should be layed out in a similar way
       And the "Aim" should be displayed
       And the "Creation date" should be displayed
       And the "Updated date" should be displayed
-      And a "Total number of Features"
 
     Scenario: Viewing a project features should display the project information in a pre defined layout
       Given the project has features

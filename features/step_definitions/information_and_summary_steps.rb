@@ -6,7 +6,6 @@ end
 Given /^the item has no "([^\"]*)"$/ do |association|
   @model.stub!(:association.to_sym).and_return []
   @model.send(association).stub!(:count).and_return 0
-  
 end
 
 When /^the "([^\"]*)" is viewed$/ do |model|
