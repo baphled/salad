@@ -219,9 +219,5 @@ describe FeaturesController do
         end
       end
     end
-    
-    context "There are system no change to sync to the file" do
-      it "should display an error flash message"
-    end
   end
 end

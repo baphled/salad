@@ -24,8 +24,4 @@ describe "/features/merge.html.erb" do
       response.should have_selector :a, :content => 'Patch'
     end
   end
-  
-  context "system feature is newer than the feature file" do
-    it "should display a flash message if the source file has newer content"    
-  end
 end
