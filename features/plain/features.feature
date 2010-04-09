@@ -163,3 +163,11 @@ Feature: A user should be able to create new features, which can be associated w
     When I uncheck "feature_story_id_1"
     Then submit the form
     And the feature should be not associated to the first story
+    
+  Scenario: We want to be able to edit a feature when viewing a particular feature
+    Given there is a feature
+    When we visit the feature
+    Then there should be an edit link
+  
+  
+  
