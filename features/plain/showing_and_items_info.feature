@@ -63,7 +63,7 @@ Feature: All item information should be layed out in a similar way
       Given there is a "<action>"
       And the item has no "<association>"
       When the "<action>" is viewed
-      Then the copy "No stories associated" should be displayed
+      Then the copy "No <association> associated" should be displayed
       And "Total number of <postfix>" should not be displayed
     
     Examples: No associations for a given action
