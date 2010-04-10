@@ -9,6 +9,7 @@
   <% if !@feature.stories.blank? %>
       <%= link_to "export feature", export_feature_path(@feature) %>
   <% end %>
+    <%= link_to "Edit", edit_feature_path(@feature) %>
 </span>
 
 <div id="list">

@@ -1,3 +1,17 @@
+Given /^there is a "([^\"]*)"$/ do |model|
+  @model = mock_model(model.capitalize.constantize).as_null_object
+  model.capitalize.constantize.stub!(:find).and_return @model
+end
+
+Given /^the item has no "([^\"]*)"$/ do |association|
+  @model.stub!(:association.to_sym).and_return []
+  @model.send(association).stub!(:count).and_return 0
+end
+
+When /^the "([^\"]*)" is viewed$/ do |model|
+  visit "#{model.pluralize}/#{@model.id}/"
+end
+
 Then /^the "([^\"]*)" information header should be displayed$/ do |model|
   response.should have_selector :h4, :content => "#{model.capitalize} Info"
 end
@@ -32,4 +46,12 @@ Then /^it should display all the story information$/ do
   Then %{the "Scenario" should be displayed}
   Then %{a "Total number of Steps"}
   Then %{a "Last Step"}
+end
+
+Then /^the copy "([^\"]*)" should be displayed$/ do |copy|
+  response.should contain copy
+end
+
+Then /^"([^\"]*)" should not be displayed$/ do |copy|
+  response.should_not contain copy
 end

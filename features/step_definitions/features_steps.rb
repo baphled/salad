@@ -33,6 +33,10 @@ When /^the feature is viewed$/ do
   visit feature_path @feature
 end
 
+When /^we visit the feature$/ do
+  visit feature_path(@feature)
+end
+
 Then /^the feature information should be saved$/ do
   assert_response :success
 end
@@ -139,3 +143,8 @@ Then /^the feature information should be not saved$/ do
   response.should_not contain "was created"
 end
 
+Then /^there should be an edit link$/ do
+  response.should have_selector :span do |content|
+    content.should have_selector :a, :content => 'Edit'
+  end
+end

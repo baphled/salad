@@ -13,7 +13,6 @@ Feature: All item information should be layed out in a similar way
       And the "Aim" should be displayed
       And the "Creation date" should be displayed
       And the "Updated date" should be displayed
-      And a "Total number of Features"
 
     Scenario: Viewing a project features should display the project information in a pre defined layout
       Given the project has features
@@ -58,3 +57,16 @@ Feature: All item information should be layed out in a similar way
       When I visit the first step
       Then the "step" information header should be displayed
       And the "Title" should be displayed
+      
+    Scenario Outline: If an items has no associated items we should not display 0 but something more informative
+      Given there is a "<action>"
+      And the item has no "<association>"
+      When the "<action>" is viewed
+      Then the copy "No <association> associated" should be displayed
+      And "Total number of <postfix>" should not be displayed
+    
+    Examples: No associations for a given action
+    | action  | association | postfix  |
+    | project | features    | Features |
+    | feature | stories     | Stories  |
+    | story   | steps       | Steps    |
