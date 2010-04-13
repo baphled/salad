@@ -41,6 +41,9 @@ describe Project do
   context "importing a projects features" do
     before(:each) do
       @project.location = "#{RAILS_ROOT}"
+      file = "#{RAILS_ROOT}/spec/fixtures/features/projects.feature"
+      result = [{:file => File.basename(file), :feature => mock_model(Feature).as_null_object}]
+      @project.stub!(:import_features).and_return result
     end
     
     it "should not include ." do
@@ -61,10 +64,6 @@ describe Project do
 
     it "finds the projects feature file" do
       @project.import_features.should contain "projects.feature"
-    end
-
-    it "finds features within directories" do
-      @project.import_features.should contain "hover_functionality.feature"
     end
 
     context "when displaying the features import data, it should" do
