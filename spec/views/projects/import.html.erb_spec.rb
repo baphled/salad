@@ -3,9 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/projects/import.html.erb" do
   before(:each) do
     @project = stub_model(Project).as_null_object
-    @project.location = "#{RAILS_ROOT}"
     file = "#{RAILS_ROOT}/features/plain/projects.feature"
-    result ||= {:file => File.basename(file), :feature => FeatureFile.new(file).export}
+    feature ||= FeatureFile.new(file).export
+    result ||= {:file => file, :feature => feature}
     @project.stub!(:import_features).and_return [result]
     
     assigns[:feature] = mock_model(Feature).as_null_object
@@ -14,9 +14,6 @@ describe "/projects/import.html.erb" do
   
   describe "viewing the import form" do
     context "invalid feature" do
-      before(:each) do
-        assigns[:imported] = @project.import_features
-      end
 
       context "disabling submit if" do
         it "should has an invalid title" do
@@ -134,10 +131,11 @@ describe "/projects/import.html.erb" do
     end
     
     
-    context "A scenario has examples" do
+    context "A scenario with examples" do
       before(:each) do
         file = "#{RAILS_ROOT}/features/plain/enhancements.feature"
-        result ||= {:file => File.basename(file), :feature => FeatureFile.new(file).export}
+        feature ||= FeatureFile.new(file).export
+        result ||= {:file => file, :feature => feature}
         @project.stub!(:import_features).and_return [result]
         assigns[:imported] = @project.import_features
         render
