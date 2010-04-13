@@ -4,6 +4,10 @@ describe "/projects/import.html.erb" do
   before(:each) do
     @project = stub_model(Project).as_null_object
     @project.location = "#{RAILS_ROOT}"
+    file = "#{RAILS_ROOT}/features/plain/projects.feature"
+    result ||= {:file => File.basename(file), :feature => FeatureFile.new(file).export}
+    @project.stub!(:import_features).and_return [result]
+    
     assigns[:feature] = mock_model(Feature).as_null_object
     assigns[:imported] = @project.import_features
   end
@@ -126,29 +130,35 @@ describe "/projects/import.html.erb" do
             step.should contain "Then"
           end
       end
-
-      it "should highlight a step if it is already part of the system" do
-        step = stub_model(Step, :title => 'Given I can view the projects page')
-        response.should have_selector :b, :content => "#{step.title}"
+      
+    end
+    
+    
+    context "A scenario has examples" do
+      before(:each) do
+        file = "#{RAILS_ROOT}/features/plain/enhancements.feature"
+        result ||= {:file => File.basename(file), :feature => FeatureFile.new(file).export}
+        @project.stub!(:import_features).and_return [result]
+        assigns[:imported] = @project.import_features
+        render
       end
       
-      context "A scenario has examples" do
-        it "should display the examples" do
-          response.should have_selector :td, :content => 'Examples'
-        end
-        
-        it "should display the examples actions" do
-          response.should have_selector :table do |table|
-            table.should have_selector :td, :content => 'action'
-          end
-        end
-        it "should display each of the actions items" do
-          response.should have_selector :table do |table|
-            table.should have_selector :td, :content => 'features'
-          end
-        end
-        
+      it "should display the examples" do
+        response.should have_selector :td, :content => 'Examples'
       end
+      
+      it "should display the examples actions" do
+        response.should have_selector :table do |table|
+          table.should have_selector :td, :content => 'page'
+        end
+      end
+      
+      it "should display each of the actions items" do
+        response.should have_selector :table do |table|
+          table.should have_selector :td, :content => 'features'
+        end
+      end
+      
     end
   end
 

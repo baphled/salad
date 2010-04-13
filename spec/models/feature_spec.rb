@@ -128,6 +128,10 @@ describe Feature do
   end
   
   context "finding for features that have not been added to the system yet" do
+    before(:each) do
+      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return [FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature").export]
+    end
+    
     it "should return a list of files to import" do
       Feature.imports_found("#{RAILS_ROOT}").should_not be_empty
     end
