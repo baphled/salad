@@ -222,6 +222,7 @@ describe ProjectsController do
 
   describe "GET, import" do
     before(:each) do
+      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
       Project.stub(:find).and_return @project
     end
 
