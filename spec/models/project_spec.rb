@@ -41,50 +41,51 @@ describe Project do
   context "importing a projects features" do
     before(:each) do
       @project.location = "#{RAILS_ROOT}"
-      file = "#{RAILS_ROOT}/spec/fixtures/features/projects.feature"
-      result = [{:file => File.basename(file), :feature => mock_model(Feature).as_null_object}]
+      file = "#{RAILS_ROOT}/features/plain/projects.feature"
+      result = [{:file => file, :feature => mock_model(Feature).as_null_object}]
       @project.stub!(:import_features).and_return result
+      @file = @project.import_features
     end
     
     it "should not include ." do
-      @project.import_features.should_not contain "^\."
+      @file.first[:file].should_not contain "^\."
     end
     
     it "should not include .." do
-      @project.import_features.should_not contain ".."
+      @file.first[:file].should_not contain ".."
     end
     
     it "should not include step_definitions" do
-      @project.import_features.should_not contain "step_definitions"
+      @file.first[:file].should_not contain "step_definitions"
     end
     
     it "should not include support" do
-      @project.import_features.should_not contain "support"
+      @file.first[:file].should_not contain "support"
     end
 
     it "finds the projects feature file" do
-      @project.import_features.should contain "projects.feature"
+      @file.first[:file].should contain "projects.feature"
     end
 
     context "when displaying the features import data, it should" do
       it "have a feature text" do
-        @project.import_features.last[:feature].title.should_not be_nil
+        @file.first[:feature].title.should_not be_nil
       end
 
       it "have a features in order text" do
-        @project.import_features.last[:feature].in_order.should_not be_nil
+        @file.first[:feature].in_order.should_not be_nil
       end
 
       it "have a features as a text" do
-        @project.import_features.first[:feature].as_a.should_not be_nil
+        @file.first[:feature].as_a.should_not be_nil
       end
 
       it "have a features 'I want' text" do
-        @project.import_features.last[:feature].i_want.should_not be_nil
+        @file.first[:feature].i_want.should_not be_nil
       end
 
       it "have a features stories text" do
-        @project.import_features.last[:feature].stories.first.scenario.should_not be_nil
+        @file.first[:feature].stories.first.scenario.should_not be_nil
       end
       
     end
