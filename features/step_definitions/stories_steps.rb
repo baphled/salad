@@ -11,8 +11,8 @@ Given /^there is a story$/ do
 end
 
 Given /^we have a stories with examples$/ do
-  f = FeatureFile.new "#{RAILS_ROOT}/features/plain/most_used.feature"
-  @story = f.scenarios.first
+  f = FeatureFile.new("#{RAILS_ROOT}/features/plain/most_used.feature").export
+  @story = f.stories.first
   @story.save
   @story.examples.size.should eql 1
 end

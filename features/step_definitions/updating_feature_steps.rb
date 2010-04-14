@@ -1,13 +1,14 @@
 Given /^we have a valid feature file$/ do
-  @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
-  File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@file) }
+  @file = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature") 
   @feature = @file.export
+  File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@feature.export) }
 end
 
 Given /^the feature file is saved$/ do
   @feature.save.should be_true
 end
 
+# TODO review this step, really don't need to change the path to this in alot of cases
 Given /^the feature has a path$/ do
   @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
 end
