@@ -6,7 +6,6 @@ describe "/features/merge.html.erb" do
     before(:each) do
       @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export
       File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@feature.export) }
-      @feature.save
       @feature.update_attribute(:path, "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature")
       assigns[:feature] = @feature
       assigns[:pretty] = @feature.diff

@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     :member => {:stories => :get,
                 :merge => :get,
                 :changes => :get,
+                :update_system => :get,
                 :file_merge => :get,
                 :system_merge => :get,
                 :export => :get}

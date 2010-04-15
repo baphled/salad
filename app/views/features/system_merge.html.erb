@@ -2,4 +2,8 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
+<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
+  <%= link_to 'Patch', update_system_feature_path(@feature) %>
+</span>
+
 <%= @pretty.to_html %>
