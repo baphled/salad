@@ -134,6 +134,10 @@ class FeaturesController < ApplicationController
       redirect_to feature_path(@feature)
     end
   end
+
+  def system_sync
+    redirect_to feature_path(@feature)
+  end
   
   def file_merge
     if params[:dry_run]

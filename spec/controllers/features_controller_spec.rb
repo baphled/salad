@@ -265,4 +265,34 @@ describe FeaturesController do
       end
     end
   end
+
+  describe "GET, system_sync" do
+    before(:each) do
+      @feature = mock_model(Feature).as_null_object
+      Feature.stub!(:find).and_return @feature
+    end
+
+    context "feature does not need updating" do
+      before(:each) do
+        @feature.stub!(:is_diff?).and_return false
+      end
+
+      it "should redirect if the system feature does not need updating" do
+        get :system_sync, {:feature => @feature}
+        response.should redirect_to feature_path @feature
+      end
+
+      it "should display an flash message stating the feature does not need updating"
+    end
+
+    context "when unsuccessful in updating a feature" do
+      it "should display an error flash message"
+      it "should redirect to the feature"
+    end
+
+    context "when successful in updating a feature" do
+      it "should display a successful flash message"
+      it "should redirect to the updated feature"
+    end
+  end
 end
