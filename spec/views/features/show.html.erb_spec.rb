@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/features/show.html.erb" do
 
   before(:each) do
-    @feature = stub_model(Feature, :title => 'story').as_null_object
+    @feature = mock_model(Feature, :title => 'story').as_null_object
   end
 
   describe "viewing feature" do
@@ -48,7 +48,7 @@ describe "/features/show.html.erb" do
     end
   end
   
-  context "feature that has changed" do
+  context "system feature that has changed" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature").as_null_object
       @feature.stub!(:is_diff?).and_return true
@@ -69,4 +69,15 @@ describe "/features/show.html.erb" do
     end
   end
   
+  context "feature file has changed" do
+    before(:each) do
+      @feature.stub!(:is_diff?).and_return true
+      assigns[:feature] = @feature
+      render
+    end
+    
+    it "should display the merge system link" do
+      response.should have_selector :a, attribute = {:href=> sync_feature_path(@feature) }
+    end
+  end
 end
