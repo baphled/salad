@@ -278,8 +278,8 @@ describe FeaturesController do
       end
 
       it "should check that the feature is different" do
-        get :system_sync, {:feature => @feature}
         @feature.should_receive :is_diff?
+        get :system_sync, {:feature => @feature}
       end
 
       it "should redirect if the system feature does not need updating" do
