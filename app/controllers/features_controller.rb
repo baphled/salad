@@ -125,6 +125,15 @@ class FeaturesController < ApplicationController
       redirect_to feature_path @feature
     end
   end
+
+  def system_merge
+    if @feature.is_diff?
+      @pretty = @feature.diff_reverse
+    else
+      flash[:error] = "No changes available"
+      redirect_to feature_path(@feature)
+    end
+  end
   
   def file_merge
     if params[:dry_run]

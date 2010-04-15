@@ -4,6 +4,7 @@
   <% if @feature.is_diff? %>
     <%= link_to "view changes", changes_feature_path(@feature) %>
     <%= link_to "merge changes", merge_feature_path(@feature) %>
+    <%= link_to "merge system", system_merge_feature_path(@feature) %>  
     <%= link_to "patch changes", feature_path(@feature, :format => :patch) %>
   <% end %>
   <% if !@feature.stories.blank? %>

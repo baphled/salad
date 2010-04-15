@@ -17,11 +17,11 @@ describe FeatureFile do
   
   context "importing a feature file which contains scenario outlines" do
     before(:each) do
-      @feature_file = FeatureFile.new "#{RAILS_ROOT}/spec/fixtures/features/most_used.feature"
+      @feature_file = FeatureFile.new "#{RAILS_ROOT}/features/plain/enhancements.feature"
     end
     
     it "should store scenario outlines" do
-      @feature_file.scenarios.first.scenario.should contain 'Users viewing an index page which is not projects should display a most used section'
+      @feature_file.scenarios.first.scenario.should contain 'When a user visits the site without JS enable we want to display a header notifying them that the site works best with JS'
     end
     
     it "should store the outlines steps" do
@@ -37,7 +37,7 @@ describe FeatureFile do
     end
     
     it "should story the actions in the expected format" do
-      "items,action,state".split(',').each_with_index { |word,index| @feature_file.scenarios.last.examples.last.actions[index].title.should == word }
+      @feature_file.scenarios.last.examples.last.actions.first.title.should == 'page'
     end
     
     it "should store the actions items" do

@@ -68,3 +68,14 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And we click the features "merge changes"
       And I use the "Patch" link
       Then the flash message "Feature has been patched" should be displayed
+      
+    Scenario: We need to be able to update a source file with changes made to a system feature
+      Given we have a valid feature file
+      And the feature file is saved
+      And the local feature file has changed
+      When view the feature
+      And we click the features "merge system"
+      And I use the "Patch" link
+      Then the flash message "The system feature has successfully been updated" should be displayed
+      And the source file should be identical to the system file
+      Then we should be able to update our source file

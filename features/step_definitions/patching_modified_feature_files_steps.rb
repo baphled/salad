@@ -1,5 +1,7 @@
 Given /^there is a feature that is not different from the source file$/ do
-  @feature = Feature.first
+  @file = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature") 
+  @feature = @file.export
+  @feature.save
 end
 
 Given /^there is a feature that is different from the source file$/ do

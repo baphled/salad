@@ -216,4 +216,53 @@ describe FeaturesController do
       end
     end
   end
+
+  describe "GET, system_sync" do
+    before(:each) do
+      @feature = mock_model(Feature,:title=>"A new feature").as_null_object
+      Feature.stub!(:find).and_return @feature
+    end
+    
+    it "makes a call to is_diff?" do
+      @feature.should_receive(:is_diff?)
+      get :system_merge, {:feature => @feature, :dry_run => true}
+    end
+    
+    it "should redirect to the feature" do
+      @feature.stub!(:is_diff?).and_return false
+      get :system_merge, {:feature => @feature, :dry_run => true}
+      response.should redirect_to feature_path(@feature)
+    end
+
+    context "feature is different" do
+      before(:each) do
+        @feature.stub!(:is_diff?).and_return true
+      end
+      
+      it "should make a call to diff_reverse" do
+        @feature.should_receive(:diff_reverse)
+        get :system_merge, {:feature => @feature, :dry_run => true}
+      end
+      
+      it "should not redirect" do
+        response.should_not redirect_to feature_path(@feature)
+      end
+    end
+    
+    context "feature is not different" do
+      before(:each) do
+        @feature.stub!(:is_diff?).and_return false
+      end
+      
+      it "should display a flash message" do
+        get :system_merge, {:feature => @feature, :dry_run => true}
+        flash.should contain "No changes available"
+      end
+      
+      it "should redirect" do
+        get :system_merge, {:feature => @feature, :dry_run => true}
+        response.should redirect_to feature_path(@feature)
+      end
+    end
+  end
 end

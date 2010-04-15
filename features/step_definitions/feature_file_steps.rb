@@ -15,7 +15,7 @@ Given /^the feature file can be opened with Cucumbers FeatureFile object$/ do
 end
 
 Given /^we create a FeatureFile from a cucumber feature file with a scenario outline$/ do
-  @file = FeatureFile.new "#{RAILS_ROOT}/spec/fixtures/features/most_used.feature"
+  @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/enhancements.feature"
 end
 
 Given /^the feature file is not present in the system$/ do
