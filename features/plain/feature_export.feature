@@ -36,3 +36,9 @@ Feature: A user needs to be able to export created features into cucumber featur
     Given there is a feature
     When we view the feature with the "feature" format
     Then the feature should be displayed
+    
+  Scenario: We should only export a feature is the system version is newer than the source file
+    Given there is a feature
+    And the features system version is not newer than the source file
+    When When we view the feature
+    Then we should not see the export link
