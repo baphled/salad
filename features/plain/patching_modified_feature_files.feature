@@ -3,14 +3,6 @@ Feature: Patching modified feature files
   As a user
   I want to be able to get a patch file from the system
   
-  Scenario: When a feature on the system has changed we need to be able to easy patch our source file
-      Given we have a valid feature file
-      And the feature file is saved
-      And the feature has a path
-      When the feature has changed "Something different"
-      And I view the feature
-      And a "patch changes" link should be displayed within the feature
-      
     Scenario: When a feature on the system has changed we need to be able to easy patch our source file
       Given we have a valid feature file
       And the feature file is saved
