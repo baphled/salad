@@ -269,22 +269,23 @@ describe FeaturesController do
   describe "GET, system_sync" do
     before(:each) do
       @feature = mock_model(Feature).as_null_object
+      @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
       Feature.stub!(:find).and_return @feature
+    end
+
+    it "should redirect to the feature" do
+      get :system_sync, {:feature => @feature}
+      response.should redirect_to feature_path(@feature)
     end
 
     context "feature does not need updating" do
       before(:each) do
-        @feature.stub!(:is_diff?).and_return true 
+        @feature.stub!(:is_diff?).and_return false
       end
 
       it "should check that the feature is different" do
         @feature.should_receive :is_diff?
         get :system_sync, {:feature => @feature}
-      end
-
-      it "should redirect if the system feature does not need updating" do
-        get :system_sync, {:feature => @feature}
-        response.should redirect_to feature_path @feature
       end
 
       it "should display an flash message stating the feature does not need updating" do
@@ -294,13 +295,24 @@ describe FeaturesController do
     end
 
     context "when unsuccessful in updating a feature" do
-      it "should display an error flash message"
-      it "should redirect to the feature"
+      before(:each) do
+        @feature.stub(:update_attributes).and_return false
+      end
+
+      it "should display an error flash message" do
+        get :system_sync, {:feature => @feature}
+        flash.should contain "Unable to update the system feature"
+      end
     end
 
     context "when successful in updating a feature" do
-      it "should display a successful flash message"
-      it "should redirect to the updated feature"
+      before(:each) do
+        @feature.stub(:update_attributes).and_return true
+      end
+      it "should display a successful flash message" do
+        get :system_sync, {:feature => @feature}
+        flash.should contain "The system feature has successfully been updated"
+      end
     end
   end
 end

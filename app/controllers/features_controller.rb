@@ -136,10 +136,16 @@ class FeaturesController < ApplicationController
   end
 
   def system_sync
-    if @feature.is_diff?
+    if not @feature.is_diff?
       flash[:error] =  "Feature does not need updating"
-      redirect_to feature_path(@feature)
     end
+    feature = FeatureFile.new(@feature.path).export
+    if @feature.update_attributes(feature.attributes)
+      flash[:notice] = "The system feature has successfully been updated"
+    else
+      flash[:error] = "Unable to update the system feature"
+    end
+      redirect_to feature_path(@feature)
   end
   
   def file_merge
