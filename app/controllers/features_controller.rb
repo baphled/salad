@@ -136,7 +136,10 @@ class FeaturesController < ApplicationController
   end
 
   def system_sync
-    redirect_to feature_path(@feature)
+    if @feature.is_diff?
+      flash[:error] =  "Feature does not need updating"
+      redirect_to feature_path(@feature)
+    end
   end
   
   def file_merge

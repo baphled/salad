@@ -274,7 +274,12 @@ describe FeaturesController do
 
     context "feature does not need updating" do
       before(:each) do
-        @feature.stub!(:is_diff?).and_return false
+        @feature.stub!(:is_diff?).and_return true 
+      end
+
+      it "should check that the feature is different" do
+        get :system_sync, {:feature => @feature}
+        @feature.should_receive :is_diff?
       end
 
       it "should redirect if the system feature does not need updating" do
@@ -282,7 +287,10 @@ describe FeaturesController do
         response.should redirect_to feature_path @feature
       end
 
-      it "should display an flash message stating the feature does not need updating"
+      it "should display an flash message stating the feature does not need updating" do
+        get :system_sync, {:feature => @feature}
+        flash[:error].should contain "Feature does not need updating"
+      end
     end
 
     context "when unsuccessful in updating a feature" do
