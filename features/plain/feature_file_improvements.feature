@@ -51,7 +51,7 @@ Feature: We want to be able to deal with Cucumber changing formats easily
       And it has a scenario outline
       And the scenario outline should precede its examples
       Then the example should have a list of actions
-      And the actions should only contain "items,action,state"
+      And the actions should only contain "page"
 
     Scenario Outline: All actions should be correctly associated to each of their items
       Given we create a FeatureFile from a cucumber feature file with a scenario outline
@@ -59,16 +59,12 @@ Feature: We want to be able to deal with Cucumber changing formats easily
       And it has a scenario outline
       And the scenario outline should precede its examples
       Then the example should have a list of actions
-      And the actions should only contain "items,action,state"
+      And the actions should only contain "page"
       And the "<action>" should have "<item>" associated to it "<amount>" of times
 
     Examples: Actions and the number of times an action item should be stored
-      |action |item       |amount |
-      |items  |features   |4      |
-      |items  |stories    |3      |
-      |items  |steps      |2      |
-      |action |features   |2      |
-      |action |stories    |4      |
-      |action |steps      |3      |
-      |state  |being      |4      |
-      |state  |not being  |5      |
+      | action | item     | amount |
+      | page   | projects | 1      |
+      | page   | features | 1      |
+      | page   | stories  | 1      |
+      | page   | steps    | 1      |
