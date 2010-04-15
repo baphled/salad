@@ -9,7 +9,6 @@ Feature: Patching modified feature files
       And the feature has a path
       When the feature has changed "Something different"
       And I view the feature
-      Then I should be alerted if a feature file has changed
       And a "patch changes" link should be displayed within the feature
       
     Scenario: When a feature on the system has changed we need to be able to easy patch our source file
@@ -18,7 +17,6 @@ Feature: Patching modified feature files
       And the feature has a path
       When the feature has changed "Something different"
       And I view the feature
-      Then I should be alerted if a feature file has changed
       And a "patch changes" link should be displayed within the feature
       When we click the features "patch changes"
       Then we should display the patch
