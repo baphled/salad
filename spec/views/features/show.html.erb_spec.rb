@@ -77,7 +77,7 @@ describe "/features/show.html.erb" do
     end
     
     it "should display the merge system link" do
-      response.should have_selector :a, attribute = {:href=> sync_feature_path(@feature) }
+      response.should have_selector :a, attribute = {:href=> system_merge_feature_path(@feature) }
     end
   end
 end

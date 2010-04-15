@@ -220,4 +220,7 @@ describe FeaturesController do
       end
     end
   end
+
+  describe "GET, system_sync" do
+  end
 end
