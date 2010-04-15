@@ -27,7 +27,7 @@ end
 
 Then /^it should display all the project information$/ do
   Then %{the "project" information header should be displayed}
-  ["Title", "Aim","Creation date", "Updated date", "Location"].each do |attribute|
+  ["Title", "Aim","Creation date", "Updated date"].each do |attribute|
     Then %{the "#{attribute}" should be displayed}
   end
   Then %{a "Total number of Features"}

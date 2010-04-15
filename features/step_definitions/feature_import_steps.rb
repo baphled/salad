@@ -16,7 +16,6 @@ end
 
 # Refactor to help speed things up
 Then /^I should see a list of features that will be imported$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :ul do |list|
     @project.import_features do |feature|
       list.should have_selector :li do |content|
@@ -27,7 +26,6 @@ Then /^I should see a list of features that will be imported$/ do
 end
 
 Then /^each of the features tabs should not include any underscores$/ do
-    @project.update_attribute(:location,"#{RAILS_ROOT}")
     response.should have_selector :ul do |list|
     @project.import_features do |feature|
       list.should have_selector :li do |content|
@@ -38,7 +36,6 @@ Then /^each of the features tabs should not include any underscores$/ do
 end
 
 Then /^each of the features title should not include any underscores$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}")
   response.should have_selector :form do |content|
     @project.import_features do |feature|
       content.should have_selector :h3, :content  => "Feature: #{feature[:file].sub(/\.feature/,"").gsub("_"," ")}"
@@ -47,7 +44,6 @@ Then /^each of the features title should not include any underscores$/ do
 end
 
 Then /^the first story should contain its examples$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}")
   @project.import_features do |feature|
     if feature[:file] == 'most_used.feature'
       response.should contain feature[:feature].stories.first.examples.first
@@ -56,8 +52,8 @@ Then /^the first story should contain its examples$/ do
   response.should contain 'Examples'
 end
 
-Then /^the features scenario "([^\"]*)" should be saved$/ do |arg1|
-  Example.first.heading.should eql 'Our actions that we want to check states for'
+Then /^the features scenario "([^\"]*)" should be saved$/ do |heading|
+  Example.first.heading.should eql heading
 end
 
 Then /^the submit button will be disabled for "([^\"]*)"$/ do |container|

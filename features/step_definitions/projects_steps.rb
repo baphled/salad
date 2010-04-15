@@ -16,7 +16,7 @@ Given /^the project does not have a project location$/ do
 end
 
 Given /^the project does have a project location$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}")
+  @project.location.should_not be_nil
 end
 
 Given /^a step already exists$/ do
@@ -89,6 +89,9 @@ When /^add 'project, new project' as tags$/ do
 end
 
 When /^I click import$/ do
+  file = "#{RAILS_ROOT}/features/plain/enhancements.feature"
+  result ||= {:file => File.basename(file), :feature => FeatureFile.new(file).export}
+  @project.stub!(:import_features).and_return [result]
   click_link 'Import'
 end
 
