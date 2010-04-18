@@ -134,7 +134,7 @@ class FeaturesController < ApplicationController
       redirect_to feature_path(@feature)
     end
   end
-
+  
   def system_sync
     if not @feature.is_diff?
       flash[:error] =  "Feature does not need updating"
