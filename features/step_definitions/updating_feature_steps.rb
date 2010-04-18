@@ -28,6 +28,7 @@ end
 Given /^the local feature file has changed$/ do
   @feature.update_attribute(:title, 'Something totally different')
   File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@feature.export) }
+  @feature.update_attribute(:path, "#{RAILS_ROOT}/tmp/tag_cloud.feature")
 end
 
 When /^the feature has changed "([^\"]*)"$/ do |message|
@@ -100,4 +101,9 @@ end
 
 Then /^we should be redirected back to "([^\"]*)"$/ do |path|
   current_url.should contain path
+end
+
+Then /^the source file should be identical to the system file$/ do
+  source_feature = FeatureFile.new(@feature.path).export
+  @feature.export.should === source_feature.export
 end

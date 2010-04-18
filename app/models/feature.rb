@@ -27,7 +27,7 @@ class Feature < ActiveRecord::Base
   has_many :feature_stories, :order => 'position'
   has_many :stories, :through => :feature_stories
 
-  accepts_nested_attributes_for :stories
+  accepts_nested_attributes_for :stories, :allow_destroy => true
   
   def export
     exported = feature_title
