@@ -6,7 +6,7 @@ Feature: Users should not have to manually input their features if they have alr
 
 	Scenario: I should be able to import feature into a project
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
 	
@@ -18,7 +18,7 @@ Feature: Users should not have to manually input their features if they have alr
 	
 	Scenario: I should be able to click the import link
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -26,7 +26,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: I should only see files which are actual features
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -35,7 +35,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: I should be able to view the feature text below the file name of each feature file
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -45,7 +45,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: I should not see 'Feature:' in the import display text
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -56,7 +56,7 @@ Feature: Users should not have to manually input their features if they have alr
 	
 	Scenario: I should display the 'In order' line
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -66,7 +66,7 @@ Feature: Users should not have to manually input their features if they have alr
 	
 	Scenario: I should display the 'As a' line
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -76,7 +76,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: I should display the 'I want' line
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -86,7 +86,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: I should be able to see all the stories for each feature
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -107,7 +107,7 @@ Feature: Users should not have to manually input their features if they have alr
 	
 	Scenario: All scenario's should display the steps associated to it
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -118,7 +118,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: When should be able to view all 'Given' steps
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -130,7 +130,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: When should be able to view all 'When' steps
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -142,7 +142,7 @@ Feature: Users should not have to manually input their features if they have alr
 		
 	Scenario: When should be able to view all 'Then' steps
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
       Then I should see a import link
       When I click import
@@ -282,7 +282,7 @@ Feature: Users should not have to manually input their features if they have alr
 
     Scenario: A feature should not be submittable if a duplicate scenario is found in the new feature
       Given there is a project
-      And the project does have a project location
+      And the project has a project path
       When the project is viewed
   	  Then I should see a import link
       Then the submit button will be disabled for that feature "Import sample one"
