@@ -29,6 +29,10 @@ Given /^the local feature file has changed$/ do
   @feature.update_attribute(:title, 'Something totally different')
 end
 
+Given /^the local feature file has changed a featutes scenario$/ do
+  @feature.stories.first.update_attribute(:scenario, 'A different story title')
+end
+
 When /^the feature has changed "([^\"]*)"$/ do |message|
   @feature.update_attribute(:title, message)
 end

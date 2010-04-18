@@ -71,7 +71,6 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       
     Scenario: We need to be able to update a source file with changes made to a system feature
       Given we have a valid feature file
-      And the feature file is saved
       And the local feature file has changed
       When view the feature
       And we click the features "merge system"
