@@ -78,3 +78,13 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And I use the "Update" link
       Then the flash message "The system feature has successfully been updated" should be displayed
       And the source file should be identical to the system file
+
+    Scenario: We need to be able to save a feature stories when a source feature file is changed
+      Given we have a valid feature file
+      And the feature file is saved
+      And the local feature file has changed a featutes scenario
+      When view the feature
+      And we click the features "merge system"
+      And I use the "Update" link
+      Then the flash message "The system feature has successfully been updated" should be displayed
+      And the source file should be identical to the system file
