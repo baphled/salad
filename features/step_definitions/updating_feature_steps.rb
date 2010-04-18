@@ -27,8 +27,8 @@ end
 
 Given /^the local feature file has changed$/ do
   @feature.update_attribute(:title, 'Something totally different')
-  File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@feature.export) }
   @feature.update_attribute(:path, "#{RAILS_ROOT}/tmp/tag_cloud.feature")
+  File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@feature.export) }
 end
 
 When /^the feature has changed "([^\"]*)"$/ do |message|
