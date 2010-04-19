@@ -74,6 +74,7 @@ class ProjectsController < ApplicationController
   end
   
   def import_all
+    Feature.imports_found(@project.location).each {|feature_file| feature_file.update_attribute(:project_ids, [@project.id])} unless Feature.imports_found(@project.location).nil?
     flash[:notice] = "Importing all features"
     redirect_to project_path(@project)
   end

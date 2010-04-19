@@ -242,6 +242,19 @@ describe ProjectsController do
     end
   end
 
+  describe "GET, import_all" do
+    before(:each) do
+      @project = mock_model(Project,:location => "#{RAILS_ROOT}")
+      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+      Project.stub(:find).and_return @project
+    end
+    
+    it "should make a call to import_feature" do
+      Feature.should_receive(:imports_found)
+      get :import_all
+    end
+  end
+  
   describe "GET, tag" do
     it "should find all projects with the given tag" do
       Project.should_receive(:find_tagged_with)

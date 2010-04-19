@@ -55,7 +55,7 @@ describe "projects/show.html.erb" do
     end
     
     it "should display an Import all link" do
-      response.should have_selector :a, attribute = {:href => import_all_projects_path(@project)}
+      response.should have_selector :a, attribute = {:href => import_all_project_path(@project)}
     end
   end
 end

@@ -403,5 +403,5 @@ Then /^the project information should not be saved$/ do
 end
 
 Then /^there should be no features to import$/ do
-  @project.import_features.should be_empty
+  Feature.imports_found(@project.location).should be_zero
 end
