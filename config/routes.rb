@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
                     :valid_directory => :get,
                     :validate => :get},
     :member => {:features => :get,
+                :import_all => :get,
                 :import_feature => :get,
                 :import => :get}
               

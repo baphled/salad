@@ -2,6 +2,7 @@
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to "Import", import_project_path(@project) unless @project.location.blank? %> | 
+  <%= link_to "Import All", import_all_project_path(@project) unless @project.location.blank? %> | 
   <%= link_to "Edit project", edit_project_path(@project) %>
 </span>
 

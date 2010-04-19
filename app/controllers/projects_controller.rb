@@ -72,6 +72,11 @@ class ProjectsController < ApplicationController
     @feature = @project.features.new(:projects=>[@project])
     @imported = @project.import_features
   end
+  
+  def import_all
+    flash[:notice] = "Importing all features"
+    redirect_to project_path(@project)
+  end
 
   def import_feature
     @to_import = Feature.imports_found @project.location

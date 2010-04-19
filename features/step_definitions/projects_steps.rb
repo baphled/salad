@@ -77,6 +77,7 @@ When /^a project has no features$/ do
 end
 
 When /^I visit the project$/ do
+  Project.stub(:find).and_return @project
   visit project_path @project
 end
 
@@ -399,4 +400,8 @@ end
 
 Then /^the project information should not be saved$/ do
   response.should have_selector :form
+end
+
+Then /^there should be no features to import$/ do
+  @project.import_features.should be_empty
 end

@@ -46,4 +46,16 @@ describe "projects/show.html.erb" do
       response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
     end
   end
+  
+  context "Importing all outstanding features" do
+    before(:each) do
+      @project.stub(:find).and_return @project
+      assigns[:project] = @project
+      render
+    end
+    
+    it "should display an Import all link" do
+      response.should have_selector :a, attribute = {:href => import_all_projects_path(@project)}
+    end
+  end
 end
