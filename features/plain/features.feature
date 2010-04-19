@@ -168,6 +168,3 @@ Feature: A user should be able to create new features, which can be associated w
     Given there is a feature
     When we visit the feature
     Then there should be an edit link
-  
-  
-  
