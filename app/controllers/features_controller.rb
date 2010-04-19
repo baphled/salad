@@ -139,10 +139,7 @@ class FeaturesController < ApplicationController
     if not @feature.is_diff?
       flash[:error] =  "Feature does not need updating"
     end
-    @feature.stories.destroy_all
-    feature = FeatureFile.new(@feature.path).export
-    @feature.stories = feature.stories
-    if @feature.update_attributes(feature.attributes)
+    if @feature.sync_system
       flash[:notice] = "The system feature has successfully been updated"
     else
       flash[:error] = "Unable to update the system feature"

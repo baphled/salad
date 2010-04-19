@@ -82,6 +82,13 @@ class Feature < ActiveRecord::Base
     end
   end
 
+  def sync_system
+    self.stories.destroy_all
+    feature = FeatureFile.new(self.path).export
+    self.stories = feature.stories
+    self.update_attributes(feature.attributes)
+  end
+  
   protected
     def run_patch dry_run
       File.open("#{RAILS_ROOT}/tmp/#{File.basename(self.path)}.patch", 'w') { |f| f.write(self.patch) }
