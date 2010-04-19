@@ -296,7 +296,7 @@ describe FeaturesController do
 
     context "when unsuccessful in updating a feature" do
       before(:each) do
-        @feature.stub(:update_attributes).and_return false
+        @feature.stub!(:sync_system).and_return false
       end
 
       it "should display an error flash message" do
@@ -307,7 +307,7 @@ describe FeaturesController do
 
     context "when successful in updating a feature" do
       before(:each) do
-        @feature.stub(:update_attributes).and_return true
+        @feature.stub(:sync_system).and_return true
       end
       it "should display a successful flash message" do
         get :system_sync, {:feature => @feature}
