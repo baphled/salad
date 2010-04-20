@@ -2,6 +2,10 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
+<div class="legend highlighttable">
+  <p class="gd">Removing from file</p>
+  <p class="gi">Adding to file</p>
+</div>
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to 'Dry-run', file_merge_feature_path(@feature, :dry_run => true) %>
   <%= link_to 'Patch', file_merge_feature_path(@feature) %>

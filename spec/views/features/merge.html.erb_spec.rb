@@ -19,8 +19,25 @@ describe "/features/merge.html.erb" do
     it "should have a link to do a dry-run" do
       response.should have_selector :a, :content => 'Dry-run'
     end
+
     it "should have a link to actually merge the changes" do
       response.should have_selector :a, :content => 'Patch'
+    end
+
+    it "should have a legend displaying system changes as green" do
+      response.should have_selector :div, attribute = {:class => "legend highlighttable"} do |legend_wrapper|
+        legend_wrapper.should have_selector :p, attribute = {:class => "gd"} do |content|
+          content.should contain "Removing from file"
+        end
+      end
+    end
+
+    it "should have a legend displaying file changes as red" do
+      response.should have_selector :div, attribute = {:class => "legend highlighttable"} do |legend_wrapper|
+        legend_wrapper.should have_selector :p, attribute = {:class => "gi"} do |content|
+          content.should contain "Adding to file"
+        end
+      end
     end
   end
 end
