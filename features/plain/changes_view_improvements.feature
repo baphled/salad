@@ -12,8 +12,8 @@ Feature: Changes view improvements
       Then changes on the "<system_or_file>" should be displayed as "<colour>"
 
     Examples:
-      |link           |system_or_file|colour  |
-      |merge changes  |system        |green   |
-      |merge changes  |feature file  |red     |
-      |merge system   |system        |red     |
-      |merge system   |feature file  |green   |
+      |link           |system_or_file      |colour  |
+      |merge changes  |Removing from file  |red     |
+      |merge changes  |Adding to file      |green   |
+      |merge system   |Removing from file  |green   |
+      |merge system   |Adding to file      |red     |
