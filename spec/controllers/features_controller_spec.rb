@@ -121,8 +121,7 @@ describe FeaturesController do
     end
     
     it "should display the changes" do
-      @feature.stub(:diff).and_return nil
-      @feature.should_receive(:diff)
+      @feature.should_receive(:diff_reverse)
       get :merge, {:feature => @feature}
     end
   end
@@ -220,6 +219,7 @@ describe FeaturesController do
   describe "GET, system_sync" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature").as_null_object
+      @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
       Feature.stub!(:find).and_return @feature
     end
     
@@ -239,8 +239,8 @@ describe FeaturesController do
         @feature.stub!(:is_diff?).and_return true
       end
       
-      it "should make a call to diff_reverse" do
-        @feature.should_receive(:diff_reverse)
+      it "should make a call to diff" do
+        @feature.should_receive(:diff)
         get :system_merge, {:feature => @feature, :dry_run => true}
       end
       
@@ -264,20 +264,7 @@ describe FeaturesController do
         response.should redirect_to feature_path(@feature)
       end
     end
-  end
-
-  describe "GET, system_sync" do
-    before(:each) do
-      @feature = mock_model(Feature).as_null_object
-      @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
-      Feature.stub!(:find).and_return @feature
-    end
-
-    it "should redirect to the feature" do
-      get :system_sync, {:feature => @feature}
-      response.should redirect_to feature_path(@feature)
-    end
-
+    
     context "feature does not need updating" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
