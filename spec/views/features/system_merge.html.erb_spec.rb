@@ -17,16 +17,16 @@ describe "features/system_merge.html.erb" do
     end
 
     it "should have a legend displaying system changes as green" do
-      response.should have_selector :div, attribute = {:class => "legend highlighttable"} do |legend_wrapper|
-        legend_wrapper.should have_selector :p, attribute = {:class => "gi"} do |content|
+      response.should have_selector :div, attribute = {:id => "legend"} do |legend_wrapper|
+        legend_wrapper.should have_selector :span, attribute = {:class => "gi"} do |content|
           content.should contain "Adding to system"
         end
       end
     end
 
     it "should have a legend displaying file changes as red" do
-      response.should have_selector :div, attribute = {:class => "legend highlighttable"} do |legend_wrapper|
-        legend_wrapper.should have_selector :p, attribute = {:class => "gd"} do |content|
+      response.should have_selector :div, attribute = {:id => "legend"} do |legend_wrapper|
+        legend_wrapper.should have_selector :span, attribute = {:class => "gd"} do |content|
           content.should contain "Removing from system"
         end
       end
