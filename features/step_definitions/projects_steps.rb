@@ -81,7 +81,7 @@ When /^a project has no features$/ do
 end
 
 When /^I visit the project$/ do
-  Project.stub(:find).and_return @project
+  # Project.stub(:find).and_return @project
   visit project_path @project
 end
 
