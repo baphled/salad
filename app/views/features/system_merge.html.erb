@@ -2,6 +2,10 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
+<div class="legend highlighttable">
+  <p class="gi">Adding to system</p>
+  <p class="gd">Removing from system</p>
+</div>
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to 'Update', system_sync_feature_path(@feature) %>
 </span>
