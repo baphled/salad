@@ -9,9 +9,11 @@ Feature: Changes view improvements
       When the feature has changed "Something different"
       And I view the feature
       And I use the "<link>" link
-      Then changes on the "<system_or_file>" should be in "<colour>"
+      Then changes on the "<system_or_file>" should be displayed as "<colour>"
 
     Examples:
-      |link             |system_or_file|colour  |
-      |merge changes  |system      |green |
-      |merge changes  |feature file|red   |
+      |link           |system_or_file|colour  |
+      |merge changes  |system        |green   |
+      |merge changes  |feature file  |red     |
+      |merge system   |system        |red     |
+      |merge system   |feature file  |green   |
