@@ -44,6 +44,10 @@ Given /^the projects creation date is not the same as the updated date$/ do
   @project.update_attribute(:updated_at, Time.now.next_year)
 end
 
+Given /^the project has features to import$/ do
+  Feature.stub!(:imports_found).with("#{RAILS_ROOT}")
+end
+
 When /^the project already exists$/ do
   @project.should_receive(:save).and_return false
 end
@@ -403,5 +407,5 @@ Then /^the project information should not be saved$/ do
 end
 
 Then /^there should be no features to import$/ do
-  Feature.imports_found(@project.location).should be_zero
+  Feature.imports_found("#{RAILS_ROOT}").should be_nil
 end
