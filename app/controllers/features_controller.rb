@@ -119,7 +119,7 @@ class FeaturesController < ApplicationController
 
   def merge
     if @feature.is_diff?
-      @pretty = @feature.diff
+      @pretty = @feature.diff_reverse
     else
       flash[:error] = "No changes available"
       redirect_to feature_path @feature
@@ -128,7 +128,7 @@ class FeaturesController < ApplicationController
 
   def system_merge
     if @feature.is_diff?
-      @pretty = @feature.diff_reverse
+      @pretty = @feature.diff
     else
       flash[:error] = "No changes available"
       redirect_to feature_path(@feature)
