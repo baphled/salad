@@ -7,4 +7,8 @@
   <%= link_to 'Patch', file_merge_feature_path(@feature) %>
 </span>
 
+<%= render :partial => "legend", :locals => {:diff_from => "file", :diff_to => "file"}  %>
+
+<div class="notice">This will change the source file. Unless you use source control, you may lose all changes</div>
+
 <%= @pretty.to_html %>

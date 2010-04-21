@@ -6,4 +6,8 @@
   <%= link_to 'Update', system_sync_feature_path(@feature) %>
 </span>
 
+<%= render :partial => "legend", :locals => {:diff_from => "system", :diff_to => "system"}  %>
+
+<div class="notice">This change will update the system feature</div>
+
 <%= @pretty.to_html %>
