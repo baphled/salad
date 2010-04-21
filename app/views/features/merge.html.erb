@@ -2,13 +2,16 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
-<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to 'Dry-run', file_merge_feature_path(@feature, :dry_run => true) %>
-  <%= link_to 'Patch', file_merge_feature_path(@feature) %>
-</span>
+<div class="wrapper">
+  <div id="panel" class="ui-widget ui-widget-content ui-corner-all">
+    <%= link_to 'Dry-run', file_merge_feature_path(@feature, :dry_run => true) %>
+    <%= link_to 'Patch', file_merge_feature_path(@feature) %>
+  </div>
+  <%= render :partial => "legend", :locals => {:diff_from => "file", :diff_to => "file"}  %>
+</div>
 
-<%= render :partial => "legend", :locals => {:diff_from => "file", :diff_to => "file"}  %>
-
+<div class="clear"></div>
 <div class="notice">This will change the source file. Unless you use source control, you may lose all changes</div>
+
 
 <%= @pretty.to_html %>
