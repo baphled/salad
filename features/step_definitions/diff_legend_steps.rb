@@ -4,3 +4,9 @@ Then /^changes on the "([^\"]*)" should be displayed as "([^\"]*)"$/ do |legend,
     content.should contain legend
   end
 end
+
+Then /^the following notice should be displayed "([^\"]*)"$/ do |notice|
+  response.should have_selector :div, attribute = {:class => "notice"} do |wrapper|
+    wrapper.should contain notice
+  end
+end

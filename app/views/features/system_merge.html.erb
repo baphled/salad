@@ -4,6 +4,8 @@
 
 <%= render :partial => "legend", :locals => {:diff_from => "system", :diff_to => "system"}  %>
 
+<div class="notice">This will change will update the system feature</div>
+
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to 'Update', system_sync_feature_path(@feature) %>
 </span>
