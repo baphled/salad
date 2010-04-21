@@ -65,5 +65,5 @@ Before do
 end
 
 After do
-    $rspec_mocks.reset_all
+  $rspec_mocks.reset_all
 end
