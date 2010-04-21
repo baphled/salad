@@ -98,9 +98,6 @@ When /^add 'project, new project' as tags$/ do
 end
 
 When /^I click import$/ do
-  file = "#{RAILS_ROOT}/features/plain/enhancements.feature"
-  result = {:file => File.basename(file), :feature => FeatureFile.new(file).export}
-  @project.stub!(:import_features).and_return [result]
   click_link 'Import'
 end
 
@@ -117,7 +114,6 @@ When /^the project single import is viewed$/ do
 end
 
 Then /^submit the form$/ do
-	
   click_button 'Save'
 end
 

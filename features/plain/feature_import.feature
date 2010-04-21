@@ -257,6 +257,7 @@ Feature: Users should not have to manually input their features if they have alr
       
     Scenario: When importing a feature which has examples, these should be displayed within the given scenario
       Given there is a project
+      And the project does have a project location
   	  When the project is viewed
   	  Then I should see a import link
       When I click import
