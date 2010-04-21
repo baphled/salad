@@ -17,5 +17,5 @@ Feature: Changes view improvements
       | merge changes | Adding to file        | green  |
       | merge system  | Adding to system      | green  |
       | merge system  | Removing from system  | red    |
-      | view changes  | Changes to the system | green  |
-      | view changes  | Changes to the file   | red    |
+      | view changes  | Changes to the file   | green  |
+      | view changes  | Changes to the system | red    |
