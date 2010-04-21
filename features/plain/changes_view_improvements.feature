@@ -11,9 +11,11 @@ Feature: Changes view improvements
       And I use the "<link>" link
       Then changes on the "<system_or_file>" should be displayed as "<colour>"
 
-    Examples:
-      |link           |system_or_file      |colour  |
-      |merge changes  |Removing from file  |red     |
-      |merge changes  |Adding to file      |green   |
-      |merge system   |Adding to system    |green   |
-      |merge system   |Removing from system|red     |
+    Examples: Legend views
+      | link          | system_or_file        | colour |
+      | merge changes | Removing from file    | red    |
+      | merge changes | Adding to file        | green  |
+      | merge system  | Adding to system      | green  |
+      | merge system  | Removing from system  | red    |
+      | view changes  | Changes to the system | green  |
+      | view changes  | Changes to the file   | red    |
