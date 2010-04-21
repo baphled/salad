@@ -10,10 +10,6 @@ Given /^we have a feature file$/ do
   File.exists?("#{RAILS_ROOT}/spec/fixtures/test.feature").should be_true
 end
 
-Given /^the feature file can be opened with Cucumbers FeatureFile object$/ do
-  @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/enhancements.feature"
-end
-
 Given /^we create a FeatureFile from a cucumber feature file with a scenario outline$/ do
   @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/enhancements.feature"
 end
@@ -99,10 +95,6 @@ end
 
 When /^each scenario should not be prefixed with 'Scenario Outline:'$/ do
   @file.export.stories.each { |story| story.scenario.should_not contain /^Scenario Outline:/}
-end
-
-Then /^our parse FeatureFile should be called$/ do
-  @file.should_receive :parse
 end
 
 Then /^a scenario outline should be found$/ do

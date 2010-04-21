@@ -16,7 +16,7 @@ require 'webrat'
 require 'webrat/core/matchers'
 
 require 'cucumber/rails/rspec'
-
+require 'spec/stubs/cucumber'
 require 'spec/mocks/framework'
 require 'spec/mocks/extensions'
 
@@ -65,5 +65,5 @@ Before do
 end
 
 After do
-  $rspec_stubs.reset_all
+    $rspec_mocks.reset_all
 end
