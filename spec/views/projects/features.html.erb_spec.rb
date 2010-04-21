@@ -39,7 +39,7 @@ describe "/projects/features.html.erb" do
       end
 
       it "should display projects summary" do
-        response.should have_selector :span, attribute = {:class=>"list_content"} do |project_info|
+        response.should have_selector :div, attribute = {:class=>"list_content"} do |project_info|
           project_info.should contain "Title: #{@project.title}"
           project_info.should contain "Created at: #{@project.description}"
         end
