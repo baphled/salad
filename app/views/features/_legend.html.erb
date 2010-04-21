@@ -1,5 +1,7 @@
 <span id="legend" class=" highlighttable ui-widget ui-widget-content ui-corner-all">
   <span>Legend</span><br />
-  <span class="gd"><%= (defined? change)? "Changes to the" : "Removing from"%> <%=h diff_from %></span>
-  <span class="gi"><%= (defined? change)? "Changes to the" : "Adding to"%> <%=h diff_to %></span>
+  <div class="centered">
+    <span class="gd"><%= (defined? change)? "Changes to the" : "Removing from"%> <%=h diff_from %></span>
+    <span class="gi"><%= (defined? change)? "Changes to the" : "Adding to"%> <%=h diff_to %></span>    
+  </div>
 </span>
