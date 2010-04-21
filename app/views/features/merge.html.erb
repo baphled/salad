@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
-<%= render :partial => "legend", :locals => {:diff_for => "file"}  %>
+<%= render :partial => "legend", :locals => {:diff_from => "file", :diff_to => "file"}  %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to 'Dry-run', file_merge_feature_path(@feature, :dry_run => true) %>

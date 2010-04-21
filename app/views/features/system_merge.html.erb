@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
-<%= render :partial => "legend", :locals => {:diff_for => "system"}  %>
+<%= render :partial => "legend", :locals => {:diff_from => "system", :diff_to => "system"}  %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <%= link_to 'Update', system_sync_feature_path(@feature) %>
