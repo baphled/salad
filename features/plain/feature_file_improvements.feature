@@ -3,19 +3,14 @@ Feature: We want to be able to deal with Cucumber changing formats easily
     As part of the system
     I want to be able to use cucumbers functionality to read our feature files
 
-    Scenario: We should be able to parse a feature file using Cucumbers exising functionality
-      Given we have a feature file
-      And the feature file can be opened with Cucumbers FeatureFile object
-      Then our parse FeatureFile should be called
-
     Scenario: We should be able to extract a scenario outline
       Given we have a feature file
-      And the feature file can be opened with Cucumbers FeatureFile object
+      And we create a FeatureFile from a cucumber feature file with a scenario outline
       Then a scenario outline should be found
 
     Scenario: We should be able to extract a scenarios examples
       Given we have a feature file
-      And the feature file can be opened with Cucumbers FeatureFile object
+      And we create a FeatureFile from a cucumber feature file with a scenario outline
       Then a scenario outline should be found
       And the scenario outlines example should be found
 
