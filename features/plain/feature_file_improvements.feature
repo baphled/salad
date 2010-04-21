@@ -40,7 +40,7 @@ Feature: We want to be able to deal with Cucumber changing formats easily
       And the scenario outline should precede its examples
       Then the example should have a list of actions
     
-    Scenario: The associated actions should be seperated and not in the format they are in within cucumber
+    Scenario: The associated actions should be separated and not in the format they are in within cucumber
       Given we create a FeatureFile from a cucumber feature file with a scenario outline
       When a feature is valid
       And it has a scenario outline
