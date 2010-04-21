@@ -61,7 +61,7 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 World(Spec::Mocks::ExampleMethods)
 
 Before do
-  $rspec_stubs ||= Spec::Mocks::Space.new
+  $rspec_mocks ||= Spec::Mocks::Space.new
 end
 
 After do
