@@ -19,3 +19,16 @@ Feature: Changes view improvements
       | merge system  | Removing from system  | red    |
       | view changes  | Changes to the file   | green  |
       | view changes  | Changes to the system | red    |
+      
+    Scenario Outline: There should be a notice warning users a feature file will be changed when patching a feature file
+      Given there is a feature
+      And the feature has a path
+      When the feature has changed "Something different"
+      And I view the feature
+      And I use the "<link>" link
+      Then the following notice should be displayed "<notice>"
+      
+    Examples: Changes notices
+      | link          | notice                                                                                    |
+      | merge changes | This will change the source file. Unless you use source control, you may lose all changes |
+      | merge system  | This will change will update the system feature                                           |
