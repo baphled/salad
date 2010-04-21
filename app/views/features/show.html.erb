@@ -13,9 +13,7 @@
     <%= link_to "Edit", edit_feature_path(@feature) %>
 </span>
 
-<div id="list">
-  <%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>
-</div>
+<%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>
 
 <%= render :partial => '/common/hover', :locals => {:items => 'story'}%>
 <%= render :partial => 'common/sidebar_items', :locals => {:models => @feature_stories, :assoc => 'steps'}%>

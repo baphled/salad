@@ -1,43 +1,46 @@
-<% if defined?([models,item_name,assoc]) %>
-  <span class="list_content">
-      <%= will_paginate models unless models.nil? or !models.respond_to?(:total_pages) %>
-    <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
-      <%= link_to "New #{item_name.singularize.capitalize}",
-          :controller => item_name.pluralize.downcase,
-          :action => :new %>
-      <%= order_btn models, order  if defined? order%>
-      <ul id="<%= item_name.pluralize.downcase %>">
-      <% if !models.blank? %>
-          <% models.each_with_index do |model,index| %>
-            <% content_tag_for(:li, model) do %>
-              <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
-              <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
-                <%if order == true %>
-                <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
-                  <%= index+1 %>
-                </span>
+<div class="clear"></div>
+<div class="list">
+  <% if defined?([models,item_name,assoc]) %>
+    <div class="list_content">
+        <%= will_paginate models unless models.nil? or !models.respond_to?(:total_pages) %>
+      <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
+        <%= link_to "New #{item_name.singularize.capitalize}",
+            :controller => item_name.pluralize.downcase,
+            :action => :new %>
+        <%= order_btn models, order  if defined? order%>
+        <ul id="<%= item_name.pluralize.downcase %>">
+        <% if !models.blank? %>
+            <% models.each_with_index do |model,index| %>
+              <% content_tag_for(:li, model) do %>
+                <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
+                <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
+                  <%if order == true %>
+                  <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
+                    <%= index+1 %>
+                  </span>
+                  <% end %>
+                  <% if 'step' == model.class.to_s.downcase %>
+                        <%=h model.send(method,method_arg[index -1])%>
+                  <% else %>
+                    <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
+                  <% end %>
                 <% end %>
-                <% if 'step' == model.class.to_s.downcase %>
-                      <%=h model.send(method,method_arg[index -1])%>
-                <% else %>
-                  <%= render :partial => "/common/list/#{model.class.to_s.downcase}", :locals => {model_name_to_sym(models) => model } %>
-                <% end %>
+
               <% end %>
-              
             <% end %>
-          <% end %>
-      <% else %>
-          <li>No <%= item_name.pluralize.downcase %> present</li>
-      <% end %>
-      </ul>
+        <% else %>
+            <li>No <%= item_name.pluralize.downcase %> present</li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="pagination pagination_summary">
+        <%= page_entries_info models unless models.nil? or !models.respond_to?(:total_pages) %>
+      </div>
     </div>
-    <div class="pagination pagination_summary">
-      <%= page_entries_info models unless models.nil? or !models.respond_to?(:total_pages) %>
-    </div>
-  </span>
-<% else %>
-<span id="error">Experiencing problems with displaying the view</span>
-<% end %>
+  <% else %>
+  <span id="error">Experiencing problems with displaying the view</span>
+  <% end %>
+</div>
 
 <% content_for :js_head do %>
   <%= javascript_include_tag "sortable_list" %>

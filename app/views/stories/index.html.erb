@@ -1,9 +1,7 @@
 <h3>Stories</h3>
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 
-<div id="list">
-  <%= render :partial => '/common/sortable_list',:locals => {:models => @stories, :item_name => 'story', :assoc => 'step', :order =>false}%>
-</div>
+<%= render :partial => '/common/sortable_list',:locals => {:models => @stories, :item_name => 'story', :assoc => 'step', :order =>false}%>
 
 <%= render :partial => '/common/hover', :locals => {:items => 'story'}%>
 <%= render :partial => 'common/sidebar_items', :locals => {:models => @stories, :assoc => 'steps'}%>
