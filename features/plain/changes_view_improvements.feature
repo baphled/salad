@@ -30,5 +30,5 @@ Feature: Changes view improvements
       
     Examples: Changes notices
       | link          | notice                                                                                    |
-      | merge changes | This will change the source file. Unless you use source control, you may lose all changes |
-      | merge system  | This will change will update the system feature                                           |
+      | merge changes | This change the source file. Unless you use source control, you may lose all changes |
+      | merge system  | This change will update the system feature                                           |
