@@ -16,11 +16,11 @@ Given /^the project does not have a project location$/ do
 end
 
 Given /^the project does have a project location$/ do
-  @project.location.should_not be_nil
+  @project.update_attribute(:location, "#{RAILS_ROOT}/spec/fixtures/")
 end
 
 Given /^a step already exists$/ do
-  response.should contain "When I click new projects"
+  response.should contain "Then the tags cloud should be displayed"
 end
 
 Given /^there are no features to import$/ do
@@ -46,6 +46,10 @@ end
 
 Given /^the project has features to import$/ do
   Feature.stub!(:imports_found).with("#{RAILS_ROOT}")
+end
+
+Given /^the project does have a project location with no features to import$/ do
+  @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures/features")
 end
 
 When /^the project already exists$/ do
@@ -95,7 +99,7 @@ end
 
 When /^I click import$/ do
   file = "#{RAILS_ROOT}/features/plain/enhancements.feature"
-  result ||= {:file => File.basename(file), :feature => FeatureFile.new(file).export}
+  result = {:file => File.basename(file), :feature => FeatureFile.new(file).export}
   @project.stub!(:import_features).and_return [result]
   click_link 'Import'
 end
@@ -309,18 +313,18 @@ When /^a scenario already exists$/ do
   response.should contain "Scenario: #{Story.find(3).scenario}"
 end
 
-When /^select the features feature$/ do
-  click_link 'feature import'
+When /^select the "([^\"]*)"$/ do |link|
+  click_link 'Tag cloud'
 end
 
 When /^the feature is visible$/ do
   response.should have_selector :div do |content|
-    content.should have_selector :h3, :content => "Feature: projects"
+    content.should have_selector :h3, :content => "Feature: tag cloud"
   end
 end
 
 When /^we click import projects$/ do
-  click_button 'Import projects'
+  click_button 'Import tag cloud'
 end
 
 Then /^we scenario should display that is is already added$/ do
@@ -343,11 +347,11 @@ Then /^the feature should have at least on '(.*)'$/ do |step_prefix|
 end
 
 Then /^it should be highlighted$/ do
-  response.should have_selector :b, :content => "When I click new projects"
+  response.should have_selector :b, :content => "Then the tags cloud should be displayed"
 end
 
 Then /^each imported stories step should be added$/ do
-  assert(Step.find_by_title("Given I can view the projects page").title)
+  assert(Step.find_by_title("Then the tags cloud should be displayed").title)
 end
 
 Then /^the project feature will be not be selectable\.$/ do
@@ -387,7 +391,7 @@ Then /^the submit button will be disabled for that feature "([^\"]*)"$/ do |butt
 end
 
 Then /^it should include features from all sub directories within the feature directory$/ do
-  response.should contain "Feature: hover functionality"
+  response.should contain "Feature: most used"
 end
 
 Then /^the "([^\"]*)" "([^\"]*)" "([^\"]*)" should have an error class$/ do |model, attribute, input|
