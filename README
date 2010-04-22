@@ -15,7 +15,7 @@ This makes Salad a nice simple tool for clarifying feature requirements & rollin
 What Salad does
 Helps organise features & their stories
 Manage a stories steps
-Allows you to import features
+Allows you to import features (all or singular)
 Allows you to export features
 Patch & diff features
 Synchronises a system feature with its associated feature file
