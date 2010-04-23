@@ -148,15 +148,10 @@ describe Feature do
       @feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature"
     end
     
-    it "should create a new patch file" do
-      File.should_receive(:open)
-      @feature.sync
-    end
-    
     context "patching a feature file in dry-run mode" do
       it "gets a patch of the changes" do
         @feature.should_receive(:patch)
-        @feature.sync
+        @feature.sync(true)
       end
             
       context "it successfully synchronises a feature file" do
@@ -165,7 +160,7 @@ describe Feature do
         end
 
         it "should return true" do
-          @feature.sync.should == true
+          @feature.sync(true).should == true
         end
       end
 
