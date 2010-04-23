@@ -149,7 +149,8 @@ describe ProjectsController do
     
     context "features to import" do
       before(:each) do
-        @feature = Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+        @results = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
+        @feature = Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return @results
         assigns[:to_import] = @feature
       end
 
@@ -164,7 +165,7 @@ describe ProjectsController do
         end
 
         it "should have an array of features file locations" do
-          assigns[:to_import].should == ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+          assigns[:to_import].should == @results
         end
       end
 
@@ -222,7 +223,8 @@ describe ProjectsController do
 
   describe "GET, import" do
     before(:each) do
-      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+      @results = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
+      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return @results
       Project.stub(:find).and_return @project
     end
 
@@ -245,7 +247,8 @@ describe ProjectsController do
   describe "GET, import_all" do
     before(:each) do
       @project = mock_model(Project,:location => "#{RAILS_ROOT}")
-      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return ["#{RAILS_ROOT}/features/plain/tag_cloud.feature"]
+      @results = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
+      Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return @results
       Project.stub(:find).and_return @project
     end
     
