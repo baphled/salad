@@ -2,7 +2,7 @@ Salad
 
 Inspired by Cucumber, Salad mixes clients & developers with a little special sauce, created to help bridge the gap between creative minds and developers.
 
-One of the main issues I've come across whilst using Cucumber, is that I end up having to copy and paste various snippets of my existing feature to create new ones. Though Cucumber is a marvelous tool, I still had the need to convert client based specifications into live code.
+One of the main issues I've come across whilst using Cucumber, is that I end up having to copy and paste various snippets of my existing feature to create new ones. Though Cucumber is a marvellous tool, I still had the need to convert client based specifications into live code.
 
 Salad takes the first step in dealing with this issue. Firstly with Salad it is easy to create features and associate them with projects, building further on them by specifying a features stories and steps need to complete a story.
 
@@ -10,14 +10,14 @@ Imagine, if you will the BS ages, Before Salad, that is. Eating vegetables got b
 
 Salad makes creating new features & stories easier as you build up a collection, as steps & stories are often reused, Salad gives you the ability to import features, steps & stories into a project, so you don't have to do it all over again. 
 
-This makes Salad a nice simple tool for clarifying feature requirements & rolling out a projects features.
+This makes Salad a nice simple tool for clarifying feature requirements & rolling out a project's features.
 
 What Salad does
 Helps organise features & their stories
 Manage a stories steps
 Allows you to import features (all or singular)
 Allows you to export features
-Patch & diff features
+Patch & update features
 Synchronises a system feature with its associated feature file
 
 What Salad doesn't do
@@ -25,7 +25,7 @@ Automatically generate cucumber steps
 Make your coffee (yet)
 
 Future features
-Display which features a features status (pending,complete,etc)
+Display features status (pending,complete,etc)
 LightHouse integration
 GitHub integration
 
