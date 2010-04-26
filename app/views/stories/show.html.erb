@@ -1,5 +1,9 @@
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps } %>
 
+<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
+  <%= link_to "Edit project", edit_story_path(@story) %>
+</span>
+
 <div>
   <%= render :partial => '/common/sortable_list',
     :locals => {:models => @story_steps,
