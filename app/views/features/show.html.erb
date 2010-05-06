@@ -15,7 +15,7 @@
   <% if !@feature.stories.blank? %>
       <%= link_to "export feature", export_feature_path(@feature), :id => 'export-feature', :title => 'Export the feature from the system.' %>
   <% end %>
-    <%= link_to "Edit", edit_feature_path(@feature) %>
+    <%= link_to "Edit", edit_feature_path(@feature), :id => 'edit', :title => 'Edit the feature and it\'s stories' %>
 </span>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>
