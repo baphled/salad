@@ -10,6 +10,10 @@ When /^I press order$/ do
   selenium.click "order_icon"
 end
 
+When /^I hover over the "([^\"]*)" link$/ do |link|
+  selenium.mouse_over("#{link}")
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1_features")
 end
@@ -58,4 +62,12 @@ end
 
 Then /^a flash message "([^\"]*)" should be dynamically displayed$/ do |message|
   response.should contain "#{message}"
+end
+
+Then /^there should be a "([^\"]*)" link$/ do |link|
+  response.should contain "#{link}"
+end
+
+Then /^a tooltip should be visible$/ do
+  selenium.wait_for_visible("css=div.tooltip")
 end
