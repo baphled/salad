@@ -18,15 +18,15 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     Then a tooltip should be visible
 
   Scenario: When hovering over the feature changes displays a tooltip
-    Given there is a feature
-    And we change the feature's title to "Something different"
-    When I view the feature
+    Given we create a feature with a path
+    When the feature is viewed
     Then there should be a "view changes" link
     And I hover over the "view-changes" link
     Then a tooltip should be visible
 
   Scenario: When hovering over the feature's merge changes link displays a tooltip
-    Given there is a feature
+    Given we create a feature with a path
+    And we edit the feature
     And we change the feature's title to "Something different"
     When I view the feature
     Then there should be a "merge changes" link
@@ -34,7 +34,8 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     Then a tooltip should be visible
 
   Scenario: When hovering over the feature's system sync link displays a tooltip
-    Given there is a feature
+    Given we create a feature with a path
+    And we edit the feature
     And we change the feature's title to "Something different"
     When I view the feature
     Then there should be a "system sync" link
@@ -42,7 +43,8 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     Then a tooltip should be visible
 
   Scenario: When hovering over the feature's patch changes link displays a tooltip
-    Given there is a feature
+    Given we create a feature with a path
+    And we edit the feature
     And we change the feature's title to "Something different"
     When I view the feature
     Then there should be a "patch changes" link
