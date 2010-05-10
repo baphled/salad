@@ -33,6 +33,10 @@ When /^we visit the feature$/ do
   visit feature_path(@feature)
 end
 
+When /^I view the feature$/ do
+  visit feature_path(@feature)
+end
+
 Then /^the feature information should be saved$/ do
   assert_response :success
 end
