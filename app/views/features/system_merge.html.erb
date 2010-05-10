@@ -2,8 +2,13 @@
 <%= stylesheet_link_tag "pretty_diff" %>
 <% end %>
 
+<% content_for :js_head do %>
+  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "tooltips.js" %>
+<%end %>
+
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to 'Update', system_sync_feature_path(@feature) %>
+  <%= link_to_with_tooltip 'Update', system_sync_feature_path(@feature), 'Merge the feature file changes to the system' %>
 </span>
 
 <%= render :partial => "legend", :locals => {:diff_from => "system", :diff_to => "system"}  %>

@@ -30,3 +30,11 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
      | merge changes | merge-changes |
      | merge system  | merge-system  |
      | patch changes | patch-changes |
+     
+   Scenario: When hovering over the feature changes displays a tooltip
+     Given we create a feature with a path
+     When the feature is viewed
+     When we click on the "merge system" link
+     Then there should be a "Update" link
+     And I hover over the "update" link
+     Then a tooltip should be visible

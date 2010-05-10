@@ -27,6 +27,10 @@ When /^I view the changed feature$/ do
   selenium.wait_for_element("view-changes")
 end
 
+When /^we click on the "([^\"]*)" link$/ do |link|
+  click_link link
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1_features")
 end
