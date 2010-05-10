@@ -7,7 +7,7 @@
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <% if @feature.is_diff? %>
-    <%= link_to "view changes", changes_feature_path(@feature), :title => 'Check the difference between the systems & your applications features' %>
+    <%= link_to "view changes", changes_feature_path(@feature), :id => 'view-changes', :title => 'Check the difference between the systems & your applications features' %>
     <%= link_to "merge changes", merge_feature_path(@feature) %>
     <%= link_to "merge system", system_merge_feature_path(@feature) %>  
     <%= link_to "patch changes", feature_path(@feature, :format => :patch) %>
