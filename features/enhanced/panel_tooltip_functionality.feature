@@ -6,7 +6,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the feature's export link displays a tooltip
     Given there is a feature
     When I view the feature
-    Then there should be a "export feature" link
+    Then there should be a "Export feature" link
     And I hover over the "export-feature" link
     Then a tooltip should be visible
 
@@ -24,7 +24,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     And I hover over the "<id>" link
     Then a tooltip should be visible
 
-  Examples: List of links that should have tool tips
+  Examples: List of feature panel links that should have tool tips
      | link          | id            |
      | view changes  | view-changes  |
      | merge changes | merge-changes |
@@ -34,7 +34,20 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
    Scenario: When hovering over the feature changes displays a tooltip
      Given we create a feature with a path
      When the feature is viewed
-     When we click on the "merge system" link
+     When we click on the "Merge system" link
      Then there should be a "Update" link
      And I hover over the "update" link
      Then a tooltip should be visible
+     
+   Scenario Outline: When hovering over the feature changes displays a tooltip
+      Given there is a project
+      When the project is viewed
+      Then there should be a "Import" link
+      And I hover over the "import" link
+      Then a tooltip should be visible
+      
+    Examples: List of feature panel links that should have tool tips
+       | link         | id           |
+       | Import       | import       |
+       | Import all   | import-all   |
+       | Edit project | edit-project |

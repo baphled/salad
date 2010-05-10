@@ -1,9 +1,14 @@
+<% content_for :js_head do %>
+  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "tooltips.js" %>
+<%end %>
+
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @project, :assoc => :features } %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to "Import", import_project_path(@project) unless @project.location.blank? %> | 
-  <%= link_to "Import All", import_all_project_path(@project) unless @project.location.blank? %> | 
-  <%= link_to "Edit project", edit_project_path(@project) %>
+  <%= link_to_with_tooltip "import", import_project_path(@project), 'Allows you to import features singularly' unless @project.location.blank? %> | 
+  <%= link_to_with_tooltip "import all", import_all_project_path(@project), 'Allows you to import all project features in one easy step' unless @project.location.blank? %> | 
+  <%= link_to_with_tooltip "edit project", edit_project_path(@project), 'Allows you to edit a projects information' %>
 </span>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'story', :order =>true}%>
