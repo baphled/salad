@@ -58,3 +58,10 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     Then there should be a "Edit step" link
     And I hover over the "edit-step" link
     Then a tooltip should be visible
+    
+  Scenario: When hovering over the story panel links displays a tooltip
+    Given there is a story
+    When the story is viewed
+    Then there should be a "Edit story" link
+    And I hover over the "edit-story" link
+    Then a tooltip should be visible

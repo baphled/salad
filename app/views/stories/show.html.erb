@@ -1,7 +1,12 @@
+<% content_for :js_head do %>
+  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "tooltips.js" %>
+<%end %>
+
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps } %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to "Edit project", edit_story_path(@story) %>
+  <%= link_to_with_tooltip "Edit story", edit_story_path(@story), 'Edit the features information' %>
 </span>
 
 <div>
