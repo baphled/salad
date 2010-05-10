@@ -20,6 +20,6 @@ module ApplicationHelper
   end
   
   def link_to_with_tooltip(link_title, link, tooltip)
-    link_to link_title, link, :id => link_title.gsub(' ', '-'), :title => tooltip
+    link_to link_title, link.capitalize, :id => link_title.gsub(' ', '-').downcase, :title => tooltip
   end
 end
