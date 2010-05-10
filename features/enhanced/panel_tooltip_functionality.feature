@@ -31,7 +31,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
      | merge system  | merge-system  |
      | patch changes | patch-changes |
      
-   Scenario: When hovering over the feature changes displays a tooltip
+   Scenario: When hovering over the feature panel links displays a tooltip
      Given we create a feature with a path
      When the feature is viewed
      When we click on the "Merge system" link
@@ -39,15 +39,22 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
      And I hover over the "update" link
      Then a tooltip should be visible
      
-   Scenario Outline: When hovering over the feature changes displays a tooltip
+   Scenario Outline: When hovering over the project panel links displays a tooltip
       Given there is a project
       When the project is viewed
       Then there should be a "Import" link
       And I hover over the "import" link
       Then a tooltip should be visible
       
-    Examples: List of feature panel links that should have tool tips
+    Examples: List of project panel links that should have tool tips
        | link         | id           |
        | Import       | import       |
        | Import all   | import-all   |
        | Edit project | edit-project |
+       
+  Scenario: When hovering over the step panel links displays a tooltip
+    Given there is a step
+    When the step is viewed
+    Then there should be a "Edit step" link
+    And I hover over the "edit-step" link
+    Then a tooltip should be visible

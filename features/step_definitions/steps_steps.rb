@@ -2,12 +2,20 @@ Given /^the step "([^\"]*)" is created$/ do |step|
   Step.create(:title => step)
 end
 
+Given /^there is a step$/ do
+  @step = Step.first
+end
+
 When /^I choose 'New Step' link$/ do
   click_link 'New Step'
 end
 
 When /^I visit the first step$/ do
   visit('/steps/1')
+end
+
+When /^the step is viewed$/ do
+  visit step_path @step
 end
 
 Then /^the new step form should be displayed$/ do

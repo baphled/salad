@@ -1,12 +1,16 @@
+<% content_for :js_head do %>
+  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "tooltips.js" %>
+<%end %>
+
 <h4>Step Info</h4>
 <div id="info">
   <%= render :partial => '/common/model_information', :locals => {:model => @step}%>
   <%= render :partial => '/common/model_summary', :locals => {:model => @step}%>
 </div>
 
-
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to "Edit step", edit_step_path(@step) %>
+  <%= link_to_with_tooltip "Edit step", edit_step_path(@step), 'Edit the steps' %>
 </span>
 
 <% semantic_form_for @step do |form| -%>
