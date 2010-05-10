@@ -8,9 +8,9 @@
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <% if @feature.is_diff? %>
     <%= link_to "view changes", changes_feature_path(@feature), :id => 'view-changes', :title => 'Check the difference between the systems & your applications features' %>
-    <%= link_to "merge changes", merge_feature_path(@feature) %>
-    <%= link_to "merge system", system_merge_feature_path(@feature) %>  
-    <%= link_to "patch changes", feature_path(@feature, :format => :patch) %>
+    <%= link_to "merge changes", merge_feature_path(@feature), :id => 'merge-changes', :title => 'Merge a systems changes with the feature' %>
+    <%= link_to "merge system", system_merge_feature_path(@feature), :id => 'merge-system', :title => 'Merge a features changes with the system' %>  
+    <%= link_to "patch changes", feature_path(@feature, :format => :patch), :id => 'patch-changes', :title => 'Patch a feature with the systems changes' %>
   <% end %>
   <% if !@feature.stories.blank? %>
       <%= link_to "export feature", export_feature_path(@feature), :id => 'export-feature', :title => 'Export the feature from the system.' %>

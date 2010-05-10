@@ -17,36 +17,16 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     And I hover over the "edit" link
     Then a tooltip should be visible
 
-  Scenario: When hovering over the feature changes displays a tooltip
+  Scenario Outline: When hovering over the feature changes displays a tooltip
     Given we create a feature with a path
     When the feature is viewed
-    Then there should be a "view changes" link
-    And I hover over the "view-changes" link
+    Then there should be a "<link>" link
+    And I hover over the "<id>" link
     Then a tooltip should be visible
 
-  Scenario: When hovering over the feature's merge changes link displays a tooltip
-    Given we create a feature with a path
-    And we edit the feature
-    And we change the feature's title to "Something different"
-    When I view the feature
-    Then there should be a "merge changes" link
-    And I hover over the "merge-changes" link
-    Then a tooltip should be visible
-
-  Scenario: When hovering over the feature's system sync link displays a tooltip
-    Given we create a feature with a path
-    And we edit the feature
-    And we change the feature's title to "Something different"
-    When I view the feature
-    Then there should be a "system sync" link
-    And I hover over the "system-sync" link
-    Then a tooltip should be visible
-
-  Scenario: When hovering over the feature's patch changes link displays a tooltip
-    Given we create a feature with a path
-    And we edit the feature
-    And we change the feature's title to "Something different"
-    When I view the feature
-    Then there should be a "patch changes" link
-    And I hover over the "patch-changes" link
-    Then a tooltip should be visible
+  Examples: List of links that should have tool tips
+     | link          | id            |
+     | view changes  | view-changes  |
+     | merge changes | merge-changes |
+     | merge system  | merge-system  |
+     | patch changes | patch-changes |
