@@ -54,7 +54,7 @@ When /^we visit the feature via import feature$/ do
 end
 
 When /^there should be a link to merge the change$/ do
-  response.should contain "merge changes"
+  response.should contain "Merge changes"
 end
 
 When /^we click the "([^\"]*)"$/ do |link|

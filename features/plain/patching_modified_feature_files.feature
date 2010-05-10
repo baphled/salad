@@ -9,7 +9,7 @@ Feature: Patching modified feature files
       And the feature has a path
       When the feature has changed "Something different"
       And I view the feature
-      And a "patch changes" link should be displayed within the feature
+      And a "Patch changes" link should be displayed within the feature
       When we click the features "patch changes"
       Then we should display the patch
 
