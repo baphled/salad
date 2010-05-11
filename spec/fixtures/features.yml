@@ -4,6 +4,7 @@ one:
   in_order: to create an project
   as_a: a developer
   i_want: to have the skills
+  path: /Users/yomic/Documents/Projects/salad/spec/fixtures/features/tag_cloud.feature
 
 two:
   id: 2

@@ -1,3 +1,11 @@
+Given /^we edit the feature$/ do
+  visit edit_feature_path @feature
+end
+
+Given /^we create a feature with a path$/ do
+  @feature = Feature.first
+end
+               
 When /^the first (.*) is hovered over$/ do |model|
   selenium.mouse_over("#{model}_1")
 end
@@ -10,8 +18,31 @@ When /^I press order$/ do
   selenium.click "order_icon"
 end
 
+When /^I hover over the "([^\"]*)" link$/ do |link|
+  selenium.mouse_over("#{link}")
+end
+
+When /^I view the changed feature$/ do
+  visit feature_path @feature
+  selenium.wait_for_element("view-changes")
+end
+
+When /^we click on the "([^\"]*)" link$/ do |link|
+  click_link link
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1_features")
+end
+
+Given /^we click the edit link$/ do
+  click_link 'Edit'
+end
+
+Given /^we change the feature's title to "([^\"]*)"$/ do |content|
+  selenium.wait_for_visible("id=feature_title")
+  fill_in 'feature_title', :with => content
+  click_button 'Save'
 end
 
 Then /^the story's information will be display in the sidebar$/ do
@@ -58,4 +89,12 @@ end
 
 Then /^a flash message "([^\"]*)" should be dynamically displayed$/ do |message|
   response.should contain "#{message}"
+end
+
+Then /^there should be a "([^\"]*)" link$/ do |link|
+  response.should contain "#{link}"
+end
+
+Then /^a tooltip should be visible$/ do
+  selenium.wait_for_visible("css=div.tooltip")
 end

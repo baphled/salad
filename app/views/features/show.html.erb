@@ -1,16 +1,21 @@
+<% content_for :js_head do %>
+  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "tooltips.js" %>
+<%end %>
+
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @feature, :assoc => :stories } %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
   <% if @feature.is_diff? %>
-    <%= link_to "view changes", changes_feature_path(@feature) %>
-    <%= link_to "merge changes", merge_feature_path(@feature) %>
-    <%= link_to "merge system", system_merge_feature_path(@feature) %>  
-    <%= link_to "patch changes", feature_path(@feature, :format => :patch) %>
+    <%= link_to_with_tooltip "view changes", changes_feature_path(@feature), :title => 'Check the difference between the systems & your applications features' %>
+    <%= link_to_with_tooltip "merge changes", merge_feature_path(@feature), :title => 'Merge a systems changes with the feature' %>
+    <%= link_to_with_tooltip "merge system", system_merge_feature_path(@feature), :title => 'Merge a features changes with the system' %>  
+    <%= link_to_with_tooltip "patch changes", feature_path(@feature, :format => :patch), :title => 'Patch a feature with the systems changes' %>
   <% end %>
   <% if !@feature.stories.blank? %>
-      <%= link_to "export feature", export_feature_path(@feature) %>
+      <%= link_to "export feature", export_feature_path(@feature), :id => 'export-feature', :title => 'Export the feature from the system.' %>
   <% end %>
-    <%= link_to "Edit", edit_feature_path(@feature) %>
+    <%= link_to "Edit", edit_feature_path(@feature), :id => 'edit', :title => 'Edit the feature and it\'s stories' %>
 </span>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>
