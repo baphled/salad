@@ -5,7 +5,17 @@ end
 Given /^we create a feature with a path$/ do
   @feature = Feature.first
 end
-               
+
+Given /^a project has tags$/ do
+  visit '/projects/1/edit'
+  fill_in 'project_tag_list', :with => 'Project management, something else'
+  click_button 'Save'
+end
+
+Given /^I create a new project$/ do
+  visit new_project_path
+end
+
 When /^the first (.*) is hovered over$/ do |model|
   selenium.mouse_over("#{model}_1")
 end
@@ -29,6 +39,10 @@ end
 
 When /^we click on the "([^\"]*)" link$/ do |link|
   click_link link
+end
+
+When /^focus on the tag input$/ do
+  selenium.click "project_tag_list"
 end
 
 Then /^the project's information will be display in the sidebar$/ do
@@ -97,4 +111,28 @@ end
 
 Then /^a tooltip should be visible$/ do
   selenium.wait_for_visible("css=div.tooltip")
+end
+
+Then /^I should see a hover dialog box$/ do
+  selenium.wait_for_visible("class=hover ui-widget ui-widget-content ui-corner-all")
+end
+
+Then /^I should not see a hover dialog box$/ do
+  response.should_not have_selector "css=div.hover"
+end
+
+Then /^there should be a "([^\"]*)" link$/ do |link|
+  response.should contain "#{link}"
+end
+
+Then /^a tooltip should be visible$/ do
+  selenium.wait_for_visible("css=div.tooltip")
+end
+
+Then /^it should have a list of all project tags$/ do
+  response.should have_selector "a.hover_select"
+end
+
+Then /^the tag input should not contain "([^\"]*)"$/ do |tag|
+  response.selenium.get_xpath_count("//a[@class='hover_select']").to_i.should be 1
 end

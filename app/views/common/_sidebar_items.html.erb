@@ -6,10 +6,10 @@
           <h3><%=h display_item_title(model) %></h3>
         <% if !model.send(assoc.to_sym).blank? %>
           <ul>
-            <% for item in model.send(assoc.to_sym)%>
+            <% model.send(assoc.to_sym).each_with_index do |item, item_index|%>
             <li>
-              <% if 'Step' == item.class.to_s.to_sym %>
-              <%=h item.formatted model.send(assoc.to_sym)[index -1] %>
+              <% if 'Step' == item.class.to_s.capitalize %>
+              <%=h item.formatted model.send(assoc.to_sym)[item_index -1] %>
               <% else %>
               <%= display_item_title(item) %>
               <% end %>
