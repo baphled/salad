@@ -64,7 +64,7 @@ When /^I edit the first feature$/ do
 end
 
 When /^I visit the first features stories$/ do
-  click_link 'feature_1_stories'
+  click_link 'Stories'
 end
 
 Then /^I should see a list of features$/ do
