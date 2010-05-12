@@ -1,26 +1,3 @@
 <% content_for :side_bar do %>
-  <% if !models.blank? %>
-    <ul id="<%= models.first.class.to_s.singularize.downcase %>_<%=assoc%>">
-	  <% models.each_with_index do |model, index| %>
-        <li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_list_item item_<%= index %> side_hover" style="display: none;">
-          <h3><%=h display_item_title(model) %></h3>
-        <% if !model.send(assoc.to_sym).blank? %>
-          <ul>
-            <% model.send(assoc.to_sym).each_with_index do |item, item_index|%>
-            <li>
-              <% if 'Step' == item.class.to_s.capitalize %>
-              <%=h item.formatted model.send(assoc.to_sym)[item_index -1] %>
-              <% else %>
-              <%= display_item_title(item) %>
-              <% end %>
-            </li>
-            <% end %>
-          </ul>
-        <%else%>
-          <%= model.class.to_s.singularize %> does not have any <%= assoc %>  yet.
-        <% end %>
-        </li>
-	  <% end %>
-	<% end %>
-  </ul>
+  <%= render :partial => '/common/sidebar_list_content', :locals => {:models => @feature_stories, :assoc => 'steps'} %>
 <% end %>
