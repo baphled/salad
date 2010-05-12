@@ -1,10 +1,9 @@
 $(document).ready(function() {
   
   var hoverItem = function() {
-    $classArray = $(this).attr('id');
     $sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
-    
-    $hover_class = 'li#' + $classArray + '_' + $sidebarPostfix[1];
+
+    $hover_class = 'li#' + $(this).attr('id') + '_' + $sidebarPostfix[1];
     $($hover_class).toggle();
   };
   
