@@ -1,7 +1,7 @@
 <% if !models.blank? %>
   <ul id="<%= models.first.class.to_s.singularize.downcase %>_<%=assoc%>">
   <% models.each_with_index do |model, index| %>
-      <li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_list_item item_<%= index %> side_hover" style="display: none;">
+      <li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_list_item side_hover" style="display: none;">
         <h3><%=h display_item_title(model) %></h3>
       <% if !model.send(assoc.to_sym).blank? %>
         <ul>
