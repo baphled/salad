@@ -13,9 +13,9 @@
     <%= link_to_with_tooltip "patch changes", feature_path(@feature, :format => :patch), :title => 'Patch a feature with the systems changes' %>
   <% end %>
   <% if !@feature.stories.blank? %>
-      <%= link_to "export feature", export_feature_path(@feature), :id => 'export-feature', :title => 'Export the feature from the system.' %>
+      <%= link_to_with_tooltip "export feature", export_feature_path(@feature), :title => 'Export the feature from the system.' %>
   <% end %>
-    <%= link_to "Edit", edit_feature_path(@feature), :id => 'edit', :title => 'Edit the feature and it\'s stories' %>
+    <%= link_to_with_tooltip "Edit", edit_feature_path(@feature),  :title => 'Edit the feature and it\'s stories' %>
 </span>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>
