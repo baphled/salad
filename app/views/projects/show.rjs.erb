@@ -1,2 +1,2 @@
-  $('#list').html("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true})%>");
-  $('div#lists ul').customSortable();
+$('div.list').html("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true})%>");
+$('div#lists ul').customSortable();

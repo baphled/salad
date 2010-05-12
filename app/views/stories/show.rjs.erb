@@ -1,4 +1,4 @@
-  $('#list').html("<%= escape_javascript(render :partial => '/common/sortable_list',
+  $('div.list').html("<%= escape_javascript(render :partial => '/common/sortable_list',
     :locals => {:models => @story_steps,
     :item_name => 'step',
     :method => :formatted,
