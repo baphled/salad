@@ -1,20 +1,4 @@
 $('div.list').replaceWith("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true})%>");
 $('div#lists ul').customSortable();
 $('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @feature_stories, :assoc => 'steps'})%>");
-
-// Ideally we should not duplicate this functionality, need to find a way to centralise it
-$(document).ready(function() {
-  
-  var hoverItem = function() {
-    $classArray = $(this).attr('id');
-    $sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
-    
-    $hover_class = 'li#' + $classArray + '_' + $sidebarPostfix[1];
-    $($hover_class).toggle();
-  };
-  
-  $("div.list_item").each(function(event) {
-    $(this).mouseover(hoverItem);
-    $(this).mouseout(hoverItem);
-  });
-});
+$.include('/javascripts/item_hover.js');
