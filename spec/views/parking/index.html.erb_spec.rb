@@ -17,9 +17,4 @@ describe '/parking/index.html' do
       response.should have_selector :button
     end
   end
-  
-  context "tickets have been retrieved" do
-    it "should allow the user to retrieve a list of tickets from lighthouse"
-    it "should have a import button"    
-  end
 end
