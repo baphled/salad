@@ -17,3 +17,7 @@ end
 Then /^each of the features should be using the "([^\"]*)" tag$/ do |tag|
   @lighthouse_tickets.each {|ticket| ticket.tag.should contain 'feature'}
 end
+
+Then /^each feature should be listed on the parking$/ do
+  @lighthouse_tickets.each {|ticket| response.should contain ticket.title }
+end
