@@ -6,6 +6,7 @@ Feature: Lighthouse integration
   Scenario: We should be able to talk to lighthouse
     Given we are using the account name "baphled"
     And we have an the project number "50164"
+    When we specify the ticket type "state:open tagged:feature"
     When we retrieve tickets
     
   Scenario: We want to be able to get a list of tickets using the give tag
