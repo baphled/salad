@@ -16,7 +16,11 @@ Feature: Lighthouse integration
     And each feature should be listed on the parking
     
   Scenario: We should be able to import all found tickets into the parking area.
+    Given there is a parking area
+    And we click import tickets
+    When we the page loads we should have a list of all tickets we would like to import
     Given we are using the account name "baphled"
     And we have an the project number "50164"
-    And we specify the ticket type "state:open tagged:feature"
-    And it should be possible to select which tickets should be saved in the parking section
+    When we specify the ticket type "state:open tagged:feature"
+    And we submit the search
+    Then it should be possible to select which tickets should be saved in the parking section
