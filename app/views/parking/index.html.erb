@@ -1,2 +1,4 @@
-<form>
-</form>
+<% semantic_form_for "/parking" do |form| %>
+  <%= form.input :tag %>
+  <%= render :partial => "/common/save_button" %>
+<% end %>
