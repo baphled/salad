@@ -11,6 +11,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :parking,
     :collection => {:tickets => :get}
   
+  map.resources :resources
+  
   map.resources :features,
     :collection => {:tags => :get,
                     :sort => :post,
