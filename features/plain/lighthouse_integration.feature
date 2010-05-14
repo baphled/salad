@@ -8,19 +8,30 @@ Feature: Lighthouse integration
     And we have an the project number "50164"
     When we specify the ticket type "state:open tagged:feature"
     When we retrieve tickets
-    
-  Scenario: We want to be able to get a list of tickets using the give tag
-    Given there is a parking area
-    And we click import tickets
-    When we submit the search
-    Then should have a list of all tickets we would like to import
+
+  Scenario: We need a place to edit our lighthouse resource information
+    Given I visit the parking page
+    When I use the "New Resource information" link
+    Then I should be sent to the "New Resource" page
+  
+  Scenario: We want to be able to add a new lighthouse resource
+    Given we visit the edit parking page
+    When we fill in the "parking_project_name" with "baphled"
+    And we fill in the "parking_project_id" with "50164"
+    And we submit the form
+    Then the resource information should be saved
+  
+  Scenario: We should be able to use the lighthouse resource when it has been stored
+    Given we have setup the lighthouse resource
+    And I visit the parking page
+    When we fill in the "parking_tag" with "feature"
+    Then we should be sent to the "tickets" page
+    And we submit the form
+    And there should be a list of tickets found
     
   Scenario: We should be able to import all found tickets into the parking area.
-    Given there is a parking area
-    When we the page loads we should have a list of all tickets we would like to import
-    Given we are using the account name in the config file
-    And we have an the project number in the config file
-    When we visit the "parking" page
+    Given we have set up the lighthouse resource
+    And I visit the parking page
+    When we submit a ticket search for "feature"
     And we specify the ticket type as "feature"
-    And we submit the search
-    Then it should display a list of tickets that could be saved as parked features
+    Then we should be able to select tickets to add to parking
