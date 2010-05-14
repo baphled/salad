@@ -4,7 +4,7 @@ describe "/parking/new.html" do
 
   context "creating a new resource" do
     before(:each) do
-      assigns[:resource] = mock_model(Resource).as_new_record.as_null_object
+      assigns[:resource] = Resource.new
       render
     end
     
@@ -20,6 +20,10 @@ describe "/parking/new.html" do
     end
     it "should have a project id" do
       response.should have_selector :input, attribute = {:id => "resource_project_id"}
+    end
+    
+    it "should have a save button" do
+      response.should have_selector :button
     end
   end
 end
