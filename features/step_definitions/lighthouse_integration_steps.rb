@@ -10,6 +10,10 @@ Given /^I visit the parking page$/ do
   visit parking_index_path
 end
 
+Given /^we visit the new parking page$/ do
+  visit new_parking_path
+end
+
 When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
 end
