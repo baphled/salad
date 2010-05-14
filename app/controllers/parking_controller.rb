@@ -11,4 +11,11 @@ class ParkingController < ActionController::Base
   def tickets
     @tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => '50164', :q => "state:open tagged:#{params[:tag]}" })
   end
+  
+  def create
+    @resource = Resource.new(params[:resource])
+    if @resource.save
+      redirect_to parking_index_path
+    end
+  end
 end
