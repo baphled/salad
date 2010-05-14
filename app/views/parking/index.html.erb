@@ -1,3 +1,5 @@
+<%= link_to 'New Resource information', new_parking_path %>
+
 <% semantic_form_for :parking,  :url => { :action => "tickets" }  do |form| %>
     <%= form.text_field :tag %>
   <%= render :partial => "/common/save_button" %>

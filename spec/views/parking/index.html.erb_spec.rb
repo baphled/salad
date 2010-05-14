@@ -16,5 +16,9 @@ describe '/parking/index.html' do
     it "should allow the user to submit the query" do
       response.should have_selector :button
     end
+    
+    it "should display a link to edit resources" do
+      response.should have_selector :a, attribute = {:href => new_parking_path}
+    end
   end
 end
