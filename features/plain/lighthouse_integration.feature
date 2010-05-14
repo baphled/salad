@@ -24,8 +24,7 @@ Feature: Lighthouse integration
   Scenario: We should be able to use the lighthouse resource when it has been stored
     Given we have setup the lighthouse resource
     And I visit the parking page
-    When I fill in the "parking_tag" with "feature"
-    Then I should be sent to the "tickets" page
+    When I fill in "parking_tag" with "feature"
     And submit the form
     And there should be a list of tickets found
     

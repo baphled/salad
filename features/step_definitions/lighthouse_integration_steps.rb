@@ -14,6 +14,13 @@ Given /^we visit the new parking page$/ do
   visit new_parking_path
 end
 
+Given /^we have setup the lighthouse resource$/ do
+  Given %{we visit the new parking page}
+  When %{I fill in "resource_name" with "baphled"}
+  And %{I fill in "resource_project_id" with "50164"}
+  Then %{submit the form}
+end
+
 When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
 end
