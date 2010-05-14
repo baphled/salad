@@ -29,3 +29,7 @@ end
 Then /^I should be sent to the "([^\"]*)" page$/ do |page_title|
   response.should contain page_title
 end
+
+Then /^the resource information should be saved$/ do
+  Resource.find_by_name("baphled").should_not be_nil
+end
