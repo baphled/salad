@@ -15,16 +15,16 @@ Feature: Lighthouse integration
     Then I should be sent to the "New Resource" page
   
   Scenario: We want to be able to add a new lighthouse resource
-    Given we visit the edit parking page
-    When we fill in the "parking_project_name" with "baphled"
-    And we fill in the "parking_project_id" with "50164"
+    Given we visit the new parking page
+    When I fill in the "parking_project_name" with "baphled"
+    And I fill in the "parking_project_id" with "50164"
     And we submit the form
     Then the resource information should be saved
   
   Scenario: We should be able to use the lighthouse resource when it has been stored
     Given we have setup the lighthouse resource
     And I visit the parking page
-    When we fill in the "parking_tag" with "feature"
+    When I fill in the "parking_tag" with "feature"
     Then we should be sent to the "tickets" page
     And we submit the form
     And there should be a list of tickets found
