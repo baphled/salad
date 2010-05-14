@@ -9,4 +9,11 @@ describe ParkingController do
       end
     end
   end
+  
+  describe "GET, new" do
+    it "should create a new resource model" do
+      Resource.should_receive(:new)
+      get :new
+    end
+  end
 end
