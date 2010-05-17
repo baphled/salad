@@ -35,11 +35,7 @@ describe "/parking/tickets.html" do
     
     it "should display each ticket's description" do
       assigns[:tickets].each do |ticket|
-        response.should have_selector :ul do |list|
-          list.should have_selector :li do |content|
-            content.should contain ticket.original_body_html
-          end
-        end
+        content.should contain ticket.original_body
       end
     end
   end
