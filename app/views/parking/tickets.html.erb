@@ -1,5 +1,12 @@
 <ul>
   <% @tickets.each do |ticket| %>
-  <li><%= ticket.title%></li>
+  <li>
+    <%= ticket.title%><br />
+    <%= ticket.created_at%><br />
+    <% ticket.tags.each do |tag| %>
+      <%= tag %>
+    <% end %>
+    <%= ticket.original_body_html %>
+  </li>
   <% end %>
 </ul>
