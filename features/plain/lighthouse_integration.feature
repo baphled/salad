@@ -24,14 +24,15 @@ Feature: Lighthouse integration
   Scenario: We should be able to use the lighthouse resource when it has been stored
     Given we have set up the lighthouse resource
     And I visit the parking page
-    When I fill in "parking_tag" with "feature"
-    When I select "baphled"
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
     And submit the form
     And there should be a list of tickets found
     
   Scenario: We should be able to import all found tickets into the parking area.
     Given we have set up the lighthouse resource
     And I visit the parking page
-    When I fill in "parking_tag" with "feature"
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
     And submit the form
     Then I should be able to select tickets to add to parking
