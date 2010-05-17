@@ -45,6 +45,6 @@ Feature: Lighthouse integration
     And submit the form
     Then I should be able to select tickets to add to parking
     # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
-    When I check "ticket_item"
+    When I check "ticket_item[]"
     And I press "Park"
-    Then the two items should be saved as parked items
+    Then one item should be saved as parked items
