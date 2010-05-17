@@ -19,4 +19,12 @@ class ParkingController < ActionController::Base
       redirect_to parking_index_path
     end
   end
+  
+  def import
+    params[:ticket_item].each do |item_id|
+      LightHouse.create(:ticket_id => item_id, :body => 'foo')
+    end
+    flash[:notice] = "Parked tickets"
+  end
+  
 end
