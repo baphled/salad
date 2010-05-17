@@ -40,3 +40,9 @@ end
 Then /^the resource information should be saved$/ do
   Resource.find_by_name("baphled").should_not be_nil
 end
+
+When /^there should be a list of tickets found$/ do
+  response.should have_selector :ul do |list|
+    list.should have_selector :li
+  end
+end
