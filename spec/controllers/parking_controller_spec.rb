@@ -43,4 +43,25 @@ describe ParkingController do
       end
     end
   end
+
+  describe "POST, import" do
+    context "imports successful" do
+      it "should get each tickets content and create a parked item" do
+        LightHouse.should_receive(:create)
+        post :import, {:ticket_item, 39}
+      end
+      
+      it "should display a flash message" do
+        post :import, {:ticket_item, {39, 9}}
+        flash[:notice].should contain 'Parked tickets'
+      end
+      
+      it "should redirect to the parking index page"
+    end
+    
+    context "imports fail" do
+      it "should display a flash message"
+      it "should render the tickets page again"
+    end
+  end
 end
