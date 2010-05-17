@@ -6,7 +6,8 @@ class ParkingController < ActionController::Base
   end
   
   def tickets
-    @tickets = Resource.tickets('baphled', '50164', params[:tag])
+    @resource = Resource.new(:name => 'baphled', :project_id => '50164')
+    @tickets = @resource.tickets(params[:tag])
   end
   
   def create
