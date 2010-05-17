@@ -38,6 +38,12 @@ describe "/parking/tickets.html" do
         ticket.original_body.should_not be_empty
       end
     end
+    
+    it "should have a checkbox for each result" do
+      assigns[:tickets].each do |ticket|
+        response.should have_selector :input, attribute = {:type => "checkbox"}
+      end
+    end
   end
 
   context "no tickets where found" do
