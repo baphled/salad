@@ -48,3 +48,30 @@ Feature: Lighthouse integration
     When I check "ticket_item[]"
     And I press "Park"
     Then one item should be saved as parked items
+    
+  Scenario: We should not be able to save a ticket if the ticket and the body are already in the system
+    Given we already have a ticket id "39" on the system
+    Given we have set up the lighthouse resource
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    Then I should be able to select tickets to add to parking
+    # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
+    When I check "ticket_item[]"
+    And I press "Park"
+    Then an error message should be displayed
+    And the flash message "Unable to save tickets" should be displayed
+    
+  Scenario: We should not save any tickets if one of them is invalid
+    Given we have set up the lighthouse resource
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    Then I should be able to select tickets to add to parking
+    # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
+    When I check "ticket_item[]"
+    And I press "Park"
+    And an error message should be displayed
+    And the tickets list should be rendered
