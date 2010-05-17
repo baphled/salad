@@ -14,7 +14,7 @@ Given /^we visit the new parking page$/ do
   visit new_parking_path
 end
 
-Given /^we have setup the lighthouse resource$/ do
+Given /^we have set up the lighthouse resource$/ do
   Given %{we visit the new parking page}
   When %{I fill in "resource_name" with "baphled"}
   And %{I fill in "resource_project_id" with "50164"}
@@ -27,6 +27,10 @@ end
 
 When /^we retrieve tickets$/ do
   @lighthouse_tickets.should_not be_empty
+end
+
+When /^I select "([^\"]*)"$/ do |selection|
+  select selection
 end
 
 Then /^each of the features should be using the "([^\"]*)" tag$/ do |tag|
@@ -44,5 +48,13 @@ end
 When /^there should be a list of tickets found$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
+  end
+end
+
+Then /^I should be able to select tickets to add to parking$/ do
+  response.should have_selector :ul do |list|
+    list.should have_selector :li do |item|
+      item.should have_selector :input, attribute = {:type => "checkbox"}
+    end
   end
 end
