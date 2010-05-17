@@ -48,3 +48,9 @@ Feature: Lighthouse integration
     When I check "ticket_item[]"
     And I press "Park"
     Then one item should be saved as parked items
+
+  Scenario: We should display all parked tickets on the index page
+    Given we have set up the lighthouse resource
+    And there are parked tickets on the system
+    When I visit the parking page
+    Then a list of parked ticket should be displayed
