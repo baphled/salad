@@ -11,6 +11,7 @@ describe Resource do
   end
   
   it "should be able to make a call to lighthouse" do
-    Resource.tickets('baphled', '50164', 'feature').should_not be_empty
+    @resource = Resource.new(:name => 'baphled', :project_id => '50164')
+    @resource.tickets('feature').should_not be_empty
   end
 end
