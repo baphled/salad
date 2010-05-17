@@ -4,8 +4,10 @@ describe ParkingController do
   describe "GET, tickets" do
     context "requesting a list of tickets" do
       it "should do a search using the LightHouse API for tags" do
-        Lighthouse::Ticket.should_receive(:find).with(:all, :params => { :project_id => '50164', :q => "state:open tagged:feature" })
-        get :tickets, {:tag => 'feature'}
+        @resource = mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object
+        Resource.stub!(:find).and_return @resource
+        @resource.should_receive(:tickets).with("feature")
+        get :tickets, {:tag => 'feature', :resource => {:id => 1}}
       end
     end
   end

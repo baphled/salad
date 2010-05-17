@@ -1,12 +1,15 @@
 class ParkingController < ActionController::Base
   layout "application"
   
+  def index
+  end
+  
   def new
     @resource = Resource.new
   end
   
   def tickets
-    @resource = Resource.new(:name => 'baphled', :project_id => '50164')
+    @resource = Resource.find(params[:resource][:id])
     @tickets = @resource.tickets(params[:tag])
   end
   
