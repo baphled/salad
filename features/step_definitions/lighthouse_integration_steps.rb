@@ -58,3 +58,7 @@ Then /^I should be able to select tickets to add to parking$/ do
     end
   end
 end
+
+Then /^one item should be saved as parked items$/ do
+  LightHouse.first.ticket_id.should_not eql 9
+end
