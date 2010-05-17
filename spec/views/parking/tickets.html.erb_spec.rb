@@ -35,7 +35,7 @@ describe "/parking/tickets.html" do
     
     it "should display each ticket's description" do
       assigns[:tickets].each do |ticket|
-        content.should contain ticket.original_body
+        ticket.original_body.should_not be_empty
       end
     end
   end
