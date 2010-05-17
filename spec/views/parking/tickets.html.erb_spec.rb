@@ -4,7 +4,7 @@ describe "/parking/tickets.html" do
 
   context "a successful search has been requested" do
     before(:each) do
-      @resource = Resource.new(:name => 'baphled', :project_id => '50164')
+      @resource = Resource.create(:name => 'baphled', :project_id => '50164')
     end
     
     it "should display a list of tickets" do
