@@ -56,12 +56,16 @@ describe ParkingController do
         flash[:notice].should contain 'Parked tickets'
       end
       
-      it "should redirect to the parking index page"
+      it "should redirect to the parking index page" do
+        post :import, {:ticket_item, {39, 9}}
+        response.should redirect_to parking_index_path
+      end
     end
     
     context "imports fail" do
       it "should display a flash message"
       it "should render the tickets page again"
+      it "should not save any of the items if one fails"
     end
   end
 end

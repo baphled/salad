@@ -25,6 +25,7 @@ class ParkingController < ActionController::Base
       LightHouse.create(:ticket_id => item_id, :body => 'foo')
     end
     flash[:notice] = "Parked tickets"
+    redirect_to parking_index_path
   end
   
 end
