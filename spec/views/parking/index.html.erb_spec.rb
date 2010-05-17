@@ -3,7 +3,8 @@ require 'spec_helper'
 describe '/parking/index.html' do
   context "No tickets have been found" do
     before(:each) do
-      render 'parking/index'
+      Resource.stub!(:all).and_return [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
+      render
     end
     
     it "should display a form" do
@@ -20,5 +21,12 @@ describe '/parking/index.html' do
     it "should display a link to edit resources" do
       response.should have_selector :a, attribute = {:href => new_parking_path}
     end
+    
+    it "should have a drop down of all resources available" do
+      response.should have_selector :select, attribute = {:id => "resource_id", :name => "resource[id]"} do |select|
+        select.should contain 'baphled'
+      end
+    end
+    
   end
 end
