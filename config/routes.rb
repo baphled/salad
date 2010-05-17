@@ -9,7 +9,8 @@ ActionController::Routing::Routes.draw do |map|
                 :import => :get}
 
   map.resources :parking,
-    :collection => {:tickets => :get}
+    :collection => {:tickets => :get,
+                    :import => :post}
   
   map.resources :resources
   
