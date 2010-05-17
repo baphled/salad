@@ -36,3 +36,15 @@ Feature: Lighthouse integration
     And I fill in "parking_tag" with "feature"
     And submit the form
     Then I should be able to select tickets to add to parking
+    
+  Scenario: We need to be able to save the selected tickets and save them as parked item
+    Given we have set up the lighthouse resource
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    Then I should be able to select tickets to add to parking
+    # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
+    When I check "ticket_item"
+    And I press "Park"
+    Then the two items should be saved as parked items
