@@ -4,6 +4,7 @@ describe '/parking/index.html' do
   context "No tickets have been found" do
     before(:each) do
       Resource.stub!(:all).and_return [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
+      assigns[:resources] = [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
       render
     end
     
@@ -29,4 +30,24 @@ describe '/parking/index.html' do
     end
     
   end
+
+
+  context "parked items present" do
+    before(:each) do
+      Resource.stub!(:all).and_return [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
+      assigns[:resources] = [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
+      render
+    end
+
+    it "should have an unordered list" do
+      response.should have_selector :ul, attribute = {:id => "resource_list"}
+    end
+
+    it "should display each parked item" do
+      response.should have_selector :ul, attribute = {:id => "resource_list"}
+        response.should have_selector :li
+      end
+    end
+
+    it "should allow users to view each item"
 end
