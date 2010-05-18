@@ -3,7 +3,7 @@
     <% @tickets.each do |ticket| %>
     <li>
         <h2><%= ticket.title%></h2>
-        <%= check_box_tag "ticket_item[]", ticket.id %><br />
+        <%= check_box_tag "lighthouse[ticket_id][]", ticket.id %><br />
         <%= ticket.created_at%><br />
         <% ticket.tags.each do |tag| %>
           <%= tag %>

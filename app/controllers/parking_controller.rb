@@ -2,6 +2,7 @@ class ParkingController < ActionController::Base
   layout "application"
   
   def index
+    @resources = LightHouse.all
   end
   
   def new
@@ -21,8 +22,9 @@ class ParkingController < ActionController::Base
   end
   
   def import
-    params[:ticket_item].each do |item_id|
-      LightHouse.create(:ticket_id => item_id, :body => 'foo')
+    params[:lighthouse].each do |item|
+
+      LightHouse.create(:ticket_id => item, :body => 'foo')
     end
     flash[:notice] = "Parked tickets"
     redirect_to parking_index_path

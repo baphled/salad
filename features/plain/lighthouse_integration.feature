@@ -36,6 +36,12 @@ Feature: Lighthouse integration
     And I fill in "parking_tag" with "feature"
     And submit the form
     Then I should be able to select tickets to add to parking
+
+  Scenario: We should display all parked tickets on the index page
+    Given we have set up the lighthouse resource
+    And there are parked tickets on the system
+    When I visit the parking page
+    Then a list of parked ticket should be displayed
     
   Scenario: We need to be able to save the selected tickets and save them as parked item
     Given we have set up the lighthouse resource
@@ -45,7 +51,7 @@ Feature: Lighthouse integration
     And submit the form
     Then I should be able to select tickets to add to parking
     # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
-    When I check "ticket_item[]"
+    When I check "lighthouse[ticket_id][]"
     And I press "Park"
     Then one item should be saved as parked items
     
@@ -58,7 +64,7 @@ Feature: Lighthouse integration
     And submit the form
     Then I should be able to select tickets to add to parking
     # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
-    When I check "ticket_item[]"
+    When I check "lighthouse[ticket_id][]"
     And I press "Park"
     Then an error message should be displayed
     And the flash message "Unable to save tickets" should be displayed
@@ -71,7 +77,7 @@ Feature: Lighthouse integration
     And submit the form
     Then I should be able to select tickets to add to parking
     # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
-    When I check "ticket_item[]"
+    When I check "lighthouse[ticket_id][]"
     And I press "Park"
     And an error message should be displayed
     And the tickets list should be rendered

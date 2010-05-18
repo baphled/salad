@@ -5,3 +5,11 @@
     <%= form.text_field :tag %>
   <%= render :partial => "/common/save_button" %>
 <% end %>
+
+<% if not @resources.empty? %>
+<ul id="resource_list">
+<% @resources.each do |item| %>
+  <li><%= item.body %></li>
+<% end  %>
+</ul>
+<% end %>
