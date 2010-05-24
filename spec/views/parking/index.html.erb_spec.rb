@@ -4,7 +4,7 @@ describe '/parking/index.html' do
   context "No tickets have been found" do
     before(:each) do
       Resource.stub!(:all).and_return [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
-      assigns[:resources] = [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
+      assigns[:tickets] = [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
       render
     end
     
@@ -35,7 +35,7 @@ describe '/parking/index.html' do
   context "parked items present" do
     before(:each) do
       Resource.stub!(:all).and_return [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
-      assigns[:resources] = [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
+      assigns[:tickets] = [mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object]
       render
     end
 
