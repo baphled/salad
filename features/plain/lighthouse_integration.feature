@@ -88,3 +88,20 @@ Feature: Lighthouse integration
     And I check "lighthouse[ticket_id][]"
     And I press "Park"
     Then the save tickets should have a body
+    
+  Scenario: A user should not be able to import tickets if a resource has not been set up
+    Given there are no resources
+    When I visit the parking page
+    Then the ticket search form should not be visible.
+    
+  Scenario: We should be able to select a parked ticket and convert in into a feature
+    Given we have set up the lighthouse resource
+    And there are no tickets parked
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    And I check "lighthouse[ticket_id][]"
+    And I press "Park"
+    When we click on the first ticket
+    Then the ticket should be converted into a parked ticket.
