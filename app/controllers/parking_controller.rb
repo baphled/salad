@@ -3,6 +3,7 @@ class ParkingController < ActionController::Base
   
   def index
     @tickets = LightHouse.all
+    @resources = Resource.all
   end
   
   def new
