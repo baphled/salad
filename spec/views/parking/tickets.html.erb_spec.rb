@@ -6,6 +6,7 @@ describe "/parking/tickets.html" do
     before(:each) do
       @resource = Resource.create(:name => 'baphled', :project_id => '50164')
       assigns[:tickets] = @resource.tickets('feature')
+      assigns[:resource] = mock_model(Resource).as_null_object
       render
     end
     
