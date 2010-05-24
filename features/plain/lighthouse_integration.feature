@@ -70,6 +70,7 @@ Feature: Lighthouse integration
     
   Scenario: We should not save any tickets if one of them is invalid
     Given we have set up the lighthouse resource
+    And there are no tickets parked
     And I visit the parking page
     When I select "baphled" from "resource_id"
     And I fill in "parking_tag" with "feature"
