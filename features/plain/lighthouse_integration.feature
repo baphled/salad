@@ -94,6 +94,17 @@ Feature: Lighthouse integration
     When I visit the parking page
     Then the ticket search form should not be visible.
 
+  Scenario: We should be able to view a tickets title
+    Given we have set up the lighthouse resource
+    And there are no tickets parked
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    And I check "lighthouse[ticket_id][]"
+    And I press "Park"
+    Then the saved tickets should have a title
+    
   Scenario: We should be able to select a parked ticket and convert in into a feature
     Given we have set up the lighthouse resource
     And there are no tickets parked
@@ -105,3 +116,13 @@ Feature: Lighthouse integration
     And I press "Park"
     When we click on the first ticket
     Then the feature form should be populated with the ticket information
+    
+  Scenario: We importing tickets we should be able to select all tickets for import
+    Given we have set up the lighthouse resource
+    And there are no tickets parked
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    And I check "select-all"
+    Then all tickets should be selected
