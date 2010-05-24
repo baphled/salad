@@ -2,7 +2,7 @@ class ParkingController < ActionController::Base
   layout "application"
   
   def index
-    @resources = LightHouse.all
+    @tickets = LightHouse.find(:all)
   end
   
   def new
@@ -23,8 +23,10 @@ class ParkingController < ActionController::Base
   
   def import
     params[:lighthouse].each do |item|
-
-      LightHouse.create(:ticket_id => item, :body => 'foo')
+      if not LightHouse.create(:ticket_id => item, :body => 'foo')
+        flash[:error] = "Unable to save tickets"
+        redirect_to parking_index_path and return
+      end
     end
     flash[:notice] = "Parked tickets"
     redirect_to parking_index_path
