@@ -66,18 +66,25 @@ Feature: Lighthouse integration
     # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
     When I check "lighthouse[ticket_id][]"
     And I press "Park"
-    And the flash message "Unable to save tickets" should be displayed
+    Then the flash message "Unable to save tickets" should be displayed
     
   Scenario: We should not save any tickets if one of them is invalid
     Given we have set up the lighthouse resource
     And there are no tickets parked
     And I visit the parking page
     When I select "baphled" from "resource_id"
-    And I fill in "parking_tag" with "feature"
+    And I fill in "parking_tag" with "foo"
     And submit the form
     Then I should be able to select tickets to add to parking
-    # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
-    When I check "lighthouse[ticket_id][]"
+    And I should not see a list of tickets to import
+    
+  Scenario: We should be able to view a tickets description body
+    Given we have set up the lighthouse resource
+    And there are no tickets parked
+    And I visit the parking page
+    When I select "baphled" from "resource_id"
+    And I fill in "parking_tag" with "feature"
+    And submit the form
+    And I check "lighthouse[ticket_id][]"
     And I press "Park"
-    Then an error message should be displayed
-    And the tickets list should be empty
+    Then the save tickets should have a body

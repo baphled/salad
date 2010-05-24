@@ -29,6 +29,10 @@ Given /^we have a tickets that is invalid$/ do
   LightHouse.stub!(:create).and_return false
 end
 
+Given /^there are no tickets parked$/ do
+  LightHouse.stub!(:all).and_return []
+end
+
 When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
 end
@@ -75,4 +79,12 @@ Then /^a list of parked ticket should be displayed$/ do
   response.should have_selector :ul, attribute  = {:id => "resource_list"} do |list|
     list.should have_selector :li
   end
+end
+
+Then /^I should not see a list of tickets to import$/ do
+  response.should_not have_selector :ul, attribute = {:id => "resource_list"}
+end
+
+Then /^the save tickets should have a body$/ do
+  LightHouse.first.body.should_not be_empty
 end
