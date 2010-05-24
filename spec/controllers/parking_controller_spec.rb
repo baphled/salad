@@ -45,21 +45,29 @@ describe ParkingController do
   end
 
   describe "POST, import" do
+    before(:each) do
+      Resource.stub!(:find).and_return mock_model(Resource, :id => 1).as_null_object
+    end
     context "imports successful" do
 
       it "should get each tickets content and create a parked item" do
         LightHouse.should_receive(:create)
-        post :import, :lighthouse => ["9"]
+        post :import, {:lighthouse =>{:ticket_id => ["9"]}, :resource => {:id => 1}}
       end
       
       it "should display a flash message" do
-        post :import, :lighthouse => ["9"]
+        post :import, {:lighthouse =>{:ticket_id => ["9"]}, :resource => {:id => 1}}
         flash[:notice].should contain 'Parked tickets'
       end
       
       it "should redirect to the parking index page" do
-        post :import, :lighthouse => ["9"]
+        post :import, {:lighthouse =>{:ticket_id => ["9"]}, :resource => {:id => 1}}
         response.should redirect_to parking_index_path
+      end
+      
+      it "should save the tickets content body" do
+        Resource.should_receive(:find)
+        post :import, {:lighthouse =>{:ticket_id => ["9"]}, :resource => {:id => 1}}
       end
     end
     
