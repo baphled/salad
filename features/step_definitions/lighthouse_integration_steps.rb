@@ -96,3 +96,7 @@ end
 Then /^the ticket search form should not be visible\.$/ do
   response.should_not have_selector :form, attribute = {:action => tickets_parking_path}
 end
+
+Then /^the saved tickets should have a title$/ do
+  LightHouse.first.title.should_not be_empty
+end
