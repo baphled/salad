@@ -33,6 +33,10 @@ Given /^there are no tickets parked$/ do
   LightHouse.stub!(:all).and_return []
 end
 
+Given /^there are no resources$/ do
+  Resource.stub!(:all).and_return []
+end
+
 When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
 end
@@ -87,4 +91,8 @@ end
 
 Then /^the save tickets should have a body$/ do
   LightHouse.first.body.should_not be_empty
+end
+
+Then /^the ticket search form should not be visible\.$/ do
+  response.should_not have_selector :form, attribute = {:action => tickets_parking_path}
 end
