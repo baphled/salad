@@ -66,8 +66,13 @@ describe ParkingController do
       end
       
       it "should save the tickets content body" do
-        Resource.should_receive(:find)
         post :import, {:lighthouse =>{:ticket_id => ["9"]}, :resource => {:id => 1}}
+        Resource.first.body.should_not be_nil
+      end
+      
+      it "should save the tickets title" do
+        post :import, {:lighthouse =>{:ticket_id => ["9"]}, :resource => {:id => 1}}
+        Resource.first.title.should_not be_nil        
       end
     end
     
