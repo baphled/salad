@@ -93,7 +93,7 @@ Feature: Lighthouse integration
     Given there are no resources
     When I visit the parking page
     Then the ticket search form should not be visible.
-    
+  
   Scenario: We should be able to select a parked ticket and convert in into a feature
     Given we have set up the lighthouse resource
     And there are no tickets parked
@@ -104,4 +104,4 @@ Feature: Lighthouse integration
     And I check "lighthouse[ticket_id][]"
     And I press "Park"
     When we click on the first ticket
-    Then the ticket should be converted into a parked ticket.
+    Then the feature form should be populated with the ticket information
