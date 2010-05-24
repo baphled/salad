@@ -25,6 +25,10 @@ Given /^there are parked tickets on the system$/ do
   LightHouse.stub!(:all).and_return [mock_model(Lighthouse).as_null_object]
 end
 
+Given /^we have a tickets that is invalid$/ do
+  LightHouse.stub!(:create).and_return false
+end
+
 When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
 end
