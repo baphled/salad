@@ -111,8 +111,7 @@ Feature: Lighthouse integration
     And there are are tickets
     When I visit the parking page
     And we click on the first ticket
-    Then the faeture form should be displayed
-    And the feature title should not be empty
+    Then the feature form should be displayed
     
   Scenario: We importing tickets we should be able to select all tickets for import
     Given we have set up the lighthouse resource

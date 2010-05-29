@@ -110,3 +110,7 @@ end
 When /^we click on the first ticket$/ do
   click_link @lighthouse_tickets.first.title
 end
+
+Then /^the feature form should be displayed$/ do
+  response.should have_selector :form
+end
