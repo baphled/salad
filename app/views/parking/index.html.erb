@@ -10,7 +10,7 @@
 <% if not @tickets.empty? %>
 <ul id="resource_list">
 <% @tickets.each do |item| %>
-  <li><%= item.body %></li>
+  <li><%= link_to item.title, new_feature_path(:title => item.title) %></li>
 <% end  %>
 </ul>
 <% end %>
