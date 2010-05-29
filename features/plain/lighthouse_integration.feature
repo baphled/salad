@@ -106,16 +106,13 @@ Feature: Lighthouse integration
     Then the saved tickets should have a title
     
   Scenario: We should be able to select a parked ticket and convert in into a feature
-    Given we have set up the lighthouse resource
-    And there are no tickets parked
-    And I visit the parking page
-    When I select "baphled" from "resource_id"
-    And I fill in "parking_tag" with "feature"
-    And submit the form
-    And I check "lighthouse[ticket_id][]"
-    And I press "Park"
-    When we click on the first ticket
-    Then the feature form should be populated with the ticket information
+    Given we are using the account name "baphled"
+    And we have an the project number "50164"
+    And there are are tickets
+    When I visit the parking page
+    And we click on the first ticket
+    Then the faeture form should be displayed
+    And the feature title should not be empty
     
   Scenario: We importing tickets we should be able to select all tickets for import
     Given we have set up the lighthouse resource
