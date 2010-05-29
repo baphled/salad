@@ -33,6 +33,12 @@ Given /^there are no tickets parked$/ do
   LightHouse.stub!(:all).and_return []
 end
 
+Given /^there are are tickets$/ do
+  @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
+  LightHouse.stub!(:all).and_return @lighthouse_tickets
+end
+
+
 Given /^there are no resources$/ do
   Resource.stub!(:all).and_return []
 end
@@ -99,4 +105,8 @@ end
 
 Then /^the saved tickets should have a title$/ do
   LightHouse.first.title.should_not be_empty
+end
+
+When /^we click on the first ticket$/ do
+  click_link @lighthouse_tickets.first.title
 end
