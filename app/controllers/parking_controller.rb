@@ -17,8 +17,12 @@ class ParkingController < ActionController::Base
   
   def create
     @resource = Resource.new(params[:resource])
-    if @resource.save
-      redirect_to parking_index_path
+    respond_to do |format|
+      if @resource.save
+        format.html { redirect_to parking_index_path }
+      else
+        format.html { render :action => "new" }
+      end
     end
   end
   
