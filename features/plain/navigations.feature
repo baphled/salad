@@ -13,6 +13,7 @@ Feature: We need to be able to easily navigate the website
   | features |
   | stories  |
   | steps    |
+  | parking  |
 
   Scenario Outline: When navigating to a page we want to make sure the menu item is actually selected
     Given I can view the <page> page
@@ -20,12 +21,13 @@ Feature: We need to be able to easily navigate the website
     And the "<menu_item>" will be selected
   
   Examples: More advanced pages which need to have navigation highlighting
-  | page     | menu_item |
-  | projects | projects  |
-  | features | features  |
-  | stories  | stories   |
-  | steps    | steps     |
-  | projects/1 | projects  |
-  | features/1 | features  |
-  | stories/1  | stories   |
-  | steps/1    | steps     |
+  | page       | menu_item   |
+  | projects   | projects    |
+  | features   | features    |
+  | stories    | stories     |
+  | steps      | steps       |
+  | parking    | parking     |
+  | projects/1 | projects    |
+  | features/1 | features    |
+  | stories/1  | stories     |
+  | steps/1    | steps       |
