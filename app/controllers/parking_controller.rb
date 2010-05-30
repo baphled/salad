@@ -28,7 +28,7 @@ class ParkingController < ActionController::Base
       ticket = @resource.ticket(item)
       if not LightHouse.create(:ticket_id => item, :title => ticket.title, :body => ticket.original_body)
         flash[:error] = "Unable to save tickets"
-        redirect_to parking_index_path and return
+        redirect_to tickets_parking_path(:resource => {:id => params[:resource][:id]}) and return
       end
     end
     flash[:notice] = "Parked tickets"

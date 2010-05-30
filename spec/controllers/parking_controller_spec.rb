@@ -77,9 +77,20 @@ describe ParkingController do
     end
     
     context "imports fail" do
-      it "should display a flash message"
-      it "should render the tickets page again"
-      it "should not save any of the items if one fails"
+      context "with one resource" do
+        before(:each) do
+          LightHouse.stub!(:create).and_return false
+          post :import, {:lighthouse =>{:ticket_id => ["9", "41"]}, :resource => {:id => 1}}
+        end
+
+        it "should display a flash message" do
+          flash[:error].should contain "Unable to save tickets"
+        end
+
+        it "should render the tickets page again" do
+          response.should redirect_to tickets_parking_path(:resource => {:id => 1})
+        end
+      end
     end
   end
 end
