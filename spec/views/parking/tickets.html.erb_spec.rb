@@ -4,9 +4,9 @@ describe "/parking/tickets.html" do
 
   context "a successful search has been requested" do
     before(:each) do
-      @resource = Resource.create(:name => 'baphled', :project_id => '50164')
+      @resource = Resource.new(:name => 'baphled', :project_id => '50164')
       assigns[:tickets] = @resource.tickets('feature')
-      assigns[:resource] = mock_model(Resource).as_null_object
+      assigns[:resource] = @resource
       render
     end
     
