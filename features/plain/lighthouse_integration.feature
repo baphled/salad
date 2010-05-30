@@ -112,7 +112,21 @@ Feature: Lighthouse integration
     When I visit the parking page
     And we click on the first ticket
     Then the feature form should be displayed
+
+  Scenario: The project name must be valid
+    Given we visit the new parking page
+    When I fill in "resource_name" with "foo"
+    When I fill in "resource_project_id" with "50164"
+    And submit the form
+    Then there a error "Must be a valid LightHouse project name" should be displayed
     
+  Scenario: The project number must be valid
+    Given we visit the new parking page
+    When I fill in "resource_name" with "baphled"
+    When I fill in "resource_project_id" with "50164"
+    When submit the form
+    Then there a error "Must be a valid LightHouse project id" should be displayed
+
   Scenario: We importing tickets we should be able to select all tickets for import
     Given we have set up the lighthouse resource
     And there are no tickets parked

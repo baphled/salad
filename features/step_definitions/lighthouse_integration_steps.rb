@@ -114,3 +114,9 @@ end
 Then /^the feature form should be displayed$/ do
   response.should have_selector :form
 end
+
+Then /^there a error "([^\"]*)" should be displayed$/ do |message|
+  response.should have_selector :ul, attribute = {:class => "errors"} do |error|
+    error.should contain message
+  end
+end
