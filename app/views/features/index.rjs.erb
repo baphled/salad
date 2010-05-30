@@ -1,1 +1,2 @@
-$('#list').html("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order =>false})%>");
+$('div.list').replaceWith("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order =>false})%>");
+$('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @features, :assoc => 'stories'})%>");
