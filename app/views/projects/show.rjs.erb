@@ -1,4 +1,3 @@
 $('div.list').replaceWith("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true})%>");
 $('div#lists ul').customSortable();
 $('div#sidebar').html("<%= escape_javascript(render :partial => 'common/sidebar_list_content', :locals => {:models => @project_features, :assoc => 'stories'})%>");
-$.include('/javascripts/item_hover.js');

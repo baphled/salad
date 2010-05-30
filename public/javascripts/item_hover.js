@@ -7,8 +7,5 @@ $(document).ready(function() {
     $($hover_class).toggle();
   };
   
-  $("div.list_item").each(function(event) {
-    $(this).mouseover(hoverItem);
-    $(this).mouseout(hoverItem);
-  });
+  $("div.list_item").live('mouseover mouseout', hoverItem);
 });
