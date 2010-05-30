@@ -12,7 +12,7 @@ class ParkingController < ActionController::Base
   
   def tickets
     @resource = Resource.find(params[:resource][:id])
-    @tickets = @resource.tickets(params[:tag])
+    @tickets = @resource.tickets(params[:parking][:tag])
   end
   
   def create
