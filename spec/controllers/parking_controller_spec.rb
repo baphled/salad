@@ -7,7 +7,7 @@ describe ParkingController do
         @resource = mock_model(Resource, :name => "baphled", :project_id => '50164').as_null_object
         Resource.stub!(:find).and_return @resource
         @resource.should_receive(:tickets).with("feature")
-        get :tickets, {:tag => 'feature', :resource => {:id => 1}}
+        get :tickets, {:parking => {:tag => 'feature'}, :resource => {:id => 1}}
       end
     end
   end
