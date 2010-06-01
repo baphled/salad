@@ -3,7 +3,7 @@ $(document).ready(function() {
   $.fn.autoScroller = function(speed,height) {
     var $innerUnorderedList = $(this).find('ul');
     $innerUnorderedList.css('height', height)
-                       .css('overflow-y', 'auto');
+                       .css('overflow-y', 'hidden');
 
 
     if ($(this).css('display') != 'none') {
