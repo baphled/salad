@@ -88,7 +88,7 @@ describe ParkingController do
         end
 
         it "should render the tickets page again" do
-          response.should redirect_to tickets_parking_path(:resource => {:id => 1})
+          response.should redirect_to parking_index_path(:resource => {:id => 1})
         end
       end
     end
