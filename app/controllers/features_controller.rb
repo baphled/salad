@@ -19,7 +19,7 @@ class FeaturesController < ApplicationController
       @project = Project.find(params[:project_id])
       @feature = @project.features.new
     else
-      @feature = Feature.new
+      @feature = Feature.new(:title => params[:title])
     end
     @projects = Project.all
   end

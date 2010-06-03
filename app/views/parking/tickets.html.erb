@@ -1,0 +1,17 @@
+<% form_tag import_parking_path, :method=>'post' do -%>
+  <%= hidden_field_tag "resource[id]", @resource.id %>
+  <ul id="tickets">
+    <% @tickets.each do |ticket| %>
+    <li>
+        <h2><%= ticket.title%></h2>
+        <%= check_box_tag "lighthouse[ticket_id][]", ticket.id %><br />
+        <%= ticket.created_at%><br />
+        <% ticket.tags.each do |tag| %>
+          <%= tag %>
+        <% end %>
+        <%= ticket.original_body_html %>
+    </li>
+    <% end %>
+  </ul>
+	<%= submit_tag "Park", :disable_with => 'Parking...', :name=>nil %>
+<% end -%>

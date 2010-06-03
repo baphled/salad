@@ -6,6 +6,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :features, 'Features', features_path
     primary.item :stories, 'Stories', stories_path
     primary.item :steps, 'Steps', steps_path
+    primary.item :parking, 'Parking', parking_index_path
   end
 end
 

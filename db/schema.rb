@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100311211233) do
+ActiveRecord::Schema.define(:version => 20100524165201) do
 
   create_table "action_examples", :id => false, :force => true do |t|
     t.integer "action_id",  :null => false
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20100311211233) do
     t.string "title", :limit => 75, :default => "", :null => false
   end
 
+  create_table "lighthouse", :force => true do |t|
+    t.string "body",                     :null => false
+    t.string "ticket_id", :limit => 100, :null => false
+    t.string "title",     :limit => 300
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "description"
     t.string   "aim",         :limit => 250
@@ -67,6 +73,13 @@ ActiveRecord::Schema.define(:version => 20100311211233) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "name",       :limit => 100, :null => false
+    t.string   "project_id", :limit => 100, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "step_stories", :id => false, :force => true do |t|

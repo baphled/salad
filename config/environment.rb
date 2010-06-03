@@ -31,6 +31,7 @@ Rails::Initializer.run do |config|
   config.gem 'simple-navigation', :lib => 'simple_navigation'
   config.gem 'deadweight'
   config.gem 'pretty_diff'
+	config.gem "Caged-lighthouse-api", :lib => 'lighthouse-api', :source => 'http://gems.github.com'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

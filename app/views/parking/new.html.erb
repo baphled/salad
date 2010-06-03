@@ -1,0 +1,6 @@
+<h1>New Resource</h1>
+<% semantic_form_for @resource, :url => { :action => "create" } do |form| %>
+  <%= form.input :name %>
+  <%= form.input :project_id %>
+  <%= render :partial => "/common/save_button" %>
+<% end %>

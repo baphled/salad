@@ -7,7 +7,13 @@ ActionController::Routing::Routes.draw do |map|
                 :import_all => :get,
                 :import_feature => :get,
                 :import => :get}
-              
+
+  map.resources :parking,
+    :collection => {:tickets => :get,
+                    :import => :post}
+  
+  map.resources :resources
+  
   map.resources :features,
     :collection => {:tags => :get,
                     :sort => :post,
