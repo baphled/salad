@@ -109,20 +109,12 @@ Then /^there should be a "([^\"]*)" link$/ do |link|
   response.should contain "#{link}"
 end
 
-Then /^a tooltip should be visible$/ do
-  selenium.wait_for_visible("css=div.tooltip")
-end
-
 Then /^I should see a hover dialog box$/ do
   selenium.wait_for_visible("class=hover ui-widget ui-widget-content ui-corner-all")
 end
 
 Then /^I should not see a hover dialog box$/ do
   response.should_not have_selector "css=div.hover"
-end
-
-Then /^there should be a "([^\"]*)" link$/ do |link|
-  response.should contain "#{link}"
 end
 
 Then /^a tooltip should be visible$/ do
