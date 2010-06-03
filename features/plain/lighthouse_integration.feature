@@ -125,13 +125,3 @@ Feature: Lighthouse integration
     When I fill in "resource_project_id" with "23"
     When submit the form
     Then there a error "Must be a valid LightHouse project id" should be displayed
-
-  Scenario: We importing tickets we should be able to select all tickets for import
-    Given we have set up the lighthouse resource
-    And there are no tickets parked
-    And I visit the parking page
-    When I select "baphled" from "resource_id"
-    And I fill in "parking_tag" with "feature"
-    And submit the form
-    And I check "select-all"
-    Then all tickets should be selected
