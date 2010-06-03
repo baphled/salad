@@ -57,12 +57,11 @@ Feature: Lighthouse integration
     
   Scenario: We should not be able to save a ticket if the ticket and the body are already in the system
     Given we have set up the lighthouse resource
+    And we have a tickets that is invalid
     And I visit the parking page
     When I select "baphled" from "resource_id"
     And I fill in "parking_tag" with "feature"
     And submit the form
-    Given we have a tickets that is invalid
-    Then I should be able to select tickets to add to parking
     # Need to refactor so that we have a stubbed version of this ticket, will break once ticket is closed
     When I check "lighthouse[ticket_id][]"
     And I press "Park"
@@ -73,7 +72,7 @@ Feature: Lighthouse integration
     And there are no tickets parked
     And I visit the parking page
     When I select "baphled" from "resource_id"
-    And I fill in "parking_tag" with "foo"
+    And I fill in "parking_tag" with "feature"
     And submit the form
     Then I should be able to select tickets to add to parking
     And I should not see a list of tickets to import
@@ -123,7 +122,7 @@ Feature: Lighthouse integration
   Scenario: The project number must be valid
     Given we visit the new parking page
     When I fill in "resource_name" with "baphled"
-    When I fill in "resource_project_id" with "50164"
+    When I fill in "resource_project_id" with "23"
     When submit the form
     Then there a error "Must be a valid LightHouse project id" should be displayed
 
