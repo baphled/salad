@@ -14,6 +14,9 @@ class ParkingController < ActionController::Base
     @resource = Resource.find(params[:resource][:id])
     puts params[:resource][:id]
     @tickets = @resource.tickets(params[:parking][:tag])
+    if @tickets.nil?
+      flash[:notice] = 'No tickets available'
+    end
   end
   
   def create
