@@ -48,6 +48,4 @@ describe '/parking/index.html' do
         response.should have_selector :li
       end
     end
-
-    it "should allow users to view each item"
 end

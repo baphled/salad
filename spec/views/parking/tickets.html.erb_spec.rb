@@ -48,7 +48,13 @@ describe "/parking/tickets.html" do
   end
 
   context "no tickets where found" do
-    it "should return an empty list"
-    it "should display a flash message"
+    before(:each) do
+      assigns[:tickets] = []
+      assigns[:resource] = Resource.new(:name => 'baphled', :project_id => '50164')
+    end
+
+    it "should return an empty list" do
+      response.should_not have_selector :ul, attribute = {:id => 'tickets'}
+    end
   end
 end

@@ -1,6 +1,6 @@
 <% form_tag import_parking_path, :method=>'post' do -%>
   <%= hidden_field_tag "resource[id]", @resource.id %>
-  <ul>
+  <ul id="tickets">
     <% @tickets.each do |ticket| %>
     <li>
         <h2><%= ticket.title%></h2>
