@@ -6,7 +6,7 @@ $(document).ready(function() {
                        .css('overflow-y', 'hidden');
 
 
-    if ($(this).css('display') != 'none') {
+    if ($(this).is(':visible')) {
       $innerUnorderedList.scrollTop(0);
       
       setInterval(function() {
