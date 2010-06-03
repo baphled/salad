@@ -5,3 +5,4 @@ $('div.list')
                                    :item_name => 'story',
                                    :assoc => 'step',
                                    :order =>false})%>");
+$('div#sidebar').html("<%= escape_javascript(render :partial => 'common/sidebar_list_content', :locals => {:models => @stories, :assoc => 'steps'})%>");
