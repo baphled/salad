@@ -29,6 +29,7 @@ $(document).ready(function() {
     var hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
     var height = $('div#lists').outerHeight() - $('div#footer').outerHeight();
 
+    $sidebar.addClass('ui-widget ui-widget-content ui-corner-all');
     if (!$(hoverItem).is(':visible')) {
       $('div#sidebar').find('li.side_hover').hide();
       $sidebar.find(hoverItem).toggle();
@@ -36,7 +37,9 @@ $(document).ready(function() {
       // Sets the hover item to a fixed position when the cursor is moved
       $(window).scroll(function() {
         var y = $(window).scrollTop();
+
         if (y >= $('div#sidebar').offset().top) {
+          $sidebar.css('width', $('.hover').width())
           $sidebar.addClass('fixed');
         } else {
           $(hoverItem).find('ul').css('');
