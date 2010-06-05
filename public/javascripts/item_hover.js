@@ -3,7 +3,7 @@ $(document).ready(function() {
   $.fn.autoScroller = function(speed,height) {
     var width = $(this).parent().width();
     var $innerUnorderedList = $(this).find('ul');
-    $innerUnorderedList.css('height', height)
+    $innerUnorderedList.css('max-height', height)
                        .css('overflow-y', 'hidden');
 
     $(this).parent().css('width', width);
@@ -27,7 +27,7 @@ $(document).ready(function() {
     var sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
     var $sidebar = $('div#sidebar > ul');
     var hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
-    var height = $('div#lists').outerHeight();
+    var height = $('div#lists').outerHeight() - $('div#footer').outerHeight();
 
     if (!$(hoverItem).is(':visible')) {
       $('div#sidebar').find('li.side_hover').hide();
