@@ -1,17 +1,24 @@
 <% form_tag import_parking_path, :method=>'post' do -%>
   <%= hidden_field_tag "resource[id]", @resource.id %>
+<div id="myTabs">
   <ul id="tickets">
     <% @tickets.each do |ticket| %>
     <li>
-        <h2><%= ticket.title%></h2>
-        <%= check_box_tag "lighthouse[ticket_id][]", ticket.id %><br />
-        <%= ticket.created_at%><br />
-        <% ticket.tags.each do |tag| %>
-          <%= tag %>
-        <% end %>
-        <%= ticket.original_body_html %>
+      <a href="#<%=h ticket.title.gsub(/\ /, '-')%>"><%= truncate(ticket.title, :length => 23) %></a>
     </li>
     <% end %>
   </ul>
-	<%= submit_tag "Park", :disable_with => 'Parking...', :name=>nil %>
+  <% @tickets.each do |ticket| %>
+    <div id="<%=h ticket.title.gsub(/\ /, '-')%>">
+      <h2><%= ticket.title%></h2>
+      <%= check_box_tag "lighthouse[ticket_id][]", ticket.id %><br />
+      <%= ticket.created_at%><br />
+      <% ticket.tags.each do |tag| %>
+        <%= tag %>
+      <% end %>
+      <%= ticket.original_body_html %>
+    </div>
+  <% end %>
+  <%= submit_tag "Park", :disable_with => 'Parking...', :name=>nil %>
 <% end -%>
+</div>
