@@ -1,11 +1,13 @@
 $(document).ready(function() {
 
   $.fn.autoScroller = function(speed,height) {
+    var width = $(this).parent().width();
     var $innerUnorderedList = $(this).find('ul');
     $innerUnorderedList.css('height', height)
                        .css('overflow-y', 'hidden');
 
-
+    $(this).parent().css('width', width);
+    
     if ($(this).is(':visible')) {
       $innerUnorderedList.scrollTop(0);
       
@@ -21,29 +23,29 @@ $(document).ready(function() {
     }
   }
   
-  var $hoverItem = function() {
+  var hoverItem = function() {
     var sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
     var $sidebar = $('div#sidebar > ul');
     var hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
-    var height = $('div#content').height();
+    var height = $('div#lists').outerHeight();
 
-    height = height - ($('div#footer').height() * 2);
-    
-    $sidebar.find(hoverItem).toggle();
-
-    $(hoverItem).autoScroller(500, height);
-    // Sets the hover item to a fixed position when the cursor is moved
-    $(window).scroll(function() {
-      var y = $(window).scrollTop();
-      if (y >= $('div#sidebar').offset().top) {      
-        $sidebar.addClass('fixed');
-      } else {
-        $(hoverItem).find('ul').css('');
-        $sidebar.removeClass('fixed');
-      }
-    });
+    if (!$(hoverItem).is(':visible')) {
+      $('div#sidebar').find('li.side_hover').hide();
+      $sidebar.find(hoverItem).toggle();
+      $(hoverItem).autoScroller(500, height);
+      // Sets the hover item to a fixed position when the cursor is moved
+      $(window).scroll(function() {
+        var y = $(window).scrollTop();
+        if (y >= $('div#sidebar').offset().top) {
+          $sidebar.addClass('fixed');
+        } else {
+          $(hoverItem).find('ul').css('');
+          $sidebar.removeClass('fixed');
+        }
+      });
+    }
 
   };
   
-  $("div.list_item").live('mouseover mouseout', $hoverItem);
+  $("div.list_item").live('mouseover', hoverItem);
 });
