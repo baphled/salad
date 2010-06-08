@@ -23,7 +23,9 @@ $(document).ready(function() {
 
           $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 2);
 
-          if ($innerUnorderedList.scrollTop() == previousOffset) {
+          if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
+            // here we should pad the start and end with the first and last 3 items respective
+            // can find a similar solution to this @ http://apple.com
             $innerUnorderedList.scrollTop(0);
           }
         }
