@@ -10,29 +10,36 @@ $(document).ready(function() {
     $(this).parent().css('width', width);
     
     if ($(this).is(':visible')) {
+      var stop = false;
       $innerUnorderedList.scrollTop(0);
       
       setInterval(function() {
-        var previousOffset = $innerUnorderedList.scrollTop();
+        $('div#sidebar > ul').live('mouseout mouseover', function(event) {
+          stop = (event.type == 'mouseover')? true : false;
+        });
 
-        $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 2);
+        if (false == stop) {
+          var previousOffset = $innerUnorderedList.scrollTop();
 
-        if ($innerUnorderedList.scrollTop() == previousOffset) {
-          $innerUnorderedList.scrollTop(0);
+          $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 2);
+
+          if ($innerUnorderedList.scrollTop() == previousOffset) {
+            $innerUnorderedList.scrollTop(0);
+          }
         }
       }, speed);
     }
   }
 
-  $.fn.hoverItem = function() {
+  $.fn.scrollingHoverable = function() {
     $(this).live('mouseover', function() {
       var sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
       var $sidebar = $('div#sidebar > ul');
       var hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
       var height = $('div#lists').outerHeight() - $('div#footer').outerHeight();
 
-      $sidebar.addClass('ui-widget ui-widget-content ui-corner-all');
-      
+      $sidebar.addClass('ui-widget ui-widget-content ui-corner-all fixed');
+
       if (!$(hoverItem).is(':visible')) {
         $('div#sidebar').find('li.side_hover').hide();
         $sidebar.find(hoverItem).toggle();
@@ -53,6 +60,5 @@ $(document).ready(function() {
     });
   };
 
-
-$("div.list_item").hoverItem();
+  $("div.list_item").scrollingHoverable();
 });
