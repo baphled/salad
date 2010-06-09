@@ -1,8 +1,13 @@
 (function($) {
-// What does the autoScroller plugin do?
+  /**
+  * Plugin to help determine the position of a given element, making sure that it is always at the top of the page.
+  *
+  * @useage $('div ul').autoScroller({scrollSpeed: 500, height: 500, stopOnHover: true})
+  *
+  * @author Yomi Colledge
+  **/
 $.fn.autoScroller = function(options) {
   var opts = $.extend({}, $.fn.autoScroller.defaults, options);
-
   var width = $(this).parent().width();
   var $innerUnorderedList = $(this).find('ul');
   

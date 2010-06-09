@@ -1,5 +1,13 @@
 (function($) {
-// What does the scrollingHoverable plugin do?
+/**
+* Creates a scrolling hoverable item, which is displayed when hovered over.
+*
+* This element will then stay in position once and move along with the scrollbar, giving us a hover effect.
+*
+* @useage $('div').scrollingHoverable({scrollSpeed: 500, height: 500, stopOnHover: true})
+*
+* @author Yomi Colledge
+**/
 $.fn.scrollingHoverable = function(options) {
   var opts = $.extend({}, $.fn.scrollingHoverable.defaults, options);
 
