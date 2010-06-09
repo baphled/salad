@@ -3,7 +3,7 @@
 $.fn.scrollingHoverable = function(options) {
   var opts = $.extend({}, $.fn.scrollingHoverable.defaults, options);
 
-  $(this).live('mouseover', function() {
+  return $(this).live('mouseover', function() {
     var sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
     var $sidebarList = $('div#sidebar > ul');
     var hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
@@ -12,7 +12,7 @@ $.fn.scrollingHoverable = function(options) {
         footerHeight = $('div#footer').outerHeight(),
         listHeight = $('div#lists').outerHeight();
     
-    var height = (listHeight - footerHeight) + headerHeight;
+    var height = (listHeight - footerHeight * 2);
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
       
