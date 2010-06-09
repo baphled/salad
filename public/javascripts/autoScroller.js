@@ -25,7 +25,7 @@ $.fn.autoScroller = function(options) {
       if (false == stop) {
         var previousOffset = $innerUnorderedList.scrollTop();
 
-        $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 2);
+        $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 1);
 
         if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
           $innerUnorderedList
