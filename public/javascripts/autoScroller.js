@@ -16,9 +16,11 @@ $.fn.autoScroller = function(options) {
     $innerUnorderedList.scrollTop(0);
     
     setInterval(function() {
-      $('div#sidebar > ul').live('mouseout mouseover', function(event) {
-        stop = (event.type == 'mouseover')? true : false;
-      });
+      if (opts.stopOnHover) {
+        $('div#sidebar > ul').live('mouseout mouseover', function(event) {
+          stop = (event.type == 'mouseover')? true : false;
+        });        
+      };
 
       if (false == stop) {
         var previousOffset = $innerUnorderedList.scrollTop();
@@ -26,9 +28,10 @@ $.fn.autoScroller = function(options) {
         $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 2);
 
         if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
-          // here we should pad the start and end with the first and last 3 items respective
-          // can find a similar solution to this @ http://apple.com
-          $innerUnorderedList.scrollTop(0);
+          $innerUnorderedList
+            .animate({opacity: 0}, function() {
+              $(this).scrollTop(0).animate({opacity: 1}, 300);
+            });
         }
       }
     }, opts.speed);
@@ -45,7 +48,8 @@ $.fn.autoScroller = function(options) {
 // default options
 $.fn.autoScroller.defaults = {
   speed:500,
-  height:200
+  height:200,
+  stopOnHover: false
 };
 
 })(jQuery);
