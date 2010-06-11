@@ -18,9 +18,9 @@ $.fn.scrollingHoverable = function(options) {
     
     var headerHeight = $(hoverItem).find('h3').outerHeight(),
         footerHeight = $('div#footer').outerHeight(),
-        listHeight = $('div#lists').outerHeight();
+        listHeight = $('div#lists').height();
     
-    var height = (listHeight - footerHeight * 2);
+    var height = (listHeight - (footerHeight * 3) - headerHeight);
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
       
