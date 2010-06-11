@@ -34,9 +34,8 @@ $.fn.autoScroller = function(options) {
 
         if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
           $innerUnorderedList
-            .animate({opacity: 0}, function() {
-              $(this).scrollTop(0).animate({opacity: 1}, 300);
-            });
+            .animate({opacity: 0, scrollTop: 0}, 3)
+            .animate({opacity: 1}, 3);
         }
         previousOffset = $innerUnorderedList.scrollTop();
       }
