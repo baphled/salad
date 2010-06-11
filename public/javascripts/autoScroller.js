@@ -17,16 +17,17 @@ $.fn.autoScroller = function(options) {
 
   $(this).parent().css('width', width);
 
+  if (opts.stopOnHover) {
+    $('div#sidebar > ul').live('mouseout mouseover', function(event) {
+      stop = (event.type == 'mouseover')? true : false;
+    });
+  }
+
   if ($(this).is(':visible')) {
     var stop = false;
     $innerUnorderedList.scrollTop(0);
 
     setInterval(function() {
-      if (opts.stopOnHover) {
-        $('div#sidebar > ul').live('mouseout mouseover', function(event) {
-          stop = (event.type == 'mouseover')? true : false;
-        });
-      };
 
       if (false == stop) {
         $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 1);
