@@ -39,6 +39,8 @@ $.fn.autoScroller = function(options) {
 
         previousOffset = $innerUnorderedList.scrollTop();
 
+        $('body').mouseout(function() { stop = true; }).mouseover(function() { stop = false; });
+        
         if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
           stop = false;
         }
