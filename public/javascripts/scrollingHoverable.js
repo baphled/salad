@@ -26,7 +26,7 @@ $.fn.scrollingHoverable = function(options) {
       
       if (y >= $('div#sidebar').offset().top) {
         $sidebarList.css('width', $('.hover').width())
-        $sidebarList.addClass('fixed');
+                    .addClass('fixed');
       } else {
         // $(hoverItem).find('ul').css('');
         $sidebarList.removeClass('fixed');
