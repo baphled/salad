@@ -38,6 +38,10 @@ $.fn.autoScroller = function(options) {
             .animate({opacity: 1}, 3);
         }
         previousOffset = $innerUnorderedList.scrollTop();
+
+        if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
+          stop = false;
+        }
       }
     }, opts.speed);
   }
