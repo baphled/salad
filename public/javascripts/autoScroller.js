@@ -34,8 +34,8 @@ $.fn.autoScroller = function(options) {
 
         if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
           $innerUnorderedList
-            .animate({opacity: 0, scrollTop: 0}, 3)
-            .animate({opacity: 1}, 3);
+            .animate({opacity: 0, scrollTop: 0}, opts.animationSpeed)
+            .animate({opacity: 1}, opts.animationSpeed);
         }
         previousOffset = $innerUnorderedList.scrollTop();
 
@@ -58,7 +58,8 @@ $.fn.autoScroller = function(options) {
 $.fn.autoScroller.defaults = {
   speed:500,
   height:200,
-  stopOnHover: false
+  stopOnHover: false,
+  animationSpeed: 30
 };
 
 })(jQuery);
