@@ -12,23 +12,20 @@ $.fn.scrollingHoverable = function(options) {
   var opts = $.extend({}, $.fn.scrollingHoverable.defaults, options);
 
   return $(this).live('mouseover', function() {
-    var sidebarPostfix = $('div#sidebar > ul').attr('id').split('_');
-    var $sidebarList = $('div#sidebar > ul');
-    var hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
-    
-    var headerHeight = $(hoverItem).find('h3').outerHeight(),
-        footerHeight = $('div#footer').outerHeight(),
-        listHeight = $('div#lists').height();
-    
-    var height = (listHeight - (footerHeight * 3) - headerHeight);
+    var $sidebarList = $(opts.hoverListElement),
+        sidebarPostfix = $sidebarList.attr('id').split('_'),
+        hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1],
+        headerHeight = $(hoverItem).find('h3').outerHeight(),   // Hover title element
+        footerHeight = $('div#footer').outerHeight(),   // footer element
+        listHeight = $('div#lists').height(),     // main contents height
+        height = (listHeight - (footerHeight * 3) - headerHeight),
+        y = $(window).scrollTop();
+        
     var setHoverPosition = function() {
-      var y = $(window).scrollTop();
-      
-      if (y >= $('div#sidebar').offset().top) {
+      if (y >= $sidebarList.offset().top) {
         $sidebarList.css('width', $('.hover').width())
                     .addClass('fixed');
       } else {
-        // $(hoverItem).find('ul').css('');
         $sidebarList.removeClass('fixed');
       }
     }
@@ -57,6 +54,7 @@ $.fn.scrollingHoverable = function(options) {
 $.fn.scrollingHoverable.defaults = {
   scrollSpeed:500,
   height:500,
+  hoverListElement: 'div#sidebar > ul',
   stopOnHover: false
 };
 
