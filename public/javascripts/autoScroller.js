@@ -8,9 +8,9 @@
   **/
 $.fn.autoScroller = function(options) {
   var opts = $.extend({}, $.fn.autoScroller.defaults, options);
-  var width = $(this).parent().width();
-  var $innerUnorderedList = $(this).find('ul');
-  var previousOffset = 0;
+  var width = $(this).parent().width(),
+      $innerUnorderedList = $(this).find('ul'),
+      previousOffset = 0;
 
   $innerUnorderedList.css('max-height', opts.height)
                      .css('overflow-y', 'hidden');
@@ -34,9 +34,9 @@ $.fn.autoScroller = function(options) {
 
         if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
           $innerUnorderedList
-            .animate({opacity: 0, scrollTop: 0}, opts.animationSpeed)
-            .animate({opacity: 1}, opts.animationSpeed);
+            .animate({scrollTop: 0}, opts.speed / 2);
         }
+
         previousOffset = $innerUnorderedList.scrollTop();
 
         if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
@@ -58,8 +58,7 @@ $.fn.autoScroller = function(options) {
 $.fn.autoScroller.defaults = {
   speed:500,
   height:200,
-  stopOnHover: false,
-  animationSpeed: 30
+  stopOnHover: false
 };
 
 })(jQuery);
