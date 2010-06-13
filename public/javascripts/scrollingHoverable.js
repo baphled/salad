@@ -13,16 +13,13 @@ $.fn.scrollingHoverable = function(options) {
 
   return $(this).live('mouseover', function() {
     var $sidebarList = $(opts.hoverListElement),
-        sidebarPostfix = $sidebarList.attr('id').split('_'),
-        hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1],
-        headerHeight = $(hoverItem).find('h3').outerHeight(),   // Hover title element
-        footerHeight = $('div#footer').outerHeight(),   // footer element
-        listHeight = $('div#lists').height(),     // main contents height
-        height = (listHeight - (footerHeight * 3) - headerHeight),
-        y = $(window).scrollTop();
-        
+        sidebarPostfix = $('div#sidebar > ul').attr('id').split('_'),
+        hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
+    
     var setHoverPosition = function() {
-      if (y >= $sidebarList.offset().top) {
+      var y = $(window).scrollTop();
+      
+      if (y >= $('div#sidebar').offset().top) {
         $sidebarList.css('width', $('.hover').width())
                     .addClass('fixed');
       } else {
@@ -36,7 +33,7 @@ $.fn.scrollingHoverable = function(options) {
     if (!$(hoverItem).is(':visible')) {
       $('div#sidebar').find('li.side_hover').hide();
       $sidebarList.find(hoverItem).toggle();
-      $(hoverItem).autoScroller({speed: 200, height: height, stopOnHover: opts.stopOnHover});
+      $(hoverItem).autoScroller({speed: 200, height: opts.height, stopOnHover: opts.stopOnHover});
 
       $(window).scroll(setHoverPosition);
     }
@@ -53,7 +50,7 @@ $.fn.scrollingHoverable = function(options) {
 // default options
 $.fn.scrollingHoverable.defaults = {
   scrollSpeed:500,
-  height:500,
+  height:300,
   hoverListElement: 'div#sidebar > ul',
   stopOnHover: false
 };

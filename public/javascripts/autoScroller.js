@@ -24,12 +24,9 @@ $.fn.autoScroller = function(options) {
   }
 
   if ($(this).is(':visible')) {
-    var stop = false,
-        $unorderedList = $('ul.hover li:visible > hr:first');
-
+    var stop = false;
     $innerUnorderedList.scrollTop(0);
 
-//    $unorderedList.before($("<div id='list-item-top'>"));
     setInterval(function() {
 
       if (false == stop) {
@@ -43,11 +40,11 @@ $.fn.autoScroller = function(options) {
 
         $('body').mouseout(function() { stop = true; }).mouseover(function() { stop = false; });
         
+        previousOffset = $innerUnorderedList.scrollTop();
         if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
           stop = false;
         }
         
-        previousOffset = $innerUnorderedList.scrollTop();
       }
     }, opts.speed);
   }
