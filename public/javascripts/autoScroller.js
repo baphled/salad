@@ -39,15 +39,15 @@ $.fn.autoScroller = function(options) {
 
         if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
           $innerUnorderedList
-            .animate({scrollTop: 0}, opts.speed / 2);
+            .animate({scrollTop: 0}, opts.speed);
         }
 
         $('body').mouseout(function() {stop = true;}).mouseover(function() {stop = false;});
-        previousOffset = $innerUnorderedList.scrollTop();
 
         if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
           stop = false;
         }
+        previousOffset = $innerUnorderedList.scrollTop();
         
       }
     }, opts.speed);
