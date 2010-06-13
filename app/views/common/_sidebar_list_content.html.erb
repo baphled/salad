@@ -3,6 +3,7 @@
   <% models.each_with_index do |model, index| %>
       <li id="<%= models.first.class.to_s.singularize.downcase %>_<%=model.id%>_<%=assoc%>" class="<%= models.first.class.to_s.singularize.downcase %>_list_item side_hover" style="display: none;">
         <h3><%=h display_item_title(model) %></h3>
+        <div id="item-list-top"></div>
         <hr/>
       <% if !model.send(assoc.to_sym).blank? %>
         <ul>
@@ -16,6 +17,7 @@
           </li>
           <% end %>
         </ul>
+        <div id="item-list-bottom"></div>
         <hr/>
       <%else%>
         <%= model.class.to_s.singularize %> does not have any <%= assoc %>  yet.
