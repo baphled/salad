@@ -27,6 +27,11 @@ $.fn.autoScroller = function(options) {
     var stop = false;
     $innerUnorderedList.scrollTop(0);
 
+    $("#item-list-top").remove();
+    $("#item-list-bottom").remove();
+    $('ul.hover li:visible > hr:first').before("<div id=item-list-top />");
+    $('ul.hover li:visible > hr:last').before("<div id=item-list-bottom />");
+    
     setInterval(function() {
 
       if (false == stop) {
@@ -37,10 +42,9 @@ $.fn.autoScroller = function(options) {
             .animate({scrollTop: 0}, opts.speed / 2);
         }
 
-
-        $('body').mouseout(function() { stop = true; }).mouseover(function() { stop = false; });
-        
+        $('body').mouseout(function() {stop = true;}).mouseover(function() {stop = false;});
         previousOffset = $innerUnorderedList.scrollTop();
+
         if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
           stop = false;
         }

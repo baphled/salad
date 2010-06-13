@@ -50,7 +50,7 @@ $.fn.scrollingHoverable = function(options) {
 // default options
 $.fn.scrollingHoverable.defaults = {
   scrollSpeed:500,
-  height:300,
+  height:250,
   hoverListElement: 'div#sidebar > ul',
   stopOnHover: false
 };
