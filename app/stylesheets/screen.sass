@@ -119,6 +119,17 @@ body.salad
         +column(6.97)
         :padding 13px 0 0 12px
         :min-height 150px
+      span.active, .order_box, span.icons
+        :padding 12px 0px
+        :background #89A407 none repeat scroll 0 0
+        :border thin solid #785C17
+      ul.items-list > li
+        :background #FCFDEF none repeat scroll 0 0
+        :border-bottom thin solid #BACA54
+        :border-top thin solid #EDF2BF
+        :margin 3px
+        :min-height 62px
+        :padding 5px 8px 0
     #sidebar
       // One third of the grid columns, rounding down. With 24 cols, this is 8.
       !sidebar_columns = floor(!blueprint_grid_columns / 3.1)
@@ -149,6 +160,19 @@ body.salad
       :padding 13px 12px 11px 
       :margin-bottom 23px
       :float left
+      ul.icons
+        li
+          :position relative
+          :float left
+          :margin 1px
+          :padding-top 1px
+          a
+            :display block
+            :height 30px
+            :width 25px
+            :margin 0px auto
+            span
+              :margin auto 0px
     .wrapper
       :width 100%
       :display block
