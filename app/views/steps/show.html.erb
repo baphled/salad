@@ -9,9 +9,7 @@
   <%= render :partial => '/common/model_summary', :locals => {:model => @step}%>
 </div>
 
-<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to_with_tooltip "Edit step", edit_step_path(@step), 'Edit the steps' %>
-</span>
+<%= render :partial => '/common/panels/step', :locals => {:step => @step} %>
 
 <% semantic_form_for @step do |form| -%>
   <%= render :partial => '/common/checkboxes', :locals => {:model => @step, :item_name => Story}%>
