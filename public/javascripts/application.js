@@ -6,7 +6,7 @@ $.ajaxSetup({
 
 $(document).ready(function() {
   //hover states on the static widgets
-  $('span.icons > ul li').hover(
+  $('ul.icons li').hover(
     function() { $(this).addClass('ui-state-hover'); },
     function() { $(this).removeClass('ui-state-hover'); }
   );
