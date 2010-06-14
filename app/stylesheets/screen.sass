@@ -36,6 +36,8 @@
 
 @import partials/pagination.sass
 
+@import partials/icons.sass
+
 @import partials/accordion.sass
 
 @import partials/hover_dialog.sass
@@ -77,6 +79,8 @@ body.salad
     +link-colors(#C1C4B5, #785C17, #C1C4B5, #C1C4B5, #C1C4B5)
     +unstyled-link
     :cursor -moz-contextmenu
+  div.clearfix
+    :clear both
   #header
     :height 80px
     #logo
@@ -117,6 +121,17 @@ body.salad
         +column(6.97)
         :padding 13px 0 0 12px
         :min-height 150px
+      span.active, .order_box, span.icons
+        :padding 12px 0px
+        :background #89A407 none repeat scroll 0 0
+        :border thin solid #785C17
+      ul.items-list > li
+        :background #FCFDEF none repeat scroll 0 0
+        :border-bottom thin solid #BACA54
+        :border-top thin solid #EDF2BF
+        :margin 3px
+        :min-height 85px
+        :padding 5px 8px 0
     #sidebar
       // One third of the grid columns, rounding down. With 24 cols, this is 8.
       !sidebar_columns = floor(!blueprint_grid_columns / 3.1)

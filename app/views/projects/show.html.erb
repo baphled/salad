@@ -6,11 +6,7 @@
 
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @project, :assoc => :features } %>
 
-<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to_with_tooltip "import", import_project_path(@project), 'Allows you to import features singularly' unless @project.location.blank? %> | 
-  <%= link_to_with_tooltip "import all", import_all_project_path(@project), 'Allows you to import all project features in one easy step' unless @project.location.blank? %> | 
-  <%= link_to_with_tooltip "edit project", edit_project_path(@project), 'Allows you to edit a projects information' %>
-</span>
+<%= render :partial => '/common/panels/project', :locals => {:project => @project} %>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'story', :order =>true}%>
 

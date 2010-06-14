@@ -3,12 +3,16 @@
     :background #785C17 none repeat scroll 0 0
     :border 2 solid #89A407
     :color #C1C4B5
-    :margin-right 58px
-    :margin-left 371px
+    :position relative
+    :float right
+    :display block
     :padding 2px
     :text-align center
     :height 23px
     :width 40px
+  .order_icon:hover
+    :background #C1C4B5 none repeat scroll 0 0
+    :color black
   #lists
     :padding 16px
     .handler
@@ -19,20 +23,10 @@
       :text-align center
       :margin 2px
       :top 2px
-    span.active, .order_box, li .icons
-      :background #89A407 none repeat scroll 0 0
-      :border thin solid #785C17
-      :margin-top 12px
-      :display inline-block
-    ul
-      :padding-top 23px
-    ul > li
-      :background #FCFDEF none repeat scroll 0 0
-      :border-bottom thin solid #BACA54
-      :border-top thin solid #EDF2BF
-      :margin 3px
-      :min-height 62px
-      :padding 5px 8px 0
+    #list-head
+      :height 50px
+      :width 408px
+      :margin 0 auto
     .list_content
       :display inline-block
       :padding-left 13px
@@ -44,10 +38,5 @@
       :float left
       :right 3px
     li span.icons
-      :height 32px
-      :width 88px
+      :position relative
       :float right
-      a
-        :margin-left 4px
-        :margin-top 7px
-        :float left

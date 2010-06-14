@@ -1,8 +1,26 @@
 <span class="icons ui-widget ui-widget-content ui-corner-all">
-  <%= link_to "View", {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'show'}, {:class=>"ui-icon-note ui-icon"} %>
-  <%= link_to "Edit", {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'edit'}, {:id=>"edit_#{model.class.to_s.downcase}_#{model.id}",:class=>"ui-icon-pencil ui-icon"} %>
-  <% if not assoc.nil? %>
-  <%= link_to "New #{assoc.capitalize}", {:controller => assoc.pluralize, :action => :new, "#{model.class.to_s.downcase}_id".to_sym => model.id }, {:class=>"ui-icon-document ui-icon"} %>
-  <% end %>
-  <%= link_to 'Delete', model, {:class=>"ui-icon-trash ui-icon",:method => :delete,:confirm => 'Are you sure?'} %>
+  <ul class="icons">
+    <li title="View" class="ui-state-default ui-corner-all">
+        <%= link_to "<span class='ui-icon ui-icon-note' />", {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'show'} %>
+    </li>
+    <li title="Edit" class="ui-state-default ui-corner-all">
+      <%= link_to "<span class='ui-icon-pencil ui-icon' />",
+        {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'edit'}, {:id=>"edit_#{model.class.to_s.downcase}_#{model.id}"} %>
+    </li>
+    <% if assoc.nil? == false && model.send("#{assoc.to_s.singularize}_ids").empty? == false %>
+    <li title="<%= assoc.pluralize.capitalize %>" class="ui-state-default ui-corner-all">
+      <%= link_to "<span class='ui-icon ui-icon-zoomin' />",
+        {:controller => model.class.to_s.downcase.pluralize, :id => model.id, :action => assoc.pluralize }%>
+    </li>
+    <% end %>
+    <li title="Delete" class="ui-state-default ui-corner-all">
+      <%= link_to "<span class='ui-icon-trash ui-icon' />", model, {:method => :delete,:confirm => 'Are you sure?'} %>
+    </li>
+    <% if not assoc.nil? %>
+    <li title="New <%=assoc.capitalize%>" class="ui-state-default ui-corner-all">
+      <%= link_to "<span class='ui-icon-document ui-icon' />",
+        {:controller => assoc.pluralize, :action => :new, "#{model.class.to_s.downcase}_id".to_sym => model.id } %>
+    </li>
+    <% end %>
+  </ul>
 </span>

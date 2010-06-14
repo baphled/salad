@@ -4,11 +4,13 @@
     <div class="list_content">
         <%= will_paginate models unless models.nil? or !models.respond_to?(:total_pages) %>
       <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
-        <%= link_to "New #{item_name.singularize.capitalize}",
+        <div id="list-head">
+          <%= order_btn models, order  if defined? order%>
+          <%= link_to "New #{item_name.singularize.capitalize}",
             :controller => item_name.pluralize.downcase,
             :action => :new %>
-        <%= order_btn models, order  if defined? order%>
-        <ul id="<%= item_name.pluralize.downcase %>">
+        </div>
+        <ul id="<%= item_name.pluralize.downcase %>" class="items-list">
         <% if !models.blank? %>
             <% models.each_with_index do |model,index| %>
               <% content_tag_for(:li, model) do %>
