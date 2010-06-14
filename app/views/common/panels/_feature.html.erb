@@ -1,0 +1,25 @@
+<span id="panel" class="icons ui-widget ui-widget-content ui-corner-all">
+  <ul class="icons">
+    <% if feature.is_diff? %>
+    <li class="ui-state-default ui-corner-all">
+      <%= link_to_with_tooltip "<span class='ui-icon-pencil ui-icon' />", changes_feature_path(feature), 'Check the difference between the systems & your applications features' %>
+    </li>
+    <li class="ui-state-default ui-corner-all">
+      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-arrowthickstop-1-n'/>", merge_feature_path(feature), 'Merge a systems changes with the feature' %>
+    </li>
+    <% end %>
+    <% if !feature.stories.blank? %>
+    <li class="ui-state-default ui-corner-all">
+      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-arrowthickstop-1-s'/>", system_merge_feature_path(feature), 'Merge a features changes with the system' %>
+    </li>
+    <% end %>
+    <% if feature.is_diff? %>
+    <li class="ui-state-default ui-corner-all">
+      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-shuffle'/>", feature_path(feature, :format => :patch), 'Patch a feature with the systems changes' %>
+    </li>
+    <% end %>
+    <li class="ui-state-default ui-corner-all">
+      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-pencil'/>", edit_feature_path(feature),  'Edit the feature and it\'s stories' %>
+    </li>
+  </ul>
+</span>
