@@ -5,6 +5,12 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
+  //hover states on the static widgets
+  $('span.icons > ul li').hover(
+    function() { $(this).addClass('ui-state-hover'); },
+    function() { $(this).removeClass('ui-state-hover'); }
+  );
+
   /**
    * We don't want our checkboxes viewable initially
    */
