@@ -6,18 +6,7 @@
 
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @feature, :assoc => :stories } %>
 
-<span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <% if @feature.is_diff? %>
-    <%= link_to_with_tooltip "view changes", changes_feature_path(@feature), :title => 'Check the difference between the systems & your applications features' %>
-    <%= link_to_with_tooltip "merge changes", merge_feature_path(@feature), :title => 'Merge a systems changes with the feature' %>
-    <%= link_to_with_tooltip "merge system", system_merge_feature_path(@feature), :title => 'Merge a features changes with the system' %>  
-    <%= link_to_with_tooltip "patch changes", feature_path(@feature, :format => :patch), :title => 'Patch a feature with the systems changes' %>
-  <% end %>
-  <% if !@feature.stories.blank? %>
-      <%= link_to_with_tooltip "export feature", export_feature_path(@feature), :title => 'Export the feature from the system.' %>
-  <% end %>
-    <%= link_to_with_tooltip "Edit", edit_feature_path(@feature),  :title => 'Edit the feature and it\'s stories' %>
-</span>
+<%= render :partial => '/common/panels/feature', :locals => {:feature => @feature} %>
 
 <%= render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true} %>
 
