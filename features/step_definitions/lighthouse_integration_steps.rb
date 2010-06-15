@@ -74,10 +74,8 @@ When /^there should be a list of tickets found$/ do
 end
 
 Then /^I should be able to select tickets to add to parking$/ do
-  response.should have_selector :ul do |list|
-    list.should have_selector :li do |item|
-      item.should have_selector :input, attribute = {:type => "checkbox"}
-    end
+  response.should have_selector :div do |content|
+    content.should have_selector :input, attribute = {:type => "checkbox"}
   end
 end
 

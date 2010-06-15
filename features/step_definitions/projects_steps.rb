@@ -232,12 +232,8 @@ Then /^there should not be a 'view features' link$/ do
 end
 
 Then /^all projects should have a 'Add features' link$/ do
-  response.should have_selector :li do |list|
-    list.should have_selector :span do |content|
-      content.should have_selector :a do |link|
-        link.should contain "New Feature"
-      end
-    end
+  response.should have_selector :li do |content|
+    content.should have_selector :a, attribute ={:title => 'New Feature'}
   end
 end
 
@@ -369,7 +365,7 @@ When /^we export the features$/ do
 end
 
 Then /^I should be able to edit a the project information$/ do
-	click_link 'Edit project'
+	click_link 'Allows you to edit a projects information'
 end
 
 Then /^the project has an invalid feature$/ do

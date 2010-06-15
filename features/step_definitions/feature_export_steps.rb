@@ -25,7 +25,7 @@ When /^the feature with no stories is displayed$/ do
 end
 
 When /^a user attempts to export a feature$/ do
-  click_link 'export feature'
+  click_link 'Export a feature'
 end
 
 When /^we view the first feature$/ do

@@ -145,6 +145,6 @@ end
 
 Then /^there should be an edit link$/ do
   response.should have_selector :span do |content|
-    content.should have_selector :a, :content => 'Edit'
+    content.should have_selector :a, attribute = {:title => 'Edit'}
   end
 end

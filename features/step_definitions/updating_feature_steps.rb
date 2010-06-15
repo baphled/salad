@@ -54,7 +54,7 @@ When /^we visit the feature via import feature$/ do
 end
 
 When /^there should be a link to merge the change$/ do
-  response.should contain "Merge changes"
+  response.should have_selector :a, attribute = {:title => "Merge changes"}
 end
 
 When /^we click the "([^\"]*)"$/ do |link|
@@ -66,7 +66,7 @@ When /^view the feature$/ do
 end
 
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
-  response.should contain message
+  response.should have_selector :a, attribute = {:title => message}
 end
 
 Then /^we should see the changes to the files$/ do
