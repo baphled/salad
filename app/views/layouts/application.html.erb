@@ -6,6 +6,7 @@
 <%= stylesheet_link_tag "jquery-ui" %>
 <%= stylesheet_link_tag "formtastic" %>
 <%= stylesheet_link_tag "formtastic_changes" %>
+<%= stylesheet_link_tag "tipsy" %>
 <%= yield :css_head %>
 <link rel="stylesheet" href="/stylesheets/compiled/screen.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="/stylesheets/compiled/print.css" type="text/css" media="print" />
@@ -20,6 +21,7 @@
 <%= yield :js_head %>
 <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
 <%= javascript_include_tag "jquery-validate" %>
+<%= javascript_include_tag "jquery.tipsy" %>
 <%= javascript_include_tag "tooltips.js" %>
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
