@@ -8,7 +8,7 @@
 <%end %>
 
 <span id="panel" class="ui-widget ui-widget-content ui-corner-all">
-  <%= link_to_with_tooltip 'Update', system_sync_feature_path(@feature), 'Merge the feature file changes to the system' %>
+  <%= link_to 'Update', system_sync_feature_path(@feature), {:id => 'update-feature', :title => 'Merge the feature file changes to the system'} %>
 </span>
 
 <%= render :partial => "legend", :locals => {:diff_from => "system", :diff_to => "system"}  %>

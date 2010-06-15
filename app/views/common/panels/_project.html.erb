@@ -1,13 +1,13 @@
 <span id="panel" class="icons ui-widget ui-widget-content ui-corner-all">
   <ul class="icons">
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon ui-icon-plus'/>", import_project_path(project), {:title => 'Allows you to import features singularly'} unless @project.location.blank? %>
+      <%= link_to "<span class='ui-icon ui-icon ui-icon-plus'/>", import_project_path(project), {:title => 'Allows you to import features singularly', :id => 'import'} unless @project.location.blank? %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-circle-plus'/>", import_all_project_path(project), {:title => 'Allows you to import all project features in one easy step'} unless @project.location.blank? %>
+      <%= link_to "<span class='ui-icon ui-icon-circle-plus'/>", import_all_project_path(project), {:title => 'Allows you to import all project features in one easy step', :id => 'import-all'} unless @project.location.blank? %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-pencil'/>", edit_project_path(project), {:title => 'Allows you to edit a projects information'} %>
+      <%= link_to "<span class='ui-icon ui-icon-pencil'/>", edit_project_path(project), {:title => 'Allows you to edit a projects information', :id => 'edit'} %>
     </li>
   </ul>
 </span>

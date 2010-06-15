@@ -7,16 +7,16 @@
     <% end %>
     <% if feature.is_diff? %>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon-transferthick-e-w ui-icon' />", changes_feature_path(feature), {:title => 'Check the difference between the systems & your applications features'} %>
+      <%= link_to "<span class='ui-icon-transferthick-e-w ui-icon' />", changes_feature_path(feature), {:title => 'Check the difference between the systems & your applications features', :id => 'view-changes'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-arrowthickstop-1-n'/>", merge_feature_path(feature), {:title => 'Merge a systems changes with the feature'} %>
+      <%= link_to "<span class='ui-icon ui-icon-arrowthickstop-1-n'/>", merge_feature_path(feature), {:title => 'Merge a systems changes with the feature', :id => 'merge-changes'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-arrowthickstop-1-s'/>", system_merge_feature_path(feature), {:title => 'Merge a features changes with the system'} %>
+      <%= link_to "<span class='ui-icon ui-icon-arrowthickstop-1-s'/>", system_merge_feature_path(feature), {:title => 'Merge a features changes with the system', :id => 'merge-system'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-shuffle'/>", feature_path(feature, :format => :patch), {:title => 'Patch a feature with the systems changes'} %>
+      <%= link_to "<span class='ui-icon ui-icon-shuffle'/>", feature_path(feature, :format => :patch), {:title => 'Patch a feature with the systems changes', :id => 'patch-changes'} %>
     </li>
     <% end %>
     <li class="ui-state-default ui-corner-all">
