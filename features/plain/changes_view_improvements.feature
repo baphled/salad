@@ -12,13 +12,13 @@ Feature: Changes view improvements
       Then changes on the "<system_or_file>" should be displayed as "<colour>"
 
     Examples: Legend views
-      | link          | system_or_file        | colour |
-      | merge changes | Removing from file    | red    |
-      | merge changes | Adding to file        | green  |
-      | merge system  | Adding to system      | green  |
-      | merge system  | Removing from system  | red    |
-      | view changes  | Changes to the file   | green  |
-      | view changes  | Changes to the system | red    |
+      | link                                                                  | system_or_file        | colour |
+      | Merge a systems changes with the feature                              | Removing from file    | red    |
+      | Merge a systems changes with the feature                              | Adding to file        | green  |
+      | Merge a features changes with the system                              | Adding to system      | green  |
+      | Merge a features changes with the system                              | Removing from system  | red    |
+      | Check the difference between the systems & your applications features | Changes to the file   | green  |
+      | Check the difference between the systems & your applications features | Changes to the system | red    |
       
     Scenario Outline: There should be a notice warning users a feature file will be changed when patching a feature file
       Given there is a feature
@@ -29,6 +29,6 @@ Feature: Changes view improvements
       Then the following notice should be displayed "<notice>"
       
     Examples: Changes notices
-      | link          | notice                                                                                    |
-      | merge changes | This will change the source file. Unless you use source control, you may lose all changes |
-      | merge system  | This change will update the system feature                                           |
+      | link                                     | notice                                                                                    |
+      | Merge a systems changes with the feature | This will change the source file. Unless you use source control, you may lose all changes |
+      | Merge a features changes with the system | This change will update the system feature                                                |
