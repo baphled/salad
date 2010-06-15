@@ -2,25 +2,25 @@
   <ul class="icons">
     <% if not feature.stories.blank? %>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-disk' />", export_feature_path(feature), 'Export a feature' %>
+      <%= link_to "<span class='ui-icon ui-icon-disk' />", export_feature_path(feature), {:title => 'Export a feature'} %>
     </li>
     <% end %>
     <% if feature.is_diff? %>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to_with_tooltip "<span class='ui-icon-transferthick-e-w ui-icon' />", changes_feature_path(feature), 'Check the difference between the systems & your applications features' %>
+      <%= link_to "<span class='ui-icon-transferthick-e-w ui-icon' />", changes_feature_path(feature), {:title => 'Check the difference between the systems & your applications features'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-arrowthickstop-1-n'/>", merge_feature_path(feature), 'Merge a systems changes with the feature' %>
+      <%= link_to "<span class='ui-icon ui-icon-arrowthickstop-1-n'/>", merge_feature_path(feature), {:title => 'Merge a systems changes with the feature'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-arrowthickstop-1-s'/>", system_merge_feature_path(feature), 'Merge a features changes with the system' %>
+      <%= link_to "<span class='ui-icon ui-icon-arrowthickstop-1-s'/>", system_merge_feature_path(feature), {:title => 'Merge a features changes with the system'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-shuffle'/>", feature_path(feature, :format => :patch), 'Patch a feature with the systems changes' %>
+      <%= link_to "<span class='ui-icon ui-icon-shuffle'/>", feature_path(feature, :format => :patch), {:title => 'Patch a feature with the systems changes'} %>
     </li>
     <% end %>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to_with_tooltip "<span class='ui-icon ui-icon-pencil'/>", edit_feature_path(feature),  'Edit the feature and it\'s stories' %>
+      <%= link_to "<span class='ui-icon ui-icon-pencil'/>", edit_feature_path(feature),  {:title => 'Edit the feature and it\'s stories'} %>
     </li>
   </ul>
 </span>
