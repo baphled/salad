@@ -60,7 +60,7 @@ When /^I visit the features stories$/ do
   visit stories_feature_path @feature
 end
 When /^I edit the first feature$/ do
-  click_link 'edit_feature_1'
+  click_link 'Edit'
 end
 
 When /^I visit the first features stories$/ do
