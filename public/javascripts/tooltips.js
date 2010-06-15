@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $('a[title]').tooltip();
+  $('a[title]').tipsy({fade: true});
 });

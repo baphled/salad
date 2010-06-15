@@ -2,4 +2,4 @@ $('div.list').replaceWith("<%= escape_javascript(render :partial => '/common/sor
 $('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @features, :assoc => 'stories'})%>");
 
 $('ul.items-list li > span').animateIconPanel();
-$('a[title]').tooltip();
+$('a[title]').tipsy({fade: true});

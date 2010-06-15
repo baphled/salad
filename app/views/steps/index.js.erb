@@ -6,4 +6,4 @@ $('.list_content').html("<%= escape_javascript(render :partial => '/common/sorta
   :assoc => nil,
   :order => false})%>");
 $('ul.items-list li > span').animateIconPanel();
-$('a[title]').tooltip();
+$('a[title]').tipsy({fade: true});
