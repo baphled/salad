@@ -8,24 +8,6 @@
   **/
 $.fn.animateIconPanel = function(options) {
   var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
-  
-  $(this).each(function() {
-    var $iconList = $('ul.icons', this),
-          $innerWrapper = $('<span>')
-            .addClass('ui-icon ui-icon-info')
-            .css({'float': 'left', 'padding-right': '0.3em'}),
-          $innerContent = $('<strong>').append('Double click'),
-          $content = $('<span> to view panel</span>'),
-          $textWrapper = $('<span>')
-            .append($innerWrapper)
-            .append($innerContent)
-            .append($content)
-            .addClass(opts.panelTextClass)
-            .css({'display': 'block', 'float': 'right'});
-
-    $iconList.hide().parent().removeClass(opts.panelClass);
-    $iconList.before($textWrapper);
-  })
 
   $(this).unbind('dbclick');
   
@@ -46,6 +28,24 @@ $.fn.animateIconPanel = function(options) {
         $openLink.fadeIn();
       });
     }
+  });
+
+  return $(this).each(function() {
+    var $iconList = $('ul.icons', this),
+          $innerWrapper = $('<span>')
+            .addClass('ui-icon ui-icon-info')
+            .css({'float': 'left', 'padding-right': '0.3em'}),
+          $innerContent = $('<strong>').append('Double click'),
+          $content = $('<span> to view panel</span>'),
+          $textWrapper = $('<span>')
+            .append($innerWrapper)
+            .append($innerContent)
+            .append($content)
+            .addClass(opts.panelTextClass)
+            .css({'display': 'block', 'float': 'right'});
+
+    $iconList.hide().parent().removeClass(opts.panelClass);
+    $iconList.before($textWrapper);
   });
 
   // private function for debugging
