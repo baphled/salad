@@ -6,7 +6,8 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the feature's export link displays a tooltip
     Given there is a feature
     When I view the feature
-    Then there should be a "Export feature" link
+    And I double click "css=span#panel"
+    Then there should be a "Export a feature" link
     And I hover over the "export-feature" link
     Then a tooltip should be visible
 

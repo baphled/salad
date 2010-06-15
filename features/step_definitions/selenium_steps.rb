@@ -45,6 +45,10 @@ When /^focus on the tag input$/ do
   selenium.click "project_tag_list"
 end
 
+When /^I double click "([^\"]*)"$/ do |element|
+  selenium.double_click element
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1_features")
 end
@@ -106,7 +110,9 @@ Then /^a flash message "([^\"]*)" should be dynamically displayed$/ do |message|
 end
 
 Then /^there should be a "([^\"]*)" link$/ do |link|
-  response.should contain "#{link}"
+  response.should have_selector :a do |content|
+    content.should contain "#{link}"
+  end
 end
 
 Then /^I should see a hover dialog box$/ do
@@ -118,7 +124,7 @@ Then /^I should not see a hover dialog box$/ do
 end
 
 Then /^a tooltip should be visible$/ do
-  selenium.wait_for_visible("css=div.tooltip")
+  selenium.wait_for_visible("css=div.tipsy")
 end
 
 Then /^it should have a list of all project tags$/ do
