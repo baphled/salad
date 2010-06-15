@@ -1,8 +1,8 @@
 (function($) {
   /**
-  * Plugin to help determine the position of a given element, making sure that it is always at the top of the page.
+  * Toggles the panel icons display, using animation to display and hide the panel icons on a double click event
   *
-  * @useage $('div ul').autoScroller({scrollSpeed: 500, height: 500, stopOnHover: true})
+  * @useage $('span.icons').animateIconPanel()
   *
   * @author Yomi Colledge
   **/
