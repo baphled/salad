@@ -1,13 +1,12 @@
 $(function() {
   // icon animation
-  var $iconList = $('span.icons ul');
+  var $iconList = $('span.icons >ul');
 
   $iconList.hide().parent().removeClass('icons ui-widget ui-widget-content ui-corner-all');
-  $iconList.before('<span>Double click to view panel</span>');
+  $iconList.before('<span class="view-panel">Double click to view panel</span>');
+  $('span.view-panel').css({'display': 'block', 'float': 'right'});
 
   $('span#panel, ul.items-list li > span').live('dblclick', function(event) {
-    console.log(event.target);
-    
     var $iconsWrapper = $('ul', this),
         $openLink = $iconsWrapper.parent().find('>span'),
         $panel = $(this);
