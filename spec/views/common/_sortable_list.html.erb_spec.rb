@@ -90,7 +90,7 @@ describe "common/_sortable_list.html.erb" do
         render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => true}
       end
       it "should display the order button" do
-        response.should have_selector :span, attribute = {:id => 'order_icon'}
+        response.should have_selector :button, attribute = {:id => 'button'}
       end
 
       it "should display any of the items handler elements" do
