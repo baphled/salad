@@ -51,7 +51,7 @@ When /^I double click "([^\"]*)"$/ do |element|
 end
 
 Then /^the project's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("project_1_features")
+  selenium.wait_for_visible("project_1")
 end
 
 Given /^we click the edit link$/ do
@@ -65,11 +65,11 @@ Given /^we change the feature's title to "([^\"]*)"$/ do |content|
 end
 
 Then /^the story's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("story_1_steps")
+  selenium.wait_for_visible("story_1")
 end
 
 Then /^the feature's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("feature_1_stories")
+  selenium.wait_for_visible("feature_1")
 end
 
 Then /^I should see the order handler$/ do
