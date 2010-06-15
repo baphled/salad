@@ -1,8 +1,3 @@
-<% content_for :js_head do %>
-  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
-  <%= javascript_include_tag "tooltips.js" %>
-<%end %>
-
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps } %>
 
 <%= render :partial => '/common/panels/story', :locals => {:story => @story} %>
