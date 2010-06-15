@@ -7,7 +7,7 @@
   * @author Yomi Colledge
   **/
 $.fn.animateIconPanel = function(options) {
-  var opts = $.extend({}, $.fn.autoScroller.defaults, options);
+  var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
   
   $(this).each(function() {
     var $iconList = $('ul.icons', this),
