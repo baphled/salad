@@ -13,12 +13,13 @@ $.fn.animateIconPanel = function(options) {
     var $iconList = $('ul.icons', this),
           $innerWrapper = $('<span>')
             .addClass('ui-icon ui-icon-info')
-            .css({'float': 'left', 'margin-right': '0.3em'}),
-          $innerContent = $('<strong class="dbl-click">Double click</strong>')
-            .append(' to view panel'),
+            .css({'float': 'left', 'padding-right': '0.3em'}),
+          $innerContent = $('<strong>').append('Double click'),
+          $content = $('<span> to view panel</span>'),
           $textWrapper = $('<span>')
             .append($innerWrapper)
             .append($innerContent)
+            .append($content)
             .addClass('view-panel ui-state-highlight')
             .css({'display': 'block', 'float': 'right'});
 
