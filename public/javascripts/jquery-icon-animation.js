@@ -9,9 +9,9 @@
 $.fn.animateIconPanel = function(options) {
   var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
 
-  $(this).unbind('dbclick');
+  $(this).unbind(opts.eventType);
   
-  $(this).bind('dblclick', function(event) {
+  $(this).bind(opts.eventType, function(event) {
     var $iconsWrapper = $('ul', this),
         $openLink = $iconsWrapper.parent().find('>span'),
         $panel = $(this);
@@ -59,6 +59,7 @@ $.fn.animateIconPanel = function(options) {
 // default options
 $.fn.animateIconPanel.defaults = {
   speed:300,
+  eventType: 'dblclick',
   panelTextClass: 'view-panel ui-state-highlight',
   panelClass: 'icons ui-widget ui-widget-content ui-corner-all',
   mouseoutBgColour: '#89A407',
