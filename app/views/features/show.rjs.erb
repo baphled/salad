@@ -1,3 +1,5 @@
 $('div.list').replaceWith("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true})%>");
 $('div#lists ul').customSortable();
+$('ul.items-list li > span').animateIconPanel();
+$('a[title]').tooltip();
 $('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @feature_stories, :assoc => 'steps'})%>");
