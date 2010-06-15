@@ -14,6 +14,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the feature's edit link displays a tooltip
     Given there is a feature
     When I view the feature
+    And I double click "css=span#panel"
     Then there should be a "Edit" link
     And I hover over the "edit" link
     Then a tooltip should be visible
