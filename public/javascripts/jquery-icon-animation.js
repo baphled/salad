@@ -5,7 +5,7 @@ $(function() {
   $iconList.hide().parent().removeClass('icons ui-widget ui-widget-content ui-corner-all');
   $iconList.before('<span>Double click to view panel</span>');
 
-  $('span#panel').live('dblclick', function(event) {
+  $('span#panel, ul.items-list li > span').live('dblclick', function(event) {
     console.log(event.target);
     
     var $iconsWrapper = $('ul', this),
