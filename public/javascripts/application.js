@@ -6,11 +6,15 @@ $.ajaxSetup({
 
 $(document).ready(function() {
   //hover states on the static widgets
-  $('ul.icons li, button.order_icon').hover(
-    function() { $(this).addClass('ui-state-hover'); },
-    function() { $(this).removeClass('ui-state-hover'); }
-  );
-
+  $('ul.icons li, button.order_icon').live('mouseover mouseout', function(event) {
+    if (event.type == 'mouseover') {
+      $(this).addClass('ui-state-hover');
+      // do something on mouseover
+    } else {
+      // do something on mouseout
+      $(this).removeClass('ui-state-hover');
+    }
+  });
   /**
    * We don't want our checkboxes viewable initially
    */
@@ -54,4 +58,5 @@ $(document).ready(function() {
     navigation: true
   }
   $('.accordion').accordion(accOpts);
+  $('span#panel, ul.items-list li > span').animateIconPanel();
 });
