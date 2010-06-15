@@ -27,8 +27,8 @@ $(function() {
         $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: '#fff'}, 'slow');
       });
     } else {
-      $panel.removeClass('icons ui-widget ui-widget-content ui-corner-all');
       $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: '#89A407'}, 'slow', function() {
+        $panel.removeClass('icons ui-widget ui-widget-content ui-corner-all');
         $openLink.fadeIn();
       });
     }
