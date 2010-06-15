@@ -29,6 +29,7 @@ When /^I press order$/ do
 end
 
 When /^I hover over the "([^\"]*)" link$/ do |link|
+  selenium.wait_for_visible("#{link}")
   selenium.mouse_over("#{link}")
 end
 
