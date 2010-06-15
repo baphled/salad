@@ -20,10 +20,10 @@ $.fn.animateIconPanel = function(options) {
             .append($innerWrapper)
             .append($innerContent)
             .append($content)
-            .addClass('view-panel ui-state-highlight')
+            .addClass(opts.panelTextClass)
             .css({'display': 'block', 'float': 'right'});
 
-    $iconList.hide().parent().removeClass('icons ui-widget ui-widget-content ui-corner-all');
+    $iconList.hide().parent().removeClass(opts.panelClass);
     $iconList.before($textWrapper);
   })
 
@@ -36,13 +36,13 @@ $.fn.animateIconPanel = function(options) {
 
     // is list visible
     if ($iconsWrapper.is(':visible') == false) {
-      $openLink.fadeOut(300, function() {
-        $panel.addClass('icons ui-widget ui-widget-content ui-corner-all');
-        $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: '#fff'}, 'slow');
+      $openLink.fadeOut(opts.speed, function() {
+        $panel.addClass(opts.panelClass);
+        $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: opts.mouseoverBgColour}, 'slow');
       });
     } else {
-      $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: '#89A407'}, 'slow', function() {
-      $panel.removeClass('icons ui-widget ui-widget-content ui-corner-all');
+      $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: opts.mouseoutBgColour}, 'slow', function() {
+      $panel.removeClass(opts.panelClass);
         $openLink.fadeIn();
       });
     }
@@ -58,7 +58,11 @@ $.fn.animateIconPanel = function(options) {
 
 // default options
 $.fn.animateIconPanel.defaults = {
-  speed:500
+  speed:300,
+  panelTextClass: 'view-panel ui-state-highlight',
+  panelClass: 'icons ui-widget ui-widget-content ui-corner-all',
+  mouseoutBgColour: '#89A407',
+  mouseoverBgColour: '#fff'
 };
 
 })(jQuery);
