@@ -18,8 +18,4 @@ module ApplicationHelper
   def display_item_title item
     item.class.to_s.eql?('Story')? item.scenario : item.title
   end
-  
-  def link_to_with_tooltip(link_title, link, tooltip)
-    link_to link_title, link, :title => tooltip
-  end
 end
