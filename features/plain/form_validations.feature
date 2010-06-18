@@ -72,19 +72,3 @@ Feature: Validation of forms
     Then submit the form
     Then the step should be not saved
     And the message 'Title must start with Given, When or Then' should be displayed
-
-  Scenario: A story invalid if it does not have 'When' as a prefix
-    Given I can view the steps page
-    When I click new steps
-    And we fill in the step title with 'we have a new step'
-    Then submit the form
-    Then the step should be not saved
-    And the message 'Title must start with Given, When or Then' should be displayed
-
-  Scenario: A story invalid if it does not have 'Then' as a prefix
-    Given I can view the steps page
-    When I click new steps
-    And we fill in the step title with 'we have a new step'
-    Then submit the form
-    Then the step should be not saved
-    And the message 'Title must start with Given, When or Then' should be displayed
