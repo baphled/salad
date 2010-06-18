@@ -3,13 +3,6 @@ Feature: Step needs basic validations
   As a system feature
   I want to be able to do basic validation oon a step
 
-  Scenario: A step need to have a title
-    Given I can view the steps page
-    When I click new steps
-    Then the new step form should be displayed
-    Then submit the form
-    And the "step" "title" "input" should have an error class
-
   Scenario: A step need to be a minimum of 12 characters
     Given I can view the steps page
     When I click new steps

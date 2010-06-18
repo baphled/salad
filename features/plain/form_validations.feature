@@ -29,3 +29,5 @@ Feature: Validation of forms
     | projects   | project | foo       | aim         | input       |
     | projects   | project | too short | description | input       |
     | projects   | project | blah/     | location    | input       |
+    | steps      | step    |           | title       | input       |
+    | stories    | story   | blah      | scenario    | input       |
