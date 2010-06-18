@@ -15,7 +15,7 @@
 <fieldset>
   <%- semantic_form_for @story do |form| -%>
     <% form.inputs :name => form_title(@story, "Story") do %>
-        <%= form.input :scenario %>
+        <%= form.input :scenario, :hint => 'e.g. We need a way to solve world hunger' %>
         <%= form.input :tag_list %>
     <% end %>
     <%= render :partial => '/common/checkboxes', :locals => {:model => story, :item_name => Feature}%>

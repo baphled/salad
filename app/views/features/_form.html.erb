@@ -12,10 +12,10 @@
 <fieldset>
   <%- semantic_form_for @feature do |form| -%>
     <% form.inputs :name => form_title(@feature, "Feature") do %>
-      <%= form.input :title %>
-      <%= form.input :in_order %>
-      <%= form.input :as_a %>
-      <%= form.input :i_want %>
+      <%= form.input :title, :hint => 'e.g. A feature that will solve all our problems' %>
+      <%= form.input :in_order, :hint => 'e.g. to create the best feature' %>
+      <%= form.input :as_a, :hint => 'e.g. user' %>
+      <%= form.input :i_want, :hint => 'e.g. to this feature to solve all our problems' %>
       <%= form.input :tag_list %>
       <%= render :partial => "/common/save_button" %>
     <% end %>
