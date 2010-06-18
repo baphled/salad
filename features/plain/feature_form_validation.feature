@@ -22,7 +22,7 @@ Feature: Feature forms should have client side validations
     When I click new features
     And we fill in the feature title with 'to'
     Then submit the form
-    And the "feature" "title" "input" should have an error class
+    And I should see "Please enter at least 6 characters." within "li#feature_title_input"
 
   Scenario: The "in_order" field should have more than 7 characters
     Given I can view the features page
