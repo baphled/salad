@@ -22,16 +22,25 @@ Feature: Validation of forms
 
   Examples: Models and their properties
     | controller | model   | value     | property    | input_type  | selector                     | error                                             |
+    | features   | feature |           | title       | input       | li#feature_title_input       | can't be blank                                    |
     | features   | feature | to        | title       | input       | li#feature_title_input       | Please enter at least 6 characters.               |
+    | features   | feature |           | in_order    | input       | li#feature_title_input       | can't be blank                                    |
     | features   | feature | to do     | in_order    | input       | li#feature_in_order_input    | Please enter at least 7 characters.               |
+    | features   | feature |           | as_a        | input       | li#feature_title_input       | can't be blank                                    |
     | features   | feature | use       | as_a        | input       | li#feature_as_a_input        | Please enter at least 4 characters.               |
+    | features   | feature |           | i_want      | input       | li#feature_title_input       | can't be blank                                    |
     | features   | feature | not       | i_want      | input       | li#feature_i_want_input      | Please enter at least 7 characters.               |
+    | projects   | project |           | title       | input       | li#project_title_input       | can't be blank                                    |
     | projects   | project | so        | title       | input       | li#project_title_input       | Please enter at least 3 characters.               |
+    | projects   | project |           | aim         | input       | li#project_title_input       | can't be blank                                    |
     | projects   | project | foo       | aim         | input       | li#project_aim_input         | Please enter at least 6 characters.               |
+    | projects   | project |           | description | input       | li#project_title_input       | can't be blank                                    |
     | projects   | project | too short | description | input       | li#project_description_input | Please enter at least 12 characters.              |
     | projects   | project | blah/     | location    | input       | li#project_location_input    | Must be a valid project location on your system.  |
-    | steps      | step    |           | title       | input       | li#step_title_input          | Please enter at least 12 characters.              |
+    | steps      | step    |           | title       | input       | li#step_title_input          | can't be blank                                    |
+    | steps      | step    | foo       | title       | input       | li#step_title_input          | Please enter at least 12 characters.              |
     | stories    | story   | blah      | scenario    | input       | li#story_scenario_input      | Please enter at least 7 characters.               |
+    | stories    | story   |           | scenario    | input       | li#story_scenario_input      | can't be blank                                    |
 
   # Relies on fixtures
   Scenario: A project must be unique
