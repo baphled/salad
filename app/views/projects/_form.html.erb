@@ -1,7 +1,3 @@
-<% content_for :side_bar do %>
-  <%= error_messages_for :project %>
-<% end %>
-
 <% content_for :js_head do %>
   <%= javascript_include_tag "/javascripts/validations/project" %>
   <%= javascript_include_tag "/javascripts/form" %>
@@ -10,14 +6,15 @@
 <%= render :partial => "/common/hover_dialog" %>
 <fieldset>
   <%- semantic_form_for @project do |form| -%>
+    <%= error_messages_for :project %>
     <% form.inputs :name => form_title(@project, "Project") do %>
-        <%= form.input :title, :hint => 'e.g. A project that creates world peace.' %>
-        <%= form.input :description, :as => :text, :hint => 'e.g. A solutions to all the worlds woes' %>
-        <%= form.input :aim, :as => :text, :hint => 'Our aim is the to solve the worlds problems' %>
-        <%= form.input :location, :hint => '/home/projects/salad' %>
-        <%= form.input :tag_list %>
+      <%= form.input :title, :hint => 'e.g. A project that creates world peace.' %>
+      <%= form.input :description, :as => :text, :hint => 'e.g. A solutions to all the worlds woes' %>
+      <%= form.input :aim, :as => :text, :hint => 'Our aim is the to solve the worlds problems' %>
+      <%= form.input :location, :hint => '/home/projects/salad' %>
+      <%= form.input :tag_list %>
 
-        <%= render :partial => "/common/save_button" %>
+      <%= render :partial => "/common/save_button" %>
     <% end %>
 
     <%= render :partial => '/common/checkboxes', :locals => {:model => @project, :item_name => Feature}%>
