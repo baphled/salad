@@ -36,14 +36,14 @@ Feature: Feature forms should have client side validations
     When I click new features
     And we fill in the feature as_a with 'use'
     Then submit the form
-    And the "feature" "as_a" "input" should have an error class
+    And I should see "Please enter at least 4 characters." within "li#feature_as_a_input"
 
   Scenario: The "i_want" field should have more than 7 characters
     Given I can view the features page
     When I click new features
     And we fill in the feature i_want with 'not'
     Then submit the form
-    And the "feature" "i_want" "input" should have an error class
+    And I should see "Please enter at least 7 characters." within "li#feature_i_want_input"
 
   Scenario: A feature must be unique
     Given I can view the features page
