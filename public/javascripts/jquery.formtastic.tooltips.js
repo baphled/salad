@@ -18,7 +18,7 @@ $.fn.generateFormatasticTooltips = function(options) {
     if (null != hint) {
       $inputWrapper.hide();
       $input = $('>input, >textarea', this);
-      $input.tipsy({gravity: 'n', fallback: hint, trigger: 'focus'});
+      $input.tipsy({gravity: 'w', fallback: hint, trigger: 'focus'});
     }
   });
 
