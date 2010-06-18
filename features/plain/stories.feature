@@ -58,3 +58,19 @@ Feature: Stories will be needed to populate our projects features
     Then submit the form
     And the step should be saved as 'Given we have a new step'
     And a flash message 'Step: Given we have a new step, was created' should be displayed
+
+  Scenario: A story must start with 'When' otherwise it does not validate
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'When we have a new step'
+    Then submit the form
+    And the step should be saved as 'When we have a new step'
+    And a flash message 'Step: When we have a new step, was created' should be displayed
+
+  Scenario: A story must start with 'Then' otherwise it does not validate
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'Then we have a new step'
+    Then submit the form
+    And the step should be saved as 'Then we have a new step'
+    And a flash message 'Step: Then we have a new step, was created' should be displayed
