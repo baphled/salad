@@ -19,4 +19,6 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('fieldset.inputs > ol li').generateFormatasticTooltips();
 });
