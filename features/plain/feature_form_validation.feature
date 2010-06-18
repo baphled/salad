@@ -6,7 +6,7 @@ Feature: Feature forms should have client side validations
   Scenario Outline: All validation should have an error class
     Given I can view the features page
     When I click new features
-    And we fill in the feature title with '<value>'
+    And we fill in the <model> <property> with '<value>'
     Then submit the form
     And the "<model>" "<property>" "<input_type>" should have an error class
 
@@ -20,16 +20,16 @@ Feature: Feature forms should have client side validations
   Scenario Outline: Fields that need validation should display the appropriate error message
     Given I can view the features page
     When I click new features
-    And we fill in the feature title with '<value>'
+    And we fill in the feature <property> with '<value>'
     Then submit the form
     And I should see "Please enter at least <number> characters." within "<selector>"
 
   Examples: Form fields and their error messages
-    | value     | number  | selector                  |
-    | to        | 6       | li#feature_title_input    |
-    | to do     | 7       | li#feature_in_order_input |
-    | use       | 4       | li#feature_as_a_input     |
-    | not       | 7       | li#feature_i_want_input   |
+    | property  | value     | number  | selector                  |
+    | title     | to        | 6       | li#feature_title_input    |
+    | in_order  | to do     | 7       | li#feature_in_order_input |
+    | as_a      | use       | 4       | li#feature_as_a_input     |
+    | i_want    | not       | 7       | li#feature_i_want_input   |
 
   Scenario: A feature must be unique
     Given I can view the features page
