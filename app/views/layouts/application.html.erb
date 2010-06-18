@@ -1,64 +1,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
-<head>
-  <title>SaladBowl</title>
-</head>
-<%= stylesheet_link_tag "jquery-ui" %>
-<%= stylesheet_link_tag "formtastic" %>
-<%= stylesheet_link_tag "formtastic_changes" %>
-<%= stylesheet_link_tag "tipsy" %>
-<%= yield :css_head %>
-<link rel="stylesheet" href="/stylesheets/compiled/screen.css" type="text/css" media="screen, projection" />
-<link rel="stylesheet" href="/stylesheets/compiled/print.css" type="text/css" media="print" />
-<!--[if lt IE 8]>
-  <link rel="stylesheet" href="/stylesheets/compiled/ie.css" type="text/css" media="screen, projection" />
-<![endif]-->
+  <head>
+    <title>SaladBowl</title>
+  </head>
+  <%= stylesheet_link_tag "jquery-ui" %>
+  <%= stylesheet_link_tag "formtastic" %>
+  <%= stylesheet_link_tag "formtastic_changes" %>
+  <%= stylesheet_link_tag "tipsy" %>
+  <%= yield :css_head %>
+  <link rel="stylesheet" href="/stylesheets/compiled/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/stylesheets/compiled/print.css" type="text/css" media="print" />
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/stylesheets/compiled/ie.css" type="text/css" media="screen, projection" />
+  <![endif]-->
 
-<%= javascript_include_tag "jquery" %>
-<%= javascript_include_tag "jquery-ui" %>
-<%= javascript_include_tag "jquery-icon-animation" %>
-<%= javascript_include_tag "jquery.formtastic.tooltips" %>
-<%= javascript_include_tag "application" %>
-<%= yield :js_head %>
-<%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
-<%= javascript_include_tag "jquery-validate" %>
-<%= javascript_include_tag "jquery.tipsy" %>
-<%= javascript_include_tag "tooltips.js" %>
-<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "jquery-ui" %>
+  <%= javascript_include_tag "jquery-icon-animation" %>
+  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :js_head %>
+  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "jquery-validate" %>
+  <%= javascript_include_tag "jquery.tipsy" %>
+  <%= javascript_include_tag "tooltips.js" %>
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
-<body class="salad">
-  <noscript><div class='notice'>This site works best with Javascript enabled</div></noscript>
-	<div id="container">
-		<div id="header">
-			<span id="logo"><%= link_to "Salad", root_url %></span><br/>
-			<span id="slogan">Mixing Clients &amp; Developers with a little special sauce.</span>
-			<div id="menu">
-				<div id="menu-items">
-				  <%= render_navigation %>
-				</div>
-			</div>
-		</div>
-		<% if not flash.empty? %>
-		<div id="flash">
-			<% flash.each do |key, msg| %>
-				<% content_tag :div, :class => key do -%>
-					<%= msg %>
-				<% end -%>
-			<% end %>
-		</div>
-		<% end%>
-		<div id="content">
-          <div id="wrapper">
-            <%= yield :layout %>
-          </div>
-		</div>
-		<div id="sidebar">
-			<%= yield :side_bar %>
-		</div>
-		<div id="footer">
-			&copy;2009-<%= Time.now.year %> Designed &amp; Developed by 
-			<a href="http://boodah.net">boodah.net</a>
-		</div>
-	</div>
-</body>
+  <body class="salad">
+    <noscript><div class='notice'>This site works best with Javascript enabled</div></noscript>
+      <div id="container">
+        <%= render :partial => 'layouts/header' %>
+        <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
+        <%= render :partial => 'layouts/content' %>
+        <%= render :partial => 'layouts/sidebar' %>
+        <%= render :partial => 'layouts/footer' %>
+      </div>
+  </body>
 </html>
