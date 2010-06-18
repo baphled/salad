@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
+  layout :default_or_defined
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
@@ -13,4 +15,8 @@ class ApplicationController < ActionController::Base
 			format.json  { render :json => @tags }
 		end
 	end
+
+  def default_or_defined
+    (action_name == 'new')? 'no_sidebar' : 'application'
+  end
 end
