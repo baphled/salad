@@ -1,0 +1,9 @@
+<% if not flash.empty? %>
+<div id="flash">
+    <% flash.each do |key, msg| %>
+        <% content_tag :div, :class => key do -%>
+            <%= msg %>
+        <% end -%>
+    <% end %>
+</div>
+<% end%>

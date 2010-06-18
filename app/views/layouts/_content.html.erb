@@ -1,0 +1,5 @@
+<div id="<%= (defined?(content) && content == 'wide')? 'content-wide' : 'content' %>">
+  <div id="wrapper">
+    <%= yield :layout %>
+  </div>
+</div>
