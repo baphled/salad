@@ -103,6 +103,10 @@ body.salad
       !content_columns = ceil(2 * !blueprint_grid_columns / 3)
       // With 24 cols, this is 16.
       +column(!content_columns)
+    #content-wide
+      :display inline-block
+      :width 100%
+    #content, #content-wide
       margin: 10px 3px 10px 3px
       background: #F5F9DD
       min-height: 500px
