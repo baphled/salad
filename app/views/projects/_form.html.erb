@@ -5,8 +5,8 @@
 
 <%= render :partial => "/common/hover_dialog" %>
 <fieldset>
+  <%= error_messages_for :project %>
   <%- semantic_form_for @project do |form| -%>
-    <%= error_messages_for :project %>
     <% form.inputs :name => form_title(@project, "Project") do %>
       <%= form.input :title, :hint => 'e.g. A project that creates world peace.' %>
       <%= form.input :description, :as => :text, :hint => 'e.g. A solutions to all the worlds woes' %>

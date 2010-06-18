@@ -1,7 +1,3 @@
-<% content_for :side_bar do %>
-	<%= error_messages_for :step %>
-<% end %>
-
 <%= render :partial => "/common/hover_dialog" %>
 
 <% content_for :js_head do %>
@@ -10,6 +6,7 @@
 <% end %>
 
 <fieldset>
+  <%= error_messages_for :step %>
   <%- semantic_form_for @step do |form| -%>
     <% form.inputs :name => form_title(@step, "Step") do %>
       <%= form.input :title, :hint => 'e.g. Given I have all my marbles' %>

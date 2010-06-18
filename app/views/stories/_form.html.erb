@@ -1,7 +1,6 @@
 <% content_for :side_bar do %>
 	<%= render :partial => '/steps/step_search', :locals => {:story => story}%>
 	<br />
-	<%= error_messages_for :story %>
 <% end %>
 
 <%= render :partial => "/common/hover_dialog" %>
@@ -13,6 +12,7 @@
 <% end %>
 
 <fieldset>
+  <%= error_messages_for :story %>
   <%- semantic_form_for @story do |form| -%>
     <% form.inputs :name => form_title(@story, "Story") do %>
         <%= form.input :scenario, :hint => 'e.g. We need a way to solve world hunger' %>
