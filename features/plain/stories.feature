@@ -50,3 +50,11 @@ Feature: Stories will be needed to populate our projects features
     Given we have a stories with examples
     When the story is viewed
     Then we should the example should be displayed
+
+  Scenario: A story must start with 'Given' otherwise it does not validate
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'Given we have a new step'
+    Then submit the form
+    And the step should be saved as 'Given we have a new step'
+    And a flash message 'Step: Given we have a new step, was created' should be displayed

@@ -31,8 +31,9 @@ Feature: Validation of forms
     | projects   | project | too short | description | input       | li#project_description_input | Please enter at least 12 characters.              |
     | projects   | project | blah/     | location    | input       | li#project_location_input    | Must be a valid project location on your system.  |
     | steps      | step    |           | title       | input       | li#step_title_input          | Please enter at least 12 characters.              |
-    | stories    | story   | blah      | scenario    | input       | li#story_scenario_input      | Please enter at least 7 characters.              |
+    | stories    | story   | blah      | scenario    | input       | li#story_scenario_input      | Please enter at least 7 characters.               |
 
+  # Relies on fixtures
   Scenario: A project must be unique
     Given I can view the projects page
     When I click new projects
@@ -43,6 +44,7 @@ Feature: Validation of forms
     And the project information should not be saved
     And the error message should be "has already been taken"
 
+  # Relies on fixtures
   Scenario: A feature must be unique
     Given I can view the features page
     When I click new features
@@ -55,6 +57,7 @@ Feature: Validation of forms
     And the feature information should be not saved
     And the error message should be "has already been taken"
 
+  # Relies on fixtures
   Scenario: If a story is not unique we need to display a error
     Given I can view the stories page
     When I use the "New Story" link
@@ -69,14 +72,6 @@ Feature: Validation of forms
     Then submit the form
     Then the step should be not saved
     And the message 'Title must start with Given, When or Then' should be displayed
-
-  Scenario: A story must start with 'Given' otherwise it does not validate
-    Given I can view the steps page
-    When I click new steps
-    And we fill in the step title with 'Given we have a new step'
-    Then submit the form
-    And the step should be saved as 'Given we have a new step'
-    And a flash message 'Step: Given we have a new step, was created' should be displayed
 
   Scenario: A story invalid if it does not have 'When' as a prefix
     Given I can view the steps page
