@@ -32,3 +32,80 @@ Feature: Validation of forms
     | projects   | project | blah/     | location    | input       | li#project_location_input    | Must be a valid project location on your system.  |
     | steps      | step    |           | title       | input       | li#step_title_input          | Please enter at least 12 characters.              |
     | stories    | story   | blah      | scenario    | input       | li#story_scenario_input      | Please enter at least 7 characters.              |
+
+  Scenario: A project must be unique
+    Given I can view the projects page
+    When I click new projects
+    And we fill in the project title with 'A fixture project'
+    And we fill in the project aim with 'A description for our project'
+    And we fill in the project description with 'A projects aims'
+    Then submit the form
+    And the project information should not be saved
+    And the error message should be "has already been taken"
+
+  Scenario: A feature must be unique
+    Given I can view the features page
+    When I click new features
+    And there are features
+    And we fill in the feature title with 'my first feature'
+    And we fill in the feature in_order with 'to create an project'
+    And we fill in the feature as_a with 'developer'
+    And we fill in the feature i_want with 'to have the skills'
+    Then submit the form
+    And the feature information should be not saved
+    And the error message should be "has already been taken"
+
+  Scenario: If a story is not unique we need to display a error
+    Given I can view the stories page
+    When I use the "New Story" link
+    And we fill in the story scenario with 'my stories 1st scenario'
+    Then submit the form
+    And the error message should be "has already been taken"
+
+  Scenario: A story invalid if it does not have 'Given' as a prefix
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'we have a new step'
+    Then submit the form
+    Then the step should be not saved
+    And the message 'Title must start with Given, When or Then' should be displayed
+
+  Scenario: A story must start with 'Given' otherwise it does not validate
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'Given we have a new step'
+    Then submit the form
+    And the step should be saved as 'Given we have a new step'
+    And a flash message 'Step: Given we have a new step, was created' should be displayed
+
+  Scenario: A story invalid if it does not have 'When' as a prefix
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'we have a new step'
+    Then submit the form
+    Then the step should be not saved
+    And the message 'Title must start with Given, When or Then' should be displayed
+
+  Scenario: A story must start with 'When' otherwise it does not validate
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'When we have a new step'
+    Then submit the form
+    And the step should be saved as 'When we have a new step'
+    And a flash message 'Step: When we have a new step, was created' should be displayed
+
+  Scenario: A story invalid if it does not have 'Then' as a prefix
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'we have a new step'
+    Then submit the form
+    Then the step should be not saved
+    And the message 'Title must start with Given, When or Then' should be displayed
+
+  Scenario: A story must start with 'Then' otherwise it does not validate
+    Given I can view the steps page
+    When I click new steps
+    And we fill in the step title with 'Then we have a new step'
+    Then submit the form
+    And the step should be saved as 'Then we have a new step'
+    And a flash message 'Step: Then we have a new step, was created' should be displayed
