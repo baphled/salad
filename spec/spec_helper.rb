@@ -56,3 +56,38 @@ Spec::Runner.configure do |config|
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
+
+class UseLayout
+  attr_reader :expected
+  attr_reader :actual
+
+  def initialize(expected)
+    @expected = 'layouts/' + expected
+  end
+
+  def matches?(controller)
+    if controller.is_a?(ActionController::Base)
+      @actual = 'layouts/' + controller.class.read_inheritable_attribute(:layout)
+    else
+      @actual = controller.layout
+    end
+    @actual ||= "layouts/application"
+    @actual == @expected
+  end
+
+  def description
+    "Determines if a controller uses a layout"
+  end
+
+  def failure_message
+    return "use_layout expected #{@expected.inspect}, got #{@actual.inspect}"
+  end
+
+ def negeative_failure_message
+   return "use_layout expected #{@expected.inspect} not to equal #{@actual.inspect}"
+  end
+end
+
+def use_layout(expected)
+  UseLayout.new(expected)
+end
