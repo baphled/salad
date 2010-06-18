@@ -17,33 +17,19 @@ Feature: Feature forms should have client side validations
     | feature | use       | as_a      | input       |
     | feature | not       | i_want    | input       |
 
-  Scenario: The "title" field should have more than 6 characters
+  Scenario Outline: Fields that need validation should display the appropriate error message
     Given I can view the features page
     When I click new features
-    And we fill in the feature title with 'to'
+    And we fill in the feature title with '<value>'
     Then submit the form
-    And I should see "Please enter at least 6 characters." within "li#feature_title_input"
+    And I should see "Please enter at least <number> characters." within "<selector>"
 
-  Scenario: The "in_order" field should have more than 7 characters
-    Given I can view the features page
-    When I click new features
-    And we fill in the feature in_order with 'to do'
-    Then submit the form
-    And I should see "Please enter at least 7 characters." within "li#feature_in_order_input"
-
-  Scenario: The "as_a" field should have more than 4 characters
-    Given I can view the features page
-    When I click new features
-    And we fill in the feature as_a with 'use'
-    Then submit the form
-    And I should see "Please enter at least 4 characters." within "li#feature_as_a_input"
-
-  Scenario: The "i_want" field should have more than 7 characters
-    Given I can view the features page
-    When I click new features
-    And we fill in the feature i_want with 'not'
-    Then submit the form
-    And I should see "Please enter at least 7 characters." within "li#feature_i_want_input"
+  Examples: Form fields and their error messages
+    | value     | number  | selector                  |
+    | to        | 6       | li#feature_title_input    |
+    | to do     | 7       | li#feature_in_order_input |
+    | use       | 4       | li#feature_as_a_input     |
+    | not       | 7       | li#feature_i_want_input   |
 
   Scenario: A feature must be unique
     Given I can view the features page
