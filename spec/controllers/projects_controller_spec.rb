@@ -22,6 +22,11 @@ describe ProjectsController do
       Feature.should_receive(:find).with(:all)
       get :new
     end
+
+    it "should render the no sidebar layout" do
+      get :new
+      response.should use_layout("no_sidebar")
+    end
   end
 
   describe "POST, create" do
