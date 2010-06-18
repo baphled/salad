@@ -1,12 +1,10 @@
-class StepsController < ActionController::Base
+class StepsController < ApplicationController
   
   navigation :steps
 
   before_filter :find_step, :except => [:index,:new,:create,:sort, :validate_prefix, :tags, :tag]
 
   before_filter :find_tags
-  
-  layout "application"
   
   def index
     @search = Step.search(params[:search_text])

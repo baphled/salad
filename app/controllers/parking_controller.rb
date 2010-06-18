@@ -1,5 +1,4 @@
-class ParkingController < ActionController::Base
-  layout "application"
+class ParkingController < ApplicationController
   
   def index
     @tickets = LightHouse.all
