@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 	end
 
   def default_or_defined
-    (action_name == 'new')? 'no_sidebar' : 'application'
+    ("new, create".include? action_name)? 'no_sidebar' : 'application'
   end
 end
