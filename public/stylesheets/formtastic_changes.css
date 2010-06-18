@@ -9,9 +9,12 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 
 --------------------------------------------------------------------------------------------------*/
 form.formtastic fieldset ol li label {
-  width: 15%
+  width: 10%;
+  display: block;
+  float: left;
+  padding-top: 0.2em;
 }
 
 form.formtastic fieldset ol li.string input, form.formtastic fieldset ol li.text textarea {
-  width: 54%
+  width: 45%
 }
