@@ -20,8 +20,12 @@ Feature: Validation of forms
     And the "<model>" "<property>" "<input_type>" should have an error class
 
   Examples: Models and their properties
-    | controller | model   | value     | property  | input_type  |
-    | features   | feature | to        | title     | input       |
-    | features   | feature | to do     | in_order  | input       |
-    | features   | feature | use       | as_a      | input       |
-    | features   | feature | not       | i_want    | input       |
+    | controller | model   | value     | property    | input_type  |
+    | features   | feature | to        | title       | input       |
+    | features   | feature | to do     | in_order    | input       |
+    | features   | feature | use       | as_a        | input       |
+    | features   | feature | not       | i_want      | input       |
+    | projects   | project | so        | title       | input       |
+    | projects   | project | foo       | aim         | input       |
+    | projects   | project | too short | description | input       |
+    | projects   | project | blah/     | location    | input       |
