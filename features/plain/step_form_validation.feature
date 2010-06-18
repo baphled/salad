@@ -3,14 +3,6 @@ Feature: Step needs basic validations
   As a system feature
   I want to be able to do basic validation oon a step
 
-  Scenario: A step need to be a minimum of 12 characters
-    Given I can view the steps page
-    When I click new steps
-    Then the new step form should be displayed
-    When we fill in the step title with 'Given'
-    Then submit the form
-    And the error message should be "Please enter at least 12 characters."
-    
   Scenario: A story invalid if it does not have 'Given' as a prefix
     Given I can view the steps page
     When I click new steps
