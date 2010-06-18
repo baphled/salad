@@ -9,16 +9,16 @@
   * @author Yomi Colledge
   **/
 $.fn.generateFormatasticTooltips = function(options) {
-  var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
+  var opts = $.extend({}, $.fn.generateFormatasticTooltips.defaults, options);
 
   return $(this).each(function() {
-    var $inputWrapper = $(this).find(opts.hintElement),
+    var $inputWrapper = $(this).find (opts.hintElement),
         hint = $inputWrapper.html();
 
     if (null != hint) {
       $inputWrapper.hide();
       $input = $('>input, >textarea', this);
-      $input.tipsy({trigger: 'focus', gravity: 'w', fallback: hint});
+      $input.tipsy({gravity: 'n', fallback: hint, trigger: 'focus'});
     }
   });
 
