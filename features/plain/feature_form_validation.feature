@@ -17,7 +17,7 @@ Feature: Feature forms should have client side validations
     | feature | use       | as_a      | input       |
     | feature | not       | i_want    | input       |
 
-  Scenario Outline: Fields that need validation should display the appropriate error message
+  Scenario Outline: Feature fields that need validation should display the appropriate error message
     Given I can view the features page
     When I click new features
     And we fill in the feature <property> with '<value>'
