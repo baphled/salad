@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
   def valid_directory
     result = true
     if not File.directory?(params[:location])
-      result = %{false, "Must be a valid project location on your system."}
+      result = "Must be a valid project location on your system."
     end
     render :json => result.to_json
   end
