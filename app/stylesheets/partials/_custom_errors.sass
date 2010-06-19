@@ -1,9 +1,19 @@
 body.salad
-  span.error
+  span.error, span.valid
     :position relative
     :display inline-block
     :margin 0.2em
     :padding 0.2em
+  .valid
+    :border #89A407 2px solid
+    :background #EAEFD1
+    :margin-bottom 1em
+    :padding 0.8em
+  span.valid
+    background: url('http://dev.jquery.com/view/trunk/plugins/validate/demo/images/checked.gif') no-repeat
+    height: 14px
+    width: 14px
+    border: none
 #errorExplanation
   :padding-left 15px
   ul
