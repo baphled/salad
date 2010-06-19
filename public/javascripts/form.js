@@ -35,6 +35,9 @@ $(document).ready(function() {
          var $parent = $(element).parent();
          var $validElements = $parent.find('span.valid');
          $validElements.remove();
+
+         $parent.addClass(errorClass).removeClass(validClass);
+         $(element).show();
        });
       },
       unhighlight: function(element, errorClass, validClass) {
