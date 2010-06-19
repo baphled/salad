@@ -58,8 +58,8 @@ $(document).ready(function() {
       },
       errorPlacement: function(error, element) {
         var $warningSpan = $('<span></span')
-                          .css({'float': 'left', 'margin': '0.3em'})
-                          .addClass('ui-icon ui-icon-alert'),
+                          .css({'float': 'left', 'margin': '0.3em', 'padding-left': '5px'})
+                          .addClass('ui-icon invalid'),
             $parent = element.parent(),
             $previousError = $parent.find('span.error');
 
