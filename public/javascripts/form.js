@@ -22,37 +22,37 @@ $(document).ready(function() {
 
   $.fn.customValidations = function(options) {
     var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
-
     $(this).validate({
       ignoreTitle: true,
+      focusInvalid: true,
+      clearFocus: true,
+      successClass: 'valid',
+      errorClass: 'error ui-state-error',
+      errorElement: "span",
       highlight: function(element, errorClass, validClass) {
        $(element).addClass(errorClass).removeClass(validClass);
        $(element).fadeOut(function() {
          var $parent = $(element).parent();
          var $validElements = $parent.find('span.valid');
          $validElements.remove();
-
-         $parent.addClass(errorClass).removeClass(validClass);
-         $(element).fadeIn();
        });
       },
       unhighlight: function(element, errorClass, validClass) {
         var $parent = $(element).parent();
+        var $validElements = $parent.find('span.error');
+        $validElements.html('');
+
         $(element).removeClass(errorClass).addClass(validClass);
+        $validElements.removeClass(errorClass).addClass(validClass);
         $parent.removeClass(errorClass).addClass(validClass);
       },
       success: function(label) {
-        console.log(label);
         var $parent = $(label).parent();
-  //      console.log($parent.find('span'));
         var $validElements = $parent.find('span.valid');
-        $(label).html();
+
         $validElements.remove();
         label.removeClass('error ui-state-error').addClass("valid");
       },
-      successClass: 'valid',
-      errorClass: 'error ui-state-error',
-      errorElement: "span",
       errorPlacement: function(error, element) {
         var $warningSpan = $('<span></span')
                           .css({'float': 'left', 'margin': '0.3em'})
