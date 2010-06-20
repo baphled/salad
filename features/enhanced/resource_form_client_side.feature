@@ -8,7 +8,7 @@ Feature: Client side validations for our parking form
       Given I can view the parking page
       When I follow "New Resource information"
       And I fill in "resource_name" with ""
-      And I fill in "resource_project_id" with "foo"
+      And I fill in "resource_project" with "foo"
       Then submit the form
       And a JS based error message should be displayed
       And the form should have an client side error
@@ -17,7 +17,7 @@ Feature: Client side validations for our parking form
       Given I can view the parking page
       When I follow "New Resource information"
       And I fill in "resource_name" with "foo"
-      And I fill in "resource_project_id" with ""
+      And I fill in "resource_project" with ""
       Then submit the form
       And a JS based error message should be displayed
       And the form should have an client side error
