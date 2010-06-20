@@ -21,12 +21,12 @@ describe Resource do
     end
     it "should have a project name" do
       @resource.save
-      @resource.errors[:name].should eql "can't be blank"
+      @resource.errors[:name].should contain "can't be blank"
     end
 
     it "should have a project id" do
       @resource.save
-      @resource.errors[:project].should eql "can't be blank"
+      @resource.errors[:project].should contain "can't be blank"
     end
 
     it "should have a valid project name" do

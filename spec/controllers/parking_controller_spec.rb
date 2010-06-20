@@ -93,4 +93,17 @@ describe ParkingController do
       end
     end
   end
+
+  describe "GET, unique-resource-name"  do
+    context "is not unique" do
+      before(:each) do
+        Resource.create({:name => 'baphled', :project => '50164'})
+      end
+      
+      it "returns an error message" do
+        get :unique_resource_name, {:name => 'baphled'}
+        response.should contain 'Must be a unique resource name.'
+      end
+    end
+  end
 end

@@ -41,5 +41,12 @@ class ParkingController < ApplicationController
     flash[:notice] = "Parked tickets"
     redirect_to parking_index_path
   end
-  
+
+  def unique_resource_name
+    result = true
+    if Resource.find_by_name params[:name]
+      result = 'Must be a unique resource name.'
+    end
+    render :json => result.to_json
+  end
 end
