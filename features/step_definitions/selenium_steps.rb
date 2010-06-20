@@ -86,7 +86,7 @@ Then /^the items should be reordered$/ do
 end
 
 Then /^a JS based error message should be displayed$/ do
-  selenium.wait_for_element("css=label.error")
+  selenium.wait_for_element("css=span.error")
 end
 
 Then /^the form should have an client side error$/ do
