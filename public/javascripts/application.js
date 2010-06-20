@@ -6,7 +6,7 @@ $.ajaxSetup({
 
 $(document).ready(function() {
   //hover states on the static widgets
-  $('ul.icons li, button.order_icon').live('mouseover mouseout', function(event) {
+  $('ul.icons li, button').live('mouseover mouseout', function(event) {
     if (event.type == 'mouseover') {
       $(this).addClass('ui-state-hover');
       // do something on mouseover
