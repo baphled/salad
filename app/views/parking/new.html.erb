@@ -1,5 +1,6 @@
 <fieldset>
-  <% semantic_form_for @resource, :url => { :action => "create" } do |form| %>
+  <%= error_messages_for :resource %>
+  <% semantic_form_for Resource.new, :url => {:action => "create"} do |form| %>
     <% form.inputs :name => form_title(@resource, "Resource") do %>
       <%= form.input :name %>
       <%= form.input :project_id %>
