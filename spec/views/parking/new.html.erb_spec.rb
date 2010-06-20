@@ -19,7 +19,7 @@ describe "/parking/new.html" do
       response.should have_selector :input, attribute = {:id => "resource_name"}
     end
     it "should have a project id" do
-      response.should have_selector :input, attribute = {:id => "resource_project_id"}
+      response.should have_selector :input, attribute = {:id => "resource_project"}
     end
     
     it "should have a save button" do

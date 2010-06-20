@@ -17,7 +17,7 @@ Feature: Lighthouse integration
   Scenario: We want to be able to add a new lighthouse resource
     Given we visit the new parking page
     When I fill in "resource_name" with "baphled"
-    And I fill in "resource_project_id" with "50164"
+    And I fill in "resource_project" with "50164"
     Then submit the form
     And the resource information should be saved
   
@@ -115,13 +115,13 @@ Feature: Lighthouse integration
   Scenario: The project name must be valid
     Given we visit the new parking page
     When I fill in "resource_name" with "foo"
-    When I fill in "resource_project_id" with "50164"
+    When I fill in "resource_project" with "50164"
     And submit the form
-    Then there a error "Must be a valid LightHouse project name" should be displayed
+    Then there a error "Name must be a valid LightHouse project name" should be displayed
     
   Scenario: The project number must be valid
     Given we visit the new parking page
     When I fill in "resource_name" with "baphled"
-    When I fill in "resource_project_id" with "23"
+    When I fill in "resource_project" with "23"
     When submit the form
-    Then there a error "Must be a valid LightHouse project id" should be displayed
+    Then there a error "Project must be a valid LightHouse project" should be displayed

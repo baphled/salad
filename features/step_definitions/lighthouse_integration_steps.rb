@@ -17,7 +17,7 @@ end
 Given /^we have set up the lighthouse resource$/ do
   Given %{we visit the new parking page}
   When %{I fill in "resource_name" with "baphled"}
-  And %{I fill in "resource_project_id" with "50164"}
+  And %{I fill in "resource_project" with "50164"}
   Then %{submit the form}
 end
 
@@ -44,7 +44,7 @@ Given /^there are no resources$/ do
 end
 
 When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
-  @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
+  @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:#{ticket_parameters}" })
 end
 
 When /^we retrieve tickets$/ do
@@ -56,7 +56,7 @@ When /^I select "([^\"]*)"$/ do |selection|
 end
 
 Then /^each of the features should be using the "([^\"]*)" tag$/ do |tag|
-  @lighthouse_tickets.each {|ticket| ticket.tag.should contain 'feature'}
+  @lighthouse_tickets.each {|ticket| ticket.tag.should contain tag}
 end
 
 Then /^I should be sent to the "([^\"]*)" page$/ do |page_title|
@@ -114,7 +114,7 @@ Then /^the feature form should be displayed$/ do
 end
 
 Then /^there a error "([^\"]*)" should be displayed$/ do |message|
-  response.should have_selector :ul, attribute = {:class => "errors"} do |error|
+  response.should have_selector :ul do |error|
     error.should contain message
   end
 end

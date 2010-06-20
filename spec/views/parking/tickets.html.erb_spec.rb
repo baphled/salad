@@ -4,7 +4,7 @@ describe "/parking/tickets.html" do
 
   context "a successful search has been requested" do
     before(:each) do
-      @resource = Resource.new(:name => 'baphled', :project_id => '50164')
+      @resource = Resource.new(:name => 'baphled', :project => '50164')
       assigns[:tickets] = @resource.tickets('feature')
       assigns[:resource] = @resource
       render
@@ -48,7 +48,7 @@ describe "/parking/tickets.html" do
   context "no tickets where found" do
     before(:each) do
       assigns[:tickets] = []
-      assigns[:resource] = Resource.new(:name => 'baphled', :project_id => '50164')
+      assigns[:resource] = Resource.new(:name => 'baphled', :project => '50164')
     end
 
     it "should return an empty list" do
