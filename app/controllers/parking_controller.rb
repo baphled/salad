@@ -23,6 +23,7 @@ class ParkingController < ApplicationController
     respond_to do |format|
       if @resource.save
         format.html { redirect_to parking_index_path }
+        format.js { redirect_to parking_index_path }
       else
         format.html { render :action => "new" }
       end
