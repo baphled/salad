@@ -42,7 +42,9 @@ Feature: Validation of forms
     | stories    | story    | blah      | scenario    | input       | li#story_scenario_input      | Please enter at least 7 characters.               |
     | stories    | story    |           | scenario    | input       | li#story_scenario_input      | can't be blank                                    |
     | parking    | resource |           | name        | input       | li#resource_name_input       | can't be blank                                    |
+    | parking    | resource |           | name        | input       | li#resource_name_input       | Please enter at least 3 characters.               |
     | parking    | resource |           | project     | input       | li#resource_project_input    | can't be blank                                    |
+    | parking    | resource |           | project     | input       | li#resource_project_input    | Please enter at least 3 characters.               |
 
   # Relies on fixtures
   Scenario: A project must be unique

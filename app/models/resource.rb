@@ -1,6 +1,11 @@
 class Resource < ActiveRecord::Base
+  include MyActiveRecordExtensions
+  
   validates_presence_of     :name
   validates_presence_of     :project
+
+  validates_length_of :name,:minimum => 3, :too_short => @@error_message
+  validates_length_of :project,:minimum => 3, :too_short => @@error_message
 
   validate :valid_lighthouse_account?, :if => :name_not_empty?
   validate :valid_lighthouse_project?, :if => :project_id_not_empty?
