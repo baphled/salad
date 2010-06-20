@@ -4,18 +4,16 @@
 
 <%= render :partial => "/common/hover_dialog" %>
 
-<fieldset>
-  <%= error_messages_for :feature %>
-  <%- semantic_form_for @feature do |form| -%>
-    <% form.inputs :name => form_title(@feature, "Feature") do %>
-      <%= form.input :title, :hint => 'e.g. A feature that will solve all our problems' %>
-      <%= form.input :in_order, :hint => 'e.g. to create the best feature' %>
-      <%= form.input :as_a, :hint => 'e.g. user' %>
-      <%= form.input :i_want, :hint => 'e.g. to this feature to solve all our problems' %>
-      <%= form.input :tag_list %>
-      <%= render :partial => "/common/save_button" %>
-    <% end %>
-    <%= render :partial => '/common/checkboxes', :locals => {:model => @feature, :item_name => Project}%>
-    <%= render :partial => '/common/checkboxes', :locals => {:model => @feature, :item_name => Story}%>
-  <% end -%>
-</fieldset>
+<%- semantic_form_for @feature do |form| -%>
+  <% form.inputs :name => form_title(@feature, "Feature") do %>
+    <%= error_messages_for :feature %>
+    <%= form.input :title, :hint => 'e.g. A feature that will solve all our problems' %>
+    <%= form.input :in_order, :hint => 'e.g. to create the best feature' %>
+    <%= form.input :as_a, :hint => 'e.g. user' %>
+    <%= form.input :i_want, :hint => 'e.g. to this feature to solve all our problems' %>
+    <%= form.input :tag_list %>
+    <%= render :partial => "/common/save_button" %>
+  <% end %>
+  <%= render :partial => '/common/checkboxes', :locals => {:model => @feature, :item_name => Project}%>
+  <%= render :partial => '/common/checkboxes', :locals => {:model => @feature, :item_name => Story}%>
+<% end -%>

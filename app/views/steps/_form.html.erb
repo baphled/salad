@@ -4,15 +4,13 @@
   <%= javascript_include_tag "/javascripts/validations/step" %>
 <% end %>
 
-<fieldset>
-  <%= error_messages_for :step %>
-  <%- semantic_form_for @step do |form| -%>
-    <% form.inputs :name => form_title(@step, "Step") do %>
-      <%= form.input :title, :hint => 'e.g. Given I have all my marbles' %>
-      <%= form.input :tag_list %>
-      <%= render :partial => "/common/save_button" %>
+<%- semantic_form_for @step do |form| -%>
+  <% form.inputs :name => form_title(@step, "Step") do %>
+    <%= error_messages_for :step %>
+    <%= form.input :title, :hint => 'e.g. Given I have all my marbles' %>
+    <%= form.input :tag_list %>
+    <%= render :partial => "/common/save_button" %>
 
-    <% end %>
-    <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
   <% end %>
-</fieldset>
+  <%= render :partial => '/common/checkboxes', :locals => {:model => step, :item_name => Story}%>
+<% end %>
