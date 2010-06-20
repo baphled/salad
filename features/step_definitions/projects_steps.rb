@@ -114,7 +114,7 @@ When /^the project single import is viewed$/ do
 end
 
 Then /^submit the form$/ do
-  click_button 'Save'
+  click_button 'save'
 end
 
 #TODO Refactor to make more explicit

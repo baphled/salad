@@ -11,5 +11,5 @@ When /^we click the "([^\"]*)" feature$/ do |link|
 end
 
 When /^we submit the new feature$/ do
-  click_button 'Save'
+  click_button 'save'
 end
