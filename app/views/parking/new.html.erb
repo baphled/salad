@@ -1,3 +1,7 @@
+<% content_for :js_head do %>
+  <%= javascript_include_tag "/javascripts/validations/resource" %>
+<% end %>
+
 <fieldset>
   <%= error_messages_for :resource %>
   <% semantic_form_for Resource.new, :url => {:action => "create"} do |form| %>
