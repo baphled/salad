@@ -3,7 +3,7 @@ Feature: We want to us different layout for specific types of actions and areas
   As an user
   I want to see different layouts for specific actions and areas
 
-  Scenario Outline: Viewing the all forms should display te no sidebar layout
+  Scenario Outline: Viewing the all forms should display the no sidebar layout
     When I view the "<model>" "<action>"
     Then the view "<matcher>" have a sidebar
 
@@ -13,7 +13,7 @@ Feature: We want to us different layout for specific types of actions and areas
     |features   | new     | should not  |
     |stories    | new     | should not  |
     |steps      | new     | should not  |
-    |projects   |         | should      |
-    |features   |         | should      |
-    |stories    |         | should      |
-    |steps      |         | should      |
+    |projects   | index   | should      |
+    |features   | index   | should      |
+    |stories    | index   | should      |
+    |steps      | index   | should      |
