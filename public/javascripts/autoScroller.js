@@ -24,29 +24,26 @@ $.fn.autoScroller = function(options) {
   }
 
   if ($(this).is(':visible')) {
-    var stop = false;
-    $innerUnorderedList.scrollTop(0);
+    var stop = false,
+        previousOffset = null;
 
+    $innerUnorderedList.scrollTop(0);
     $("#item-list-top").remove();
     $("#item-list-bottom").remove();
     $('ul.hover li:visible > hr:first').before("<div id=item-list-top />");
     $('ul.hover li:visible > hr:last').before("<div id=item-list-bottom />");
+    $('body').mouseout(function() {stop = true;}).mouseover(function() {stop = false;});
     
     setInterval(function() {
 
       if (false == stop) {
-        $innerUnorderedList.scrollTop($innerUnorderedList.scrollTop() + 1);
-
-        if ($innerUnorderedList.scrollTop() == previousOffset && 0 !== previousOffset) {
-          $innerUnorderedList
-            .animate({scrollTop: 0}, opts.speed);
+        if ($innerUnorderedList.scrollTop() == previousOffset && null != previousOffset) {
+          $innerUnorderedList.animate({scrollTop: 0}, 'slow');
+          previousOffset = null;
+        } else {
+          $innerUnorderedList.animate({scrollTop: $innerUnorderedList.scrollTop() + 2}, 5);
         }
 
-        $('body').mouseout(function() {stop = true;}).mouseover(function() {stop = false;});
-
-        if ((previousOffset && $innerUnorderedList.scrollTop()) == 0) {
-          stop = false;
-        }
         previousOffset = $innerUnorderedList.scrollTop();
         
       }
