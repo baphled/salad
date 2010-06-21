@@ -58,5 +58,5 @@ $(document).ready(function() {
     navigation: true
   }
   $('.accordion').accordion(accOpts);
-  $('span#panel, ul.items-list li > span').animateIconPanel();
+  $('span#panel, ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
 });
