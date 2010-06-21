@@ -9,13 +9,19 @@
 $.fn.animateIconPanel = function(options) {
   var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
 
-  $(this).unbind(opts.eventType);
-  
+  // Stop the propagation of our event on links
+  // @todo Need to resolve our issue with this removing the accordion functionality.
+  // $("a[href!='#']").bind('click', function(event) {
+  //   event.stopPropagation();
+  // });
+
+  // $(this).unbind(opts.eventType);
   $(this).bind(opts.eventType, function(event) {
     var $iconsWrapper = $('ul', this),
         $openLink = $iconsWrapper.parent().find('>span'),
         $panel = $(this);
 
+    console.log($("a[href!='#']"));
     // is list visible
     if ($iconsWrapper.is(':visible') == false) {
       $openLink.fadeOut(opts.speed, function() {
@@ -35,7 +41,7 @@ $.fn.animateIconPanel = function(options) {
           $innerWrapper = $('<span>')
             .addClass('ui-icon ui-icon-info')
             .css({'float': 'left', 'padding-right': '0.3em'}),
-          $innerContent = $('<strong>').append('Double click'),
+          $innerContent = $('<strong>').append(opts.eventText),
           $content = $('<span> to view panel</span>'),
           $textWrapper = $('<span>')
             .append($innerWrapper)
@@ -60,6 +66,7 @@ $.fn.animateIconPanel = function(options) {
 $.fn.animateIconPanel.defaults = {
   speed:300,
   eventType: 'dblclick',
+  eventText: 'Double click',
   panelTextClass: 'view-panel ui-state-highlight',
   panelClass: 'icons ui-widget ui-widget-content ui-corner-all',
   mouseoutBgColour: '#89A407',

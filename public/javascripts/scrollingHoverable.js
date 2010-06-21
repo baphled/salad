@@ -15,7 +15,7 @@ $.fn.scrollingHoverable = function(options) {
     var $sidebarList = $(opts.hoverListElement),
         sidebarPostfix = $('div#sidebar > ul').attr('id').split('_'),
         hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
-    
+
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
       
@@ -26,15 +26,18 @@ $.fn.scrollingHoverable = function(options) {
         $sidebarList.removeClass('fixed');
       }
     }
-    
+    $currentList = $(this).parent();
     $sidebarList.addClass('ui-widget ui-widget-content ui-corner-all');
+    
+    
     setHoverPosition();
     
     if (!$(hoverItem).is(':visible')) {
+      $('ul.items-list li').css({opacity: 1}).removeClass('ui-widget-content');
+      $currentList.animate({opacity: 0.7}, 300).addClass('ui-widget-content');
       $('div#sidebar').find('li.side_hover').hide();
       $sidebarList.find(hoverItem).toggle();
       $(hoverItem).autoScroller({speed: 200, height: opts.height, stopOnHover: opts.stopOnHover});
-
       $(window).scroll(setHoverPosition);
     }
   });

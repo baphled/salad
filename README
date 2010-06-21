@@ -18,7 +18,8 @@ Manage a stories steps
 Allows you to import features (all or singular)
 Allows you to export features
 Patch & diff features
-Synchronises a system feature with its associated feature file
+Synchronises a system's feature with its associated feature file
+LightHouse integration
 
 What Salad doesn't do
 Automatically generate cucumber steps
@@ -26,7 +27,6 @@ Make your coffee (yet)
 
 Future features
 Display which features a features status (pending,complete,etc)
-LightHouse integration
 GitHub integration
 
 Install

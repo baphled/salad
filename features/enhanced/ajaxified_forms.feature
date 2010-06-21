@@ -14,7 +14,6 @@ Feature: All our forms need to be passed to the server via AJAX
       And the form should be hidden
       And a flash message "Project: A project was created" should be dynamically displayed
 
-
     Scenario: We should be able to submit an editted project form via AJAX
       Given there is a project
       And I visit the projects edit view

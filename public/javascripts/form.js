@@ -20,6 +20,10 @@ $(document).ready(function() {
     });
   });
 
+  // Disable autocomplete for our imput elements
+  $('input').attr('autocomplete','off');
+  
+  // Customised validations for all of our forms
   $.fn.customValidations = function(options) {
     var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
     $(this).validate({
@@ -30,23 +34,23 @@ $(document).ready(function() {
       errorClass: 'error ui-state-error',
       errorElement: "span",
       highlight: function(element, errorClass, validClass) {
-       $(element).addClass(errorClass).removeClass(validClass);
-       $(element).fadeOut(function() {
-         var $parent = $(element).parent();
-         var $validElements = $parent.find('span.valid');
-         $validElements.remove();
+      $(element).fadeOut(function() {
+        var $parent = $(element).parent();
+        var $validElements = $parent.find('span.valid');
+        $validElements.remove();
 
-         $parent.addClass(errorClass).removeClass(validClass);
-         $(element).show();
-       });
+        $(element).addClass(errorClass).removeClass(validClass);
+        $parent.addClass(errorClass).removeClass(validClass);
+        $(element).show();
+      });
       },
       unhighlight: function(element, errorClass, validClass) {
         var $parent = $(element).parent();
-        var $validElements = $parent.find('span.error');
-        $validElements.html('');
+        var $invalidElements = $parent.find('span.error');
 
+        $invalidElements.html('');
         $(element).removeClass(errorClass).addClass(validClass);
-        $validElements.removeClass(errorClass).addClass(validClass);
+        $invalidElements.removeClass(errorClass).addClass(validClass);
         $parent.removeClass(errorClass).addClass(validClass);
       },
       success: function(label) {
