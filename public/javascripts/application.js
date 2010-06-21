@@ -19,7 +19,7 @@ $(document).ready(function() {
    * We don't want our checkboxes viewable initially
    */
   $('.views').hide();
-  
+
   /**
    * Handling the viewing and hiding of our item checkboxes
    */
@@ -52,7 +52,7 @@ $(document).ready(function() {
   $('#myTabs').tabs();
 	
   var accOpts = {
-    event: "mouseover",
+    event: "click",
     autoHeight: false,
     fillSpace: false,
     navigation: true
