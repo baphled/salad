@@ -8,14 +8,8 @@ $(document).ready(function() {
   // We need singular & plural resource names to take advantage of hover dialog
   var formIdArray = $formID.split('_');
   var $resourceSingular = formIdArray[1];
-  var $resourcePlural = '';
+  var $resourcePlural = formIdArray[1].pluralize();
   
-  // Should really use some kind of pluralisation technique
-  if ($resourceSingular == 'story') {
-    $resourcePlural = 'stories'
-  } else {
-    $resourcePlural = $resourceSingular + 's';
-  };
   // Selector for our tag input
   var $tagInput = $('input#'+ $resourceSingular + '_tag_list');
   var $tagInputWrapper = $('li#'+ $resourceSingular + '_tag_list_input');
@@ -62,9 +56,8 @@ $(document).ready(function() {
 		      $tagInput.attr('value',$tagInput.attr('value') + $(this).html() + ', ');
 		      $(this).fadeOut();
           return false;
-        }))
-		    .append(' ')
-		    .fadeIn();
+        })
+      ).append(' ').fadeIn();
 	  };
 	};
 });
