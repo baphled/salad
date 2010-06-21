@@ -21,7 +21,6 @@ $.fn.scrollingHoverable = function(options) {
     $lists.removeClass('highlighted');
     $currentList.addClass('highlighted');
     
-    console.log($lists);
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
       
