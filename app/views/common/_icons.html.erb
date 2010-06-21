@@ -7,7 +7,7 @@
       <%= link_to "<span class='ui-icon-pencil ui-icon' />",
         {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'edit'}, {:title => 'Edit', :id=>"edit_#{model.class.to_s.downcase}_#{model.id}"} %>
     </li>
-    <% if assoc.nil? == false && model.send("#{assoc.to_s.singularize}_ids").empty? == false %>
+    <% if assoc.nil? == false && model.public_methods.include?("#{assoc.to_s.singularize}_ids") && model.send("#{assoc.to_s.singularize}_ids").empty? == false %>
     <li title="<%= assoc.pluralize.capitalize %>" class="ui-state-default ui-corner-all">
       <%= link_to "<span class='ui-icon ui-icon-zoomin' />",
         {:controller => model.class.to_s.downcase.pluralize, :id => model.id, :action => assoc.pluralize }, {:title => "#{assoc.pluralize.capitalize}"} %>
