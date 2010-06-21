@@ -18,7 +18,10 @@
         </ul>
         <hr/>
       <%else%>
-        <%= model.class.to_s.singularize %> does not have any <%= assoc %>  yet.
+				<ul>
+					<li><%= model.class.to_s.singularize %> does not have any <%= assoc %>  yet.</li>
+				</ul>
+				<hr/>
       <% end %>
       </li>
   <% end %>
