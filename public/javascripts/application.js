@@ -52,8 +52,8 @@ $(document).ready(function() {
   $('#myTabs').tabs();
 	
   var accOpts = {
-    event: "click",
-    autoHeight: true,
+    event: "mouseover",
+    autoHeight: false,
     fillSpace: false,
     navigation: true
   }

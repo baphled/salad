@@ -14,18 +14,19 @@
     <link rel="stylesheet" href="/stylesheets/compiled/ie.css" type="text/css" media="screen, projection" />
   <![endif]-->
 
-  <%= javascript_include_tag "jquery" %>
+	<%= javascript_include_tag "jquery" %>
   <%= javascript_include_tag "jquery-ui" %>
-  <%= javascript_include_tag "jquery-icon-animation" %>
-  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery-validate" %>
+  <%= javascript_include_tag "jquery-icon-animation" %>
   <%= javascript_include_tag "inflection" %>
   <%= javascript_include_tag "form" %>
-  <%= yield :js_head %>
-  <%= javascript_include_tag "http://cdn.jquerytools.org/1.2.0/all/jquery.tools.min.js" %>
+  <%= javascript_include_tag "jquery-validate" %>
   <%= javascript_include_tag "jquery.tipsy" %>
+  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
   <%= javascript_include_tag "tooltips.js" %>
+  <%= yield :js_head %>
+
+
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
   <body class="salad">
