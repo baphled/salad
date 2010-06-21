@@ -9,13 +9,14 @@
 $.fn.animateIconPanel = function(options) {
   var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
 
+  
   // Stop the propagation of our event on links
+  // @todo Need to resolve our issue with this removing the accordion functionality.
   $('a').bind('click', function(event) {
     event.stopImmediatePropagation();
   });
-  
+
   $(this).unbind(opts.eventType);
-  
   $(this).bind(opts.eventType, function(event) {
     var $iconsWrapper = $('ul', this),
         $openLink = $iconsWrapper.parent().find('>span'),

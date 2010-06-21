@@ -53,10 +53,10 @@ $(document).ready(function() {
 	
   var accOpts = {
     event: "click",
-    autoHeight: false,
+    autoHeight: true,
     fillSpace: false,
     navigation: true
   }
-  $('.accordion').accordion(accOpts);
+  $('ul.accordion').accordion(accOpts);
   $('span#panel, ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
 });
