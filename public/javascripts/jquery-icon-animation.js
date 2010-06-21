@@ -10,18 +10,18 @@ $.fn.animateIconPanel = function(options) {
   var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
 
   // Stop the propagation of our event on links
-  // @todo Need to resolve our issue with this removing the accordion functionality.
-  // $("a[href!='#']").bind('click', function(event) {
-  //   event.stopPropagation();
-  // });
+   $("span#panel a, ul.icons a").each(function() {
+     $(this).bind('click', function(event) {
+       event.stopPropagation();
+     });
+   });
 
-  // $(this).unbind(opts.eventType);
+  $(this).unbind(opts.eventType);
   $(this).bind(opts.eventType, function(event) {
     var $iconsWrapper = $('ul', this),
         $openLink = $iconsWrapper.parent().find('>span'),
         $panel = $(this);
 
-    console.log($("a[href!='#']"));
     // is list visible
     if ($iconsWrapper.is(':visible') == false) {
       $openLink.fadeOut(opts.speed, function() {
