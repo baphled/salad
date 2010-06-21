@@ -17,8 +17,9 @@ $.fn.scrollingHoverable = function(options) {
         hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
 
     $currentList = $(this).parent();
-    $('ul.items-list li div').removeClass('highlighted');
-    $currentList.addClass('highlighted');
+    
+    $('ul.items-list li').css({opacity: 1}).removeClass('ui-widget-content');
+    $currentList.animate({opacity: 0.7}, 300).addClass('ui-widget-content');
     
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
