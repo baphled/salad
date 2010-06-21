@@ -20,6 +20,7 @@ $(document).ready(function() {
     });
   });
 
+  console.log($("a[href!='#']"));
   // Disable autocomplete for our imput elements
   $('input').attr('autocomplete','off');
   
@@ -34,15 +35,15 @@ $(document).ready(function() {
       errorClass: 'error ui-state-error',
       errorElement: "span",
       highlight: function(element, errorClass, validClass) {
-      $(element).fadeOut(function() {
-        var $parent = $(element).parent();
-        var $validElements = $parent.find('span.valid');
-        $validElements.remove();
+        $(element).fadeOut(function() {
+          var $parent = $(element).parent();
+          var $validElements = $parent.find('span.valid');
+          $validElements.remove();
 
-        $(element).addClass(errorClass).removeClass(validClass);
-        $parent.addClass(errorClass).removeClass(validClass);
-        $(element).show();
-      });
+          $(element).addClass(errorClass).removeClass(validClass);
+          $parent.addClass(errorClass).removeClass(validClass);
+          $(element).show();
+        });
       },
       unhighlight: function(element, errorClass, validClass) {
         var $parent = $(element).parent();
