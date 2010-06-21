@@ -16,6 +16,12 @@ $.fn.scrollingHoverable = function(options) {
         sidebarPostfix = $('div#sidebar > ul').attr('id').split('_'),
         hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
     
+    $lists = $('ul.items-list li');
+    $currentList = $(this).parent();
+    $lists.removeClass('highlighted');
+    $currentList.addClass('highlighted');
+    
+    console.log($lists);
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
       
