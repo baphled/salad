@@ -20,7 +20,6 @@ $(document).ready(function() {
     });
   });
 
-  console.log($("a[href!='#']"));
   // Disable autocomplete for our imput elements
   $('input').attr('autocomplete','off');
   
