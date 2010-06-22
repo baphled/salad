@@ -8,12 +8,12 @@ Feature: We want to us different layout for specific types of actions and areas
     Then the view "<matcher>" have a sidebar
 
   Examples: List of actions that have no sidebars in their layout
-    |model      | action  | matcher     |
-    |projects   | new     | should not  |
-    |features   | new     | should not  |
-    |stories    | new     | should not  |
-    |steps      | new     | should not  |
-    |projects   | index   | should      |
-    |features   | index   | should      |
-    |stories    | index   | should      |
-    |steps      | index   | should      |
+    | model    | action | matcher    |
+    | projects | new    | should not |
+    | features | new    | should not |
+    | stories  | new    | should not |
+    | steps    | new    | should not |
+    | projects |        | should     |
+    | features |        | should     |
+    | stories  |        | should     |
+    | steps    |        | should     |

@@ -19,7 +19,8 @@ Feature: We need to be able to easily navigate the website
     Given I can view the <page> page
     Then the navigation should be displayed
     And the "<menu_item>" will be selected
-  
+    And the navigation should be displayed
+    
   Examples: More advanced pages which need to have navigation highlighting
   | page       | menu_item   |
   | projects   | projects    |
