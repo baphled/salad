@@ -10,7 +10,7 @@ $(document).ready(function() {
       $tagInput = $('input#'+ resourceSingular + '_tag_list'),
       $tagInputWrapper = $('li#'+ resourceSingular + '_tag_list_input'),
       $hoverDialog = $("<div></div>")
-      .addClass('hover ui-widget ui-widget ui-corner-all')
+      .addClass('hover ui-widget ui-widget-content ui-corner-all')
       .insertAfter($tagInput)
       .hide();
 
@@ -44,8 +44,20 @@ $(document).ready(function() {
 		    .addClass('hover_select')
 		    .attr('id','item_' + item['tag']['id'])
 		    .click(function() {
-		      $tagInput.attr('value',$tagInput.attr('value') + $(this).html() + ', ');
-		      $(this).fadeOut();
+		      var content = '';
+		      // Add comma if there is already a tag in the input field
+		      if ($tagInput.attr('value') == '') {
+		        content = ',' + $tagInput.attr('value');
+		      };
+		      content = ($tagInput.attr('value') == '')? $(this).html() : $(this).html() + ', ';
+
+		      $tagInput.attr('value', content);
+		      $(this).fadeOut().remove();
+		      
+		      // if there are no more tags we should hide the dialog panel
+		      if ($hoverDialog.html() == ' ') {
+		        $hoverDialog.fadeOut().remove();
+		      };
           return false;
         })
       ).append(' ').fadeIn();
