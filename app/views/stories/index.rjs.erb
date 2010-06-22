@@ -6,5 +6,5 @@ $('div.list')
                                    :assoc => 'step',
                                    :order =>false})%>");
 $('div#sidebar').html("<%= escape_javascript(render :partial => 'common/sidebar_list_content', :locals => {:models => @stories, :assoc => 'steps'})%>");
-$('ul.items-list li > span').animateIconPanel();
+$('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
 $('a[title]').tipsy({fade: true});
