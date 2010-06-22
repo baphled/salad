@@ -93,7 +93,11 @@ describe Feature do
       it "should have items" do
         @feature.stories.first.examples.first.actions.each do |action|
           action.items.each do |item|
-            @feature.export.should contain "| #{item.title} |"
+            if item.title == '&nbsp;'
+              @feature.export.should contain "| |"
+            else
+              @feature.export.should contain "| #{item.title} |"
+            end
           end
         end
       end
