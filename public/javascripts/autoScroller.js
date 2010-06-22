@@ -10,6 +10,7 @@ $.fn.autoScroller = function(options) {
   var opts = $.extend({}, $.fn.autoScroller.defaults, options);
   var width = $(this).parent().width(),
       $innerUnorderedList = $(this).find('ul'),
+      stop = false,
       previousOffset = null;
 
   $innerUnorderedList.css('max-height', opts.height)
@@ -24,32 +25,34 @@ $.fn.autoScroller = function(options) {
   }
 
   if ($(this).is(':visible')) {
-    var stop = false,
-        previousOffset = null;
-
+    previousOffset = null;
     $innerUnorderedList.scrollTop(0);
+    
     $("#item-list-top").remove();
     $("#item-list-bottom").remove();
-    if (parseInt($('ul.hover li:visible').height()) >= 250) {
-      $('ul.hover li:visible > hr:first').before("<div id=item-list-top />");
-      $('ul.hover li:visible > hr:last').before("<div id=item-list-bottom />");
+    if (parseInt($(this).height()) >= 250) {
+      $(' hr:first', this).before("<div id=item-list-top />");
+      $('hr:last', this).before("<div id=item-list-bottom />");
       $('body').mouseout(function() {stop = true;}).mouseover(function() {stop = false;});
-
-      setInterval(function() {
-
-        if (false == stop) {
-          if ($innerUnorderedList.scrollTop() == previousOffset && null != previousOffset) {
-            $innerUnorderedList.animate({scrollTop: 0}, 'slow');
-            previousOffset = null;
-          } else {
-            $innerUnorderedList.animate({scrollTop: $innerUnorderedList.scrollTop() + 2}, 5);
-          }
-
-          previousOffset = $innerUnorderedList.scrollTop();
+    }
     
+    var scrollerId = setInterval(function() {
+      if (false == stop) {
+        if ($innerUnorderedList.scrollTop() == parseInt($(this).height())) {
+          $innerUnorderedList.animate({scrollTop: 0}, 'slow');
+          previousOffset = null;
+        } else {
+          $innerUnorderedList.animate({scrollTop: $innerUnorderedList.scrollTop() + 1}, 5);
         }
-      }, opts.speed);
-    };
+
+        previousOffset = $innerUnorderedList.scrollTop();
+  
+      }
+    }, opts.speed);
+    
+  } else {
+    clearInterval(scrollerId);
+    console.log('cleared');
   }
 
   // private function for debugging
