@@ -17,7 +17,7 @@ $(document).ready(function () {
       "feature[i_want]": {required: true, minlength: 7}
     }
   });
-  if (window.location.pathname.indexOf('edit')) {
+  if (window.location.pathname.indexOf('edit') != -1) {
     $("#feature_title").rules('remove', 'remote');
   };
 });

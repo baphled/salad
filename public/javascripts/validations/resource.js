@@ -17,4 +17,7 @@ $(document).ready(function () {
       "resource[project]": {required: true, minlength: 3}
     }
   });
+  if (window.location.pathname.indexOf('edit') != -1) {
+    $("#resource_name").rules('remove', 'remote');
+  };
 });
