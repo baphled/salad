@@ -25,13 +25,13 @@
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
   <body class="salad">
-    <noscript><div class='notice'>This site works best with Javascript enabled</div></noscript>
       <div id="container">
         <%= render :partial => 'layouts/header' %>
         <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
         <%= render :partial => 'layouts/content' %>
         <%= render :partial => 'layouts/sidebar' %>
-        <%= render :partial => 'layouts/footer' %>
+				<div id="footer_layout">
       </div>
+      <%= render :partial => 'layouts/footer' %>
   </body>
 </html>
