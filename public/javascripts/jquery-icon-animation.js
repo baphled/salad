@@ -2,6 +2,8 @@
   /**
   * Toggles the panel icons display, using animation to display and hide the panel icons on a double click event
   *
+  * The plugin relies on jQuery UI's layouts but can be easily customised to work with custom stylings
+  *
   * @useage $('span.icons').animateIconPanel()
   *
   * @author Yomi Colledge
@@ -59,17 +61,17 @@ $.fn.animateIconPanel = function(options) {
   **/
   return $(this).each(function() {
     var $iconList = $('ul.icons', this),
-          $innerWrapper = $('<span>')
+          $icon = $('<span>')
             .addClass('ui-icon ui-icon-info')
             .css({'float': 'left', 'padding-right': '0.3em'}),
           $innerContent = $('<strong>').append(opts.eventText),
           $content = $('<span>').append(' to view panel'),
           $textWrapper = $('<span>')
-            .append($innerWrapper)
+            .append($icon)
             .append($innerContent)
             .append($content)
             .addClass(opts.panelTextClass)
-            .css({'display': 'block', 'float': 'right', cursor: 'pointer'});
+            .css({'display': 'block', 'float': 'right', 'cursor': 'pointer', 'padding': '4px'});
 
     $iconList.hide().parent().removeClass(opts.panelClass);
     $iconList.before($textWrapper);
