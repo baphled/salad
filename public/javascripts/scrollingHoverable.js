@@ -37,9 +37,9 @@ $.fn.scrollingHoverable = function(options) {
     // Need to refactor to make more universal
     if (!$(hoverItem).is(':visible')) {
       $('ul.items-list li')
+        .removeClass('ui-widget-content')
         .find('div.list_item')
-        .css({opacity: 1})
-        .removeClass('ui-widget-content');
+        .css({opacity: 1});
       $(this).parent()
         .addClass('ui-widget-content')
         .find('div.list_item')
