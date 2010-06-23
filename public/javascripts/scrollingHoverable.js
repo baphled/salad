@@ -29,7 +29,7 @@ $.fn.scrollingHoverable = function(options) {
         $sidebarList.removeClass('fixed');
       }
     }
-    $currentList = $(this).parent();
+    // var $currentList = $(this).parent();
     $sidebarList.addClass('ui-widget ui-widget-content ui-corner-all');
     
     setHoverPosition();
@@ -40,7 +40,7 @@ $.fn.scrollingHoverable = function(options) {
         .find('div.list_item')
         .css({opacity: 1})
         .removeClass('ui-widget-content');
-      $currentList
+      $(this).parent()
         .addClass('ui-widget-content')
         .find('div.list_item')
         .animate({opacity: 0.4}, 300);
