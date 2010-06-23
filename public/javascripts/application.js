@@ -5,6 +5,20 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
+  /**
+  * Plugin variable
+  **/
+  var accOpts = {
+        event: "click",
+        autoHeight: false,
+        fillSpace: false,
+        navigation: true
+      },
+      animateIconOpts = {
+        eventType: 'click',
+        eventText: 'Click'
+      };
+  
   //hover states on the static widgets
   $('ul.icons li, button').live('mouseover mouseout', function(event) {
     if (event.type == 'mouseover') {
@@ -49,14 +63,8 @@ $(document).ready(function() {
     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
   });
   
+  // Plugin intialisation
   $('#myTabs').tabs();
-	
-  var accOpts = {
-    event: "click",
-    autoHeight: false,
-    fillSpace: false,
-    navigation: true
-  }
   $('ul.accordion').accordion(accOpts);
-  $('span#panel, ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
+  $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
 });
