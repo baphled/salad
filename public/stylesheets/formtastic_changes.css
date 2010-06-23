@@ -16,5 +16,6 @@ form.formtastic fieldset ol li label {
 }
 
 form.formtastic fieldset ol li.string input, form.formtastic fieldset ol li.text textarea {
-  width: 45%
+  width: 45%;
+  background-color: #fff;
 }
