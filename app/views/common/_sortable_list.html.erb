@@ -19,12 +19,12 @@
             <% models.each_with_index do |model,index| %>
               <% content_tag_for(:li, model) do %>
                 <%= render :partial => "/common/icons", :locals => {:model => model, :assoc => assoc } %>
+                <%if order == true %>
+                <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
+                  <%= index+1 %>
+                </span>
+                <% end %>
                 <% content_tag_for(:div, model, :class=> "list_item item_" + index.to_s ) do %>
-                  <%if order == true %>
-                  <span id="order_btn_<%=(index+1).to_s %>" class="handler ui-widget ui-widget-content ui-corner-all" style="display:none;">
-                    <%= index+1 %>
-                  </span>
-                  <% end %>
                   <% if 'step' == model.class.to_s.downcase %>
                         <%=h model.send(method,method_arg[index -1])%>
                   <% else %>
