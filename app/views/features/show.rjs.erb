@@ -1,5 +1,2 @@
 $('div.list').replaceWith("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @feature_stories, :item_name => 'story', :assoc => 'step', :order =>true})%>");
 $('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @feature_stories, :assoc => 'steps'})%>");
-
-$('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-$('a[title]').tipsy({fade: true});

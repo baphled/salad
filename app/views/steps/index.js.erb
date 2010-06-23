@@ -5,6 +5,3 @@ $('.list_content').html("<%= escape_javascript(render :partial => '/common/sorta
   :method_arg => @steps,
   :assoc => nil,
   :order => false})%>");
-
-$('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-$('a[title]').tipsy({fade: true});

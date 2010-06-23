@@ -1,3 +1,1 @@
 $('#list').html("<%= escape_javascript(render :partial => '/common/sortable_list', :locals => {:models => @projects, :item_name => 'project', :assoc => 'feature', :order =>false})%>");
-$('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-$('a[title]').tipsy({fade: true});
