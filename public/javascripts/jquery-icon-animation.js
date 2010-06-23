@@ -48,7 +48,7 @@ $.fn.animateIconPanel = function(options) {
             .append($innerContent)
             .append($content)
             .addClass(opts.panelTextClass)
-            .css({'display': 'block', 'float': 'right'});
+            .css({'display': 'block', 'float': 'right', cursor: 'pointer'});
 
     $iconList.hide().parent().removeClass(opts.panelClass);
     $iconList.before($textWrapper);
