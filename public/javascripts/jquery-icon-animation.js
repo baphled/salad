@@ -9,40 +9,61 @@
 $.fn.animateIconPanel = function(options) {
   var opts = $.extend({}, $.fn.animateIconPanel.defaults, options);
 
-  // Stop the propagation of our event on links
+  /**
+  * Stop the propagation of our event on links
+  *
+  * @todo Make this more universal
+  **/
+  
    $("span#panel a, ul.icons a").each(function() {
-     $(this).bind('click', function(event) {
+     $(this).bind(opts.eventType, function(event) {
        event.stopPropagation();
      });
    });
 
   $(this).unbind(opts.eventType);
-  $(this).bind(opts.eventType, function(event) {
+  
+  /**
+  * Bind our icon panel animation and stylings
+  **/
+  $(this).live(opts.eventType, function(event) {
     var $iconsWrapper = $('ul', this),
         $openLink = $iconsWrapper.parent().find('>span'),
         $panel = $(this);
 
-    // is list visible
     if ($iconsWrapper.is(':visible') == false) {
       $openLink.fadeOut(opts.speed, function() {
         $panel.addClass(opts.panelClass);
-        $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: opts.mouseoverBgColour}, 'slow');
+        $iconsWrapper.animate(panelAnimation(opts.mouseoverBgColour), opts.speed);
       });
     } else {
-      $iconsWrapper.animate({opacity: 'toggle', height: 'toggle', width: 'toggle', background: opts.mouseoutBgColour}, 'slow', function() {
-      $panel.removeClass(opts.panelClass);
+      $iconsWrapper.animate(panelAnimation(opts.mouseoutBgColour), opts.speed, function() {
+        $panel.removeClass(opts.panelClass);
         $openLink.fadeIn();
       });
     }
+    return false;
   });
 
+  /**
+  * Returns the stylings for our panel animation
+  **/
+  function panelAnimation(colour) {
+    return {opacity: 'toggle', height: 'toggle', width: 'toggle', background: colour}
+  }
+  
+  /**
+  * Dynamically generate our icon panels
+  *
+  * @todo Allow for the the icon panels stylings are customisable
+  **/
   return $(this).each(function() {
     var $iconList = $('ul.icons', this),
           $innerWrapper = $('<span>')
             .addClass('ui-icon ui-icon-info')
             .css({'float': 'left', 'padding-right': '0.3em'}),
           $innerContent = $('<strong>').append(opts.eventText),
-          $content = $('<span> to view panel</span>'),
+          $content = $('<span>').append(' to view panel'),
           $textWrapper = $('<span>')
             .append($innerWrapper)
             .append($innerContent)
@@ -52,6 +73,7 @@ $.fn.animateIconPanel = function(options) {
 
     $iconList.hide().parent().removeClass(opts.panelClass);
     $iconList.before($textWrapper);
+
   });
 
   // private function for debugging
