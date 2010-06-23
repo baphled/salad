@@ -20,7 +20,7 @@ $(document).ready(function() {
       };
   
   //hover states on the static widgets
-  $('ul.icons li, button').live('mouseover mouseout', function(event) {
+  $('ul.icons li, button, span.handler').live('mouseover mouseout', function(event) {
     (event.type == 'mouseover')? $(this).addClass('ui-state-hover') : $(this).removeClass('ui-state-hover');
   });
   /**
