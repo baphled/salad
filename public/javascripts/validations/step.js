@@ -17,4 +17,7 @@ $(document).ready(function () {
       }
     }
   });
+  if (window.location.pathname.indexOf('edit')) {
+    $("#step_title").rules('remove', 'remote');
+  };
 });

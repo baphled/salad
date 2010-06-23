@@ -29,4 +29,7 @@ $(document).ready(function () {
       }
     }
   });
+  if (window.location.pathname.indexOf('edit')) {
+    $("#project_title").rules('remove', 'remote');
+  };
 });

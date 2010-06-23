@@ -14,4 +14,7 @@ $(document).ready(function () {
       }
     }
   });
+  if (window.location.pathname.indexOf('edit')) {
+    $("#story_scenario").rules('remove', 'remote');
+  };
 });
