@@ -21,13 +21,7 @@ $(document).ready(function() {
   
   //hover states on the static widgets
   $('ul.icons li, button').live('mouseover mouseout', function(event) {
-    if (event.type == 'mouseover') {
-      $(this).addClass('ui-state-hover');
-      // do something on mouseover
-    } else {
-      // do something on mouseout
-      $(this).removeClass('ui-state-hover');
-    }
+    (event.type == 'mouseover')? $(this).addClass('ui-state-hover') : $(this).removeClass('ui-state-hover');
   });
   /**
    * We don't want our checkboxes viewable initially
