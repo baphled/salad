@@ -16,6 +16,9 @@ $.fn.scrollingHoverable = function(options) {
         sidebarPostfix = $('div#sidebar > ul').attr('id').split('_'),
         hoverItem = 'li#' + $(this).attr('id') + '_' + sidebarPostfix[1];
 
+    /**
+    * Determines whether we need to set the fixed class or not
+    **/
     var setHoverPosition = function() {
       var y = $(window).scrollTop();
       
@@ -29,12 +32,18 @@ $.fn.scrollingHoverable = function(options) {
     $currentList = $(this).parent();
     $sidebarList.addClass('ui-widget ui-widget-content ui-corner-all');
     
-    
     setHoverPosition();
     
+    // Need to refactor to make more universal
     if (!$(hoverItem).is(':visible')) {
-      $('ul.items-list li').css({opacity: 1}).removeClass('ui-widget-content');
-      $currentList.animate({opacity: 0.7}, 300).addClass('ui-widget-content');
+      $('ul.items-list li')
+        .find('div.list_item')
+        .css({opacity: 1})
+        .removeClass('ui-widget-content');
+      $currentList
+        .addClass('ui-widget-content')
+        .find('div.list_item')
+        .animate({opacity: 0.4}, 300);
       $('div#sidebar').find('li.side_hover').hide();
       $sidebarList.find(hoverItem).toggle();
       $(hoverItem).autoScroller({speed: 200, height: opts.height, stopOnHover: opts.stopOnHover});
