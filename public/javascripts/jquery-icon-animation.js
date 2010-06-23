@@ -61,17 +61,19 @@ $.fn.animateIconPanel = function(options) {
   **/
   return $(this).each(function() {
     var $iconList = $('ul.icons', this),
-          $icon = $('<span>')
-            .addClass('ui-icon ui-icon-info')
-            .css({'float': 'left', 'padding-right': '0.3em'}),
+          $icon = $('<span>'),
           $innerContent = $('<strong>').append(opts.eventText),
           $content = $('<span>').append(' to view panel'),
-          $textWrapper = $('<span>')
-            .append($icon)
-            .append($innerContent)
-            .append($content)
-            .addClass(opts.panelTextClass)
-            .css({'display': 'block', 'float': 'right', 'cursor': 'pointer', 'padding': '4px'});
+          $textWrapper = $('<span>');
+
+    $icon
+      .addClass('ui-icon ui-icon-info')
+      .css({'float': 'left', 'padding-right': '0.3em'});
+    $textWrapper.append($icon)
+      .append($innerContent)
+      .append($content)
+      .addClass(opts.panelTextClass)
+      .css({'display': 'block', 'float': 'right', 'cursor': 'pointer', 'padding': '4px'});
 
     $iconList.hide().parent().removeClass(opts.panelClass);
     $iconList.before($textWrapper);
