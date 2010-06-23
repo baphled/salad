@@ -50,7 +50,7 @@
 
 @import blueprint/modules/form.sass
 @import blueprint/modules/grid.sass
-
+@import compass/layout.sass
 +blueprint-grid
 
 //Recommended Blueprint configuration with scoping and semantic layout:
@@ -61,6 +61,7 @@
 html, body
   height: 100%
 body.salad
+  +sticky-footer(172px, "#container", "#footer_layout", "#footer")
   +blueprint-interaction
   +blueprint-utilities
   +blueprint-debug
@@ -86,15 +87,15 @@ body.salad
       :font-size 32px
     #slogan, #logo
       :padding-left 30px
-  #header, #footer
+  #header
     :height 132px
     :color #c1c4b5
     :background #89a407
     +column(!blueprint_grid_columns, true)
   #footer
+    :background #89a407
+    :color #c1c4b5
     :text-align center
-    :height 32px
-    +column(!blueprint_grid_columns, true)
   #container
     +container
     :height auto
