@@ -20,9 +20,13 @@ $.fn.scrollingHoverable = function(options) {
     * Determines whether we need to set the fixed class or not
     **/
     var setHoverPosition = function() {
-      var y = $(window).scrollTop();
+      var y = $(window).scrollTop(),
+          cloudOffset = ($('div#sidebar >div').offset() == null)? 0 : $('div#sidebar >div').offset().top;
       
-      if (y >= $('div#sidebar').offset().top) {
+      offset = $('div#sidebar').offset().top + cloudOffset;
+      
+
+      if (y >=  offset) {
         $sidebarList.css('width', $('.hover').width())
                     .addClass('fixed');
       } else {
