@@ -1,3 +1,7 @@
+var $content = $('div#container').find('div#content-wide');
+$content.attr('id', 'content');
+$("<div id='sidebar'></div>").insertAfter($content);
+
 var form = $('#wrapper >fieldset').clone();
 
 var projectInfo = $("<div></div>").attr('id','info');

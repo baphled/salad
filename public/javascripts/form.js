@@ -2,7 +2,12 @@ $(document).ready(function() {
 
   $('form').submit(function() {
     var postData = $(this).serialize();
-    $.post($(this).attr('action'), postData, null, "script");
+    $.post($(this).attr('action'), postData, function(data) {
+      // here is where we make our necessary form response for all our AJAX based responses
+      
+      $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
+      $('a[title]').tipsy({fade: true});
+    }, "script");
     return false;
   });
 

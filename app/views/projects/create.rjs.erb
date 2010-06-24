@@ -1,3 +1,8 @@
+var $content = $('div#container').find('div#content-wide');
+$content.attr('id', 'content');
+$("<div id='sidebar'></div>").insertAfter($content);
+$('div#sidebar').html("<%= escape_javascript(render :partial => 'common/sidebar_list_content', :locals => {:models => @project_features, :assoc => 'stories'})%>");
+
 var form = $('#wrapper >fieldset').clone();
 
 var projectInfo = $("<div></div>").attr('id','info');
