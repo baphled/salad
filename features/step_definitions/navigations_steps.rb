@@ -2,6 +2,10 @@ Given /^I can view the (.*) page$/ do |controller|
   visit "/#{controller}"
 end
 
+Given /^I have the first "([^\"]*)"$/ do |model|
+  @model = model.capitalize.constantize.first
+end
+
 #@TODO refactor so it more flexible
 When /^I click (.*) (.*)$/ do |action,controller|
   visit "/#{controller}/#{action}"
@@ -13,6 +17,10 @@ end
 
 When /^we click import "([^\"]*)"$/ do |feature_title|
   click_button "Import #{feature_title}"
+end
+
+When /^I view the "([^\"]*)" path$/ do |path|
+  visit path_to(path)
 end
 
 Then /^the navigation should be displayed$/ do

@@ -13,7 +13,16 @@ Feature: We want to us different layout for specific types of actions and areas
     | features | new    | should not |
     | stories  | new    | should not |
     | steps    | new    | should not |
+    | steps    | new    | should not |
     | projects |        | should     |
     | features |        | should     |
     | stories  |        | should     |
     | steps    |        | should     |
+
+  Scenario Outline: Viewing specific actions should render specific layouts
+    When I view the "<page name>" path
+    Then the view "<matcher>" have a sidebar
+    
+  Examples: List of models to view and their associated actions
+    | page name      | matcher    |
+    | export feature | should not |
