@@ -23,6 +23,7 @@ $(document).ready(function() {
   $('ul.icons li, button, span.handler').live('mouseover mouseout', function(event) {
     (event.type == 'mouseover')? $(this).addClass('ui-state-hover') : $(this).removeClass('ui-state-hover');
   });
+  
   /**
    * We don't want our checkboxes viewable initially
    */

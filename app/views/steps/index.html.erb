@@ -1,5 +1,6 @@
 
 <h3>Steps</h3>
+<%= render 'step_search' %>
 <%= render :partial => 'common/cloud_tag', :locals => {:tags => @tags}%>
 
 <%= render :partial => '/common/sortable_list',
@@ -9,7 +10,3 @@
   :method_arg => @steps,
   :assoc => nil,
   :order => false}%>
-
-<% content_for :side_bar do %>
-	<%= render 'step_search' %>
-<% end %>
