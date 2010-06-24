@@ -26,3 +26,4 @@ Feature: We want to us different layout for specific types of actions and areas
   Examples: List of models to view and their associated actions
     | page name      | matcher    |
     | export feature | should not |
+    | import project | should not |
