@@ -9,10 +9,3 @@ Feature: We need to be able to carry out searches on various parts of the applic
     And we click search
     Then we should have a list of results
     And all results should contain 'Given'
-
-  Scenario: We should be able to use the search functionality to add a step to a story
-    Given I can view the stories page
-    When I edit the first story
-    And I search for steps contain 'Given'
-    And we click search
-    Then the resulting step should be added to the story
