@@ -50,9 +50,6 @@ $.fn.autoScroller = function(options) {
       }
     }, opts.speed);
     
-  } else {
-    clearInterval(scrollerId);
-    console.log('cleared');
   }
 
   // private function for debugging
