@@ -47,10 +47,10 @@ $(document).ready(function() {
 		    .click(function() {
 		      var content = '';
 		      // Add comma if there is already a tag in the input field
-		      if ($tagInput.attr('value') == '') {
-		        content = ',' + $tagInput.attr('value');
+		      if ($tagInput.attr('value') != '') {
+		        content = $tagInput.attr('value') + ', ';
 		      };
-		      content = ($tagInput.attr('value') == '')? $(this).html() : $(this).html() + ', ';
+		      content += ($tagInput.attr('value') == '')? $(this).html() : $(this).html();
 
 		      $tagInput.attr('value', content);
 		      $(this).fadeOut().remove();
