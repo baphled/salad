@@ -1,13 +1,29 @@
 $(document).ready(function() {
 
-  $('form').submit(function() {
+  $('form').live('submit', function() {
     var postData = $(this).serialize();
+    var $form = $(this).clone();
+    
+    // Convert our content-wide id to content, to allow us to render the side bar
+    var $content = $('div#container').find('div#content-wide');
+    $content.attr('id', 'content');
+    $("<div id='sidebar'></div>").insertAfter($content);
+  
+    // Setup of info container used to render our items information
+    var projectInfo = $("<div></div>").attr('id','info');
+    $('#wrapper').html($(projectInfo));
+    
     $.post($(this).attr('action'), postData, function(data) {
       // here is where we make our necessary form response for all our AJAX based responses
+      $('#wrapper').append($form.hide());
+      $('<a class="display_form" href="javascript://">view form</a>').insertBefore('#wrapper form')
+        .addClass('ui-widget ui-widget-content ui-corner-all');
       
+      // setup our generic list events
       $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
       $('a[title]').tipsy({fade: true});
     }, "script");
+    
     return false;
   });
 

@@ -9,7 +9,7 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 
 --------------------------------------------------------------------------------------------------*/
 form.formtastic fieldset ol li label {
-  width: 10%;
+  width: -moz-available;
   display: block;
   float: left;
   padding-top: 0.2em;
