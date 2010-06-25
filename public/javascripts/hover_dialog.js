@@ -27,10 +27,6 @@ $(document).ready(function() {
     	}
     });
   });
-
-  $tagInputWrapper.focusout(function() {
-    $('.hover').fadeOut();
-  });
   
   var $enableHoverLink = function(index, item) {
 	  var tags = $tagInput.val().split(', '),
@@ -54,9 +50,9 @@ $(document).ready(function() {
 		      $(this).fadeOut().remove();
 		      
 		      // if there are no more tags we should hide the dialog panel
-		      if ($hoverDialog.html() == ' ') {
+		      if ($hoverDialog.html() == '  ') {
 		        $hoverDialog.fadeOut().remove();
-		      };
+		      }
           return false;
         })
       ).append(' ').fadeIn();
