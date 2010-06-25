@@ -13,12 +13,4 @@ $('#wrapper > fieldset')
 
 $('#wrapper form').hide();
 
-var flashDiv = $("<div></div>")
-  .addClass("flash");
-
-var flashNoticeDiv = $("<div></div>")
-                        .addClass("notice")
-                        .html('<%=escape_javascript(flash.delete(:notice)) %>');
-
-var flashMsg = flashDiv.html($(flashNoticeDiv));
-$('#content').before($(flashMsg));
+$('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
