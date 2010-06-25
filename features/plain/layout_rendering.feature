@@ -24,6 +24,9 @@ Feature: We want to us different layout for specific types of actions and areas
     Then the view "<matcher>" have a sidebar
     
   Examples: List of models to view and their associated actions
-    | page name      | matcher    |
-    | export feature | should not |
-    | import project | should not |
+    | page name       | matcher    |
+    | export feature  | should not |
+    | import project  | should not |
+    | feature changes | should not |
+    | feature merge   | should not |
+    | system merge    | should not |
