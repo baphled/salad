@@ -14,6 +14,8 @@ module NavigationHelpers
       '/features/1/export'
     when /import project/
       '/projects/1/import'
+    when /feature changes/
+      '/features/1/changes'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
