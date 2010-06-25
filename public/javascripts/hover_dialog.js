@@ -13,7 +13,7 @@ $(document).ready(function() {
       .insertAfter($tagInput)
       .hide();
 
-  $tagInput.focus(function() {
+  $tagInput.keyup(function() {
     $url = '/' + resourcePlural + "/tags.json";
     $.ajax({
       url: $url,
@@ -50,8 +50,9 @@ $(document).ready(function() {
 		      $(this).fadeOut().remove();
 		      
 		      // if there are no more tags we should hide the dialog panel
-		      if ($hoverDialog.html() == '  ') {
-		        $hoverDialog.fadeOut().remove();
+		      // @todo cleanup as this could be done cleaner
+		      if ($hoverDialog.html() == ('  ' || ' ') ) {
+		        $hoverDialog.fadeOut();
 		      }
           return false;
         })
