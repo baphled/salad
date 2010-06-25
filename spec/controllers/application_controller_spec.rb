@@ -41,13 +41,34 @@ describe ApplicationController do
   end
   
   context "Features" do
-    describe "GET, export" do
-      controller_name :features
+    controller_name :features
     
+    describe "GET, export" do
       it "should render the no sidebar layout" do
         get :export, {:id => 1}
         response.should use_layout("no_sidebar")
       end
+    end
+    
+    describe "GET, changes" do
+      it "should render the no sidebar layout" do
+        get :changes, {:id => 1}
+        response.should use_layout("no_sidebar")
+      end      
+    end
+
+    describe "GET, merge" do
+      it "should render the no sidebar layout" do
+        get :merge, {:id => 1}
+        response.should use_layout("no_sidebar")
+      end      
+    end
+    
+    describe "GET, system_merge" do
+      it "should render the no sidebar layout" do
+        get :system_merge, {:id => 1}
+        response.should use_layout("no_sidebar")
+      end      
     end
   end
 end
