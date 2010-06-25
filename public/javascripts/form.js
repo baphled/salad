@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('form').submit(function() {
+  $('form').live('submit', function() {
     var postData = $(this).serialize();
     var $form = $(this).clone();
     
@@ -9,6 +9,7 @@ $(document).ready(function() {
     $content.attr('id', 'content');
     $("<div id='sidebar'></div>").insertAfter($content);
   
+    // Setup of info container used to render our items information
     var projectInfo = $("<div></div>").attr('id','info');
     $('#wrapper').html($(projectInfo));
     
@@ -22,6 +23,7 @@ $(document).ready(function() {
       $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
       $('a[title]').tipsy({fade: true});
     }, "script");
+    
     return false;
   });
 
