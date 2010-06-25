@@ -36,8 +36,9 @@ $(document).ready(function() {
   });
   
   var $enableHoverLink = function(index, item) {
-	  var tags = $tagInput.val().split(',');
+	  var tags = $tagInput.val().split(', ');
 	  var result = $.inArray(item['tag']['name'], tags);
+
 	  if (result == -1) {
 		  $hoverDialog.append($('<a href="javascript:///>"')
 		    .append(item['tag']['name'])
