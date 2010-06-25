@@ -25,11 +25,6 @@ $(document).ready(function() {
   });
   
   /**
-   * We don't want our checkboxes viewable initially
-   */
-  $('.views').hide();
-
-  /**
    * Handling the viewing and hiding of our item checkboxes
    */
   $("a.display_info").live("click", function(event) {

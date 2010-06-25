@@ -2,21 +2,20 @@
 $(document).ready(function() {
   
   // Create acessors for our hover dialog
-  var $formAction = $('form').attr('action'),
-      formIdArray = $('form').attr('id').split('_');
+  var formIdArray = $('form').attr('id').split('_');
       resourceSingular = formIdArray[1],
       resourcePlural = resourceSingular.pluralize(),
       $tagInput = $('input#'+ resourceSingular + '_tag_list'),
       $tagInputWrapper = $('li#'+ resourceSingular + '_tag_list_input'),
       $hoverDialog = $("<div></div>")
-      .addClass('hover ui-widget ui-widget-content ui-corner-all')
-      .insertAfter($tagInput)
-      .hide();
+        .addClass('hover ui-widget ui-widget-content ui-corner-all')
+        .insertAfter($tagInput)
+        .hide();
 
   $tagInput.keyup(function() {
-    $url = '/' + resourcePlural + "/tags.json";
+    var url = '/' + resourcePlural + "/tags.json";
     $.ajax({
-      url: $url,
+      url: url,
       data: $tagInput.serialize(),
       dataType: 'json',
       type: 'GET',
@@ -51,7 +50,7 @@ $(document).ready(function() {
 		      
 		      // if there are no more tags we should hide the dialog panel
 		      // @todo cleanup as this could be done cleaner
-		      if ($hoverDialog.html() == ('  ' || ' ') ) {
+		      if ($hoverDialog.html().trim() == '') {
 		        $hoverDialog.fadeOut();
 		      }
           return false;
