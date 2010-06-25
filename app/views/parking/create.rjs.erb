@@ -1,16 +1,3 @@
-var $content = $('div#container').find('div#content-wide');
-$content.attr('id', 'content');
-$("<div id='sidebar'></div>").insertAfter($content);
-
-var form = $('#wrapper >fieldset').clone();
-
 $('#wrapper').append('<%=escape_javascript(link_to 'New Resource information', new_parking_path) %>');
-$('#wrapper').append($(form));
-
-$('#wrapper > fieldset')
-  .prepend('<a class="display_form" href="javascript://">view form</a>')
-  .addClass('ui-widget ui-widget-content ui-corner-all');
-
-$('#wrapper form').hide();
 
 $('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});

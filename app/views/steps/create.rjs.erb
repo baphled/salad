@@ -1,21 +1,4 @@
-var $content = $('div#container').find('div#content-wide');
-$content.attr('id', 'content');
-$("<div id='sidebar'></div>").insertAfter($content);
-
-var form = $('#wrapper >fieldset').clone();
-
-var projectInfo = $("<div></div>").attr('id','info');
-$('#wrapper').html($(projectInfo));
-
 $('#info').html("<%= escape_javascript(render :partial => '/common/model_information', :locals => {:model => @step})%>");
 $('#info').append("<%= escape_javascript(render :partial => '/common/model_summary', :locals => {:model => @step})%>");
-
-$('#wrapper').append($(form));
-
-$('#wrapper > fieldset')
-.prepend('<a class="display_form" href="javascript://">view form</a>')
-.addClass('ui-widget ui-widget-content ui-corner-all');
-
-$('#wrapper form').hide();
 
 $('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});

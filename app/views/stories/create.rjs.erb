@@ -1,16 +1,5 @@
-var $content = $('div#container').find('div#content-wide');
-$content.attr('id', 'content');
-$("<div id='sidebar'></div>").insertAfter($content);
-
-var form = $('#wrapper >fieldset').clone();
-
-var projectInfo = $("<div></div>").attr('id','info');
-$('#wrapper').html($(projectInfo));
-
 $('#info').html("<%= escape_javascript(render :partial => '/common/model_information', :locals => {:model => @story})%>");
 $('#info').append("<%= escape_javascript(render :partial => '/common/model_summary', :locals => {:model => @story, :assoc => :steps})%>");
-
-var listContent = $("<span></span>").addClass('list_content');
 
 $('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable_list',
     :locals => {:models => @story_steps,
@@ -20,12 +9,5 @@ $('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable
     :assoc => nil,
     :order =>true})%>");
 
-$('#wrapper').append($(form));
-
-$('#wrapper > fieldset')
-.prepend('<a class="display_form" href="javascript://">view form</a>')
-.addClass('ui-widget ui-widget-content ui-corner-all');
-
-$('#wrapper form').hide();
 
 $('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
