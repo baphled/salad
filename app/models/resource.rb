@@ -25,7 +25,7 @@ class Resource < ActiveRecord::Base
     begin
       Lighthouse.account = self.name
       Lighthouse::Project.find :all
-    rescue ActiveResource::UnauthorizedAccess
+    rescue
       errors.add(:name, "must be a valid LightHouse project name")
     end
   end
