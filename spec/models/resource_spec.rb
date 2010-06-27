@@ -29,6 +29,18 @@ describe Resource do
       @resource.errors[:project].should contain "can't be blank"
     end
 
+    it "should have name of more than 3 characters" do
+      @resource.name = 'b'
+      @resource.save
+      @resource.errors[:project].should contain "Please enter at least 3 characters."
+    end
+
+    it "should have project of more than 3 characters" do
+      @resource.project = 'b'
+      @resource.save
+      @resource.errors[:project].should contain "Please enter at least 3 characters."
+    end
+
     it "should have a valid project name" do
       @resource = Resource.new(:name => 'foo', :project => 23)
       @resource.save
