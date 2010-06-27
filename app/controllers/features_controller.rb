@@ -31,11 +31,11 @@ class FeaturesController < ApplicationController
         flash[:notice] = "Feature: #{@feature.title}, was created"
         find_features_stories
         if "Submit" == params[:commit]
-          format.html { redirect_to @feature }
-          format.js { render "create.rjs" }
-        else
           format.html { redirect_to :back }
           format.js { render "index.rjs" }
+        else
+          format.html { redirect_to @feature }
+          format.js { render "create.rjs" }
         end
       else
         format.js { render :action => "edit" }

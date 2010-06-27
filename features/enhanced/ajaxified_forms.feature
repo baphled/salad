@@ -33,7 +33,7 @@ Feature: All our forms need to be passed to the server via AJAX
       Then submit the form
       And there should be an AJAX request
       And the form should be hidden
-      And a flash message "Feature: Logging in via ajax, was created" should be dynamically displayed
+      And a flash message "was created" should be dynamically displayed
 
     Scenario: We should be able to submit an editted feature form via AJAX
       Given I can view the features page
