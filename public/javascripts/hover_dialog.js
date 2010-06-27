@@ -12,7 +12,7 @@ $(document).ready(function() {
         .insertAfter($tagInput)
         .hide();
 
-  $tagInput.keyup(function() {
+  $tagInput.focus(function() {
     var url = '/' + resourcePlural + "/tags.json";
     $.ajax({
       url: url,
