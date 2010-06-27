@@ -29,7 +29,7 @@ Feature: Client side validations for our parking form
       And I fill in "resource_project" with ""
       Then submit the form
       And a JS based error message should be displayed
-      And the client side error message should be "Please enter a value greater than or equal to 3."
+      And the client side error message should be "Please enter at least 3 characters."
 
     Scenario: The parking resource project must be at least 3 characters
       Given I can view the parking page
@@ -38,4 +38,4 @@ Feature: Client side validations for our parking form
       And I fill in "resource_project" with "ba"
       Then submit the form
       And a JS based error message should be displayed
-      And the client side error message should be "Please enter a value greater than or equal to 3."
+      And the client side error message should be "Please enter at least 3 characters."
