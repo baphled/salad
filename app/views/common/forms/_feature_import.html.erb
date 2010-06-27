@@ -1,6 +1,7 @@
 <h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></h3>
 <%- form_for file[:feature], :id => "new_feature",:class => "new_feature hidden", :method => :post do |f|%>
   <fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+  <%= hidden_field_tag :commit, 'Import' %>
     <%= f.hidden_field :title %>
     <%= f.hidden_field :in_order %>
     <%= f.hidden_field :as_a %>

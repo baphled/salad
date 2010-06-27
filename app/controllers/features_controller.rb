@@ -30,7 +30,7 @@ class FeaturesController < ApplicationController
       if @feature.save
         flash[:notice] = "Feature: #{@feature.title}, was created"
         find_features_stories
-        if "Submit" == params[:commit]
+        if "Import" == params[:commit]
           format.html { redirect_to :back }
           format.js { render "index.rjs" }
         else
