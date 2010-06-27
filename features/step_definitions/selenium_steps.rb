@@ -25,7 +25,7 @@ When /^the (.*) page is loaded$/ do |model|
 end
 
 When /^I press order$/ do
-  selenium.click "order_icon"
+  selenium.click "css=button.order_icon"
 end
 
 When /^I hover over the "([^\"]*)" link$/ do |link|
