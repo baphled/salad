@@ -36,6 +36,39 @@ describe FeaturesController do
         @feature.save.should_not eql true
       end
       
+      context "saving an imported feature" do
+        before(:each) do
+          request.env["HTTP_REFERER"] = import_project_path mock_model(Project,:id=>1,:null_object=>true)
+          @feature.stub!(:save).and_return true
+          post :create, {:commit => 'Import'}
+        end
+        
+        it "redirects to the import page" do
+          response.should redirect_to import_project_path(Project.first)
+        end
+        
+        context "importing over XHR" do
+          before(:each) do
+            request.env["HTTP_REFERER"] = import_project_path mock_model(Project,:id=>1,:null_object=>true)
+            @feature.stub!(:save).and_return true
+            xhr :post, :create, {:commit => 'Import'}
+          end
+          
+          context "more features to import" do
+            it "displays the import list"
+            it "does not display the imported feature"
+          end
+          
+          context "no more features to import" do
+            it "displays a notice stating that there are no more features to import"
+            it "displays the projects information"
+          end
+          
+          it "redirects not to the import page" do
+            response.should_not redirect_to import_project_path(Project.first)          
+          end          
+        end
+      end
     end
   end
   
