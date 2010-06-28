@@ -6,6 +6,10 @@
 $.fn.renderFlashMessage = function(options) {
   var opts = $.extend({}, $.fn.renderFlashMessage.defaults, options);
 
+  $('div.flash').each(function() {
+    $(this).remove();
+  });
+  
   return this.each(function() {
     var $this = $(this),
         $flashDiv = $("<div>").addClass("flash"),
