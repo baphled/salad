@@ -1,5 +1,7 @@
 class ParkingController < ApplicationController
   
+  navigation :parking
+  
   def index
     @tickets = LightHouse.all
     @resources = Resource.all
