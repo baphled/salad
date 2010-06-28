@@ -10,9 +10,16 @@ describe "/projects/import.html.erb" do
     
     assigns[:feature] = mock_model(Feature).as_null_object
     assigns[:imported] = @project.import_features
+    assigns[:project] = @project
   end
   
+  it "stores the current projects id for later use" do
+    render
+    response.should have_selector :input, attribute = {:type => "hidden", :id => 'current_project_id'}
+  end
+
   describe "viewing the import form" do
+    
     context "invalid feature" do
 
       context "disabling submit if" do

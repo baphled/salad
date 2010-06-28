@@ -1,6 +1,6 @@
 <% if Feature.find_by_title(file[:feature].title).nil? %>
 <div id="<%=h file[:file].gsub(/\./,"_")%>-<%= index+1%>">
-	<%= render :partial => '/common/forms/feature_import', :locals => {:file => file, :feature => @feature}%>
+	<%= render :partial => '/common/forms/feature_import', :locals => {:file => file, :feature => @feature, :current_project => @project}%>
 	<p>
 		<%= render :partial => '/common/scenario_steps', :locals => {:scenarios => file[:feature].stories,:feature => file[:file].sub(/\./,"_")}%>
 	</p>
