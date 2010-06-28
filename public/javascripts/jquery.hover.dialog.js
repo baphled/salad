@@ -1,8 +1,8 @@
 (function($) {
   /**
-  * Plugin to help determine the position of a given element, making sure that it is always at the top of the page.
+  * Simple plugin to help display a hover dialog for tag list input
   *
-  * @useage $('div ul').autoScroller({scrollSpeed: 500, height: 500, stopOnHover: true})
+  * @useage $('div ul').hoverDialog()
   *
   * @author Yomi Colledge
   **/
