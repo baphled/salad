@@ -1,10 +1,11 @@
 $(document).ready(function() {
 
   $('form').live('submit', function() {
-    var postData = $(this).serialize();
-    var $form = $(this).clone();
+    var postData = $(this).serialize(),
+        $form = $(this).clone();
     
-    if ($(this).hasClass('hidden') == false) {
+    // disable the submit button
+    if ($form.hasClass('hidden') == false) {
       // Convert our content-wide id to content, to allow us to render the side bar
       var $content = $('div#container').find('div#content-wide');
       $content.attr('id', 'content');
@@ -18,7 +19,7 @@ $(document).ready(function() {
     }
     
     $.post($(this).attr('action'), postData, function(data) {
-      if ($form.hasClass('import_feature')) {
+      if ($form.hasClass('hidden') == false) {
         // here is where we make our necessary form response for all our AJAX based responses
         $('#wrapper').append($form.hide());
         $('<a class="display_form" href="javascript://">view form</a>').insertBefore('#wrapper form')
