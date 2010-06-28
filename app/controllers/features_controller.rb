@@ -31,8 +31,16 @@ class FeaturesController < ApplicationController
         flash[:notice] = "Feature: #{@feature.title}, was created"
         find_features_stories
         if "Import" == params[:commit]
-          format.html { redirect_to :back }
-          format.js { render "index.rjs" }
+          @project = Project.find(params[:current_project_id])
+          puts @project.id
+          @imported = @project.import_features
+          if @imported.empty?
+            format.html { redirect_to :back }
+            format.js { render "index.rjs" }
+          else
+            format.html { redirect_to :back }
+            format.js { render "import.rjs" }         
+          end
         else
           format.html { redirect_to @feature }
           format.js { render "create.rjs" }

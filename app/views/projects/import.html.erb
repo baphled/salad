@@ -1,18 +1,1 @@
-<% if @imported.blank? or steps_imported? @imported %>
-	<p>No features to import.</p>
-<% else %>
-<div id="myTabs">
-	<ul>
-	<% @imported.each_with_index do |file, index| %>
-		<% if Feature.find_by_title(file[:feature].title).nil? %>
-		<li>
-          <a href="#<%=h file[:file].sub(/\./,"_") %>-<%= index+1%>"><%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ').capitalize %></a>
-		</li>
-		<% end%>
-	<% end %>
-	</ul>
-<% @imported.each_with_index do |file, index| %>
-<%= render :partial => '/common/import_feature',:locals => {:file => file, :feature => @feature, :index => index} %>
-<% end %>
-</div>
-<% end %>
+<%= render :partial => '/common/project_import' %>
