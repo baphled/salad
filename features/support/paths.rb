@@ -16,6 +16,10 @@ module NavigationHelpers
       '/projects/1/import'
     when /feature changes/
       '/features/1/changes'
+    when /feature merge/
+      '/features/1/merge'
+    when /system merge/
+      '/features/1/system_merge'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
