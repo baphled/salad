@@ -27,6 +27,9 @@ $(document).ready(function() {
     });
   });
   
+  $tagInput.focusout(function() {
+    $hoverDialog.fadeOut();
+  })
   var $enableHoverLink = function(index, item) {
 	  var tags = $tagInput.val().split(', '),
 	      result = $.inArray(item['tag']['name'], tags);

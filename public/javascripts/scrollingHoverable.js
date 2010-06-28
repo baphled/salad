@@ -27,7 +27,8 @@ $.fn.scrollingHoverable = function(options) {
       
 
       if (y >=  offset) {
-        $sidebarList.css('width', $('.hover').width())
+        $sidebarList.css('width', $sidebarList.css('width'))
+                    .css('margin-right', $sidebarList.css('margin-right'))
                     .addClass('fixed');
       } else {
         $sidebarList.removeClass('fixed');
