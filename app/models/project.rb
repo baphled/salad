@@ -35,4 +35,15 @@ class Project < ActiveRecord::Base
   def directory_present?
     self.location.blank? == false
   end
+  
+  def features_to_import?
+    result = false
+    features_list = self.import_features
+    features_list.each do |feature|
+      if not Feature.find_by_path feature[:feature].path
+        result = true
+      end
+    end
+    result
+  end
 end

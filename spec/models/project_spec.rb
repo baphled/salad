@@ -89,5 +89,44 @@ describe Project do
       end
       
     end
+    
+    
+  end
+
+  context "listing importable features" do
+    before(:each) do
+      @project = Project.first
+    end
+    
+    context "with importable features" do
+      before(:each) do
+        file = "#{RAILS_ROOT}/features/plain/projects.feature"
+        result = [{:file => file, :feature => mock_model(Feature).as_null_object}]
+        @project.stub!(:import_features).and_return result
+      end
+      
+      it "gets the features to import" do
+        @project.should_receive(:import_features)
+        @project.features_to_import?
+      end
+      
+      it "searches for each feature on the system" do
+        Feature.should_receive(:find_by_path)
+        @project.features_to_import?
+      end
+
+      it "returns true if there are importable features"
+    end
+    
+    context "with no importable features" do
+      before(:each) do
+        @project.stub!(:import_features).and_return []
+      end
+      
+      it "returns false if there are no importable features" do
+        @project.features_to_import?.should be_false
+      end
+          
+    end
   end
 end
