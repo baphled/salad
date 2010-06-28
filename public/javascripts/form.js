@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $('form').hoverDialog();
+  
   $('form').live('submit', function() {
     var postData = $(this).serialize(),
         $form = $(this).clone();
@@ -27,7 +29,8 @@ $(document).ready(function() {
       }
       // setup our generic list events
       $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-      $('a[title]').tipsy({fade: true});          
+      $('a[title]').tipsy({fade: true});
+      $('form').hoverDialog();
     }, "script");
     return false;
   });
