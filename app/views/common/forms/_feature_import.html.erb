@@ -41,7 +41,7 @@
     <% elsif has_no_stories? file[:feature] %>
       <p id="error">No Scenario's found</p>
     <% else %>
-      <button type="submit" class="button positive"><%= "Import #{file[:file].sub(/\.feature/,"").gsub(/_/," ")}" %></button>
+      <button type="submit" class="button positive ui-state-default ui-corner-all ui-button-text"><%= "Import #{file[:file].sub(/\.feature/,"").gsub(/_/," ")}" %></button>
     <% end %>
   </fieldset>
 <% end %>
