@@ -1,2 +1,10 @@
+var accOpts = {
+  event: "click",
+  autoHeight: false,
+  fillSpace: false,
+  navigation: true
+}
 $('div#wrapper').html("<%= escape_javascript(render :partial => '/common/project_import', :locals => {:current_project => @current_project}) %>");
-$('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
+$('#content-wide').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
+$('#myTabs').tabs();
+$('ul.accordion').accordion(accOpts);
