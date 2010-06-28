@@ -35,39 +35,58 @@ describe FeaturesController do
       it "should not save if the title is not present" do
         @feature.save.should_not eql true
       end
+    end
+    
+    context "saving an imported feature" do
+      before(:each) do
+        request.env["HTTP_REFERER"] = import_project_path mock_model(Project,:id=>1,:null_object=>true)
+        assigns[:current_project_id] = 1
+        @feature.stub!(:save).and_return true
+      end
       
-      context "saving an imported feature" do
+      it "redirects to the import page" do
+        post :create, {:commit => 'Import', :current_project_id => 1}
+        response.should redirect_to import_project_path(Project.first)
+      end
+      
+      context "importing over XHR" do
         before(:each) do
-          request.env["HTTP_REFERER"] = import_project_path mock_model(Project,:id=>1,:null_object=>true)
+          @project = mock_model(Project,:id=>1,:null_object=>true)
+          request.env["HTTP_REFERER"] = import_project_path @project
+          assigns[:current_project_id] = 1
           @feature.stub!(:save).and_return true
-          post :create, {:commit => 'Import'}
         end
         
-        it "redirects to the import page" do
-          response.should redirect_to import_project_path(Project.first)
+        it "redirects not to the import page" do
+          xhr :post, :create, {:commit => 'Import', :current_project_id => 1}
+          response.should_not redirect_to import_project_path(Project.first)
         end
         
-        context "importing over XHR" do
+        context "more features to import" do
           before(:each) do
-            request.env["HTTP_REFERER"] = import_project_path mock_model(Project,:id=>1,:null_object=>true)
-            @feature.stub!(:save).and_return true
-            xhr :post, :create, {:commit => 'Import'}
+            @project.stub!(:features_to_import?).and_return true
           end
           
-          context "more features to import" do
-            it "displays the import list"
-            it "does not display the imported feature"
+          it "finds the project the feature was imported from" do
+            @feature.stub!(:find_by_project_id).and_return Project.first
+            xhr :post, :create, {:commit => 'Import', :current_project_id => 1}
           end
           
-          context "no more features to import" do
-            it "displays a notice stating that there are no more features to import"
-            it "displays the projects information"
+          it "renders the import RJS file" do
+            xhr :post, :create, {:commit => 'Import', :current_project_id => 1}
+            response.should render_template "import.rjs"
           end
           
-          it "redirects not to the import page" do
-            response.should_not redirect_to import_project_path(Project.first)          
-          end          
+          it "displays the import list"
+          it "does not display the imported feature"
         end
+        
+        context "no more features to import" do
+          it "renders the project RJS file"
+          it "displays a notice stating that there are no more features to import"
+          it "displays the projects information"
+        end
+        
       end
     end
   end
