@@ -2,5 +2,6 @@ $('#info').html("<%= escape_javascript(render :partial => '/common/model_informa
 $('#info').append("<%= escape_javascript(render :partial => '/common/model_summary', :locals => {:model => @project, :assoc => :features})%>");
 
 $('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true})%>");
+$('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @project_features, :assoc => 'stories'})%>");
 
 $('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
