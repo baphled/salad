@@ -165,3 +165,7 @@ end
 Then /^the imports will be rendered via AJAX$/ do
   selenium.wait_for_visible("css=div#myTabs", :timeout_in_seconds => 2 * 60)
 end
+
+When /^focus is off the tag input$/ do
+  selenium.mouse_over("css=div#header")
+end
