@@ -287,3 +287,10 @@ Feature: Users should not have to manually input their features if they have alr
       When the project is viewed
   	  Then I should see a import link
       Then the submit button will be disabled for that feature "Import sample one"
+      
+    Scenario: Should not see the the import link if there are no features to import
+      Given there is a project
+      And the project has a project path
+      And there are no projects to import
+      When the project is viewed
+  	  Then I should not see a import link

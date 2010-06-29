@@ -6,6 +6,10 @@ Given /^the project has a project path$/ do
   @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures")
 end
 
+Given /^there are no projects to import$/ do
+  @project.stub!(:features_to_import?).and_return false
+end
+
 Then /^I should see a import link$/ do
   response.should have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
 end
