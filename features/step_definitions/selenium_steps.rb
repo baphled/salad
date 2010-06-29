@@ -137,6 +137,9 @@ Then /^the tag input should not contain "([^\"]*)"$/ do |tag|
 end
 
 Then /^the sidebar will be rendered via AJAX$/ do
-  save_and_open_page
   selenium.wait_for_visible("css=div#sidebar")
+end
+
+Then /^the side bar should not be rendered$/ do
+  response.should_not have_selector "css=div#sidebar"
 end
