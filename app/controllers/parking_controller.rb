@@ -13,7 +13,6 @@ class ParkingController < ApplicationController
   
   def tickets
     @resource = Resource.find(params[:resource][:id])
-    puts params[:resource][:id]
     @tickets = @resource.tickets(params[:parking][:tag])
     if @tickets.nil?
       flash[:notice] = 'No tickets available'
