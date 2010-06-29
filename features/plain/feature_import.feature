@@ -294,3 +294,10 @@ Feature: Users should not have to manually input their features if they have alr
       And there are no projects to import
       When the project is viewed
       Then I should not see a import link
+
+    Scenario: Should not see the the import link if there are no features to import
+      Given there is a project
+      And the project has a project path
+      And there are no projects to import
+      When the project is viewed
+      Then I should not see a import all link
