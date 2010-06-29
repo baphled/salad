@@ -293,4 +293,4 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       And there are no projects to import
       When the project is viewed
-  	  Then I should not see a import link
+      Then I should not see a import link

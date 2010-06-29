@@ -7,7 +7,7 @@ Given /^the project has a project path$/ do
 end
 
 Given /^there are no projects to import$/ do
-  @project.stub!(:features_to_import?).and_return false
+  Feature.stub!(:find_by_path).and_return mock_model(Feature).as_null_object
 end
 
 Then /^I should see a import link$/ do
