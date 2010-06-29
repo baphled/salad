@@ -196,9 +196,7 @@ Feature: Users should not have to manually input their features if they have alr
       Given there is a project
       And the project does have a project location with no features to import
       And there are no features to import
-      When the project is viewed
-      Then I should see a import link
-      When I click import
+      And I am on "import project"
       Then the message 'No features to import.' should be displayed
 	
 	Scenario: Successfully importing a feature should redirect back to the import page
