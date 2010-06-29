@@ -71,3 +71,7 @@ Then /^display the feature file for "([^\"]*)" already exists$/ do |feature_file
     error.should contain "Feature already exists in #{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature"
   end
 end
+
+Then /^I should not see a import all link$/ do
+  response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import_all"}
+end
