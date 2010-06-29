@@ -2,8 +2,6 @@
   <%= javascript_include_tag "/javascripts/validations/project" %>
 <% end %>
 
-<%= render :partial => "/common/hover_dialog" %>
-
 <%- semantic_form_for @project do |form| -%>
   <% form.inputs :name => form_title(@project, "Project") do %>
     <%= error_messages_for :project %>
