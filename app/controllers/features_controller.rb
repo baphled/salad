@@ -3,7 +3,7 @@ class FeaturesController < ApplicationController
   navigation :features
 
   before_filter :find_feature, :except => [:index, :new, :create, :tag, :tags, :validate, :import]
-  before_filter :find_features_stories, :only => [:show, :stories]
+  before_filter :find_features_stories, :only => [:show, :update, :stories]
   before_filter :find_tag
   
   def index
@@ -32,7 +32,6 @@ class FeaturesController < ApplicationController
         find_features_stories
         if "Import" == params[:commit]
           @project = Project.find(params[:current_project_id])
-          puts @project.id
           @imported = @project.import_features
           if @imported.empty?
             format.html { redirect_to :back }
