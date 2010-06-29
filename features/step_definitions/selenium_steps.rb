@@ -143,3 +143,25 @@ end
 Then /^the side bar should not be rendered$/ do
   response.should_not have_selector "css=div#sidebar"
 end
+
+When /^I click "([^\"]*)"$/ do |selector|
+  selenium.wait_for_element("css=#{selector}", :timeout_in_seconds => 10)
+  selenium.click "css=#{selector}"
+end
+
+Then /^the import link should be visible$/ do
+  selenium.wait_for_visible("css=span#panel ul.icons > li a#import")
+end
+
+Then /^I should see the imports page$/ do
+  selenium.wait_for_element("css=div#myTabs", :timeout_in_seconds => 60)
+end
+
+When /^I import "([^\"]*)"$/ do |selector|
+  selenium.wait_for_element("css=#{selector}", :timeout_in_seconds => 10)
+  selenium.click "css=#{selector}"
+end
+
+Then /^the imports will be rendered via AJAX$/ do
+  selenium.wait_for_visible("css=div#myTabs", :timeout_in_seconds => 2 * 60)
+end
