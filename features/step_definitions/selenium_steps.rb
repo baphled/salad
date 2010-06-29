@@ -8,6 +8,7 @@ end
 
 Given /^a project has tags$/ do
   visit '/projects/1/edit'
+  fill_in 'project_location', :with => ''
   fill_in 'project_tag_list', :with => 'Project management, something else'
   click_button 'Save'
 end
@@ -116,7 +117,7 @@ Then /^there should be a "([^\"]*)" link$/ do |link|
 end
 
 Then /^I should see a hover dialog box$/ do
-  selenium.wait_for_visible("class=hover ui-widget ui-widget-content ui-corner-all")
+  selenium.wait_for_visible("css=div.hover")
 end
 
 Then /^I should not see a hover dialog box$/ do
@@ -133,4 +134,9 @@ end
 
 Then /^the tag input should not contain "([^\"]*)"$/ do |tag|
   response.selenium.get_xpath_count("//a[@class='hover_select']").to_i.should be 1
+end
+
+Then /^the sidebar will be rendered via AJAX$/ do
+  save_and_open_page
+  selenium.wait_for_visible("css=div#sidebar")
 end

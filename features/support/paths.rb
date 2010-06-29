@@ -20,6 +20,22 @@ module NavigationHelpers
       '/features/1/merge'
     when /system merge/
       '/features/1/system_merge'
+    when /new project/
+      'projects/new'
+    when /edit project/
+      '/projects/1/edit'
+    when /new feature/
+      'features/new'
+    when /edit feature/
+      'features/1/edit'
+    when /new story/
+      'stories/new'
+    when /edit story/
+      'stories/1/edit'
+    when /new step/
+      'steps/new'
+    when /edit step/
+      'steps/1/edit'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
