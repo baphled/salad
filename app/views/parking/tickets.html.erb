@@ -13,9 +13,6 @@
       <h2><%= ticket.title%></h2>
       <%= check_box_tag "lighthouse[ticket_id][]", ticket.id %><br />
       <%= ticket.created_at%><br />
-      <% ticket.tags.each do |tag| %>
-        <%= tag %>
-      <% end %>
       <%= ticket.original_body_html %>
     </div>
   <% end %>

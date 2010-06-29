@@ -24,14 +24,6 @@ describe "/parking/tickets.html" do
       end
     end
     
-    it "should display each ticket's tag" do
-      response.should have_selector :ul do |list|
-        list.should have_selector :li do |content|
-          content.should contain assigns[:tickets].first.tags.first
-        end
-      end
-    end
-    
     it "should display each ticket's description" do
       assigns[:tickets].each do |ticket|
         ticket.original_body.should_not be_empty
