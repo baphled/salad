@@ -33,9 +33,9 @@ Feature: Order items
       
     Examples: List of pages that use the list layout
       | page name         | have order button |
-      | a project         | no                |
-      | a feature         | no                |
-      | a story           | no                |
+      | a project         | yes               |
+      | a feature         | yes               |
+      | a story           | yes               |
       | a step            | no                |
       | projects features | yes               |
       | features stories  | yes               |
