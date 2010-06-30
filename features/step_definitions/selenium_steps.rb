@@ -171,7 +171,7 @@ When /^focus is off the tag input$/ do
 end
 
 Then /^it should "([^\"]*)"$/ do |have_or_have_not|
-  if have_or_have_not == 'no'
+  if have_or_have_not == 'does not'
     response.should_not have_selector "css=button#button"
   else
     selenium.wait_for_element "css=button#button",  :timeout_in_seconds => 10

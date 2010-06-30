@@ -33,14 +33,18 @@ Feature: Order items
       
     Examples: List of pages that use the list layout
       | page name         | have order button |
-      | a project         | yes               |
-      | a feature         | yes               |
-      | a story           | yes               |
-      | a step            | no                |
-      | projects features | yes               |
-      | features stories  | yes               |
-      | stories steps     | yes               |
-      | all projects      | no                |
-      | all features      | no                |
-      | all stories       | no                |
-      | all steps         | no                |
+      | a project         | does              |
+      | a feature         | does              |
+      | a story           | does              |
+      | a step            | does not          |
+      | projects features | does              |
+      | features stories  | does              |
+      | stories steps     | does              |
+      | all projects      | does not          |
+      | all features      | does not          |
+      | all stories       | does not          |
+      | all steps         | does not          |
+
+    
+    
+    
