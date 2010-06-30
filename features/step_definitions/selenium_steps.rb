@@ -174,6 +174,6 @@ Then /^it should "([^\"]*)"$/ do |have_or_have_not|
   if have_or_have_not == 'no'
     response.should_not have_selector "css=button#button"
   else
-    response.should have_selector "css=button#button"
+    selenium.wait_for_element "css=button#button",  :timeout_in_seconds => 10
   end
 end
