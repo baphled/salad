@@ -32,8 +32,11 @@ Feature: Order items
       Then it should "<have order button>"
       
     Examples: List of pages that use the list layout
-      | page name | have order button |
-      | a project | no                |
-      | a feature | no                |
-      | a story   | no                |
-      | a step    | no                |
+      | page name         | have order button |
+      | a project         | no                |
+      | a feature         | no                |
+      | a story           | no                |
+      | a step            | no                |
+      | projects features | yes               |
+      | features stories  | yes               |
+      | stories steps     | yes               |
