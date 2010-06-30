@@ -29,7 +29,7 @@ Feature: Order items
       
     Scenario Outline: The ordering button should not be on any of the model index pages
       When I view the "<page name>" path
-      Then it should "<have order button>"
+      Then it should "<have order button>" have an order button
       
     Examples: List of pages that use the list layout
       | page name         | have order button |
