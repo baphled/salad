@@ -26,3 +26,14 @@ Feature: Order items
       Then I should see the order handler
       And I should be able to move the second item to the first position
       And the items should be reordered
+      
+    Scenario Outline: The ordering button should not be on any of the model index pages
+      When I view the "<page name>" path
+      Then it should "<have order button>"
+      
+    Examples: List of pages that use the list layout
+      | page name | have order button |
+      | a project | no                |
+      | a feature | no                |
+      | a story   | no                |
+      | a step    | no                |
