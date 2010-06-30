@@ -45,6 +45,10 @@ Feature: Order items
       | all stories       | does not          |
       | all steps         | does not          |
 
+    Scenario: Should not be able to order items if there is only one item
+      Given the project has one feature
+      When I visit the projects features
+      Then it should "does not" have an order button
     
     
     
