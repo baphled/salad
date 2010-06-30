@@ -40,3 +40,7 @@ Feature: Order items
       | projects features | yes               |
       | features stories  | yes               |
       | stories steps     | yes               |
+      | all projects      | no                |
+      | all features      | no                |
+      | all stories       | no                |
+      | all steps         | no                |
