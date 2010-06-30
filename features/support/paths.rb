@@ -37,13 +37,13 @@ module NavigationHelpers
     when /edit step/
       'steps/1/edit'
      when /projects features/
-       'projects/1/features'
+       'projects/2/features'
      when /features stories/
        'features/1/stories'
      when /stories steps/ 
        'stories/1/steps'
     when /a project/
-      '/projects/1'
+      '/projects/2'
     when /a feature/
       'features/1'
     when /a story/
