@@ -169,3 +169,11 @@ end
 When /^focus is off the tag input$/ do
   selenium.mouse_over("css=div#header")
 end
+
+Then /^it should "([^\"]*)"$/ do |have_or_have_not|
+  if have_or_have_not == 'no'
+    response.should_not have_selector "css=button#button"
+  else
+    response.should have_selector "css=button#button"
+  end
+end

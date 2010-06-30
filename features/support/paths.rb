@@ -36,6 +36,20 @@ module NavigationHelpers
       'steps/new'
     when /edit step/
       'steps/1/edit'
+     when /projects features/
+       'projects/1/features'
+     when /features stories/
+       'features/1/stories'
+     when /stories steps/ 
+       'stories/1/steps'
+    when /a project/
+      '/projects/1'
+    when /a feature/
+      'features/1'
+    when /a story/
+      'stories/1'
+    when /a step/
+      'steps/1'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
