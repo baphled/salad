@@ -2,10 +2,6 @@
 module ApplicationHelper
   include TagsHelper
   
-  def order_btn object, order
-    render :partial => '/common/order', :locals => {:order => order} if !object.blank?
-  end
-
 	def form_title item, title
 		(item.id)? "Edit #{title}"  : "New #{title}"
 	end

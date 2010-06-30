@@ -24,6 +24,8 @@ $(document).ready(function() {
     (event.type == 'mouseover')? $(this).addClass('ui-state-hover') : $(this).removeClass('ui-state-hover');
   });
   
+  $('button.button').button();
+  
   /**
    * Handling the viewing and hiding of our item checkboxes
    */

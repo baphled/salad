@@ -13,3 +13,7 @@ Then /^the view "([^\"]*)" have a sidebar$/ do |matcher|
     response.should_not have_selector :div, attribute = {:id => 'sidebar'}
   end
 end
+
+Then /^the order button should not be visible$/ do
+  response.should_not have_selector :button, attribute = {:id => 'button', :role => 'button', :class => 'order_icon ui-state-default ui-priority-primary ui-corner-all'}
+end

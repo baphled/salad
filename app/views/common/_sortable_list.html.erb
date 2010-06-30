@@ -5,7 +5,6 @@
         <%= will_paginate models unless models.nil? or !models.respond_to?(:total_pages) %>
       <div class="<%= item_name.pluralize.downcase %> ui-widget ui-widget-content ui-corner-all" id="lists">
         <div id="list-head">
-          <%= order_btn models, order  if defined? order%>
           <%= link_to "New #{item_name.singularize.capitalize}",
             :controller => item_name.pluralize.downcase,
             :action => :new %>

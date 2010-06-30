@@ -17,6 +17,12 @@ Given /^I create a new project$/ do
   visit new_project_path
 end
 
+Given /^the project has one feature$/ do
+  feature = Feature.first
+  @project = mock_model(Project, :id => 1, :features => [Feature.first]).as_null_object
+  @project.stub!(:features).and_return feature
+end
+
 When /^the first (.*) is hovered over$/ do |model|
   selenium.mouse_over("#{model}_1")
 end
@@ -168,4 +174,12 @@ end
 
 When /^focus is off the tag input$/ do
   selenium.mouse_over("css=div#header")
+end
+
+Then /^it should "([^\"]*)" have an order button$/ do |have_or_have_not|
+  if have_or_have_not == 'does not'
+    response.should_not have_selector "css=button#button"
+  else
+    selenium.wait_for_element "css=button#button",  :timeout_in_seconds => 10
+  end
 end

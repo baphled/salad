@@ -13,20 +13,32 @@ $(document).ready(function() {
   });
 
   $.fn.customSortable = function() {
-      $(this).sortable({
-        axis:'y',
-        dropOnEmpty:false,
-        handle:'.handler',
-        cursor: 'crosshair',
-        items: 'li',
+    
+    // if no handlers are rendered we don't need an order button
+    if ($('span.handler').size() > 1) {
+      $button = $("<button>")
+        .append('Order')
+        .addClass('order_icon ui-state-default ui-priority-primary ui-corner-all')
+        .attr('id', 'button')
+        .attr('role', 'button');
 
-        update:function(){
-          $.ajax({
-            data:$(this).sortable('serialize'),
-            dataType:'script',
-            type:'post',
-            url: "/" + $(this).attr('id') + "/sort"})
-        }
+      $('div#list-head').prepend($button);
+    };
+    
+    $(this).sortable({
+      axis:'y',
+      dropOnEmpty:false,
+      handle:'.handler',
+      cursor: 'crosshair',
+      items: 'li',
+
+      update:function(){
+        $.ajax({
+          data:$(this).sortable('serialize'),
+          dataType:'script',
+          type:'post',
+          url: "/" + $(this).attr('id') + "/sort"})
+      }
     });
   }
 
