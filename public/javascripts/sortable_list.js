@@ -6,10 +6,6 @@
  */
 $(document).ready(function() {
   // Toggle our position handler
-  
-  
-  
-
   $('.order_icon').live("click",function() {
       $('#lists').toggleClass('active');
       $(this).toggleClass('active');
