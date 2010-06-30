@@ -2,7 +2,7 @@
   <ul class="icons">
     <% if not feature.stories.blank? %>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-disk' />", export_feature_path(feature), {:title => 'Export a feature', :id => 'export-feature'} %>
+      <%= link_to "<span class='ui-icon ui-icon-document' />", export_feature_path(feature), {:title => 'Export a feature', :id => 'export-feature'} %>
     </li>
     <% end %>
     <% if feature.is_diff? %>
