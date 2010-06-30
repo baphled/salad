@@ -59,20 +59,15 @@ describe "common/_sortable_list.html.erb" do
   end
 
   describe "list has items" do
-    before(:each) do
-      @projects = [mock_model(Project).as_new_record.as_null_object]
-      @projects.stub(:total_pages).and_return 1
-    end
+      before(:each) do
+        @projects = [mock_model(Project).as_new_record.as_null_object]
+        @projects.stub(:total_pages).and_return 1
+      end
 
-    it "should display not the order button" do
-      response.should_not have_selector :button, attribute = {:id => 'button'}
-    end
-    
     context "display an unsortable list" do
       before(:each) do
         render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => false}
       end
-      
       it "should display an icon set for each item" do
         response.should have_selector :ul do |list_item|
           list_item.should have_selector :li, attribute = {:class => 'project'} do |content|
@@ -80,7 +75,11 @@ describe "common/_sortable_list.html.erb" do
           end
         end
       end
-      
+
+      it "should not display the order button" do
+        response.should_not have_selector :span, attribute = {:id => 'order_icon'}
+      end
+
       it "should not display any of the items handler elements" do
         response.should_not have_selector :span, attribute = {:class => 'handler ui-widget ui-widget-content ui-corner-all'}
       end
@@ -89,6 +88,9 @@ describe "common/_sortable_list.html.erb" do
     context "display a sortable list" do
       before(:each) do
         render :partial => '/common/sortable_list', :locals => {:models => @projects,  :item_name => 'feature', :assoc => 'story', :order => true}
+      end
+      it "should display the order button" do
+        response.should have_selector :button, attribute = {:id => 'button'}
       end
 
       it "should display any of the items handler elements" do
