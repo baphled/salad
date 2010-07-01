@@ -6,7 +6,6 @@ $(document).ready(function() {
     var postData = $(this).serialize(),
         $form = $(this).clone();
     
-    // disable the submit button
     if ($form.hasClass('hidden') == false) {
       // Convert our content-wide id to content, to allow us to render the side bar
       var $content = $('div#container').find('div#content-wide');
@@ -17,7 +16,6 @@ $(document).ready(function() {
       var projectInfo = $("<div></div>").attr('id','info');
       $('#wrapper').html($(projectInfo));
     
-      // Remove any pre-existing flash message
     }
     
     $.post($(this).attr('action'), postData, function(data) {
@@ -29,8 +27,8 @@ $(document).ready(function() {
       }
       // setup our generic list events
       $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-      $('a[title]').tipsy({fade: true});
       $('form').hoverDialog();
+      $('a[title]').tipsy({fade: true});
     }, "script");
     return false;
   });
