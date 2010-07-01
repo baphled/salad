@@ -13,7 +13,6 @@ $(document).ready(function() {
   });
 
   $.fn.customSortable = function() {
-    
     // if no handlers are rendered we don't need an order button
     if ($('span.handler').size() > 1) {
       $button = $("<button>")
@@ -41,7 +40,4 @@ $(document).ready(function() {
       }
     });
   }
-
-  // sort our list
-  $('div#lists ul').customSortable();
 });
