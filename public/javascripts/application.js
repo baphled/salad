@@ -19,13 +19,7 @@ $(document).ready(function() {
         eventText: 'Click'
       };
   
-  //hover states on the static widgets
-  $('ul.icons li, button, span.handler').live('mouseover mouseout', function(event) {
-    (event.type == 'mouseover')? $(this).addClass('ui-state-hover') : $(this).removeClass('ui-state-hover');
-  });
-  
-  $('button.button').button();
-  
+
   /**
    * Handling the viewing and hiding of our item checkboxes
    */
@@ -56,7 +50,10 @@ $(document).ready(function() {
   });
   
   // Plugin intialisation
+  //hover states on the static widgets
+  $('ul.icons li,  span.handler, button.button').button();
   $('#myTabs').tabs();
   $('ul.accordion').accordion(accOpts);
   $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
+  $('div#lists ul').customSortable();
 });
