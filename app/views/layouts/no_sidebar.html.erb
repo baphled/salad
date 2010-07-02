@@ -16,7 +16,6 @@
 
 	<%= javascript_include_tag "jquery" %>
   <%= javascript_include_tag "jquery-ui" %>
-  <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery-icon-animation" %>
   <%= javascript_include_tag "inflection" %>
   <%= javascript_include_tag "jquery.custom.validation" %>
@@ -32,6 +31,7 @@
   <%= javascript_include_tag "tooltips" %>
   <%= javascript_include_tag "pagination" %>
   <%= javascript_include_tag "sortable_list" %>
+  <%= javascript_include_tag "application" %>
   <%= yield :js_head %>
 
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
