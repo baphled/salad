@@ -5,7 +5,8 @@ $(document).ready(function() {
   $('form').live('submit', function() {
     var postData = $(this).serialize(),
         $form = $(this).clone();
-    
+
+    $('button', this).button('disable');
     if ($form.hasClass('hidden') == false) {
       // Convert our content-wide id to content, to allow us to render the side bar
       var $content = $('div#container').find('div#content-wide');
