@@ -191,3 +191,7 @@ end
 Then /^the "([^\"]*)" button should be visible$/ do |tab_name|
   response.should contain tab_name
 end
+
+Then /^the "([^\"]*)" tab should not be visible$/ do |tab_name|
+  selenium.wait_for_no_element "webrat=#{tab_name}"
+end
