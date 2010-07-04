@@ -183,3 +183,11 @@ Then /^it should "([^\"]*)" have an order button$/ do |have_or_have_not|
     selenium.wait_for_element "css=button#button",  :timeout_in_seconds => 10
   end
 end
+
+Then /^select the "([^\"]*)" tab$/ do |tab|
+  click_link tab
+end
+
+Then /^the "([^\"]*)" button should be visible$/ do |tab_name|
+  response.should contain tab_name
+end
