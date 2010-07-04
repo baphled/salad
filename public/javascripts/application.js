@@ -52,7 +52,7 @@ $(document).ready(function() {
   // Plugin intialisation
   //hover states on the static widgets
   $('ul.icons li .handler').button('option', 'icon');
-  $('button.order_icon').button({ label: "custom label", option: 'text' });
+  $('button.order_icon, button.button').button({ option: 'text' });
   $('#myTabs').tabs();
   $('ul.accordion').accordion(accOpts);
   $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);

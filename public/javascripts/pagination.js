@@ -6,7 +6,7 @@ $(function() {
 		$.get(this.href, null, function() {
 		  // All pagination data needs the following calls so we'll include them here instead
           $('ul.icons li .handler').button('option', 'icon');
-          $('button.order_icon').button({ label: "custom label", option: 'text' });
+          $('button.order_icon button.button').button({ option: 'text' });
           $('div#lists ul').customSortable();
 		  $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
       $('a[title]').tipsy({fade: true});
