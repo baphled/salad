@@ -56,6 +56,10 @@ When /^I double click "([^\"]*)"$/ do |element|
   selenium.double_click element
 end
 
+When /^I submit the form$/ do
+  selenium.click "css=button.button"
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1")
 end
@@ -176,14 +180,6 @@ When /^focus is off the tag input$/ do
   selenium.mouse_over("css=div#header")
 end
 
-Then /^it should "([^\"]*)" have an order button$/ do |have_or_have_not|
-  if have_or_have_not == 'does not'
-    response.should_not have_selector "css=button#button"
-  else
-    selenium.wait_for_element "css=button#button",  :timeout_in_seconds => 10
-  end
-end
-
 Then /^select the "([^\"]*)" tab$/ do |tab|
   click_link tab
 end
@@ -194,4 +190,8 @@ end
 
 Then /^the "([^\"]*)" tab should not be visible$/ do |tab_name|
   selenium.wait_for_no_element "webrat=#{tab_name}"
+end
+
+Then /^a flash message should be displayed via AJAX$/ do
+  selenium.wait_for_element("css=div.flash", :timeout_in_seconds => 10)
 end
