@@ -59,7 +59,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features 'In order' text
@@ -69,7 +69,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features 'As a' text
@@ -79,7 +79,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features 'I want' text
@@ -89,7 +89,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features its stories
@@ -99,7 +99,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       And select the "Tag cloud"
       And the feature is visible
       And we click import projects
@@ -110,7 +110,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features its stories
@@ -121,7 +121,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features its stories
@@ -133,7 +133,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features its stories
@@ -145,7 +145,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a project path
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features its stories
@@ -158,7 +158,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And each entry should be a feature file
       And each entry should display the features its stories
@@ -171,7 +171,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And we click import projects
       Then a flash message 'Something different' should be displayed
@@ -182,7 +182,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
       When the project is viewed
       Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And we click import projects
       Then a flash message 'Something different' should be displayed
@@ -204,7 +204,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
 	    When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then I should see a list of features that will be imported
       And we click import projects
   	  Then a flash message 'Something different' should be displayed
@@ -215,7 +215,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then it should include features from all sub directories within the feature directory
 
     Scenario: When importing a feature file if the file is invalid then an error is displayed
@@ -223,7 +223,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location to an invalid feature
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       And the project has an invalid feature
       Then the submit button will be disabled for that feature
 
@@ -232,7 +232,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location to an invalid feature
 	    When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then the submit button will be disabled for that feature
 
     Scenario: The feature file heading should not contain any underscores
@@ -240,7 +240,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location to an invalid feature
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then each of the features tabs should not include any underscores
       And each of the features title should not include any underscores
 
@@ -250,7 +250,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location to an invalid feature
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then display the feature file for "sample_one" already exists
       
     Scenario: When importing a feature which has examples, these should be displayed within the given scenario
@@ -258,7 +258,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then the first story should contain its examples
     
     Scenario: When importing features, we should be warned if a scenario title has been duplicated
@@ -267,7 +267,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project has a feature to export with duplicate scenarios
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       Then the submit button will be disabled for "sample_one"
     
     Scenario: We want to make sure that a scenario's example are imported along with its scenario
@@ -275,7 +275,7 @@ Feature: Users should not have to manually input their features if they have alr
       And the project does have a project location
   	  When the project is viewed
   	  Then I should see a import link
-      When I click import
+      When I am on "import project"
       And we click import "most used"
       Then the features scenario "Our actions that we want to check states for" should be saved
 

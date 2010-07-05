@@ -13,7 +13,7 @@ module NavigationHelpers
     when /export feature/
       '/features/1/export'
     when /import project/
-      '/projects/1/import'
+      import_project_path(@project)
     when /feature changes/
       '/features/1/changes'
     when /feature merge/
