@@ -174,6 +174,13 @@ class FeaturesController < ApplicationController
     end
   end
   
+  def file
+    @file = File.read(@feature.path)
+    respond_to do |format|
+      format.html
+    end
+  end
+  
   def validate
     result = true
     if Feature.find_by_title params[:title]
