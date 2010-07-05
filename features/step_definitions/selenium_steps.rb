@@ -124,6 +124,10 @@ Then /^a flash message "([^\"]*)" should be dynamically displayed$/ do |message|
   response.should contain "#{message}"
 end
 
+
+Then /^the system merge page should be displayed$/ do
+  selenium.wait_for_visible("css=div#legend")
+end
 Then /^there should be a "([^\"]*)" link$/ do |link|
   response.should have_selector :a do |content|
     content.should contain "#{link}"
@@ -165,6 +169,10 @@ end
 
 Then /^the import link should be visible$/ do
   selenium.wait_for_visible("css=span#panel ul.icons > li a#import")
+end
+
+Then /^the panel icons should be visible$/ do
+  selenium.wait_for_visible("css=span#panel ul.icons")
 end
 
 Then /^I should see the imports page$/ do
