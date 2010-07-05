@@ -11,7 +11,7 @@ Feature: Hovering over a project item
     Then the project's information will be display in the sidebar
 
   Scenario: Hovering over a project item from project feature
-    Given the project has features
+    Given the "project" has "features"
     When I visit the projects features
     And the feature page is loaded
     And the first feature is hovered over
@@ -49,3 +49,16 @@ Feature: Hovering over a project item
     When the story page is loaded
     And the first story is hovered over
     Then the story's information will be display in the sidebar
+    
+   Scenario Outline: When submitting a form the hover functionality should still be available
+     Given the "<model>" has "<assoc item>"
+     And the "<model>" is viewed
+     When the "<assoc>" page is loaded
+     And the first "<assoc>" is hovered over
+     Then the "<assoc item>"'s information will be display in the sidebar
+
+   Examples: List of forms that should display flash messages after submitting a form
+     | page name | assoc item | assoc   |
+     | project   | features   | feature |
+     | feature   | stories    | story   |
+     | story     | steps      | step    |
