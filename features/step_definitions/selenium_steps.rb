@@ -82,6 +82,10 @@ Then /^the feature's information will be display in the sidebar$/ do
   selenium.wait_for_visible("feature_1")
 end
 
+Then /^the step's information will be display in the sidebar$/ do
+  selenium.wait_for_visible("step_1")
+end
+
 Then /^I should see the order handler$/ do
   selenium.wait_for_visible("order_btn_1")
 end

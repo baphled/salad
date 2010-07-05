@@ -82,6 +82,8 @@ Given /^the "([^\"]*)" has "([^\"]*)"$/ do |model, assoc|
       @project = Project.find 2
     when /feature/
       @feature = Feature.first
+    when /story/
+      @story = Story.first
     else
       raise "Can't instantiate \"#{model}\".\n" +
         "Now, go and add a mapping in #{__FILE__}"
