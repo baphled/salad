@@ -33,6 +33,10 @@ describe "/features/show.html.erb" do
     it "should display an export feature link" do
       response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
     end
+    
+    it "has a link to view a feature file" do
+       response.should have_selector :a, attribute = {:href => file_feature_path(@feature)}
+     end
   end
   
   context "feature with no story" do
