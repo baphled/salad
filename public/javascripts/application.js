@@ -55,6 +55,5 @@ $(document).ready(function() {
   // @todo Refactor initalisation so that they are enabled regardless of the current DOM
   $('ul.icons li, button.button').button({ option: 'text' });
   $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
-  
   $('a[title]').tipsy({fade: true});
 });
