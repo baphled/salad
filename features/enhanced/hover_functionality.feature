@@ -44,7 +44,7 @@ Feature: Hovering over a project item
     Then the feature's information will be display in the sidebar
     
   Scenario: When viewing a feature we must be able to hover of its items
-    Given the feature has stories
+    Given the "feature" has "stories"
     And the feature is viewed
     When the story page is loaded
     And the first story is hovered over
