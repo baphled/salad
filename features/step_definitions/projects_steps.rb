@@ -81,7 +81,7 @@ Given /^the "([^\"]*)" has "([^\"]*)"$/ do |model, assoc|
     when /project/
       @project = Project.find 2
     else
-      raise "Can't find model from \"#{model}\" to a path.\n" +
+      raise "Can't instantiate \"#{model}\".\n" +
         "Now, go and add a mapping in #{__FILE__}"
   end
 end
@@ -121,6 +121,16 @@ end
 
 When /^the project single import is viewed$/ do
   visit import_feature_project_path @project
+end
+
+When /^I visit the "([^\"]*)" "([^\"]*)"$/ do |model, assoc|
+  case model
+    when /projects/
+      visit features_project_path @project
+    else
+      raise "Unable to find path for \"#{model}\" associated to \"#{assoc}\".\n" +
+        "Now, go and add a mapping in #{__FILE__}"
+  end
 end
 
 Then /^submit the form$/ do

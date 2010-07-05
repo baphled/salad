@@ -12,7 +12,7 @@ Feature: Hovering over a project item
 
   Scenario: Hovering over a project item from project feature
     Given the "project" has "features"
-    When I visit the projects features
+    When I visit the "projects" "features"
     And the feature page is loaded
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
@@ -32,14 +32,14 @@ Feature: Hovering over a project item
     Then the story's information will be display in the sidebar
 
   Scenario: When viewing a project we must be able to hover of its items
-    Given the project has features
+    Given the "project" has "features"
     And the project is viewed
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
     
   Scenario: When viewing a project's feature we must be able to hover of its items
-    Given the project has features
-    When I visit the projects features
+    Given the "project" has "features"
+    When I visit the "projects" "features"
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
     
