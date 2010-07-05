@@ -23,7 +23,7 @@ module NavigationHelpers
     when /new project/
       'projects/new'
     when /edit project/
-      '/projects/1/edit'
+      edit_project_path @project
     when /new feature/
       'features/new'
     when /edit feature/
