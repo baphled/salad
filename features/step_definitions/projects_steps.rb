@@ -76,6 +76,16 @@ When /^I visit the projects features$/ do
   visit features_project_path @project
 end
 
+Given /^the "([^\"]*)" has "([^\"]*)"$/ do |model, assoc|
+  case model
+    when /project/
+      @project = Project.find 2
+    else
+      raise "Can't find model from \"#{model}\" to a path.\n" +
+        "Now, go and add a mapping in #{__FILE__}"
+  end
+end
+
 When /^I create new a feature$/ do
   click_link 'New feature'
 end
