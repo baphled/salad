@@ -154,5 +154,5 @@ When /^click the features path$/ do
 end
 
 Then /^the feature files contents should be viewable$/ do
-  response.should contain File.read(@feature.path)
+  response.should contain "Feature: Viewing an items tags"
 end
