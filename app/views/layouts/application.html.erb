@@ -17,7 +17,9 @@
   <%= javascript_include_tag "jquery" %>
   <%= javascript_include_tag "jquery-ui" %>
   <%= javascript_include_tag "jquery-icon-animation" %>
+  <!-- JS Head start -->
   <%= yield :js_head %>
+  <!-- JS Head end -->
   <%= javascript_include_tag "jquery-validate" %>
   <%= javascript_include_tag "jquery.tipsy" %>
   <%= javascript_include_tag "tooltips.js" %>
@@ -30,7 +32,7 @@
         <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
         <%= render :partial => 'layouts/content' %>
         <%= render :partial => 'layouts/sidebar' %>
-				<div id="footer_layout">
+		<div id="footer_layout"></div>
       </div>
       <%= render :partial => 'layouts/footer' %>
   </body>

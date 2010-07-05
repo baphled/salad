@@ -6,7 +6,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the feature's export link displays a tooltip
     Given there is a feature
     When I view the feature
-    And I double click "css=span#panel"
+    And I click "span#panel"
     Then there should be a "Export a feature" link
     And I hover over the "export-feature" link
     Then a tooltip should be visible
@@ -14,7 +14,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the feature's edit link displays a tooltip
     Given there is a feature
     When I view the feature
-    And I double click "css=span#panel"
+    And I click "span#panel"
     Then there should be a "Edit" link
     And I hover over the "edit" link
     Then a tooltip should be visible
@@ -22,7 +22,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario Outline: When hovering over the feature changes displays a tooltip
     Given we create a feature with a path
     When the feature is viewed
-    And I double click "css=span#panel"
+    And I click "span#panel"
     Then there should be a "<link>" link
     And I hover over the "<id>" link
     Then a tooltip should be visible
@@ -37,7 +37,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
    Scenario: When hovering over the feature panel links displays a tooltip
      Given we create a feature with a path
      When the feature is viewed
-     And I double click "css=span#panel"
+     And I click "span#panel"
      When we click on the "Merge a features changes with the system" link
      Then there should be a "update" link
      And I hover over the "update-feature" link
@@ -46,7 +46,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
    Scenario Outline: When hovering over the project panel links displays a tooltip
      Given there is a project
      When the project is viewed
-     And I double click "css=span#panel"
+     And I click "span#panel"
      Then there should be a "<link>" link
      And I hover over the "<id>" link
      Then a tooltip should be visible
@@ -60,7 +60,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the step panel links displays a tooltip
     Given there is a step
     When the step is viewed
-    And I double click "css=span#panel"
+    And I click "span#panel"
     Then there should be a "Edit the step" link
     And I hover over the "edit" link
     Then a tooltip should be visible
@@ -68,7 +68,7 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
   Scenario: When hovering over the story panel links displays a tooltip
     Given there is a story
     When the story is viewed
-    And I double click "css=span#panel"
+    And I click "span#panel"
     Then there should be a "Edit the story" link
     And I hover over the "edit" link
     Then a tooltip should be visible

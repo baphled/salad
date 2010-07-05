@@ -36,7 +36,7 @@ Feature: Import feature ajax functionality
     Then I should see the imports page
     And select the "Tag cloud" tab
     And I click "button.button"
-    Then the "Tag cloud" tab should be visible
+    Then the "Tag cloud" tab should not be visible
 
   Scenario: Upon importing a feature a flash message should be displayed
     Given there is a project

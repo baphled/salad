@@ -10,7 +10,7 @@ $.fn.hoverDialog = function(options) {
   var opts = $.extend({}, $.fn.hoverDialog.defaults, options);
 
   // Create acessors for our hover dialog
-  var formIdArray = $(this).attr('id').split('_');
+  var formIdArray = $(this).attr('id').split('_');    // @todo Refactor so that when id attribute is not fail we fail silently
       resourceSingular = formIdArray[1],
       resourcePlural = resourceSingular.pluralize(),
       $tagInput = $('input#'+ resourceSingular + '_tag_list'),
