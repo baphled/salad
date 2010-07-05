@@ -1,5 +1,8 @@
 <span id="panel" class="icons ui-widget ui-widget-content ui-corner-all">
   <ul class="icons">
+    <li class="ui-state-default ui-corner-all">
+			<%= link_to "Original file", file_feature_path(feature), {:title => 'Save the original feature', :id => 'file-feature'} %>
+    </li>
     <% if not feature.stories.blank? %>
     <li class="ui-state-default ui-corner-all">
 			<%= link_to "Export", export_feature_path(feature), {:title => 'Export a feature', :id => 'export-feature'} %>
@@ -13,10 +16,10 @@
       <%= link_to "Merge", merge_feature_path(feature), {:title => 'Merge a systems changes with the feature', :id => 'merge-changes'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "System Merge", system_merge_feature_path(feature), {:title => 'Merge a features changes with the system', :id => 'merge-system'} %>
+      <%= link_to "Sys Merge", system_merge_feature_path(feature), {:title => 'Merge a features changes with the system', :id => 'merge-system'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "Get Patch", feature_path(feature, :format => :patch), {:title => 'Patch a feature with the systems changes', :id => 'patch-changes'} %>
+      <%= link_to "Patch", feature_path(feature, :format => :patch), {:title => 'Patch a feature with the systems changes', :id => 'patch-changes'} %>
     </li>
     <% end %>
     <li class="ui-state-default ui-corner-all">
