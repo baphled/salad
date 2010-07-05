@@ -51,10 +51,10 @@ $(document).ready(function() {
   
   // Plugin intialisation
   //hover states on the static widgets
-  $('ul.icons li .handler').button('option', 'icon');
-  $('button.order_icon, button.button').button({ option: 'text' });
+  $('ul.icons li, button.order_icon, button.button, .handler').button({ option: 'text' });
   $('#myTabs').tabs();
   $('ul.accordion').accordion(accOpts);
   $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
   $('div#lists ul').customSortable();
+  $('a[title]').tipsy({fade: true});
 });
