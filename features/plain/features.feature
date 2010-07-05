@@ -168,3 +168,10 @@ Feature: A user should be able to create new features, which can be associated w
     Given there is a feature
     When we visit the feature
     Then there should be an edit link
+
+  Scenario: I should be able to view a feature that has a file and view the feature directly
+    Given there is a feature
+    And the feature has a path
+    When I view the feature
+    And click the features path
+    Then the feature files contents should be viewable

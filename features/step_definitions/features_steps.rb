@@ -148,3 +148,11 @@ Then /^there should be an edit link$/ do
     content.should have_selector :a, attribute = {:title => 'Edit'}
   end
 end
+
+When /^click the features path$/ do
+  click_link 'Original file'
+end
+
+Then /^the feature files contents should be viewable$/ do
+  response.should contain File.read(@feature.path)
+end
