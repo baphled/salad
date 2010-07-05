@@ -50,11 +50,11 @@ $(document).ready(function() {
   });
   
   // Plugin intialisation
-  //hover states on the static widgets
-  $('ul.icons li, button.button').button({ option: 'text' });
   $('#myTabs').tabs();
   $('ul.accordion').accordion(accOpts);
+  // @todo Refactor initalisation so that they are enabled regardless of the current DOM
+  $('ul.icons li, button.button').button({ option: 'text' });
   $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
-  $('div#lists ul').customSortable();
+  
   $('a[title]').tipsy({fade: true});
 });

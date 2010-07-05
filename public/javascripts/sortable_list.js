@@ -5,21 +5,24 @@
  *
  */
 $(document).ready(function() {
-  // Toggle our position handler
-  $('.order_icon').live("click",function() {
+  // @todo Refactor to make an actual plugin
+  $.fn.customSortable = function() {
+    // if no handlers are rendered we don't need an order button
+
+    // Toggle our position handler
+    $('button.order_icon').live("click",function() {
       $('#lists').toggleClass('active');
       $(this).toggleClass('active');
       $('.handler').toggle();
-  });
-
-  $.fn.customSortable = function() {
-    // if no handlers are rendered we don't need an order button
+    });
+    
     if ($('span.handler').size() > 1) {
       $button = $("<button>")
         .append('Order')
         .addClass('order_icon ui-state-default ui-priority-primary ui-corner-all')
         .attr('id', 'button')
-        .attr('role', 'button');
+        .attr('role', 'button')
+        .button({option: "text"});
 
       $('div#list-head').prepend($button);
     };
@@ -40,4 +43,5 @@ $(document).ready(function() {
       }
     });
   }
+  $('div#lists ul').customSortable();
 });
