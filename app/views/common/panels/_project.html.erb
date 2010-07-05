@@ -2,15 +2,15 @@
   <ul class="icons">
     <% if project.location.blank? == false and project.features_to_import? %>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon ui-icon-plus'/>", import_project_path(project), {:title => 'Allows you to import features singularly', :id => 'import'} %>
+      <%= link_to "Import a feature", import_project_path(project), {:title => 'Allows you to import features singularly', :id => 'import'} %>
     </li>
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-circle-plus'/>", import_all_project_path(project), {:title => 'Allows you to import all project features in one easy step', :id => 'import-all'} %>
+      <%= link_to "Import all", import_all_project_path(project), {:title => 'Allows you to import all project features in one easy step', :id => 'import-all'} %>
     </li>
     <% end %>
 
     <li class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-pencil'/>", edit_project_path(project), {:title => 'Allows you to edit a projects information', :id => 'edit'} %>
+      <%= link_to "Edit", edit_project_path(project), {:title => 'Allows you to edit a projects information', :id => 'edit'} %>
     </li>
   </ul>
 </span>
