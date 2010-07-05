@@ -38,9 +38,10 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
      Given we create a feature with a path
      When the feature is viewed
      And I click "span#panel"
-     When we click on the "Merge a features changes with the system" link
-     Then there should be a "update" link
-     And I hover over the "update-feature" link
+     Then the panel icons should be visible
+     When I am on "system merge"
+     Then the system merge page should be displayed
+     When I hover over the "update-feature" link
      Then a tooltip should be visible
      
    Scenario Outline: When hovering over the project panel links displays a tooltip
