@@ -180,6 +180,14 @@ When /^focus is off the tag input$/ do
   selenium.mouse_over("css=div#header")
 end
 
+Then /^it should "([^\"]*)" have an order button$/ do |have_or_have_not|
+  if have_or_have_not == 'does not'
+    response.should_not have_selector "css=button#button"
+  else
+    selenium.wait_for_element "css=button#button",  :timeout_in_seconds => 10
+  end
+end
+
 Then /^select the "([^\"]*)" tab$/ do |tab|
   click_link tab
 end
