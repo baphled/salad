@@ -1,2 +1,5 @@
 <b>Exported feature: </b><br/>
-	<%= text_area_tag('export',@feature.export,{:size=> "50x20", :class =>"ui-widget ui-widget-content ui-corner-all"}) %>
+	<pre><code><%=h @feature.export %></code></pre>
+	<form action="<%= feature_path(@feature, :format => 'feature')%>">
+		<button class="button">Download</button>		
+	</form>
