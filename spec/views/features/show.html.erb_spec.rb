@@ -29,7 +29,7 @@ describe "/features/show.html.erb" do
         end
       end
     end
-    
+
     it "should display an export feature link" do
       response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
     end
