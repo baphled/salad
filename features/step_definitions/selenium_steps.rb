@@ -215,3 +215,7 @@ end
 Then /^a flash message should be displayed via AJAX$/ do
   selenium.wait_for_element("css=div.flash", :timeout_in_seconds => 10)
 end
+
+Then /^a dialog box should appear$/ do
+  selenium.wait_for_visible("css=div.dialog", :timeout_in_seconds => 10)
+end
