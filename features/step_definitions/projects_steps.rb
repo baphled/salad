@@ -435,7 +435,7 @@ Then /^there should be no features to import$/ do
 end
 
 Then /^a feature with a path should display it$/ do
-  response.should have_selector :span do |content|
+  response.should have_selector :b do |content|
     content.should contain 'Path:'
   end
 end
