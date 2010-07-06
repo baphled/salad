@@ -1,2 +1,5 @@
 <b>Title: </b><%= feature.title %><br/>
 <b>Created at: </b><%= feature.creation_date %><br/>
+<% if not feature.path.nil? %>
+<b>Path: </b><%= feature.path %>
+<% end %>
