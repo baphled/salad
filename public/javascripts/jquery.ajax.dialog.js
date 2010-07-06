@@ -12,27 +12,32 @@ $(function() {
   
   // bind click event to related property on page
   $('a#file-feature').live('click', function() {
-    // make ajax call
-    $.ajax({
-      url: $('a#file-feature').attr('href'),
-      type: 'GET',
-      dataType: 'html',
-      complete: function(xhr, textStatus) {
-      },
-      success: function(data, textStatus, xhr) {
-        // populate dialog box with content
-        $dialog
-          .append(data)
-          .dialog({
-            title: 'Source feature content',
-            width: '75%',
-            buttons: { "Ok": function() { $(this).dialog("close"); } }
-          });
-      },
-      error: function(xhr, textStatus, errorThrown) {
-        // display flash error
-      }
-    });
+    // check to see if we already have the dialog element on the page
+    if ($('div pre').size() == 0) {
+      // make ajax call
+      $.ajax({
+        url: $('a#file-feature').attr('href'),
+        type: 'GET',
+        dataType: 'html',
+        complete: function(xhr, textStatus) {
+        },
+        success: function(data, textStatus, xhr) {
+          // populate dialog box with content
+          $dialog
+            .append(data)
+            .dialog({
+              title: 'Source feature content',
+              width: '75%',
+              buttons: { "Ok": function() { $(this).dialog("close"); } }
+            });
+        },
+        error: function(xhr, textStatus, errorThrown) {
+          // display flash error
+        }
+      });      
+    } else {
+      $('div.dialog').dialog('open');
+    }
     
     return false;
   })
