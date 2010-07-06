@@ -150,7 +150,8 @@ Then /^there should be an edit link$/ do
 end
 
 When /^click the features path$/ do
-  click_link 'Original file'
+  save_and_open_page
+  click_link @feature.path
 end
 
 Then /^the feature files contents should be viewable$/ do
