@@ -110,7 +110,7 @@ describe "common/_sortable_list.html.erb" do
     before(:each) do
       @features = [mock_model(Feature,:path => "#{RAILS_ROOT}/features/tag_cloud.feature").as_null_object]
       @features.stub(:total_pages).and_return 1
-      render :partial => '/common/sortable_list', :locals => {:models => @features,  :item_name => 'feature', :assoc => 'story', :order => true}
+      render :partial => '/common/sortable_list', :locals => {:models => @features, :item_name => 'feature', :assoc => 'story', :order => true}
     end
 
     it "should display a features path" do
@@ -120,10 +120,7 @@ describe "common/_sortable_list.html.erb" do
     end
 
     it "will display the path location" do
-      response.should have_selector :b do |content|
-        content.should contain "Path: #{RAILS_ROOT}/features/tag_cloud.feature"
-      end
+      response.should contain "Path: #{RAILS_ROOT}/features/tag_cloud.feature"
     end
   end
-
 end
