@@ -441,7 +441,7 @@ Then /^a feature with a path should display it$/ do
 end
 
 Then /^the path location should be a link$/ do
-  response.should have_selector :b do |content|
-    content.should have_selector :a, attribute = {:href => "#{RAILS_ROOT}/features/tag_cloud.feature"}
+  response.should have_selector :a do |content|
+    content.should contain 'view source file'
   end
 end
