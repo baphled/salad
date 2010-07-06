@@ -31,8 +31,8 @@ Then /^the "([^\"]*)" will be selected$/ do |menu_item|
   response.should have_selector :li, attribute = {:class => 'selected', :id => menu_item}
 end
 
-Then /^a "([^\"]*)" button should be displayed$/ do |arg1|
+Then /^a "([^\"]*)" button should be displayed$/ do |name|
   response.should have_selector :button do |content|
-    content.should contain 'Download'
+    content.should contain name
   end
 end

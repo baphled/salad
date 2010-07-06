@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/features/export.html.erb" do
   before(:each) do
-    @feature = mock_model(Feature).as_new_record.as_null_object
+    @feature = Feature.first
     assigns[:feature] = @feature
     render
   end
@@ -12,8 +12,10 @@ describe "/features/export.html.erb" do
       response.should contain "Exported feature:"
     end
     
-    it "has a download link" do
-      response.should have_selector :button, :contents => 'Download'
+    it "has a download button" do
+      response.should have_selector :button do |content|
+        content.should contain 'Download'
+      end
     end
   end
 end
