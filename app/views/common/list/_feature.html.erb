@@ -1,5 +1,5 @@
 <b>Title: </b><%= feature.title %><br/>
 <b>Created at: </b><%= feature.creation_date %><br/>
 <% if not feature.path.nil? %>
-<b>Path: </b><%= feature.path %>
+<b>Path: </b><%= link_to "#{feature.path}", file_feature_path(feature), {:title => 'Save the original feature', :id => 'file-feature'} %>
 <% end %>
