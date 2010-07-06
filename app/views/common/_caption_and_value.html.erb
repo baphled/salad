@@ -1,4 +1,8 @@
 <% if not attribute.blank? && model.respond_to?(attribute)%>
 <b><%= attribute.capitalize.gsub("_", " ") %>: </b>
+<% if attribute == 'path' && model.class.to_s == 'Feature'%>
+<span><%= link_to "#{model.send(attribute.to_sym)}", file_feature_path(model), {:title => 'Save the original feature', :id => 'file-feature'} %></span><br/>
+<% else %>
 <span><%= model.send(attribute.to_sym) %></span><br/>
+<% end %>
 <% end %>
