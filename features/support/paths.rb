@@ -10,6 +10,8 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
+    when /project show/
+      project_path(@project)
     when /export feature/
       export_feature_path(@feature)
     when /import project/

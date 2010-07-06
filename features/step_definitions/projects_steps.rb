@@ -429,3 +429,9 @@ end
 Then /^there should be no features to import$/ do
   Feature.imports_found("#{RAILS_ROOT}").should be_nil
 end
+
+Then /^a feature with a path should display it$/ do
+  response.should have_selector :span do |content|
+    content.should contain 'Path:'
+  end
+end
