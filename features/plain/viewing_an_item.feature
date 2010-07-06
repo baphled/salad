@@ -3,13 +3,7 @@ Feature: Viewing an item
   As a user
   I want to see a consistent layout
 
-  Scenario: Viewing a project should display a list of features
-    Given the project has features
-    And one of the projects features has a path
-    When I am on "project show" page
-    Then a feature with a path should display it
-
-  Scenario: The features path should be clickable
+  Scenario: There should be a link to a features source file if it has a path
     Given the project has features
     And one of the projects features has a path
     When I am on "project show" page
