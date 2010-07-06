@@ -90,6 +90,10 @@ Given /^the "([^\"]*)" has "([^\"]*)"$/ do |model, assoc|
   end
 end
 
+Given /^one of the projects features has a path$/ do
+  @project.features.first.update_attribute(:path, "#{RAILS_ROOT}/features/tag_cloud.feature")
+end
+
 When /^I create new a feature$/ do
   click_link 'New feature'
 end
