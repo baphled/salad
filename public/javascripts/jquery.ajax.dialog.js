@@ -27,8 +27,10 @@ $(function() {
             .append(data)
             .dialog({
               title: 'Source feature content',
-              width: '75%',
-              buttons: { "Ok": function() { $(this).dialog("close"); } }
+              width: '95%',
+              height: 500,
+              buttons: { "Ok": function() { $(this).dialog("close"); } },
+              modal: true
             });
         },
         error: function(xhr, textStatus, errorThrown) {
