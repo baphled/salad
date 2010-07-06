@@ -371,5 +371,9 @@ describe FeaturesController do
       File.should_receive :read
       get :file, {:feature => @feature}
     end
+    
+    context "Making call via AJAX" do
+      it "should return the feature files content in HTML format"
+    end
   end
 end

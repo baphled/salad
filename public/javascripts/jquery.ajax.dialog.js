@@ -1,0 +1,39 @@
+/**
+* This plugin makes an ajax call to the backend requesting a specific piece of data from an object
+* For the moment, we'll primarily be using this to retrieve Salad's feature content but we should be able
+* to extend it to pull in any time of data and display it in a dialog box.
+*
+* @author Yomi Colledge
+*
+**/
+$(function() {
+  // create dialog div
+  var $dialog = $('<div>').addClass('dialog path');
+  
+  // bind click event to related property on page
+  $('a#file-feature').live('click', function() {
+    // make ajax call
+    $.ajax({
+      url: $('a#file-feature').attr('href'),
+      type: 'GET',
+      dataType: 'html',
+      complete: function(xhr, textStatus) {
+      },
+      success: function(data, textStatus, xhr) {
+        // populate dialog box with content
+        $dialog
+          .append(data)
+          .dialog({
+            title: 'Source feature content',
+            width: '75%',
+            buttons: { "Ok": function() { $(this).dialog("close"); } }
+          });
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        // display flash error
+      }
+    });
+    
+    return false;
+  })
+});
