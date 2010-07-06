@@ -150,7 +150,6 @@ Then /^there should be an edit link$/ do
 end
 
 When /^click the features path$/ do
-  save_and_open_page
   click_link @feature.path
 end
 
