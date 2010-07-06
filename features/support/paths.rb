@@ -11,7 +11,7 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /export feature/
-      '/features/1/export'
+      export_feature_path(@feature)
     when /import project/
       import_project_path(@project)
     when /feature changes/

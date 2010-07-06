@@ -36,3 +36,11 @@ Feature: A user needs to be able to export created features into cucumber featur
     Given there is a feature
     When we view the feature with the "feature" format
     Then the feature should be displayed
+    
+  Scenario: Saving the exported feature
+    Given there is a feature
+    When I view the "export feature" path
+    Then a "Download" button should be displayed
+  
+  
+  
