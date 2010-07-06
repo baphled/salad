@@ -35,7 +35,7 @@ When /^I press order$/ do
   selenium.click "css=button.order_icon"
 end
 
-When /^I hover over the "([^\"]*)" link$/ do |link|
+When /^I hover over the "([^\"]*)" (?:link|button)$/ do |link|
   selenium.mouse_over("#{link}")
 end
 
