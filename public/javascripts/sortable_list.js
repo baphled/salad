@@ -19,7 +19,7 @@ $(document).ready(function() {
     if ($('span.handler').size() > 1) {
       $button = $("<button>")
         .append('Order')
-        .addClass('order_icon ui-state-default ui-priority-primary ui-corner-all')
+        .addClass('order_icon')
         .attr('id', 'button')
         .attr('role', 'button')
         .button({option: "text"});
