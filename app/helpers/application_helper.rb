@@ -14,4 +14,14 @@ module ApplicationHelper
   def display_item_title item
     item.class.to_s.eql?('Story')? item.scenario : item.title
   end
+
+  def render_form_js_includes controller, validator
+    controller.content_for :js_head do
+      controller.javascript_include_tag( "jquery-validate",
+        "/javascripts/validations/#{validator}",
+        "jquery.formtastic.tooltips",
+        "form",
+        "jquery.hover.dialog")
+    end
+  end
 end
