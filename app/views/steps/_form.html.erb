@@ -1,14 +1,4 @@
-<%= render :partial => "/common/hover_dialog" %>
-
-<% content_for :js_head do %>
-  <%= javascript_include_tag "jquery-validate" %>
-  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
-  <%= javascript_include_tag "form" %>
-  <%= javascript_include_tag "jquery.hover.dialog" %>
-  <%= javascript_include_tag "item_hover" %>
-  <%= javascript_include_tag "/javascripts/validations/step" %>
-<% end %>
-
+<%= render_form_js_includes self, "step" %>
 <%- semantic_form_for @step do |form| -%>
   <% form.inputs :name => form_title(@step, "Step") do %>
     <%= error_messages_for :step %>

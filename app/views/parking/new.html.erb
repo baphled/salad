@@ -1,12 +1,4 @@
-<% content_for :js_head do %>
-  <%= javascript_include_tag "jquery-validate" %>
-  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
-  <%= javascript_include_tag "form" %>
-  <%= javascript_include_tag "jquery.hover.dialog" %>
-  <%= javascript_include_tag "item_hover" %>
-  <%= javascript_include_tag "/javascripts/validations/resource" %>
-<% end %>
-
+<%= render_form_js_includes self, "resource" %>
 <%- semantic_form_for @resource, :url => {:action => "create"} do |form| %>
   <% form.inputs :name => form_title(@resource, "Resource") do %>
     <%= error_messages_for :resource %>

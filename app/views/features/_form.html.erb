@@ -1,11 +1,4 @@
-<% content_for :js_head do %>
-  <%= javascript_include_tag "jquery-validate" %>
-  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
-  <%= javascript_include_tag "form" %>
-  <%= javascript_include_tag "jquery.hover.dialog" %>
-  <%= javascript_include_tag "/javascripts/validations/feature" %>
-<% end %>
-
+<%= render_form_js_includes self, "feature" %>
 <%- semantic_form_for @feature do |form| -%>
   <% form.inputs :name => form_title(@feature, "Feature") do %>
     <%= error_messages_for :feature %>
