@@ -18,18 +18,34 @@ $(document).ready(function() {
       $('#wrapper').html($(projectInfo));
     
     }
-    
+
     $.post($(this).attr('action'), postData, function(data) {
-      if ($form.hasClass('hidden') == false) {
-        // here is where we make our necessary form response for all our AJAX based responses
-        $('#wrapper').append($form.hide());
-        $('<a class="display_form" href="javascript://">view form</a>').insertBefore('#wrapper form')
-          .addClass('ui-widget ui-widget-content ui-corner-all');      
-      }
-      // setup our generic list events
-      $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-      $('form').hoverDialog();
-      $('a[title]').tipsy({fade: true});
+      var files = [
+          '/javascripts/autoScroller.js',
+          '/javascripts/scrollingHoverable.js',
+          '/javascripts/sortable_list.js',
+          '/javascripts/pagination.js'
+      ];
+
+      $.include(files, function() {
+        if ($form.hasClass('hidden') == false) {
+          // here is where we make our necessary form response for all our AJAX based responses
+          $('#wrapper').append($form.hide());
+          $('<a class="display_form" href="javascript://">view form</a>').insertBefore('#wrapper form')
+            .addClass('ui-widget ui-widget-content ui-corner-all');
+        }
+        // setup our generic list events
+        $('ul.icons li .handler').button('option', 'icon');
+        $('button.order_icon button.button').button({ option: 'text' });
+        $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
+        $('form').hoverDialog();
+        
+        if ($('div=sidebar >ul').size() >= 1) {
+          $("div.list_item").scrollingHoverable({stopOnHover: true});
+        }
+        $('a[title]').tipsy({fade: true});
+      });
+      
     }, "script");
     return false;
   });
