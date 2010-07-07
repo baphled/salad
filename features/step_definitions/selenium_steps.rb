@@ -223,3 +223,7 @@ end
 Then /^a dialog box should appear$/ do
   selenium.wait_for_visible("css=div.dialog", :timeout_in_seconds => 10)
 end
+
+Then /^the submit button should be disabled$/ do
+  selenium.wait_for_element("css=button.ui-button-disabled", :timeout_in_seconds => 10)
+end

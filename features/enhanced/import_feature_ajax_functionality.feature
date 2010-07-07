@@ -50,3 +50,9 @@ Feature: Import feature ajax functionality
     And I click "button.button"
     Then the flash message "was created" should be displayed
 
+  Scenario: Importing a feature should disable the submit button on sumbission
+    Given there is a project
+    And the project has a project path
+    When I am on the "import project" page
+    When I import "button.button"
+    Then the submit button should be disabled
