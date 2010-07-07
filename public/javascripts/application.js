@@ -53,7 +53,15 @@ $(document).ready(function() {
   $('#myTabs').tabs();
   $('ul.accordion').accordion(accOpts);
   // @todo Refactor initalisation so that they are enabled regardless of the current DOM
-  $('ul.icons li, button.button').button({ option: 'text' });
-  $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
-  $('a[title], button[title]').tipsy({fade: true});
+
+  function instantiateOrderedListEvents() {
+    if ($('div#lists ul').size()) {
+      $('div#lists ul').customSortable();
+    }
+    $('ul.icons li, button.button').button({option: 'text'});
+    $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
+    $('a[title], button[title]').tipsy({fade: true});
+  }
+
+  instantiateOrderedListEvents();
 });

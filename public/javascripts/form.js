@@ -38,8 +38,9 @@ $(document).ready(function() {
         $('ul.icons li .handler').button('option', 'icon');
         $('ul.icons li, button.button').button({ option: 'text' });
         $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-        $('form').hoverDialog();
         $('div#lists ul').customSortable();
+
+        $('form').hoverDialog();
         if ($('div=sidebar >ul').size() >= 1) {
           $("div.list_item").scrollingHoverable({stopOnHover: true});
         }
