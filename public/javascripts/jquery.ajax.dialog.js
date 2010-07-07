@@ -18,13 +18,15 @@ $(function() {
       $.ajax({
         url: $('a#file-feature').attr('href'),
         type: 'GET',
-        dataType: 'html',
+        dataType: 'json',
         complete: function(xhr, textStatus) {
         },
         success: function(data, textStatus, xhr) {
           // populate dialog box with content
+          var $wrapper = $('<pre>').append($('<code>'));
+          
           $dialog
-            .append(data)
+            .append($wrapper.append(data))
             .dialog({
               title: 'Source feature content',
               width: '95%',

@@ -178,7 +178,7 @@ class FeaturesController < ApplicationController
     @file = File.read(@feature.path)
     respond_to do |format|
       format.html
-      format.js { render :html => @file }
+      format.js { render :json => @file.to_json }
     end
   end
   
