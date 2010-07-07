@@ -60,6 +60,10 @@ When /^I submit the form$/ do
   selenium.click "css=button.button"
 end
 
+When /^I use the features path link$/ do
+  click_link "#{@feature.path}"
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1")
 end
