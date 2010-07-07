@@ -9,6 +9,7 @@ $(document).ready(function() {
   $.fn.customSortable = function() {
     // if no handlers are rendered we don't need an order button
 
+    $('button.order_icon').die();
     // Toggle our position handler
     $('button.order_icon').live("click",function() {
       $('#lists').toggleClass('active');
@@ -43,5 +44,5 @@ $(document).ready(function() {
       }
     });
   }
-  $('div#lists ul').customSortable();
+//  $('div#lists ul').customSortable();
 });
