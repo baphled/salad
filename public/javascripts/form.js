@@ -36,10 +36,10 @@ $(document).ready(function() {
         }
         // setup our generic list events
         $('ul.icons li .handler').button('option', 'icon');
-        $('button.order_icon button.button').button({ option: 'text' });
+        $('ul.icons li, button.button').button({ option: 'text' });
         $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
         $('form').hoverDialog();
-        
+        $('div#lists ul').customSortable();
         if ($('div=sidebar >ul').size() >= 1) {
           $("div.list_item").scrollingHoverable({stopOnHover: true});
         }
