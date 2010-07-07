@@ -4,9 +4,11 @@
 <% end %>
 
 <% content_for :js_head do %>
-	<%= javascript_include_tag "form" %>
-	<%= javascript_include_tag "jquery.hover.dialog" %>
-	<%= javascript_include_tag "item_hover" %>
+  <%= javascript_include_tag "jquery-validate" %>
+  <%= javascript_include_tag "jquery.formtastic.tooltips" %>
+  <%= javascript_include_tag "form" %>
+  <%= javascript_include_tag "jquery.hover.dialog" %>
+  <%= javascript_include_tag "item_hover" %>
   <%= javascript_include_tag "/javascripts/validations/story" %>
   <%= javascript_include_tag "add_step" %>
 <% end %>
