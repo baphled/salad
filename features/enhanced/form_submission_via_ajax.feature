@@ -30,9 +30,9 @@ Feature: Form submission via AJAX
     | new project     | project   | fill in     |
     | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
@@ -47,11 +47,11 @@ Feature: Form submission via AJAX
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
 
   Scenario Outline: The items panel should be visible
     Given there is a <item>
@@ -63,11 +63,11 @@ Feature: Form submission via AJAX
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
@@ -83,11 +83,11 @@ Feature: Form submission via AJAX
 Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
 
   # @TODO Add more pagination related scenarios later
   Scenario Outline: We should still be able to use the pagination
@@ -100,11 +100,11 @@ Examples:
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
@@ -119,11 +119,11 @@ Examples:
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
@@ -137,11 +137,11 @@ Examples:
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
@@ -156,11 +156,11 @@ Examples:
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
-    | update feature  | feature   | update      |
+    | edit feature    | feature   | update      |
     | new story       | story     | fill in     |
-    | update story    | story     | update      |
+    | edit story      | story     | update      |
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
