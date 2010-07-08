@@ -139,7 +139,7 @@ Then /^there should be a "([^\"]*)" link$/ do |link|
 end
 
 Then /^I should see a hover dialog box$/ do
-  selenium.wait_for_visible("css=div.hover")
+  selenium.wait_for_visible("css=div.hover", :timeout_in_seconds => 10)
 end
 
 Then /^I should not see a hover dialog box$/ do
