@@ -36,23 +36,6 @@ Feature: Form submission via AJAX
     | new step        | step      | fill in     |
     | edit step       | step      | update      |
 
-  Scenario Outline: The item hover feature should still function
-    Given there is a <item>
-    When I am on the <page> page
-    And the <item> is filled in
-    Then there should be an AJAX call
-    When I hover over the tag cloud
-    Then the hover dialog should be displayed
-
-  Examples:
-    | page            | item      | form action |
-    | new project     | project   | fill in     |
-    | edit project    | project   | update      |
-    | new feature     | feature   | fill in     |
-    | edit feature    | feature   | update      |
-    | new story       | story     | fill in     |
-    | edit story      | story     | update      |
-
   Scenario Outline: The items panel should be visible
     Given there is a <item>
     When I am on the <page> page
