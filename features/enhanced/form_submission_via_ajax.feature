@@ -19,19 +19,16 @@ Feature: Form submission via AJAX
 
   Scenario Outline: After editing a item the hover dialog should still function
     Given there is a <item>
-    And the <item> can select tags
     When I am on "<page>" page
     And "<form action>" the "<item>" form
     Then I submit the form
-    And there should be an AJAX request
-    And the form should be hidden
-    When I click the "view form" link
-    Then the hover dialog should be displayed
+    When I click "button.display_form"
+    Then there should be an AJAX request
 
   Examples:
     | page            | item      | form action |
     | new project     | project   | fill in     |
-    | update project  | project   | update      |
+    | edit project    | project   | update      |
     | new feature     | feature   | fill in     |
     | update feature  | feature   | update      |
     | new story       | story     | fill in     |
