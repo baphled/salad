@@ -17,6 +17,9 @@ end
 When /^the step is viewed$/ do
   visit step_path @step
 end
+When /^I fill in the step form"$/ do
+  When %{we fill in the step title with 'Given we have a new step'}
+end
 
 Then /^the new step form should be displayed$/ do
   response.should have_selector :form

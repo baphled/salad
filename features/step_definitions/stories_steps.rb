@@ -53,6 +53,10 @@ When /^the story is viewed$/ do
   visit story_path @story
 end
 
+When /^I fill in the story form"$/ do
+  When %{we fill in the story scenario with 'this is our stories scenario'}
+end
+
 Then /^there should be a list of stories$/ do
   response.should have_selector(:div) do |content|
     content.should have_selector(:ul) do |list|
