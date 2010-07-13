@@ -111,3 +111,38 @@ Feature: All our forms need to be passed to the server via AJAX
     | feature   | story   | edit feature |
     | story     | step    | edit story   |
     
+  Scenario Outline: The ordering button should not be on any of the model index pages
+    Given there is a <model>
+    When I view the "<page name>" path
+    And fill in the <model> form
+    And submit the form
+    Then it should "<have order button>" have an order button
+
+  Examples: List of pages that use the list layout
+    | model   | page name    | have order button |
+    | project | new project  | does not          |
+    | feature | new feature  | does not          |
+    | story   | new story    | does not          |
+    | step    | new step     | does not          |
+    | project | edit project | does              |
+    | feature | edit feature | does              |
+    | story   | edit story   | does              |
+    | step    | edit step    | does not          |
+
+  Scenario Outline: The items summary information should always be displayed
+    Given there is a <model>
+    When I view the "<page name>" path
+    And fill in the <model> form
+    And submit the form
+    Then it should display all the <model> information
+      
+  Examples: List of actions that should render the information and summary panel
+    | model   | page name    |
+    | project | new project  |
+    | project | edit project |
+    | feature | new feature  |
+    | feature | edit feature |
+    | story   | new story    |
+    | story   | edit story   |
+    | step    | new step     |
+    | step    | edit step    |
