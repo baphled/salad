@@ -4,6 +4,7 @@ Feature: AJAX based Sidebar functionality
   I want to be able to submit a form and have the side bar along with its hover items available to the user
 
   Scenario Outline: Displaying the side bar after form submission
+    Given there is a <model>
     When I view the "<page name>" path
     Then the side bar should not be rendered
     And submit the form
@@ -11,8 +12,8 @@ Feature: AJAX based Sidebar functionality
     And the sidebar will be rendered via AJAX
     
   Examples: All pages that should have render the sidebar after an AJAX based form submission
-     | page name    |
-     | edit project |
-     | edit feature |
-     | edit story   |
-     | edit step    |
+     | model   | page name    |
+     | project | edit project |
+     | feature | edit feature |
+     | story   | edit story   |
+     | step    | edit step    |
