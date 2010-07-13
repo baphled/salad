@@ -81,3 +81,33 @@ Feature: All our forms need to be passed to the server via AJAX
     Then submit the form
     And the form should be hidden
     And a flash message "was updated" should be dynamically displayed
+    
+  Scenario Outline: Displaying the side bar after form submission
+    Given there is a <model>
+    When I view the "<page name>" path
+    Then the side bar should not be rendered
+    And submit the form
+    And there should be an AJAX request
+    And the sidebar will be rendered via AJAX
+
+  Examples: All pages that should have render the sidebar after an AJAX based form submission
+    | model   | page name    |
+    | project | edit project |
+    | feature | edit feature |
+    | story   | edit story   |
+    | step    | edit step    |
+
+  Scenario Outline: When submitting a form the hover functionality should still be available
+     Given the "<page name>" has "<assoc item>"
+     When I am on the <page>
+     And I submit the form
+     And the <assoc> page is loaded
+     And the first <assoc> is hovered over
+     Then the <assoc>'s information will be display in the sidebar
+
+  Examples: List of forms that should display flash messages after submitting a form
+    | page name | assoc   | page         |
+    | project   | feature | edit project |
+    | feature   | story   | edit feature |
+    | story     | step    | edit story   |
+    
