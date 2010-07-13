@@ -28,22 +28,23 @@ Feature: Order items
       And the items should be reordered
       
     Scenario Outline: The ordering button should not be on any of the model index pages
+      Given there is a <model>
       When I view the "<page name>" path
       Then it should "<have order button>" have an order button
       
     Examples: List of pages that use the list layout
-      | page name         | have order button |
-      | a project         | does              |
-      | a feature         | does              |
-      | a story           | does              |
-      | a step            | does not          |
-      | projects features | does              |
-      | features stories  | does              |
-      | stories steps     | does              |
-      | all projects      | does not          |
-      | all features      | does not          |
-      | all stories       | does not          |
-      | all steps         | does not          |
+      | model   | page name         | have order button |
+      | project | a project         | does              |
+      | feature | a feature         | does              |
+      | story   | a story           | does              |
+      | step    | a step            | does not          |
+      | project | projects features | does              |
+      | feature | features stories  | does              |
+      | story   | stories steps     | does              |
+      | project | all projects      | does not          |
+      | feature | all features      | does not          |
+      | story   | all stories       | does not          |
+      | step    | all steps         | does not          |
 
     Scenario: Should not be able to order items if there is only one item
       Given the project has one feature
