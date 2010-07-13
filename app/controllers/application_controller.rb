@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 	end
 
   def default_or_defined
-    ("new, create, edit, import, export, changes, merge system_merge, tickets, file".include? action_name)? 'no_sidebar' : 'application'
+    ("new, create, edit, import, export, changes, merge system_merge, tickets, source".include? action_name)? 'no_sidebar' : 'application'
   end
 end
