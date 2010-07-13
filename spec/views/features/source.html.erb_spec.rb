@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "/features/file.html.erb" do
+describe "/features/source.html.erb" do
   before(:each) do
     @file = File.read("#{RAILS_ROOT}/features/plain/tag_cloud.feature")
     assigns[:file] = @file
