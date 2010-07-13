@@ -13,53 +13,53 @@ module NavigationHelpers
     when /project show/
       project_path(@project)
     when /export feature/
-      export_feature_path(@feature)
+      export_feature_path @feature
     when /import project/
       import_project_path(@project)
     when /feature changes/
-      '/features/1/changes'
+      changes_feature_path @feature
     when /feature merge/
-      '/features/1/merge'
+      merge_feature_path @feature
     when /system merge/
-      '/features/1/system_merge'
+      system_merge_feature_path @feature
     when /new project/
-      'projects/new'
+      new_project_path
     when /edit project/
       edit_project_path @project
     when /new feature/
-      'features/new'
+      new_feature_path
     when /edit feature/
-      'features/1/edit'
+      edit_feature_path @feature
     when /new story/
-      'stories/new'
+      new_story_path
     when /edit story/
-      'stories/1/edit'
+      edit_story_path @story
     when /new step/
-      'steps/new'
+      new_step_path
     when /edit step/
-      'steps/1/edit'
+      edit_step_path @step
     when /projects features/
-     'projects/2/features'
+      features_project_path @project
     when /features stories/
-     'features/1/stories'
+      stories_feature_path @feature
     when /stories steps/ 
-     'stories/1/steps'
+      steps_story_path @story
     when /a project/
-      '/projects/2'
+      project_path @project
     when /a feature/
-      'features/1'
+      feature_path @feature
     when /a story/
-      'stories/1'
+      story_path @story
     when /a step/
-      'steps/1'
+      step_path @step
     when /all projects/
-      '/projects'
+      projects_path
     when /all features/
-      '/features'
+      features_path
     when /all stories/
-      '/stories'
+      stories_path
     when /all steps/
-      '/steps'
+      steps_path
     
     
     
