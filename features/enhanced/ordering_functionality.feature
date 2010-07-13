@@ -50,6 +50,3 @@ Feature: Order items
       Given the project has one feature
       When I visit the projects features
       Then it should "does not" have an order button
-    
-    
-    
