@@ -5,8 +5,8 @@ class Resource < ActiveRecord::Base
   validates_presence_of     :project
   validates_uniqueness_of   :name
   
-  validates_length_of       :name,:minimum => 3, :too_short => @@error_message
-  validates_length_of       :project,:minimum => 3, :too_short => @@error_message
+  validates_length_of       :name,:minimum => 3, :too_short => :too_short
+  validates_length_of       :project,:minimum => 3, :too_short => :too_short
 
   validate                  :valid_lighthouse_account?, :if => :name_not_empty?
   validate                  :valid_lighthouse_project?, :if => :project_id_not_empty?
