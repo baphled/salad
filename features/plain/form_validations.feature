@@ -1,13 +1,4 @@
-#
-# inspired by Ryan Bates screencast
-#
-/*
-* I can comment this way
-*/
-# and this way
-// and this way
 Feature: Validation of forms
-  # Main goal of this project
   In order to help the user create valid input
   As an user
   I want to be alert on invalid data input

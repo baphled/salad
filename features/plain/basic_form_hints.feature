@@ -1,13 +1,4 @@
-#
-# inspired by Ryan Bates screencast
-#
-/*
-* I can comment this way
-*/
-# and this way
-// and this way
 Feature: All forms input elements should have hints to help the user fill in a form correctly
-    # Main goal of this project
     In order to help users submit valid form input
     As an user
     I want to see hints to give me clues as to what data needs to go with what field
