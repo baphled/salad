@@ -15,6 +15,10 @@ When /^fill in the feature form$/ do
   When %{we fill in the feature i_want with 'the best project ever'}
 end
 
+When /^I fill in the feature form$/ do
+  fill_feature_form
+end
+
 When /^fill in the story form$/ do
   When %{we fill in the story scenario with 'this is our stories scenario'}
 end
