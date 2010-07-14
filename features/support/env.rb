@@ -59,13 +59,13 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 
 module FormHelpers
 
-  def fill_feature_form(opts = nil)
+  def fill_feature_form(opts = {})
     values = {
       :title => 'Logging in',
       :in_order => 'to create the best app',
       :as_a => 'user',
       :i_want => 'the best project ever'}
-    parmas = values.merge(opts) unless opts.nil?
+    parmas = values.merge(opts)
     parmas.each { |param, value| When %{we fill in the feature #{param} with '#{value}'} }
   end
 end
