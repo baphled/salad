@@ -64,7 +64,11 @@ module FormHelpers
       when /feature/
         values = {:title => 'Logging in', :in_order => 'to create the best app', :as_a => 'user', :i_want => 'the best project ever'}
       when /project/
-        values = {:title => 'A project', :aim => 'An aim', :description => 'A description'}
+        values = {:title => 'A project', :aim => 'An aim', :description => 'A description', :location => "#{RAILS_ROOT}"}
+      when /story/
+        values = {:scenario => 'this is our stories scenario'}
+      when /step/
+        values = {:title => 'Given we have a new step'}
       else
         raise "Can't find the form #{form_name}.\n" +
           "Now, go and add a mapping in #{__FILE__}"

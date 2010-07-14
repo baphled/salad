@@ -13,7 +13,7 @@ Feature: Stories will be needed to populate our projects features
     Given I can view the features page
     And there are features
     When I select first feature new story link
-    And we fill in the story scenario with 'this is our stories scenario'
+    And I fill in the story form
     Then submit the form
     And the story information should be saved
     And I should be redirected to the new story

@@ -12,7 +12,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     Given I can view the steps page
     When I click new steps
     Then the new step form should be displayed
-    When we fill in the step title with 'Given we have a new step'
+    When I fill in the step form
     Then submit the form
     And the step should be saved as 'Given we have a new step'
     And a flash message 'Step: Given we have a new step, was created' should be displayed
@@ -21,7 +21,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     Given I can view the steps page
     When I click new steps
     Then the new step form should be displayed
-    And we fill in the step title with 'Given we have a new step'
+    When I fill in the step form
     Then submit the form
     When I click new steps
     Then the new step form should be displayed
@@ -33,7 +33,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     Given I can view the steps page
     When I click new steps
     Then the new step form should be displayed
-    When we fill in the step title with 'Given we have a new step'
+    When I fill in the step form
     And I check 'my first story'
     Then submit the form
 
@@ -41,7 +41,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     Given I can view the stories page
     And there are stories
     When I choose 'New Step' link
-    And we fill in the step title with 'Given we have a new step'
+    When I fill in the step form
     Then submit the form
     And the step should be saved as 'Given we have a new step'
     And a flash message 'Step: Given we have a new step, was created' should be displayed
