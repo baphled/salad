@@ -141,12 +141,6 @@ When /^I visit the "([^\"]*)" "([^\"]*)"$/ do |model, assoc|
   end
 end
 
-When /^I fill in the project form"$/ do
-  When %{we fill in the project title with 'A project'}
-  When %{we fill in the project aim with 'An aim'}
-  When %{we fill in the project description with 'A description'}
-end
-
 Then /^submit the form$/ do
   click_button 'save'
 end

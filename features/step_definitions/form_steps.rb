@@ -15,12 +15,12 @@ When /^fill in the feature form$/ do
   When %{we fill in the feature i_want with 'the best project ever'}
 end
 
-When /^I fill in the feature form$/ do
-  fill_feature_form
+When /^I fill in the ([^\"]*) form$/ do |model|
+  fill_form model
 end
 
-When /^I don't fill in the features "([^\"]*)"$/ do |opt|
-  fill_feature_form opt.to_sym => ''
+When /^I don't fill in the ([^\"]*) "([^\"]*)"$/ do |model, opt|
+  fill_form model.singularize, opt.to_sym => ''
 end
 
 When /^fill in the story form$/ do
