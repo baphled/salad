@@ -1,5 +1,4 @@
-$('#info').html("<%= escape_javascript(render :partial => '/common/model_information', :locals => {:model => @story})%>");
-$('#info').append("<%= escape_javascript(render :partial => '/common/model_summary', :locals => {:model => @story, :assoc => :steps})%>");
+$('#wrapper').html("<%= escape_javascript(render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps})%>");
 
 $('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable_list',
     :locals => {:models => @story_steps,

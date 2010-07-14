@@ -7,9 +7,9 @@ class Project < ActiveRecord::Base
   validates_presence_of     :aim
   validates_uniqueness_of   :title
 
-  validates_length_of :title, :minimum => 3, :too_short => @@error_message
-  validates_length_of :aim, :minimum => 6, :too_short => @@error_message
-  validates_length_of :description, :minimum => 12, :too_short => @@error_message
+  validates_length_of :title, :minimum => 3, :too_short => :too_short
+  validates_length_of :aim, :minimum => 6, :too_short => :too_short
+  validates_length_of :description, :minimum => 12, :too_short => :too_short
 
   validate :directory_is_valid?, :if => :directory_present?
 

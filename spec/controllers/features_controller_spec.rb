@@ -355,7 +355,7 @@ describe FeaturesController do
     end
   end
   
-  describe "GET, file" do
+  describe "GET, source" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature").as_null_object
       @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
@@ -364,12 +364,12 @@ describe FeaturesController do
     
     it "finds the feature" do
       Feature.should_receive :find
-      get :file, {:feature => @feature}
+      get :source, {:feature => @feature}
     end
     
     it "should open and read the feature file" do
       File.should_receive :read
-      get :file, {:feature => @feature}
+      get :source, {:feature => @feature}
     end
     
     context "Making call via AJAX" do

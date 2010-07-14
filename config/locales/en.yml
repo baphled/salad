@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      messages: 
+        too_short: "Please enter at least {{count}} characters."

@@ -49,17 +49,3 @@ Feature: Hovering over a project item
     When the story page is loaded
     And the first story is hovered over
     Then the story's information will be display in the sidebar
-    
-   Scenario Outline: When submitting a form the hover functionality should still be available
-     Given the "<page name>" has "<assoc item>"
-     When I am on the <page>
-     And I submit the form
-     And the <assoc> page is loaded
-     And the first <assoc> is hovered over
-     Then the <assoc>'s information will be display in the sidebar
-
-   Examples: List of forms that should display flash messages after submitting a form
-     | page name | assoc   | page         |
-     | project   | feature | edit project |
-     | feature   | story   | edit feature |
-     | story     | step    | edit story   |

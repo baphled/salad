@@ -71,9 +71,9 @@ describe ApplicationController do
       end      
     end
     
-    describe "GET, file" do
+    describe "GET, source" do
       it "should render the no sidebar layout" do
-        get :file, {:id => 1}
+        get :source, {:id => 1}
         response.should use_layout("no_sidebar")
       end
     end

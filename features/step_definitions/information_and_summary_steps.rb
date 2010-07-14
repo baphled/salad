@@ -15,11 +15,15 @@ When /^the "([^\"]*)" is viewed$/ do |model|
 end
 
 Then /^the "([^\"]*)" information header should be displayed$/ do |model|
-  response.should have_selector :h4, :content => "#{model.capitalize} Info"
+  response.should have_selector :h4 do |content|
+    content.should contain "#{model.capitalize} Info"
+  end
 end
 
 Then /^the "([^\"]*)" should be displayed$/ do |message|
-  response.should have_selector :b, :content => "#{message}:"
+  response.should have_selector :b do |content|
+    content.should contain "#{message}:"
+  end
 end
 
 Then /^a "([^\"]*)"$/ do |message|
@@ -31,7 +35,9 @@ Then /^it should display all the project information$/ do
   ["Title", "Aim","Creation date", "Updated date"].each do |attribute|
     Then %{the "#{attribute}" should be displayed}
   end
-  Then %{a "Total number of Features"}
+  if not @project.features != 0
+    Then %{a "Total number of Features"}
+  end
 end
 
 Then /^it should display all the feature information$/ do
@@ -39,15 +45,23 @@ Then /^it should display all the feature information$/ do
   ["Title", "In order","I want", "As a"].each do |attribute|
     Then %{the "#{attribute}" should be displayed}
   end
-  Then %{a "Total number of Stories"}
-  Then %{a "Last Story"}
+  if not @feature.stories != 0
+    Then %{a "Total number of Stories"}
+    Then %{a "Last Story"}
+  end
 end
 
 Then /^it should display all the story information$/ do
   Then %{the "story" information header should be displayed}
   Then %{the "Scenario" should be displayed}
-  Then %{a "Total number of Steps"}
-  Then %{a "Last Step"}
+  if not @story.steps.count != 0
+    Then %{a "Total number of Steps"}
+    Then %{a "Last Step"}    
+  end
+end
+
+Then /^it should display all the step information$/ do
+  Then %{the "step" information header should be displayed}
 end
 
 Then /^the copy "([^\"]*)" should be displayed$/ do |copy|

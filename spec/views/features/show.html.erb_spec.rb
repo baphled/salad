@@ -35,7 +35,7 @@ describe "/features/show.html.erb" do
     end
     
     it "has a link to view a feature file" do
-       response.should have_selector :a, attribute = {:href => file_feature_path(@feature)}
+       response.should have_selector :a, attribute = {:href => source_feature_path(@feature)}
      end
   end
   

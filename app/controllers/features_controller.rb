@@ -174,7 +174,7 @@ class FeaturesController < ApplicationController
     end
   end
   
-  def file
+  def source
     @file = File.read(@feature.path)
     respond_to do |format|
       format.html
