@@ -31,8 +31,9 @@ $(document).ready(function() {
         if ($form.hasClass('hidden') == false) {
           // here is where we make our necessary form response for all our AJAX based responses
           $('#wrapper').append($form.hide());
-          $('<a class="display_form" href="javascript://">view form</a>').insertBefore('#wrapper form')
-            .addClass('ui-widget ui-widget-content ui-corner-all');
+          $('<button class="display_form button" href="javascript://">view form</a>')
+            .insertBefore('#wrapper form')
+            .button({ option: 'text' });
         }
         // setup our generic list events
         $('ul.icons li .handler').button('option', 'icon');
@@ -51,7 +52,7 @@ $(document).ready(function() {
     return false;
   });
 
-  $("a.display_form").live("click",function(event) {
+  $("button.display_form").live("click",function(event) {
     var link = $(this),
         id_attribute_name = link.attr('id').split('_'),
         title_array = link.text().split(' '),

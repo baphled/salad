@@ -60,6 +60,10 @@ When /^I submit the form$/ do
   selenium.click "css=button.button"
 end
 
+When /^I use the features path link$/ do
+  click_link "#{@feature.path}"
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1")
 end
@@ -135,7 +139,7 @@ Then /^there should be a "([^\"]*)" link$/ do |link|
 end
 
 Then /^I should see a hover dialog box$/ do
-  selenium.wait_for_visible("css=div.hover")
+  selenium.wait_for_visible("css=div.hover", :timeout_in_seconds => 10)
 end
 
 Then /^I should not see a hover dialog box$/ do
@@ -218,4 +222,8 @@ end
 
 Then /^a dialog box should appear$/ do
   selenium.wait_for_visible("css=div.dialog", :timeout_in_seconds => 10)
+end
+
+Then /^the submit button should be disabled$/ do
+  selenium.wait_for_element("css=button.ui-button-disabled", :timeout_in_seconds => 10)
 end

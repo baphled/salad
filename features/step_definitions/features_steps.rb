@@ -67,6 +67,13 @@ When /^I visit the first features stories$/ do
   click_link 'Stories'
 end
 
+When /^I fill in the feature form"$/ do
+  When %{we fill in the feature title with 'Logging in'}
+  When %{we fill in the feature in_order with 'to create the best app'}
+  When %{we fill in the feature as_a with 'user'}
+  When %{we fill in the feature i_want with 'the best project ever'}
+end
+
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
