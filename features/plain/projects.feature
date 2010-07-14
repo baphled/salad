@@ -123,7 +123,8 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the feature information should be saved
 
   Scenario: I should not see a list of features if there are none associated with a project
-    Given I can view the projects page
+    Given there is a project
+    And I can view the projects page
     When a project has no features
     And I visit the first projects features
     Then I should not see the project features section
@@ -132,11 +133,6 @@ Feature: We need to a way to store our stories within a project, this will help 
     Given I can view the projects page
     Then I should be able to click the new project link
     And be sent to the new projects view
-
-  Scenario: I should not be able to see the view project features link unless there are actually features linked to the project
-    Given I can view the projects page
-    When a project has no features
-    Then there should not be a 'view features' link
 
   Scenario: I should be able to easily create new features for a project
     Given I can view the projects page
@@ -169,7 +165,8 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the project should have link to create new features
 
   Scenario: When viewing a project with no feature, the user should not see the order button
-    Given I can view the projects page
+    Given there is a project
+    And I can view the projects page
     When a project has no features
     And there is a project
     And the project is viewed

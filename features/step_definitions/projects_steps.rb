@@ -99,7 +99,7 @@ When /^I create new a feature$/ do
 end
 
 When /^a project has no features$/ do
-  Project.stub(:features).and_return []
+  @project.features.stub(:count).and_return 0
 end
 
 When /^I visit the project$/ do
