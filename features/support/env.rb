@@ -58,15 +58,20 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 # DatabaseCleaner.strategy = :truncation
 
 module FormHelpers
+  def fill_form(form_name, opts = {})
+    values = {}
+    case form_name
+      when /feature/
+        values = {:title => 'Logging in', :in_order => 'to create the best app', :as_a => 'user', :i_want => 'the best project ever'}
+      when /project/
+        values = {:title => 'A project', :aim => 'An aim', :description => 'A description'}
+      else
+        raise "Can't find the form #{form_name}.\n" +
+          "Now, go and add a mapping in #{__FILE__}"
+    end
 
-  def fill_feature_form(opts = {})
-    values = {
-      :title => 'Logging in',
-      :in_order => 'to create the best app',
-      :as_a => 'user',
-      :i_want => 'the best project ever'}
     parmas = values.merge(opts)
-    parmas.each { |param, value| When %{we fill in the feature #{param} with '#{value}'} }
+    parmas.each { |param, value| When %{we fill in the #{form_name} #{param} with '#{value}'} }
   end
 end
 
