@@ -39,7 +39,7 @@ describe "/common/_model_summary.html.erb" do
     context "no associated features" do
       before(:each) do
         @project.update_attribute(:updated_at, @date.tomorrow)
-        @project.send('features').stub!(:count).and_return 0
+        @project.stub!(:features).and_return []
         render :locals => {:model => @project, :assoc => :features}
       end
       
