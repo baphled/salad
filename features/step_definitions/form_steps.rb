@@ -19,6 +19,10 @@ When /^I fill in the feature form$/ do
   fill_feature_form
 end
 
+When /^I don't fill in the features "([^\"]*)"$/ do |opt|
+  fill_feature_form opt.to_sym => ''
+end
+
 When /^fill in the story form$/ do
   When %{we fill in the story scenario with 'this is our stories scenario'}
 end
