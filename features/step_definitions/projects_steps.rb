@@ -53,7 +53,7 @@ Given /^the project does have a project location with no features to import$/ do
 end
 
 When /^the project already exists$/ do
-  @project.should_receive(:save).and_return false
+  @project.stub!(:save).and_return false
 end
 
 When /^the project is viewed$/ do
