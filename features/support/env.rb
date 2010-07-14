@@ -57,8 +57,20 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 # require 'database_cleaner'
 # DatabaseCleaner.strategy = :truncation
 
+module FormHelpers
 
-World(Spec::Mocks::ExampleMethods)
+  def fill_feature_form(opts = nil)
+    values = {
+      :title => 'Logging in',
+      :in_order => 'to create the best app',
+      :as_a => 'user',
+      :i_want => 'the best project ever'}
+    parmas = values.merge(opts) unless opts.nil?
+    parmas.each { |param, value| When %{we fill in the feature #{param} with '#{value}'} }
+  end
+end
+
+World(Spec::Mocks::ExampleMethods, FormHelpers)
 
 Before do
   $rspec_mocks ||= Spec::Mocks::Space.new
