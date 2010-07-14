@@ -15,7 +15,7 @@ Feature: A user should be able to create new features, which can be associated w
   Scenario: As a user when I create a feature with no title, the feature should not be valid
     Given I can view the features page
     When I click new features
-    And I don't fill in the features title
+    And I don't fill in the features "title"
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed
@@ -52,7 +52,7 @@ Feature: A user should be able to create new features, which can be associated w
   Scenario: A user who sends an invalid feature update
     Given I can view the features page
     When I edit the first feature
-    And we fill in the feature title with ''
+    And I don't fill in the features "title"
     And submit the form
     Then the form should be rerendered
     And the flash message 'Feature: my first feature, was not updated'
@@ -79,31 +79,26 @@ Feature: A user should be able to create new features, which can be associated w
 
   Scenario: A feature should have a 'In order' field
     Given I can view the features page
-    And there are projects
     When I click new features
     And we fill in the feature in_order with 'to create the best app'
 
   Scenario: A feature should have a 'As a' field
     Given I can view the features page
-    And there are projects
     When I click new features
     And we fill in the feature as_a with 'user'
 
   Scenario: A feature should have a 'I want' field
     Given I can view the features page
-    And there are projects
     When I click new features
     And we fill in the feature i_want with 'the best project ever'
 
   Scenario: A feature must have the 'In order' field filled
     Given I can view the features page
-    And there are projects
     When I click new features
     And we fill in the feature in_order with 'to create the best app'
 
   Scenario: A feature must have the 'As a' field filled
     Given I can view the features page
-    And there are projects
     When I click new features
     And we fill in the feature title with 'Logging in'
     And we fill in the feature in_order with 'to create the best app'
@@ -114,11 +109,8 @@ Feature: A user should be able to create new features, which can be associated w
 
   Scenario: A feature must have the 'I want' field filled
     Given I can view the features page
-    And there are projects
     When I click new features
-    And we fill in the feature title with 'Logging in'
-    And we fill in the feature in_order with 'to create the best app'
-    And we fill in the feature as_a with 'user'
+    And I don't fill in the features "i_want"
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed
