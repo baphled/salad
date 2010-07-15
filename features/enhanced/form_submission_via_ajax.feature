@@ -54,24 +54,6 @@ Feature: Form submission via AJAX
     | edit story      | story     | update      |
     | edit step       | step      | update      |
 
-Scenario Outline: The order button should still function
-  Given there is a <item>
-  When I am on the <page> page
-  And the <item> is filled in
-  Then there should be an AJAX call
-  And the order button should be visible
-  When I click the "Order" button
-  Then I should see the handlers
-
-Examples:
-    | page            | item      | form action |
-    | new project     | project   | fill in     |
-    | new feature     | feature   | fill in     |
-    | new story       | story     | fill in     |
-    | edit project    | project   | update      |
-    | edit feature    | feature   | update      |
-    | edit story      | story     | update      |
-
   # @TODO Add more pagination related scenarios later
   Scenario Outline: We should still be able to use the pagination
     Given there is a <item>
@@ -96,15 +78,11 @@ Examples:
     When I am on the <page> page
     And I <form action> the <item> form
     Then there should be an AJAX request
-    And I click panel for the first item in the sortable list
+    And I "click" on the one of the items panel
     Then the panels icons should be visible
 
   Examples:
     | page            | item      | form action |
-    | new project     | project   | fill in     |
-    | new feature     | feature   | fill in     |
-    | new story       | story     | fill in     |
-    | new step        | step      | fill in     |
     | edit project    | project   | update      |
     | edit feature    | feature   | update      |
     | edit story      | story     | update      |
@@ -142,22 +120,6 @@ Examples:
     | new feature     | feature   | fill in     |
     | new story       | story     | fill in     |
     | new step        | step      | fill in     |
-    | edit project    | project   | update      |
-    | edit feature    | feature   | update      |
-    | edit story      | story     | update      |
-    | edit step       | step      | update      |
-
-  Scenario Outline: Should be able to sort the responding
-    Given there is a <item>
-    When I am on the <page> page
-    And I <form action> the <item> form
-    Then there should be an AJAX request
-    And the order button should be visible
-    When I click the "Order" button
-    Then I should see the handlers
-
-  Examples:
-    | page            | item      | form action |
     | edit project    | project   | update      |
     | edit feature    | feature   | update      |
     | edit story      | story     | update      |
