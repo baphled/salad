@@ -1,5 +1,4 @@
 Feature: Client side validations for our parking form
-    # Main goal of this project
     In order to improve the user experience when creating new resource
     As an user
     I want the input validated my client side validation
