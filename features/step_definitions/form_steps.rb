@@ -30,3 +30,6 @@ end
 When /^fill in the step form$/ do
   When %{we fill in the step title with 'Given we have a new step'}
 end
+
+When /^I update the ([^\"]*) form$/ do  |model|
+end

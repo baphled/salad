@@ -87,7 +87,6 @@ Feature: All our forms need to be passed to the server via AJAX
     When I view the "<page name>" path
     Then the side bar should not be rendered
     And submit the form
-    And there should be an AJAX request
     And the sidebar will be rendered via AJAX
 
   Examples: All pages that should have render the sidebar after an AJAX based form submission
@@ -101,7 +100,7 @@ Feature: All our forms need to be passed to the server via AJAX
      Given the "<page name>" has "<assoc item>"
      When I am on the <page>
      And I submit the form
-     And the <assoc> page is loaded
+     And there should be an AJAX request
      And the first <assoc> is hovered over
      Then the <assoc>'s information will be display in the sidebar
 
@@ -115,38 +114,38 @@ Feature: All our forms need to be passed to the server via AJAX
   Scenario Outline: The ordering button should not be on any of the model index pages
     Given there is a <model>
     When I view the "<page name>" path
-    And I fill in the <model> form
+    And I <form action> the <model> form
     And submit the form
     And there should be an AJAX request
     Then it should "<have order button>" have an order button
 
   Examples: List of pages that use the list layout
-    | model   | page name    | have order button |
-    | project | new project  | does not          |
-    | feature | new feature  | does not          |
-    | story   | new story    | does not          |
-    | step    | new step     | does not          |
-    | project | edit project | does              |
-    | feature | edit feature | does              |
-    | story   | edit story   | does              |
-    | step    | edit step    | does not          |
+    | model   | page name    | have order button | form action |
+    | project | new project  | does not          | fill in     |
+    | feature | new feature  | does not          | fill in     |
+    | story   | new story    | does not          | fill in     |
+    | step    | new step     | does not          | fill in     |
+    | project | edit project | does              | update      |
+    | feature | edit feature | does              | update      |
+    | story   | edit story   | does              | update      |
+    | step    | edit step    | does not          | update      |
 
   # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The items summary information should always be displayed
     Given there is a <model>
     When I view the "<page name>" path
-    And I fill in the <model> form
+    And I <form action> the <model> form
     And submit the form
     And there should be an AJAX request
     Then it should display all the <model> information
       
   Examples: List of actions that should render the information and summary panel
-    | model   | page name    |
-    | project | new project  |
-    | project | edit project |
-    | feature | new feature  |
-    | feature | edit feature |
-    | story   | new story    |
-    | story   | edit story   |
-    | step    | new step     |
-    | step    | edit step    |
+    | model   | page name    | form action |
+    | project | new project  | fill in     |
+    | project | edit project | update      |
+    | feature | new feature  | fill in     |
+    | feature | edit feature | update      |
+    | story   | new story    | fill in     |
+    | story   | edit story   | update      |
+    | step    | new step     | fill in     |
+    | step    | edit step    | update      |
