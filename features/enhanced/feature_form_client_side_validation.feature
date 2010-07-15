@@ -18,37 +18,20 @@ Feature: Feature forms should have client side validations
     | as_a     |
     | i_want   |
 
-  Scenario: The "title" field should have more than 7 characters
+  Scenario Outline: All fields with character limits should be validated by client side validation
     Given I can view the features page
     When I click new features
-    And we fill in the feature title with 'to'
+    And we fill in the feature <field> with '<value>'
     Then submit the form
     And a JS based error message should be displayed
-    And the client side error message should be "Please enter at least 7 characters."
+    And the client side error message should be "Please enter at least <amount> characters."
 
-  Scenario: The "in_order" field should have more than 7 characters
-    Given I can view the features page
-    When I click new features
-    And we fill in the feature in_order with 'to do'
-    Then submit the form
-    And a JS based error message should be displayed
-    And the client side error message should be "Please enter at least 7 characters."
-
-  Scenario: The "as_a" field should have more than 4 characters
-    Given I can view the features page
-    When I click new features
-    And we fill in the feature as_a with 'use'
-    Then submit the form
-    And a JS based error message should be displayed
-    And the client side error message should be "Please enter at least 4 characters."
-
-  Scenario: The "i_want" field should have more than 7 characters
-    Given I can view the features page
-    When I click new features
-    And we fill in the feature i_want with 'not'
-    Then submit the form
-    And a JS based error message should be displayed
-    And the client side error message should be "Please enter at least 7 characters."
+  Examples: List of fields that have character limits
+    | field | value | amount |
+    | title    | to    | 7      |
+    | in_order | to do | 7      |
+    | as_a     | use   | 4      |
+    | i_want   | not   | 7      |
     
   Scenario: A feature must be unique
     Given I can view the features page
