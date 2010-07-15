@@ -180,7 +180,7 @@ Then /^the panel icons should be visible$/ do
 end
 
 Then /^I should see the imports page$/ do
-  selenium.wait_for_element("css=div#myTabs", :timeout_in_seconds => 60)
+  selenium.wait_for_element("css=div#myTabs", :timeout_in_seconds => 180)
 end
 
 When /^I import "([^\"]*)"$/ do |selector|
