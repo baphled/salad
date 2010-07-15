@@ -110,12 +110,14 @@ Feature: All our forms need to be passed to the server via AJAX
     | project   | feature | edit project |
     | feature   | story   | edit feature |
     | story     | step    | edit story   |
-    
+
+  # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The ordering button should not be on any of the model index pages
     Given there is a <model>
     When I view the "<page name>" path
-    And fill in the <model> form
+    And I fill in the <model> form
     And submit the form
+    And there should be an AJAX request
     Then it should "<have order button>" have an order button
 
   Examples: List of pages that use the list layout
@@ -129,11 +131,13 @@ Feature: All our forms need to be passed to the server via AJAX
     | story   | edit story   | does              |
     | step    | edit step    | does not          |
 
+  # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The items summary information should always be displayed
     Given there is a <model>
     When I view the "<page name>" path
-    And fill in the <model> form
+    And I fill in the <model> form
     And submit the form
+    And there should be an AJAX request
     Then it should display all the <model> information
       
   Examples: List of actions that should render the information and summary panel
