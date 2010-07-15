@@ -100,7 +100,7 @@ Feature: All our forms need to be passed to the server via AJAX
      Given the "<page name>" has "<assoc item>"
      When I am on the <page>
      And I submit the form
-     And there should be an AJAX request
+     And the <assoc> page is loaded
      And the first <assoc> is hovered over
      Then the <assoc>'s information will be display in the sidebar
 
@@ -142,10 +142,10 @@ Feature: All our forms need to be passed to the server via AJAX
   Examples: List of actions that should render the information and summary panel
     | model   | page name    | form action |
     | project | new project  | fill in     |
-    | project | edit project | update      |
     | feature | new feature  | fill in     |
-    | feature | edit feature | update      |
     | story   | new story    | fill in     |
-    | story   | edit story   | update      |
     | step    | new step     | fill in     |
+    | project | edit project | update      |
+    | feature | edit feature | update      |
+    | story   | edit story   | update      |
     | step    | edit step    | update      |
