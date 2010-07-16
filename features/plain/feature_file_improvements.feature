@@ -58,8 +58,8 @@ Feature: We want to be able to deal with Cucumber changing formats easily
       And the "<action>" should have "<item>" associated to it "<amount>" of times
 
     Examples: Actions and the number of times an action item should be stored
-      | action | item     | amount |
-      | page   | projects | 1      |
-      | page   | features | 1      |
-      | page   | stories  | 1      |
-      | page   | steps    | 1      |
+      | action | item         | amount |
+      | page   | all projects | 1      |
+      | page   | all features | 1      |
+      | page   | all stories  | 1      |
+      | page   | all steps    | 1      |
