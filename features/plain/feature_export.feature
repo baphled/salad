@@ -5,21 +5,20 @@ Feature: A user needs to be able to export created features into cucumber featur
 	
   Scenario: A user should not be able to export a feature if a feature does not have any stories
     Given we select a feature with no stories
-	  When the feature with no stories is displayed
+    When I am on "a feature"
   	Then the export link should not be viewable
 	
   Scenario: A user is able to export a feature that has stories with no steps
     Given we select a feature with stories
-  	And the feature has a story with no steps
   	And the feature has other stories with steps
-  	When we view the first feature
+  	When I am on "a feature"
   	Then the export link should be viewable
 	  
   Scenario: When a user selects a feature, which has complete stories & steps, all its stories are exported to scenarios
     Given we select a feature with stories
   	And the feature has a story with no steps
   	And the feature has other stories with steps
-  	When we view the first feature
+  	When I am on "a feature"
   	And a user attempts to export a feature
   	Then the feature should be converted to the necessary cucumber feature format
 		
@@ -27,7 +26,7 @@ Feature: A user needs to be able to export created features into cucumber featur
   	Given we select a feature with stories
   	And the feature has a story with no steps
   	And the feature has other stories with steps
-  	When we view the first feature
+  	When I am on "a feature"
   	And the export link should be viewable
   	And a user attempts to export a feature
   	Then that story is not added to the exported feature
@@ -39,7 +38,7 @@ Feature: A user needs to be able to export created features into cucumber featur
     
   Scenario: Saving the exported feature
     Given there is a feature
-    When I view the "export feature" path
+    When I am on "export feature"
     Then a "Download" button should be displayed
   
   
