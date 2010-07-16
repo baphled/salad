@@ -6,12 +6,12 @@ Feature: All lists should have pagination functionality if there are more than 5
     Scenario Outline: All lists with less than 5 items should have pagination
       Given there are "<items>"
       And there are <moreorless> than 5 "<items>"
-      When I visit the "<items>"
+      When I am on "<page name>"
       Then we should not see our pagination
 
     Examples: All non-associated lists
-      |items    |moreorless |
-      |projects |less       |
-      |features |less       |
-      |stories  |less       |
-      |steps    |less       |
+      | items     |page name    |moreorless |
+      | projects  | all projects |less       |
+      | features  | all features |less       |
+      | stories   | all stories  | less       |
+      | steps     |all steps    | less       |
