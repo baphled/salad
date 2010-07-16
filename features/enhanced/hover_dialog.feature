@@ -30,14 +30,3 @@ Feature: When selecting tags we want to be able to select from pre-existing tags
       Then I should see a hover dialog box
       When focus is off the tag input
       Then I should not see a hover dialog box
-
-    Scenario: After creating a new project the hover dialog should still be functional
-      Given a project has tags
-      And I create a new project
-      And we fill in the project title with 'WorldPeace2.9'
-      And we fill in the project aim with 'An aim'
-      And we fill in the project description with 'A description'
-      Then submit the form
-      And I view the form
-      And focus on the tag input
-      Then I should see a hover dialog box
