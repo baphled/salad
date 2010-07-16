@@ -8,23 +8,22 @@ Feature: Patching modified feature files
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      And I view the feature
+      And I am on "a feature"
       And a "Patch a feature with the systems changes" link should be displayed within the feature
       When we click the features "Patch a feature with the systems changes"
       Then we should display the patch
 
     Scenario: A user should be redirected if they try to acess a feature with no patch file
       Given  there is a feature that is not different from the source file
-      When we view the feature with the "patch" format
+      When I am on "features patch"
       Then the flash message "No patch available" should be displayed
 
     Scenario: A user should be able to acess a features patch in a RESTful way
       Given  there is a feature that is different from the source file
-      When we view the feature with the "patch" format
+      When I am on "features patch"
       Then the patch should be displayed
       
     Scenario: A user should be redirected back to the feature when they try to access a patch that does not exist
-      Given we have a valid feature file
-      And the feature file is saved
-      When the features diff is viewed
+      Given there is a feature that is not different from the source file
+      When I am on "features patch"
       Then the flash message "No patch available" should be displayed

@@ -30,6 +30,8 @@ module NavigationHelpers
       merge_feature_path @feature
     when /system merge/
       system_merge_feature_path @feature
+    when /features patch/
+      feature_path(@feature,:format => :patch)
     when /new project/
       new_project_path
     when /edit project/
