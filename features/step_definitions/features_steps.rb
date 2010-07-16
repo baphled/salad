@@ -6,10 +6,6 @@ Given /^there is a feature$/ do
   @feature = Feature.first
 end
 
-Given /^I visit the features edit view$/ do
-  visit("/features/#{@feature.id}/edit")
-end
-
 Given /^the feature has stories$/ do
   @feature = Feature.first
 end
@@ -23,18 +19,6 @@ Given /^the feature already exists$/ do
                  :in_order => 'to create an project',
                  :as_a => 'developer',
                  :i_want => 'to have the skills'
-end
-
-When /^the feature is viewed$/ do
-  visit feature_path @feature
-end
-
-When /^we visit the feature$/ do
-  visit feature_path(@feature)
-end
-
-When /^I view the feature$/ do
-  visit feature_path(@feature)
 end
 
 Then /^the feature information should be saved$/ do
@@ -52,19 +36,8 @@ When /^there are features$/ do
   assert Feature.find :all
 end
 
-When /^I visit the index features page$/ do
-  visit('/features')
-end
-
-When /^I visit the features stories$/ do
-  visit stories_feature_path @feature
-end
 When /^I edit the first feature$/ do
   click_link 'Edit'
-end
-
-When /^I visit the first features stories$/ do
-  click_link 'Stories'
 end
 
 When /^I fill in the feature form"$/ do

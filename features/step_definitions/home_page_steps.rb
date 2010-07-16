@@ -19,10 +19,6 @@ Given /^the project has more than 1 project$/ do
   @last_project.features.stub(:count).and_return 2
 end
 
-When /^we view the home page$/ do
-  visit('/')
-end
-
 Then /^I should see that no projects are on the system$/ do
   response.should contain 'There are no projects'
 end

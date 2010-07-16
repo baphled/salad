@@ -1,7 +1,3 @@
-Given /^we edit the feature$/ do
-  visit edit_feature_path @feature
-end
-
 Given /^we create a feature with a path$/ do
   @feature = Feature.first
 end
@@ -11,10 +7,6 @@ Given /^a project has tags$/ do
   fill_in 'project_location', :with => ''
   fill_in 'project_tag_list', :with => 'Project management, something else'
   click_button 'Save'
-end
-
-Given /^I create a new project$/ do
-  visit new_project_path
 end
 
 Given /^the project has one feature$/ do
@@ -37,11 +29,6 @@ end
 
 When /^I hover over the "([^\"]*)" (?:link|button)$/ do |link|
   selenium.mouse_over("#{link}")
-end
-
-When /^I view the changed feature$/ do
-  visit feature_path @feature
-  selenium.wait_for_element("view-changes")
 end
 
 When /^we click on the "([^\"]*)" link$/ do |link|

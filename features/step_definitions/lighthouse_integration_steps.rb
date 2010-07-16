@@ -6,22 +6,13 @@ Given /^we have an the project number "([^\"]*)"$/ do |project_number|
   @project_number = project_number
 end
 
-Given /^I visit the parking page$/ do
-  visit parking_index_path
-end
-
-Given /^we visit the new parking page$/ do
-  visit new_parking_path
-end
-
 Given /^there are resources$/ do
   @resources = Resource.all
 end
 
 Given /^we have set up the lighthouse resource$/ do
-  Given %{we visit the new parking page}
-  When %{I fill in "resource_name" with "baphled"}
-  And %{I fill in "resource_project" with "50164"}
+  When %{I am on "new parking"}
+  And %{I fill in the resource form}
   Then %{submit the form}
 end
 

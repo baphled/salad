@@ -9,10 +9,6 @@ Given /^there is a feature that is different from the source file$/ do
   @feature.save
 end
 
-When /^we view the feature with the "([^\"]*)" format$/ do |format|
-  visit feature_path(@feature, :format => format)
-end
-
 Then /^the flash message "([^\"]*)" should be displayed$/ do |message|
   response.should contain message
 end

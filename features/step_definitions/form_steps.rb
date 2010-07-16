@@ -1,7 +1,3 @@
-When /^I view the "([^\"]*)" form$/ do |model|
-  visit "/#{model}/new"
-end
-
 When /^I fill in the ([^\"]*) form$/ do |model|
   fill_form model
 end

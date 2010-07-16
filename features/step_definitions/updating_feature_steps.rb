@@ -41,18 +41,6 @@ When /^we click the features "([^\"]*)"$/ do |link|
   click_link link
 end
 
-When /^the features diff is viewed$/ do
-  visit feature_path(@feature,:format => :patch)
-end
-
-When /^the features changes is viewed$/ do
-  visit changes_feature_path(@feature)
-end
-
-When /^we visit the feature via import feature$/ do
-  visit import_features_path(:path => @feature.path)
-end
-
 When /^there should be a link to merge the change$/ do
   response.should have_selector :a, attribute = {:title => "Merge changes"}
 end
@@ -61,9 +49,6 @@ When /^we click the "([^\"]*)"$/ do |link|
   click_button link
 end
 
-When /^view the feature$/ do
-  visit feature_path @feature
-end
 
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
   response.should have_selector :a, attribute = {:title => message}

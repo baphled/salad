@@ -2,10 +2,6 @@ Given /^there is a project$/ do
   @project = Project.first
 end
 
-Given /^I visit the projects edit view$/ do
-  visit("/projects/#{@project.id}/edit")
-end
-
 Given /^there are projects$/ do
   @projects = Project.find(:all)
   @projects.should_not be_empty
@@ -56,24 +52,12 @@ When /^the project already exists$/ do
   @project.stub!(:save).and_return false
 end
 
-When /^the project is viewed$/ do
-  visit project_path @project
-end
-
 When /^I view the project$/ do
   When %{the project is viewed}
 end
 
 When /^the project is not able to update$/ do
   @project.stub!(:update_attributes).and_return false
-end
-
-When /^I visit the projects index page$/ do
-  visit projects_path
-end
-
-When /^I visit the projects features$/ do
-  visit features_project_path @project
 end
 
 Given /^the "([^\"]*)" has "([^\"]*)"$/ do |model, assoc|
@@ -102,15 +86,6 @@ When /^a project has no features$/ do
   @project.features.stub(:count).and_return 0
 end
 
-When /^I visit the project$/ do
-  # Project.stub(:find).and_return @project
-  visit project_path @project
-end
-
-When /^I visit the first projects features$/ do
-  visit('/projects/1/features')
-end
-
 When /^add 'project, new project' as tags$/ do
   fill_in 'project_tag_list', :with => 'project, new project'
 end
@@ -125,20 +100,6 @@ end
 
 When /^we fill in the project location$/ do
   fill_in 'project_location', :with => "#{RAILS_ROOT}"
-end
-
-When /^the project single import is viewed$/ do
-  visit import_feature_project_path @project
-end
-
-When /^I visit the "([^\"]*)" "([^\"]*)"$/ do |model, assoc|
-  case model
-    when /projects/
-      visit features_project_path @project
-    else
-      raise "Unable to find path for \"#{model}\" associated to \"#{assoc}\".\n" +
-        "Now, go and add a mapping in #{__FILE__}"
-  end
 end
 
 Then /^submit the form$/ do
@@ -265,10 +226,6 @@ Then /^all projects should have a 'Add features' link$/ do
   end
 end
 
-Then /^I should be able to visit the URL$/ do
-  visit('/features/new?id=new_project_feature_1')
-end
-
 Then /^the project should have link to create new features$/ do
   response.should have_selector :a, attribute = {:href => new_feature_path}
 end
@@ -381,11 +338,6 @@ end
 
 Then /^we should be redirected to the projects import page$/ do
   current_url.should =~ /import/
-end
-
-When /^we visit the new feature$/ do
-  feature = Feature.find_by_title("We need to a way to store our stories within a project, this will help organise our stories.")
-  visit feature_path(feature)
 end
 
 When /^we export the features$/ do

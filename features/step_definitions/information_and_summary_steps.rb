@@ -33,10 +33,6 @@ Given /^there is a story with no steps$/ do
   Story.stub!(:find).and_return @story
 end
 
-When /^the "([^\"]*)" is viewed$/ do |model|
-  visit "#{model.pluralize}/#{@model.id}/"
-end
-
 Then /^the "([^\"]*)" information header should be displayed$/ do |model|
   response.should have_selector :h4 do |content|
     content.should contain "#{model.capitalize} Info"

@@ -17,14 +17,6 @@ Given /^we have a stories with examples$/ do
   @story.examples.size.should eql 1
 end
 
-When /^I visit the stories steps$/ do
-  visit steps_story_path @story
-end
-
-When /^I visit the storys steps$/ do
-  visit steps_story_path @story
-end
-
 When /^I select first feature new story link$/ do
   click_link 'New Story'
 end
@@ -33,24 +25,12 @@ When /^I select first feature$/ do
   click_link 'View'
 end
 
-When /^I edit the first story$/ do
-  visit('/stories/1/edit')
-end
-
 When /^uncheck a feature it is associated to$/ do
   uncheck 'story_feature_id_1'
 end
 
 When /^check a pre\-existing step$/ do
   check 'story_step_id_1'
-end
-
-When /^I select first story$/ do
-  visit('/stories/1')
-end
-
-When /^the story is viewed$/ do
-  visit story_path @story
 end
 
 When /^I fill in the story form"$/ do

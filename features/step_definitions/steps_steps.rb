@@ -15,13 +15,6 @@ When /^I choose 'New Step' link$/ do
   click_link 'New Step'
 end
 
-When /^I visit the first step$/ do
-  visit('/steps/1')
-end
-
-When /^the step is viewed$/ do
-  visit step_path @step
-end
 When /^I fill in the step form"$/ do
   When %{we fill in the step title with 'Given we have a new step'}
 end

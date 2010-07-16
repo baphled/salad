@@ -20,16 +20,8 @@ Given /^the feature has other stories with steps$/ do
   @feature = mock_model(Story,:id => 1, :steps => [@steps]).as_null_object
 end
 
-When /^the feature with no stories is displayed$/ do
-  visit feature_path @feature
-end
-
 When /^a user attempts to export a feature$/ do
   click_link 'Export a feature'
-end
-
-When /^we view the first feature$/ do
-  visit feature_path @feature
 end
 
 When /^the export link should be viewable$/ do
