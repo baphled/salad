@@ -12,6 +12,10 @@ module NavigationHelpers
       '/'
     when /project show/
       project_path(@project)
+    when /parking index/
+      parking_index_path
+    when /parking new/
+      new_parking_path
     when /new feature/
       new_feature_path
     when /export feature/
@@ -36,6 +40,8 @@ module NavigationHelpers
       edit_feature_path @feature
     when /new story/
       new_story_path
+    when /new parking/
+      new_parking_path
     when /edit story/
       edit_story_path @story
     when /new step/
