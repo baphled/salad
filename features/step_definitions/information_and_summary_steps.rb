@@ -1,13 +1,36 @@
-Given /^there is a "([^\"]*)"$/ do |model|
-  # pending 'This step seems to cause all subsequent steps to break which use find on a model, need to find out why'
-  @model = mock_model(model.capitalize.constantize).as_null_object
-  model.capitalize.constantize.stub!(:find).and_return @model
+Given /^the ([^\"]*) has no "([^\"]*)"$/ do |model ,association|
+  case model
+  when /project/
+    Project.stub!(association.to_sym).and_return []
+    Project.send(association).stub!(:count).and_return 0
+  when /feature/
+    Feature.stub!(association.to_sym).and_return []
+    Feature.send(association).stub!(:count).and_return 0
+  when /story/
+    Story.stub!(association.to_sym).and_return []
+    Story.send(association).stub!(:count).and_return 0
+  when /step/
+    Step.stub!(association.to_sym).and_return []
+    Step.send(association).stub!(:count).and_return 0
+  else
+    raise "Can't find mapping from \"#{model}\".\n" +
+        "Now, go and add a mapping in #{__FILE__}"
+  end
 end
 
-Given /^the item has no "([^\"]*)"$/ do |association|
-  # pending 'This step seems to cause all subsequent steps to break which use find on a model, need to find out why'
-  @model.stub!(association.to_sym).and_return []
-  @model.send(association).stub!(:count).and_return 0
+Given /^there is a project with no features$/ do
+  @project = mock_model(Project, :features => []).as_null_object
+  Project.stub!(:find).and_return @project
+end
+
+Given /^there is a feature with no stories$/ do
+  @feature = mock_model(Feature, :stories => []).as_null_object
+  Feature.stub!(:find).and_return @feature
+end
+
+Given /^there is a story with no steps$/ do
+  @story = mock_model(Story, :steps => []).as_null_object
+  Story.stub!(:find).and_return @story
 end
 
 When /^the "([^\"]*)" is viewed$/ do |model|
