@@ -69,6 +69,8 @@ module FormHelpers
         values = {"scenario" => 'this is our stories scenario'}
       when /step/
         values = {"title" => 'Given we have a new step'}
+      when /resource/
+        values = {"name" => "baphled", "project" => "50164"}
       else
         raise "Can't find the form #{form_name}.\n" +
           "Now, go and add a mapping in #{__FILE__}"
