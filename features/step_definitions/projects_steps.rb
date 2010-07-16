@@ -426,10 +426,6 @@ Then /^the error message should be "([^\"]*)"$/ do |message|
   end
 end
 
-Then /^the project information should not be saved$/ do
-  response.should have_selector :form
-end
-
 Then /^there should be no features to import$/ do
   Feature.imports_found("#{RAILS_ROOT}").should be_nil
 end

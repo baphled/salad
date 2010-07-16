@@ -41,3 +41,7 @@ end
 When /^I fill in the ([^\"]*) form with duplicate data$/ do |model|
   fill_in_form_with_duplicate_data model
 end
+
+Then /^the ([^\"]*) information should not be saved$/ do |model|
+  response.should have_selector :form
+end
