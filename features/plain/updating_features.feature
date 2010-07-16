@@ -8,7 +8,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      And I view the feature
+      And I am on a "a feature"
       And a "Check the difference between the systems & your applications features" link should be displayed within the feature
       
     Scenario: An existing features story has changed
@@ -16,7 +16,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      And I view the feature
+      And I am on a "a feature"
       When we click the features "Check the difference between the systems & your applications features"
       Then we should see the changes to the files
       And "Something different" should be highlighted as added
@@ -32,19 +32,19 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      When I view the feature
-      And we click the features "Merge a systems changes with the feature"
-      Then I should see "Dry-run"
+      And I am on a "a feature"
+      Then we click the features "Merge a systems changes with the feature"
+      And I should see "Dry-run"
 
     Scenario: We need a way to do a dry-run patch on our feature file
       Given we have a valid feature file
       And the feature file is saved
       And the feature has a path
       When the feature has changed "Something different"
-      When I view the feature
+      And I am on a "a feature"
       And we click the features "Merge a systems changes with the feature"
-      And I use the "Dry-run" link
-      Then the flash message "No errors whilst doing dry-run" should be displayed
+      Then I use the "Dry-run" link
+      And the flash message "No errors whilst doing dry-run" should be displayed
       And we should be redirected back to "merge"
 
     Scenario: We need a way to to patch on our feature file
@@ -53,7 +53,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       And the feature has a path
       When the feature has changed "Something different"
       And the feature file has changed
-      And I view the feature
+      And I am on a "a feature"
       And we click the features "Merge a systems changes with the feature"
       And I use the "Patch" link
       Then the flash message "Feature has been patched" should be displayed
@@ -61,7 +61,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
     Scenario: We need to be able to update a source file with changes made to a system feature
       Given we have a valid feature file
       And the local feature file has changed
-      When view the feature
+      And I am on a "a feature"
       And we click the features "Merge a features changes with the system"
       And I use the "Update" link
       Then the flash message "The system feature has successfully been updated" should be displayed
@@ -71,7 +71,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
       Given we have a valid feature file
       And the feature file is saved
       And the local feature file has changed a featutes scenario
-      When view the feature
+      And I am on a "a feature"
       And we click the features "Merge a features changes with the system"
       And I use the "Update" link
       Then the flash message "The system feature has successfully been updated" should be displayed
