@@ -18,6 +18,8 @@ module NavigationHelpers
       export_feature_path @feature
     when /import project/
       import_project_path(@project)
+    when /import single feature/
+      import_feature_project_path @project
     when /feature changes/
       changes_feature_path @feature
     when /feature merge/
