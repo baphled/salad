@@ -5,7 +5,7 @@ Feature: We want to us different layout for specific types of actions and areas
 
   Scenario Outline: Viewing specific actions should render specific layouts
     Given there is a <model>
-    When I view the "<page name>" path
+    When I am on "<page name>"
     Then the view "<matcher>" have a sidebar
     
   Examples: List of models to view and their associated actions

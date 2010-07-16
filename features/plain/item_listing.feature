@@ -5,7 +5,7 @@ Feature: Item listing
   
   Scenario Outline: All listings should not display the order button
     Given there is a <model>
-    When I view the "<page name>" path
+    When I am on "<page name>"
     Then the order button should not be visible
     
   Examples: List of pages that have sortable functionality but do not display the order button

@@ -6,7 +6,7 @@ Feature: Import all features
   Scenario: When a user selects update all we will update all features
     Given there is a project
     And the project has features to import
-    When I visit the project
+    When I am on "all projects"
     And I follow "Import all"
     Then a flash message 'Importing all features' should be displayed
     And there should be no features to import
