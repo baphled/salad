@@ -20,9 +20,7 @@ Feature: All our forms need to be passed to the server via AJAX
     And a flash message "was updated" should be dynamically displayed
 
   Scenario: We should be able to submit a new feature form via AJAX
-    Given there are features
-    When I am on "all features"
-    And I click new features
+    When I am on "new feature"
     And I fill in the feature form
     Then submit the form
     And there should be an AJAX request
@@ -49,8 +47,7 @@ Feature: All our forms need to be passed to the server via AJAX
     And a flash message "was created" should be dynamically displayed
 
   Scenario: We should be able to submit an editted story form via AJAX
-    Given I can view the stories page
-    And there is a story
+    Given there is a story
     When I am on "edit story"
     And uncheck a feature it is associated to
     Then submit the form
