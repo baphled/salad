@@ -64,8 +64,7 @@ Feature: A user should be able to create new features, which can be associated w
     Then I should be able to see the first features stories link
 
   Scenario: I should be able to view all stories associated to a given feature
-    Given I can view the features page
-    And there is a feature
+    Given there is a feature
     And the first feature has stories
     When I am on "features stories"
     Then I can view all the stories associated to the feature

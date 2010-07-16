@@ -4,8 +4,7 @@ Feature: Validation of forms
   I want to be alert on invalid data input
 
   Scenario Outline: All validation should have an error class
-    Given I can view the <controller> page
-    When I click new <controller>
+    When I am on "new <model>"
     And we fill in the <model> <property> with '<value>'
     Then submit the form
     And the "<model>" "<property>" "<input_type>" should have an error class

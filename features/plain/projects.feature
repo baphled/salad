@@ -59,9 +59,8 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then the project should not be updated
 
   Scenario: All stories can be linked to a project
-    Given I can view the projects page
-    When I click new projects
-    And there are features
+    Given there are features
+    When I am on "new project"
     Then I should have a checkable list of features
     And we must be able to select 1 feature
     And the project information should be saved
@@ -80,8 +79,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a summary of the project should be displayed
 
   Scenario: I should be able to add new features a project within the project features
-    Given I can view the projects page
-    And there is a project
+    Given there is a project
     When I am on "projects features"
     Then the project features page will be displayed
     When I create new a feature
@@ -153,7 +151,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 
   Scenario: When a user edits a project the projects date should be updated
     Given there is a project
-    And I visit the projects edit view
+    When I am on "edit project"
     When we fill in the project title with 'A different title'
     Then submit the form
     And the title should now be 'A different title'
