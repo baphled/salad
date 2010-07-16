@@ -4,31 +4,32 @@ Feature: We need to be able to easily navigate the website
   I want to be able to easily move around the site using the sites navigation
   
   Scenario Outline: We need to make sure that all pages have navigation
-    Given I can view the <page> page
+    When I am on "<page name>"
     Then the navigation should be displayed
   
   Examples: Basic pages that we want to have navigation highlighting
-  | page     |
-  | projects |
-  | features |
-  | stories  |
-  | steps    |
-  | parking  |
+    | page name     |
+    | all projects  |
+    | all features  |
+    | all stories   |
+    | all steps     |
+    | parking index |
 
   Scenario Outline: When navigating to a page we want to make sure the menu item is actually selected
-    Given I can view the <page> page
+    Given there <model>
+    When I am on "<page>"
     Then the navigation should be displayed
     And the "<menu_item>" will be selected
     And the navigation should be displayed
     
   Examples: More advanced pages which need to have navigation highlighting
-  | page       | menu_item   |
-  | projects   | projects    |
-  | features   | features    |
-  | stories    | stories     |
-  | steps      | steps       |
-  | parking    | parking     |
-  | projects/1 | projects    |
-  | features/1 | features    |
-  | stories/1  | stories     |
-  | steps/1    | steps       |
+    | model             | page           | menu_item   |
+    | are projects      | all projects   | projects    |
+    | are features      | all features   | features    |
+    | are stories       | all stories    | stories     |
+    | are steps         | all steps      | steps       |
+    | are resources     | parking index  | parking     |
+    | is a project      | a project      | projects    |
+    | is a feature      | a feature      | features    |
+    | is a story        | a story        | stories     |
+    | is a step         | a step         | steps       |

@@ -6,6 +6,11 @@ Given /^there is a step$/ do
   @step = Step.first
 end
 
+Given /^there are steps$/ do
+  @step = Step.find(:all)
+  @step.should_not be_empty
+end
+
 When /^I choose 'New Step' link$/ do
   click_link 'New Step'
 end

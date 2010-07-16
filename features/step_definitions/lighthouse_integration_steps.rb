@@ -14,6 +14,10 @@ Given /^we visit the new parking page$/ do
   visit new_parking_path
 end
 
+Given /^there are resources$/ do
+  @resources = Resource.all
+end
+
 Given /^we have set up the lighthouse resource$/ do
   Given %{we visit the new parking page}
   When %{I fill in "resource_name" with "baphled"}
