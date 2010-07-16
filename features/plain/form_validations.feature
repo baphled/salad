@@ -12,30 +12,30 @@ Feature: Validation of forms
     And I should see "<error>" within "<selector>"
 
   Examples: Models and their properties
- | controller | model    | value     | property    | input_type | selector                     | error                                            |
- | features   | feature  |           | title       | input      | li#feature_title_input       | can't be blank                                   |
- | features   | feature  | to        | title       | input      | li#feature_title_input       | Please enter at least 6 characters.              |
- | features   | feature  |           | in_order    | input      | li#feature_title_input       | can't be blank                                   |
- | features   | feature  | to do     | in_order    | input      | li#feature_in_order_input    | Please enter at least 7 characters.              |
- | features   | feature  |           | as_a        | input      | li#feature_title_input       | can't be blank                                   |
- | features   | feature  | use       | as_a        | input      | li#feature_as_a_input        | Please enter at least 4 characters.              |
- | features   | feature  |           | i_want      | input      | li#feature_title_input       | can't be blank                                   |
- | features   | feature  | not       | i_want      | input      | li#feature_i_want_input      | Please enter at least 7 characters.              |
- | projects   | project  |           | title       | input      | li#project_title_input       | can't be blank                                   |
- | projects   | project  | so        | title       | input      | li#project_title_input       | Please enter at least 3 characters.              |
- | projects   | project  |           | aim         | input      | li#project_title_input       | can't be blank                                   |
- | projects   | project  | foo       | aim         | input      | li#project_aim_input         | Please enter at least 6 characters.              |
- | projects   | project  |           | description | input      | li#project_title_input       | can't be blank                                   |
- | projects   | project  | too short | description | input      | li#project_description_input | Please enter at least 12 characters.             |
- | projects   | project  | blah/     | location    | input      | li#project_location_input    | Must be a valid project location on your system. |
- | steps      | step     |           | title       | input      | li#step_title_input          | can't be blank                                   |
- | steps      | step     | foo       | title       | input      | li#step_title_input          | Please enter at least 12 characters.             |
- | stories    | story    | blah      | scenario    | input      | li#story_scenario_input      | Please enter at least 7 characters.              |
- | stories    | story    |           | scenario    | input      | li#story_scenario_input      | can't be blank                                   |
- | parking    | resource |           | name        | input      | li#resource_name_input       | can't be blank                                   |
- | parking    | resource |           | name        | input      | li#resource_name_input       | Please enter at least 3 characters.              |
- | parking    | resource |           | project     | input      | li#resource_project_input    | can't be blank                                   |
- | parking    | resource |           | project     | input      | li#resource_project_input    | Please enter at least 3 characters.              |
+    | controller | model    | value     | property    | input_type | selector                     | error                                            |
+    | features   | feature  |           | title       | input      | li#feature_title_input       | can't be blank                                   |
+    | features   | feature  | to        | title       | input      | li#feature_title_input       | Please enter at least 6 characters.              |
+    | features   | feature  |           | in_order    | input      | li#feature_title_input       | can't be blank                                   |
+    | features   | feature  | to do     | in_order    | input      | li#feature_in_order_input    | Please enter at least 7 characters.              |
+    | features   | feature  |           | as_a        | input      | li#feature_title_input       | can't be blank                                   |
+    | features   | feature  | use       | as_a        | input      | li#feature_as_a_input        | Please enter at least 4 characters.              |
+    | features   | feature  |           | i_want      | input      | li#feature_title_input       | can't be blank                                   |
+    | features   | feature  | not       | i_want      | input      | li#feature_i_want_input      | Please enter at least 7 characters.              |
+    | projects   | project  |           | title       | input      | li#project_title_input       | can't be blank                                   |
+    | projects   | project  | so        | title       | input      | li#project_title_input       | Please enter at least 3 characters.              |
+    | projects   | project  |           | aim         | input      | li#project_title_input       | can't be blank                                   |
+    | projects   | project  | foo       | aim         | input      | li#project_aim_input         | Please enter at least 6 characters.              |
+    | projects   | project  |           | description | input      | li#project_title_input       | can't be blank                                   |
+    | projects   | project  | too short | description | input      | li#project_description_input | Please enter at least 12 characters.             |
+    | projects   | project  | blah/     | location    | input      | li#project_location_input    | Must be a valid project location on your system. |
+    | steps      | step     |           | title       | input      | li#step_title_input          | can't be blank                                   |
+    | steps      | step     | foo       | title       | input      | li#step_title_input          | Please enter at least 12 characters.             |
+    | stories    | story    | blah      | scenario    | input      | li#story_scenario_input      | Please enter at least 7 characters.              |
+    | stories    | story    |           | scenario    | input      | li#story_scenario_input      | can't be blank                                   |
+    | parking    | resource |           | name        | input      | li#resource_name_input       | can't be blank                                   |
+    | parking    | resource |           | name        | input      | li#resource_name_input       | Please enter at least 3 characters.              |
+    | parking    | resource |           | project     | input      | li#resource_project_input    | can't be blank                                   |
+    | parking    | resource |           | project     | input      | li#resource_project_input    | Please enter at least 3 characters.              |
 
 
   # Relies on fixtures
@@ -51,11 +51,7 @@ Feature: Validation of forms
   Scenario: A feature must be unique
     Given I can view the features page
     When I click new features
-    And there are features
-    And we fill in the feature title with 'my first feature'
-    And we fill in the feature in_order with 'to create an project'
-    And we fill in the feature as_a with 'developer'
-    And we fill in the feature i_want with 'to have the skills'
+    And I fill in the feature form with duplicate data
     Then submit the form
     And the feature information should be not saved
     And the error message should be "has already been taken"
@@ -64,7 +60,7 @@ Feature: Validation of forms
   Scenario: If a story is not unique we need to display a error
     Given I can view the stories page
     When I use the "New Story" link
-    And we fill in the story scenario with 'my stories 1st scenario'
+    And I fill in the story form with duplicate data
     Then submit the form
     And the error message should be "has already been taken"
 
