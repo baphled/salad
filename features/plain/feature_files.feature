@@ -50,6 +50,7 @@ Feature: We need a way to handle out feature files
       And the feature should have stories
       And these stores should have steps
 
+    # @TODO Could streamline
     Scenario: When exporting a feature we want to make sure we get rid of the prefixes
       Given we create a FeatureFile from a cucumber feature file
       When a feature is valid

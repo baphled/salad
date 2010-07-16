@@ -12,6 +12,7 @@ Then /^we click search$/ do
   click_button 'Search'
 end
 
+# @TODO Refactor so that we actually check that each result starts or contains Given
 Then /^all results should contain 'Given'$/ do
   results = Step.find(:all, :conditions => ["title LIKE ?", "%Given%"])
   response.should contain "Results (#{results.size.to_s})"

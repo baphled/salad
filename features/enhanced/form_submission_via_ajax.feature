@@ -111,7 +111,7 @@ Feature: Form submission via AJAX
     When I am on the <page> page
     And I <form action> the <item> form
     Then there should be an AJAX request
-    And the for should be hidden
+    And the form should be hidden
     And there should be a "view form" button
 
   Examples:
