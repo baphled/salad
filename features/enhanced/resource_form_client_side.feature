@@ -4,10 +4,9 @@ Feature: Client side validations for our parking form
     I want the input validated my client side validation
 
     Scenario: The parking resource name must be entered
-      Given I can view the parking page
-      When I follow "New Resource information"
-      And I fill in "resource_name" with ""
-      And I fill in "resource_project" with "foo"
+      When I am on the "parking index" page
+      And I follow "New Resource information"
+      And I fill in the resource form name with ""
       Then submit the form
       And a JS based error message should be displayed
       And the form should have an client side error
@@ -15,8 +14,7 @@ Feature: Client side validations for our parking form
     Scenario: The parking resource project must be entered
       Given I can view the parking page
       When I follow "New Resource information"
-      And I fill in "resource_name" with "foo"
-      And I fill in "resource_project" with ""
+      And I fill in the resource form project with ""
       Then submit the form
       And a JS based error message should be displayed
       And the form should have an client side error
@@ -24,8 +22,7 @@ Feature: Client side validations for our parking form
     Scenario: The parking resource name must be at least 3 characters
       Given I can view the parking page
       When I follow "New Resource information"
-      And I fill in "resource_name" with "fo"
-      And I fill in "resource_project" with ""
+      And I fill in the resource form name with "fo"
       Then submit the form
       And a JS based error message should be displayed
       And the client side error message should be "Please enter at least 3 characters."
@@ -33,8 +30,7 @@ Feature: Client side validations for our parking form
     Scenario: The parking resource project must be at least 3 characters
       Given I can view the parking page
       When I follow "New Resource information"
-      And I fill in "resource_name" with ""
-      And I fill in "resource_project" with "ba"
+      And I fill in the resource form project with "fo"
       Then submit the form
       And a JS based error message should be displayed
       And the client side error message should be "Please enter at least 3 characters."

@@ -3,33 +3,23 @@ Feature: Order items
     As an user
     I want to be able to sort items into the appropriate order
 
-    Scenario: Ordering a projects features
-      Given the project has features
-      When I visit the projects features
+    Scenario Outline: Ordering items
+      Given the <model> has <assoc>
+      When I am on the "<page name>" page
       And I press order
       Then I should see the order handler
       And I should be able to move the second item to the first position
       And the items should be reordered
 
-    Scenario: Ordering a features stories
-      Given the feature has stories
-      When I visit the features stories
-      And I press order
-      Then I should see the order handler
-      And I should be able to move the second item to the first position
-      And the items should be reordered
+    Examples: List of items than can be reordered
+      | model   | assoc     | page name         |
+      | project | features  | projects features |
+      | feature | stories   | features stories  |
+      | story   | steps     | stories steps     |
 
-    Scenario: Ordering a storys steps
-      Given the story has steps
-      When I visit the stories steps
-      And I press order
-      Then I should see the order handler
-      And I should be able to move the second item to the first position
-      And the items should be reordered
-      
     Scenario Outline: The ordering button should not be on any of the model index pages
       Given there is a <model>
-      When I view the "<page name>" path
+      When I am on the "<page name>" page
       Then it should "<have order button>" have an order button
       
     Examples: List of pages that use the list layout
@@ -48,5 +38,5 @@ Feature: Order items
 
     Scenario: Should not be able to order items if there is only one item
       Given the project has one feature
-      When I visit the projects features
+      When I am on the "projects features" page
       Then it should "does not" have an order button

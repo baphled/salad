@@ -6,7 +6,7 @@ Feature: AJAX based sidebar functionality
   # @TODO move this to the form submission feature file
   Scenario Outline: Displaying the side bar after form submission
     Given there is a <item>
-    When I view the "<page name>" path
+    When I am on the "<page name>" page
     Then the side bar should not be rendered
     And submit the form
     And there should be an AJAX request

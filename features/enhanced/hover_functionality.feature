@@ -5,47 +5,42 @@ Feature: Hovering over a project item
 
   Scenario: Hovering over a project item from the projects index
     Given there are projects
-    And I visit the projects index page
-    When the project page is loaded
+    When I am on "all projects"
     And the first project is hovered over
     Then the project's information will be display in the sidebar
 
   Scenario: Hovering over a project item from project feature
     Given the "project" has "features"
-    When I visit the "projects" "features"
-    And the feature page is loaded
+    When I am on the "projects features" page
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
 
   Scenario: Hovering over an item from the features index
     Given there are features
-    And I can view the features page
-    When the feature page is loaded
+    When I am on "all features"
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
 
   Scenario: Hovering over a story item
     Given there are stories
-    And I can view the stories page
-    When the story page is loaded
+    When I am on "all stories"
     And the first story is hovered over
     Then the story's information will be display in the sidebar
 
   Scenario: When viewing a project we must be able to hover of its items
     Given the "project" has "features"
-    And the project is viewed
+    When I am on "a project"
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
     
   Scenario: When viewing a project's feature we must be able to hover of its items
     Given the "project" has "features"
-    When I visit the "projects" "features"
+    When I am on the "projects features" page
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
     
   Scenario: When viewing a feature we must be able to hover of its items
     Given the "feature" has "stories"
-    And the feature is viewed
-    When the story page is loaded
+    When I am on "a feature"
     And the first story is hovered over
     Then the story's information will be display in the sidebar
