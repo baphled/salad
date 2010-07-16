@@ -42,9 +42,7 @@ Feature: Validation of forms
   Scenario: A project must be unique
     Given I can view the projects page
     When I click new projects
-    And we fill in the project title with 'A fixture project'
-    And we fill in the project aim with 'A description for our project'
-    And we fill in the project description with 'A projects aims'
+    And I fill in the project form with duplicate data
     Then submit the form
     And the project information should not be saved
     And the error message should be "has already been taken"

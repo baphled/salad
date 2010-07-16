@@ -33,3 +33,11 @@ end
 
 When /^I update the ([^\"]*) form$/ do  |model|
 end
+
+When /^I fill in the ([^\"]*) form ([^\"]*) with "([^\"]*)"$/ do |model, property, value|
+  fill_form model.singularize, property.to_sym => "#{value}"
+end
+
+When /^I fill in the ([^\"]*) form with duplicate data$/ do |model|
+  fill_in_form_with_duplicate_data model
+end
