@@ -16,6 +16,8 @@ module NavigationHelpers
       parking_index_path
     when /parking new/
       new_parking_path
+    when /new resource/
+      new_parking_path
     when /new feature/
       new_feature_path
     when /export feature/
@@ -32,6 +34,8 @@ module NavigationHelpers
       system_merge_feature_path @feature
     when /features patch/
       feature_path(@feature,:format => :patch)
+    when /export feature file/
+      feature_path(@feature,:format => :feature)
     when /new project/
       new_project_path
     when /edit project/
