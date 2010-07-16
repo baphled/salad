@@ -62,13 +62,13 @@ module FormHelpers
     values = {}
     case form_name
       when /feature/
-        values = {:title => 'Logging in', :in_order => 'to create the best app', :as_a => 'user', :i_want => 'the best project ever'}
+        values = {"title" => 'Logging in', "in_order" => 'to create the best app', "as_a" => 'user', "i_want" => 'the best project ever'}
       when /project/
-        values = {:title => 'A project', :aim => 'An aim', :description => 'A description', :location => "#{RAILS_ROOT}"}
+        values = {"title" => 'A project', "aim" => 'An aim', "description" => 'A description', "location" => "#{RAILS_ROOT}"}
       when /story/
-        values = {:scenario => 'this is our stories scenario'}
+        values = {"scenario" => 'this is our stories scenario'}
       when /step/
-        values = {:title => 'Given we have a new step'}
+        values = {"title" => 'Given we have a new step'}
       else
         raise "Can't find the form #{form_name}.\n" +
           "Now, go and add a mapping in #{__FILE__}"
@@ -76,6 +76,15 @@ module FormHelpers
 
     parmas = values.merge(opts)
     parmas.each { |param, value| When %{we fill in the #{form_name} #{param} with '#{value}'} }
+  end
+
+  def fill_in_form_with_duplicate_data form_name
+    model = form_name.capitalize.constantize.first
+    opts = model.attributes
+    ['id', 'created_at', 'updated_at'].each do |param|
+      opts.delete param
+    end
+    fill_form form_name.singularize, opts
   end
 end
 
