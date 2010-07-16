@@ -6,10 +6,6 @@ Given /^the "([^\"]*)" tags are not empty$/ do |model|
   @temp.tag_counts.should_not be_empty
 end
 
-When /^we visit the "([^\"]*)" index$/ do |controller|
-  visit "/#{controller}/"
-end
-
 Then /^the tags cloud should be displayed$/ do
   response.should have_selector :div, attribute = {:id => "cloud_tag" }
 end
