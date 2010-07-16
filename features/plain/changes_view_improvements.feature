@@ -7,7 +7,7 @@ Feature: Changes view improvements
       Given there is a feature
       And the feature has a path
       When the feature has changed "Something different"
-      And I view the feature
+      And I am on "a feature"
       And I use the "<link>" link
       Then changes on the "<system_or_file>" should be displayed as "<colour>"
 
@@ -24,7 +24,7 @@ Feature: Changes view improvements
       Given there is a feature
       And the feature has a path
       When the feature has changed "Something different"
-      And I view the feature
+      And I am on "a feature"
       And I use the "<link>" link
       Then the following notice should be displayed "<notice>"
       
