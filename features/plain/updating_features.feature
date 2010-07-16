@@ -24,7 +24,7 @@ Feature: We need a way to keep our local feature files in sync with what is on t
     Scenario: A user should be redirected back to the feature when they try to access changes that does not exist
       Given we have a valid feature file
       And the feature file is saved
-      When the features changes is viewed
+      When I am on "feature changes"
       Then the flash message "No changes available" should be displayed
       
     Scenario: We must be able to view the changes we are about to merge

@@ -53,7 +53,7 @@ Feature: We need to a way to store our stories within a project, this will help 
 
   Scenario: If there is a problem saving the project we should be alerted
     Given there is a project
-    When I visit the projects edit view
+    When I am on "edit project"
     And we fill in the project aim with 'A different aim'
     And the project is not able to update
     Then the project should not be updated
@@ -101,7 +101,6 @@ Feature: We need to a way to store our stories within a project, this will help 
   Scenario: I should be able to easily create new features for a project
     When I am on "all projects"
     Then all projects should have a 'Add features' link
-    And I should be able to visit the URL
 
   Scenario: I should be able to create a project with tags
     When I am on "new project"
@@ -124,10 +123,8 @@ Feature: We need to a way to store our stories within a project, this will help 
 
   Scenario: When viewing a project with no feature, the user should not see the order button
     Given there is a project
+    And a project has no features
     When I am on "a project"
-    When a project has no features
-    And there is a project
-    And the project is viewed
     Then the order button should not be displayed
 
   Scenario: When a project is created it should store its creation date

@@ -33,7 +33,7 @@ Feature: A user needs to be able to export created features into cucumber featur
 
   Scenario: We want to be able to export the feature in a RESTful manner
     Given there is a feature
-    When we view the feature with the "feature" format
+    When am on "export feature file"
     Then the feature should be displayed
     
   Scenario: Saving the exported feature

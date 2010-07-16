@@ -62,8 +62,6 @@ Feature: Users should not have to manually input their features if they have alr
   Scenario: I should be able to see all the stories for each feature
     Given there is a project
     And the project has a project path
-    When the project is viewed
-    Then I should see a import link
     When I am on "import project"
     Then I should see a list of features that will be imported
     And each entry should be a feature file
@@ -146,7 +144,7 @@ Feature: Users should not have to manually input their features if they have alr
     And we click import projects
     Then a flash message 'Something different' should be displayed
     And each imported stories step should be added
-    When the project is viewed
+    When I am on "a project"
     Then I should see a import link
     When I click import
     Then the project feature will be not be selectable.

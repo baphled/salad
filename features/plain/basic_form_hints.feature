@@ -4,7 +4,7 @@ Feature: All forms input elements should have hints to help the user fill in a f
     I want to see hints to give me clues as to what data needs to go with what field
 
     Scenario Outline: A project forms hints
-      When I view the "<page>" path
+      When I am on "<page>"
       Then I should see "<tooltip>" within "<selector>"
 
     Examples: List of form selectors with hints
