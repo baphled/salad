@@ -52,15 +52,14 @@ $(document).ready(function() {
     return false;
   });
 
-  $("button.display_form").live("click",function(event) {
-    var link = $(this),
-        id_attribute_name = link.attr('id').split('_'),
-        title_array = link.text().split(' '),
+  $("button.display_form").live("click",function() {
+    var $link = $(this),
+        title_array = $link.text().split(' '),
         prefix = '';
 
     $('form').toggle(function() {
-      prefix = ('view' == link.text().substr(0,4))? 'hide ' : 'view ';
-      link.text(prefix + title_array[1]);
+      prefix = ('view' == title_array[0])? 'hide ' : 'view ';
+      $link.button({ option: 'text' , label: prefix + title_array[1]});
     });
   });
 
