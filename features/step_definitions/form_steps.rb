@@ -20,7 +20,7 @@ When /^I fill in the ([^\"]*) form$/ do |model|
 end
 
 When /^I don't fill in the ([^\"]*) "([^\"]*)"$/ do |model, opt|
-  fill_form model.singularize, opt.to_sym => ''
+  fill_form model.singularize, opt => ''
 end
 
 When /^fill in the story form$/ do
@@ -35,7 +35,7 @@ When /^I update the ([^\"]*) form$/ do  |model|
 end
 
 When /^I fill in the ([^\"]*) form ([^\"]*) with "([^\"]*)"$/ do |model, property, value|
-  fill_form model.singularize, property.to_sym => "#{value}"
+  fill_form model.singularize, property => "#{value}"
 end
 
 When /^I fill in the ([^\"]*) form with duplicate data$/ do |model|

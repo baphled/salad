@@ -12,41 +12,26 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
     And a flash message 'Project: A project was created' should be displayed
 
-  Scenario: As a user I must give the project a title
-    Given I can view the projects page
-    When I click new projects
-    And I don't fill in the projects "title"
+  Scenario Outline: Not furfilling the forms required fields results in a validation error
+    When I am on the "new project" page
+    And I don't fill in the projects "<field>"
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed
-    And the user should be told the must have a title
-		
-  Scenario: As a user I must give the project a brief description when editing a project
-    Given I can view the projects page
-    When I click new projects
-    And I don't fill in the projects "description"
-    Then submit the form
-    And I should be redirected to the form
-    And a form error must be displayed
-    And the user should be told the must have a description
-		
-  Scenario: As a user I must give the project an aim
-    Given I can view the projects page
-    When I click new projects
-    And I don't fill in the projects "aim"
-    Then submit the form
-    And I should be redirected to the form
-    And a form error must be displayed
-    And the user should be told the must have a aim
-		
+    And the user should be told the must have a <field>
+
+  Examples: Fields that are required
+    | field       |
+    | title       |
+    | description |
+    | aim         |
+
   Scenario: As a user I should not be able to create a project that already exists
     Given I can view the projects page
     And there is a project
     When I click new projects
     And the project already exists
-    And we fill in the project title with 'A fixture project'
-	And we fill in the project aim with 'A description for our project'
-	And we fill in the project description with 'A projects aims'
+    And I fill in the project form title with "A fixture project"
     Then submit the form
     And I should be redirected to the form
     And a form error must be displayed
