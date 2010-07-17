@@ -50,14 +50,17 @@ Feature: We need a way to handle out feature files
       And the feature should have stories
       And these stores should have steps
 
-    # @TODO Could streamline
-    Scenario: When exporting a feature we want to make sure we get rid of the prefixes
+    Scenario Outline: When exporting a feature we want to make sure we get rid of the prefixes
       Given we create a FeatureFile from a cucumber feature file
       When a feature is valid
       And it has more than one scenario
       Then export will return a Feature object
-      And exported features 'title' will not contain 'Feature:' prefix
-      And exported features 'in_order' will not contain 'In order' prefix
-      And exported features 'i_want' will not contain 'I want' prefix
-      And exported features 'as_a' will not contain 'As a' prefix
+      And exported features '<property>' will not contain '<prefix>' prefix
       And each scenario should not be prefixed with 'Scenario:'
+
+    Examples: List of propertties that should not contain the given prefixes
+      | property | prefix   |
+      | title    | Feature: |
+      | in_order | In order |
+      | i_want   | I want   |
+      | as_a     | As a     |

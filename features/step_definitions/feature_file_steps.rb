@@ -69,20 +69,9 @@ end
 Then /^these stores should have steps$/ do
   @file.export.stories.each { |story| story.steps.should_not be_nil  }
 end
-Then /^exported features 'title' will not contain '(.*)' prefix$/ do |content|
-  @file.export.title.should_not contain content
-end
 
-Then /^exported features 'in_order' will not contain '(.*)' prefix$/ do |content|
-  @file.export.in_order.should_not contain content
-end
-
-Then /^exported features 'i_want' will not contain '(.*)' prefix$/ do |content|
-  @file.export.i_want.should_not contain content
-end
-
-Then /^exported features 'as_a' will not contain '(.*)' prefix$/ do |content|
-  @file.export.as_a.should_not contain content
+Then /^exported features '(.*)' will not contain '(.*)' prefix$/ do |property, content|
+  @file.export.send(property.to_sym).should_not contain content
 end
 
 Then /^each scenario should not be prefixed with 'Scenario:'$/ do
