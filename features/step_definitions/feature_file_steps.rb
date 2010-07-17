@@ -62,12 +62,8 @@ Then /^exported features '(.*)' will not contain '(.*)' prefix$/ do |property, c
   @file.export.send(property.to_sym).should_not contain content
 end
 
-Then /^each scenario should not be prefixed with 'Scenario:'$/ do
-  @file.export.stories.each { |story| story.scenario.should_not contain /^Scenario:/}
-end
-
-When /^each scenario should not be prefixed with 'Scenario Outline:'$/ do
-  @file.export.stories.each { |story| story.scenario.should_not contain /^Scenario Outline:/}
+Then /^each scenario should not be prefixed with '(.*)'$/ do |content|
+  @file.export.stories.each { |story| story.scenario.should_not contain /^#{content}/}
 end
 
 Then /^a scenario outline should be found$/ do
