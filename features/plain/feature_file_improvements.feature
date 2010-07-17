@@ -4,13 +4,11 @@ Feature: We want to be able to deal with Cucumber changing formats easily
     I want to be able to use cucumbers functionality to read our feature files
 
     Scenario: We should be able to extract a scenario outline
-      Given we have a feature file
-      And we create a FeatureFile from a cucumber feature file with a scenario outline
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
       Then a scenario outline should be found
 
     Scenario: We should be able to extract a scenarios examples
-      Given we have a feature file
-      And we create a FeatureFile from a cucumber feature file with a scenario outline
+      Given we create a FeatureFile from a cucumber feature file with a scenario outline
       Then a scenario outline should be found
       And the scenario outlines example should be found
 
