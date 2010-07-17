@@ -38,8 +38,8 @@ Then /^the '(.*)' property should not be nil$/ do |property|
   @file.send(property.to_sym).should_not be_nil
 end
 
-Then /^the object should have 1 or more scenarios$/ do
-  @file.scenarios.count.should >= 1
+Then /^the object should have (.*) or more scenarios$/ do |amount|
+  @file.scenarios.count.should >= amount.to_i
 end
 
 Then /^each scenario should have the expected steps$/ do
