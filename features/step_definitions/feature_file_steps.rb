@@ -39,7 +39,7 @@ Then /^the '(.*)' property should not be nil$/ do |property|
 end
 
 Then /^the object should have 1 or more scenarios$/ do
-  @file.scenarios.should_not be_nil
+  @file.scenarios.count.should >= 1
 end
 
 Then /^each scenario should have the expected steps$/ do
