@@ -38,16 +38,8 @@ Then /^the object should be invalid$/ do
   @file.should be_invalid
 end
 
-Then /^the 'In order' property should not be nil$/ do
-  @file.in_order.should_not be_nil
-end
-
-Then /^the 'As a' property should not be nil$/ do
-  @file.as_a.should_not be_nil
-end
-
-Then /^the 'I want' property should not be nil$/ do
-  @file.i_want.should_not be_nil
+Then /^the '(.*)' property should not be nil$/ do |property|
+  @file.send(property.to_sym).should_not be_nil
 end
 
 Then /^the object should have 1 or more scenarios$/ do
