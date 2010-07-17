@@ -11,26 +11,19 @@ Feature: We need a way to handle out feature files
       Given we create a FeatureFile from a cucumber feature file
       Then the object should be valid
 
-    Scenario: A FeatureFile should store the 'Feature' heading
+    # @TODO Add examples for scenarios
+    Scenario Outline: A FeatureFile should store the 'In order' heading
       Given we create a FeatureFile from a cucumber feature file
       Then the object should be valid
-      And the feature property should not be nil
-      
-    Scenario: A FeatureFile should store the 'In order' heading
-      Given we create a FeatureFile from a cucumber feature file
-      Then the object should be valid
-      And the 'In order' property should not be nil
-      
-    Scenario: A FeatureFile should store the 'As a' heading
-      Given we create a FeatureFile from a cucumber feature file
-      Then the object should be valid
-      And the 'As a' property should not be nil
+      And the '<property>' property should not be nil
 
-    Scenario: A FeatureFile should store the 'I want' heading
-      Given we create a FeatureFile from a cucumber feature file
-      Then the object should be valid
-      And the 'I want' property should not be nil
-
+    Examples: List of properties that should not be nil
+      | property |
+      | feature |
+      | in_order |
+      | as_a     |
+      | i_want   |
+      
     Scenario: A FeatureFile should store the feature files scenario's
       Given we create a FeatureFile from a cucumber feature file
       Then the object should be valid

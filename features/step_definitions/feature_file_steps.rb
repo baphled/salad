@@ -30,10 +30,6 @@ Then /^the object should be valid$/ do
   @file.should_not be_invalid
 end
 
-Then /^the feature property should not be nil$/ do
-  @file.feature.should_not be_nil
-end
-
 Then /^the object should be invalid$/ do
   @file.should be_invalid
 end
