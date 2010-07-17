@@ -6,10 +6,6 @@ Given /^we create a FeatureFile from a cucumber feature file$/ do
   @file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/test.feature")
 end
 
-Given /^we have a feature file$/ do
-  File.exists?("#{RAILS_ROOT}/spec/fixtures/test.feature").should be_true
-end
-
 Given /^we create a FeatureFile from a cucumber feature file with a scenario outline$/ do
   @file = FeatureFile.new "#{RAILS_ROOT}/features/plain/enhancements.feature"
 end

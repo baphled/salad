@@ -1,5 +1,6 @@
 Given /^we select a feature with no stories$/ do
-  @feature = mock_model(Story,:id => 1, :steps => []).as_null_object
+  @feature = mock_model(Feature, :stories => []).as_null_object
+  Feature.stub!(:find).and_return @feature
 end
 
 Given /^we select a feature with stories$/ do
@@ -30,7 +31,7 @@ end
 
 
 Then /^the export link should not be viewable$/ do
-  response.should_not have_selector :a, attribute = {:href => "/features/2/export"}
+  response.should_not have_selector :a, attribute = {:href => "#{export_feature_path @feature}"}
 end
 
 Then /^the feature should be converted to the necessary cucumber feature format$/ do
@@ -42,6 +43,7 @@ Then /^that story is not added to the exported feature$/ do
   response.should_not contain "Scenario: #{Story.find(2).scenario}"
 end
 
+# @TODO Rename to a more appropriate title
 Then /^the feature should be displayed$/ do
   response.should be_success
 end
