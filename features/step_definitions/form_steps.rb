@@ -35,10 +35,6 @@ When /^"([^\"]*)" the "([^\"]*)" form$/ do |form_action, item|
   end
 end
 
-Then /^I should not be redirected to the form$/ do
-  response.should_not have_selector :form
-end
-
 Then /^the ([^\"]*) information should not be saved$/ do |model|
   response.should have_selector :form
 end

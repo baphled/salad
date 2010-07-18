@@ -15,10 +15,6 @@ When /^I choose 'New Step' link$/ do
   click_link 'New Step'
 end
 
-When /^I fill in the step form"$/ do
-  When %{we fill in the step title with 'Given we have a new step'}
-end
-
 Then /^the new step form should be displayed$/ do
   response.should have_selector :form
 end
@@ -33,10 +29,6 @@ end
 
 Then /^the step should be not saved$/ do
   response.should have_selector :form
-end
-
-Then /^I don't fill in the steps title$/ do
-  
 end
 
 Then /^I check 'my first story'$/ do

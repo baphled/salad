@@ -46,14 +46,6 @@ When /^we retrieve tickets$/ do
   @lighthouse_tickets.should_not be_empty
 end
 
-When /^I select "([^\"]*)"$/ do |selection|
-  select selection
-end
-
-Then /^each of the features should be using the "([^\"]*)" tag$/ do |tag|
-  @lighthouse_tickets.each {|ticket| ticket.tag.should contain tag}
-end
-
 Then /^I should be sent to the "([^\"]*)" page$/ do |page_title|
   response.should contain page_title
 end

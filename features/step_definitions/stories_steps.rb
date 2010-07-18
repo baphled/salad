@@ -53,10 +53,6 @@ Then /^each story should have a scenario$/ do
   end
 end
 
-Then /^there should not be a list of stories$/ do
-  response.should_not have_selector :ul
-end
-
 Then /^the story information should be saved$/ do
   assert !Story.find_by_scenario("this is our stories scenario").scenario.nil?
 end

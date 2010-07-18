@@ -14,13 +14,6 @@ Given /^the features creation date is not the same as the updated date$/ do
   @feature.update_attribute(:updated_at, Time.now.next_year)
 end
 
-Given /^the feature already exists$/ do
-  Feature.create :title => 'my first feature',
-                 :in_order => 'to create an project',
-                 :as_a => 'developer',
-                 :i_want => 'to have the skills'
-end
-
 Then /^the feature information should be saved$/ do
   assert_response :success
 end
@@ -34,17 +27,6 @@ end
 
 When /^there are features$/ do
   assert Feature.find :all
-end
-
-When /^I edit the first feature$/ do
-  click_link 'Edit'
-end
-
-When /^I fill in the feature form"$/ do
-  When %{we fill in the feature title with 'Logging in'}
-  When %{we fill in the feature in_order with 'to create the best app'}
-  When %{we fill in the feature as_a with 'user'}
-  When %{we fill in the feature i_want with 'the best project ever'}
 end
 
 Then /^I should see a list of features$/ do
@@ -93,10 +75,6 @@ Then /^I can view all the stories associated to the feature$/ do
       end
     end
   end
-end
-
-Then /^the feature should have a creation date$/ do
-  response.should contain "Creation date:"
 end
 
 Then /^the features date should be updated$/ do

@@ -31,16 +31,8 @@ When /^I hover over the "([^\"]*)" (?:link|button)$/ do |link|
   selenium.mouse_over("#{link}")
 end
 
-When /^we click on the "([^\"]*)" link$/ do |link|
-  click_link link
-end
-
 When /^focus on the tag input$/ do
   selenium.click "project_tag_list"
-end
-
-When /^I double click "([^\"]*)"$/ do |element|
-  selenium.double_click element
 end
 
 When /^I submit the form$/ do
@@ -53,16 +45,6 @@ end
 
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1")
-end
-
-Given /^we click the edit link$/ do
-  click_link 'Edit'
-end
-
-Given /^we change the feature's title to "([^\"]*)"$/ do |content|
-  selenium.wait_for_visible("id=feature_title")
-  fill_in 'feature_title', :with => content
-  click_button 'Save'
 end
 
 Then /^the story's information will be display in the sidebar$/ do

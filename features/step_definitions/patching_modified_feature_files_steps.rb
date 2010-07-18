@@ -13,10 +13,6 @@ Then /^the flash message "([^\"]*)" should be displayed$/ do |message|
   response.should contain message
 end
 
-Then /^we should display a patch with the changes$/ do
-  response.should contain 'Patch:'
-end
-
 Then /^the patch should be displayed$/ do
   response.body.should_not be_empty
 end

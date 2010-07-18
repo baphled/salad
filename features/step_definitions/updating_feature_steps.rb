@@ -13,10 +13,6 @@ Given /^the feature has a path$/ do
   @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
 end
 
-Given /^the feature is found$/ do
-  Feature.find_by_title(@feature.title).should be_true
-end
-
 Given /^the feature is not found$/ do
   Feature.find_by_title(@feature.title).should be_nil
 end
@@ -41,14 +37,9 @@ When /^we click the features "([^\"]*)"$/ do |link|
   click_link link
 end
 
-When /^there should be a link to merge the change$/ do
-  response.should have_selector :a, attribute = {:title => "Merge changes"}
-end
-
 When /^we click the "([^\"]*)"$/ do |link|
   click_button link
 end
-
 
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
   response.should have_selector :a, attribute = {:title => message}
@@ -74,16 +65,8 @@ Then /^we should display the patch$/ do
   response.should contain "+Feature: Something different"
 end
 
-Then /^we should be redirected to the feature page$/ do
-  response.should contain 'Feature does not have any changes'
-end
-
 Then /^the feature should be save$/ do
   Feature.find_by_title(@feature.title).should_not be_nil
-end
-
-Then /^we should see the changes on the system$/ do
-  response.should contain "+Feature: Something different"
 end
 
 Then /^we should be redirected back to "([^\"]*)"$/ do |path|

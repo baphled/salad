@@ -1,7 +1,3 @@
-Given /^I have the first "([^\"]*)"$/ do |model|
-  @model = model.capitalize.constantize.first
-end
-
 When /^I use the "([^\"]*)" link$/ do |link|
   click_link link
 end

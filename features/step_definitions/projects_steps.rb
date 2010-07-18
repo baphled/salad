@@ -23,10 +23,6 @@ Given /^there are no features to import$/ do
   Project.stub(:find_features).and_return []
 end
 
-Given /^there are no projects$/ do
-  @projects = Project.stub(:last).and_return nil
-end
-
 #TODO refactor so that the steps action is clearer
 Given /^the project has features$/ do
   @project = Project.find 2
@@ -46,14 +42,6 @@ end
 
 Given /^the project does have a project location with no features to import$/ do
   @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures/features")
-end
-
-When /^the project already exists$/ do
-  @project.stub!(:save).and_return false
-end
-
-When /^I view the project$/ do
-  When %{the project is viewed}
 end
 
 When /^the project is not able to update$/ do
@@ -151,16 +139,6 @@ end
 
 Then /^the project should not be updated$/ do
   response.should have_selector :form
-end
-
-Then /^I should not view a list of projects$/ do
-  response.should_not have_selector :ul do |list|
-    list.should_not have_selector :li
-  end
-end
-
-Then /^should see a message saying 'No projects available'$/ do
-  response.should have_selector :span, :content => "No projects available"
 end
 
 Then /^I should have a checkable list of features$/ do
@@ -286,10 +264,6 @@ Then /^each entry should display the features its stories$/ do
   end
 end
 
-When /^a scenario already exists$/ do
-  response.should contain "Scenario: #{Story.find(3).scenario}"
-end
-
 When /^select the "([^\"]*)"$/ do |link|
   click_link 'Tag cloud'
 end
@@ -302,15 +276,6 @@ end
 
 When /^we click import projects$/ do
   click_button 'Import tag cloud'
-end
-
-Then /^we scenario should display that is is already added$/ do
-  response.should have_selector :b, :content => "Already added"
-end
-
-Then /^the scenario should not be duplicationed$/ do
-  response.should_not have_selector :input, 
-                                  attribute = {:value => "Scenario: As a user I must give the project a brief description"}
 end
 
 Then /^each story should display its steps$/ do
@@ -338,10 +303,6 @@ end
 
 Then /^we should be redirected to the projects import page$/ do
   current_url.should =~ /import/
-end
-
-When /^we export the features$/ do
-  click_link 'export feature'
 end
 
 Then /^I should be able to edit a the project information$/ do
@@ -380,12 +341,6 @@ end
 
 Then /^there should be no features to import$/ do
   Feature.imports_found("#{RAILS_ROOT}").should be_nil
-end
-
-Then /^a feature with a path should display it$/ do
-  response.should have_selector :b do |content|
-    content.should contain 'Path:'
-  end
 end
 
 Then /^the path location should be a link$/ do
