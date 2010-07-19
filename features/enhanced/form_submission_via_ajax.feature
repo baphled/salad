@@ -93,7 +93,7 @@ Feature: Form submission via AJAX
     When I am on the <page> page
     And I <form action> the <item> form
     Then there should be an AJAX request
-    And the for should be hidden
+    And the form should be hidden
 
   Examples:
     | page            | item      | form action |
@@ -124,3 +124,19 @@ Feature: Form submission via AJAX
     | edit feature    | feature   | update      |
     | edit story      | story     | update      |
     | edit step       | step      | update      |
+
+  # @TODO Refactor so we can apply the same scenario to new form submissions & our edge case scenario's'
+  Scenario Outline: Displaying the sidebar after form submission
+    Given there is a <item>
+    When I am on the "<page name>" page
+    Then the side bar should not be rendered
+    And submit the form
+    And there should be an AJAX request
+    And the sidebar will be rendered via AJAX
+
+  Examples: All pages that should have render the sidebar after an AJAX based form submission
+     | item    | page name    |
+     | project | edit project |
+     | feature | edit feature |
+     | story   | edit story   |
+     | step    | edit step    |
