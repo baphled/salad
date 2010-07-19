@@ -13,7 +13,7 @@ Feature: Form submission via AJAX
     Then there should be an AJAX request
     And a dialog box should appear
 
-  Examples:
+  Examples: A list of form based pages that when submitted should still allow the user to see view source feature file via a dialog box
     | page          | item      | form action |
     | edit feature  | feature   | update      |
 
@@ -128,15 +128,20 @@ Feature: Form submission via AJAX
   # @TODO Refactor so we can apply the same scenario to new form submissions & our edge case scenario's'
   Scenario Outline: Displaying the sidebar after form submission
     Given there is a <item>
-    When I am on the "<page name>" page
+    When I am on the "<page>" page
+    And I <form action> the <item> form
     Then the side bar should not be rendered
-    And submit the form
-    And there should be an AJAX request
+    When submit the form
+    Then there should be an AJAX request
     And the sidebar will be rendered via AJAX
 
   Examples: All pages that should have render the sidebar after an AJAX based form submission
-     | item    | page name    |
-     | project | edit project |
-     | feature | edit feature |
-     | story   | edit story   |
-     | step    | edit step    |
+    | page            | item      | form action |
+    | new project     | project   | fill in     |
+    | new feature     | feature   | fill in     |
+    | new story       | story     | fill in     |
+    | new step        | step      | fill in     |
+    | edit project    | project   | update      |
+    | edit feature    | feature   | update      |
+    | edit story      | story     | update      |
+    | edit step       | step      | update      |
