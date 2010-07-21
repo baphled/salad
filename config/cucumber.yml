@@ -7,4 +7,5 @@ std_opts = "#{rerun_opts} --format rerun --out rerun.txt --strict --tags ~@wip"
 wip: --tags @wip:3 --wip features/plain
 
 default: -r features/support/env.rb -r features/support/plain.rb -r features/step_definitions features/plain <%= std_opts %>
+autotest: -r features/support/env.rb -r features/support/plain.rb -r features/step_definitions features/plain <%= std_opts %>
 selenium: -r features/support/env.rb -r features/support/enhanced.rb -r features/step_definitions features/enhanced <%= std_opts %>
