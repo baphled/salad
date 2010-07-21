@@ -23,6 +23,7 @@ Feature: All item information should be layed out in a similar way
 
     Scenario: Viewing a feature should display the feature information in a pre defined layout
       Given there is a feature
+      And the "feature" has 5 "stories"
       And the features creation date is not the same as the updated date
       When I am on "a feature"
       Then the "feature" information header should be displayed
