@@ -8,19 +8,20 @@ describe "/features/show.html.erb" do
 
   describe "viewing feature" do
     before(:each) do
-      @feature = Feature.first
+      @feature = Feature.make
       assigns[:feature] = @feature
       assigns[:feature_stories] = @feature.stories.paginate(:page=>1)
-      render
     end
     
     it "should have display the features informaion" do
+      render
       response.should have_selector :div do |content|
         content.should contain @feature.title
       end
     end
     
     it "should have a list of stories associated to it" do
+      render
       response.should have_selector :ul do |list|
         @feature.stories.each do |story|
           list.should have_selector :li do |content|
@@ -30,13 +31,24 @@ describe "/features/show.html.erb" do
       end
     end
 
-    it "should display an export feature link" do
-      response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
-    end
-    
+
     it "has a link to view a feature file" do
-       response.should have_selector :a, attribute = {:href => source_feature_path(@feature)}
-     end
+      render
+      response.should have_selector :a, attribute = {:href => source_feature_path(@feature)}
+    end
+
+    context "feature is exportable" do
+      before(:each) do
+        @feature.stub(:is_diff?).and_return true
+        assigns[:feature] = @feature
+        render
+      end
+
+      it "should display an export feature link" do
+        pending "Need to setup so that the export link is visible"
+        response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
+      end
+    end
   end
   
   context "feature with no story" do
