@@ -9,7 +9,7 @@ Feature: All our forms need to be passed to the server via AJAX
     Then submit the form
     And there should be an AJAX request
     And the form should be hidden
-    And a flash message "Project: A project was created" should be dynamically displayed
+    And a flash message "was created" should be dynamically displayed
 
   Scenario: We should be able to submit an editted project form via AJAX
     Given there is a project
@@ -48,6 +48,7 @@ Feature: All our forms need to be passed to the server via AJAX
 
   Scenario: We should be able to submit an editted story form via AJAX
     Given there is a story
+    And there are features
     When I am on "edit story"
     And uncheck a feature it is associated to
     Then submit the form
@@ -65,6 +66,7 @@ Feature: All our forms need to be passed to the server via AJAX
 
   Scenario: We should be able to submit an editted step via AJAX
     Given there is a story
+    And it has an associated feature
     When I am on "edit story"
     And uncheck a feature it is associated to
     Then submit the form
@@ -73,25 +75,28 @@ Feature: All our forms need to be passed to the server via AJAX
     
   Scenario Outline: Displaying the side bar after form submission
     Given there is a <model>
+    And the "<page name>" has "<assoc>"
     When I am on "<page name>"
     Then the side bar should not be rendered
     And submit the form
+    And there should be an AJAX request
     And the sidebar will be rendered via AJAX
 
   Examples: All pages that should have render the sidebar after an AJAX based form submission
-    | model   | page name    |
-    | project | edit project |
-    | feature | edit feature |
-    | story   | edit story   |
-    | step    | edit step    |
+    | model   | page name    | assoc   |
+    | project | edit project | feature |
+    | feature | edit feature | story   |
+    | story   | edit story   | step    |
+    | step    | edit step    |         |
 
   Scenario Outline: When submitting a form the hover functionality should still be available
-     Given the "<page name>" has "<assoc item>"
-     When I am on the <page>
-     And I submit the form
-     And the <assoc> page is loaded
-     And the first <assoc> is hovered over
-     Then the <assoc>'s information will be display in the sidebar
+    Given there is a <page name>
+    And the "<page name>" has "<assoc>"
+    When I am on the <page>
+    And I submit the form
+    And the <assoc> page is loaded
+    And the first <assoc> is hovered over
+    Then the <assoc>'s information will be display in the sidebar
 
   Examples: List of forms that should display flash messages after submitting a form
     | page name | assoc   | page         |
@@ -102,6 +107,7 @@ Feature: All our forms need to be passed to the server via AJAX
   # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The ordering button should not be on any of the model index pages
     Given there is a <model>
+    Given the "<page name>" has 5 "<assoc>"
     When I am on "<page name>"
     And I <form action> the <model> form
     And submit the form
@@ -109,19 +115,20 @@ Feature: All our forms need to be passed to the server via AJAX
     Then it should "<have order button>" have an order button
 
   Examples: List of pages that use the list layout
-    | model   | page name    | have order button | form action |
-    | project | new project  | does not          | fill in     |
-    | feature | new feature  | does not          | fill in     |
-    | story   | new story    | does not          | fill in     |
-    | step    | new step     | does not          | fill in     |
-    | project | edit project | does              | update      |
-    | feature | edit feature | does              | update      |
-    | story   | edit story   | does              | update      |
-    | step    | edit step    | does not          | update      |
+    | model   | page name    | assoc   | have order button | form action |
+    | project | new project  | feature | does not          | fill in     |
+    | feature | new feature  | story   | does not          | fill in     |
+    | story   | new story    | step    | does not          | fill in     |
+    | step    | new step     |         | does not          | fill in     |
+    | project | edit project | feature | does              | update      |
+    | feature | edit feature | story   | does              | update      |
+    | story   | edit story   | step    | does              | update      |
+    | step    | edit step    |         | does not          | update      |
 
   # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The items summary information should always be displayed
     Given there is a <model>
+    And the "<page name>" has "<assoc>"
     When I am on "<page name>"
     And I <form action> the <model> form
     And submit the form
@@ -129,12 +136,12 @@ Feature: All our forms need to be passed to the server via AJAX
     Then it should display all the <model> information
       
   Examples: List of actions that should render the information and summary panel
-    | model   | page name    | form action |
-    | project | new project  | fill in     |
-    | feature | new feature  | fill in     |
-    | story   | new story    | fill in     |
-    | step    | new step     | fill in     |
-    | project | edit project | update      |
-    | feature | edit feature | update      |
-    | story   | edit story   | update      |
-    | step    | edit step    | update      |
+    | model   | page name    | assoc   | form action |
+    | project | new project  | feature | fill in     |
+    | feature | new feature  | story   | fill in     |
+    | story   | new story    | step    | fill in     |
+    | step    | new step     |         | fill in     |
+    | project | edit project | feature | update      |
+    | feature | edit feature | story   | update      |
+    | story   | edit story   | step    | update      |
+    | step    | edit step    |         | update      |
