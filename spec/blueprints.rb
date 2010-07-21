@@ -19,6 +19,7 @@ Feature.blueprint {
   as_a { "user" }
   in_order { Faker::Lorem.sentence }
   i_want { Faker::Lorem.sentence }
+  path { "#{RAILS_ROOT}/features/plain/tag_cloud.feature" }
 }
 
 Story.blueprint {
@@ -28,15 +29,3 @@ Story.blueprint {
 Step.blueprint {
   title { Sham.step }
 }
-
-def machine_fixtures
-  3.times {
-    Project.make
-  }
-end
-
-def project_with_features(attributes = {})
-  Project.make(attributes) do |project|
-    3.times { project.features.make }    
-  end
-end
