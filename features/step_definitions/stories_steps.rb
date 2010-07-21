@@ -70,7 +70,6 @@ Then /^I should see a list of stories$/ do
 end
 
 Then /^the features information should be displayed above the form$/ do
-  @feature = Feature.find 1
   response.should have_selector :div do |content|
     content.should contain @feature.title
   end
@@ -87,4 +86,13 @@ end
 
 Then /^we should the example should be displayed$/ do
   response.should have_selector :td, :content => "Examples"
+end
+
+When /^I uncheck a story$/ do
+  @removed_story = @feature.stories.first
+  uncheck "feature_story_id_#{@feature.stories.first.id}"
+end
+
+Then /^the feature should be not associated to the story$/ do
+  @feature.stories.should_not contain @removed_story
 end

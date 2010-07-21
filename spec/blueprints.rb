@@ -21,6 +21,7 @@ Feature.blueprint {
   in_order { Faker::Lorem.sentence }
   i_want { Faker::Lorem.sentence }
   path { "#{RAILS_ROOT}/features/plain/tag_cloud.feature" }
+  created_at { Time.now.last_year }
 }
 
 Story.blueprint {

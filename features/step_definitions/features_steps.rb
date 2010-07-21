@@ -1,5 +1,5 @@
 Given /^the first feature has stories$/ do
-  assert !Feature.find(1).stories.nil?
+  @feature.stories = [Story.make]
 end
 
 Given /^there is a feature$/ do
@@ -7,7 +7,7 @@ Given /^there is a feature$/ do
 end
 
 Given /^the feature has stories$/ do
-  @feature = Feature.first
+  @feature.stories = [Story.make]
 end
 
 Given /^the features creation date is not the same as the updated date$/ do
@@ -65,7 +65,7 @@ end
 
 Then /^I can view all the stories associated to the feature$/ do
   response.should have_selector :ul do |list|
-    Feature.find(1).stories.each do |story|
+    @feature.stories.each do |story|
       list.should have_selector :li do |content|
         content.should contain story.scenario
       end

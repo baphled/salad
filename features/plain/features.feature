@@ -96,6 +96,7 @@ Feature: A user should be able to create new features, which can be associated w
     And a form error must be displayed
 
   Scenario: A user must be able to view all features creation date
+    Given there are features
     When I am on "all features"
     Then each of the features should have a creation date
 
@@ -117,18 +118,21 @@ Feature: A user should be able to create new features, which can be associated w
 
   Scenario: We should be able to easily associate a story with a feature
     Given there is a feature
+    And there are stories
     When I am on "edit feature"
     When the feature has stories
     Then the stories should be listed
     
   Scenario: When adding a new feature story the associated story should be saved
     Given there is a feature
+    And the "feature" has 5 "stories"
     When I am on "edit feature"
     When we fill in the feature title with 'A different title'
     Then the stories should be listed
-    When I uncheck "feature_story_id_1"
+    When I uncheck a story
     Then submit the form
-    And the feature should be not associated to the first story
+    And show me the page
+    And the feature should be not associated to the story
     
   Scenario: We want to be able to edit a feature when viewing a particular feature
     Given there is a feature

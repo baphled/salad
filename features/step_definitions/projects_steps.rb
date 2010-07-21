@@ -150,7 +150,7 @@ Then /^I should have a checkable list of features$/ do
 end
 
 Then /^we must be able to select 1 feature$/ do
-  check 'project_feature_id_1'
+  check "li > input"
 end
 
 Then /^the project features page will be displayed$/ do
