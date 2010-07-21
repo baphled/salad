@@ -38,13 +38,13 @@ ActionController::Base.allow_rescue = false
 # after each scenario, which can lead to hard-to-debug failures in
 # subsequent scenarios. If you do this, we recommend you create a Before
 # block that will explicitly put your database in a known state.
-Cucumber::Rails::World.use_transactional_fixtures = true
+Cucumber::Rails::World.use_transactional_fixtures = false
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
-# DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.strategy = :truncation
 
 # this is necessary to have webrat "wait_for" the response body to be available
 # when writing steps that match against the response body returned by selenium
@@ -53,12 +53,12 @@ World(Webrat::Selenium::Matchers)
 # "before all"
 browser = Selenium::SeleniumDriver.new("localhost", 4444, "*chrome", "http://localhost", 15000)
 Sham.reset(:before_all)
+
 Before do
   Sham.reset(:before_each)
   @browser = browser
   DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean
-  machine_fixtures
 end
 
 #
