@@ -1,5 +1,5 @@
 Given /^we create a feature with a path$/ do
-  @feature = Feature.first
+  @feature = Feature.make(:path => "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature")
 end
 
 Given /^a project has tags$/ do

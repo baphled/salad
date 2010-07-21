@@ -5,9 +5,11 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
 
   Scenario: When hovering over the feature's export link displays a tooltip
     Given there is a feature
+    And the "feature" has 5 "stories"
     When I am on "a feature"
     And I click "span#panel"
     Then there should be a "Export a feature" link
+    And show me the page
     And I hover over the "export-feature" link
     Then a tooltip should be visible
 
