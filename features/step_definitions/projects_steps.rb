@@ -3,8 +3,7 @@ Given /^there is a project$/ do
 end
 
 Given /^there are projects$/ do
-  @projects = Project.find(:all)
-  @projects.should_not be_empty
+  @projects = Project.stub(:all).and_return [Project.make]
 end
 
 Given /^the project does not have a project location$/ do

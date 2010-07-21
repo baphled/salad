@@ -1,5 +1,5 @@
 Given /^there are stories$/ do
-  assert !Story.find(:all).nil?
+  @stories = Story.stub(:all).and_return [Story.make]
 end
 
 Given /^the story has steps$/ do
