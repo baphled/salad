@@ -64,13 +64,13 @@ module FormHelpers
     values = {}
     case form_name
       when /feature/
-        values = {"title" => 'Logging in', "in_order" => 'to create the best app', "as_a" => 'user', "i_want" => 'the best project ever'}
+        values = {"title" => Sham.feature, "in_order" => 'to create the best app', "as_a" => 'user', "i_want" => 'the best project ever'}
       when /project/
-        values = {"title" => 'A project', "aim" => 'An aim', "description" => 'A description', "location" => "#{RAILS_ROOT}"}
+        values = {"title" => Sham.title, "aim" => 'An aim', "description" => 'A description', "location" => "#{RAILS_ROOT}"}
       when /story/
-        values = {"scenario" => 'this is our stories scenario'}
+        values = {"scenario" => Sham.scenario }
       when /step/
-        values = {"title" => 'Given we have a new step'}
+        values = {"title" => Sham.step }
       when /resource/
         values = {"name" => "baphled", "project" => "50164"}
       else
