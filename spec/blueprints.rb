@@ -12,6 +12,7 @@ Project.blueprint {
   aim { 'An aim' }
   description { 'A description' }
   location { "#{RAILS_ROOT}" }
+  created_at { Time.now.last_year }
 }
 
 Feature.blueprint {
