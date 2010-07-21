@@ -17,25 +17,6 @@ Feature: Form submission via AJAX
     | page          | item      | form action |
     | edit feature  | feature   | update      |
 
-  Scenario Outline: After editing a item the hover dialog should still function
-    Given there is a <item>
-    When I am on "<page>" page
-    And I <form action> the <item> form
-    Then I submit the form
-    When I click "button.display_form"
-    Then there should be an AJAX request
-
-  Examples:
-    | page            | item      | form action |
-    | new project     | project   | fill in     |
-    | new feature     | feature   | fill in     |
-    | new story       | story     | fill in     |
-    | new step        | step      | fill in     |
-    | edit project    | project   | update      |
-    | edit feature    | feature   | update      |
-    | edit story      | story     | update      |
-    | edit step       | step      | update      |
-
   Scenario Outline: The items panel should be visible
     Given there is a <item>
     When I am on the <page> page
@@ -92,6 +73,7 @@ Feature: Form submission via AJAX
     Given there is a <item>
     When I am on the <page> page
     And I <form action> the <item> form
+    When submit the form
     Then there should be an AJAX request
     And the form should be hidden
 
@@ -110,9 +92,10 @@ Feature: Form submission via AJAX
     Given there is a <item>
     When I am on the <page> page
     And I <form action> the <item> form
+    When submit the form
     Then there should be an AJAX request
     And the form should be hidden
-    And there should be a "view form" button
+    And I should see "view form"
 
   Examples:
     | page            | item      | form action |
