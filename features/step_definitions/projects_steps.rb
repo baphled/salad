@@ -32,7 +32,7 @@ Given /^the project does have a project location to an invalid feature$/ do
 end
 
 Given /^the projects creation date is not the same as the updated date$/ do
-  @project.update_attribute(:updated_at, Time.now.next_year)
+  @project.stub!(:created_at).and_return Time.now.last_year
 end
 
 Given /^the project has features to import$/ do
