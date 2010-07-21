@@ -35,6 +35,10 @@ When /^"([^\"]*)" the "([^\"]*)" form$/ do |form_action, item|
   end
 end
 
+When /^I fill in the feature form with existing data$/ do
+  fill_form 'feature', 'title' => @feature.title
+end
+
 Then /^the ([^\"]*) information should not be saved$/ do |model|
   response.should have_selector :form
 end
