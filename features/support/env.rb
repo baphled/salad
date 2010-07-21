@@ -20,6 +20,8 @@ require 'spec/stubs/cucumber'
 require 'spec/mocks/framework'
 require 'spec/mocks/extensions'
 
+require File.join(RAILS_ROOT, 'spec', 'blueprints')
+
 #require 'cucumber/webrat/element_locator' # Deprecated in favor of #tableish - remove this line if you don't use #element_at or #table_at
 
 Webrat.configure do |config|
