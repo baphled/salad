@@ -80,10 +80,6 @@ Then /^I should be see a link to create a new story$/ do
   click_link 'New Story'
 end
 
-Then /^the story should no long store the feature$/ do
-  assert Story.find(1).feature_ids.empty?
-end
-
 Then /^it should be saved$/ do
   response.should_not have_selector :form, attribute = {:href=>new_story_path}
 end

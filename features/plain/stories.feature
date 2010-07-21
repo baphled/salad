@@ -15,7 +15,6 @@ Feature: Stories will be needed to populate our projects features
     And I select first feature new story link
     And I fill in the story form
     Then submit the form
-    And the story information should be saved
     And I should be redirected to the new story
     And a flash message 'Story: this is our stories scenario, was created' should be displayed
 
@@ -30,13 +29,6 @@ Feature: Stories will be needed to populate our projects features
     Given there are stories
     When I am on "all stories"
     Then I should be see a link to create a new story
-
-  Scenario: I should be able to edit a story
-    Given there is a story
-    And I am on "edit story"
-    And uncheck a feature it is associated to
-    Then submit the form
-    And the story should no long store the feature
 
   Scenario: I should be able to select a pre-existing step, which we can use instead
     Given there is a story

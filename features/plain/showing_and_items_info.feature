@@ -15,7 +15,8 @@ Feature: All item information should be layed out in a similar way
       And the "Updated date" should be displayed
 
     Scenario: Viewing a project features should display the project information in a pre defined layout
-      Given the project has features
+      Given there is a project
+      And the project has features
       And the projects creation date is not the same as the updated date
       When I am on "projects features"
       Then it should display all the project information
@@ -35,7 +36,8 @@ Feature: All item information should be layed out in a similar way
       And a "Last Story"
 
     Scenario: Viewing a features stories should display the features information in a pre defined layout
-      Given the feature has stories
+      Given there is a feature
+      Given the "feature" has 5 "stories"
       When I am on "features stories"
       Then it should display all the feature information
 
@@ -48,6 +50,7 @@ Feature: All item information should be layed out in a similar way
       And a "Last Step"
 
     Scenario: Viewing a storys steps should display the storys information in a pre defined layout
+      Given there is a story
       Given the story has steps
       When I am on "stories steps"
       Then it should display all the story information

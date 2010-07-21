@@ -4,6 +4,7 @@ Feature: Viewing an item
   I want to see a consistent layout
 
   Scenario: There should be a link to a features source file if it has a path
+    Given there is a project
     Given the project has features
     And one of the projects features has a path
     When I am on "project show" page

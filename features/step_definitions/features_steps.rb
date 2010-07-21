@@ -47,16 +47,12 @@ Then /^the feature should be saved$/ do
   assert !Feature.find_by_title("an edited title").title.nil?
 end
 
-Then /^the flash message 'Feature: my first feature, was updated'$/ do
-  flash.should contain "Feature: my first feature, was updated"
+Then /^the flash message '(.*)'$/ do |flash|
+  flash.should contain "#{flash}"
 end
 
 Then /^the form should be rerendered$/ do
   response.should render_template "edit"
-end
-
-Then /^the flash message 'Feature: my first feature, was not updated'$/ do
-  flash.should contain "Feature: my first feature, was not updated"
 end
 
 Then /^I should be able to add a new story$/ do
@@ -103,7 +99,7 @@ end
 
 Then /^there should be an edit link$/ do
   response.should have_selector :span do |content|
-    content.should have_selector :a, attribute = {:title => 'Edit'}
+    content.should have_selector :a, attribute = {:title => "Edit the feature and it's stories"}
   end
 end
 

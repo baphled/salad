@@ -40,8 +40,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     When I choose 'New Step' link
     When I fill in the step form
     Then submit the form
-    And the step should be saved as 'Given we have a new step'
-    And a flash message 'Step: Given we have a new step, was created' should be displayed
+    And a flash message ', was created' should be displayed
 
   Scenario: A user should be able to view the stories a step is linked to
     Given there is a step

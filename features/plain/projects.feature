@@ -9,9 +9,9 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
     And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'was created' should be displayed
 
-  Scenario Outline: Not furfilling the forms required fields results in a validation error
+  Scenario Outline: Not fulfilling the forms required fields results in a validation error
     When I am on "new project"
     And I don't fill in the projects "<field>"
     Then submit the form
@@ -109,7 +109,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
     And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'was created' should be displayed
 
   Scenario: When creating a new project the user should be directed to it and be able to add features
     When I am on "new project"
@@ -118,7 +118,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
     And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'was created' should be displayed
     And the project should have link to create new features
 
   Scenario: When viewing a project with no feature, the user should not see the order button
@@ -134,7 +134,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the project information should be saved
     And the project creation date should be stored
     And I should be redirected to the new project
-    And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'was created' should be displayed
 
   Scenario: A user must be able to view all projects creation date
     Given there are projects
@@ -169,7 +169,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
     And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'was created' should be displayed
     And the projects updated field will not be displayed
 
   Scenario: A user can specify the location of a given project
@@ -178,7 +178,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then submit the form
     And the project information should be saved
     And I should be redirected to the new project
-    And a flash message 'Project: A project was created' should be displayed
+    And a flash message 'was created' should be displayed
 
   Scenario: A user can edit a project when it is being viewed
     Given there is a project

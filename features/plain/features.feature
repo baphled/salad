@@ -9,7 +9,7 @@ Feature: A user should be able to create new features, which can be associated w
     Then submit the form
     And the feature information should be saved
     And I should be redirected to the new features
-    And a flash message 'Feature: Logging in, was created' should be displayed
+    And a flash message 'was created' should be displayed
 
   Scenario: As a user when I create a feature with no title, the feature should not be valid
     When I am on "new feature"
