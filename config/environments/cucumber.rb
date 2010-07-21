@@ -28,3 +28,5 @@ config.gem 'webrat',           :lib => false, :version => '>=0.6.0' unless File.
 config.gem 'rcov',             :lib => false, :version => '>=0.9.7.1'
 config.gem 'Selenium',        :lib => false
 config.gem 'selenium-client',  :lib => false, :version => '=1.2.18'
+config.gem 'machinist', :lib => 'machinist'
+config.gem 'faker'
