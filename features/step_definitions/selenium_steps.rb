@@ -3,7 +3,7 @@ Given /^we create a feature with a path$/ do
 end
 
 Given /^a project has tags$/ do
-  visit '/projects/1/edit'
+  visit edit_project_path @project
   fill_in 'project_location', :with => ''
   fill_in 'project_tag_list', :with => 'Project management, something else'
   click_button 'Save'
