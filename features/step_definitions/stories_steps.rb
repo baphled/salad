@@ -7,7 +7,7 @@ Given /^the story has steps$/ do
 end
 
 Given /^there is a story$/ do
-  @story = Story.first
+  @story = Story.make
 end
 
 Given /^we have a stories with examples$/ do
@@ -15,6 +15,10 @@ Given /^we have a stories with examples$/ do
   @story = f.stories.first
   @story.save
   @story.examples.size.should eql 1
+end
+
+Given /^it has an associated feature$/ do
+  @story.features << Feature.make
 end
 
 When /^I select first feature new story link$/ do

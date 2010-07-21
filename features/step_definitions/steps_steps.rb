@@ -3,7 +3,7 @@ Given /^the step "([^\"]*)" is created$/ do |step|
 end
 
 Given /^there is a step$/ do
-  @step = Step.first
+  @step = Step.make
 end
 
 Given /^there are steps$/ do

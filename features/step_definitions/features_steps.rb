@@ -3,7 +3,7 @@ Given /^the first feature has stories$/ do
 end
 
 Given /^there is a feature$/ do
-  @feature = Feature.first
+  @feature = Feature.make
 end
 
 Given /^the feature has stories$/ do
@@ -26,7 +26,7 @@ Then /^I should have a checkable list of projects$/ do
 end
 
 When /^there are features$/ do
-  assert Feature.find :all
+  Feature.stub(:all).and_return [Feature.make]
 end
 
 Then /^I should see a list of features$/ do

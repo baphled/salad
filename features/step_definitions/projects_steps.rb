@@ -1,5 +1,5 @@
 Given /^there is a project$/ do
-  @project = Project.first
+  @project = Project.make
 end
 
 Given /^there are projects$/ do
@@ -25,7 +25,7 @@ end
 
 #TODO refactor so that the steps action is clearer
 Given /^the project has features$/ do
-  @project = Project.find 2
+  @project.features << Feature.make
 end
 
 Given /^the project does have a project location to an invalid feature$/ do
@@ -51,11 +51,13 @@ end
 Given /^the "([^\"]*)" has "([^\"]*)"$/ do |model, assoc|
   case model
     when /project/
-      @project = Project.find 2
+      @project.features << Feature.make
     when /feature/
-      @feature = Feature.first
+      @feature.stories << Story.make
     when /story/
-      @story = Story.first
+      @story.steps << Step.make
+    when //
+      # do nothing
     else
       raise "Can't instantiate \"#{model}\".\n" +
         "Now, go and add a mapping in #{__FILE__}"
