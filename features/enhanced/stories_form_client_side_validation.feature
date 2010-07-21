@@ -17,8 +17,9 @@ Feature: Stories need client side validation
     And the client side error message should be "Please enter at least 7 characters."
   
   Scenario: If a story is not unique we need to display a client side error
+    Given there is a story
     When I am on "new story"
-    And we fill in the story scenario with 'my stories 1st scenario'
+    And I fill in the story form with duplicate data
     Then submit the form
     And a JS based error message should be displayed
     And the client side error message should be "Must be a unique story."

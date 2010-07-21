@@ -1,5 +1,5 @@
 Given /^the step "([^\"]*)" is created$/ do |step|
-  Step.create(:title => step)
+  Step.make(:title => step)
 end
 
 Given /^there is a step$/ do
@@ -7,8 +7,7 @@ Given /^there is a step$/ do
 end
 
 Given /^there are steps$/ do
-  @step = Step.find(:all)
-  @step.should_not be_empty
+  @step = Step.stub(:all).and_return [Step.make]
 end
 
 When /^I choose 'New Step' link$/ do
@@ -23,8 +22,8 @@ Then /^the step should be saved as '(.*)'$/ do |message|
   assert !Step.find_by_title("#{message}").title.nil?
 end
   
-Then /^a flash message 'Step: Given we have a new step was created', should be displayed$/ do
-  flash.should contain "Step: Given we have a new step, was created"
+Then /^a flash message '(.*)', should be displayed$/ do |flash|
+  flash.should contain "#{flash}"
 end
 
 Then /^the step should be not saved$/ do
