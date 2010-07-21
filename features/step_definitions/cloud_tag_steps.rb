@@ -1,5 +1,5 @@
 Given /^there are "([^\"]*)" tags$/ do |model|
-  @temp = model.capitalize.constantize.first
+  @temp = model.capitalize.constantize.make
   @temp.update_attribute :tag_list, ["Tag 1","Tag 2","Tag 3"]
 end
 

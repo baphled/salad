@@ -1,4 +1,7 @@
 Given /^there are "([^\"]*)"$/ do |model|
+  models = []
+  3.times { models << model.capitalize.singularize.constantize.make }
+  model.capitalize.singularize.constantize.stub!(:all).and_return models
   model.capitalize.singularize.constantize.all.should_not be_empty
 end
 
