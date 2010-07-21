@@ -4,7 +4,7 @@ describe "/common/_model_information.html.erb" do
   
   describe "a newly created project" do
     before(:each) do
-      @project = Project.first
+      @project = Project.make
     end
     
     context "basic project information" do

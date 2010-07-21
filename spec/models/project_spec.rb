@@ -95,7 +95,7 @@ describe Project do
 
   context "listing importable features" do
     before(:each) do
-      @project = Project.first
+      @project = Project.make
     end
     
     context "with importable features" do

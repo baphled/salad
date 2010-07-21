@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/features/export.html.erb" do
   before(:each) do
-    @feature = Feature.first
+    @feature = Feature.make
     assigns[:feature] = @feature
     render
   end

@@ -7,7 +7,7 @@ describe "/common/_model_summary.html.erb" do
 
   before(:each) do
     @date = Time.now
-    @project = Project.first
+    @project = Project.make(:created_at => Time.now)
   end
   describe "a project summary" do
 

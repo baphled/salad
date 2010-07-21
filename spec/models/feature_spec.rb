@@ -2,7 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Feature do
   before(:each) do
-    @feature ||= Feature.first
+    steps = []
+    3.times { |i| steps << Step.make }
+    @feature ||= Feature.make(:stories => [Story.make(:steps => steps)])
   end
 
   it "can store the features file location" do
@@ -37,11 +39,11 @@ describe Feature do
       @feature.export.should contain "In order #{@feature.in_order}"
     end
     
-    it "should contain an 'as a' line" do
-      @feature.export.should contain "As a"
+    it "should contain an 'as' line" do
+      @feature.export.should contain "As"
     end
     
-    it "should contain a 'as a' contents" do
+    it "should contain a 'as' contents" do
       @feature.export.should contain "As #{@feature.as_a}"
     end
     
@@ -69,7 +71,7 @@ describe Feature do
       @feature.stories.each do |story|
         if not story.steps.nil?
           story.steps.each do |step|
-            @feature.export.should contain "#{step.title}"
+            @feature.export.should contain "#{step.title.sub(/Given|When|Then/, '')}"
           end
         end
       end

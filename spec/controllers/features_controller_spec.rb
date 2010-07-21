@@ -9,7 +9,7 @@ describe FeaturesController do
   describe "POST, create" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature",:null_object=>true)
-      request.env["HTTP_REFERER"] = projects_path mock_model(Project,:id=>1,:null_object=>true)
+      request.env["HTTP_REFERER"] = projects_path(Project.make)
       Feature.stub!(:new).and_return @feature
       
     end
@@ -39,27 +39,22 @@ describe FeaturesController do
     
     context "saving an imported feature" do
       before(:each) do
-        request.env["HTTP_REFERER"] = import_project_path mock_model(Project,:id=>1,:null_object=>true)
-        assigns[:current_project_id] = 1
+        @project = Project.make
+        request.env["HTTP_REFERER"] = import_project_path @project
+        assigns[:current_project_id] = @project.id
         @feature.stub!(:save).and_return true
       end
       
       it "redirects to the import page" do
-        post :create, {:commit => 'Import', :current_project_id => 1}
-        response.should redirect_to import_project_path(Project.first)
+        post :create, {:commit => 'Import', :current_project_id => @project.id}
+        response.should redirect_to import_project_path(@project)
       end
       
       context "importing over XHR" do
-        before(:each) do
-          @project = mock_model(Project,:id=>1,:null_object=>true)
-          request.env["HTTP_REFERER"] = import_project_path @project
-          assigns[:current_project_id] = 1
-          @feature.stub!(:save).and_return true
-        end
         
         it "redirects not to the import page" do
-          xhr :post, :create, {:commit => 'Import', :current_project_id => 1}
-          response.should_not redirect_to import_project_path(Project.first)
+          xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
+          response.should_not redirect_to import_project_path(@project)
         end
         
         context "more features to import" do
@@ -69,11 +64,11 @@ describe FeaturesController do
           
           it "finds the project the feature was imported from" do
             @feature.stub!(:find_by_project_id).and_return Project.first
-            xhr :post, :create, {:commit => 'Import', :current_project_id => 1}
+            xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
           end
           
           it "renders the import RJS file" do
-            xhr :post, :create, {:commit => 'Import', :current_project_id => 1}
+            xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
             response.should render_template "import.rjs"
           end
           
