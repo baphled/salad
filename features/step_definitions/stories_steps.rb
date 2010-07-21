@@ -34,7 +34,7 @@ When /^uncheck a feature it is associated to$/ do
 end
 
 When /^check a pre\-existing step$/ do
-  check 'story_step_id_1'
+  check "#{Step.first.title}"
 end
 
 When /^I fill in the story form"$/ do

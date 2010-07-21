@@ -44,6 +44,7 @@ Feature: All item information should be layed out in a similar way
 
     Scenario: Viewing a story should display the story information in a pre defined layout
       Given there is a story
+      And the "story" has 5 "steps"
       When I am on "a story"
       Then the "story" information header should be displayed
       And the "Scenario" should be displayed
@@ -52,6 +53,7 @@ Feature: All item information should be layed out in a similar way
 
     Scenario: Viewing a storys steps should display the storys information in a pre defined layout
       Given there is a story
+      And the "story" has 5 "steps"
       Given the story has steps
       When I am on "stories steps"
       Then it should display all the story information

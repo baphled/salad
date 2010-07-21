@@ -99,6 +99,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And be sent to the new projects view
 
   Scenario: I should be able to easily create new features for a project
+    Given there are projects
     When I am on "all projects"
     Then all projects should have a 'Add features' link
 
@@ -126,15 +127,6 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a project has no features
     When I am on "a project"
     Then the order button should not be displayed
-
-  Scenario: When a project is created it should store its creation date
-    When I am on "new project"
-    And I fill in the project form
-    Then submit the form
-    And the project information should be saved
-    And the project creation date should be stored
-    And I should be redirected to the new project
-    And a flash message 'was created' should be displayed
 
   Scenario: A user must be able to view all projects creation date
     Given there are projects

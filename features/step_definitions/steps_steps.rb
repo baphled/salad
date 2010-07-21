@@ -31,13 +31,17 @@ Then /^the step should be not saved$/ do
 end
 
 Then /^I check 'my first story'$/ do
-  check 'step_story_id_1'
+  check "#{Story.first.scenario}"
 end
 
 Then /^I should see check boxes for all steps it can be linked to$/ do
-  response.should have_selector :input, attribute = {:type=>"checkbox",:value=>"1",:id=>"step_story_id_1"}
+  response.should have_selector :input, attribute = {:type=>"checkbox",:value=> "#{Story.first.id}", :id=>"step_story_id_#{Story.first.id}"}
 end
 
 Then /^the message '(.*)' should be displayed$/ do |message|
   response.should contain "#{message}"
+end
+
+Given /^there is a story with the "([^\"]*)" "([^\"]*)"$/ do |param, value|
+  @story = Story.make( param.to_sym => value )
 end

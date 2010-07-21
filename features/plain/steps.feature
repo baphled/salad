@@ -12,8 +12,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     Then the new step form should be displayed
     When I fill in the step form
     Then submit the form
-    And the step should be saved as 'Given we have a new step'
-    And a flash message 'Step: Given we have a new step, was created' should be displayed
+    And a flash message 'was created' should be displayed
 
   Scenario: A user should not be able to create a new step if it is not unique
     When I am on "new step"
@@ -27,6 +26,7 @@ Feature: Stories have steps, which help to define what the action taken within a
     And the step should be not saved
 
   Scenario: A user should be able to associate a step with a story
+    Given there is a story with the "scenario" "my first story"
     When I am on "new step"
     Then the new step form should be displayed
     When I fill in the step form
@@ -43,7 +43,9 @@ Feature: Stories have steps, which help to define what the action taken within a
     And a flash message ', was created' should be displayed
 
   Scenario: A user should be able to view the stories a step is linked to
-    Given there is a step
+    Given there is a story
+    And there is a step
+    And the "story" has 5 "steps"
     When I am on "a step"
     Then I should see check boxes for all steps it can be linked to
 

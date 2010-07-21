@@ -68,7 +68,7 @@ Given /^one of the projects features has a path$/ do
 end
 
 When /^I create new a feature$/ do
-  click_link 'New feature'
+  click_link "Add Project's Feature"
 end
 
 When /^a project has no features$/ do
@@ -150,7 +150,7 @@ Then /^I should have a checkable list of features$/ do
 end
 
 Then /^we must be able to select 1 feature$/ do
-  check "li > input"
+  check "#{Feature.first.title}"
 end
 
 Then /^the project features page will be displayed$/ do
@@ -176,7 +176,7 @@ Then /^I should be sent to the new feature page$/ do
 end
 
 Then /^the project should already be selected$/ do
-  response.should have_selector :input, atrribute = {:type=>"checkbox",:value=>"1",:id=>"feature_project_id_1"}
+  response.should have_selector :input, atrribute = {:type=>"checkbox", :value=> "#{Project.first.id}", :id=> "feature_project_id_#{Project.first.id}"}
 end
 
 Then /^I should not see the project features section$/ do

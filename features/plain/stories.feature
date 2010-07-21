@@ -16,12 +16,12 @@ Feature: Stories will be needed to populate our projects features
     And I fill in the story form
     Then submit the form
     And I should be redirected to the new story
-    And a flash message 'Story: this is our stories scenario, was created' should be displayed
+    And a flash message 'was created' should be displayed
 
   Scenario: As a user I should be able to view all the features stories
-    Given there are features
-    When I am on "all features"
-    When I select first feature
+    Given there is a feature
+    And the "feature" has 5 "stories"
+    When I am on "a feature"
     Then I should see a list of stories
     And each story should have a scenario
 
@@ -32,6 +32,7 @@ Feature: Stories will be needed to populate our projects features
 
   Scenario: I should be able to select a pre-existing step, which we can use instead
     Given there is a story
+    And there are steps
     When I am on "a story"
     And check a pre-existing step
     Then submit the form

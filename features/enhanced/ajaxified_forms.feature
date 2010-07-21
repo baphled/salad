@@ -104,7 +104,6 @@ Feature: All our forms need to be passed to the server via AJAX
     | feature   | story   | edit feature |
     | story     | step    | edit story   |
 
-  # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The ordering button should not be on any of the model index pages
     Given there is a <model>
     Given the "<page name>" has 5 "<assoc>"
@@ -125,7 +124,6 @@ Feature: All our forms need to be passed to the server via AJAX
     | story   | edit story   | step    | does              | update      |
     | step    | edit step    |         | does not          | update      |
 
-  # @TODO Review steps are we are getting inconsistent errors due to our helper and unique values
   Scenario Outline: The items summary information should always be displayed
     Given there is a <model>
     And the "<page name>" has "<assoc>"
