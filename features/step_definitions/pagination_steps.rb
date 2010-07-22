@@ -8,10 +8,7 @@ Given /^there are less than 5 "([^\"]*)"$/ do |model|
 end
 
 Given /^the ([a-z]*) has more than ([0-9]*) ([a-z]*)$/ do |model, amount, association|
-  associations = []
-  number = amount.to_i + 1
-  current_model = eval("@#{model}")
-  number.times { current_model.send(association.pluralize.to_sym) << association.singularize.capitalize.constantize.make }
+  build_model_associations_more_than amount, model, association
 end
 
 Then /^we should not see our pagination$/ do

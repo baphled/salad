@@ -97,20 +97,17 @@ module AssociationsHelper
   def build_associations_by_amount amount, model, assoc
     associated = []
     amount = amount.to_i
-    associate = assoc.capitalize.singularize.constantize
-    amount.times { associated << associate.make } unless assoc.empty?
-    case model
-      when /project/
-        @project.features = associated
-      when /feature/
-        @feature.stories = associated
-      when /story/
-        @story.steps = associated
-      when //
-      else
-        raise "Can't instantiate \"#{model}\".\n" +
-          "Now, go and add a mapping in #{__FILE__}"
+    if not assoc.empty?
+      associate = assoc.capitalize.singularize.constantize
+      amount.times { associated << associate.make }
+      eval("@#{model}.#{assoc.pluralize} = associated")
     end
+  end
+
+  def build_model_associations_more_than amount, model
+    number = amount.to_i + 1
+    current_model = eval("@#{model}")
+    number.times { current_model.send(association.pluralize.to_sym) << association.singularize.capitalize.constantize.make }
   end
 
   def build_model_by_amount amount, model
