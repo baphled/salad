@@ -214,3 +214,11 @@ end
 Then /^the icons panel should be visible$/ do
   selenium.wait_for_element("css=span#panel", :timeout_in_seconds => 10)
 end
+
+Then /^pagination should be visible$/ do
+  selenium.wait_for_element("css=div.pagination", :timeout_in_seconds => 10)
+end
+
+Then /^the item's panel should be visible$/ do
+  selenium.wait_for_visible("css=span.view-panel", :timeout_in_seconds => 10)
+end

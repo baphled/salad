@@ -9,10 +9,11 @@ Given /^there are less than 5 "([^\"]*)"$/ do |model|
   assert model.capitalize.singularize.constantize.all.count <= 5
 end
 
-Given /^the project has more than ([0-9]*) features$/ do |amount|
+Given /^the ([a-z]*) has more than ([0-9]*) ([a-z]*)$/ do |model, amount, association|
   associations = []
   number = amount.to_i + 1
-  number.times { @project.features << Feature.make }
+  current_model = eval("@#{model}")
+  number.times { current_model.send(association.pluralize.to_sym) << association.singularize.capitalize.constantize.make }
 end
 
 Then /^we should not see our pagination$/ do

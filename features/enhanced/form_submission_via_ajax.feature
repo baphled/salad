@@ -7,10 +7,10 @@ Feature: Form submission via AJAX
     Given there is a <item>
     When I am on "<page>" page
     And I <form action> the <item> form
-    Then I submit the form
+    When I submit the form
     Then there should be an AJAX request
-    When I use the features path link
-    Then there should be an AJAX request
+    And I use the features path link
+    And there should be an AJAX request
     And a dialog box should appear
 
   Examples: A list of form based pages that when submitted should still allow the user to see view source feature file via a dialog box
@@ -21,8 +21,8 @@ Feature: Form submission via AJAX
     Given there is a <item>
     When I am on the <page> page
     And I <form action> the <item> form
-    Then I submit the form
-    And there should be an AJAX request
+    And I submit the form
+    Then there should be an AJAX request
     And the icons panel should be visible
 
   Examples:
@@ -39,37 +39,36 @@ Feature: Form submission via AJAX
   # @TODO Add more pagination related scenarios later
   Scenario Outline: We should still be able to use the pagination
     Given there is a <item>
+    And the <item> has more than 5 <assoc>
     When I am on the <page> page
     And I <form action> the <item> form
-    Then I submit the form
-    And there should be an AJAX request
+    And I submit the form
+    Then there should be an AJAX request
     And pagination should be visible
 
   Examples:
-    | page            | item      | form action |
-    | new project     | project   | fill in     |
-    | new feature     | feature   | fill in     |
-    | new story       | story     | fill in     |
-    | new step        | step      | fill in     |
-    | edit project    | project   | update      |
-    | edit feature    | feature   | update      |
-    | edit story      | story     | update      |
-    | edit step       | step      | update      |
+    | page         | item    | assoc   | form action |
+    | new project  | project | feature | fill in     |
+    | new feature  | feature | story   | fill in     |
+    | new story    | story   | step    | fill in     |
+    | edit project | project | feature | update      |
+    | edit feature | feature | story   | update      |
+    | edit story   | story   | step    | update      |
 
   Scenario Outline: Animated icon panels should still work
     Given there is a <item>
+    And the <item> has more than 5 <assoc>
     When I am on the <page> page
     And I <form action> the <item> form
+    And I submit the form
     Then there should be an AJAX request
-    And I "click" on the one of the items panel
-    Then the panels icons should be visible
+    Then the item's panel should be visible
 
   Examples:
-    | page            | item      | form action |
-    | edit project    | project   | update      |
-    | edit feature    | feature   | update      |
-    | edit story      | story     | update      |
-    | edit step       | step      | update      |
+    | page         | item    | assoc   | form action |
+    | edit project | project | feature | update      |
+    | edit feature | feature | story   | update      |
+    | edit story   | story   | step    | update      |
 
   Scenario Outline: The submitted form should be hidden
     Given there is a <item>

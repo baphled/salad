@@ -31,7 +31,7 @@ $(document).ready(function() {
         if ($form.hasClass('hidden') == false) {
           // here is where we make our necessary form response for all our AJAX based responses
           $('#wrapper').append($form.hide());
-          $('<button class="display_form button" href="javascript://">view form</a>')
+          $('<button class="display_form button">view form</button>')
             .insertBefore('#wrapper form')
             .button({ option: 'text' });
         }
