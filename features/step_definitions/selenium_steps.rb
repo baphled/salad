@@ -196,3 +196,11 @@ end
 Then /^the submit button should be disabled$/ do
   selenium.wait_for_element("css=button.ui-button-disabled", :timeout_in_seconds => 10)
 end
+
+Then /^the pagination panel should be displayed$/ do
+  selenium.wait_for_element("css=div.pagination")
+end
+
+Then /^the JS message "([^\"]*)" should be displayed$/ do |arg1|
+  selenium.wait_for_visible("css=div.loading")
+end

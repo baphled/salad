@@ -7,10 +7,9 @@ Feature: Pagination should be done with AJAX if possible
       Given there is a project
       And the project has more than 5 features
       When I am on "projects features"
-      And we click page "2"
+      Then the pagination panel should be displayed
+      When I follow "2" within "div.pagination"
       Then the JS message "Page loading..." should be displayed
-      When I am on the "projects features"
-      And the feature page is loaded
 
     Scenario: All lists should display the current page they are one
       Given there is a project
@@ -25,7 +24,6 @@ Feature: Pagination should be done with AJAX if possible
       And the project has more than 5 features
       When I am on "projects features"
       And we click page "2"
-      Then the page should not refresh
       And there should be an AJAX request
       And the list content should be updated
 
