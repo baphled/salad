@@ -16,6 +16,7 @@ Feature: All our forms need to be passed to the server via AJAX
     And I am on "edit project"
     When we fill in the project aim with 'A different aim'
     Then submit the form
+    And there should be an AJAX request
     And the form should be hidden
     And a flash message "was updated" should be dynamically displayed
 
