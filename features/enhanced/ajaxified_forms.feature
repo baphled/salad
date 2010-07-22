@@ -3,77 +3,26 @@ Feature: All our forms need to be passed to the server via AJAX
   As a user
   I want to be able to create new items without having the page refresh when the forms submitted
 
-  Scenario: We should be able to submit a new project form via AJAX
-    When I am on "new project"
-    And I fill in the project form
+  Scenario Outline: All forms should render the expected flash message
+    Given there is a <item>
+    When I am on "<page>"
+    And I <form action> the <item> form
     Then submit the form
     And there should be an AJAX request
     And the form should be hidden
-    And a flash message "was created" should be dynamically displayed
-
-  Scenario: We should be able to submit an editted project form via AJAX
-    Given there is a project
-    And I am on "edit project"
-    When we fill in the project aim with 'A different aim'
-    Then submit the form
-    And there should be an AJAX request
-    And the form should be hidden
-    And a flash message "was updated" should be dynamically displayed
-
-  Scenario: We should be able to submit a new feature form via AJAX
-    When I am on "new feature"
-    And I fill in the feature form
-    Then submit the form
-    And there should be an AJAX request
-    And the form should be hidden
-    And a flash message "was created" should be dynamically displayed
-
-  Scenario: We should be able to submit an editted feature form via AJAX
-    Given there is a feature
-    When I am on "edit feature"
-    And we fill in the feature title with 'an edited title'
-    And submit the form
-    And there should be an AJAX request
-    And the form should be hidden
-    And a flash message "was updated" should be dynamically displayed
-
-  Scenario: We should be able to submit a new story form via AJAX
-    Given there are features
-    When I am on "all features"
-    And I select first feature new story link
-    And we fill in the story scenario with 'this is our AJAX based stories scenario'
-    Then submit the form
-    And there should be an AJAX request
-    And the form should be hidden
-    And a flash message "was created" should be dynamically displayed
-
-  Scenario: We should be able to submit an editted story form via AJAX
-    Given there is a story
-    And there are features
-    When I am on "edit story"
-    And uncheck a feature it is associated to
-    Then submit the form
-    And there should be an AJAX request
-    And the form should be hidden
-    And a flash message "was updated" should be dynamically displayed
-
-  Scenario: We should be able to submit a created step form via AJAX
-    When I am on "new step"
-    Then the new step form should be displayed
-    When we fill in the step title with 'Given we have a new AJAX step'
-    Then submit the form
-    And the form should be hidden
-    And a flash message "was created" should be dynamically displayed
-
-  Scenario: We should be able to submit an editted step via AJAX
-    Given there is a story
-    And it has an associated feature
-    When I am on "edit story"
-    And uncheck a feature it is associated to
-    Then submit the form
-    And the form should be hidden
-    And a flash message "was updated" should be dynamically displayed
-    
+    And a flash message "<message>" should be dynamically displayed
+  
+  Examples: List of form actions should should respond with a flash message upon successful submission
+    | item    | page         | form action | message     |
+    | project | new project  | fill in     | was created |
+    | feature | new feature  | fill in     | was created |
+    | story   | new story    | fill in     | was created |
+    | step    | new step     | fill in     | was created |
+    | project | edit project | update      | was updated |
+    | feature | edit feature | update      | was updated |
+    | story   | edit story   | update      | was updated |
+    | step    | edit step    | update      | was updated |
+  
   Scenario Outline: Displaying the side bar after form submission
     Given there is a <model>
     And the "<page name>" has "<assoc>"
