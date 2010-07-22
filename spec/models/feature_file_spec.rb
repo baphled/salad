@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FeatureFile do
   before(:each) do
-    @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/projects.yml")
+    @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/blueprints.rb")
   end
 
   it "should be a child of the File object" do
