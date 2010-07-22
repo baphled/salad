@@ -85,7 +85,7 @@ module FormHelpers
   def fill_in_form_with_duplicate_data form_name
     model = form_name.capitalize.constantize.make
     opts = model.attributes
-    ['id', 'created_at', 'updated_at', 'path'].each do |param|
+    ['id', 'example_id', 'created_at', 'updated_at', 'path'].each do |param|
       opts.delete param
     end
     fill_form form_name.singularize, opts
