@@ -21,7 +21,8 @@ Feature: Form submission via AJAX
     Given there is a <item>
     When I am on the <page> page
     And I <form action> the <item> form
-    Then there should be an AJAX request
+    Then I submit the form
+    And there should be an AJAX request
     And the icons panel should be visible
 
   Examples:
@@ -40,7 +41,8 @@ Feature: Form submission via AJAX
     Given there is a <item>
     When I am on the <page> page
     And I <form action> the <item> form
-    Then there should be an AJAX request
+    Then I submit the form
+    And there should be an AJAX request
     And pagination should be visible
 
   Examples:

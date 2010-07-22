@@ -15,10 +15,6 @@ Given /^the project has more than ([0-9]*) features$/ do |amount|
   number.times { @project.features << Feature.make }
 end
 
-When /^I click page "([^\"]*)"$/ do |page_number|
-  selenium.click page_number
-end
-
 Then /^we should not see our pagination$/ do
   response.should_not have_selector :div, attribute = {:class => "pagination"}
 end

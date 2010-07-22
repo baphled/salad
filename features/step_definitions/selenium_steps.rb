@@ -43,6 +43,10 @@ When /^I use the features path link$/ do
   click_link "#{@feature.path}"
 end
 
+When /^I click page "([^\"]*)"$/ do |page_number|
+  selenium.click page_number
+end
+
 Then /^the project's information will be display in the sidebar$/ do
   selenium.wait_for_visible("project_1")
 end
@@ -205,4 +209,8 @@ Then /^the JS message "([^\"]*)" should be displayed$/ do |message|
   selenium.wait_for_element("css=div.loading") do
     response.should contain message
   end
+end
+
+Then /^the icons panel should be visible$/ do
+  selenium.wait_for_element("css=span#panel", :timeout_in_seconds => 10)
 end
