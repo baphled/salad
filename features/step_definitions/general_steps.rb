@@ -1,18 +1,16 @@
 Given /^the "([^\"]*)" has ([^\"]*) "([^\"]*)"$/ do |model, amount, assoc|
   associated = []
   amount = amount.to_i
+  associate = assoc.capitalize.singularize.constantize
+  amount.times { associated << associate.make } unless assoc.empty?
   case model
     when /project/
-      amount.times { associated << assoc.capitalize.singularize.constantize.make }
       @project.features = associated
     when /feature/
-      amount.times { associated << assoc.capitalize.singularize.constantize.make }
       @feature.stories = associated
     when /story/
-      amount.times { associated << assoc.capitalize.singularize.constantize.make }
       @story.steps = associated
     when //
-      # do nothing
     else
       raise "Can't instantiate \"#{model}\".\n" +
         "Now, go and add a mapping in #{__FILE__}"
