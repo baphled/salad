@@ -131,7 +131,6 @@ Feature: A user should be able to create new features, which can be associated w
     Then the stories should be listed
     When I uncheck a story
     Then submit the form
-    And show me the page
     And the feature should be not associated to the story
     
   Scenario: We want to be able to edit a feature when viewing a particular feature
