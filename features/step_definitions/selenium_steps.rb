@@ -16,7 +16,7 @@ Given /^the project has one feature$/ do
 end
 
 When /^the first (.*) is hovered over$/ do |model|
-  selenium.mouse_over("#{model}_1")
+  selenium.mouse_over("css=ul##{model.pluralize} >li div.#{model}")
 end
 
 When /^the (.*) page is loaded$/ do |model|
@@ -52,7 +52,7 @@ Then /^the story's information will be display in the sidebar$/ do
 end
 
 Then /^the feature's information will be display in the sidebar$/ do
-  selenium.wait_for_visible("feature_1")
+  selenium.wait_for_visible("css=div#sidebar > ul#feature_stories")
 end
 
 Then /^the step's information will be display in the sidebar$/ do
@@ -201,6 +201,8 @@ Then /^the pagination panel should be displayed$/ do
   selenium.wait_for_element("css=div.pagination")
 end
 
-Then /^the JS message "([^\"]*)" should be displayed$/ do |arg1|
-  selenium.wait_for_visible("css=div.loading")
+Then /^the JS message "([^\"]*)" should be displayed$/ do |message|
+  selenium.wait_for_element("css=div.loading") do
+    response.should contain message
+  end
 end

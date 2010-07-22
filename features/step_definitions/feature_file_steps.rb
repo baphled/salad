@@ -94,6 +94,7 @@ Then /^the "([^\"]*)" should have "([^\"]*)" associated to it "([^\"]*)" of time
   @file.export.stories.first.examples.first.actions.each {|current_action| count = 0; current_action.items.each {|item| (item.title == current_item)? count += 1 :nil;  } ; count.to_s.should eql amount if current_action.title == action }
 end
 
+#@TODO refactor to make more meaningful
 Then /^we want to be able to import the feature$/ do
   response.should have_selector :a
 end
