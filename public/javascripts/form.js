@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+  var method = 'POST';
+  
   $('form').hoverDialog();
   
   $('form').live('submit', function() {
@@ -19,50 +20,59 @@ $(document).ready(function() {
     
     }
 
-    $.post($(this).attr('action'), postData, function(data) {
-      var files = [
-          '/javascripts/autoScroller.js',
-          '/javascripts/scrollingHoverable.js',
-          '/javascripts/sortable_list.js',
-          '/javascripts/pagination.js'
-      ];
+    if (window.location.pathname.indexOf('edit') != -1) {
+      method = 'PUT';
+    }
+    
+    $.ajax({
+        'url': $(this).attr('action'),
+        'data': postData,
+        'type': method,
+        'success': function(data) {
+            var files = [
+            '/javascripts/autoScroller.js',
+            '/javascripts/scrollingHoverable.js',
+            '/javascripts/sortable_list.js',
+            '/javascripts/pagination.js'
+          ];
 
-      $.include(files, function() {
-        if ($form.hasClass('hidden') == false) {
-          // here is where we make our necessary form response for all our AJAX based responses
-          $('#wrapper').append($form.hide());
-          $('<button class="display_form button">view form</button>')
-            .insertBefore('#wrapper form')
-            .button({ option: 'text' });
+          $.include(files, function() {
+            if ($form.hasClass('hidden') == false) {
+              // here is where we make our necessary form response for all our AJAX based responses
+              $('#wrapper').append($form.hide());
+              $('<button class="display_form button">view form</button>')
+                .insertBefore('#wrapper form')
+                .button({ option: 'text' });
+            }
+            // setup our generic list events
+            $('ul.icons li .handler').button('option', 'icon');
+            $('ul.icons li, button.button').button({ option: 'text' });
+            $('span#panel, ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
+            $('div#lists ul').customSortable();
+
+            $('form').hoverDialog();
+            if ($('div=sidebar >ul').size() >= 1) {
+              $("div.list_item").scrollingHoverable({stopOnHover: true});
+            }
+            $('a[title]').tipsy({fade: true});
+          });
+          
+          $("button.display_form").live("click",function() {
+            var $link = $(this),
+                title_array = $link.text().split(' '),
+                prefix = '';
+
+            $('form').toggle(function() {
+              prefix = ('view' == title_array[0])? 'hide ' : 'view ';
+              $link.button({ option: 'text' , label: prefix + title_array[1]});
+            });
+          });
+
+
+          return false;
         }
-        // setup our generic list events
-        $('ul.icons li .handler').button('option', 'icon');
-        $('ul.icons li, button.button').button({ option: 'text' });
-        $('span#panel, ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
-        $('div#lists ul').customSortable();
-
-        $('form').hoverDialog();
-        if ($('div=sidebar >ul').size() >= 1) {
-          $("div.list_item").scrollingHoverable({stopOnHover: true});
-        }
-        $('a[title]').tipsy({fade: true});
-      });
-      
-    }, "script");
-    return false;
-  });
-
-  $("button.display_form").live("click",function() {
-    var $link = $(this),
-        title_array = $link.text().split(' '),
-        prefix = '';
-
-    $('form').toggle(function() {
-      prefix = ('view' == title_array[0])? 'hide ' : 'view ';
-      $link.button({ option: 'text' , label: prefix + title_array[1]});
     });
   });
-
   // Disable autocomplete for our imput elements
   $('input').attr('autocomplete','off');
   $('fieldset.views').hide();
