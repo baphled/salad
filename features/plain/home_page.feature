@@ -27,7 +27,7 @@ Feature: Home page must display the intent of the site
 
   Scenario: We should pluralise the features amount copy for proper pluralisation
     Given there is a last project
-    And the project has more than 1 project
+    And the project has more than 1 features
     When I am on "the home page"
     Then it should be displayed
     And it should display the word features

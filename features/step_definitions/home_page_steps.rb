@@ -1,10 +1,10 @@
 Given /^there is a last project$/ do
-  @last_project = mock_model(Project,
+  @project = mock_model(Project,
                             :title => 'A project',
                             :creation_date => Time.now.to_s(:long),
                             :features => [mock_model(Feature).as_new_record],
                             :null_object => true).as_new_record
-  Project.stub(:last).and_return @last_project
+  Project.stub(:last).and_return @project
 end
 
 Given /^there is no last project$/ do
@@ -12,11 +12,7 @@ Given /^there is no last project$/ do
 end
 
 Given /^the project has no features$/ do
-  @last_project.features.stub(:count).and_return 0
-end
-
-Given /^the project has more than 1 project$/ do
-  @last_project.features.stub(:count).and_return 2
+  @project.features.stub(:count).and_return 0
 end
 
 Then /^I should see that no projects are on the system$/ do
@@ -38,15 +34,15 @@ Then /^there should not be instructions on how to add a project$/ do
 end
 
 Then /^it should display its title$/ do
-  response.should contain @last_project.title
+  response.should contain @project.title
 end
 
 Then /^it should display when the project was created$/ do
-  response.should contain @last_project.creation_date
+  response.should contain @project.creation_date
 end
 
 Then /^how many features the project has$/ do
-  response.should contain "#{@last_project.features.count} feature"
+  response.should contain "#{@project.features.count} feature"
 end
 
 Then /^it should display a message about the project not having any features$/ do
@@ -54,5 +50,5 @@ Then /^it should display a message about the project not having any features$/ d
 end
 
 Then /^it should display the word features$/ do
-  response.should contain "#{@last_project.features.count} features"
+  response.should contain "#{@project.features.count} features"
 end
