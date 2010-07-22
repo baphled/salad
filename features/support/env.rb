@@ -21,6 +21,8 @@ require 'spec/mocks/framework'
 require 'spec/mocks/extensions'
 
 require File.join(RAILS_ROOT, 'spec', 'blueprints')
+require File.join(RAILS_ROOT, 'features', 'support', 'helper', 'associations')
+require File.join(RAILS_ROOT, 'features', 'support', 'helper', 'forms')
 
 #require 'cucumber/webrat/element_locator' # Deprecated in favor of #tableish - remove this line if you don't use #element_at or #table_at
 
@@ -59,60 +61,7 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 # require 'database_cleaner'
 # DatabaseCleaner.strategy = :truncation
 
-module FormHelpers
-  def fill_form(form_name, opts = {})
-    values = {}
-    case form_name
-      when /feature/
-        values = {"title" => Sham.feature, "in_order" => 'to create the best app', "as_a" => 'user', "i_want" => 'the best project ever'}
-      when /project/
-        values = {"title" => Sham.title, "aim" => 'An aim', "description" => 'A description', "location" => "#{RAILS_ROOT}"}
-      when /story/
-        values = {"scenario" => Sham.scenario }
-      when /step/
-        values = {"title" => Sham.step }
-      when /resource/
-        values = {"name" => "baphled", "project" => "50164"}
-      else
-        raise "Can't find the form #{form_name}.\n" +
-          "Now, go and add a mapping in #{__FILE__}"
-    end
-
-    parmas = values.merge(opts)
-    parmas.each { |param, value| When %{we fill in the #{form_name} #{param} with '#{value}'} }
-  end
-
-  def fill_in_form_with_duplicate_data form_name
-    model = form_name.capitalize.constantize.make
-    opts = model.attributes
-    unsubmitables = ['created_at', 'updated_at', 'path']
-    model.attributes.each { |key, attribute| unsubmitables << key if not key.match(/id$/).nil? }
-    unsubmitables.each { |param| opts.delete param }
-    fill_form form_name.singularize, opts
-  end
-end
-
-module AssociationsHelper
-
-  def build_associations_by_amount amount, model, assoc
-    amount = amount.to_i
-    amount.times { eval("@#{model}.#{assoc.pluralize}") << assoc.capitalize.singularize.constantize.make } unless assoc.empty?
-  end
-
-  def build_model_associations_more_than amount, model
-    number = amount.to_i + 1
-    current_model = eval("@#{model}")
-    number.times { current_model.send(association.pluralize.to_sym) << association.singularize.capitalize.constantize.make }
-  end
-
-  def build_model_by_amount amount, model
-    models = []
-    amount.times { models << model.capitalize.singularize.constantize.make }
-    model.capitalize.singularize.constantize.stub!(:all).and_return models
-  end
-end
-
-World(Spec::Mocks::ExampleMethods, FormHelpers, AssociationsHelper)
+World(Spec::Mocks::ExampleMethods, FormsHelper, AssociationsHelper)
 
 Before do
   $rspec_mocks ||= Spec::Mocks::Space.new
