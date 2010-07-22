@@ -1,5 +1,5 @@
 Given /^we create a FeatureFile from a none cucumber feature file$/ do
-  @file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/projects.yml")
+  @file = FeatureFile.new("#{RAILS_ROOT}/spec/blueprints.rb")
 end
 
 Given /^we create a FeatureFile from a cucumber feature file$/ do
