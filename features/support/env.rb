@@ -94,7 +94,7 @@ end
 
 module AssociationsHelper
 
-  def build_associations model, assoc, amount
+  def build_associations_by_amount amount, model, assoc
     associated = []
     amount = amount.to_i
     associate = assoc.capitalize.singularize.constantize
@@ -112,7 +112,14 @@ module AssociationsHelper
           "Now, go and add a mapping in #{__FILE__}"
     end
   end
+
+  def build_model_by_amount amount, model
+    models = []
+    amount.times { models << model.capitalize.singularize.constantize.make }
+    model.capitalize.singularize.constantize.stub!(:all).and_return models
+  end
 end
+
 World(Spec::Mocks::ExampleMethods, FormHelpers, AssociationsHelper)
 
 Before do

@@ -1,5 +1,5 @@
 Given /^the "([^\"]*)" has ([^\"]*) "([^\"]*)"$/ do |model, amount, assoc|
-  build_associations model, assoc, amount
+  build_associations_by_amount amount, model, assoc
 end
 
 Then /^a flash message '(.*)' should be displayed$/ do |message|
