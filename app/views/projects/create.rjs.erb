@@ -1,6 +1,8 @@
-$('#wrapper').html("<%= escape_javascript(render :partial => '/common/model_info_and_summary', :locals => {:model => @project, :assoc => :features})%>");
-$('#wrapper').append("<%= escape_javascript(render :partial => '/common/panels/project', :locals => {:project => @project}) %>");
-$('#wrapper').append("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true})%>");
+$('#wrapper')
+	.html("<%= escape_javascript(render :partial => '/common/model_info_and_summary', :locals => {:model => @project, :assoc => :features})%>")
+	.append("<%= escape_javascript(render :partial => '/common/panels/project', :locals => {:project => @project}) %>")
+	.append("<%= escape_javascript(render :partial => '/common/sortable_list',:locals => {:models => @project_features, :item_name => 'feature', :assoc => 'step', :order =>true})%>");
+	
 $('div#sidebar').html("<%= escape_javascript(render :partial => '/common/sidebar_list_content', :locals => {:models => @project_features, :assoc => 'stories'})%>");
 
 $('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
