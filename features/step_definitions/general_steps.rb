@@ -1,14 +1,15 @@
-Given /^the "([^\"]*)" has 5 "([^\"]*)"$/ do |model, assoc|
+Given /^the "([^\"]*)" has ([^\"]*) "([^\"]*)"$/ do |model, amount, assoc|
   associated = []
+  amount = amount.to_i
   case model
     when /project/
-      5.times { associated << assoc.capitalize.singularize.constantize.make }
+      amount.times { associated << assoc.capitalize.singularize.constantize.make }
       @project.features = associated
     when /feature/
-      5.times { associated << assoc.capitalize.singularize.constantize.make }
+      amount.times { associated << assoc.capitalize.singularize.constantize.make }
       @feature.stories = associated
     when /story/
-      5.times { associated << assoc.capitalize.singularize.constantize.make }
+      amount.times { associated << assoc.capitalize.singularize.constantize.make }
       @story.steps = associated
     when //
       # do nothing
