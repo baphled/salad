@@ -1,12 +1,11 @@
-$('#wrapper')
-	.html("<%= escape_javascript(render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps})%>")
-	.append("<%= escape_javascript(render :partial => '/common/panels/story', :locals => {:story => @story}) %>")
-	.append("<%= escape_javascript(render :partial => '/common/sortable_list',
-    :locals => {:models => @story_steps,
+$('#wrapper').html("<%= escape_javascript(render :partial => '/common/ajax_form_response_wrapper',
+  :locals => {
+    :model => @story,
+    :assoc => :steps,
+    :models => @story_steps,
     :item_name => 'step',
-    :method => :formatted,
-    :method_arg => @story_steps,
-    :assoc => nil,
-    :order =>true})%>");
+    :sortable_assoc => nil,
+    :order => true
+  })%>");
 
 $('#content').renderFlashMessage({flashMessage:"<%=escape_javascript(flash.delete(:notice)) %>"});
