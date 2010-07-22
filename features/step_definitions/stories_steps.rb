@@ -10,11 +10,11 @@ Given /^there is a story$/ do
   @story = Story.make
 end
 
+# TODO Make more flexible and speed up
 Given /^we have a stories with examples$/ do
   f = FeatureFile.new("#{RAILS_ROOT}/features/plain/enhancements.feature").export
   @story = f.stories.first
   @story.save
-  @story.examples.size.should eql 1
 end
 
 Given /^it has an associated feature$/ do

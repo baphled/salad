@@ -67,7 +67,7 @@ Then /^each scenario should not be prefixed with '(.*)'$/ do |content|
 end
 
 Then /^a scenario outline should be found$/ do
-  @file.export.stories.first.examples.first.should_not be_nil
+  @file.export.stories.first.example.should_not be_nil
 end
 
 Then /^each scenario outline should have the expected steps$/ do
@@ -75,23 +75,23 @@ Then /^each scenario outline should have the expected steps$/ do
 end
 
 Then /^the scenario outline should precede its examples$/ do
-  @file.export.stories.first.examples.should_not be_empty
+  @file.export.stories.first.example.should_not be_blank
 end
 
 Then /^the example should have a list of actions$/ do
-  @file.export.stories.first.examples.first.actions.should_not be_empty
+  @file.export.stories.first.example.actions.should_not be_empty
 end
 
 Then /^the scenario outlines example should be found$/ do
-  @file.export.stories.first.examples.first.should_not be_nil
+  @file.export.stories.first.example.should_not be_nil
 end
 
 Then /^the actions should only contain "([^\"]*)"$/ do |words|
-  words.split(',').each_with_index { |word,index|  @file.export.stories.first.examples.first.actions[index].title.should == word }
+  words.split(',').each_with_index { |word,index|  @file.export.stories.first.example.actions[index].title.should == word }
 end
 
 Then /^the "([^\"]*)" should have "([^\"]*)" associated to it "([^\"]*)" of times$/ do |action, current_item, amount|
-  @file.export.stories.first.examples.first.actions.each {|current_action| count = 0; current_action.items.each {|item| (item.title == current_item)? count += 1 :nil;  } ; count.to_s.should eql amount if current_action.title == action }
+  @file.export.stories.first.example.actions.each {|current_action| count = 0; current_action.items.each {|item| (item.title == current_item)? count += 1 :nil;  } ; count.to_s.should eql amount if current_action.title == action }
 end
 
 #@TODO refactor to make more meaningful

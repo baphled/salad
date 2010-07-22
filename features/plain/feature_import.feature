@@ -211,13 +211,6 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then the submit button will be disabled for "sample_one"
 
-  Scenario: We want to make sure that a scenario's example are imported along with its scenario
-    Given there is a project
-    And the project does have a project location
-    When I am on "import project"
-    And we click import "most used"
-    Then the features scenario "Our actions that we want to check states for" should be saved
-
   Scenario: A feature should not be submittable if a duplicate scenario is found in the new feature
     Given there is a project
     And the project has a project path

@@ -118,17 +118,17 @@ class Feature < ActiveRecord::Base
     end
     
     def feature_scenarios story
-      result = (story.examples.first.blank?)? "\n  Scenario:" : "\n  Scenario Outline:"
+      result = (story.example.blank?)? "\n  Scenario:" : "\n  Scenario Outline:"
       result += " #{story.scenario}\n#{story_titles story}"unless story.steps.blank?
     end
 
     def feature_examples story
-      if not story.examples.first.nil?
-        result = "\n\t\tExamples: #{story.examples.first.heading.lstrip}\n"
-        story.examples.first.actions.each { |action| result += "\t\t| #{action.title}" }
+      if not story.example.nil?
+        result = "\n\t\tExamples: #{story.example.heading.lstrip}\n"
+        story.example.actions.each { |action| result += "\t\t| #{action.title}" }
         result += " |\n"
-        story.examples.first.actions.first.items.each_with_index do |item, index|
-          story.examples.first.actions.each do |action|
+        story.example.actions.first.items.each_with_index do |item, index|
+          story.example.actions.each do |action|
             result += "\t\t| #{action.items[index].title}"
           end
           result += " |\n"

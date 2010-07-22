@@ -29,19 +29,19 @@ describe FeatureFile do
     end
     
     it "should have a list of examples associated to it" do
-      @feature_file.scenarios.first.examples.should_not be_empty
+      @feature_file.scenarios.first.example.should_not be_blank
     end
     
     it "should have a list of associated actions" do
-      @feature_file.scenarios.first.examples.first.actions.should_not be_empty
+      @feature_file.scenarios.first.example.actions.should_not be_empty
     end
     
     it "should story the actions in the expected format" do
-      @feature_file.scenarios.last.examples.last.actions.first.title.should == 'page'
+      @feature_file.scenarios.last.example.actions.first.title.should == 'page'
     end
     
     it "should store the actions items" do
-      @feature_file.scenarios.last.examples.last.actions.last.items.should_not be_empty
+      @feature_file.scenarios.last.example.actions.last.items.should_not be_empty
     end
   end
   

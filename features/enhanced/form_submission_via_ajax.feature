@@ -36,7 +36,6 @@ Feature: Form submission via AJAX
     | edit story      | story     | update      |
     | edit step       | step      | update      |
 
-  # @TODO Add more pagination related scenarios later
   Scenario Outline: We should still be able to use the pagination
     Given there is a <item>
     And the <item> has more than 5 <assoc>
@@ -109,7 +108,7 @@ Feature: Form submission via AJAX
     | edit story      | story     | update      |
     | edit step       | step      | update      |
 
-  # @TODO Refactor so we can apply the same scenario to new form submissions & our edge case scenario's'
+  # @TODO Refactor so we can apply the same scenario to our edge case scenario's
   Scenario Outline: Displaying the sidebar after form submission
     Given there is a <item>
     When I am on the "<page>" page

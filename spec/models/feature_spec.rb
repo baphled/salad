@@ -83,17 +83,17 @@ describe Feature do
       end
 
       it "should display the example heading" do
-        @feature.export.should contain "Examples: #{@feature.stories.first.examples.first.heading}"
+        @feature.export.should contain "Examples: #{@feature.stories.first.example.heading}"
       end
       
       it "should display the examples action headings" do
-        @feature.stories.first.examples.first.actions.each do |action|
+        @feature.stories.first.example.actions.each do |action|
           @feature.export.should contain "| #{action.title} |"
         end
       end
       
       it "should have items" do
-        @feature.stories.first.examples.first.actions.each do |action|
+        @feature.stories.first.example.actions.each do |action|
           action.items.each do |item|
             if item.title == '&nbsp;'
               @feature.export.should contain "| |"

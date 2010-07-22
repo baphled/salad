@@ -50,14 +50,10 @@ end
 Then /^the first story should contain its examples$/ do
   @project.import_features do |feature|
     if feature[:file] == 'most_used.feature'
-      response.should contain feature[:feature].stories.first.examples.first
+      response.should contain feature[:feature].stories.first.example
     end
   end
   response.should contain 'Examples'
-end
-
-Then /^the features scenario "([^\"]*)" should be saved$/ do |heading|
-  Example.first.heading.should eql heading
 end
 
 Then /^the submit button will be disabled for "([^\"]*)"$/ do |container|

@@ -1,21 +1,21 @@
-<% if not story.examples.empty? %>
+<% if not story.example.blank? %>
 <hr />
 <table class="ui-tabs ui-widget ui-widget-content ui-corner-all">
   <thead>
     <tr>
-      <td colspan="<%=story.examples.first.actions.size%>"><b>Examples:</b> <%=h story.examples.first.heading %></td>
+      <td colspan="<%=story.example.actions.size%>"><b>Examples:</b> <%=h story.example.heading %></td>
     </tr>
     <tr>
-    <% story.examples.first.actions.each do |action| %>
+    <% story.example.actions.each do |action| %>
       <td><b><%= action.title%></b></td>
     <% end %>
     </tr>
   </thead>
   <tbody>
-    <% story.examples.first.actions.first.items.each_with_index do |item, index| %>
+    <% story.example.actions.first.items.each_with_index do |item, index| %>
     <tr class="<%=  (index.even?)? 'even' : 'odd' %>">
-      <% story.examples.first.actions.each_with_index do |action, width_index| %>
-      <td><%= story.examples.first.actions[width_index].items[index].title %></td>
+      <% story.example.actions.each_with_index do |action, width_index| %>
+      <td><%= story.example.actions[width_index].items[index].title %></td>
       <% end %>
     </tr>
     <% end %>
