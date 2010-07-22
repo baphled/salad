@@ -1,11 +1,3 @@
-<% content_for :js_head do %>
-	<%= javascript_include_tag "form" %>
-	<%= javascript_include_tag "jquery.hover.dialog" %>
-	<%= javascript_include_tag "item_hover" %>
-	<%= javascript_include_tag "jquery.tipsy" %>
-	<%= javascript_include_tag "tooltips" %>
-<% end %>
-
 <h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></h3>
 <%- form_for file[:feature], :html => {:id => "new_feature",:class => "new_feature hidden", :method => :post} do |f|%>
   <fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
