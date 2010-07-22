@@ -38,7 +38,7 @@ $(document).ready(function() {
         // setup our generic list events
         $('ul.icons li .handler').button('option', 'icon');
         $('ul.icons li, button.button').button({ option: 'text' });
-        $('ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
+        $('span#panel, ul.items-list li > span').animateIconPanel({eventType: 'click', eventText: 'Click'});
         $('div#lists ul').customSortable();
 
         $('form').hoverDialog();
