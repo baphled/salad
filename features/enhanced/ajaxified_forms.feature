@@ -54,6 +54,7 @@ Feature: All our forms need to be passed to the server via AJAX
     | feature   | story   | edit feature |
     | story     | step    | edit story   |
 
+  # @TODO Move to its own feature file
   Scenario Outline: The ordering button should not be on any of the model index pages
     Given there is a <model>
     Given the "<page name>" has 5 "<assoc>"

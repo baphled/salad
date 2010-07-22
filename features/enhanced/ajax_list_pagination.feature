@@ -1,5 +1,5 @@
-Feature: Pagination should be done with AJAX if possible
-    In order to help improve the users experience we will use AJAX to manipulate the pagination functionality
+Feature: Pagination should be done with AJAX
+    In order to help improve the users experience
     As a user
     I want to be able to request a new page and not have the whole page refresh
 

@@ -3,7 +3,7 @@ Feature: Form submission via AJAX
   As an user
   I want to experience the same kind of user journey regardless of using AJAX or not
 
-  Scenario Outline: A feature we should still see the source feature file contents via a dialog box
+  Scenario Outline: A feature should still see the source feature file contents via a dialog box
     Given there is a <item>
     When I am on "<page>" page
     And I <form action> the <item> form
@@ -13,11 +13,11 @@ Feature: Form submission via AJAX
     And there should be an AJAX request
     And a dialog box should appear
 
-  Examples: A list of form based pages that when submitted should still allow the user to see view source feature file via a dialog box
+  Examples: A list of form that when submitted should still allow the user to see view source feature file via a dialog box
     | page          | item      | form action |
     | edit feature  | feature   | update      |
 
-  Scenario Outline: The items panel should be visible
+  Scenario Outline: The icons panel should be functional
     Given there is a <item>
     When I am on the <page> page
     And I <form action> the <item> form
@@ -25,7 +25,7 @@ Feature: Form submission via AJAX
     Then there should be an AJAX request
     And the icons panel should be visible
 
-  Examples:
+  Examples: A list of forms that should render the icons panel after submission
     | page            | item      | form action |
     | new project     | project   | fill in     |
     | new feature     | feature   | fill in     |
@@ -45,7 +45,7 @@ Feature: Form submission via AJAX
     Then there should be an AJAX request
     And pagination should be visible
 
-  Examples:
+  Examples: A list of forms that when submitted should render the pagination functionality
     | page         | item    | assoc   | form action |
     | new project  | project | feature | fill in     |
     | new feature  | feature | story   | fill in     |
@@ -63,7 +63,7 @@ Feature: Form submission via AJAX
     Then there should be an AJAX request
     Then the item's panel should be visible
 
-  Examples:
+  Examples: A list of forms that enable the animation functionality when submitted
     | page         | item    | assoc   | form action |
     | edit project | project | feature | update      |
     | edit feature | feature | story   | update      |
@@ -77,7 +77,7 @@ Feature: Form submission via AJAX
     Then there should be an AJAX request
     And the form should be hidden
 
-  Examples:
+  Examples: A list of forms that when submitted should hide the submittd form
     | page            | item      | form action |
     | new project     | project   | fill in     |
     | new feature     | feature   | fill in     |
@@ -97,7 +97,7 @@ Feature: Form submission via AJAX
     And the form should be hidden
     And I should see "view form"
 
-  Examples:
+  Examples: A list of forms that should render view form button when submitted
     | page            | item      | form action |
     | new project     | project   | fill in     |
     | new feature     | feature   | fill in     |
