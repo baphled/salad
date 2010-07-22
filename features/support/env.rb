@@ -95,13 +95,8 @@ end
 module AssociationsHelper
 
   def build_associations_by_amount amount, model, assoc
-    associated = []
     amount = amount.to_i
-    if not assoc.empty?
-      associate = assoc.capitalize.singularize.constantize
-      amount.times { associated << associate.make }
-      eval("@#{model}.#{assoc.pluralize} = associated")
-    end
+    amount.times { eval("@#{model}.#{assoc.pluralize}") << assoc.capitalize.singularize.constantize.make } unless assoc.empty?
   end
 
   def build_model_associations_more_than amount, model
