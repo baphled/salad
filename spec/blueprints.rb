@@ -5,7 +5,7 @@ require 'faker'
 Sham.title { Faker::Lorem.words(3).join(' ') }
 Sham.feature { Faker::Lorem.sentence }
 Sham.scenario { Faker::Lorem.sentence }
-Sham.step { "Given #{Faker::Lorem.words(3).join(' ')}" }
+Sham.step { %w{Given When Then}.rand + "#{Faker::Lorem.words(3).join(' ')}" }
 
 Project.blueprint {
   title { Sham.title }
