@@ -1,6 +1,6 @@
 $('#wrapper')
-	.html("<%= escape_javascript(render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps})%>");
-	.append("<%= escape_javascript(render :partial => '/common/panels/story', :locals => {:story => @story}) %>");
+	.html("<%= escape_javascript(render :partial => '/common/model_info_and_summary', :locals => {:model => @story, :assoc => :steps})%>")
+	.append("<%= escape_javascript(render :partial => '/common/panels/story', :locals => {:story => @story}) %>")
 	.append("<%= escape_javascript(render :partial => '/common/sortable_list',
     :locals => {:models => @story_steps,
     :item_name => 'step',
