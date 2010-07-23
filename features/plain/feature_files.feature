@@ -1,6 +1,6 @@
 Feature: We need a way to handle out feature files
   In order to improve the way we handle feature imports
-  As Salad
+  As a Salad feature
   I want to be able to read feature files and store its information
 
   Scenario: A FeatureFile can gives an error if the file referenced is not a cucumber feature file
@@ -11,7 +11,6 @@ Feature: We need a way to handle out feature files
     Given we create a FeatureFile from a cucumber feature file
     Then the object should be valid
 
-  # @TODO Add examples for scenarios
   Scenario Outline: A FeatureFile should store the 'In order' heading
     Given we create a FeatureFile from a cucumber feature file
     Then the object should be valid
@@ -19,10 +18,11 @@ Feature: We need a way to handle out feature files
 
   Examples: List of properties that should not be nil
     | property |
-    | feature  |
+    | title    |
     | in_order |
     | as_a     |
     | i_want   |
+    | stories  |
 
   Scenario: A FeatureFile should store the feature files scenario's
     Given we create a FeatureFile from a cucumber feature file
@@ -51,7 +51,7 @@ Feature: We need a way to handle out feature files
     And exported features '<property>' will not contain '<prefix>' prefix
     And each scenario should not be prefixed with 'Scenario:'
 
-  Examples: List of propertties that should not contain the given prefixes
+  Examples: List of properties that should not contain the given prefixes
     | property | prefix   |
     | title    | Feature: |
     | in_order | In order |

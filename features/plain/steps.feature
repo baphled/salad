@@ -49,27 +49,15 @@ Feature: Stories have steps, which help to define what the action taken within a
     When I am on "a step"
     Then I should see check boxes for all steps it can be linked to
 
-
-  # @TODO Move to the form validation faeture, may well be duplicate scenarios
-  Scenario: A step must start with 'Given' otherwise it does not validate
+  Scenario Outline: A step must start with a given prefix
     When I am on "new step"
-    And we fill in the step title with 'Given we have a new step'
+    And we fill in the step title with '<title>'
     Then submit the form
-    And the step should be saved as 'Given we have a new step'
-    And a flash message 'Step: Given we have a new step, was created' should be displayed
+    And the step should be saved as '<title>'
+    And a flash message 'Step: <title>, was created' should be displayed
 
-  # @TODO Move to the form validation faeture, may well be duplicate scenarios
-  Scenario: A step must start with 'When' otherwise it does not validate
-    When I am on "new step"
-    And we fill in the step title with 'When we have a new step'
-    Then submit the form
-    And the step should be saved as 'When we have a new step'
-    And a flash message 'Step: When we have a new step, was created' should be displayed
-
-  # @TODO Move to the form validation faeture, may well be duplicate scenarios
-  Scenario: A step must start with 'Then' otherwise it does not validate
-    When I am on "new step"
-    And we fill in the step title with 'Then we have a new step'
-    Then submit the form
-    And the step should be saved as 'Then we have a new step'
-    And a flash message 'Step: Then we have a new step, was created' should be displayed
+  Examples: List of valid step prefixes
+    | title                    |
+    | Given we have a new step |
+    | When we have a new step  |
+    | Then we have a new step  |
