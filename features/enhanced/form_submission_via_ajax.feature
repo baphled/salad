@@ -13,7 +13,7 @@ Feature: Form submission via AJAX
     And there should be an AJAX request
     And a dialog box should appear
 
-  Examples: A list of form that when submitted should still allow the user to see view source feature file via a dialog box
+  Examples: A list of forms that when submitted should still allow the user to see view source feature file via a dialog box
     | page          | item      | form action |
     | edit feature  | feature   | update      |
 

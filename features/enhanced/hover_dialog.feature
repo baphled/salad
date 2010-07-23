@@ -5,7 +5,7 @@ Feature: When selecting tags we want to be able to select from pre-existing tags
 
     Scenario: When the project tags hover dialog is displayed, it should display all project tags
       Given there is a project
-      Given a project has tags
+      And a project has tags
       When I am on "new project"
       And focus on the tag input
       Then I should see a hover dialog box
@@ -13,7 +13,7 @@ Feature: When selecting tags we want to be able to select from pre-existing tags
 
     Scenario: A project tag should not be displayed if the tag is present in the tag input
       Given there is a project
-      Given a project has tags
+      And a project has tags
       When I am on "new project"
       And I fill in "project_tag_list" with "Project management"
       And focus on the tag input
@@ -27,7 +27,7 @@ Feature: When selecting tags we want to be able to select from pre-existing tags
       
     Scenario: The hover dialog should not be visible when focus is taken away from the tag input
       Given there is a project
-      Given a project has tags
+      And a project has tags
       When I am on "new project"
       And focus on the tag input
       Then I should see a hover dialog box

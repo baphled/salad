@@ -4,7 +4,7 @@ Feature: Import feature ajax functionality
   I want the import view to be re-rendered once the import form has been submitted
   
   Scenario: Importing a feature via AJAX should re-render the import view
-    Given there is a project with "location" as "RAILS_ROOT"
+    Given there is a project with a valid location
     When I am on "a project"
     When I click "span.view-panel"
     Then the import link should be visible
