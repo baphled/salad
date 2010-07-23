@@ -1,3 +1,7 @@
 <%= render :partial => '/common/model_info_and_summary', :locals => {:model => model, :assoc => assoc}%>
 <%= render :partial => "/common/panels/#{model.class.to_s.downcase}", :locals => {model.class.to_s.downcase.to_sym => model} %>
+<% if defined? method_arg && defined? method %>
+<%= render :partial => '/common/sortable_list',:locals => {:models => models, :item_name => item_name, :assoc => sortable_assoc, :method => method, :method_arg => method_arg, :order => order} %>
+<% else %>
 <%= render :partial => '/common/sortable_list',:locals => {:models => models, :item_name => item_name, :assoc => sortable_assoc, :order => order} %>
+<% end %>

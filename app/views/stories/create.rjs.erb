@@ -5,6 +5,8 @@ $('#wrapper').html("<%= escape_javascript(render :partial => '/common/ajax_form_
     :models => @story_steps,
     :item_name => 'step',
     :sortable_assoc => nil,
+		:method => :formatted,
+		:method_arg => @story_steps,
     :order => true
   })%>");
 
