@@ -8,9 +8,9 @@ Feature: We want to make sure that users use javascript to take advantage of all
     Then the message 'This site works best with Javascript enabled' should be displayed
   
   Examples: Basic pages we want to visit to check for JS enabled
-  | page          |
-  | the home page |
-  | all projects  |
-  | all features  |
-  | all stories   |
-  | all steps     |
+    | page          |
+    | the home page |
+    | all projects  |
+    | all features  |
+    | all stories   |
+    | all steps     |

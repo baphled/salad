@@ -1,13 +1,14 @@
-Feature: We want to us different layout for specific types of actions and areas
+Feature: We want to use different layout for specific types of actions and areas
   In order to help inform the user that specific actions have different layouts associated to them
-  As an user
+  As a user
   I want to see different layouts for specific actions and areas
 
   Scenario Outline: Viewing specific actions should render specific layouts
     Given there is a <model>
     When I am on "<page name>"
     Then the view "<matcher>" have a sidebar
-    
+
+  # @TODO Add missing views
   Examples: List of models to view and their associated actions
     | model   | page name       | matcher    |
     | project | new project     | should not |

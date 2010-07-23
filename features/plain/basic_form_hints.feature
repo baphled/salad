@@ -1,6 +1,6 @@
 Feature: All forms input elements should have hints to help the user fill in a form correctly
     In order to help users submit valid form input
-    As an user
+    As a user
     I want to see hints to give me clues as to what data needs to go with what field
 
     Scenario Outline: A project forms hints

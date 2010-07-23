@@ -10,3 +10,5 @@ Feature: Import all features
     And I follow "Import all"
     Then a flash message 'Importing all features' should be displayed
     And there should be no features to import
+
+  # @TODO Add scenario Importing a feature should be a background process

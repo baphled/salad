@@ -1,4 +1,4 @@
-Feature: We need a way to handle out feature files
+Feature: We need a way to handle cucumber feature files
   In order to improve the way we handle feature imports
   As a Salad feature
   I want to be able to read feature files and store its information
@@ -11,7 +11,7 @@ Feature: We need a way to handle out feature files
     Given we create a FeatureFile from a cucumber feature file
     Then the object should be valid
 
-  Scenario Outline: A FeatureFile should store the 'In order' heading
+  Scenario Outline: A FeatureFile should store the all feature information
     Given we create a FeatureFile from a cucumber feature file
     Then the object should be valid
     And the '<property>' property should not be nil
@@ -56,4 +56,4 @@ Feature: We need a way to handle out feature files
     | title    | Feature: |
     | in_order | In order |
     | i_want   | I want   |
-    | as_a     | As a     |
+    | as_a     | As       |

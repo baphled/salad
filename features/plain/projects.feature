@@ -1,9 +1,9 @@
 Feature: We need to a way to store our stories within a project, this will help organise our stories.
   In order to help manage and organise our projects
   As a user
-  I want to be able to create a problem which I can view, edit and manage
+  I want to be able to create a project which I can view, edit and manage
 
-  Scenario: As a user I need to be able to create a new project
+  Scenario: I need to be able to create a new project
     When I am on "new project"
     And I fill in the project form
     Then submit the form
@@ -11,40 +11,26 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
 
-  Scenario Outline: Not fulfilling the forms required fields results in a validation error
-    When I am on "new project"
-    And I don't fill in the projects "<field>"
-    Then submit the form
-    And I should be redirected to the form
-    And a form error must be displayed
-    And the user should be told the must have a <field>
-
-  Examples: Fields that are required
-    | field       |
-    | title       |
-    | description |
-    | aim         |
-
-  Scenario: A user should be able to view a single project
+  Scenario: I should be able to view a single project
     Given there is a project
     When I am on "a project"
     Then I should be able to view its details
 	
-  Scenario: A user should be able to edit projects title
+  Scenario: I should be able to edit projects title
     Given there is a project
     When I am on "edit project"
     And we fill in the project title with 'A different title'
     Then submit the form
     And the title should now be 'A different title'
 	
-  Scenario: A user should be able to edit projects description
+  Scenario: I should be able to edit projects description
     Given there is a project
     When I am on "edit project"
     And we fill in the project description with 'A different description'
     And submit the form
     Then project description 'A description' should now be 'A different description'
 
-  Scenario: A user should be able to edit projects aim
+  Scenario: I should be able to edit projects aim
     Given there is a project
     When I am on "edit project"
     And we fill in the project aim with 'A different aim'
@@ -58,7 +44,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the project is not able to update
     Then the project should not be updated
 
-  Scenario: All stories can be linked to a project
+  Scenario: I should be ale to link a feature to a project
     Given there are features
     When I am on "new project"
     Then I should have a checkable list of features
@@ -98,7 +84,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     Then I should be able to click the new project link
     And be sent to the new projects view
 
-  Scenario: I should be able to easily create new features for a project
+  Scenario: All projects on the projects page should have a way of easily adding a new feature
     Given there are projects
     When I am on "all projects"
     Then all projects should have a 'Add features' link
@@ -112,7 +98,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
 
-  Scenario: When creating a new project the user should be directed to it and be able to add features
+  Scenario: When creating a new project I should be directed to it and be able to add features
     When I am on "new project"
     And I fill in the project form
     And add 'project, new project' as tags
@@ -122,23 +108,23 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a flash message 'was created' should be displayed
     And the project should have link to create new features
 
-  Scenario: When viewing a project with no feature, the user should not see the order button
+  Scenario: When viewing a project with no feature, I should not see the order button
     Given there is a project
     And a project has no features
     When I am on "a project"
     Then the order button should not be displayed
 
-  Scenario: A user must be able to view all projects creation date
+  Scenario: I must be able to view all projects creation date
     Given there are projects
     When I am on "all projects"
     Then each of the projects should have a creation date
 
-  Scenario: A user must be able to see a projects creation date
+  Scenario: I must be able to see a projects creation date
     Given there is a project
     When I am on "a project"
     Then the project should have a creation date
 
-  Scenario: When a user edits a project the projects date should be updated
+  Scenario: When editing a project the date should be updated
     Given there is a project
     When I am on "edit project"
     When we fill in the project title with 'A different title'
@@ -146,7 +132,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the title should now be 'A different title'
     And the projects date should be updated
 
-  Scenario: When a user edits a project the project's updated date with be displayed
+  Scenario: When I edit a project the updated date with be displayed
     Given there is a project
     When I am on "edit project"
     And we fill in the project title with 'A different title'
@@ -155,7 +141,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And the projects date should be updated
     And the projects updated field will be displayed
 
-  Scenario: A user should not display the date the project was updated if it is the same as the creation date
+  Scenario: The updated date should not be displayed when the creation date is the same as it
     When I am on "new project"
     And I fill in the project form
     Then submit the form
@@ -164,7 +150,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And a flash message 'was created' should be displayed
     And the projects updated field will not be displayed
 
-  Scenario: A user can specify the location of a given project
+  Scenario: I should be able to specify the location of a given project
     When I am on "new project"
     And I fill in the project form
     Then submit the form
@@ -172,7 +158,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
 
-  Scenario: A user can edit a project when it is being viewed
+  Scenario: I should be able to edit a project when it is being viewed
     Given there is a project
     When I am on "a project"
     Then I should be able to edit a the project information

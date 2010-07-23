@@ -1,6 +1,6 @@
-Feature: Home page must display the intent of the site
+Feature: Home page
   In order to navigate through the site
-  As an user
+  As a user
   I want to be able to know what the site can do for me
 
   Scenario: Visiting the home page with no last project

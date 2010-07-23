@@ -1,7 +1,7 @@
-Feature: We need to be able to easily navigate the website
+Feature: Site navigation
   In order to help users experience the whole site
   As a user
-  I want to be able to easily move around the site using the sites navigation
+  I want to be able to easily move around the site
   
   Scenario Outline: We need to make sure that all pages have navigation
     When I am on "<page name>"
@@ -15,7 +15,7 @@ Feature: We need to be able to easily navigate the website
     | all steps     |
     | parking index |
 
-  Scenario Outline: When navigating to a page we want to make sure the menu item is actually selected
+  Scenario Outline: When navigating to a page we want to make sure the menu item is actually highlighted
     Given there <model>
     When I am on "<page>"
     Then the navigation should be displayed

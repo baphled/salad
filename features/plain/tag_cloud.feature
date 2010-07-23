@@ -1,9 +1,9 @@
-Feature: Viewing an items tags
+Feature: Tag cloud
   In order to view tags associated to a item
   As a user
-  I want to be able to view them on each item index
+  I want to be able to view them on each items index
 
-  Scenario Outline: If an item has tags we must display them
+  Scenario Outline: I should see a tag cloud if there are tags associated to the item
     Given there are "<model>" tags
     And the "<model>" tags are not empty
     When I am on "<page name>"
