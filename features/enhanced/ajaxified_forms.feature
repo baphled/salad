@@ -57,7 +57,7 @@ Feature: All our forms need to be passed to the server via AJAX
   # @TODO Move to its own feature file
   Scenario Outline: The ordering button should not be on any of the model index pages
     Given there is a <model>
-    Given the "<page name>" has 5 "<assoc>"
+    Given the "<model>" has 5 "<assoc>"
     When I am on "<page name>"
     And I <form action> the <model> form
     And submit the form
