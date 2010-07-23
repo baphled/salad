@@ -11,6 +11,10 @@ Given /^there is a project with "([^\"]*)" as "([^\"]*)"$/ do |property, value|
   @project = Project.make(property.to_sym => "#{value}")
 end
 
+Given /^there is a project with a valid location$/ do
+  @project = Project.make(:location => "#{RAILS_ROOT}/spec/fixtures/")
+end
+
 Given /^the project does not have a project location$/ do
  @project.update_attribute(:location,"")
 end
@@ -328,7 +332,7 @@ Then /^the submit button will be disabled for that feature "([^\"]*)"$/ do |butt
 end
 
 Then /^it should include features from all sub directories within the feature directory$/ do
-  response.should contain "Feature: ajax list pagination"
+  response.should contain "Feature: most used"
 end
 
 Then /^the "([^\"]*)" "([^\"]*)" "([^\"]*)" should have an error class$/ do |model, attribute, input|
