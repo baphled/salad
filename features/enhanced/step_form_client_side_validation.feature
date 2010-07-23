@@ -25,9 +25,3 @@ Feature: Step needs client side validations
     Then the step should be not saved
     And a JS based error message should be displayed
     And the client side error message should be "must start with Given, When or Then"
-
-  Scenario: A step should be successfully save if the frontend and backend validation passes
-    When I am on "new step"
-    And we fill in the step title with 'Given we have a new step'
-    Then submit the form
-    And the form should be hidden
