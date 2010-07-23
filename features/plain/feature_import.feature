@@ -159,8 +159,7 @@ Feature: Users should not have to manually input their features if they have alr
     Then it should include features from all sub directories within the feature directory
 
   Scenario: When importing a feature file if the file is invalid then an error is displayed
-    GGiven there is a project with a valid location
-    And the project does have a project location to an invalid feature
+    Given there is a project with a valid location
     When I am on "import project"
     And the project has an invalid feature
     Then the submit button will be disabled for that feature
