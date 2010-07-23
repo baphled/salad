@@ -11,7 +11,7 @@ Feature: All forms should have client side validations
     And the form should have an client side error
 
   Examples: List of fields that are required
-    | page name   | model   | field        |
+    | page name   | model   | field       |
     | new feature | feature | title       |
     | new feature | feature | in_order    |
     | new feature | feature | as_a        |
@@ -36,3 +36,18 @@ Feature: All forms should have client side validations
     | new project | project | title       | so        | 3      |
     | new project | project | aim         | so        | 6      |
     | new project | project | description | too short | 12     |
+    | new story   | story   | scenario    | this      | 7      |
+    
+  Scenario Outline: All listed models must be unique
+    Given there is a <model>
+    When I am on "new <model>"
+    And I fill in the <model> form with duplicate data
+    Then submit the form
+    And a JS based error message should be displayed
+    And the client side error message should be "Must be a unique <model>."
+    
+  Examples: List of models that must be unique
+    | model   |
+    | project |
+    | feature |
+    | story   |

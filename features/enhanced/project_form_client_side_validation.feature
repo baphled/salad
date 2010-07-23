@@ -15,11 +15,3 @@ Feature: Must be able to do client side validations on our forms
       And I fill in the project form title with "WorldPeace2.0"
       Then submit the form
       And I should be redirected to the new project
-      
-   Scenario: An project that is not unique must return the relevant client side error
-      Given there is a project
-      When I am on the "new project" page
-      And I fill in the project form with duplicate data
-      Then submit the form
-      And a JS based error message should be displayed
-      And the client side error message should be "Must be a unique project."
