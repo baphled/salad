@@ -1,11 +1,11 @@
 module AssociationsHelper
 
-  def build_associations_by_amount amount, model, assoc
+  def build_associations_by_amount amount, model, association
     amount = amount.to_i
-    amount.times { eval("@#{model}.#{assoc.pluralize}") << assoc.capitalize.singularize.constantize.make } unless assoc.empty?
+    amount.times { eval("@#{model}.#{assoc.pluralize}") << association.capitalize.singularize.constantize.make } unless assoc.empty?
   end
 
-  def build_model_associations_more_than amount, model
+  def build_model_associations_more_than amount, model, association
     number = amount.to_i + 1
     current_model = eval("@#{model}")
     number.times { current_model.send(association.pluralize.to_sym) << association.singularize.capitalize.constantize.make }
