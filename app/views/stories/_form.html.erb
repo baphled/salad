@@ -3,6 +3,7 @@
 	<br />
 <% end %>
 
+<%= render_form_js_includes self, "step" %>
 <% content_for :js_head do %>
   <%= javascript_include_tag "add_step" %>
 <% end %>
