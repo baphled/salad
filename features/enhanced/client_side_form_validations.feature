@@ -19,6 +19,8 @@ Feature: All forms should have client side validations
     | new project | project | title       |
     | new project | project | description |
     | new project | project | aim         |
+    | new story   | story   | scenario    |
+    | new step    | step    | title       |
 
   Scenario Outline: All fields with character limits should be validated by client side validation
     When I am on "<page name>"
