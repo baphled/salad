@@ -1,8 +1,8 @@
-Given /^we are using the account name "([^\"]*)"$/ do |account_name|
+Given /^I are using the account name "([^\"]*)"$/ do |account_name|
   Lighthouse.account = account_name
 end
 
-Given /^we have an the project number "([^\"]*)"$/ do |project_number|
+Given /^I have an the project number "([^\"]*)"$/ do |project_number|
   @project_number = project_number
 end
 
@@ -10,7 +10,7 @@ Given /^there are resources$/ do
   @resources = Resource.all
 end
 
-Given /^we have set up the lighthouse resource$/ do
+Given /^I have set up the lighthouse resource$/ do
   When %{I am on "new parking"}
   And %{I fill in the resource form}
   Then %{submit the form}
@@ -20,7 +20,7 @@ Given /^there are parked tickets on the system$/ do
   LightHouse.stub!(:all).and_return [mock_model(Lighthouse).as_null_object]
 end
 
-Given /^we have a tickets that is invalid$/ do
+Given /^I have a tickets that is invalid$/ do
   LightHouse.stub!(:create).and_return false
 end
 
@@ -28,7 +28,7 @@ Given /^there are no tickets parked$/ do
   LightHouse.stub!(:all).and_return []
 end
 
-Given /^there are are tickets$/ do
+Given /^there are tickets$/ do
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
   LightHouse.stub!(:all).and_return @lighthouse_tickets
 end
@@ -38,11 +38,11 @@ Given /^there are no resources$/ do
   Resource.stub!(:all).and_return []
 end
 
-When /^we specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
+When /^I specify the ticket type "([^\"]*)"$/ do |ticket_parameters|
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:#{ticket_parameters}" })
 end
 
-When /^we retrieve tickets$/ do
+When /^I retrieve tickets$/ do
   @lighthouse_tickets.should_not be_empty
 end
 
@@ -54,7 +54,7 @@ Then /^the resource information should be saved$/ do
   Resource.find_by_name("baphled").should_not be_nil
 end
 
-When /^there should be a list of tickets found$/ do
+Then /^there should be a list of tickets found$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li
   end
@@ -92,7 +92,7 @@ Then /^the saved tickets should have a title$/ do
   LightHouse.first.title.should_not be_empty
 end
 
-When /^we click on the first ticket$/ do
+When /^I click on the first ticket$/ do
   click_link @lighthouse_tickets.first.title
 end
 

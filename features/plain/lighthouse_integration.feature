@@ -1,50 +1,49 @@
 Feature: Lighthouse integration
   In order pull in potential features from lighthouse
-  As the system
+  As a user
   I want to be able to retrieve a list of features
   
-  Scenario: We should be able to talk to lighthouse
-    Given we are using the account name "baphled"
-    And we have an the project number "50164"
-    When we specify the ticket type "state:open tagged:feature"
-    When we retrieve tickets
+  Scenario: We should be able to retrieve tickets from Lighthouse
+    Given I are using the account name "baphled"
+    And I have an the project number "50164"
+    When I specify the ticket type "state:open tagged:feature"
+    When I retrieve tickets
 
-  Scenario: We need a place to edit our lighthouse resource information
+  Scenario: There should be a place to edit our Lighthouse resource information
     When I am on "parking index"
-    When I use the "New Resource information" link
+    When I follow "New Resource information"
     Then I should be sent to the "New Resource" page
 
-  Scenario: We want to be able to add a new lighthouse resource
+  Scenario: I should be able to create a new Lighthouse resource
     When I am on "parking new"
-    And I fill in "resource_name" with "baphled"
-    And I fill in "resource_project" with "50164"
+    And I fill in the resource form
     Then submit the form
     And the resource information should be saved
   
-  Scenario: We should be able to use the lighthouse resource when it has been stored
-    Given we have set up the lighthouse resource
+  Scenario: I should be able to use the lighthouse resource when it has been stored
+    Given I have set up the lighthouse resource
     When I am on "parking index"
     And I select "baphled" from "resource_id"
     And I fill in "parking_tag" with "feature"
     And submit the form
     And there should be a list of tickets found
     
-  Scenario: We should be able to import all found tickets into the parking area.
-    Given we have set up the lighthouse resource
+  Scenario: I should be able to import all found tickets into the parking area.
+    Given I have set up the lighthouse resource
     When I am on "parking index"
     And I select "baphled" from "resource_id"
     And I fill in "parking_tag" with "feature"
     And submit the form
     Then I should be able to select tickets to add to parking
 
-  Scenario: We should display all parked tickets on the index page
-    Given we have set up the lighthouse resource
+  Scenario: All parked tickets should be displayed on the index page
+    Given I have set up the lighthouse resource
     And there are parked tickets on the system
     When I am on "parking index"
     Then a list of parked ticket should be displayed
     
-  Scenario: We need to be able to save the selected tickets and save them as parked item
-    Given we have set up the lighthouse resource
+  Scenario: I should be able to save the selected tickets as parked item
+    Given I have set up the lighthouse resource
     When I am on "parking index"
     And I select "baphled" from "resource_id"
     And I fill in "parking_tag" with "feature"
@@ -55,9 +54,9 @@ Feature: Lighthouse integration
     And I press "Park"
     Then one item should be saved as parked items
     
-  Scenario: We should not be able to save a ticket if the ticket and the body are already in the system
-    Given we have set up the lighthouse resource
-    And we have a tickets that is invalid
+  Scenario: A ticket should not be saved if the title and its content are found on the system
+    Given I have set up the lighthouse resource
+    And I have a tickets that is invalid
     When I am on "parking index"
     And I select "baphled" from "resource_id"
     And I fill in "parking_tag" with "feature"
@@ -67,8 +66,8 @@ Feature: Lighthouse integration
     And I press "Park"
     Then the flash message "Unable to save tickets" should be displayed
     
-  Scenario: We should not save any tickets if one of them is invalid
-    Given we have set up the lighthouse resource
+  Scenario: A ticket should not be save if any one of the tickets are invalid
+    Given I have set up the lighthouse resource
     And there are no tickets parked
     When I am on "parking index"
     And I select "baphled" from "resource_id"
@@ -77,8 +76,8 @@ Feature: Lighthouse integration
     Then I should be able to select tickets to add to parking
     And I should not see a list of tickets to import
     
-  Scenario: We should be able to view a tickets description body
-    Given we have set up the lighthouse resource
+  Scenario: I should be able to view a tickets description body
+    Given I have set up the lighthouse resource
     And there are no tickets parked
     When I am on "parking index"
     And I select "baphled" from "resource_id"
@@ -88,13 +87,13 @@ Feature: Lighthouse integration
     And I press "Park"
     Then the save tickets should have a body
 
-  Scenario: A user should not be able to import tickets if a resource has not been set up
+  Scenario: I should not be able to import tickets if a resource has not been set up
     Given there are no resources
     When I am on "parking index"
     Then the ticket search form should not be visible.
 
-  Scenario: We should be able to view a tickets title
-    Given we have set up the lighthouse resource
+  Scenario: I should be able to view a tickets title
+    Given I have set up the lighthouse resource
     And there are no tickets parked
     When I am on "parking index"
     And I select "baphled" from "resource_id"
@@ -104,24 +103,10 @@ Feature: Lighthouse integration
     And I press "Park"
     Then the saved tickets should have a title
     
-  Scenario: We should be able to select a parked ticket and convert in into a feature
-    Given we are using the account name "baphled"
-    And we have an the project number "50164"
-    And there are are tickets
+  Scenario: I should be able to convert a parked ticket in into a feature
+    Given I are using the account name "baphled"
+    And I have an the project number "50164"
+    And there are tickets
     When I am on "parking index"
-    And we click on the first ticket
+    And I click on the first ticket
     Then the feature form should be displayed
-
-  Scenario: The project name must be valid
-    When I am on "parking new"
-    And I fill in "resource_name" with "foo"
-    And I fill in "resource_project" with "50164"
-    And submit the form
-    Then there a error "Name must be a valid LightHouse project name" should be displayed
-    
-  Scenario: The project number must be valid
-    When I am on "parking new"
-    And I fill in "resource_name" with "baphled"
-    And I fill in "resource_project" with "23"
-    And submit the form
-    Then there a error "Project must be a valid LightHouse project" should be displayed
