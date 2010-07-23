@@ -1,5 +1,9 @@
-Given /^the "([^\"]*)" has ([^\"]*) "([^\"]*)"$/ do |model, amount, assoc|
+Given /^the "([^\"]*)" has (\d+) "([^\"]*)"$/ do |model, amount, assoc|
   build_associations_by_amount amount, model, assoc
+end
+
+Given /^the ([^\"]*) has (\d+) ([^\"]*)s$/ do |model, amount, assoc|
+  Given %{the "#{model}" has #{amount} "#{assoc}"}
 end
 
 Then /^a flash message '(.*)' should be displayed$/ do |message|
