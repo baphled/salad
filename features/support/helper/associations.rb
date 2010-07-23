@@ -2,7 +2,7 @@ module AssociationsHelper
 
   def build_associations_by_amount amount, model, association
     amount = amount.to_i
-    amount.times { eval("@#{model}.#{assoc.pluralize}") << association.capitalize.singularize.constantize.make } unless assoc.empty?
+    amount.times { eval("@#{model}.#{association.pluralize}") << association.capitalize.singularize.constantize.make } unless association.empty?
   end
 
   def build_model_associations_more_than amount, model, association
