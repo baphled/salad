@@ -33,6 +33,12 @@ Given /^there is a story with no steps$/ do
   Story.stub!(:find).and_return @story
 end
 
+Given /^the steps creation date is not the same as the updated date$/ do
+end
+
+Given /^the storys creation date is not the same as the updated date$/ do
+end
+
 Then /^the "([^\"]*)" information header should be displayed$/ do |model|
   response.should have_selector :h4 do |content|
     content.should contain "#{model.capitalize} Info"
