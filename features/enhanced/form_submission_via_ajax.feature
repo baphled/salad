@@ -77,7 +77,7 @@ Feature: Form submission via AJAX
     Then there should be an AJAX request
     And the form should be hidden
 
-  Examples: A list of forms that when submitted should hide the submittd form
+  Examples: A list of forms that when submitted should hide the submitted form
     | page            | item      | form action |
     | new project     | project   | fill in     |
     | new feature     | feature   | fill in     |

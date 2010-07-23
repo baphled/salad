@@ -37,7 +37,15 @@ Feature: All forms should have client side validations
     | new project | project | aim         | so        | 6      |
     | new project | project | description | too short | 12     |
     | new story   | story   | scenario    | this      | 7      |
-    
+
+  Scenario: A client side error is displayed if it does not have 'Given' as a prefix
+    When I am on "new step"
+    And we fill in the step title with 'we have a new step'
+    Then submit the form
+    Then the step should be not saved
+    And a JS based error message should be displayed
+    And the client side error message should be "must start with Given, When or Then"
+  
   Scenario Outline: All listed models must be unique
     Given there is a <model>
     When I am on "new <model>"

@@ -16,8 +16,6 @@ $.fn.autoScroller = function(options) {
   $innerUnorderedList.css('max-height', opts.height)
                      .css('overflow-y', 'hidden');
 
-  $(this).parent().css('width', width);
-
   if (opts.stopOnHover) {
     $('div#sidebar > ul').live('mouseout mouseover', function(event) {
       stop = (event.type == 'mouseover')? true : false;
