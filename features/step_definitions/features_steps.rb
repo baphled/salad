@@ -107,6 +107,7 @@ When /^click the features path$/ do
   click_link @feature.path
 end
 
+# @TODO Make more flexible
 Then /^the feature files contents should be viewable$/ do
-  response.should contain "Feature: Viewing an items tags"
+  response.should contain "Feature: Tag cloud"
 end
