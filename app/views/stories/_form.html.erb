@@ -3,12 +3,11 @@
 	<br />
 <% end %>
 
-<%= render_form_js_includes self, "step" %>
+<%= render_form_js_includes self, "story" %>
 <% content_for :js_head do %>
   <%= javascript_include_tag "add_step" %>
 <% end %>
 
-<%= render_form_js_includes self, "story" %>
 <%- semantic_form_for @story do |form| -%>
   <% form.inputs :name => form_title(@story, "Story") do %>
     <%= error_messages_for :story %>
