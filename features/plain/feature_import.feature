@@ -9,7 +9,7 @@ Feature: Users should not have to manually input their features if they have alr
     Then I should see a import link
 
   Scenario: I should not see an import link if the project location is not present
-    Given there is a project with "location" as "RAILS_ROOT"
+    Given there is a project with "location" as ""
     When I am on "a project"
     Then I should not see a import link
 
@@ -64,12 +64,12 @@ Feature: Users should not have to manually input their features if they have alr
     And each entry should display the features its stories
 
   Scenario: I should be able to save a selected feature to import
-    Given the project does have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     And select the "Tag cloud"
     And the feature is visible
     And we click import projects
-    Then a flash message 'Feature: Something different, was created' should be displayed
+    Then a flash message 'Feature: Viewing an items tags, was created' should be displayed
 
   Scenario: All scenario's should display the steps associated to it
     Given there is a project with "location" as "RAILS_ROOT"
@@ -123,7 +123,7 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
-    Then a flash message 'Something different' should be displayed
+    Then a flash message 'was created' should be displayed
     And each imported stories step should be added
 
   Scenario: A feature should not be viewable if the feature is already added
@@ -131,7 +131,7 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
-    Then a flash message 'Something different' should be displayed
+    Then a flash message 'was created' should be displayed
     And each imported stories step should be added
     When I am on "a project"
     Then I should see a import link
@@ -150,7 +150,7 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
-    Then a flash message 'Something different' should be displayed
+    Then a flash message 'was created' should be displayed
     And we should be redirected to the projects import page
 
   Scenario: When importing features, we should be able to find feature regardless of the feature directory structure

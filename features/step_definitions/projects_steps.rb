@@ -328,7 +328,7 @@ Then /^the submit button will be disabled for that feature "([^\"]*)"$/ do |butt
 end
 
 Then /^it should include features from all sub directories within the feature directory$/ do
-  response.should contain "Feature: most used"
+  response.should contain "Feature: ajax list pagination"
 end
 
 Then /^the "([^\"]*)" "([^\"]*)" "([^\"]*)" should have an error class$/ do |model, attribute, input|
