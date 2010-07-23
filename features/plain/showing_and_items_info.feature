@@ -3,6 +3,19 @@ Feature: All item information should be layed out in a similar way
   As a user
   I want to see item information in a generic format
 
+  Scenario Outline: Viewing a project features should display the project information in a pre defined layout
+    Given there is a <model>
+    And the <model> has 1 <associated>
+    And the <model>s creation date is not the same as the updated date
+    When I am on "<page>"
+    Then it should display all the <model> information
+
+   Examples: A list of models that should display associated items information
+    | model   | associated  | page              |
+    | project | features    | projects features |
+    | feature | storys      | features stories  |
+    | story   | steps       | stories steps     |
+
   Scenario Outline: All pages should be consistently layed out
     Given there is a <model>
     And the <model>s creation date is not the same as the updated date
@@ -40,26 +53,6 @@ Feature: All item information should be layed out in a similar way
     | feature | stories     | a feature | Last Story               |
     | story   | steps       | a story   | Total number of Steps    |
     | story   | steps       | a story   | Last Step                |
-
-  Scenario: Viewing a project features should display the project information in a pre defined layout
-    Given there is a project
-    And the project has features
-    And the projects creation date is not the same as the updated date
-    When I am on "projects features"
-    Then it should display all the project information
-
-  Scenario: Viewing a features stories should display the features information in a pre defined layout
-    Given there is a feature
-    Given the "feature" has 5 "stories"
-    When I am on "features stories"
-    Then it should display all the feature information
-
-  Scenario: Viewing a storys steps should display the storys information in a pre defined layout
-    Given there is a story
-    And the "story" has 5 "steps"
-    Given the story has steps
-    When I am on "stories steps"
-    Then it should display all the story information
 
   Scenario Outline: If an items has no associated items we should not display 0 but something more informative
     Given there is a <model> with no <associations>
