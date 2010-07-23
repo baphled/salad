@@ -9,7 +9,7 @@ Feature: Users should not have to manually input their features if they have alr
     Then I should see a import link
 
   Scenario: I should not see an import link if the project location is not present
-    Given the project does not have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     Then I should not see a import link
 
