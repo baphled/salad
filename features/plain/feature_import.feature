@@ -4,20 +4,17 @@ Feature: Users should not have to manually input their features if they have alr
   I want to have the functionality to import my cucumber features into salad
 
   Scenario: I should be able to import feature into a project
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     Then I should see a import link
 
   Scenario: I should not see an import link if the project location is not present
-    Given there is a project
-    And the project does not have a project location
+    Given the project does not have a project location
     When I am on "a project"
     Then I should not see a import link
 
   Scenario: I should be able to click the import link
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     Then I should see a import link
     When I click import
@@ -60,16 +57,14 @@ Feature: Users should not have to manually input their features if they have alr
     And each entry should display the features 'I want' text
 
   Scenario: I should be able to see all the stories for each feature
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And each entry should be a feature file
     And each entry should display the features its stories
 
   Scenario: I should be able to save a selected feature to import
-    Given there is a project
-    And the project does have a project location
+    Given the project does have a project location
     When I am on "import project"
     And select the "Tag cloud"
     And the feature is visible
@@ -77,8 +72,7 @@ Feature: Users should not have to manually input their features if they have alr
     Then a flash message 'Feature: Something different, was created' should be displayed
 
   Scenario: All scenario's should display the steps associated to it
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And each entry should be a feature file
@@ -86,8 +80,7 @@ Feature: Users should not have to manually input their features if they have alr
     And each story should display its steps
 
   Scenario: When should be able to view all 'Given' steps
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And each entry should be a feature file
@@ -96,8 +89,7 @@ Feature: Users should not have to manually input their features if they have alr
     And the feature should have at least on 'Given'
 
   Scenario: When should be able to view all 'When' steps
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And each entry should be a feature file
@@ -106,8 +98,7 @@ Feature: Users should not have to manually input their features if they have alr
     And the feature should have at least on 'When'
 
   Scenario: When should be able to view all 'Then' steps
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And each entry should be a feature file
@@ -128,8 +119,7 @@ Feature: Users should not have to manually input their features if they have alr
     Then it should be highlighted
 
   Scenario: All steps should be added
-    Given there is a project
-    And the project does have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
@@ -137,8 +127,7 @@ Feature: Users should not have to manually input their features if they have alr
     And each imported stories step should be added
 
   Scenario: A feature should not be viewable if the feature is already added
-    Given there is a project
-    And the project does have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
@@ -157,8 +146,7 @@ Feature: Users should not have to manually input their features if they have alr
     Then the message 'No features to import.' should be displayed
 
   Scenario: Successfully importing a feature should redirect back to the import page
-    Given there is a project
-    And the project does have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
@@ -166,8 +154,7 @@ Feature: Users should not have to manually input their features if they have alr
     And we should be redirected to the projects import page
 
   Scenario: When importing features, we should be able to find feature regardless of the feature directory structure
-    Given there is a project
-    And the project does have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then it should include features from all sub directories within the feature directory
 
@@ -199,34 +186,29 @@ Feature: Users should not have to manually input their features if they have alr
     Then display the feature file for "sample_one" already exists
 
   Scenario: When importing a feature which has examples, these should be displayed within the given scenario
-    Given there is a project
-    And the project does have a project location
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then the first story should contain its examples
 
   Scenario: When importing features, we should be warned if a scenario title has been duplicated
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     And the project has a feature to export with duplicate scenarios
     When I am on "import project"
     Then the submit button will be disabled for "sample_one"
 
   Scenario: A feature should not be submittable if a duplicate scenario is found in the new feature
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "import project"
     Then the submit button will be disabled for that feature "Import sample one"
 
   Scenario: Should not see the the import link if there are no features to import
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     And there are no projects to import
     When I am on "a project"
     Then I should not see a import link
 
   Scenario: Should not see the the import link if there are no features to import
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     And there are no projects to import
     When I am on "a project"
     Then I should not see a import all link

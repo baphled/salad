@@ -37,7 +37,6 @@ Feature: Validation of forms
     | parking    | resource |                     | project     | input      | li#resource_project_input    | can't be blank                                   |
     | parking    | resource |                     | project     | input      | li#resource_project_input    | Please enter at least 3 characters.              |
 
-  # Relies on fixtures
   Scenario Outline: There should not be any duplicate entries
     When I am on "new <model>" page
     And I fill in the <model> form with duplicate data

@@ -4,8 +4,7 @@ Feature: Import feature ajax functionality
   I want the import view to be re-rendered once the import form has been submitted
   
   Scenario: Importing a feature via AJAX should re-render the import view
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     When I click "span.view-panel"
     Then the import link should be visible
@@ -16,8 +15,7 @@ Feature: Import feature ajax functionality
     And the imports will be rendered via AJAX
 
   Scenario: Clicking on a feature tab should display the importable feature
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     When I click "span.view-panel"
     Then the import link should be visible
@@ -27,8 +25,7 @@ Feature: Import feature ajax functionality
     Then the "Import tag cloud" button should be visible
 
   Scenario: Upon importing a feature the related tab should be removed
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     When I click "span.view-panel"
     Then the import link should be visible
@@ -39,8 +36,7 @@ Feature: Import feature ajax functionality
     Then the "Tag cloud" tab should not be visible
 
   Scenario: Upon importing a feature a flash message should be displayed
-    Given there is a project
-    And the project has a project path
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on "a project"
     When I click "span.view-panel"
     Then the import link should be visible
@@ -50,9 +46,8 @@ Feature: Import feature ajax functionality
     And I click "button.button"
     Then the flash message "was created" should be displayed
 
-  Scenario: Importing a feature should disable the submit button on sumbission
-    Given there is a project
-    And the project has a project path
+  Scenario: Importing a feature should disable the submit button on submission
+    Given there is a project with "location" as "RAILS_ROOT"
     When I am on the "import project" page
     When I import "button.button"
     Then the submit button should be disabled

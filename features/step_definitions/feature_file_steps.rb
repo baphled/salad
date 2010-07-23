@@ -35,7 +35,7 @@ Then /^the object should be invalid$/ do
 end
 
 Then /^the '(.*)' property should not be nil$/ do |property|
-  @file.send(property.to_sym).should_not be_nil
+  @file.export.send(property.to_sym).should_not be_nil
 end
 
 Then /^the object should have (.*) or more scenarios$/ do |amount|
