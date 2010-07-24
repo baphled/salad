@@ -3,17 +3,17 @@ Feature: Form submission via AJAX
   As an user
   I want to experience the same kind of user journey regardless of using AJAX or not
 
-  Scenario Outline: A feature should still see the source feature file contents via a dialog box
+  Scenario Outline: should still be able to see the source feature file contents via a dialog box
     Given there is a <item>
     When I am on "<page>" page
     And I <form action> the <item> form
     When I submit the form
     Then there should be an AJAX request
-    And I use the features path link
-    And there should be an AJAX request
+    When I use the features path link
+    Then there should be an AJAX request
     And a dialog box should appear
 
-  Examples: A list of forms that when submitted should still allow the user to see view source feature file via a dialog box
+  Examples: A list of forms that should still allow the user to see view source feature file via a dialog box
     | page          | item      | form action |
     | edit feature  | feature   | update      |
 
@@ -36,7 +36,7 @@ Feature: Form submission via AJAX
     | edit story      | story     | update      |
     | edit step       | step      | update      |
 
-  Scenario Outline: We should still be able to use the pagination
+  Scenario Outline: I should still be able to use the pagination
     Given there is a <item>
     And the <item> has more than 5 <assoc>
     When I am on the <page> page
@@ -53,6 +53,8 @@ Feature: Form submission via AJAX
     | edit project | project | feature | update      |
     | edit feature | feature | story   | update      |
     | edit story   | story   | step    | update      |
+
+  # @TODO Add another scenario to cover clicking through the paginator after a form is submitted
 
   Scenario Outline: Animated icon panels should still work
     Given there is a <item>
@@ -107,6 +109,8 @@ Feature: Form submission via AJAX
     | edit feature    | feature   | update      |
     | edit story      | story     | update      |
     | edit step       | step      | update      |
+
+  # @TODO Add scenario for opening and closing the form view
 
   # @TODO Refactor so we can apply the same scenario to our edge case scenario's
   Scenario Outline: Displaying the sidebar after form submission

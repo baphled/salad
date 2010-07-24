@@ -1,8 +1,9 @@
-Feature: When hovering over a panel link we want to display a speech bubble tooltip
+Feature: Panel tooltip functionality
   In order to improve the userability of the panel links
   As an user
   I want to be given functionality information when hovering over a panel link
 
+  # @TODO Add all missing tooltips if any
   Scenario: When hovering over the feature's export link displays a tooltip
     Given there is a feature
     And the "feature" has 5 "stories"
@@ -12,13 +13,20 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
     And I hover over the "export-feature" link
     Then a tooltip should be visible
 
-  Scenario: When hovering over the feature's edit link displays a tooltip
-    Given there is a feature
-    When I am on "a feature"
+  Scenario Outline: Hovering over an item panels link should display a tootip
+    Given there is a step
+    When I am on "a step"
     And I click "span#panel"
-    Then there should be a "Edit" link
+    Then there should be a "Edit the step" link
     And I hover over the "edit" link
     Then a tooltip should be visible
+
+  Examples: List of page that should have edit tooltips
+    | model   | page      |
+    | project | a project |
+    | feature | a feature |
+    | story   | a story   |
+    | step    | a step    |
 
   Scenario Outline: When hovering over the feature changes displays a tooltip
     Given we create a feature with a path
@@ -57,20 +65,4 @@ Feature: When hovering over a panel link we want to display a speech bubble tool
        | link                                                       | id           |
        | Allows you to import features singularly                   | import       |
        | Allows you to import all project features in one easy step | import-all   |
-       | Allows you to edit a projects information                  | edit |
-       
-  Scenario: When hovering over the step panel links displays a tooltip
-    Given there is a step
-    When I am on "a step"
-    And I click "span#panel"
-    Then there should be a "Edit the step" link
-    And I hover over the "edit" link
-    Then a tooltip should be visible
-    
-  Scenario: When hovering over the story panel links displays a tooltip
-    Given there is a story
-    When I am on "a story"
-    And I click "span#panel"
-    Then there should be a "Edit the story" link
-    And I hover over the "edit" link
-    Then a tooltip should be visible
+       | Allows you to edit a projects information                  | edit         |

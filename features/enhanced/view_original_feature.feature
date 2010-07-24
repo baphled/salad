@@ -9,3 +9,5 @@ Feature: view an original feature file
     And click the features path
     Then there should be an AJAX request
     And a dialog box should appear
+
+  # @TODO Add scenarios for viewing source files for features from a list

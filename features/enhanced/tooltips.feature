@@ -8,3 +8,5 @@ Feature: Tooltips
     When I am on "export feature"
     And I hover over the "css=button.button" button
     Then a tooltip should be visible
+
+  # @TODO Add all other tooltips

@@ -1,9 +1,9 @@
-Feature: When selecting tags we want to be able to select from pre-existing tags easily
+Feature: Hover dialog
     In order to help the user to select tags
     As the system
     I want to provide a hover dialog box with pre-existing tags
 
-    Scenario: When the project tags hover dialog is displayed, it should display all project tags
+    Scenario: It should show all tags when the hover dialog for a new project is active
       Given there is a project
       And a project has tags
       When I am on "new project"
@@ -20,12 +20,12 @@ Feature: When selecting tags we want to be able to select from pre-existing tags
       Then I should see a hover dialog box
       And the tag input should not contain "Project management"
 
-    Scenario: The hover dialog should not be displayed if there are no tags in the response
+    Scenario: it should not be displayed if there are no tags in the response
       When I am on "new project"
       And focus on the tag input
       Then I should not see a hover dialog box
       
-    Scenario: The hover dialog should not be visible when focus is taken away from the tag input
+    Scenario: It should not be visible when focus is taken away from the tag input
       Given there is a project
       And a project has tags
       When I am on "new project"

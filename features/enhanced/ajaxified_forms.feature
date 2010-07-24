@@ -1,4 +1,4 @@
-Feature: All our forms need to be passed to the server via AJAX
+Feature: AJAXified forms
   In order to improve the users experience
   As a user
   I want to be able to create new items without having the page refresh when the forms submitted
@@ -23,6 +23,7 @@ Feature: All our forms need to be passed to the server via AJAX
     | story   | edit story   | update      | was updated |
     | step    | edit step    | update      | was updated |
   
+  # @TODO Add new item pages
   Scenario Outline: Displaying the side bar after form submission
     Given there is a <model>
     And the "<page name>" has "<assoc>"
@@ -39,6 +40,7 @@ Feature: All our forms need to be passed to the server via AJAX
     | story   | edit story   | step    |
     | step    | edit step    |         |
 
+  # @TODO Add new item pages
   Scenario Outline: When submitting a form the hover functionality should still be available
     Given there is a <page name>
     And the "<page name>" has "<assoc>"

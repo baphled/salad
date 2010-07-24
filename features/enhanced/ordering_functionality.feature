@@ -1,7 +1,7 @@
-Feature: Order items
+Feature: Ordering functionality
   In order to order salad items
   As an user
-  I want to be able to sort items
+  I want to be able to sort items without having the page refresh
 
   Scenario Outline: The order button should not be present if there are is only one item
     Given there is a <model>
@@ -45,18 +45,24 @@ Feature: Order items
     Then it should "<have order button>" have an order button
 
   Examples: List of pages that use the list layout
-    | model   | assoc   | page name         | have order button |
-    | project | feature | a project         | does              |
-    | feature | story   | a feature         | does              |
-    | story   | step    | a story           | does              |
-    | step    |         | a step            | does not          |
-    | project | feature | projects features | does              |
-    | feature | story   | features stories  | does              |
-    | story   | step    | stories steps     | does              |
-    | project | feature | all projects      | does not          |
-    | feature | story   | all features      | does not          |
-    | story   | step    | all stories       | does not          |
-    | step    |         | all steps         | does not          |
+    | model   | assoc   | amount |  page name         | have order button |
+    | project | feature | 5      | a project         | does              |
+    | feature | story   | 5      | a feature         | does              |
+    | story   | step    | 5      | a story           | does              |
+    | step    |         | 5      | a step            | does not          |
+    | project | feature | 5      | projects features | does              |
+    | feature | story   | 5      | features stories  | does              |
+    | story   | step    | 5      | stories steps     | does              |
+    | project | feature | 5      | all projects      | does not          |
+    | feature | story   | 5      | all features      | does not          |
+    | story   | step    | 5      | all stories       | does not          |
+    | step    |         | 5      | all steps         | does not          |
+    | project | feature | 1      | a project         | does not          |
+    | feature | story   | 1      | a feature         | does not          |
+    | story   | step    | 1      | a story           | does not          |
+    | project | feature | 1      | projects features | does not          |
+    | feature | story   | 1      | features stories  | does not          |
+    | story   | step    | 1      | stories steps     | does not          |
 
   Scenario: Should not be able to order items if there is only one item
     Given the project has one feature

@@ -1,4 +1,4 @@
-Feature: Pagination should be done with AJAX
+Feature: AJAX list pagination
   In order to help improve the users experience
   As a user
   I want to be able to request a new page and not have the whole page refresh
@@ -19,3 +19,5 @@ Feature: Pagination should be done with AJAX
     When I follow "2" within "div.pagination"
     And the first feature is hovered over
     Then the feature's information will be display in the sidebar
+
+  # @TODO Add scenarios for displaying an overlay whilst the page is loading
