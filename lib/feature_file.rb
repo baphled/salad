@@ -60,7 +60,6 @@ class FeatureFile < File
 
   private
 
-    # @TODO refactor to take a block, allowing us to use this method for scenarios
     def read_properties property
       value = nil
       self.reopen path if self.eof?

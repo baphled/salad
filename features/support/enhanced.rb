@@ -1,4 +1,3 @@
-#TODO work out why db cleaner is truncating our test db instead of the selenium one
 ENV[RAILS_ENV] = 'selenium'
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require "selenium/client"
