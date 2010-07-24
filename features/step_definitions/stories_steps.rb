@@ -12,7 +12,7 @@ end
 
 # TODO Make more flexible and speed up
 Given /^we have a stories with examples$/ do
-  f = FeatureFile.new("#{RAILS_ROOT}/features/plain/enhancements.feature").export
+  f = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export
   @story = f.stories.first
   @story.save
 end

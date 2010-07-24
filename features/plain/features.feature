@@ -141,7 +141,7 @@ Feature: A user should be able to add features to the system
 
   Scenario: When a feature stored on system has a path stored I should be able to easily view the feature file
     Given there is a feature
-    And the feature has a path
+    And the feature has a valid path
     When I am on "a feature"
     And click the features path
     Then the feature files contents should be viewable

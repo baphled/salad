@@ -7,7 +7,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     When I am on "new project"
     And I fill in the project form
     Then submit the form
-    And the project information should be saved
+    And the response should be successful
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
 
@@ -49,7 +49,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     When I am on "new project"
     Then I should have a checkable list of features
     And we must be able to select 1 feature
-    And the project information should be saved
+    And the response should be successful
     And I should be redirected to the new project
 
   Scenario: I should be able to click a link which takes me to the projects features
@@ -94,7 +94,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I fill in the project form
     And add 'project, new project' as tags
     Then submit the form
-    And the project information should be saved
+    And the response should be successful
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
 
@@ -103,7 +103,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     And I fill in the project form
     And add 'project, new project' as tags
     Then submit the form
-    And the project information should be saved
+    And the response should be successful
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
     And the project should have link to create new features
@@ -145,7 +145,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     When I am on "new project"
     And I fill in the project form
     Then submit the form
-    And the project information should be saved
+    And the response should be successful
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
     And the projects updated field will not be displayed
@@ -154,7 +154,7 @@ Feature: We need to a way to store our stories within a project, this will help 
     When I am on "new project"
     And I fill in the project form
     Then submit the form
-    And the project information should be saved
+    And the response should be successful
     And I should be redirected to the new project
     And a flash message 'was created' should be displayed
 

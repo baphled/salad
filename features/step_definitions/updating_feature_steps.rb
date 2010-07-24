@@ -1,19 +1,22 @@
 Given /^we have a valid feature file$/ do
-  @file = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature") 
-  @feature = @file.export
-  File.open("#{RAILS_ROOT}/tmp/tag_cloud.feature", 'w') { |f| f.write(@feature.export) }
+  @file = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature")
+  @file.should_not be_invalid
+end
+
+Given /^there is a valid feature file$/ do
+  Given %{we have a valid feature file}
 end
 
 Given /^the feature file is saved$/ do
   @feature.save.should be_true
 end
 
-# TODO review this step, really don't need to change the path to this in alot of cases
-Given /^the feature has a path$/ do
-  @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/tag_cloud.feature")
+Given /^the feature has a valid path$/ do
+  @feature.path.should_not be_empty
 end
 
-Given /^the feature is not found$/ do
+Given /^the feature file is not found$/ do
+  @feature = @file.export
   Feature.find_by_title(@feature.title).should be_nil
 end
 
@@ -27,6 +30,10 @@ end
 
 Given /^the local feature file has changed a featutes scenario$/ do
   @feature.stories.first.update_attribute(:scenario, 'A different story title')
+end
+
+Given /^the feature is exported$/ do
+  @feature = @file.export
 end
 
 When /^the feature has changed "([^\"]*)"$/ do |message|

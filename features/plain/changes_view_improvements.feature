@@ -5,7 +5,6 @@ Feature: Changes view improvements
 
   Scenario Outline: Each sync and change view should have a legend of what has change
     Given there is a feature
-    And the feature has a path
     When the feature has changed "Something different"
     And I am on "a feature"
     And I use the "<link>" link
@@ -22,7 +21,6 @@ Feature: Changes view improvements
 
   Scenario Outline: There should be a notice warning users a feature file will be changed when patching a feature file
     Given there is a feature
-    And the feature has a path
     When the feature has changed "Something different"
     And I am on "a feature"
     And I use the "<link>" link

@@ -43,7 +43,7 @@ Feature: Form validations
     When I am on "new <model>" page
     And I fill in the <model> form with duplicate data
     Then submit the form
-    And the <model> information should not be saved
+    And the <model> form should still be displayed
     And the error message should be "has already been taken"
 
   Examples: List of models that must be unique

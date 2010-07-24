@@ -10,7 +10,7 @@ Feature: Tag cloud
     Then the tags cloud should be displayed
 
   Examples: List of views that should display the tag cloud
-    | model   | page name    |
+    | model   | page name       |
     | project | all projects    |
     | feature | all features    |
     | story   | all stories     |

@@ -103,8 +103,7 @@ Then /^submit the form$/ do
   click_button 'save'
 end
 
-#TODO Refactor to make more explicit
-Then /^the project information should be saved$/ do
+Then /^the response should be successful$/ do
   assert_response :success
 end
 

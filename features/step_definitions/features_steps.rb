@@ -25,6 +25,7 @@ Then /^I should have a checkable list of projects$/ do
   end
 end
 
+# @TODO Centralise step
 When /^there are features$/ do
   Feature.stub(:all).and_return [Feature.make]
 end
@@ -107,7 +108,6 @@ When /^click the features path$/ do
   click_link @feature.path
 end
 
-# @TODO Make more flexible
 Then /^the feature files contents should be viewable$/ do
-  response.should contain "Feature: Tag cloud"
+  response.should contain "Feature: "
 end

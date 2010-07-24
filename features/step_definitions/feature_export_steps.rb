@@ -42,8 +42,3 @@ end
 Then /^that story is not added to the exported feature$/ do
   response.should_not contain "Scenario: #{@has_no_steps.scenario}"
 end
-
-# @TODO Rename to a more appropriate title
-Then /^the feature should be displayed$/ do
-  response.should be_success
-end

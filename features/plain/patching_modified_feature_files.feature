@@ -4,9 +4,9 @@ Feature: Patching modified feature files
   I want to be able to get a patch file from the system
   
   Scenario: I should be able to patch a feature file if the system feature is different
-    Given we have a valid feature file
+    Given there is a valid feature file
+    And the feature is exported
     And the feature file is saved
-    And the feature has a path
     When the feature has changed "Something different"
     And I am on "a feature"
     And a "Patch a feature with the systems changes" link should be displayed within the feature
