@@ -2,10 +2,6 @@ Given /^the step "([^\"]*)" is created$/ do |step|
   Step.make(:title => step)
 end
 
-Given /^there is a step$/ do
-  @step = Step.make
-end
-
 Given /^there are steps$/ do
   @step = Step.stub(:all).and_return [Step.make]
 end

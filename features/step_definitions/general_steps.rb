@@ -1,3 +1,7 @@
+Given /^there is a ([^\"]*)$/ do |model|
+  eval("@#{model} = model.camelcase.constantize.make")
+end
+
 Given /^the "([^\"]*)" has (\d+) "([^\"]*)"$/ do |model, amount, assoc|
   build_associations_by_amount amount, model, assoc
 end

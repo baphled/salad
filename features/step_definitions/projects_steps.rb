@@ -1,7 +1,3 @@
-Given /^there is a project$/ do
-  @project = Project.make
-end
-
 Given /^there are projects$/ do
   @projects = Project.stub(:all).and_return [Project.make]
 end

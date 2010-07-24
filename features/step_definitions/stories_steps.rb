@@ -6,10 +6,6 @@ Given /^the story has steps$/ do
   @story ||= Story.first
 end
 
-Given /^there is a story$/ do
-  @story = Story.make
-end
-
 # TODO Make more flexible and speed up
 Given /^we have a stories with examples$/ do
   f = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export

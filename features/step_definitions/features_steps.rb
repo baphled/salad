@@ -2,10 +2,6 @@ Given /^the first feature has stories$/ do
   @feature.stories = [Story.make]
 end
 
-Given /^there is a feature$/ do
-  @feature = Feature.make
-end
-
 Given /^the feature has stories$/ do
   @feature.stories = [Story.make]
 end
