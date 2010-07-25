@@ -5,8 +5,27 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environ
 require 'spec/autorun'
 require 'spec/rails'
 require File.join(RAILS_ROOT, 'spec', 'blueprints')
+#require File.join(RAILS_ROOT, 'spec', 'matchers')
 # Uncomment the next line to use webrat's matchers
 require 'webrat/integrations/rspec-rails'
+
+Spec::Matchers.define :have_features_to_import do
+  match do |project|
+    project.features_to_import?
+  end
+
+  failure_message_for_should do
+    "expected the project to have features to import"
+  end
+
+  failure_message_for_should_not do
+    "expected the project not to have any features to import"
+  end
+
+  description do
+    "expected the project to have features to import"
+  end
+end
 
 def content_for(name)
   response.template.instance_variable_get("@content_for_#{name}")
