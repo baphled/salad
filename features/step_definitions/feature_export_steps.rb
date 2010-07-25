@@ -3,13 +3,6 @@ Given /^we select a feature with no stories$/ do
   Feature.stub!(:find).and_return @feature
 end
 
-Given /^we select a feature with stories$/ do
-  @steps = []
-  3.times { |steps| @steps << Step.make }
-  @feature.stories << Story.make(:steps => [@steps])
-  Feature.stub!(:find).and_return @feature
-end
-
 Given /^the feature has a story with no steps$/ do
   @has_no_steps = Story.make
   @feature.stories << @has_no_steps
@@ -32,11 +25,6 @@ end
 
 Then /^the export link should not be viewable$/ do
   response.should_not have_selector :a, attribute = {:href => "#{export_feature_path @feature}"}
-end
-
-Then /^the feature should be converted to the necessary cucumber feature format$/ do
-  @file = File.open("#{RAILS_ROOT}/spec/fixtures/test.feature")
-  response.should contain "Scenario: #{@feature.stories.first.scenario}"
 end
 
 Then /^that story is not added to the exported feature$/ do

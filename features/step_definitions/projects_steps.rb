@@ -10,10 +10,6 @@ Given /^there is a project with a valid location$/ do
   @project = Project.make(:location => "#{RAILS_ROOT}/spec/fixtures/")
 end
 
-Given /^the project does not have a project location$/ do
- @project.update_attribute(:location,"")
-end
-
 Given /^the project does have a project location$/ do
   @project.update_attribute(:location, "#{RAILS_ROOT}/spec/fixtures/")
 end
@@ -86,10 +82,6 @@ When /^I click import$/ do
   click_link 'Import'
 end
 
-When /^we fill in the features tags$/ do
-  fill_in 'feature_tag_list', :with => 'new feature, something cool'
-end
-
 When /^we fill in the project location$/ do
   fill_in 'project_location', :with => "#{RAILS_ROOT}"
 end
@@ -117,10 +109,6 @@ end
 
 Then /^the user should be told the must have a (.*)$/ do |value|
   response.should contain "#{value.capitalize} can't be blank"
-end
-
-Then /^the user should be told the project already exists$/ do
-  response.should contain "Title has already been taken"
 end
 
 Then /^I should be able to view its details$/ do
@@ -193,12 +181,6 @@ end
 
 Then /^be sent to the new projects view$/ do
   response.should have_selector :form, attribute = {:action=>"/projects",:method=>"post"}
-end
-
-Then /^there should not be a 'view features' link$/ do
-  response.should_not have_selector :a, attribute = {:href=>"/projects/1/features"} do |content|
-    content.should_not contain "Feature"
-  end
 end
 
 Then /^all projects should have a 'Add features' link$/ do

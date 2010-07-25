@@ -9,12 +9,6 @@ Given /^a project has tags$/ do
   click_button 'Save'
 end
 
-Given /^the project has one feature$/ do
-  feature = Feature.first
-  @project = mock_model(Project, :id => 1, :features => [Feature.first]).as_null_object
-  @project.stub!(:features).and_return feature
-end
-
 When /^the first (.*) is hovered over$/ do |model|
   selenium.mouse_over("css=ul##{model.pluralize} >li div.#{model}")
 end

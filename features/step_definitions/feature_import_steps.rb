@@ -2,10 +2,6 @@ Given /^the project has a feature to export with duplicate scenarios$/ do
   Given %{we have a valid feature file}
 end
 
-Given /^the project has a project path$/ do
-  @project.update_attribute(:location,"#{RAILS_ROOT}/spec/fixtures")
-end
-
 Given /^there are no projects to import$/ do
   Feature.stub!(:find_by_path).and_return mock_model(Feature).as_null_object
 end

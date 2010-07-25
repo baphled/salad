@@ -81,14 +81,6 @@ Then /^the (.*) should be listed$/ do |item|
   end
 end
 
-Then /^the feature should be not associated to the first story$/ do
-  @feature.stories.should_not contain Feature.first.stories.first
-end
-
-Then /^the feature information should be not saved$/ do
-  response.should_not contain "was created"
-end
-
 Then /^there should be an edit link$/ do
   response.should have_selector :span do |content|
     content.should have_selector :a, attribute = {:title => "Edit the feature and it's stories"}

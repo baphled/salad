@@ -1,12 +1,3 @@
-Given /^there is a last project$/ do
-  @project = mock_model(Project,
-                            :title => 'A project',
-                            :creation_date => Time.now.to_s(:long),
-                            :features => [mock_model(Feature).as_new_record],
-                            :null_object => true).as_new_record
-  Project.stub(:last).and_return @project
-end
-
 Given /^there is no last project$/ do
   Project.stub(:last).and_return nil
 end

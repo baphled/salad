@@ -2,10 +2,6 @@ Given /^the step "([^\"]*)" is created$/ do |step|
   Step.make(:title => step)
 end
 
-When /^I choose 'New Step' link$/ do
-  click_link 'New Step'
-end
-
 Then /^the new step form should be displayed$/ do
   response.should have_selector :form
 end
