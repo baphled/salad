@@ -33,6 +33,7 @@ Feature: Client side form validations
     And the form should have an client side error
 
   Examples: List of edit forms that should be validated
+    | page name    | model    | field       |
     | edit feature | feature  | title       |
     | edit feature | feature  | in_order    |
     | edit feature | feature  | as_a        |
