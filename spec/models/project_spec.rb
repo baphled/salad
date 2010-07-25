@@ -115,7 +115,9 @@ describe Project do
         @project.features_to_import?
       end
 
-      it "returns true if there are importable features"
+      it "returns true if there are importable features" do
+        @project.should have_features_to_import
+      end
     end
     
     context "with no importable features" do
