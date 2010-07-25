@@ -39,13 +39,12 @@ describe "/features/show.html.erb" do
 
     context "feature is exportable" do
       before(:each) do
-        @feature.stub(:is_diff?).and_return true
+        @feature.stub(:stories).and_return [Story.make]
         assigns[:feature] = @feature
         render
       end
 
       it "should display an export feature link" do
-        pending "Need to setup so that the export link is visible"
         response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
       end
     end
