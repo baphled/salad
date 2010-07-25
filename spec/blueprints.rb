@@ -31,3 +31,8 @@ Story.blueprint {
 Step.blueprint {
   title { Sham.step }
 }
+
+Resource.blueprint {
+  name "baphled"
+  project "50164"
+}
