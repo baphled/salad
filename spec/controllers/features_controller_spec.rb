@@ -52,7 +52,7 @@ describe FeaturesController do
       
       context "importing over XHR" do
         
-        it "redirects not to the import page" do
+        it "does not redirects to the import page" do
           xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
           response.should_not redirect_to import_project_path(@project)
         end
@@ -60,26 +60,43 @@ describe FeaturesController do
         context "more features to import" do
           before(:each) do
             @project.stub!(:features_to_import?).and_return true
+            xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
           end
           
           it "finds the project the feature was imported from" do
             @feature.stub!(:find_by_project_id).and_return Project.first
-            xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
           end
           
           it "renders the import RJS file" do
-            xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
             response.should render_template "import.rjs"
           end
-          
-          it "displays the import list"
-          it "does not display the imported feature"
+
+          it "displays a message stating the feature has been imported" do
+            flash[:notice].should contain "Feature: #{@feature.title}, was imported"
+          end
         end
         
         context "no more features to import" do
-          it "renders the project RJS file"
-          it "displays a notice stating that there are no more features to import"
-          it "displays the projects information"
+          before(:each) do
+            @project = Project.make
+            @project.stub!(:import_features).and_return []
+            Project.stub!(:find).and_return @project
+            xhr :post, :create, {:commit => 'Import', :current_project_id => @project.id}
+          end
+
+          it "renders the project RJS file" do
+            response.should render_template "index.rjs"
+          end
+          
+          it "displays a notice stating that there are no more features to import" do
+            flash[:notice].should contain "No more features to import"
+          end
+          
+          it "displays the features information" do
+            pending "Need to finish functionality" do
+              response.should have_selector :h3, :content => 'Feature Info'
+            end
+          end
         end
         
       end
@@ -352,7 +369,7 @@ describe FeaturesController do
   
   describe "GET, source" do
     before(:each) do
-      @feature = mock_model(Feature,:title=>"A new feature").as_null_object
+      @feature = mock_model(Feature).as_null_object
       @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/tag_cloud.feature"
       Feature.stub!(:find).and_return @feature
     end
