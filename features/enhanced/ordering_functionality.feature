@@ -65,6 +65,7 @@ Feature: Ordering functionality
     | story   | step    | 1      | stories steps     | does not          |
 
   Scenario: Should not be able to order items if there is only one item
-    Given the project has one feature
+    Given there is a project
+    And the "project" has 1 "feature"
     When I am on the "projects features" page
     Then it should "does not" have an order button
