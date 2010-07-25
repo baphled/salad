@@ -8,6 +8,6 @@ describe "/features/source.html.erb" do
   
   it "should display the original feature files contents" do
     render
-    response.should contain "Feature: Viewing an items tags"
+    response.should contain "Feature: Tag cloud"
   end
 end
