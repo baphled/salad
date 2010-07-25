@@ -6,10 +6,6 @@ Given /^I have an the project number "([^\"]*)"$/ do |project_number|
   @project_number = project_number
 end
 
-Given /^there are resources$/ do
-  @resources = Resource.all
-end
-
 Given /^I have set up the lighthouse resource$/ do
   When %{I am on "new parking"}
   And %{I fill in the resource form}
@@ -28,7 +24,7 @@ Given /^there are no tickets parked$/ do
   LightHouse.stub!(:all).and_return []
 end
 
-Given /^there are tickets$/ do
+Given /^there are parked tickets$/ do
   @lighthouse_tickets = Lighthouse::Ticket.find(:all, :params => { :project_id => @project_number, :q => "state:open tagged:feature" })
   LightHouse.stub!(:all).and_return @lighthouse_tickets
 end

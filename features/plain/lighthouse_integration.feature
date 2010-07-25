@@ -106,7 +106,7 @@ Feature: Lighthouse integration
   Scenario: I should be able to convert a parked ticket in into a feature
     Given I are using the account name "baphled"
     And I have an the project number "50164"
-    And there are tickets
+    And there are parked tickets
     When I am on "parking index"
     And I click on the first ticket
     Then the feature form should be displayed

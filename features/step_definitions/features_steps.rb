@@ -21,11 +21,6 @@ Then /^I should have a checkable list of projects$/ do
   end
 end
 
-# @TODO Centralise step
-When /^there are features$/ do
-  Feature.stub(:all).and_return [Feature.make]
-end
-
 Then /^I should see a list of features$/ do
   response.should have_selector :ul do |list|
     list.should have_selector :li

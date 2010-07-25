@@ -1,7 +1,4 @@
-Given /^there are stories$/ do
-  @stories = Story.stub(:all).and_return [Story.make]
-end
-
+# @TODO Find all scenarios that use this step make change them to use our newer version
 Given /^the story has steps$/ do
   @story ||= Story.first
 end

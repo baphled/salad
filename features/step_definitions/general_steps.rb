@@ -1,5 +1,10 @@
-Given /^there is a ([^\"]*)$/ do |model|
+Given /^there is a (\S+)$/ do |model|
   eval("@#{model} = model.camelcase.constantize.make")
+end
+
+Given /^there are (\S+)$/ do |model|
+  constant = model.singularize.camelcase.constantize
+  eval "@#{model} = constant.stub(:all).and_return [constant.make]"
 end
 
 Given /^the "([^\"]*)" has (\d+) "([^\"]*)"$/ do |model, amount, assoc|

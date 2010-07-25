@@ -1,12 +1,11 @@
-Given /^there are projects$/ do
-  @projects = Project.stub(:all).and_return [Project.make]
-end
-
 Given /^there is a project with "([^\"]*)" as "([^\"]*)"$/ do |property, value|
   value = value.constantize if value == 'RAILS_ROOT'
   @project = Project.make(property.to_sym => "#{value}")
 end
 
+Given /^there is no project$/ do
+
+end
 Given /^there is a project with a valid location$/ do
   @project = Project.make(:location => "#{RAILS_ROOT}/spec/fixtures/")
 end
