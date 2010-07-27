@@ -14,7 +14,7 @@ class Story < ActiveRecord::Base
   has_many :step_stories
   has_many :steps, :through => :step_stories
 
-  belongs_to :example
+  has_one :example
   
   accepts_nested_attributes_for :steps
   accepts_nested_attributes_for :example
