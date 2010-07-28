@@ -6,6 +6,7 @@ class FeaturesController < ApplicationController
   before_filter :find_features_stories, :only => [:show, :update, :stories]
   before_filter :find_tag
 
+#  after_filter :find_features_stories, :only => [:sync]
   def index
     @features = Feature.paginate(:page => params[:page],:per_page => 5)
     respond_to do |format|
@@ -29,24 +30,9 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(params[:feature])
     respond_to do |format|
       if @feature.save
-        find_features_stories
-        if "Import" == params[:commit]
-          @project = Project.find(params[:current_project_id])
-          @imported = @project.import_features
-          if @imported.empty?
-            flash[:notice] = "No more features to import"
-            format.html { redirect_to :back }
-            format.js { render "index.rjs" }
-          else
-            flash[:notice] = "Feature: #{@feature.title}, was imported"
-            format.html { redirect_to :back }
-            format.js { render "import.rjs" }
-          end
-        else
-          flash[:notice] = "Feature: #{@feature.title}, was created"
-          format.html { redirect_to @feature }
-          format.js { render "create.rjs" }
-        end
+        flash[:notice] = "Feature: #{@feature.title}, was created"
+        format.html { redirect_to @feature }
+        format.js { render "create.rjs" }
       else
         format.js { render :action => "edit" }
         format.html { render :action => "edit" }
@@ -59,18 +45,16 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.save
         find_features_stories
-        if "Import" == params[:commit]
-          @project = Project.find(params[:current_project_id])
-          @imported = @project.import_features
-          if @imported.empty?
-            flash[:notice] = "No more features to import"
-            format.html { redirect_to :back }
-            format.js { render "index.rjs" }
-          else
-            flash[:notice] = "Feature: #{@feature.title}, was imported"
-            format.html { redirect_to :back }
-            format.js { render "import.rjs" }
-          end
+        @project = Project.find(params[:current_project_id])
+        @imported = @project.import_features
+        if @imported.empty?
+          flash[:notice] = "No more features to import"
+          format.html { redirect_to :back }
+          format.js { render "index.rjs" }
+        else
+          flash[:notice] = "Feature: #{@feature.title}, was imported"
+          format.html { redirect_to :back }
+          format.js { render "import.rjs" }
         end
       else
         format.js { render :action => "edit" }
