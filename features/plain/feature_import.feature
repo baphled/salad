@@ -211,3 +211,9 @@ Feature: Users should not have to manually input their features if they have alr
     And there are no projects to import
     When I am on "a project"
     Then I should not see a import all link
+
+  Scenario: Imported features are sent to the import action
+    Given there is a project with a valid location
+    When I am on "import project"
+    And we click import projects
+    Then the request should be sent to the import action
