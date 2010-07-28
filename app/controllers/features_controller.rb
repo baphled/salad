@@ -5,7 +5,7 @@ class FeaturesController < ApplicationController
   before_filter :find_feature, :except => [:index, :new, :create, :tag, :tags, :validate, :import]
   before_filter :find_features_stories, :only => [:show, :update, :stories]
   before_filter :find_tag
-  
+
   def index
     @features = Feature.paginate(:page => params[:page],:per_page => 5)
     respond_to do |format|
@@ -13,7 +13,7 @@ class FeaturesController < ApplicationController
       format.js { render "index.rjs" }
     end
   end
-  
+
   def new
     if !params[:project_id].nil? && !Project.find(params[:project_id]).nil?
       @project = Project.find(params[:project_id])
@@ -23,24 +23,27 @@ class FeaturesController < ApplicationController
     end
     @projects = Project.all
   end
-  
+
+  # @TODO Refactor so that we have an import action that handles our import related functionality
   def create
     @feature = Feature.new(params[:feature])
     respond_to do |format|
       if @feature.save
-        flash[:notice] = "Feature: #{@feature.title}, was created"
         find_features_stories
         if "Import" == params[:commit]
           @project = Project.find(params[:current_project_id])
           @imported = @project.import_features
           if @imported.empty?
+            flash[:notice] = "No more features to import"
             format.html { redirect_to :back }
             format.js { render "index.rjs" }
           else
+            flash[:notice] = "Feature: #{@feature.title}, was imported"
             format.html { redirect_to :back }
-            format.js { render "import.rjs" }         
+            format.js { render "import.rjs" }
           end
         else
+          flash[:notice] = "Feature: #{@feature.title}, was created"
           format.html { redirect_to @feature }
           format.js { render "create.rjs" }
         end
@@ -50,10 +53,10 @@ class FeaturesController < ApplicationController
       end
     end
   end
-  
+
   def edit
   end
-  
+
   def show
     respond_to do |format|
       format.html
@@ -62,7 +65,7 @@ class FeaturesController < ApplicationController
       format.js { render "show.rjs" }
     end
   end
-  
+
   def update
     title = @feature.title
     respond_to do |format|
@@ -76,7 +79,7 @@ class FeaturesController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @feature.destroy
     respond_to do |format|
@@ -84,28 +87,28 @@ class FeaturesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def stories
     respond_to do |format|
       format.html
       format.js { render "show.rjs" }
     end
   end
-  
+
   def export
     respond_to do |format|
       format.html
       format.txt { render :text => "#{@feature.export}" }
     end
   end
-  
+
   def sort
     params[:feature].each_with_index do |id, index|
       @feature.feature_projects.update_all(['position=?', index+1])
     end
     render :nothing => true
   end
-  
+
   def tag
     @features = Feature.find_tagged_with params[:tag]
     render :index
@@ -141,7 +144,7 @@ class FeaturesController < ApplicationController
       redirect_to feature_path(@feature)
     end
   end
-  
+
   def system_sync
     if not @feature.is_diff?
       flash[:error] =  "Feature does not need updating"
@@ -153,7 +156,7 @@ class FeaturesController < ApplicationController
     end
       redirect_to feature_path(@feature)
   end
-  
+
   def file_merge
     if params[:dry_run]
       if @feature.sync(params[:dry_run])
@@ -173,7 +176,7 @@ class FeaturesController < ApplicationController
       end
     end
   end
-  
+
   def source
     @file = File.read(@feature.path)
     respond_to do |format|
@@ -181,7 +184,7 @@ class FeaturesController < ApplicationController
       format.js { render :json => @file.to_json }
     end
   end
-  
+
   def validate
     result = true
     if Feature.find_by_title params[:title]
@@ -189,7 +192,7 @@ class FeaturesController < ApplicationController
     end
     render :json => result.to_json
   end
-  
+
   private
     def handle_patch_view feature
       if feature.is_diff?
@@ -199,11 +202,11 @@ class FeaturesController < ApplicationController
         redirect_to feature_path(feature)
       end
     end
-    
+
     def find_tag
       @tags = Feature.tag_counts
     end
-  
+
     def find_feature
       @feature = Feature.find(params[:id])
     end
