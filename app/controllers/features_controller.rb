@@ -45,9 +45,8 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.save
         find_features_stories
-        @project = Project.find(params[:current_project_id])
-        @imported = @project.import_features
-        if @imported.empty?
+        # Need to review he below line, im sure it could be written better
+        if params[:current_project_id] and @project = Project.find(params[:current_project_id]) and @project.import_features.empty?
           flash[:notice] = "No more features to import"
           format.html { redirect_to :back }
           format.js { render "index.rjs" }
