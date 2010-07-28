@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
     :collection => {:tags => :get,
                     :sort => :post,
                     :import => :get,
-                    :importing => :post,
+                    :sync => :post,
                     :validate => :get},
     :member => {:stories => :get,
                 :source => :get,
