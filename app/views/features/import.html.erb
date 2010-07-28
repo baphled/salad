@@ -1,7 +1,7 @@
 <% if Feature.find_by_title(@feature.title).nil? %>
 <div id="<%=h @feature.path.gsub(/\./,"_")%>>">
 	<h3>Feature: <%=h File.basename(@feature.path).sub(/\.feature/,"").gsub(/_/,' ') %></h3>
-  <%- form_for @feature, :id => "new_feature",:class => "new_feature", :method => :post do |f|%>
+  <%- form_for @feature, :url => sync_features_path, :id => "new_feature",:class => "new_feature", :method => :post do |f|%>
     <fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
       <%= f.hidden_field :title %>
       <%= f.hidden_field :in_order %>

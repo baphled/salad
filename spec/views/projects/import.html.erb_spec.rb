@@ -26,7 +26,6 @@ describe "/projects/import.html.erb" do
     end
 
     context "invalid feature" do
-
       context "disabling submit if" do
         it "should has an invalid title" do
           assigns[:imported].first[:feature].title = nil
