@@ -1,5 +1,5 @@
 <h3>Feature: <%=h file[:file].sub(/\.feature/,"").gsub(/_/,' ') %></h3>
-<%- form_for sync_feature_path, :html => {:id => "new_feature",:class => "new_feature hidden", :method => :post} do |f|%>
+<%- form_for file[:feature], :url => sync_features_path, :html => {:id => "new_feature",:class => "new_feature hidden", :method => :post} do |f|%>
   <fieldset class="ui-tabs ui-widget ui-widget-content ui-corner-all">
     <%= hidden_field_tag :commit, 'Import' %>
     <%= hidden_field_tag :current_project_id, current_project.id %>
