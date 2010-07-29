@@ -30,12 +30,14 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(params[:feature])
     respond_to do |format|
       if @feature.save
+        find_features_stories
         flash[:notice] = "Feature: #{@feature.title}, was created"
-        format.html { redirect_to @feature }
         format.js { render "create.rjs" }
+        format.html { redirect_to @feature }
       else
-        format.js { render :action => "edit" }
-        format.html { render :action => "edit" }
+        flash[:notice] = "Feature: #{@feature.title}, was not created"
+        format.js { render :action => "new" }
+        format.html { render :action => "new" }
       end
     end
   end
