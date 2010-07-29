@@ -4,7 +4,7 @@ Feature: Home page
   I want to be able to know what the site can do for me
 
   Scenario: Visiting the home page with no last project
-    Given there is no project
+    Given there is no last project
     When I am on "the home page"
     Then I should see that no projects are on the system
     And I should be instructed on how to add a project
