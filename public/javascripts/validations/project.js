@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  var loaded_location_value = $('#project_location').val();
   $("form.project").customValidations({
     rules: {
       "project[title]": {required: true, minlength: 3,
@@ -31,5 +32,8 @@ $(document).ready(function () {
   });
   if (window.location.pathname.indexOf('edit') != -1) {
     $("#project_title").rules('remove', 'remote');
-  };
+    if (loaded_location_value == $('#project_location').val()) {
+      $("#project_location").rules('remove', 'remote');
+    }
+  }
 });
