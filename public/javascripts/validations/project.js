@@ -32,6 +32,7 @@ $(document).ready(function () {
   });
   if (window.location.pathname.indexOf('edit') != -1) {
     $("#project_title").rules('remove', 'remote');
+    // @TODO Need to get this to be added or removed only when the location has changed or is not got a value
     $("#project_location").rules('remove', 'remote');
   }
 });
