@@ -17,11 +17,14 @@ module ApplicationHelper
 
   def render_form_js_includes controller, validator
     controller.content_for :js_head do
-      controller.javascript_include_tag( "jquery-validate",
-        "/javascripts/validations/#{validator}",
+      controller.javascript_include_tag(
+        "jquery.hover.dialog",
         "jquery.formtastic.tooltips",
-        "form",
-        "jquery.hover.dialog")
+        "jquery-validate",
+        "jquery.custom.validation",
+        "/javascripts/validations/#{validator}",
+        "form"
+      )
     end
   end
 end
