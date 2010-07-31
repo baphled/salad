@@ -7,9 +7,9 @@ Feature: AJAXified forms
     Given there is a <item>
     When I am on "<page>"
     And I <form action> the <item> form
-    Then submit the form
+    And all AJAX requests are complete
+    Then I submit the form
     And there should be an AJAX request
-    And the form should be hidden
     And a flash message "<message>" should be dynamically displayed
   
   Examples: List of form actions should should respond with a flash message upon successful submission
@@ -45,7 +45,7 @@ Feature: AJAXified forms
     Given there is a <page name>
     And the "<page name>" has "<assoc>"
     When I am on the <page>
-    And I submit the form
+    And submit the form
     And the <assoc> page is loaded
     And the first <assoc> is hovered over
     Then the <assoc>'s information will be display in the sidebar
