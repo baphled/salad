@@ -1,35 +1,33 @@
 $(document).ready(function() {
   var method = 'POST';
-  
+
   $('form').hoverDialog();
-  
+
   $('form').live('submit', function() {
     var postData = $(this).serialize(),
         $form = $(this).clone();
 
-    $('button', this).button('disable');
-    if ($form.hasClass('hidden') == false) {
-      // Convert our content-wide id to content, to allow us to render the side bar
-      var $content = $('div#container').find('div#content-wide');
-      $content.attr('id', 'content');
-      $("<div id='sidebar'></div>").insertAfter($content);
-  
-      // Setup of info container used to render our items information
-      var projectInfo = $("<div></div>").attr('id','info');
-      $('#wrapper').html($(projectInfo));
-    
-    }
+    $('button').button('disable');
+    // Convert our content-wide id to content, to allow us to render the side bar
+    var $content = $('div#container').find('div#content-wide');
+    $content.attr('id', 'content');
+    $("<div id='sidebar'></div>").insertAfter($content);
+
+    // Setup of info container used to render our items information
+    var projectInfo = $("<div></div>").attr('id','info');
+    $('#wrapper').html($(projectInfo));
 
     if (window.location.pathname.indexOf('edit') != -1) {
       method = 'PUT';
     }
-    
+
     $.ajax({
         'url': $(this).attr('action'),
         'data': postData,
         'type': method,
+        'dataType': 'script',
         'success': function(data) {
-            var files = [
+          var files = [
             '/javascripts/autoScroller.js',
             '/javascripts/scrollingHoverable.js',
             '/javascripts/sortable_list.js',
@@ -56,7 +54,7 @@ $(document).ready(function() {
             }
             $('a[title]').tipsy({fade: true});
           });
-          
+
           $("button.display_form").live("click",function() {
             var $link = $(this),
                 title_array = $link.text().split(' '),
@@ -67,11 +65,9 @@ $(document).ready(function() {
               $link.button({ option: 'text' , label: prefix + title_array[1]});
             });
           });
-
-
-          return false;
         }
     });
+    return false;
   });
   // Disable autocomplete for our imput elements
   $('input').attr('autocomplete','off');
