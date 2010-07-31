@@ -32,8 +32,6 @@ $(document).ready(function () {
   });
   if (window.location.pathname.indexOf('edit') != -1) {
     $("#project_title").rules('remove', 'remote');
-    if (loaded_location_value == $('#project_location').val()) {
-      $("#project_location").rules('remove', 'remote');
-    }
+    $("#project_location").rules('remove', 'remote');
   }
 });
