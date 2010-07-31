@@ -83,6 +83,10 @@ Then /^the client side error message should be "([^\"]*)"$/ do |message|
   selenium.wait_for_text "#{message}"
 end
 
+When /^all AJAX requests are complete$/ do
+  selenium.wait_for_condition("selenium.browserbot.getCurrentWindow().jQuery.active == 0;", 10)
+end
+
 Then /^there should be an AJAX request$/ do
   selenium.wait_for(:wait_for => :ajax, :javascript_framework => :jquery)
 end
