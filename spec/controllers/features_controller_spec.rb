@@ -40,17 +40,25 @@ describe FeaturesController do
 
   describe "POST, sync" do
     before(:each) do
+      @project = Project.make
       @feature = mock_model(Feature,:title=>"A new feature",:null_object=>true)
-      request.env["HTTP_REFERER"] = projects_path(Project.make)
+      request.env["HTTP_REFERER"] = projects_path @project
       Feature.stub!(:new).and_return @feature
+      Project.stub!(:find).and_return @project
     end
     
-    it "finds the project"
-    it "checks to see if there are features to import"
+    it "finds the project" do
+      Project.should_receive(:find)
+      post :sync, {:commit => 'Import', :current_project_id => @project.id}
+    end
+    
+    it "checks to see if there are features to import" do
+      @project.should_receive(:features_to_import?)
+      post :sync, {:commit => 'Import', :current_project_id => @project.id}
+    end
 
     context "saving an imported feature" do
       before(:each) do
-        @project = Project.make
         request.env["HTTP_REFERER"] = import_project_path @project
         assigns[:current_project_id] = @project.id
         @feature.stub!(:save).and_return true
@@ -88,9 +96,7 @@ describe FeaturesController do
 
         context "no more features to import" do
           before(:each) do
-            @project = Project.make
-            @project.stub!(:import_features).and_return []
-            Project.stub!(:find).and_return @project
+            @project.stub!(:features_to_import?).and_return false
             xhr :post, :sync, {:commit => 'Import', :current_project_id => @project.id}
           end
 
