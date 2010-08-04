@@ -60,7 +60,7 @@ $(document).ready(function() {
     }
     $('ul.icons li, button.button').button({option: 'text'});
     $('span#panel, ul.items-list li > span').animateIconPanel(animateIconOpts);
-    $('a[title], button[title]').tipsy({fade: true});
+    $('li[title], button[title]').tipsy({fade: true});
   }
 
   instantiateOrderedListEvents();

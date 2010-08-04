@@ -1,16 +1,16 @@
 <span id="panel" class="icons ui-widget ui-widget-content ui-corner-all">
   <ul class="icons">
     <% if project.location.blank? == false and project.features_to_import? %>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Import a feature", import_project_path(project), {:title => 'Allows you to import features singularly', :id => 'import'} %>
+    <li class="ui-state-default ui-corner-all" title="Allows you to import features singularly">
+      <%= link_to "Import a feature", import_project_path(project), { :id => 'import'} %>
     </li>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Import all", import_all_project_path(project), {:title => 'Allows you to import all project features in one easy step', :id => 'import-all'} %>
+    <li class="ui-state-default ui-corner-all" title="Allows you to import all project features in one easy step">
+      <%= link_to "Import all", import_all_project_path(project), {:id => 'import-all'} %>
     </li>
     <% end %>
 
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Edit", edit_project_path(project), {:title => 'Allows you to edit a projects information', :id => 'edit'} %>
+    <li class="ui-state-default ui-corner-all" title="Allows you to edit a projects information">
+      <%= link_to "Edit", edit_project_path(project), {:id => 'edit'} %>
     </li>
   </ul>
 </span>

@@ -1,26 +1,26 @@
 <span id="panel" class="icons ui-widget ui-widget-content ui-corner-all">
   <ul class="icons">
     <% if not feature.stories.blank? %>
-    <li class="ui-state-default ui-corner-all">
-			<%= link_to "Export", export_feature_path(feature), {:title => 'Export a feature', :id => 'export-feature'} %>
+    <li class="ui-state-default ui-corner-all" title="Export a feature">
+      <%= link_to "Export", export_feature_path(feature), {:id => 'export-feature'} %>
     </li>
     <% end %>
     <% if feature.is_diff? %>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Changes", changes_feature_path(feature), {:title => 'Check the difference between the systems & your applications features', :id => 'view-changes'} %>
+    <li class="ui-state-default ui-corner-all" title="Check the difference between the systems & your applications features">
+      <%= link_to "Changes", changes_feature_path(feature), {:id => 'view-changes'} %>
     </li>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Merge", merge_feature_path(feature), {:title => 'Merge a systems changes with the feature', :id => 'merge-changes'} %>
+    <li class="ui-state-default ui-corner-all" title="Merge a systems changes with the feature">
+      <%= link_to "Merge", merge_feature_path(feature), {:id => 'merge-changes'} %>
     </li>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Sys Merge", system_merge_feature_path(feature), {:title => 'Merge a features changes with the system', :id => 'merge-system'} %>
+    <li class="ui-state-default ui-corner-all" title="Merge a features changes with the system">
+      <%= link_to "Sys Merge", system_merge_feature_path(feature), {:id => 'merge-system'} %>
     </li>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Patch", feature_path(feature, :format => :patch), {:title => 'Patch a feature with the systems changes', :id => 'patch-changes'} %>
+    <li class="ui-state-default ui-corner-all" title="Patch a feature with the systems changes">
+      <%= link_to "Patch", feature_path(feature, :format => :patch), {:id => 'patch-changes'} %>
     </li>
     <% end %>
-    <li class="ui-state-default ui-corner-all">
-      <%= link_to "Edit", edit_feature_path(feature),  {:title => 'Edit the feature and it\'s stories', :id => 'edit'} %>
+    <li class="ui-state-default ui-corner-all" title="Edit the feature and it\'s stories">
+      <%= link_to "Edit", edit_feature_path(feature),  {:id => 'edit'} %>
     </li>
   </ul>
 </span>
