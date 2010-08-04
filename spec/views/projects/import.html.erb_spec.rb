@@ -19,9 +19,13 @@ describe "/projects/import.html.erb" do
   end
 
   describe "viewing the import form" do
-    
-    context "invalid feature" do
 
+    it "sends the import to the sync action" do
+      render
+      response.should have_selector :form, attribute = {:action => sync_features_path}
+    end
+
+    context "invalid feature" do
       context "disabling submit if" do
         it "should has an invalid title" do
           assigns[:imported].first[:feature].title = nil

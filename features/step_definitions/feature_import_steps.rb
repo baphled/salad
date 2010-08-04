@@ -67,3 +67,7 @@ end
 Then /^I should not see a import all link$/ do
   response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import_all"}
 end
+
+Then /^the request should be sent to the import action$/ do
+  response.should have_selector :form, attribute = {:action => sync_features_path}
+end

@@ -2,7 +2,7 @@ require 'machinist/active_record'
 require 'sham'
 require 'faker'
 
-Sham.title { Faker::Lorem.words(3).join(' ') }
+Sham.title { Faker::Lorem.words(4).join(' ') }
 Sham.feature { Faker::Lorem.sentence }
 Sham.scenario { Faker::Lorem.sentence }
 Sham.step { %w{Given When Then}.rand + " #{Faker::Lorem.words(3).join(' ')}" }
@@ -12,7 +12,7 @@ Project.blueprint {
   aim { 'An aim' }
   description { 'A description' }
   location { "#{RAILS_ROOT}" }
-  created_at { Time.now.last_year }
+  created_at { Time.now.prev_year }
 }
 
 Feature.blueprint {
@@ -21,7 +21,7 @@ Feature.blueprint {
   in_order { Faker::Lorem.sentence }
   i_want { Faker::Lorem.sentence }
   path { "#{RAILS_ROOT}/features/plain/tag_cloud.feature" }
-  created_at { Time.now.last_year }
+  created_at { Time.now.prev_year }
 }
 
 Story.blueprint {

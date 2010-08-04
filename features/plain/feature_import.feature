@@ -69,7 +69,7 @@ Feature: Users should not have to manually input their features if they have alr
     And select the "Tag cloud"
     And the feature is visible
     And we click import projects
-    Then a flash message 'Feature: Something different, was created' should be displayed
+    Then a flash message 'Feature: Something different, was imported' should be displayed
 
   Scenario: All scenario's should display the steps associated to it
     Given there is a project with a valid location
@@ -123,7 +123,7 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
-    Then a flash message 'was created' should be displayed
+    Then a flash message 'was imported' should be displayed
     And each imported stories step should be added
 
   Scenario: A feature should not be viewable if the feature is already added
@@ -131,7 +131,7 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
-    Then a flash message 'was created' should be displayed
+    Then a flash message 'was imported' should be displayed
     And each imported stories step should be added
     When I am on "a project"
     Then I should see a import link
@@ -150,7 +150,7 @@ Feature: Users should not have to manually input their features if they have alr
     When I am on "import project"
     Then I should see a list of features that will be imported
     And we click import projects
-    Then a flash message 'was created' should be displayed
+    Then a flash message 'was imported' should be displayed
     And we should be redirected to the projects import page
 
   Scenario: When importing features, we should be able to find feature regardless of the feature directory structure
@@ -211,3 +211,9 @@ Feature: Users should not have to manually input their features if they have alr
     And there are no projects to import
     When I am on "a project"
     Then I should not see a import all link
+
+  Scenario: Imported features are sent to the import action
+    Given there is a project with a valid location
+    When I am on "import project"
+    And we click import projects
+    Then the request should be sent to the import action
