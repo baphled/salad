@@ -119,8 +119,18 @@ describe FeaturesController do
     end
 
     context "no more features to import" do
-      it "redirects tp the features index"
-      it "displays a notice stating there are no more features to import"
+      before(:each) do
+        @project.stub!(:features_to_import?).and_return false
+        post :sync, {:commit => 'Import', :current_project_id => @project.id}
+      end
+
+      it "does not redirects to the features index" do
+        response.should_not redirect_to features_path
+      end
+
+      it "displays a notice stating there are no more features to import" do
+        flash[:notice].should_not be_empty
+      end
     end
   end
 

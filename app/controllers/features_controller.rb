@@ -51,7 +51,7 @@ class FeaturesController < ApplicationController
         @project = Project.find(params[:current_project_id]) unless params[:current_project_id].nil?
         if not @project.features_to_import?
           flash[:notice] = "No more features to import"
-          format.html { redirect_to :back }
+          format.html { redirect_to feature_path @feature }
           format.js { render "index.rjs" }
         else
           flash[:notice] = "Feature: #{@feature.title}, was imported"
