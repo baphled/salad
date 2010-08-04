@@ -35,7 +35,8 @@ class Project < ActiveRecord::Base
   def directory_present?
     self.location.blank? == false
   end
-  
+
+  # @TODO refactor so that we get a list of feature file names instead of using import_features
   def features_to_import?
     result = false
     features_list = self.import_features
