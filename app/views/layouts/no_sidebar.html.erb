@@ -2,31 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
   <head>
     <title>SaladBowl</title>
+    <%= stylesheet_link_tag "jquery-ui" %>
+    <%= stylesheet_link_tag "formtastic" %>
+    <%= stylesheet_link_tag "formtastic_changes" %>
+    <%= stylesheet_link_tag "tipsy" %>
+    <%= yield :css_head %>
+    <link rel="stylesheet" href="/stylesheets/compiled/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/stylesheets/compiled/print.css" type="text/css" media="print" />
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="/stylesheets/compiled/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+
+      <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "jquery-ui" %>
+    <%= javascript_include_tag "jquery-icon-animation" %>
+    <%= javascript_include_tag "inflection" %>
+    <%= javascript_include_tag "jquery.render.flash.message" %>
+    <%= javascript_include_tag "jquery.tipsy" %>
+    <%= javascript_include_tag "jquery-include" %>
+    <%= javascript_include_tag "jquery.ajax.dialog" %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :js_head %>
+
+    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   </head>
-  <%= stylesheet_link_tag "jquery-ui" %>
-  <%= stylesheet_link_tag "formtastic" %>
-  <%= stylesheet_link_tag "formtastic_changes" %>
-  <%= stylesheet_link_tag "tipsy" %>
-  <%= yield :css_head %>
-  <link rel="stylesheet" href="/stylesheets/compiled/screen.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/stylesheets/compiled/print.css" type="text/css" media="print" />
-  <!--[if lt IE 8]>
-    <link rel="stylesheet" href="/stylesheets/compiled/ie.css" type="text/css" media="screen, projection" />
-  <![endif]-->
-
-	<%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "jquery-ui" %>
-  <%= javascript_include_tag "jquery-icon-animation" %>
-  <%= javascript_include_tag "inflection" %>
-  <%= javascript_include_tag "jquery.render.flash.message" %>
-  <%= javascript_include_tag "jquery.tipsy" %>
-  <%= javascript_include_tag "jquery-include" %>
-  <%= javascript_include_tag "jquery.ajax.dialog" %>
-  <%= javascript_include_tag "application" %>
-  <%= yield :js_head %>
-
-  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-
   <body class="salad">
 	  <div id="container">
 	    <%= render :partial => 'layouts/header' %>
