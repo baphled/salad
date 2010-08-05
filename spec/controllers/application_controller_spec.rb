@@ -90,7 +90,7 @@ describe ApplicationController do
 
     describe "GET, tickets" do
       before(:each) do
-        @resource = mock_model(Resource, {:id => 1, :name => 'baphled', :project => '50164'}).as_null_object
+        @resource = mock_model(Resource, {:id => 1}).as_null_object
         Resource.stub!(:find).and_return @resource
       end
 
