@@ -15,7 +15,7 @@ Feature: Updating features
     And the feature has a valid path
     When the feature has changed "Something different"
     And I am on a "a feature"
-    When we click the features "Check the difference between the systems & your applications features"
+    When we click the features "view-changes"
     Then we should see the changes to the files
     And "Something different" should be highlighted as added
 
@@ -31,7 +31,7 @@ Feature: Updating features
     And the feature has a valid path
     When the feature has changed "Something different"
     And I am on a "a feature"
-    Then we click the features "Merge a systems changes with the feature"
+    Then we click the features "merge-changes"
     And I should see "Dry-run"
 
   Scenario: I need a way to do a dry-run patch on our feature file
@@ -39,7 +39,7 @@ Feature: Updating features
     And the feature has a valid path
     When the feature has changed "Something different"
     And I am on a "a feature"
-    And we click the features "Merge a systems changes with the feature"
+    And we click the features "merge-changes"
     Then I use the "Dry-run" link
     And the flash message "No errors whilst doing dry-run" should be displayed
     And we should be redirected back to "merge"
@@ -50,7 +50,7 @@ Feature: Updating features
     When the feature has changed "Something different"
     And the feature file has changed
     And I am on a "a feature"
-    And we click the features "Merge a systems changes with the feature"
+    And we click the features "merge-changes"
     And I use the "Patch" link
     Then the flash message "Feature has been patched" should be displayed
 
@@ -59,7 +59,7 @@ Feature: Updating features
     And the feature has a valid path
     And the local feature file has changed
     And I am on a "a feature"
-    And we click the features "Merge a features changes with the system"
+    And we click the features "merge-system"
     And I use the "Update" link
     Then the flash message "The system feature has successfully been updated" should be displayed
     And the source file should be identical to the system file
@@ -70,7 +70,7 @@ Feature: Updating features
     And the feature file is saved
     And the local feature file has changed a featutes scenario
     And I am on a "a feature"
-    And we click the features "Merge a features changes with the system"
+    And we click the features "merge-system"
     And I use the "Update" link
     Then the flash message "The system feature has successfully been updated" should be displayed
     And the source file should be identical to the system file

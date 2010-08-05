@@ -82,9 +82,7 @@ Then /^the (.*) should be listed$/ do |item|
 end
 
 Then /^there should be an edit link$/ do
-  response.should have_selector :span do |content|
-    content.should have_selector :a, attribute = {:title => "Edit the feature and it's stories"}
-  end
+  response.should have_selector :a, attribute = {:href => edit_feature_path(@feature), :id => "edit"}
 end
 
 When /^click the features path$/ do

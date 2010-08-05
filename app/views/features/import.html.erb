@@ -18,7 +18,7 @@
       <%= f.text_field :tag_list %><br/>
       <% if !Project.all.empty? %>
         <p>
-        <% for project in Project.find :all %>
+        <% for project in Project.all %>
           <%= check_box_tag "feature[project_ids][]", project.id, @feature.projects.include?(project), {:id=>"feature_project_id_#{project.id}"} %>
           <%=h project.title%><br/>
         <% end %>

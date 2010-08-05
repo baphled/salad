@@ -15,7 +15,7 @@ Given /^the feature has other stories with steps$/ do
 end
 
 When /^a user attempts to export a feature$/ do
-  click_link 'Export a feature'
+  click_link 'export-feature'
 end
 
 When /^the export link should be viewable$/ do

@@ -49,7 +49,7 @@ class FeaturesController < ApplicationController
         find_features_stories
         # Need to review he below line, im sure it could be written better
         @project = Project.find(params[:current_project_id]) unless params[:current_project_id].nil?
-        if not @project.features_to_import?
+        if not @project.nil? and not @project.features_to_import?
           flash[:notice] = "No more features to import"
           format.html { redirect_to feature_path @feature }
           format.js { render "index.rjs" }
