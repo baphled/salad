@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ParkingController do
   describe "GET, tickets" do
     context "requesting a list of tickets" do
-      it "can get tickets from Lighthouse" do
+      it "can get tickets using Lighthouse API" do
         @resource = mock_model(Resource, :name => "baphled", :project => '50164').as_null_object
         Resource.stub!(:find).and_return @resource
         @resource.should_receive(:tickets).with("feature")
@@ -13,7 +13,7 @@ describe ParkingController do
   end
   
   describe "GET, new" do
-    it "creates a new resource model" do
+    it "creates a new resource object" do
       Resource.should_receive(:new)
       get :new
     end
@@ -25,13 +25,13 @@ describe ParkingController do
       Resource.stub!(:new).and_return @resource
     end
     
-    context "input is valid" do
+    context "resource is valid" do
       it "should create a new resource" do
         Resource.should_receive(:new)
         post :create  
       end
       
-      it "saves the new resource" do
+      it "is saved" do
         @resource.should_receive(:save)
         post :create, {:resource => @resource}
       end
@@ -77,7 +77,6 @@ describe ParkingController do
     end
     
     context "failing imports" do
-
       context "with one resource" do
         before(:each) do
           LightHouse.stub!(:create).and_return false

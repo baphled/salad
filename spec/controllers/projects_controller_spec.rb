@@ -84,7 +84,7 @@ describe ProjectsController do
       Project.stub(:find).and_return @project
     end
 
-    context "successfully updated" do
+    context "successful" do
       before(:each) do
         @project.stub(:update_attributes).and_return true
       end
@@ -100,12 +100,12 @@ describe ProjectsController do
       end
     end
 
-    context "unsuccessfully updated" do
+    context "unsuccessful" do
       before(:each) do
         @project.stub(:update_attributes).and_return false
       end
 
-      it "not updated" do
+      it "does not update" do
         @project.should_receive(:update_attributes).and_return false
         put :update, {:project => @project}
       end
@@ -126,7 +126,7 @@ describe ProjectsController do
     before(:each) do
       Project.stub!(:find).and_return @project
     end
-    it "should get the project" do
+    it "gets the project" do
       Project.should_receive(:find).and_return @project
       get :show
     end
@@ -137,14 +137,14 @@ describe ProjectsController do
       Project.stub(:find).and_return @project
     end
     
-    context "features to import" do
+    context "has features to import" do
       before(:each) do
         @results = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
         @feature = Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return @results
         assigns[:to_import] = @feature
       end
 
-      context "has a project path" do
+      context "with a project path" do
         before(:each) do
           assigns[:project] = @project.stub(:location).and_return "#{RAILS_ROOT}"
           get :import_feature
@@ -207,7 +207,7 @@ describe ProjectsController do
       Project.should_receive(:find).and_return @project
     end
 
-    it "gets all features related to the project" do
+    it "gets all associated features" do
       @project.stub(:features).and_return mock_model(Feature).as_null_object
       @project.should_receive(:features)
     end
@@ -225,7 +225,7 @@ describe ProjectsController do
       get :import
     end
     
-    it "associates the features to the project" do
+    it "associates feature to project" do
       @project.features.should_receive(:new)
       get :import
     end
@@ -251,7 +251,7 @@ describe ProjectsController do
   end
   
   describe "GET, tag" do
-    it "finds all projects with the given tag" do
+    it "finds tagged project" do
       Project.should_receive(:find_tagged_with)
       get :tag, {:tag => 'Given'}
     end

@@ -42,12 +42,12 @@ describe FeaturesController do
       Project.stub!(:find).and_return @project
     end
     
-    it "finds project that a feature is sync'd to" do
+    it "finds an associated project" do
       Project.should_receive(:find)
       post :sync, {:commit => 'Import', :current_project_id => @project.id}
     end
     
-    it "checks to see if there are features to import" do
+    it "checks for features to import" do
       @project.should_receive(:features_to_import?)
       post :sync, {:commit => 'Import', :current_project_id => @project.id}
     end
@@ -133,7 +133,7 @@ describe FeaturesController do
       get :show, {:feature => @feature}
     end
     
-    context "feature with changes" do
+    context "a feature with changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return true
       end
@@ -143,7 +143,7 @@ describe FeaturesController do
       end
     end
     
-    context "feature that no changes" do
+    context "a feature that no changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
         get :show, {:feature => @feature, :format => :patch}
@@ -154,7 +154,7 @@ describe FeaturesController do
       end
     end
 
-    context "no features to import" do
+    context "with no features to import" do
       before(:each) do
         Feature.stub!(:imports_found).and_return []
         get :show
@@ -172,18 +172,18 @@ describe FeaturesController do
       Feature.stub(:find).and_return @feature
     end
 
-    context "feature has changes" do
+    context "with changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return true
       end
       
-      it "displays the changes" do
+      it "displays them" do
         @feature.should_receive(:diff_reverse)
         get :changes, {:feature => @feature}
       end
     end
     
-    context "feature has no changes" do
+    context "with no changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
       end
@@ -201,7 +201,7 @@ describe FeaturesController do
       Feature.stub(:find).and_return @feature
     end
     
-    it "should displays what will be merged" do
+    it "displays what will be merged" do
       @feature.should_receive(:diff_reverse)
       get :merge, {:feature => @feature}
     end
@@ -213,7 +213,7 @@ describe FeaturesController do
       Feature.stub!(:find).and_return @feature
     end
 
-    context "system changes to sync to a feature file" do
+    context "to a feature file" do
       
       it "redirects to the feature after sync" do
         @feature.stub!(:sync).and_return false
@@ -221,12 +221,12 @@ describe FeaturesController do
         response.should redirect_to feature_path(@feature)
       end
 
-      it "triggers a sync of the feature" do
+      it "synchronises" do
         @feature.should_receive(:sync)
         get :file_merge, {:feature => @feature, :dry_run => true}
       end
 
-      context "changes are merged" do
+      context "when changes are merged" do
         before(:each) do
           @feature.stub!(:sync).and_return true
         end
@@ -243,7 +243,7 @@ describe FeaturesController do
         end
       end
 
-      context "successfully merging changes with a dry-run" do
+      context "when successfully merging changes with a dry-run" do
         before(:each) do
           @feature.stub!(:sync).and_return true
           get :file_merge, {:feature => @feature, :dry_run => true}
@@ -254,7 +254,7 @@ describe FeaturesController do
         end
       end
 
-      context "unsuccessfully merging changes with a dry-run" do
+      context "when unsuccessfully merging changes with a dry-run" do
         before(:each) do
           @feature.stub!(:sync).and_return false
           get :file_merge, {:feature => @feature, :dry_run => true}
@@ -265,7 +265,7 @@ describe FeaturesController do
         end
       end
       
-      context "successfully patched" do
+      context "when successfully patched" do
         before(:each) do
           @feature.stub!(:sync).and_return true
           get :file_merge, {:feature => @feature, :dry_run => false}
@@ -280,7 +280,7 @@ describe FeaturesController do
         end
       end
       
-      context "unsuccessfully patched" do
+      context "when unsuccessfully patched" do
         before(:each) do
           @feature.stub!(:sync).and_return false
           get :file_merge, {:feature => @feature, :dry_run => false}
@@ -315,7 +315,7 @@ describe FeaturesController do
       response.should redirect_to feature_path(@feature)
     end
 
-    context "feature with no differences" do
+    context "with no differences" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return true
       end

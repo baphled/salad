@@ -7,7 +7,12 @@ describe StepsController do
 
   describe "GET, new" do
     
-    context "associated to a story" do
+    it "creates a new story" do
+      Step.should_receive(:new)
+      get :new
+    end
+
+    context "is associated to a story" do
       before(:each) do
         @story = mock_model(Story).as_null_object
         Story.stub(:find).and_return @story
@@ -21,13 +26,6 @@ describe StepsController do
       it "creates a new step associated to the story" do
         @story.steps.should_receive(:new).with(:story_ids => ["1"])
         get :new, {:story_id => 1}
-      end
-    end
-
-    context "not associated to a story" do
-      it "creates a new story" do
-        Step.should_receive(:new)
-        get :new
       end
     end
   end
@@ -56,7 +54,7 @@ describe StepsController do
       post :create, {:step => @step}
     end
 
-    context "valid step" do
+    context "successful" do
       before(:each) do
         @step.stub(:save).and_return true
       end
@@ -77,7 +75,7 @@ describe StepsController do
       end
     end
 
-    context "invalid step" do
+    context "unsuccessful" do
       before(:each) do
         @step.stub(:save).and_return false
       end
@@ -107,7 +105,7 @@ describe StepsController do
       Step.stub(:find).and_return @step
     end
     
-    context "successfully updates" do
+    context "successful" do
       before(:each) do
         @step.stub(:update_attributes).and_return true
       end
@@ -129,7 +127,7 @@ describe StepsController do
 
     end
 
-    context "unsuccessfully updates" do
+    context "unsuccessful" do
       before(:each) do
         @step.stub(:update_attributes).and_return false
       end

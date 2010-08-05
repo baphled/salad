@@ -20,7 +20,7 @@ describe StoriesController do
       Story.stub(:new).and_return @story
     end
 
-    context "a valid story" do
+    context "valid" do
       before(:each) do
         @story.stub(:save).and_return true
       end
@@ -42,7 +42,7 @@ describe StoriesController do
       end
     end
 
-    context "an invalid story" do
+    context "invalid" do
       before(:each) do
         Story.stub(:save).and_return false
       end
@@ -82,11 +82,9 @@ describe StoriesController do
   end
 
   describe "GET, new" do
-    context "not associated to a feature" do
-      it "should create a new story" do
-        Story.should_receive(:new)
-        get :new
-      end
+    it "should create a new story" do
+      Story.should_receive(:new)
+      get :new
     end
 
     context "associated to a feature" do
@@ -99,7 +97,7 @@ describe StoriesController do
         get :new, {:feature_id => 1}
       end
 
-      it "creates a new story" do
+      it "creates a new story object" do
         @feature.stories.should_receive(:new)
         get :new, {:feature_id => 1}
       end
@@ -165,7 +163,7 @@ describe StoriesController do
       Story.stub(:find).and_return @story
     end
     
-    it "is associated to steps" do
+    it "gets the associated steps" do
       @story.should_receive(:steps)
       get :steps
     end
@@ -183,7 +181,7 @@ describe StoriesController do
   end
 
   describe "GET, tag" do
-    it "has a list of stories that have the liked to a tag" do
+    it "finds stories with tag" do
       Story.should_receive :find_tagged_with
       get :tag, {:tag => 'Given'}
     end
