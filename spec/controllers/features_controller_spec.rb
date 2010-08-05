@@ -1,38 +1,32 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FeaturesController do
-  
-  def mock_feature(stubs={})
-    @mock_feature ||= mock_model(Feature, stubs)
-  end
-
   describe "POST, create" do
     before(:each) do
-      @feature = mock_model(Feature,:title=>"A new feature",:null_object=>true)
+      @feature = mock_model(Feature,:title=>"A new feature").as_null_object
       request.env["HTTP_REFERER"] = projects_path(Project.make)
       Feature.stub!(:new).and_return @feature
-      
     end
     
-    context "the feature is valid" do
+    context "valid feature" do
       before(:each) do
         @feature.stub!(:save).and_return true
       end
 
-      it "should save the feature" do
+      it "is saved" do
         @feature.save.should eql true
         post :create
       end
       
     end
     
-    context "the feature is invalid" do
+    context "invalid feature" do
       before(:each) do
-        @feature.stub!(:title).and_return nil
+        @feature.stub!(:save).and_return false
         post :create
       end
       
-      it "should not save if the title is not present" do
+      it "is not saved" do
         @feature.save.should_not eql true
       end
     end
@@ -47,7 +41,7 @@ describe FeaturesController do
       Project.stub!(:find).and_return @project
     end
     
-    it "finds the project" do
+    it "finds project that a feature is sync'd to" do
       Project.should_receive(:find)
       post :sync, {:commit => 'Import', :current_project_id => @project.id}
     end
@@ -63,6 +57,7 @@ describe FeaturesController do
         assigns[:current_project_id] = @project.id
         @feature.stub!(:save).and_return true
       end
+
       it "redirects to the import page" do
         post :sync, {:commit => 'Import', :current_project_id => @project.id}
         response.should redirect_to import_project_path(@project)
@@ -75,14 +70,10 @@ describe FeaturesController do
           response.should_not redirect_to import_project_path(@project)
         end
 
-        context "more features to import" do
+        context "with more features to import" do
           before(:each) do
             @project.stub!(:features_to_import?).and_return true
             xhr :post, :sync, {:commit => 'Import', :current_project_id => @project.id}
-          end
-
-          it "finds the project the feature was imported from" do
-            @feature.stub!(:find_by_project_id).and_return Project.first
           end
 
           it "renders the import RJS file" do
@@ -90,11 +81,11 @@ describe FeaturesController do
           end
 
           it "displays a message stating the feature has been imported" do
-            flash[:notice].should contain "Feature: #{@feature.title}, was imported"
+            flash[:notice].should contain "was imported"
           end
         end
 
-        context "no more features to import" do
+        context "with no more features to import" do
           before(:each) do
             @project.stub!(:features_to_import?).and_return false
             xhr :post, :sync, {:commit => 'Import', :current_project_id => @project.id}
@@ -118,7 +109,7 @@ describe FeaturesController do
       end
     end
 
-    context "no more features to import" do
+    context "with no more features to import" do
       before(:each) do
         @project.stub!(:features_to_import?).and_return false
         post :sync, {:commit => 'Import', :current_project_id => @project.id}
@@ -128,7 +119,7 @@ describe FeaturesController do
         response.should_not redirect_to features_path
       end
 
-      it "displays a notice stating there are no more features to import" do
+      it "displays a flash notice" do
         flash[:notice].should_not be_empty
       end
     end
@@ -141,41 +132,35 @@ describe FeaturesController do
       get :show, {:feature => @feature}
     end
     
-    context "feature has been changed" do
+    context "feature with changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return true
       end
       
-      it "should generate a flash message if the feature has changed" do
+      it "generates a flash message" do
         @feature.is_diff.should be_true
-      end
-      
-      it "should display the patch file" do
-        response.body.should_not be_empty
       end
     end
     
-    context "a feature that has no changes" do
+    context "feature that no changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
         get :show, {:feature => @feature, :format => :patch}
       end
 
-      it "expects is_diff to be false" do
+      it "should be not be different from the source" do
         @feature.is_diff?.should be_false
       end
     end
 
-    context "there are features to import" do
-      context "no features to import" do
-        before(:each) do
-          Feature.stub!(:imports_found).and_return []
-          get :show
-        end
-        
-        it "should have an empty list" do
-          Feature.imports_found.should be_empty
-        end
+    context "no features to import" do
+      before(:each) do
+        Feature.stub!(:imports_found).and_return []
+        get :show
+      end
+
+      it "should have an empty list" do
+        Feature.imports_found.should be_empty
       end
     end
   end
@@ -186,18 +171,18 @@ describe FeaturesController do
       Feature.stub(:find).and_return @feature
     end
 
-    context "has changes" do
+    context "feature has changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return true
       end
       
-      it "should display the changes" do
+      it "displays the changes" do
         @feature.should_receive(:diff_reverse)
         get :changes, {:feature => @feature}
       end
     end
     
-    context "has no changes" do
+    context "feature has no changes" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
       end
@@ -215,7 +200,7 @@ describe FeaturesController do
       Feature.stub(:find).and_return @feature
     end
     
-    it "should display the changes" do
+    it "should displays what will be merged" do
       @feature.should_receive(:diff_reverse)
       get :merge, {:feature => @feature}
     end
@@ -227,30 +212,30 @@ describe FeaturesController do
       Feature.stub!(:find).and_return @feature
     end
 
-    context "There are system change to sync to the file" do
+    context "system changes to sync to a feature file" do
       
-      it "should redirect to the feature" do
+      it "redirects to the feature after sync" do
         @feature.stub!(:sync).and_return false
         get :file_merge, {:feature => @feature, :dry_run => true}
         response.should redirect_to feature_path(@feature)
       end
 
-      it "should make a call to the features sync method" do
+      it "triggers a sync of the feature" do
         @feature.should_receive(:sync)
         get :file_merge, {:feature => @feature, :dry_run => true}
       end
 
-      context "when sync is called" do
+      context "changes are merged" do
         before(:each) do
           @feature.stub!(:sync).and_return true
         end
 
-        it "should return true if the changes were merged to the file" do
+        it "returns true when successful" do
           @feature.should_receive(:sync).and_return true
           get :file_merge, {:feature => @feature, :dry_run => true}
         end
 
-        it "should return false if the changes were not merged to the file" do
+        it "returns true when not successful" do
           @feature.stub!(:sync).and_return false
           @feature.should_receive(:sync).and_return false
           get :file_merge, {:feature => @feature, :dry_run => true}
@@ -263,8 +248,8 @@ describe FeaturesController do
           get :file_merge, {:feature => @feature, :dry_run => true}
         end
 
-        it "should display a successfully flash message" do
-          flash.should contain 'No errors whilst doing dry-run'
+        it "displays a successfully flash message" do
+          flash[:notice].should contain 'No errors whilst doing dry-run'
         end
       end
 
@@ -274,37 +259,37 @@ describe FeaturesController do
           get :file_merge, {:feature => @feature, :dry_run => true}
         end
         
-        it "should display a error flash message" do
-          flash.should contain 'Unable to merge changes'
+        it "displays a error flash message" do
+          flash[:error].should contain 'Unable to merge changes'
         end
       end
       
-      context "successfully patched a file" do
+      context "successfully patched" do
         before(:each) do
           @feature.stub!(:sync).and_return true
           get :file_merge, {:feature => @feature, :dry_run => false}
         end
         
-        it "should display a success message" do
+        it "displays a success message" do
           flash.should contain 'Feature has been patched'
         end
         
-        it "should redirect to the feature show action" do
+        it "redirects to the feature" do
           response.should redirect_to feature_path(@feature)
         end
       end
       
-      context "unsuccessfully patched a file" do
+      context "unsuccessfully patched" do
         before(:each) do
           @feature.stub!(:sync).and_return false
           get :file_merge, {:feature => @feature, :dry_run => false}
         end
         
-        it "should display a error message" do
+        it "displays a error message" do
           flash.should contain 'Errors encountered whilst patching file'
         end
         
-        it "should redirect back to the features merge action" do
+        it "redirects back to the features merge" do
           response.should redirect_to merge_feature_path(@feature)
         end
       end
@@ -318,82 +303,77 @@ describe FeaturesController do
       Feature.stub!(:find).and_return @feature
     end
     
-    it "makes a call to is_diff?" do
+    it "checks to see if there are any differences" do
       @feature.should_receive(:is_diff?)
       get :system_merge, {:feature => @feature, :dry_run => true}
     end
     
-    it "should redirect to the feature" do
+    it "redirects to the feature" do
       @feature.stub!(:is_diff?).and_return false
       get :system_merge, {:feature => @feature, :dry_run => true}
       response.should redirect_to feature_path(@feature)
     end
 
-    context "feature is different" do
+    context "feature with no differences" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return true
       end
       
-      it "should make a call to diff" do
+      it "gets the difference" do
         @feature.should_receive(:diff)
         get :system_merge, {:feature => @feature, :dry_run => true}
       end
       
-      it "should not redirect" do
+      it "does not redirect" do
         response.should_not redirect_to feature_path(@feature)
       end
     end
     
-    context "feature is not different" do
+    context "feature with no differences" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
       end
       
-      it "should display a flash message" do
+      it "should displays a flash notice message" do
         get :system_merge, {:feature => @feature, :dry_run => true}
-        flash.should contain "No changes available"
+        flash[:notice].should contain "No changes available"
       end
       
-      it "should redirect" do
+      it "redirects to the feature" do
         get :system_merge, {:feature => @feature, :dry_run => true}
         response.should redirect_to feature_path(@feature)
       end
     end
     
-    context "feature does not need updating" do
+    context "feature with nothing to update" do
       before(:each) do
         @feature.stub!(:is_diff?).and_return false
       end
 
-      it "should check that the feature is different" do
-        @feature.should_receive :is_diff?
+      it "should display an flash notice message" do
         get :system_sync, {:feature => @feature}
-      end
-
-      it "should display an flash message stating the feature does not need updating" do
-        get :system_sync, {:feature => @feature}
-        flash[:error].should contain "Feature does not need updating"
+        flash[:notice].should_not be_empty
       end
     end
 
-    context "when unsuccessful in updating a feature" do
+    context "unsuccessfully updating a feature" do
       before(:each) do
         @feature.stub!(:sync_system).and_return false
       end
 
-      it "should display an error flash message" do
+      it "displays a flash error message" do
         get :system_sync, {:feature => @feature}
-        flash.should contain "Unable to update the system feature"
+        flash[:error].should_not be_empty
       end
     end
 
-    context "when successful in updating a feature" do
+    context "successfully updating a feature" do
       before(:each) do
         @feature.stub(:sync_system).and_return true
       end
       it "should display a successful flash message" do
         get :system_sync, {:feature => @feature}
-        flash.should contain "The system feature has successfully been updated"
+        flash[:success].should_not be_empty
       end
     end
   end
@@ -405,18 +385,15 @@ describe FeaturesController do
       Feature.stub!(:find).and_return @feature
     end
     
-    it "finds the feature" do
+    it "searches for the feature" do
       Feature.should_receive :find
       get :source, {:feature => @feature}
     end
     
-    it "should open and read the feature file" do
+    it "reads the source feature file" do
       File.should_receive :read
       get :source, {:feature => @feature}
     end
     
-    context "Making call via AJAX" do
-      it "should return the feature files content in HTML format"
-    end
   end
 end

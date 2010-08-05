@@ -151,17 +151,17 @@ class FeaturesController < ApplicationController
     if @feature.is_diff?
       @pretty = @feature.diff
     else
-      flash[:error] = "No changes available"
+      flash[:notice] = "No changes available"
       redirect_to feature_path(@feature)
     end
   end
 
   def system_sync
     if not @feature.is_diff?
-      flash[:error] =  "Feature does not need updating"
+      flash[:notice] =  "Feature does not need updating"
     end
     if @feature.sync_system
-      flash[:notice] = "The system feature has successfully been updated"
+      flash[:success] = "The system feature has successfully been updated"
     else
       flash[:error] = "Unable to update the system feature"
     end
