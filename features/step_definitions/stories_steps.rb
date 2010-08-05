@@ -6,7 +6,7 @@ Given /^we have a stories with examples$/ do
 end
 
 When /^I select first feature new story link$/ do
-  click_link 'New Story'
+  click_link 'new-story'
 end
 
 When /^check a pre\-existing step$/ do

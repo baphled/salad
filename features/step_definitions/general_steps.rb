@@ -15,6 +15,11 @@ Given /^the ([^\"]*) has (\d+) ([^\"]*)s$/ do |model, amount, assoc|
   Given %{the "#{model}" has #{amount} "#{assoc}"}
 end
 
+Given /^the ([^\"]*) can be found$/ do |model|
+  variable = eval "@#{model}"
+  model.camelcase.constantize.stub!(:find).and_return variable
+end
+
 Then /^a flash message '(.*)' should be displayed$/ do |message|
   flash.should contain "#{message}"
 end

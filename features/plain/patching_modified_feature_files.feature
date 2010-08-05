@@ -10,7 +10,7 @@ Feature: Patching modified feature files
     When the feature has changed "Something different"
     And I am on "a feature"
     And a "Patch a feature with the systems changes" link should be displayed within the feature
-    When we click the features "Patch a feature with the systems changes"
+    When we click the features "patch-changes"
     Then we should display the patch
 
   Scenario: I should be redirected if they try to acess a feature with no patch file

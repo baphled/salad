@@ -13,6 +13,8 @@ Feature: Import a single feature
   # @TODO Complete scenario
   Scenario: When importing a feature we should be able to click import and then be redirected to the new feature
     Given there is a project
+    And there are projects
+    And the project can be found
     And we have a valid feature file
     And the feature file is not found
     When I am on "import single feature"

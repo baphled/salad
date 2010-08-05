@@ -1,7 +1,8 @@
 <span class="icons ui-widget ui-widget-content ui-corner-all">
   <ul class="icons">
     <li title="View" class="ui-state-default ui-corner-all">
-      <%= link_to "<span class='ui-icon ui-icon-note' />", {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'show'} %>
+      <%= link_to "<span class='ui-icon ui-icon-note' />",
+        {:controller => model.class.to_s.downcase.pluralize, :id => model, :action => 'show'}, {:title => "View"} %>
     </li>
     <li title="Edit" class="ui-state-default ui-corner-all">
       <%= link_to "<span class='ui-icon-pencil ui-icon' />",
@@ -19,7 +20,8 @@
     <% if not assoc.nil? %>
     <li title="New <%=assoc.capitalize%>" class="ui-state-default ui-corner-all" title="New <%=assoc.capitalize %>">
       <%= link_to "<span class='ui-icon-document ui-icon' />",
-        {:controller => assoc.pluralize, :action => :new, "#{model.class.to_s.downcase}_id".to_sym => model.id } %>
+        {:controller => assoc.pluralize, :action => :new, "#{model.class.to_s.downcase}_id".to_sym => model.id },
+        {:id => "new-#{assoc}" } %>
     </li>
     <% end %>
   </ul>

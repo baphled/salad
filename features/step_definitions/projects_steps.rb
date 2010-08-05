@@ -184,9 +184,7 @@ Then /^be sent to the new projects view$/ do
 end
 
 Then /^all projects should have a 'Add features' link$/ do
-  response.should have_selector :li do |content|
-    content.should have_selector :a, attribute ={:title => 'New Feature'}
-  end
+  response.should have_selector :li, attribute ={:title => 'New Feature'}
 end
 
 Then /^the project should have link to create new features$/ do
@@ -290,7 +288,7 @@ Then /^we should be redirected to the projects import page$/ do
 end
 
 Then /^I should be able to edit a the project information$/ do
-	click_link 'Allows you to edit a projects information'
+	click_link 'edit'
 end
 
 Then /^the project has an invalid feature$/ do

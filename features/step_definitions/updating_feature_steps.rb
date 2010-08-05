@@ -49,7 +49,9 @@ When /^we click the "([^\"]*)"$/ do |link|
 end
 
 Then /^a "([^\"]*)" link should be displayed within the feature$/ do |message|
-  response.should have_selector :a, attribute = {:title => message}
+  response.should have_selector :li, attribute = {:title => message} do |item|
+    item.should have_selector :a
+  end
 end
 
 Then /^we should see the changes to the files$/ do
