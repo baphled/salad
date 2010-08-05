@@ -1,5 +1,5 @@
 <% content_for :js_head do %>
-  <%= javascript_include_tag "jquery.egrep" %>
+  <%= javascript_include_tag "jquery.egrep", "jquery.examples.table" %>
 <% end %>
 
 <% if Feature.find_by_title(@feature.title).nil? %>
