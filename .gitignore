@@ -12,3 +12,4 @@ rerun.txt
 features/step_definitions/web_steps.rb
 lib/tasks/rspec.rake
 lib/tasks/cucumber.rake
+db/schema.rb
