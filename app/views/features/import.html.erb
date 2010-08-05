@@ -1,3 +1,7 @@
+<% content_for :js_head do %>
+  <%= javascript_include_tag "jquery.egrep" %>
+<% end %>
+
 <% if Feature.find_by_title(@feature.title).nil? %>
 <div id="<%=h @feature.path.gsub(/\./,"_")%>>">
 	<h3>Feature: <%=h File.basename(@feature.path).sub(/\.feature/,"").gsub(/_/,' ') %></h3>
