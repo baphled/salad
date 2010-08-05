@@ -12,15 +12,15 @@ describe "/features/merge.html.erb" do
       render
     end
     
-    it "should display the changes"do
+    it "should displays the changes"do
       response.should contain "+Feature: Something different"
     end
     
-    it "should have a link to do a dry-run" do
+    it "has a link to do a dry-run" do
       response.should have_selector :a, :content => 'Dry-run'
     end
 
-    it "should have a link to actually merge the changes" do
+    it "has a link to merge the changes" do
       response.should have_selector :a, :content => 'Patch'
     end
   end

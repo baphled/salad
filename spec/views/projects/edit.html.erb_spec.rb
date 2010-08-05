@@ -15,7 +15,7 @@ describe "/projects/edit.html.erb" do
         render
       end
 
-      it "should not update the project if there is a problem" do
+      it "does not update the project" do
         response.should have_tag("form[action=#{project_path(@project)}][method=post]")
       end
     

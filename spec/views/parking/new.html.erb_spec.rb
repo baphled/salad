@@ -8,21 +8,21 @@ describe "/parking/new.html" do
       render
     end
     
-    it "should display the page title" do
+    it "displays the page title" do
       response.should contain "New Resource"
     end
-    it "should have a form" do
+    it "has a form" do
       response.should have_selector :form
     end
     
-    it "should have a project name" do
+    it "has a project name" do
       response.should have_selector :input, attribute = {:id => "resource_name"}
     end
-    it "should have a project id" do
+    it "has a project id" do
       response.should have_selector :input, attribute = {:id => "resource_project"}
     end
     
-    it "should have a save button" do
+    it "has a save button" do
       response.should have_selector :button
     end
   end

@@ -8,12 +8,12 @@ describe "/features/index.html.erb" do
     assigns[:features].stub(:total_pages).and_return 1
   end
   
-  describe "a list of features" do
+  context "a list of features" do
     before(:each) do
       render
     end
     
-    it "should display the features creation date" do
+    it "displays the features creation date" do
       assigns[:features].each do |feature|
         response.should contain "Created at: #{feature.creation_date}"
       end
@@ -24,7 +24,8 @@ describe "/features/index.html.erb" do
     before(:each) do
       render
     end
-    it "should have a list" do
+
+    it "has a list" do
       response.should have_selector :div do |content|
         content.should have_selector :ul do |list|
           list.should have_selector :li
@@ -32,7 +33,7 @@ describe "/features/index.html.erb" do
       end
     end
     
-    it "should have a list of features " do
+    it "has a list of features " do
       assigns[:features].each do |feature|
         response.should have_selector :div do |content|
           content.should contain feature.title
@@ -42,11 +43,11 @@ describe "/features/index.html.erb" do
     
   end
   
-  context "feature with stories associated to it" do
+  context "feature with associated stories" do
     before(:each) do
       render
     end
-    it "should have a view stories link" do
+    it "has a view stories link" do
       response.should have_selector :a, attribute = {:href=> feature_path(assigns[:features].first)}
     end
   end

@@ -12,54 +12,58 @@ describe Feature do
     @feature.path.should contain "#{RAILS_ROOT}/features/plain/most_used.feature"
   end
 
-  it "should save if the feature location is valid" do
-    @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/most_used.feature").should be_true
-  end
-  
-  it "should not save if the feature location is not valid" do
-    @feature.path = 'foo'
-    @feature.save.should_not be_true
+  context "valid location" do
+    it "saves" do
+      @feature.update_attribute(:path, "#{RAILS_ROOT}/features/plain/most_used.feature").should be_true
+    end
   end
 
-  context "exporting features" do
+  context "invalid location" do
+    it "should not save if the feature location is not valid" do
+      @feature.path = 'foo'
+      @feature.save.should_not be_true
+    end
+  end
+
+  context "displaying exported features" do
     
-    it "should display the 'Feature:' prefix" do
+    it "have a 'Feature:' prefix" do
       @feature.export.should contain "Feature:"
     end
     
-    it "should display the feature title" do
+    it "displays the title" do
       @feature.export.should contain "Feature: #{@feature.title}"
     end
     
-    it "should contain an in order line" do
+    it "contains an in order line" do
       @feature.export.should contain "In order"
     end
     
-    it "should contain the 'in order' contents" do
+    it "contains the 'in order' contents" do
       @feature.export.should contain "In order #{@feature.in_order}"
     end
     
-    it "should contain an 'as' line" do
+    it "contains an 'as' line" do
       @feature.export.should contain "As"
     end
     
-    it "should contain a 'as' contents" do
+    it "contains a 'as' contents" do
       @feature.export.should contain "As #{@feature.as_a}"
     end
     
-    it "should contain a 'i want' line" do
+    it "contains a 'i want' line" do
       @feature.export.should contain "I want"
     end
     
-    it "should contain a 'i want contents" do
+    it "contains a 'i want contents" do
       @feature.export.should contain "I want #{@feature.i_want}"
     end
     
-    it "should should have at least one scenario" do
+    it "contains at least one scenario" do
       @feature.export.should contain "Scenario:"
     end
     
-    it "should have a scenario for each story" do
+    it "has a scenario for each story" do
       @feature.stories.each do |story|
         if not story.steps.blank?
           @feature.export.should contain "#{story.scenario}"
@@ -67,7 +71,7 @@ describe Feature do
       end
     end
     
-    it "should display each stories steps" do
+    it "displays each stories steps" do
       @feature.stories.each do |story|
         if not story.steps.nil?
           story.steps.each do |step|
@@ -82,17 +86,17 @@ describe Feature do
         @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/navigations.feature").export
       end
 
-      it "should display the example heading" do
+      it "displays the example heading" do
         @feature.export.should contain "Examples: #{@feature.stories.first.example.heading}"
       end
       
-      it "should display the examples action headings" do
+      it "displays the examples action headings" do
         @feature.stories.first.example.actions.each do |action|
           @feature.export.should contain "| #{action.title} |"
         end
       end
       
-      it "should have items" do
+      it "has items" do
         @feature.stories.first.example.actions.each do |action|
           action.items.each do |item|
             if item.title == '&nbsp;'
@@ -107,38 +111,38 @@ describe Feature do
     
   end
 
-  context "checking the difference between a stored feature and the source file" do
+  context "comparing a source feature with the system" do
     before(:each) do
       @feature = FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export
     end
     
-    it "should be able to export a feature for comparison" do
+    it "has exported features" do
       @feature.export.should_not be_empty
     end
 
-    it "should store the system based feature in a temp file" do
+    it "stores the system based feature in a temp file" do
       FileUtils.touch("#{RAILS_ROOT}/tmp/#{File.basename(@feature.path)}.tmp")
       file = File.new("#{RAILS_ROOT}/tmp/#{File.basename(@feature.path)}.tmp", 'w')
       file.write(@feature.export)
       file.should_not == ''
     end
 
-    it "should return true if there is a diff" do
+    it "returns true if there is a diff" do
       @feature.update_attribute(:title, 'Something different')
       @feature.is_diff?.should be_true
     end
 
-    it "should return false if there is no diff" do
+    it "returns false if there is no diff" do
       @feature.is_diff?.should be_false
     end
   end
   
-  context "finding for features that have not been added to the system yet" do
+  context "finding features that have not been added to the system yet" do
     before(:each) do
       Feature.stub!(:imports_found).with("#{RAILS_ROOT}").and_return [FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature").export]
     end
     
-    it "should return a list of files to import" do
+    it "returns a list of files to import" do
       Feature.imports_found("#{RAILS_ROOT}").should_not be_empty
     end
     
@@ -154,42 +158,46 @@ describe Feature do
       @feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/tag_cloud.feature"
     end
     
-    context "patching a feature file in dry-run mode" do
-      it "gets a patch of the changes" do
+    context "in dry-run mode" do
+      it "executes patch" do
         @feature.should_receive(:patch)
         @feature.sync(true)
       end
             
-      context "it successfully synchronises a feature file" do
+      context "successfully synchronises" do
         before(:each) do
           @feature.stub!(:sync).and_return true
         end
 
-        it "should return true" do
+        it "returns true" do
           @feature.sync(true).should == true
         end
       end
 
-      context "it unsuccessfully synchronises a feature file" do
+      context "unsuccessfully synchronises" do
         before(:each) do
           @feature.stub!(:sync).and_return false
         end
 
-        it "should return false" do
+        it "returns false" do
           @feature.sync.should == false
         end
       end
     end
 
     context "patching a feature file" do
-      it "should return true" do
-        @feature.stub!(:sync).with(false).and_return true
-        @feature.sync(false).should == true
+      context "successful" do
+        it "returns true" do
+          @feature.stub!(:sync).with(false).and_return true
+          @feature.sync(false).should == true
+        end
       end
-    
-      it "should display false" do
-        @feature.stub!(:sync).with(false).and_return false
-        @feature.sync(false).should == false
+
+      context "unsuccessful" do
+        it "displays false" do
+          @feature.stub!(:sync).with(false).and_return false
+          @feature.sync(false).should == false
+        end
       end
     end
   end

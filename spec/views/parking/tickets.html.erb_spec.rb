@@ -10,27 +10,27 @@ describe "/parking/tickets.html" do
       render
     end
     
-    it "should display a list of tickets" do
+    it "displays a list of tickets" do
       response.should have_selector :ul
     end
     
-    it "should display each ticket's title" do
+    it "displays each ticket's title" do
       assigns[:tickets].should_not be_empty
     end
     
-    it "should display each ticket's date" do
+    it "displays each ticket's date" do
       assigns[:tickets].each do |ticket|
         ticket.created_at.should_not be_nil
       end
     end
     
-    it "should display each ticket's description" do
+    it "displays each ticket's description" do
       assigns[:tickets].each do |ticket|
         ticket.original_body.should_not be_empty
       end
     end
     
-    it "should have a checkbox for each result" do
+    it "has a checkbox for each result" do
       assigns[:tickets].each do |ticket|
         response.should have_selector :input, attribute = {:type => "checkbox"}
       end
@@ -43,7 +43,7 @@ describe "/parking/tickets.html" do
       assigns[:resource] = Resource.new(:name => 'baphled', :project => '50164')
     end
 
-    it "should return an empty list" do
+    it "does not display a empty list" do
       response.should_not have_selector :ul, attribute = {:id => 'tickets'}
     end
   end

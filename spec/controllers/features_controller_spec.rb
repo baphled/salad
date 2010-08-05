@@ -32,6 +32,7 @@ describe FeaturesController do
     end
   end
 
+  # @TODO Improve the speed of these specs. First step would be to improve the features_to_import? method
   describe "POST, sync" do
     before(:each) do
       @project = Project.make

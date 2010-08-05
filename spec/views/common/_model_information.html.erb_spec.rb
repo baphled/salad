@@ -12,19 +12,19 @@ describe "/common/_model_information.html.erb" do
         render :locals => {:model => @project}
       end
 
-      it "should have the projects title" do
+      it "has the projects title" do
         response.should have_selector :span, :content => @project.title
       end
 
-      it "should have a description" do
+      it "has a description" do
         response.should have_selector :span, :content => @project.description
       end
 
-      it "should have an aim" do
+      it "has an aim" do
         response.should have_selector :span, :content => @project.aim
       end
 
-      it "should have an location" do
+      it "has an location" do
         response.should have_selector :span, :content => @project.location
       end
     end
@@ -35,7 +35,7 @@ describe "/common/_model_information.html.erb" do
         render :locals => {:model => @project}
       end
 
-      it "should not display the location if one is not set" do
+      it "does not display the location" do
         response.should_not contain "Location:"
       end
     end

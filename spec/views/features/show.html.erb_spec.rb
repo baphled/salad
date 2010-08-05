@@ -13,14 +13,14 @@ describe "/features/show.html.erb" do
       assigns[:feature_stories] = @feature.stories.paginate(:page=>1)
     end
     
-    it "should have display the features informaion" do
+    it "displays the feature's informaion" do
       render
       response.should have_selector :div do |content|
         content.should contain @feature.title
       end
     end
     
-    it "should have a list of stories associated to it" do
+    it "has a list of associated stories" do
       render
       response.should have_selector :ul do |list|
         @feature.stories.each do |story|
@@ -44,7 +44,7 @@ describe "/features/show.html.erb" do
         render
       end
 
-      it "should display an export feature link" do
+      it "displays an export feature link" do
         response.should have_selector :a, attribute = {:href=> export_feature_path(@feature) }
       end
     end
@@ -57,12 +57,12 @@ describe "/features/show.html.erb" do
       render
     end
     
-    it "should not display an export feature link" do
+    it "displays an export feature link" do
       response.should_not have_selector :a, attribute = {:href=> export_feature_path(@feature) }
     end
   end
   
-  context "system feature that has changed" do
+  context "system feature has changed" do
     before(:each) do
       @feature = mock_model(Feature,:title=>"A new feature").as_null_object
       @feature.stub!(:is_diff?).and_return true
@@ -70,15 +70,15 @@ describe "/features/show.html.erb" do
       render
     end
     
-    it "should display a view diff link" do
+    it "displays a view diff link" do
       response.should have_selector :a, attribute = {:href=> changes_feature_path(@feature) }
     end
     
-    it "should display a patch link" do
+    it "displays a patch link" do
       response.should have_selector :a, attribute = {:href=> feature_path(@feature, :format => :patch) }
     end
     
-    it "should display a link to merge the source" do
+    it "displays a link to merge the source" do
       response.should have_selector :a, attribute = {:href=> merge_feature_path(@feature) }
     end
   end
@@ -90,7 +90,7 @@ describe "/features/show.html.erb" do
       render
     end
     
-    it "should display the merge system link" do
+    it "displays the merge system link" do
       response.should have_selector :a, attribute = {:href=> system_merge_feature_path(@feature) }
     end
   end

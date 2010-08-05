@@ -12,7 +12,7 @@ describe "features/system_merge.html.erb" do
       render
     end
 
-    it "should have a link to update the system feature" do
+    it "has a link to update the system feature" do
       response.should have_selector :a, attributes = {:href => system_sync_feature_path(@feature)}
     end
   end

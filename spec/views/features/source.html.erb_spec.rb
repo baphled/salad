@@ -6,7 +6,7 @@ describe "/features/source.html.erb" do
     assigns[:file] = @file
   end
   
-  it "should display the original feature files contents" do
+  it "displays the original feature files contents" do
     render
     response.should contain "Feature: Tag cloud"
   end

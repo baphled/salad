@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# @TODO Remove spec as not needed
 describe WelcomeHelper do
 
   #Delete this example and add some real ones or delete this file

@@ -8,13 +8,13 @@ describe "projects/new.html.erb" do
     assigns[:project] = stub_model(Project).as_new_record
     render
   end
-  it "should display a form" do
+
+  it "displays a form" do
     response.should have_selector :form, attribute = {:action => projects_path}
   end
-  
-  describe "new project form" do
-    
-    it "should have a list of checkboxes for each project that is avaiable" do
+
+  context "each available project" do
+    it "has a checkbox" do
       response.should have_selector :form do |content|
         @features.each do |feature|
           content.should have_selector :input, attribute = {:type => "checkbox", :value => "#{feature.id}"}
@@ -23,7 +23,7 @@ describe "projects/new.html.erb" do
     end
   end
   
-  it "should have a 'location' field " do
+  it "has a 'location' field " do
     have_tag("form[action=#{projects_path}][method=post]") do
       with_tag('input#project_location[name=?]', "project[location]")
     end

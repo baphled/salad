@@ -16,11 +16,11 @@ describe "/common/_model_summary.html.erb" do
         render :locals => {:model => @project, :assoc => :features}
       end
 
-      it "should display the created at field" do
+      it "displays the created at field" do
         response.should contain "Creation date:"
       end
 
-      it "should display the date the project was updated" do
+      it "displays the date the project was updated" do
         response.should_not contain "Updated date:"
       end
     end
@@ -31,7 +31,7 @@ describe "/common/_model_summary.html.erb" do
         render :locals => {:model => @project, :assoc => :features}
       end
 
-      it "should display the date the project was updated" do
+      it "displays the date the project was updated" do
         response.should contain "Updated date:"
       end
     end
@@ -43,11 +43,11 @@ describe "/common/_model_summary.html.erb" do
         render :locals => {:model => @project, :assoc => :features}
       end
       
-      it "should display the following message" do
+      it "displays the following message" do
         response.should contain "No features associated"
       end
       
-      it "should not display the number of associated items as 0" do
+      it "does not display the number of associated items as 0" do
         response.should_not contain "Total number of Features : 0"
       end
     end
@@ -59,14 +59,13 @@ describe "/common/_model_summary.html.erb" do
         render :locals => {:model => @feature, :assoc => :stories}
       end
       
-      it "should display the following message" do
+      it "displays the following message" do
         response.should contain "No stories associated"
       end
       
-      it "should not display the number of associated items as 0" do
+      it "does not display the number of associated items as 0" do
         response.should_not contain "Total number of Stories : 0"
       end
     end
   end
-  
 end

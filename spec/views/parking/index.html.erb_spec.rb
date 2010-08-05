@@ -8,22 +8,22 @@ describe '/parking/index.html' do
       render
     end
     
-    it "should display a form" do
+    it "displays a form" do
       response.should have_selector :form
     end
-    it "should have an input box for the tag name" do
+    it "has an input box for the tag name" do
       response.should have_selector :input
     end
 
-    it "should allow the user to submit the query" do
+    it "allows the user to submit the query" do
       response.should have_selector :button
     end
     
-    it "should display a link to edit resources" do
+    it "displays a link to edit resources" do
       response.should have_selector :a, attribute = {:href => new_parking_path}
     end
     
-    it "should have a drop down of all resources available" do
+    it "should has a drop down of all resources available" do
       response.should have_selector :select, attribute = {:id => "resource_id", :name => "resource[id]"} do |select|
         select.should contain 'baphled'
       end
@@ -39,11 +39,11 @@ describe '/parking/index.html' do
       render
     end
 
-    it "should have an unordered list" do
+    it "has an unordered list" do
       response.should have_selector :ul, attribute = {:id => "resource_list"}
     end
 
-    it "should display each parked item" do
+    it "displays each parked item" do
       response.should have_selector :ul, attribute = {:id => "resource_list"}
         response.should have_selector :li
       end
