@@ -36,7 +36,7 @@ class FeatureFile < File
         scenarios.last.example = Example.new(:heading => line.strip.sub(/^Examples:/, '').strip)
       elsif (line.strip =~ /^\|\w*|/ and scenarios.last.nil? == false) and scenarios.last.example.nil? == false
         if scenarios.last.example.actions.empty?
-          line.strip.split('|').each { |action| scenarios.last.example.actions << Action.new(:title => action.gsub(/ /,'').strip) unless action.strip.blank?}
+          line.strip.split('|').each { |action| scenarios.last.example.actions << Action.new(:title => action.strip) unless action.strip.blank?}
         elsif not scenarios.last.example.actions.empty?
           line.strip.split('|').each_with_index { |item, index| scenarios.last.example.actions[index-1].items << Item.new(:title => item.strip) unless item.empty?}
         end
