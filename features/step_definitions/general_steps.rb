@@ -16,7 +16,7 @@ Given /^the ([^\"]*) has (\d+) ([^\"]*)s$/ do |model, amount, assoc|
 end
 
 Then /^a flash message '(.*)' should be displayed$/ do |message|
-  flash[:notice].should contain "#{message}"
+  flash.should contain "#{message}"
 end
 
 When /^we click the "([^\"]*)" feature$/ do |link|
