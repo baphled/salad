@@ -8,7 +8,7 @@ describe "/projects/edit.html.erb" do
   
   describe "POST update" do
     
-    context "unable to update" do
+    context "unsuccessful" do
       before(:each) do
 				@project.errors.stub!(:[]).and_return(:title)
         @project.stub!(:update_attributes).and_return false

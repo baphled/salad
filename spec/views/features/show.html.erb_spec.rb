@@ -31,13 +31,12 @@ describe "/features/show.html.erb" do
       end
     end
 
-
     it "has a link to view a feature file" do
       render
       response.should have_selector :a, attribute = {:href => source_feature_path(@feature)}
     end
 
-    context "feature is exportable" do
+    context "which is exportable" do
       before(:each) do
         @feature.stub(:stories).and_return [Story.make]
         assigns[:feature] = @feature

@@ -5,27 +5,28 @@ describe Project do
     @project = stub_model(Project).as_new_record.as_null_object
   end
 
-  context "validation on the location directory" do
-    it "has a valid directory location" do
-      @project.respond_to?(:directory_is_valid?).should be_true
-    end
-  end
+  describe "#directory_is_valid?" do
+    context "valid" do
+      it "return true" do
+        @project.respond_to?(:directory_is_valid?).should be_true
+      end
 
-  context "location is invalid" do
-
-    it "has a blank location" do
-      @project.stub(:location).and_return nil
-      @project.save
-      @project.errors[:location].should be_nil
+      it "has a blank location" do
+        @project.stub(:location).and_return nil
+        @project.save
+        @project.errors[:location].should be_nil
+      end
     end
     
-    it "stores a error message for the location" do
-      @project.stub(:location).and_return "/blah/"
-      @project.save
-      @project.errors[:location].should_not be_nil
+    context "location is invalid" do
+      it "has an invalid path" do
+        @project.stub(:location).and_return "/blah/"
+        @project.save
+        @project.errors[:location].should_not be_nil
+      end
     end
   end
-  
+
   context "has invalid input" do
     before(:each) do
       @project.should_receive(:save).and_return false

@@ -10,7 +10,7 @@ describe Resource do
     Resource.project.should eql '50164'
   end
   
-  it "should be able to make a call to lighthouse" do
+  it "makes a call to lighthouse" do
     @resource = Resource.make
     @resource.tickets('feature').should_not be_empty
   end
@@ -41,7 +41,7 @@ describe Resource do
       @resource.errors[:project].should contain "Please enter at least 3 characters."
     end
 
-    it "ha a valid project name" do
+    it "has a valid project name" do
       @resource = Resource.new(:name => 'foo', :project => 23)
       @resource.save
       @resource.errors[:name].should eql "must be a valid LightHouse project name"

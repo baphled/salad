@@ -7,7 +7,7 @@ describe Feature do
     @feature ||= Feature.make(:stories => [Story.make(:steps => steps)])
   end
 
-  it "can store the features file location" do
+  it "stores the features file location" do
     @feature.stub!(:path).and_return "#{RAILS_ROOT}/features/plain/most_used.feature"
     @feature.path.should contain "#{RAILS_ROOT}/features/plain/most_used.feature"
   end
@@ -19,19 +19,19 @@ describe Feature do
   end
 
   context "invalid location" do
-    it "should not save if the feature location is not valid" do
+    it "does not save" do
       @feature.path = 'foo'
       @feature.save.should_not be_true
     end
   end
 
-  context "displaying exported features" do
+  context "exporting features" do
     
-    it "have a 'Feature:' prefix" do
+    it "has a 'Feature:' prefix" do
       @feature.export.should contain "Feature:"
     end
     
-    it "displays the title" do
+    it "contains the title" do
       @feature.export.should contain "Feature: #{@feature.title}"
     end
     

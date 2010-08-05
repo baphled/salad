@@ -21,7 +21,7 @@ describe ProjectsHelper do
 
     context "a single feature" do
 
-      context "a single feature with no duplicate scenario's" do
+      context "with no duplicate scenario's" do
         before(:each) do
           setup_features
         end
@@ -31,7 +31,7 @@ describe ProjectsHelper do
         end
       end
 
-      context "a single feature with duplicate scenario's" do
+      context "with duplicate scenario's" do
         before(:each) do
           setup_features false
         end
@@ -70,16 +70,18 @@ describe ProjectsHelper do
     before(:each) do
       @feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature"
     end
-    
-    it "should return false if the feature shares its name wuth another feature" do
-      @feature.stub!(:path).and_return "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature"
-      @feature_import = [{:file => "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", :feature => @feature}]
-      helper.has_duplicate_feature_name?("#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", @feature_import).should be_false
+
+    context "does not share name with another feature" do
+      it "returns false" do
+        @feature_import = [{:file => "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", :feature => @feature}]
+        helper.has_duplicate_feature_name?("#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", @feature_import).should be_false
+      end
     end
-    
-    it "should return true if the feature shares its name with another feature" do
-      @feature_import = [{:file => "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", :feature => @feature}, {:file => "#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature", :feature => @feature}]
-      helper.has_duplicate_feature_name?("#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature", @feature_import).should == "#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature"
+    context "shares name with another feature" do
+      it "returns true" do
+        @feature_import = [{:file => "#{RAILS_ROOT}/spec/fixtures/features/sample_one.feature", :feature => @feature}, {:file => "#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature", :feature => @feature}]
+        helper.has_duplicate_feature_name?("#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature", @feature_import).should == "#{RAILS_ROOT}/spec/fixtures/features/duplicates/sample_one.feature"
+      end
     end
   end
   

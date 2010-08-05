@@ -13,7 +13,7 @@ describe "/features/index.html.erb" do
       render
     end
     
-    it "displays the features creation date" do
+    it "displays the creation date" do
       assigns[:features].each do |feature|
         response.should contain "Created at: #{feature.creation_date}"
       end

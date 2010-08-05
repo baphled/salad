@@ -8,7 +8,7 @@ describe "/features/export.html.erb" do
   end
   
   describe "GET, export" do
-    it "should have display a title" do
+    it "displays a title" do
       response.should contain "Exported feature:"
     end
     

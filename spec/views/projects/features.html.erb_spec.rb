@@ -8,7 +8,7 @@ describe "/projects/features.html.erb" do
   end
 
   describe "GET, projects" do
-    context "has no features"  do
+    context "with no features"  do
       before(:each) do
         render
       end
@@ -22,7 +22,7 @@ describe "/projects/features.html.erb" do
       end
     end
     
-    context "has features"  do
+    context "with features"  do
       before(:each) do
         @project_features = [stub_model(Feature,:title=>'first feature').as_null_object]
         assigns[:project_features] = @project_features

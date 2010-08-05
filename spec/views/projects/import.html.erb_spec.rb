@@ -25,7 +25,7 @@ describe "/projects/import.html.erb" do
       response.should have_selector :form, attribute = {:action => sync_features_path}
     end
 
-    context "with invalid feature" do
+    context "with an invalid feature" do
       it "should has an invalid title" do
         assigns[:imported].first[:feature].title = nil
         render
@@ -71,7 +71,7 @@ describe "/projects/import.html.erb" do
       end
     end
       
-    context "with valid features" do
+    context "with a valid features" do
       before(:each) do
         Step.create(:title => 'Given I can view the projects page')
         render

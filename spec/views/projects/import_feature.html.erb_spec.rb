@@ -15,18 +15,18 @@ describe "projects/import_feature.html.erb" do
     end
   end
 
-  context "new features to import" do
+  context "with features to import" do
     before(:each) do
       assigns[:project] = @project
       assigns[:to_import] = [FeatureFile.new("#{RAILS_ROOT}/features/plain/tag_cloud.feature").export]
       render
     end
 
-    it "has a list of feature files to import" do
+    it "has a list of feature files" do
       response.should have_selector :ul, attribute = {:id => 'import_list'}
     end
 
-    it "has a link to import that feature" do
+    it "has a link to import feature" do
       response.should have_selector :a,
         :content => "Import #{File.basename(assigns[:to_import].first.path).sub('.feature', '').gsub('_',' ')}"
     end

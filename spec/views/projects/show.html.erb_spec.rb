@@ -11,7 +11,7 @@ describe "projects/show.html.erb" do
                             :created_at => @date).as_null_object
   end
   
-  context "is updated" do
+  context "has been updated updated" do
     before(:each) do
       @project.stub(:updated_at).and_return @date.tomorrow
       assigns[:project] = @project
@@ -42,6 +42,7 @@ describe "projects/show.html.erb" do
       assigns[:project] = @project
       render
     end
+    
     it "does not have an import link" do
       response.should_not have_selector :a, attribute = {:href => "/projects/#{@project.id}/import"}
     end
@@ -58,7 +59,7 @@ describe "projects/show.html.erb" do
       render
     end
     
-    it "displays an Import all link" do
+    it "displays a link to import all features" do
       response.should have_selector :a, attribute = {:href => import_all_project_path(@project)}
     end
   end

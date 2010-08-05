@@ -15,7 +15,7 @@ describe FeatureFile do
     end
   end
   
-  context "importing a feature file which contains scenario outlines" do
+  context "valid feature file with scenario outlines" do
     before(:each) do
       @feature_file = FeatureFile.new "#{RAILS_ROOT}/features/plain/enhancements.feature"
     end
@@ -48,10 +48,6 @@ describe FeatureFile do
   context "valid feature file" do
     before(:each) do
       @feature_file = FeatureFile.new("#{RAILS_ROOT}/spec/fixtures/test.feature")
-    end
-
-    it "is a cucumber feature file" do
-      @feature_file.should_not be_invalid
     end
 
     it "has a feature that is a string" do
@@ -95,19 +91,19 @@ describe FeatureFile do
         @feature_file.export.should be_a Feature
       end
 
-      it "returns the in order property " do
+      it "has a in order property" do
         @feature_file.export.in_order.should_not be_nil
       end
 
-      it "returns the as a property" do
+      it "has a as a property" do
         @feature_file.export.as_a.should be_a String
       end
 
-      it "returns the i want property" do
+      it "has a i want property" do
         @feature_file.export.i_want.should be_a String
       end
 
-      it "returns a list of stories" do
+      it "has a list of stories" do
         @feature_file.export.stories.should_not be_empty
       end
     end
