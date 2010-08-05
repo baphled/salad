@@ -6,14 +6,14 @@ describe ProjectsController do
   end
 
   describe "GET, index" do
-    it "should get a list of all projects" do
+    it "displays a list of all projects" do
       Project.should_receive(:paginate)
       get :index
     end
   end
 
   describe "GET, new" do
-    it "renders the new form template" do
+    it "renders the new form" do
       get :new
       response.should render_template :new
     end
@@ -21,11 +21,6 @@ describe ProjectsController do
     it "gets a list of features" do
       Feature.should_receive(:find).with(:all)
       get :new
-    end
-
-    it "should render the no sidebar layout" do
-      get :new
-      response.should use_layout("no_sidebar")
     end
   end
 
@@ -39,19 +34,14 @@ describe ProjectsController do
         Project.stub!(:save).and_return true
       end
       
-      it "should save the project" do
+      it "is saved" do
         @project.should_receive(:save).and_return true
         post :create
       end
     
-      it "should display a flash message" do
+      it "displays a success flash message" do
         post :create
-        flash.should contain "Project: #{@project.title} was created"
-      end
-
-      it "should save the project" do
-        post :create
-        response.should be_success
+        flash[:success].should_not be_empty
       end
     end
 
@@ -60,12 +50,12 @@ describe ProjectsController do
         @project.stub(:save).and_return false
       end
 
-      it "should not save the project" do
+      it "is not saved" do
         @project.should_receive(:save).and_return false
         post :create
       end
 
-      it "should render the new form" do
+      it "displays the form" do
         post :create
         response.should render_template :new
       end
@@ -77,12 +67,12 @@ describe ProjectsController do
       Project.stub(:find).and_return @project
     end
     
-    it "should find the project" do
+    it "finds the project" do
       Project.should_receive(:find).and_return @project
       get :edit
     end
 
-    it "should render the edit form template" do
+    it "renders the form" do
       get :edit
       response.should render_template :edit
     end
@@ -94,43 +84,38 @@ describe ProjectsController do
       Project.stub(:find).and_return @project
     end
 
-    context "successfully update a project" do
+    context "successfully updated" do
       before(:each) do
         @project.stub(:update_attributes).and_return true
       end
       
-      it "should update the project" do
+      it "updates the project" do
         @project.should_receive(:update_attributes).with(@project)
         put :update, {:project => @project}
       end
 
-      it "should display a flash message" do
+      it "displays a flash message" do
         put :update, {:project => @project}
         flash[:notice].should contain "Project: #{@project.title} was updated"
       end
-
-      it "should update the project" do
-        put :update, {:project => @project}
-        response.should be_success
-      end
     end
 
-    context "unsuccessfully update a project" do
+    context "unsuccessfully updated" do
       before(:each) do
         @project.stub(:update_attributes).and_return false
       end
 
-      it "should not update the project" do
+      it "not updated" do
         @project.should_receive(:update_attributes).and_return false
         put :update, {:project => @project}
       end
 
-      it "should display a flash[:error] message" do
+      it "displays a flash error message" do
         put :update, {:project => @project}
-        flash[:error].should contain "Project: #{@project.title} was not created"
+        flash[:error].should_not be_empty
       end
       
-      it "should render the edit form template" do
+      it "renders the edit form" do
         put :update, {:project => @project}
         response.should render_template :edit
       end
@@ -165,25 +150,25 @@ describe ProjectsController do
           get :import_feature
         end
 
-        it "should search all feature files" do
+        it "searches for features to import" do
           assigns[:to_import].should_not be_empty
         end
 
-        it "should have an array of features file locations" do
+        it "has a list of features file locations" do
           assigns[:to_import].should == @results
         end
       end
 
     end
 
-    context "does not have a project path" do
+    context "has no project path" do
       before(:each) do
         Project.stub(:find).and_return @project
         assigns[:project] = @project.stub(:location).and_return nil
         get :import_feature
       end
 
-      it "should not display a list of features to import" do
+      it "lists features to import" do
         assigns[:to_import].should be_empty
       end
     end
@@ -193,17 +178,17 @@ describe ProjectsController do
     before(:each) do
       Project.stub(:find).and_return @project
     end
-    it "should find the project" do
+    it "find the project" do
       Project.should_receive(:find)
       delete :destroy, {:project => @project}
     end
     
-    it "should destroy the project" do
+    it "destroys the project" do
       @project.should_receive(:destroy).and_return true
       delete :destroy
     end
 
-    it "should redirect to the projects path" do
+    it "redirects to the projects" do
       delete :destroy
       response.should redirect_to projects_path
     end
@@ -213,16 +198,18 @@ describe ProjectsController do
     before(:each) do
       Project.stub(:find).and_return @project
     end
-    
-    it "should get the project" do
-      Project.should_receive(:find).and_return @project
+
+    after(:each) do
       get :features
     end
 
-    it "should get all features related to the project" do
+    it "gets the project" do
+      Project.should_receive(:find).and_return @project
+    end
+
+    it "gets all features related to the project" do
       @project.stub(:features).and_return mock_model(Feature).as_null_object
       @project.should_receive(:features)
-      get :features
     end
   end
 
@@ -233,17 +220,17 @@ describe ProjectsController do
       Project.stub(:find).and_return @project
     end
 
-    it "should find the project" do
+    it "finds the project" do
       Project.should_receive(:find).and_return @project
       get :import
     end
     
-    it "should create a feature associated to the project" do
+    it "associates the features to the project" do
       @project.features.should_receive(:new)
       get :import
     end
     
-    it "should retreive a list of features to import" do
+    it "retreives a list of features to import" do
       @project.should_receive(:import_features)
       get :import
     end
@@ -257,19 +244,19 @@ describe ProjectsController do
       Project.stub(:find).and_return @project
     end
     
-    it "should make a call to import_feature" do
+    it "finds all features to import" do
       Feature.should_receive(:imports_found)
       get :import_all
     end
   end
   
   describe "GET, tag" do
-    it "should find all projects with the given tag" do
+    it "finds all projects with the given tag" do
       Project.should_receive(:find_tagged_with)
       get :tag, {:tag => 'Given'}
     end
     
-    it "shold render the index page" do
+    it "renders the projects page" do
       get :tag
       response.should render_template :index
     end

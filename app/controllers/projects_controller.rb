@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         find_projects_features
-        flash[:notice] = "Project: #{@project.title} was created"
+        flash[:success] = "Project: #{@project.title} was created"
         format.js { render "create.rjs" }
         format.html { redirect_to @project }
       else
