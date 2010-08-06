@@ -13,7 +13,7 @@ class Feature < ActiveRecord::Base
   
   validates_associated      :stories, :on => :create
 
-  validates_length_of :title, :minimum => 6, :too_short => :too_short
+  validates_length_of :title, :minimum => 4, :too_short => :too_short
   validates_length_of :in_order, :minimum => 7, :too_short => :too_short
   validates_length_of :as_a, :minimum => 4, :too_short => :too_short
   validates_length_of :i_want, :minimum => 7, :too_short => :too_short

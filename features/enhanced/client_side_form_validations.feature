@@ -53,7 +53,7 @@ Feature: Client side form validations
 
   Examples: List of fields that have character limits
     | page name    | model    | field       | value     | amount |
-    | new feature  | feature  | title       | to        | 7      |
+    | new feature  | feature  | title       | to        | 4      |
     | new feature  | feature  | in_order    | to do     | 7      |
     | new feature  | feature  | as_a        | use       | 4      |
     | new feature  | feature  | i_want      | not       | 7      |

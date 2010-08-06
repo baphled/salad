@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('form.feature').customValidations({
     rules: {
-      "feature[title]": {required: true, minlength: 7,
+      "feature[title]": {required: true, minlength: 4,
         remote: {
           url: "/features/validate.json",
           type: "get",

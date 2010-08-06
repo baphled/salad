@@ -13,7 +13,7 @@ Feature: Form validations
   Examples: Models and their properties
     | controller | model    | value               | property    | input_type | selector id               | error                                            |
     | features   | feature  |                     | title       | input      | feature_title_input       | can't be blank                                   |
-    | features   | feature  | to                  | title       | input      | feature_title_input       | Please enter at least 6 characters.              |
+    | features   | feature  | to                  | title       | input      | feature_title_input       | Please enter at least 4 characters.              |
     | features   | feature  |                     | in_order    | input      | feature_title_input       | can't be blank                                   |
     | features   | feature  | to do               | in_order    | input      | feature_in_order_input    | Please enter at least 7 characters.              |
     | features   | feature  |                     | as_a        | input      | feature_title_input       | can't be blank                                   |
